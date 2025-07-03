@@ -42,8 +42,8 @@ export default {
 
 <style scoped>
 .site-footer {
-  background-color: var(--primary-color);
-  color: #a0aec0;
+  background-color: #1e3a8a; /* BLUE BACKGROUND */
+  color: #ffffff;
   padding: 60px 20px 0 20px;
   font-size: 0.9rem;
 }
@@ -58,7 +58,7 @@ export default {
 }
 
 .footer-about h3 {
-  color: var(--white-color);
+  color: #ffffff;
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
@@ -68,16 +68,18 @@ export default {
   font-size: 0.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #777;
+  color: #c7d2fe; /* Light indigo */
   margin-bottom: 20px;
 }
 
 .slogan {
   line-height: 1.6;
+  color: #e0e7ff; /* light blue/indigo */
 }
 
-.footer-links h4, .footer-contact h4 {
-  color: var(--white-color);
+.footer-links h4,
+.footer-contact h4 {
+  color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 20px;
@@ -85,16 +87,24 @@ export default {
   letter-spacing: 0.5px;
 }
 
-.footer-links ul { list-style: none; padding: 0; margin: 0; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a, .footer-contact a {
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 12px;
+}
+.footer-links a,
+.footer-contact a {
   text-decoration: none;
-  color: #a0aec0;
+  color: #e0e7ff;
   transition: color 0.3s ease, padding-left 0.3s ease;
   position: relative;
 }
-.footer-links a:hover, .footer-contact a:hover {
-  color: var(--secondary-color);
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: #93c5fd; /* Light sky blue */
   padding-left: 5px;
 }
 
@@ -102,10 +112,11 @@ export default {
   margin-bottom: 12px;
   display: flex;
   align-items: center;
+  color: #e0e7ff;
 }
 
 .footer-contact i {
-  color: var(--secondary-color);
+  color: #60a5fa; /* Sky blue icon color */
   margin-right: 12px;
   width: 15px;
   text-align: center;
@@ -115,15 +126,17 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 0;
-  border-top: 1px solid #1a324d;
+  border-top: 1px solid #3b82f6;
   text-align: center;
   font-size: 0.85rem;
+  color: #cbd5e1;
 }
 
 @media (max-width: 768px) {
   .footer-container {
     text-align: center;
   }
+
   .footer-contact p {
     justify-content: center;
   }

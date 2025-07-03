@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="My personal portfolio showcasing my work and skills">
+  <meta name="author" content="Your Name">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Tongfang system integrated</title>
+
+  <!-- Favicon Link -->
+  <link rel="icon" href="/logo.png" type="image/png">
+
+  <!-- Include FontAwesome CDN for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+
+  <!-- Optional: Include a CSS file for global styles if needed -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Custom Styles for the icon -->
+  <style>
+    .contact-icon {
+      font-size: 40px; /* Adjust icon size */
+      color: #e9967a; /* Adjust the color of the icon */
+      position: fixed;
+      bottom: 20px;
+      right: 20px; /* Position it at the bottom-right corner */
+      cursor: pointer;
+    }
+
+    /* Ensures there are no extra icons at the bottom center */
+    .bottom-center-icon {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div> <!-- Vue.js will mount here -->
+
+  <!-- The icon positioned at the bottom-right corner -->
+  <a href="#home"> <!-- Replace with the correct section link if needed -->
+    <i class="fas fa-home contact-icon"></i> <!-- FontAwesome Home Icon -->
+  </a>
+
+  <!-- Script for Vue.js application -->
+  <script src="/js/app.js"></script>
+</body>
+
+</html>

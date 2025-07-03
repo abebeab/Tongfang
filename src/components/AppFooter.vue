@@ -2,14 +2,12 @@
   <footer class="site-footer">
     <div class="footer-container">
       
-      <!-- Column 1: About the Company -->
       <div class="footer-about">
         <h3>TONGFANG</h3>
         <p class="footer-subtext">System Integrated</p>
         <p class="slogan">"Moving Forward" - Innovating the future of smart building management.</p>
       </div>
 
-      <!-- Column 2: Quick Links -->
       <div class="footer-links">
         <h4>Site Map</h4>
         <ul>
@@ -21,7 +19,6 @@
         </ul>
       </div>
 
-      <!-- Column 3: Contact Details -->
       <div class="footer-contact">
         <h4>Get in Touch</h4>
         <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
@@ -31,7 +28,6 @@
 
     </div>
     
-    <!-- Bottom Bar with Copyright -->
     <div class="footer-bottom">
       <p>© {{ new Date().getFullYear() }} Tongfang System Integrated PLC. All Rights Reserved. </p>
     </div>
@@ -47,7 +43,7 @@ export default {
 <style scoped>
 .site-footer {
   background-color: var(--primary-color);
-  color: #a0aec0; /* A softer white for text */
+  color: #a0aec0;
   padding: 60px 20px 0 20px;
   font-size: 0.9rem;
 }
@@ -89,23 +85,14 @@ export default {
   letter-spacing: 0.5px;
 }
 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 12px;
-}
-
+.footer-links ul { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 12px; }
 .footer-links a, .footer-contact a {
   text-decoration: none;
   color: #a0aec0;
   transition: color 0.3s ease, padding-left 0.3s ease;
   position: relative;
 }
-
 .footer-links a:hover, .footer-contact a:hover {
   color: var(--secondary-color);
   padding-left: 5px;

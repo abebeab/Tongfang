@@ -27,7 +27,7 @@
             <div class="info-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
             <div class="info-text">
               <h4>Our Office</h4>
-              <p>Addis Ababa, Ethiopia</p>
+              <p>Bole around Rouanda Embasy,Addis Ababa, Ethiopia</p>
             </div>
           </div>
         </div>

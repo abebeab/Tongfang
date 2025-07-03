@@ -12,7 +12,7 @@
         </p>
       </div>
       <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1581092921445-95a22a453e95?q=80&w=2787&auto=format&fit=crop" alt="Technology and Engineering">
+         <img src="@/assets/tec.jpg" alt="Technology and Engineering">
       </div>
     </div>
   </section>

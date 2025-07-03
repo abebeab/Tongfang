@@ -1,34 +1,39 @@
 <template>
-  <footer class="footer">
+  <footer class="site-footer">
     <div class="footer-container">
-      <!-- Contact Information -->
-      <div class="contact-info">
-        <p class="contact-text">Email: <a href="mailto:abebetafere988@gmail.com">abebetafere988@gmail.com</a></p>
-        <p class="contact-text">Location: Addis Ababa, Ethiopia</p>
+      
+      <!-- Column 1: About the Company -->
+      <div class="footer-about">
+        <h3>TONGFANG</h3>
+        <p class="footer-subtext">System Integrated</p>
+        <p class="slogan">"Moving Forward" - Innovating the future of smart building management.</p>
       </div>
 
-      <!-- Copyright Notice -->
-      <p class="footer-text">&copy; 2025 All rights reserved. This portfolio is made with ❤️ by Abebe Tafere</p>
-
-      <!-- "Super Digital Hitec" Announcement Section -->
-      <div class="company-announcement">
-        <p class="company-name"><strong>Super Digital Hi-Tec</strong></p>
-        <p class="coming-soon-text">🚀 Launching Soon! Stay tuned for the future !!</p> </div>
-      <!-- Social Media Links (Right-aligned) -->
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/abebe-tafere-6176781a2/" target="_blank" class="social-icon">
-          <img src="../assets/icons/linkedin-icon.jpg" alt="LinkedIn" />
-        </a>
-        <a href="https://t.me/ab_se7p" target="_blank" class="social-icon">
-          <img src="../assets/icons/telegram-icon.jpg" alt="Telegram" />
-        </a>
-        <a href="https://github.com/abebeab" target="_blank" class="social-icon">
-          <img src="../assets/icons/github-icon.jpg" alt="GitHub" />
-        </a>
-        <a href="https://www.upwork.com/freelancers/~01d347dbe89190526d?mp_source=share" target="_blank" class="social-icon">
-          <img src="../assets/icons/upwork-icon.jpg" alt="Upwork" />
-        </a>
+      <!-- Column 2: Quick Links -->
+      <div class="footer-links">
+        <h4>Site Map</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Solutions</a></li>
+          <li><a href="#projects">Landmark Projects</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
       </div>
+
+      <!-- Column 3: Contact Details -->
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+251911249722">+251 911 249722</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@tongfang-integrated.com">info@tongfang-integrated.com</a></p>
+      </div>
+
+    </div>
+    
+    <!-- Bottom Bar with Copyright -->
+    <div class="footer-bottom">
+      <p>© {{ new Date().getFullYear() }} Tongfang System Integrated PLC. All Rights Reserved. </p>
     </div>
   </footer>
 </template>
@@ -40,133 +45,100 @@ export default {
 </script>
 
 <style scoped>
-/* Footer Styling */
-.footer {
-  background: linear-gradient(135deg, #6a1b9a, #ff4081); /* Gradient background */
-  color: #fff; /* White text color for contrast */
-  padding: 40px 20px;
-  text-align: center;
-  position: relative;
-  width: 100%;
-  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow on the top */
+.site-footer {
+  background-color: var(--primary-color);
+  color: #a0aec0; /* A softer white for text */
+  padding: 60px 20px 0 20px;
+  font-size: 0.9rem;
 }
 
-/* Footer Container */
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  padding-bottom: 40px;
 }
 
-/* Contact Information */
-.contact-info {
+.footer-about h3 {
+  color: var(--white-color);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.footer-subtext {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #777;
   margin-bottom: 20px;
 }
 
-.contact-text {
-  font-size: 1.1rem;
-  margin: 5px 0;
+.slogan {
+  line-height: 1.6;
 }
 
-.contact-text a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.contact-text a:hover {
-  text-decoration: underline;
-}
-
-/* Footer Text */
-.footer-text {
+.footer-links h4, .footer-contact h4 {
+  color: var(--white-color);
   font-size: 1.1rem;
   font-weight: 600;
-  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* Company Announcement Section */
-.company-announcement {
-  margin-top: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 20px;
-  border-radius: 10px;
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a, .footer-contact a {
+  text-decoration: none;
+  color: #a0aec0;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  position: relative;
+}
+
+.footer-links a:hover, .footer-contact a:hover {
+  color: var(--secondary-color);
+  padding-left: 5px;
+}
+
+.footer-contact p {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-contact i {
+  color: var(--secondary-color);
+  margin-right: 12px;
+  width: 15px;
   text-align: center;
 }
 
-.company-name {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ff6347;
-  text-transform: uppercase;
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  border-top: 1px solid #1a324d;
+  text-align: center;
+  font-size: 0.85rem;
 }
 
-.coming-soon-text {
-  font-size: 1.3rem;
-  margin-top: 10px;
-  color: #fff;
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: 1px;
-}
-
-/* Social Media Links */
-.social-links {
-  display: flex;
-  gap: 15px; /* Space between icons */
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
-.social-icon {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.social-icon img {
-  width: 50px; /* Adjust icon size */
-  height: 50px;
-  border-radius: 50%; /* Make the icons circular */
-  transition: transform 0.3s ease;
-}
-
-.social-icon:hover img {
-  transform: scale(1.2); /* Slightly enlarge icon on hover */
-}
-
-/* Responsive Design for smaller screens */
 @media (max-width: 768px) {
   .footer-container {
-    padding: 15px;
+    text-align: center;
   }
-
-  .contact-info {
-    margin-bottom: 15px;
-  }
-
-  .footer-text {
-    font-size: 1rem;
-  }
-
-  .company-announcement {
-    margin-top: 30px;
-    padding: 15px;
-  }
-
-  .company-name {
-    font-size: 1.6rem;
-  }
-
-  .coming-soon-text {
-    font-size: 1.1rem;
-  }
-
-  .social-icon img {
-    width: 35px;
-    height: 35px;
+  .footer-contact p {
+    justify-content: center;
   }
 }
 </style>

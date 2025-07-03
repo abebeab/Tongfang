@@ -1,44 +1,27 @@
 <template>
   <section id="contact">
-    <h2 class="contact-title">Contact US</h2>
-    <p class="contact-description">
-      Hey, you can contact US through any of your favorite social media links or email us directly!
-    </p>
-
-    <!-- Success Message -->
-    <div v-if="formSubmitted" class="success-message">
-      Thank You! The Message was Submitted Successfully!
-    </div>
-
-    <div class="contact-content">
-      <div class="contact-info-left">
-        <!-- Add your contact information here -->
-      </div>
-
-      <div class="contact-form-right">
-        <!-- Form Element -->
+    <div class="contact-overlay"></div>
+    <div class="contact-container">
+      <div class="contact-form-wrapper">
+        <h2 class="section-title">Build a Smarter Future</h2>
+        <p class="section-description">
+          Ready to enhance your building's efficiency and security? Contact us today for a consultation or quote. Our team will get back to you within 24 hours.
+        </p>
+        
         <form @submit.prevent="handleSubmit" ref="form">
-          <div class="form-inputs">
-            <input
-              type="text"
-              v-model="name"
-              name="user_name"
-              placeholder="Your Name"
-              required
-              class="input-field"
-            />
-            <input
-              type="email"
-              v-model="email"
-              name="user_email"
-              placeholder="Your Email"
-              required
-              class="input-field"
-            />
+          <div class="form-row">
+            <input type="text" name="user_name" placeholder="Your Name" required v-model="form.name" />
+            <input type="email" name="user_email" placeholder="Your Email" required v-model="form.email" />
           </div>
-          <textarea v-model="message" name="message" placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
+          <textarea name="message" placeholder="Tell us about your project..." required v-model="form.message"></textarea>
+          <button type="submit" :disabled="isSending">
+            {{ isSending ? 'Sending...' : 'Send Inquiry' }}
+          </button>
         </form>
+
+        <div v-if="statusMessage" :class="['status-message', formStatus]">
+          {{ statusMessage }}
+        </div>
       </div>
     </div>
   </section>
@@ -51,205 +34,185 @@ export default {
   name: 'ContactSection',
   data() {
     return {
-      name: '',
-      email: '',
-      message: '',
-      formSubmitted: false,
+      isSending: false,
+      formStatus: '', // Will be 'success' or 'error'
+      statusMessage: '',
+      form: {
+        name: '',
+        email: '',
+        message: ''
+      }
     };
   },
   methods: {
     handleSubmit() {
-      const form = this.$refs.form; // Reference the form
+      // --- START OF DIAGNOSTIC LOGS ---
+      // This will help us see if the .env variables are loading correctly.
+      console.log('--- Attempting to send email with this config: ---');
+      console.log('Service ID:', process.env.VUE_APP_EMAILJS_SERVICE_ID);
+      console.log('Template ID:', process.env.VUE_APP_EMAILJS_TEMPLATE_ID);
+      console.log('Public Key:', process.env.VUE_APP_EMAILJS_PUBLIC_KEY);
+      // --- END OF DIAGNOSTIC LOGS ---
 
-      // Step 1: Send the message to your email (admin email)
-      emailjs
-        .sendForm('service_u1gdw9v', 'template_bjp8zyb', form, 'KH3eyX6xnGJcbUd9R')
-        .then(
-          (result) => {
-            console.log('Message sent to admin:', result.text);
+      this.isSending = true;
+      this.statusMessage = '';
 
-            // Step 2: Send the auto-response email to the user
-            this.sendAutoResponse();
-
-            // Step 3: After successful submission, reset the form fields
-            this.name = '';
-            this.email = '';
-            this.message = '';
-            this.formSubmitted = true;
-
-            // Step 4: Hide the success message after 3 seconds
-            setTimeout(() => {
-              this.formSubmitted = false;
-            }, 3000); // 3 seconds for the success message
-          },
-          (error) => {
-            console.log('Error sending message to admin:', error.text);
-            alert('There was an error submitting your form. Please try again later.');
-          }
-        );
-
-      // Optionally reset the form manually
-      form.reset();
+      emailjs.sendForm(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+        this.$refs.form,
+        process.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      )
+      .then((result) => {
+        console.log('SUCCESS! Message sent to admin.', result.text);
+        this.sendAutoResponse(); // Trigger auto-response on success
+        this.formStatus = 'success';
+        this.statusMessage = 'Thank you! Your message has been sent successfully.';
+        this.$refs.form.reset(); // The best way to clear the form
+      }, (error) => {
+        console.error('FAILED to send message to admin:', error);
+        this.formStatus = 'error';
+        this.statusMessage = 'Sorry, an error occurred. Please check the console for details.';
+      })
+      .finally(() => {
+        this.isSending = false;
+        // Hide the status message after 5 seconds
+        setTimeout(() => { this.statusMessage = ''; }, 5000);
+      });
     },
 
     sendAutoResponse() {
-      // Step 1: Prepare auto-response parameters
+      console.log('--- Attempting to send auto-response ---');
+      console.log('Auto-Reply Template ID:', process.env.VUE_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID);
+
       const autoResponseParams = {
-        user_name: this.name,
-        user_email: this.email,
-        message: this.message,
+        user_name: this.form.name,
+        user_email: this.form.email,
+        message: this.form.message,
       };
 
-      // Step 2: Send the auto-reply to the user
-      emailjs
-        .send('service_u1gdw9v', 'template_kutm8cg', autoResponseParams, 'KH3eyX6xnGJcbUd9R')
-        .then(
-          (result) => {
-            console.log('Auto-response sent to user:', result.text);
-          },
-          (error) => {
-            console.log('Error sending auto-response to user:', error.text);
-            alert('There was an error sending the auto-response. Please try again later.');
-          }
-        );
+      emailjs.send(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID,
+        autoResponseParams,
+        process.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      )
+      .then((result) => {
+        console.log('Auto-response sent to user successfully.', result.text);
+      }, (error) => {
+        console.error('Failed to send auto-response:', error);
+      });
     },
-  },
+  }
 };
 </script>
 
 <style scoped>
-/* Section Styling */
-section#contact {
-  margin-top: 10px;
-  padding: 40px 10px;
-  padding-top: 30px;
-  min-height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
+#contact {
+  padding: 100px 20px;
   position: relative;
-  background-color: #f4f7fb;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: url('https://images.unsplash.com/photo-1558021211-6514f395939a?q=80&w=2940&auto=format&fit=crop') no-repeat center center/cover;
+  color: var(--white-color);
 }
-
-/* Success Message Styling */
-.success-message {
-  font-size: 1.5rem;
-  color: green;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+.contact-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(45deg, rgba(10, 37, 64, 0.95), rgba(10, 37, 64, 0.85));
+}
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
   text-align: center;
-  opacity: 0;
-  animation: fadeIn 0.5s forwards; /* Fade-in animation */
 }
-
-/* Success Message Animation */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
-
-/* General Form Styling */
-.contact-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 10px;
+.section-description {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  opacity: 0.8;
+  line-height: 1.7;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.contact-description {
-  text-align: center;
-  font-size: 1.2rem;
-  margin-bottom: 30px;
-}
-
-.contact-content {
+form {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  align-items: center;
+  gap: 20px;
+  text-align: left;
 }
-
-.contact-info-left {
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+input, textarea {
   width: 100%;
-  text-align: center;
-}
-
-.contact-form-right {
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-form-right form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact-form-right input,
-.contact-form-right textarea,
-.contact-form-right button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid #ddd;
+  padding: 15px;
+  border: 1px solid #4a5a6a;
+  background-color: rgba(26, 50, 77, 0.7);
+  color: var(--white-color);
+  border-radius: 8px;
   font-size: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
-
-.contact-form-right textarea {
-  height: 150px;
+input::placeholder, textarea::placeholder {
+  color: #a0aec0;
 }
-
-.contact-form-right button {
-  padding: 10px 20px;
-  background-color: #e9967a;
-  color: white;
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.3);
+}
+textarea {
+  height: 140px;
+  resize: vertical;
+}
+button {
+  padding: 15px 30px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  align-self: center;
+  transition: all 0.3s ease;
 }
-
-.contact-form-right button:hover {
-  background-color: #c67c56;
+button:hover:not(:disabled) {
+  background-color: var(--white-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
-
-/* Responsive Design */
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+.status-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.status-message.success {
+  background-color: rgba(0, 209, 178, 0.2);
+  color: #00D1B2;
+  border: 1px solid #00D1B2;
+}
+.status-message.error {
+  background-color: rgba(255, 69, 58, 0.2);
+  color: #FF453A;
+  border: 1px solid #FF453A;
+}
 @media (max-width: 768px) {
-  section#contact {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contact-form-right {
-    width: 100%;
-  }
-
-  .contact-form-right input,
-  .contact-form-right textarea,
-  .contact-form-right button {
-    width: 90%;
-  }
+  .form-row { grid-template-columns: 1fr; }
 }
 </style>

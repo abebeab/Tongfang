@@ -27,7 +27,7 @@
             <div class="info-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
             <div class="info-text">
               <h4>Our Office</h4>
-              <p>Bole around Rouanda Embasy,Addis Ababa, Ethiopia</p>
+              <p>Bole around Rouanda Embasy, Addis Ababa, Ethiopia</p>
             </div>
           </div>
         </div>
@@ -37,7 +37,7 @@
       <div class="contact-form-wrapper">
         <form @submit.prevent="handleSubmit" ref="form">
           <h4>Send Us a Message</h4>
-          <div class="form-row">
+          <div class="form-group">
             <input type="text" name="user_name" placeholder="Your Name" required v-model="form.name" />
             <input type="email" name="user_email" placeholder="Your Email" required v-model="form.email" />
           </div>
@@ -56,32 +56,77 @@
 </template>
 
 <script>
-// Your script logic is already perfect and does not need to change.
 import emailjs from '@emailjs/browser';
+
 export default {
   name: 'ContactSection',
-  data() { return { isSending: false, formStatus: '', statusMessage: '', form: { name: '', email: '', message: '' } }; },
+  data() {
+    return {
+      isSending: false,
+      formStatus: '',
+      statusMessage: '',
+      form: {
+        name: '',
+        email: '',
+        message: '',
+      },
+    };
+  },
   methods: {
     handleSubmit() {
-      this.isSending = true; this.statusMessage = '';
-      emailjs.sendForm(process.env.VUE_APP_EMAILJS_SERVICE_ID, process.env.VUE_APP_EMAILJS_TEMPLATE_ID, this.$refs.form, process.env.VUE_APP_EMAILJS_PUBLIC_KEY)
-        .then(() => { this.sendAutoResponse(); this.formStatus = 'success'; this.statusMessage = 'Thank you! Your message has been sent successfully.'; this.$refs.form.reset(); },
-              () => { this.formStatus = 'error'; this.statusMessage = 'Sorry, an error occurred. Please try again later.'; })
-        .finally(() => { this.isSending = false; setTimeout(() => { this.statusMessage = ''; }, 5000); });
+      this.isSending = true;
+      this.statusMessage = '';
+      emailjs.sendForm(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+        this.$refs.form,
+        process.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      )
+        .then(() => {
+          this.sendAutoResponse();
+          this.formStatus = 'success';
+          this.statusMessage = 'Thank you! Your message has been sent successfully.';
+          this.$refs.form.reset();
+
+          // Clear Vue form model after native reset
+          this.form.name = '';
+          this.form.email = '';
+          this.form.message = '';
+        })
+        .catch(() => {
+          this.formStatus = 'error';
+          this.statusMessage = 'Sorry, an error occurred. Please try again later.';
+        })
+        .finally(() => {
+          this.isSending = false;
+          setTimeout(() => {
+            this.statusMessage = '';
+          }, 5000);
+        });
     },
     sendAutoResponse() {
-      const params = { user_name: this.form.name, user_email: this.form.email, message: this.form.message };
-      emailjs.send(process.env.VUE_APP_EMAILJS_SERVICE_ID, process.env.VUE_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID, params, process.env.VUE_APP_EMAILJS_PUBLIC_KEY)
-        .then(() => console.log('Auto-response sent.'), (err) => console.error('Auto-response failed:', err));
+      const params = {
+        user_name: this.form.name,
+        user_email: this.form.email,
+        message: this.form.message,
+      };
+      emailjs.send(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID,
+        params,
+        process.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      )
+        .then(() => console.log('Auto-response sent.'))
+        .catch((err) => console.error('Auto-response failed:', err));
     },
-  }
+  },
 };
 </script>
 
 <style scoped>
 #contact {
   padding: 100px 20px;
-  background: linear-gradient(135deg, var(--white-color) 0%, #f0f4f8 100%); /* Bright & subtle gradient */
+  background: linear-gradient(135deg, var(--white-color) 0%, #f0f4f8 100%);
   color: var(--primary-color);
 }
 
@@ -89,7 +134,7 @@ export default {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.2fr; /* Two distinct columns */
+  grid-template-columns: 1fr 1.2fr;
   gap: 60px;
   align-items: center;
 }
@@ -163,22 +208,39 @@ export default {
   margin-bottom: 30px;
   text-align: center;
 }
-form { display: flex; flex-direction: column; gap: 20px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Small vertical space between Name and Email */
+}
 input, textarea {
-  width: 100%;
+  width: 80%;
   padding: 15px;
-  border: 1px solid #ddd;
-  background-color: #f9fafb;
+  border: 1px solid #dddddd;
+  background-color: #faf9fb;
   color: var(--text-dark);
   border-radius: 8px;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
-input::placeholder, textarea::placeholder { color: #888; }
-input:focus, textarea:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.3); }
-textarea { height: 120px; resize: vertical; }
+input::placeholder, textarea::placeholder {
+  color: #888;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.3);
+}
+textarea {
+  height: 120px;
+  resize: vertical;
+}
 button {
   padding: 15px 30px;
   background-color: var(--secondary-color);
@@ -191,13 +253,34 @@ button {
   align-self: center;
   transition: all 0.3s ease;
 }
-button:hover:not(:disabled) { background-color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-button:disabled { background-color: #999; cursor: not-allowed; }
+button:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
 
 /* Status Message Styles */
-.status-message { margin-top: 20px; padding: 15px; border-radius: 8px; text-align: center; font-weight: 500; }
-.status-message.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-.status-message.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.status-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
 
 /* Responsive Adjustments */
 @media (max-width: 992px) {
@@ -218,7 +301,8 @@ button:disabled { background-color: #999; cursor: not-allowed; }
   }
 }
 @media (max-width: 768px) {
-  .form-row { grid-template-columns: 1fr; }
-  .contact-form-wrapper { padding: 30px; }
+  .contact-form-wrapper {
+    padding: 30px;
+  }
 }
 </style>

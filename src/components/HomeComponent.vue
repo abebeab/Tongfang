@@ -29,7 +29,6 @@ export default {
   height: 100vh;
   position: relative;
   color: var(--white-color);
-  /* Use a professional background image of a smart building or abstract tech */
   background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop') no-repeat center center/cover;
 }
 
@@ -69,6 +68,9 @@ export default {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 2.5rem;
+  max-width: 700px; /* Constrain width for better readability */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta-button {
@@ -96,8 +98,17 @@ export default {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
-  .home-title { font-size: 3rem; }
-  .home-subtitle { font-size: 1.4rem; }
+  .home-title {
+    font-size: 3rem;
+  }
+  .home-subtitle {
+    font-size: 1.3rem;
+  }
+  .home-description {
+    font-size: 1rem;
+    max-width: 90%;
+  }
 }
 </style>

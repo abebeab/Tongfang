@@ -50,12 +50,14 @@ export default {
 }
 
 .home-title {
-  font-size: 5rem;
+  font-size: 2.35rem;
   font-weight: 700;
   margin-bottom: 1rem;
   letter-spacing: 2px;
   text-transform: uppercase;
+  font-style: italic;
 }
+
 
 .home-subtitle {
   font-size: 1.8rem;

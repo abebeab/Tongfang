@@ -21,7 +21,8 @@
 
       <div class="footer-contact">
         <h4>Get in Touch</h4>
-        <p><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+        <p><i class="fas fa-map-marker-alt"></i> Head quarter: China ,Bejjing</p>
+        <p><i class="fas fa-map-marker-alt"></i> Branch: Addis Ababa, Ethiopia</p>
         <p><i class="fas fa-phone-alt"></i> <a href="tel:+251911249722">+251 911 249722</a></p>
         <p><i class="fas fa-envelope"></i> <a href="mailto:info@tongfang-integrated.com">info@tongfang-integrated.com</a></p>
       </div>

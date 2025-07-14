@@ -3,9 +3,15 @@
     <!-- Header with dynamic classes for scrolling and mobile menu -->
     <header class="header" :class="{ 'scrolled': isHeaderScrolled }">
       <div class="logo-container" @click="scrollToSection('#home')">
-        <span class="logo-text">TONGFANG</span>
-        <span class="logo-subtext">System Integrated</span>
+        <!-- Logo image -->
+        <img src="/logo.png" alt="Logo" class="logo-img" />
+        <!-- Brand text -->
+        <div class="logo-text-group">
+          <span class="logo-text">TONGFANG</span>
+          <span class="logo-subtext">System Integration</span>
+        </div>
       </div>
+
       <nav class="navbar">
         <!-- Hamburger menu icon -->
         <div class="hamburger" @click="toggleMenu" :class="{ 'active': menuActive }">
@@ -13,6 +19,7 @@
           <span class="bar"></span>
           <span class="bar"></span>
         </div>
+
         <!-- Navigation links -->
         <ul class="nav-links" :class="{ 'active': menuActive }">
           <li><a href="#home" @click.prevent="scrollToSection('#home')" :class="{ 'active-link': activeSection === 'home' }">Home</a></li>
@@ -36,8 +43,6 @@
   </div>
 </template>
 
-// In App.vue
-
 <script>
 import HomeComponent from './components/HomeComponent.vue';
 import AboutPage from './components/AboutPage.vue';
@@ -48,7 +53,14 @@ import AppFooter from './components/AppFooter.vue';
 
 export default {
   name: 'App',
-  components: { HomeComponent, AboutPage, ServiceList, ProjectList, ContactSection, AppFooter },
+  components: {
+    HomeComponent,
+    AboutPage,
+    ServiceList,
+    ProjectList,
+    ContactSection,
+    AppFooter
+  },
   data: () => ({
     menuActive: false,
     isHeaderScrolled: false,
@@ -63,13 +75,12 @@ export default {
       const section = document.querySelector(id);
       if (section) {
         const headerOffset = this.isHeaderScrolled ? 65 : 80;
-        // Use window.scrollY for better cross-browser compatibility
         const elementPosition = section.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
         window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
+          top: offsetPosition,
+          behavior: 'smooth'
         });
         this.menuActive = false;
       }
@@ -78,14 +89,11 @@ export default {
       this.isHeaderScrolled = window.scrollY > 50;
     },
     initIntersectionObserver() {
-      // Use $nextTick to ensure the DOM is fully rendered
       this.$nextTick(() => {
         const sections = document.querySelectorAll('main section');
-        
-        // **CRITICAL FIX**: Check if sections exist before proceeding
         if (sections.length === 0) {
-            console.warn("IntersectionObserver: No sections found to observe. Will not initialize.");
-            return; // Exit the function if no sections are found
+          console.warn("No sections found.");
+          return;
         }
 
         const options = {
@@ -112,97 +120,119 @@ export default {
     this.initIntersectionObserver();
   },
   beforeUnmount() {
-    // **CRITICAL FIX**: Ensure observer exists before trying to disconnect
     if (this.observer) {
       this.observer.disconnect();
     }
     window.removeEventListener('scroll', this.handleScroll);
-  },
+  }
 };
 </script>
 
 <style>
-/* --- Global & Root Styles --- */
 :root {
-  --primary-color: #0A2540; /* Dark Blue */
-  --secondary-color: #00D1B2; /* Teal/Turquoise */
-  --accent-color: #2a9d8f; /* Another shade of teal for variety */
-  --background-light: #f4f7f8;
-  --text-dark: #333333;
-  --text-light: #555;
+  --brand-color: #f59805;
+  --black-color: #000000;
   --white-color: #ffffff;
 }
+
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   background-color: var(--white-color);
-  color: var(--text-dark);
+  color: var(--black-color);
 }
+
 main {
-  /* This prevents content from hiding behind the fixed header */
   padding-top: 80px;
 }
 
-/* --- Header & Navigation --- */
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
+  padding: 0 10px;
   background-color: var(--white-color);
   width: 100%;
-  box-sizing: border-box;
   position: fixed;
   top: 0;
   z-index: 1000;
+  height: 80px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   transition: height 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
-  height: 80px;
 }
+
 .header.scrolled {
   height: 65px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+
 .logo-container {
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
+  gap: 12px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
+
+.logo-img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-text,
+.logo-subtext {
+  color: var(--black-color);
+}
+
 .logo-text {
-  font-size: 3.0rem;
+  font-size: 2.8rem;
   font-weight: 800;
-  color: var(--primary-color);
   letter-spacing: -1px;
 }
+
 .logo-subtext {
   font-size: 1.0rem;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: #777;
 }
+
 .header.scrolled .logo-container {
   transform: scale(0.9);
   transform-origin: left;
 }
+
+/* Navbar Links */
 .navbar .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding-right: 20px;
+  gap: 30px;
 }
-.navbar li { margin-left: 35px; }
+
+.navbar li:last-child {
+  margin-right: 10px;
+}
+
 .navbar a {
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--primary-color);
+  color: var(--black-color);
   padding: 8px 0;
   position: relative;
   transition: color 0.3s;
 }
+
 .navbar a::after {
   content: '';
   position: absolute;
@@ -210,45 +240,88 @@ main {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: var(--secondary-color);
+  background-color: var(--brand-color);
   transition: width 0.3s ease;
 }
-.navbar a:hover, .navbar a.active-link {
-  color: var(--secondary-color);
+
+.navbar a:hover,
+.navbar a.active-link {
+  color: var(--brand-color);
 }
+
 .navbar a.active-link::after {
   width: 100%;
 }
+
+/* Contact Button */
 .contact-btn {
-  background-color: var(--secondary-color);
+  background-color: var(--brand-color);
   color: var(--white-color) !important;
-  padding: 10px 22px !important;
+  padding: 10px 25px !important;
   border-radius: 50px;
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  white-space: nowrap;
 }
+
 .contact-btn:hover {
-  background-color: var(--primary-color);
+  background-color: #b36e00;
   transform: translateY(-2px);
 }
-.contact-btn::after { display: none !important; }
 
-/* --- Hamburger Menu & Mobile --- */
-.hamburger { display: none; cursor: pointer; z-index: 1002; }
-.bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--primary-color); border-radius: 2px; transition: all 0.3s ease-in-out; }
-.hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger.active .bar:nth-child(2) { opacity: 0; }
-.hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.contact-btn::after {
+  display: none !important;
+}
 
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  background-color: var(--black-color);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hamburger.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Project Section Background */
+section#projects {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  padding: 50px 20px;
+}
+
+/* Mobile Responsive */
 @media (max-width: 992px) {
-  .header { padding: 0 25px; }
-  .hamburger { display: block; }
+  .header {
+    padding: 0 25px;
+  }
+  .hamburger {
+    display: block;
+  }
   .nav-links {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(5px);
+    background-color: var(--white-color);
     box-shadow: 0 10px 15px rgba(0,0,0,0.1);
     padding: 20px 0;
     opacity: 0;
@@ -264,7 +337,15 @@ main {
     visibility: visible;
     transform: translateY(0);
   }
-  .navbar li { margin: 10px 0; width: 100%; text-align: center; }
-  .contact-btn { display: inline-block; width: auto; padding: 12px 35px !important; }
+  .navbar li {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .contact-btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 35px !important;
+  }
 }
 </style>

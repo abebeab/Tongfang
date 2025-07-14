@@ -4,7 +4,7 @@
       
       <div class="footer-about">
         <h3>TONGFANG</h3>
-        <p class="footer-subtext">System Integrated</p>
+        <p class="footer-subtext">System Integration</p>
         <p class="slogan">"Moving Forward" - Innovating the future of smart building management.</p>
       </div>
 
@@ -24,13 +24,16 @@
         <p><i class="fas fa-map-marker-alt"></i> Head quarter: China ,Bejjing</p>
         <p><i class="fas fa-map-marker-alt"></i> Branch: Addis Ababa, Ethiopia</p>
         <p><i class="fas fa-phone-alt"></i> <a href="tel:+251911249722">+251 911 249722</a></p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:info@tongfang-integrated.com">info@tongfang-integrated.com</a></p>
-      </div>
+      
+       <p><i class="fas fa-envelope"></i> <a href="mailto:info@tongfangbms.com">info@tongfangbms.com</a></p>
+    
+    </div>
+
 
     </div>
     
     <div class="footer-bottom">
-      <p>© {{ new Date().getFullYear() }} Tongfang System Integrated PLC. All Rights Reserved. </p>
+      <p>© {{ new Date().getFullYear() }} Tongfang System Integration PLC. All Rights Reserved. </p>
     </div>
   </footer>
 </template>
@@ -43,7 +46,8 @@ export default {
 
 <style scoped>
 .site-footer {
-  background-color: #1e3a8a; /* BLUE BACKGROUND */
+  background-color: #1e3a8a;
+   
   color: #ffffff;
   padding: 60px 20px 0 20px;
   font-size: 0.9rem;

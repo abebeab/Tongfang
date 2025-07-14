@@ -20,7 +20,7 @@
             <div class="info-icon-wrapper"><i class="fas fa-envelope"></i></div>
             <div class="info-text">
               <h4>Email for Inquiries</h4>
-              <a href="mailto:info@tongfang-integrated.com">info@tongfang-integrated.com</a>
+              <a href="mailto:info@tongfang-integrated.com">info@tongfangbms.com</a><br>
             </div>
           </div>
           <div class="info-item">

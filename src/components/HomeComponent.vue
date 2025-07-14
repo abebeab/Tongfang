@@ -50,7 +50,7 @@ export default {
 }
 
 .home-title {
-  font-size: 2.35rem;
+  font-size: 2.3rem;
   font-weight: 700;
   margin-bottom: 1rem;
   letter-spacing: 2px;

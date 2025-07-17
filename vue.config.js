@@ -1,16 +1,15 @@
-// vue.config.js
+// At the very top of the file, force load the .env file
+require('dotenv').config();
+
 const { defineConfig } = require('@vue/cli-service');
-const webpack = require('webpack');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  configureWebpack: {
-    plugins: [
-      new webpack.DefinePlugin({
-        __VUE_OPTIONS_API__: JSON.stringify(true),
-        __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
-        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false)
-      })
-    ]
-  }
+  chainWebpack: config => {
+    // This part, which solves the feature flag warning, remains the same
+    config.plugin('define').tap(args => {
+      args[0]['__VUE_PROD_HYDRATION_MISMATCH_DETAILS__'] = JSON.stringify(false);
+      return args;
+    });
+  },
 });

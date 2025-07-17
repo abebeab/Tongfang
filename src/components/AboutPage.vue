@@ -1,28 +1,29 @@
 <template>
-  <section id="about">
-    <div class="about-container">
-      <div class="about-content">
-        <h2 class="section-title">The Future of Building Management</h2>
-        <p class="section-subtitle">We are Tongfang: Innovators in System Integration</p>
-        <p>
-          At Tongfang System Integrated PLC, our name embodies our core philosophy: <strong>"Moving Forward."</strong> We are driven by a relentless pursuit of progress, pushing the boundaries of technology to create smarter, more efficient, and secure building environments.
-        </p>
-        <p>
-          Our expertise lies in designing and implementing comprehensive Building Management Integration Systems (BMIS). We unify complex systems—from security and surveillance to energy management and automation—into a single, intelligent, and easy-to-manage platform.
-        </p>
-        
-        <!-- NEW: Core Principles Section for better structure -->
-        <div class="core-principles">
-            <h4>Our Goal is to Empower Clients With:</h4>
-            <ul>
-                <li><i class="fas fa-check-circle"></i> Cutting-edge solutions that reduce operational costs.</li>
-                <li><i class="fas fa-check-circle"></i> Enhanced safety and security measures.</li>
-                <li><i class="fas fa-check-circle"></i> An unparalleled, seamless user experience.</li>
-            </ul>
-        </div>
+  <section id="about" class="section-container">
+    <h2 class="section-title">About Us</h2>
+    <p class="section-subtitle">
+      Our history, leadership, and commitment to excellence define who we are and drive us to innovate for a better future.
+    </p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h4><i class="fas fa-history"></i> Company Background</h4>
+        <p>Founded on the principles of innovation and excellence, TONGFANG has grown from a specialized tech provider to a global system integration leader. We are dedicated to building the smart infrastructure of tomorrow.</p>
       </div>
-      <div class="about-image">
-         <img src="@/assets/tec.jpg" alt="Technology and Engineering">
+      <div class="about-card">
+        <h4><i class="fas fa-users"></i> Leadership Team</h4>
+        <p>Our team comprises industry veterans, visionary engineers, and strategic thinkers (CEO, CTO, VP of Engineering) committed to delivering unparalleled value and expertise to our clients.</p>
+      </div>
+      <div class="about-card">
+        <h4><i class="fas fa-certificate"></i> Certifications & Compliance</h4>
+        <p>We adhere to the highest international standards, holding certifications like <strong>ISO 9001</strong> and <strong>ISO/IEC 27001</strong>, and ensuring compliance with GDPR and other regional regulations.</p>
+      </div>
+      <div class="about-card">
+        <h4><i class="fas fa-award"></i> Awards & Recognition</h4>
+        <p>Our commitment to quality and innovation has been recognized through numerous industry and partnership awards, affirming our position as a trusted leader in technology integration.</p>
+      </div>
+       <div class="about-card-full">
+        <h4><i class="fas fa-globe-africa"></i> Corporate Social Responsibility</h4>
+        <p>We believe in technology for good. Our CSR initiatives focus on sustainable practices, environmental responsibility, and community engagement to create a positive impact beyond business.</p>
       </div>
     </div>
   </section>
@@ -31,102 +32,42 @@
 <script>
 export default {
   name: 'AboutPage',
-};
+}
 </script>
 
 <style scoped>
-#about {
-  padding: 100px 20px;
-  background-color: var(--white-color);
+#about { background-color: var(--white-color); }
+.about-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
 }
-
-.about-container {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
+.about-card, .about-card-full {
+    background: var(--light-bg-color);
+    padding: 30px;
+    border-radius: 12px;
 }
-
-.about-content {
-  flex: 1.2;
-}
-
-.section-title {
-  font-size: 2.8rem;
-  color: var(--primary-color);
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-
-.about-content p {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: var(--text-light);
-  margin-bottom: 20px;
-}
-
-.core-principles {
-    margin-top: 30px;
-    background-color: #f9fbfc;
-    padding: 20px;
-    border-left: 4px solid var(--secondary-color);
-    border-radius: 4px;
-}
-
-.core-principles h4 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-    font-size: 1.1rem;
-}
-
-.core-principles ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.core-principles li {
+.about-card h4, .about-card-full h4 {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+}
+.about-card h4 i, .about-card-full h4 i { color: var(--secondary-color); }
+.about-card p, .about-card-full p {
+    font-size: 1rem;
     color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
 }
-
-.core-principles i {
-    color: var(--secondary-color);
+.about-card-full {
+    grid-column: 1 / -1; /* Span full width */
 }
-
-.about-image {
-  flex: 1;
-}
-
-.about-image img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-@media (max-width: 992px) {
-  .about-container {
-    flex-direction: column-reverse;
-    gap: 40px;
-  }
-  .section-title {
-    font-size: 2.2rem;
-    text-align: center;
-  }
-  .section-subtitle {
-      text-align: center;
-  }
+@media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
 }
 </style>

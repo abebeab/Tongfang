@@ -2,7 +2,7 @@
   <section id="home">
     <div class="home-overlay"></div>
     <div class="home-content">
-      <h1 class="home-title">Empowering Innovation Through Integrated Technology</h1>
+      <h1 class="home-title">BMS System Integration</h1>
       
       <!-- UPDATED SLOGAN -->
       <p class="home-slogan">

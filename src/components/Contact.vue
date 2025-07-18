@@ -15,6 +15,14 @@
               <a href="tel:+251911249722">+251 911 249722</a>
             </div>
           </div>
+          <!-- UPDATED: WeChat link is now clickable -->
+          <div class="info-item">
+            <div class="info-icon-wrapper"><i class="fab fa-weixin"></i></div>
+            <div class="info-text">
+              <h4>Chat on WeChat</h4>
+              <a href="weixin://user/wxid_3jxtp7rz3p8e22" target="_blank" rel="noopener noreferrer">wxid_3jxtp7rz3p8e22</a>
+            </div>
+          </div>
           <div class="info-item">
             <div class="info-icon-wrapper"><i class="fas fa-envelope"></i></div>
             <div class="info-text">
@@ -172,6 +180,12 @@ export default {
   color: var(--secondary-color);
   font-size: 1.3rem;
 }
+
+/* Specific icon color for wechat */
+.info-icon-wrapper .fa-weixin {
+  color: #09B83E; /* Official WeChat green color */
+}
+
 .info-text h4 {
   margin: 0 0 5px 0;
   font-size: 1rem;

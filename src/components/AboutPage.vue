@@ -2,22 +2,27 @@
   <section id="about" class="section-container">
     <h2 class="section-title">About Us</h2>
     <p class="section-subtitle">
-      Our history, leadership, and commitment to excellence define who we are and drive us to innovate for a better future.
+      A Factory of Innovation, a Partner in Design.
     </p>
     <div class="about-grid">
       <div class="about-card">
-        <h4><i class="fas fa-history"></i> Company Background</h4>
-        <p>Founded on the principles of innovation and excellence, TONGFANG has grown from a specialized tech provider to a global system integration leader. We are dedicated to building the smart infrastructure of tomorrow.</p>
+        <img src="../assets/images/光电.png" alt="Company Background" class="company-logo">
+
+        <h4><i class="fas fa-industry"></i> Company Background</h4>
+        <p>Founded on the principles of innovation and excellence, TONGFANG is a leading factorial that not only produces cutting-edge technology but also provides comprehensive architectural and system design services. We are dedicated to building the smart infrastructure of tomorrow, from the factory floor to the finished building.</p>
       </div>
       <div class="about-card">
+        <img src="../assets/images/44.jpg" alt="Leadership Team" class="about-card-image">
         <h4><i class="fas fa-users"></i> Leadership Team</h4>
         <p>Our team comprises industry veterans, visionary engineers, and strategic thinkers (CEO, CTO, VP of Engineering) committed to delivering unparalleled value and expertise to our clients.</p>
       </div>
       <div class="about-card">
+        <img src="/path/to/your/image.jpg" alt="Certifications" class="about-card-image">
         <h4><i class="fas fa-certificate"></i> Certifications & Compliance</h4>
         <p>We adhere to the highest international standards, holding certifications like <strong>ISO 9001</strong> and <strong>ISO/IEC 27001</strong>, and ensuring compliance with GDPR and other regional regulations.</p>
       </div>
       <div class="about-card">
+        <img src="/path/to/your/image.jpg" alt="Awards" class="about-card-image">
         <h4><i class="fas fa-award"></i> Awards & Recognition</h4>
         <p>Our commitment to quality and innovation has been recognized through numerous industry and partnership awards, affirming our position as a trusted leader in technology integration.</p>
       </div>
@@ -48,6 +53,13 @@ export default {
     background: var(--light-bg-color);
     padding: 30px;
     border-radius: 12px;
+}
+.about-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 .about-card h4, .about-card-full h4 {
     display: flex;

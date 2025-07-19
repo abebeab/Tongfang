@@ -34,7 +34,7 @@
             <div class="info-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
             <div class="info-text">
               <h4>Our Office</h4>
-              <p>Bole around Rwanda Embassy, Addis Ababa, Ethiopia</p>
+              <p>Bole Bulbula, Addis Ababa, Ethiopia</p>
             </div>
           </div>
         </div>

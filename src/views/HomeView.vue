@@ -132,7 +132,7 @@ export default {
       clearInterval(this.slideInterval);
       this.slideInterval = setInterval(() => {
         this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
-      }, 5000);
+      }, 7000);
     },
     nextSlide() {
       this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;

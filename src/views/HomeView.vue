@@ -2,7 +2,6 @@
   <div>
     <!-- Section 1: Hero Section -->
     <section class="hero-section">
-      <!-- ✅ SLIDESHOW ANIMATION IS NOW INTEGRATED HERE -->
       <transition-group name="slide-fade" tag="div" class="hero-slideshow">
         <div
           v-for="slide in activeSlide"
@@ -22,7 +21,7 @@
         </div>
       </div>
 
-      <!-- ✅ MANUAL SLIDE NAVIGATION CONTROLS ADDED HERE -->
+      <!-- MANUAL SLIDE NAVIGATION CONTROLS -->
       <div class="slide-nav prev" @click="prevSlide">
         <i class="fas fa-chevron-left"></i>
       </div>
@@ -31,7 +30,7 @@
       </div>
     </section>
 
-    <!-- Section 2: Trusted By (Remains Unchanged) -->
+    <!-- The rest of your page remains exactly the same -->
     <section class="trusted-by-section">
       <div class="trusted-by-container">
         <h3 class="trusted-by-title">Trusted By Industry Leaders and Government Agencies in Ethiopia & Beyond</h3>
@@ -45,7 +44,6 @@
       </div>
     </section>
 
-    <!-- Section 3: Core Services (Remains Unchanged) -->
     <section class="core-services-section">
       <div class="page-container">
         <h2 class="section-title">A Complete Integration Partner</h2>
@@ -70,7 +68,6 @@
       </div>
     </section>
 
-    <!-- Section 4: Why Choose Us (Remains Unchanged) -->
     <section class="why-choose-us-section">
       <div class="page-container why-choose-us-grid">
         <div class="why-choose-us-image">
@@ -90,7 +87,6 @@
       </div>
     </section>
 
-    <!-- Section 5: Featured Project (Remains Unchanged) -->
     <section class="featured-project-section">
       <div class="project-overlay"></div>
       <div class="page-container project-content">
@@ -100,7 +96,6 @@
       </div>
     </section>
 
-    <!-- Section 6: Final CTA (Remains Unchanged) -->
     <section class="final-cta-section">
       <div class="page-container">
         <h2>Let's Build the Future Together</h2>
@@ -112,7 +107,6 @@
 </template>
 
 <script>
-// ✅ JAVASCRIPT LOGIC FOR SLIDESHOW ADDED HERE
 export default {
   name: 'HomeView',
   data() {
@@ -122,9 +116,9 @@ export default {
       slides: [
          { image: require('@/assets/images/hero-bg-3.png') },
         { image: require('@/assets/images/pexels-jakubzerdzicki-18186205.jpg') },
-      
+              { image: require('@/assets/images/hero-bg-2.jpg') },
         { image: require('@/assets/images/hero-bg-4.png') },
-        { image: require('@/assets/images/hero-bg-2.jpg') },
+  
       ],
     };
   },
@@ -167,7 +161,6 @@ export default {
 .hero-section {
   display: flex; justify-content: center; align-items: center; text-align: center; height: calc(100vh - 110px); min-height: 650px;
   position: relative; color: var(--white-color); overflow: hidden;
-  /* The static background is removed from here and handled by the slideshow */
 }
 .hero-slideshow {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -177,7 +170,8 @@ export default {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-size: cover;
   background-position: center top;
-  filter: brightness(1.15) contrast(1.1);
+  /* ✅ BRIGHTNESS MAXIMIZED: Pushed to 1.3 for a very bright effect */
+  filter: brightness(1.3) contrast(1.1);
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
 }
@@ -199,7 +193,8 @@ export default {
 .prev { left: 30px; }
 .next { right: 30px; }
 
-.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.9), rgba(13, 36, 79, 0.7)); z-index: 2; }
+/* ✅ OVERLAY LIGHTENED MAXIMALLY: Opacity is now very low for maximum image visibility */
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.2), rgba(13, 36, 79, 0.1)); z-index: 2; }
 .hero-content { position: relative; z-index: 3; max-width: 950px; padding: 0 20px; animation: fadeIn 1.5s ease-in-out; }
 .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
 .hero-slogan { font-size: 1.8rem; font-weight: 500; font-style: italic; color: var(--secondary-color); margin-bottom: 2.5rem; opacity: 0.9; text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
@@ -219,6 +214,9 @@ export default {
 .logo-placeholder:hover { color: var(--secondary-color); }
 
 .core-services-section { background-color: var(--white-color); padding: 80px 20px; }
+.page-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-title { text-align: center; font-size: 2.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-light); max-width: 650px; margin: 0 auto 50px auto; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
 .service-card { text-align: center; padding: 30px; border: 1px solid var(--border-color); border-radius: 12px; transition: all 0.3s ease; }
 .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px var(--shadow-color); }

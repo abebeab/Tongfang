@@ -2,6 +2,16 @@
   <div>
     <!-- Section 1: Hero Section -->
     <section class="hero-section">
+      <!-- ✅ SLIDESHOW ANIMATION IS NOW INTEGRATED HERE -->
+      <transition-group name="slide-fade" tag="div" class="hero-slideshow">
+        <div
+          v-for="slide in activeSlide"
+          :key="slide.image"
+          class="slide"
+          :style="{ backgroundImage: `url(${slide.image})` }">
+        </div>
+      </transition-group>
+
       <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1 class="hero-title">BMS System Integration</h1>
@@ -11,9 +21,17 @@
           <router-link to="/contact" class="cta-button secondary">Talk to Our Experts</router-link>
         </div>
       </div>
+
+      <!-- ✅ MANUAL SLIDE NAVIGATION CONTROLS ADDED HERE -->
+      <div class="slide-nav prev" @click="prevSlide">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+      <div class="slide-nav next" @click="nextSlide">
+        <i class="fas fa-chevron-right"></i>
+      </div>
     </section>
 
-    <!-- Section 2: Trusted By -->
+    <!-- Section 2: Trusted By (Remains Unchanged) -->
     <section class="trusted-by-section">
       <div class="trusted-by-container">
         <h3 class="trusted-by-title">Trusted By Industry Leaders and Government Agencies in Ethiopia & Beyond</h3>
@@ -27,7 +45,7 @@
       </div>
     </section>
 
-    <!-- Section 3: Core Services -->
+    <!-- Section 3: Core Services (Remains Unchanged) -->
     <section class="core-services-section">
       <div class="page-container">
         <h2 class="section-title">A Complete Integration Partner</h2>
@@ -52,11 +70,10 @@
       </div>
     </section>
 
-    <!-- Section 4: Why Choose Us -->
+    <!-- Section 4: Why Choose Us (Remains Unchanged) -->
     <section class="why-choose-us-section">
       <div class="page-container why-choose-us-grid">
         <div class="why-choose-us-image">
-          <!-- ✅ Local image inserted -->
           <img :src="require('@/assets/images/光电.png')" alt="Tongfang Engineering and Manufacturing">
         </div>
         <div class="why-choose-us-content">
@@ -73,7 +90,7 @@
       </div>
     </section>
 
-    <!-- Section 5: Featured Project -->
+    <!-- Section 5: Featured Project (Remains Unchanged) -->
     <section class="featured-project-section">
       <div class="project-overlay"></div>
       <div class="page-container project-content">
@@ -83,7 +100,7 @@
       </div>
     </section>
 
-    <!-- Section 6: Final CTA -->
+    <!-- Section 6: Final CTA (Remains Unchanged) -->
     <section class="final-cta-section">
       <div class="page-container">
         <h2>Let's Build the Future Together</h2>
@@ -95,29 +112,97 @@
 </template>
 
 <script>
+// ✅ JAVASCRIPT LOGIC FOR SLIDESHOW ADDED HERE
 export default {
-  name: 'HomeView'
+  name: 'HomeView',
+  data() {
+    return {
+      currentSlideIndex: 0,
+      slideInterval: null,
+      slides: [
+         { image: require('@/assets/images/hero-bg-3.png') },
+        { image: require('@/assets/images/pexels-jakubzerdzicki-18186205.jpg') },
+      
+        { image: require('@/assets/images/hero-bg-4.png') },
+        { image: require('@/assets/images/hero-bg-2.jpg') },
+      ],
+    };
+  },
+  computed: {
+    activeSlide() {
+      return [this.slides[this.currentSlideIndex]];
+    }
+  },
+  methods: {
+    startSlideTimer() {
+      clearInterval(this.slideInterval);
+      this.slideInterval = setInterval(() => {
+        this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
+      }, 5000);
+    },
+    nextSlide() {
+      this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
+      this.startSlideTimer();
+    },
+    prevSlide() {
+      if (this.currentSlideIndex === 0) {
+        this.currentSlideIndex = this.slides.length - 1;
+      } else {
+        this.currentSlideIndex--;
+      }
+      this.startSlideTimer();
+    }
+  },
+  mounted() {
+    this.startSlideTimer();
+  },
+  beforeUnmount() {
+    clearInterval(this.slideInterval);
+  }
 }
 </script>
 
 <style scoped>
-/* [All your existing styles remain unchanged] */
+/* --- HERO SECTION STYLES (MERGED) --- */
 .hero-section {
   display: flex; justify-content: center; align-items: center; text-align: center; height: calc(100vh - 110px); min-height: 650px;
-  position: relative; color: var(--white-color); background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop') no-repeat center center/cover;
+  position: relative; color: var(--white-color); overflow: hidden;
+  /* The static background is removed from here and handled by the slideshow */
 }
-.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.9), rgba(13, 36, 79, 0.7)); }
-.hero-content { position: relative; z-index: 2; max-width: 950px; padding: 0 20px; animation: fadeIn 1.5s ease-in-out; }
+.hero-slideshow {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+.slide {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(1.15) contrast(1.1);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+}
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: opacity 1.5s ease;
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  opacity: 0;
+}
+.slide-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; cursor: pointer;
+  width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.25); border-radius: 50%;
+  color: white; display: flex; justify-content: center; align-items: center; font-size: 20px;
+  transition: background-color 0.3s ease;
+}
+.slide-nav:hover { background-color: rgba(0, 0, 0, 0.5); }
+.prev { left: 30px; }
+.next { right: 30px; }
+
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.9), rgba(13, 36, 79, 0.7)); z-index: 2; }
+.hero-content { position: relative; z-index: 3; max-width: 950px; padding: 0 20px; animation: fadeIn 1.5s ease-in-out; }
 .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
-.hero-slogan {
-  font-size: 1.8rem;
-  font-weight: 500;
-  font-style: italic;
-  color: var(--secondary-color);
-  margin-bottom: 2.5rem;
-  opacity: 0.9;
-  text-shadow: 0 1px 5px rgba(0,0,0,0.2);
-}
+.hero-slogan { font-size: 1.8rem; font-weight: 500; font-style: italic; color: var(--secondary-color); margin-bottom: 2.5rem; opacity: 0.9; text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
 .hero-cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
 .cta-button { text-decoration: none; }
 .cta-button.primary { background-color: var(--secondary-color); color: var(--white-color); border: 2px solid var(--secondary-color); }
@@ -125,6 +210,7 @@ export default {
 .cta-button.secondary:hover { background-color: var(--white-color); color: var(--primary-color); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
+/* --- [ALL YOUR OTHER EXISTING STYLES REMAIN UNCHANGED BELOW] --- */
 .trusted-by-section { background-color: var(--light-bg-color); padding: 30px 20px; border-bottom: 1px solid var(--border-color); }
 .trusted-by-container { max-width: 1200px; margin: 0 auto; text-align: center; }
 .trusted-by-title { font-size: 1rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; }
@@ -133,84 +219,30 @@ export default {
 .logo-placeholder:hover { color: var(--secondary-color); }
 
 .core-services-section { background-color: var(--white-color); padding: 80px 20px; }
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-.service-card {
-  text-align: center;
-  padding: 30px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px var(--shadow-color);
-}
-.service-icon {
-  font-size: 2.5rem;
-  color: var(--secondary-color);
-  margin-bottom: 20px;
-}
-.service-card h4 {
-  font-size: 1.3rem;
-  color: var(--primary-color);
-  margin-bottom: 15px;
-}
-.service-card p {
-  color: var(--text-light);
-  line-height: 1.7;
-}
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.service-card { text-align: center; padding: 30px; border: 1px solid var(--border-color); border-radius: 12px; transition: all 0.3s ease; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px var(--shadow-color); }
+.service-icon { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 20px; }
+.service-card h4 { font-size: 1.3rem; color: var(--primary-color); margin-bottom: 15px; }
+.service-card p { color: var(--text-light); line-height: 1.7; }
 
 .why-choose-us-section { background-color: var(--light-bg-color); padding: 80px 20px; }
 .why-choose-us-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
 .why-choose-us-image img { width: 100%; border-radius: 12px; }
 .why-choose-us-content ul { list-style: none; padding: 0; margin-top: 20px; margin-bottom: 30px; }
-.why-choose-us-content li {
-  padding-left: 30px;
-  margin-bottom: 15px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23F59805" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center;
-}
-.cta-button.primary-outline {
-  background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--secondary-color);
-}
-.cta-button.primary-outline:hover {
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-}
+.why-choose-us-content li { padding-left: 30px; margin-bottom: 15px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="%23F59805" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center; }
+.cta-button.primary-outline { background-color: transparent; color: var(--primary-color); border: 2px solid var(--secondary-color); }
+.cta-button.primary-outline:hover { background-color: var(--secondary-color); color: var(--white-color); }
 
-.featured-project-section {
-  padding: 100px 20px;
-  text-align: center;
-  position: relative;
-  background: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200') no-repeat center center/cover;
-  color: var(--white-color);
-}
+.featured-project-section { padding: 100px 20px; text-align: center; position: relative; background: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200') no-repeat center center/cover; color: var(--white-color); }
 .project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(13, 36, 79, 0.85); }
 .project-content { position: relative; z-index: 2; }
 .project-content .section-title, .project-content .section-subtitle { color: var(--white-color); }
 .project-content .section-subtitle { max-width: 600px; opacity: 0.9; }
 
-.final-cta-section {
-  padding: 80px 20px;
-  text-align: center;
-  background-color: var(--white-color);
-}
-.final-cta-section h2 {
-  font-size: 2.2rem;
-  color: var(--primary-color);
-  margin-bottom: 15px;
-}
-.final-cta-section p {
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-bottom: 30px;
-}
+.final-cta-section { padding: 80px 20px; text-align: center; background-color: var(--white-color); }
+.final-cta-section h2 { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 15px; }
+.final-cta-section p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; }
 
 @media (max-width: 900px) {
   .hero-title { font-size: 2.8rem; }

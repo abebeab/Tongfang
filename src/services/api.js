@@ -8,8 +8,12 @@ const products = [
 ];
 
 const solutions = [
-  { slug: 'smart-offices', title: 'Smart Office & Building Automation', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500', shortDescription: 'Enhance productivity and security with integrated energy management and access control.', description: 'Comprehensive solutions for modern offices focusing on energy management, access control, and smart automation to enhance productivity and security.', relatedProducts: ['ipc-101', 'nwe-401'] },
+  { slug: 'smart-offices', title: 'Smart Office & Building Automation', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500', shortDescription: 'Enhance productivity and security with integrated energy management and access control.', description: '<p>Comprehensive solutions for modern offices focusing on energy management,</p> access control, and smart automation to enhance productivity and security.', relatedProducts: ['ipc-101', 'nwe-401'] },
+  { slug: 'airport-integration', title: 'Airport Terminal Integration', image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500', shortDescription: 'Unified terminal automation, public address systems, and security for modern airports.', description: 'Integrated systems for airport terminals, including public address systems, terminal automation, baggage handling control, and unified security integration.', relatedProducts: ['nvr-200', 'ipc-101'] },
+
+  { slug: 'Multimedia Conference System', title: 'Multimedia Conference System', image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500', shortDescription: 'Enhance productivity and security with integrated energy management and access control.', description: 'Comprehensive solutions for modern offices focusing on energy management, access control, and smart automation to enhance productivity and security.', relatedProducts: ['ipc-101', 'nwe-401'] },
   { slug: 'airport-integration', title: 'Airport Terminal Integration', image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500', shortDescription: 'Unified terminal automation, public address systems, and security for modern airports.', description: 'Integrated systems for airport terminals, including public address systems, terminal automation, baggage handling control, and unified security integration.', relatedProducts: ['nvr-200', 'ipc-101'] }
+
 ];
 
 const downloads = [

@@ -22,15 +22,19 @@
             <div class="form-group">
               <label for="email">Email Address</label>
               <div class="input-wrapper">
-                <i class="fas fa-envelope"></i>
+                <i class="fas fa-envelope icon"></i>
                 <input type="email" id="email" v-model="email" placeholder="you@example.com" required>
               </div>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
               <div class="input-wrapper">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="password" v-model="password" placeholder="••••••••" required>
+                <i class="fas fa-lock icon"></i>
+                <input :type="passwordFieldType" id="password" v-model="password" placeholder="••••••••" required>
+                <!-- NEW: Password Toggle Button -->
+                <button type="button" class="password-toggle" @click="togglePasswordVisibility" aria-label="Toggle password visibility">
+                  <i :class="['fas', passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash']"></i>
+                </button>
               </div>
             </div>
             <div class="form-options">
@@ -61,20 +65,22 @@ export default {
       email: '',
       password: '',
       rememberMe: false,
+      // NEW: Data property to control the input type
+      passwordFieldType: 'password', 
     };
   },
   methods: {
     handleLogin() {
-      // Here you would typically handle the login logic,
-      // e.g., send credentials to a backend API.
       console.log('Logging in with:', {
         email: this.email,
         password: this.password,
         rememberMe: this.rememberMe,
       });
-      // For demonstration, we'll just log it.
-      // In a real app, you'd handle the response, store tokens, and redirect.
       alert('Login functionality would be handled here!');
+    },
+    // NEW: Method to toggle the password field type
+    togglePasswordVisibility() {
+      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
     },
   },
 };
@@ -166,12 +172,13 @@ export default {
 .input-wrapper {
   position: relative;
 }
-.input-wrapper i {
+.input-wrapper .icon {
   position: absolute;
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-light);
+  z-index: 2; /* Ensure icon is above input */
 }
 .form-group input {
   width: 100%;
@@ -187,6 +194,31 @@ export default {
   border-color: var(--secondary-color);
   box-shadow: 0 0 0 3px rgba(245, 152, 5, 0.2);
 }
+
+/* --- NEW: Password Toggle Styles --- */
+input[type="password"], input[type="text"] {
+  padding-right: 45px; /* Add space for the icon on the right */
+}
+.password-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+.password-toggle:hover {
+  color: var(--secondary-color);
+}
+/* --- END: New Styles --- */
+
 .form-options {
   display: flex;
   justify-content: space-between;
@@ -246,7 +278,7 @@ export default {
     grid-template-columns: 1fr;
   }
   .login-branding {
-    display: none; /* Hide branding on smaller screens for focus */
+    display: none;
   }
   .login-form-section {
     padding: 40px;

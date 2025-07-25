@@ -2,58 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue')
-  },
-  {
-    path: '/products',
-    name: 'products',
-    component: () => import('../views/ProductsView.vue')
-  },
-  {
-    path: '/products/:id',
-    name: 'product-detail',
-    component: () => import('../views/ProductDetailView.vue')
-  },
-  {
-    path: '/solutions',
-    name: 'solutions',
-    component: () => import('../views/SolutionsView.vue')
-  },
-  {
-    path: '/solutions/:slug',
-    name: 'solution-detail',
-    component: () => import('../views/SolutionDetailView.vue')
-  },
-  // --- NEW ROUTES ADDED HERE ---
-  {
-    path: '/achievements',
-    name: 'achievements',
-    component: () => import('../views/AchievementView.vue')
-  },
-  {
-    path: '/partner',
-    name: 'partner',
-    component: () => import('../views/PartnerView.vue')
-  },
-  // --- END OF NEW ROUTES ---
-  {
-    path: '/support',
-    name: 'support',
-    component: () => import('../views/SupportView.vue')
-  },
-  {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('../views/ContactView.vue')
-  }
+  { path: '/', name: 'home', component: HomeView },
+  { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
+  { path: '/products', name: 'products', component: () => import('../views/ProductsView.vue') },
+  { path: '/products/:id', name: 'product-detail', component: () => import('../views/ProductDetailView.vue') },
+  { path: '/solutions', name: 'solutions', component: () => import('../views/SolutionsView.vue') },
+  { path: '/solutions/:slug', name: 'solution-detail', component: () => import('../views/SolutionDetailView.vue') },
+  { path: '/achievements', name: 'achievements', component: () => import('../views/AchievementView.vue') },
+  { path: '/partner', name: 'partner', component: () => import('../views/PartnerView.vue') },
+  { path: '/support', name: 'support', component: () => import('../views/SupportView.vue') },
+  { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') }
 ]
 
 const router = createRouter({
@@ -62,9 +20,21 @@ const router = createRouter({
   linkExactActiveClass: 'active-link', 
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
-    } else {
-      return { top: 0 }
+      return savedPosition;
+    } 
+    else if (to.hash) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ 
+            el: to.hash, 
+            behavior: 'smooth',
+            top: 140, // Offset for main header (70px) + hints bar (70px)
+          });
+        }, 500); 
+      });
+    }
+    else {
+      return { top: 0, behavior: 'smooth' };
     }
   },
 })

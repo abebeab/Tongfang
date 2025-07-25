@@ -9,36 +9,72 @@ const products = [
 
 const solutionsByIndustry = [
     {
-        slug: 'education',
-        title: 'Education',
+        slug: 'smart-offices',
+        title: 'Smart Offices',
+        image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200',
+        description: 'Transform workplaces with intelligent automation, energy management, and integrated security for enhanced productivity.',
+        successStories: [
+            { title: 'Corporate Tower Automation', description: 'Deployed a unified BMS for a 50-story building, reducing energy costs by 30% and improving employee comfort.' },
+            { title: 'Seamless Access Control for Tech Park', description: 'Integrated facial recognition and mobile access for over 5,000 employees, enhancing security and convenience.' }
+        ]
+    },
+    {
+        slug: 'airport-integration',
+        title: 'Airport Integration',
+        image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1200',
+        description: 'Unified terminal automation, public address systems, and security for modern, efficient, and safe airport operations.',
+        successStories: [
+            { title: 'International Airport Terminal Upgrade', description: 'Upgraded the entire terminal with integrated BMS, security, and public address systems, improving passenger flow and safety.' },
+        ]
+    },
+    {
+        slug: 'hotels-hospitality',
+        title: 'Hotels & Hospitality',
+        image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200',
+        description: 'Elevate the guest experience with intelligent room controls, keyless entry, and centralized management.',
+        successStories: [
+            { title: '5-Star Resort Smart Room Rollout', description: 'Equipped 500 guest rooms with IoT devices for lighting, climate, and entertainment control, boosting guest satisfaction scores.' },
+        ]
+    },
+    {
+        slug: 'educational-campuses',
+        title: 'Educational Campuses',
         image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200',
-        description: 'Empower better education with integrated solutions for security, management, and interactive learning.',
+        description: 'Create a safe, efficient, and modern learning environment with integrated security and smart campus solutions.',
         successStories: [
-            { title: 'Securing a Modern University Campus', description: 'A comprehensive surveillance and access control system for over 20,000 students and staff, reducing incidents by 40%.' },
-            { title: 'Smart Data Management for a School District', description: 'Implemented a big data solution that streamlined administrative tasks and provided valuable insights into student performance.' },
-            { title: 'Interactive Learning in Smart Classrooms', description: 'Outfitted 100+ classrooms with our intelligent systems to create a more engaging and effective educational experience.' }
+            { title: 'University-Wide Security & BMS Integration', description: 'Implemented a central command center for a large university, managing security and energy use across 50+ buildings.' },
         ]
-    },
-     {
-        slug: 'healthcare',
-        title: 'Healthcare',
-        image: 'https://images.unsplash.com/photo-1586773860414-b24a64387c9b?w=1200',
-        description: 'Securing smarter healthcare environments to improve patient safety and operational efficiency.',
-        successStories: [
-            { title: 'Integrated Management for a Leading Medical Center', description: 'A unified platform for managing building access, patient records, and security, improving response times by 60%.' },
-            { title: 'Smart Entrance & Exit Control for Hospitals', description: 'Streamlined visitor and staff access across multiple entry points, enhancing security and workflow.' }
-        ]
-    },
-    // Add other industries in the same format
+    }
 ];
 
 const solutionsByScenario = [
-    { title: 'Apartments', image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500' },
+    { title: 'Apartments', image: 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?w=500' },
     { title: 'Factories', image: 'https://images.unsplash.com/photo-1580982327341-4c65b5375b42?w=500' },
     { title: 'Classroom Hub', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500' },
     { title: 'Urban Roadways', image: 'https://images.unsplash.com/photo-1528952643265-22501a03c113?w=500' },
     { title: 'Office Buildings', image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500' },
     { title: 'Retail Stores', image: 'https://images.unsplash.com/photo-1556740738-b6a63e2775d2?w=500' },
+    { title: 'Bus Stop', image: 'https://images.unsplash.com/photo-1569921471702-8367a14594c2?w=500' },
+    { title: 'Car Dealerships', image: 'https://images.unsplash.com/photo-1551522435-a131bf538a72?w=500' },
+    { title: 'Conference Rooms', image: 'https://images.unsplash.com/photo-1580577661853-b4e4d1b72a0f?w=500' },
+    { title: 'Construction Site', image: 'https://images.unsplash.com/photo-1581092448348-1ce241e57c61?w=500' },
+    { title: 'Electrical Substations', image: 'https://images.unsplash.com/photo-1581373446412-25b4b15091a1?w=500' },
+    { title: 'Gas Stations', image: 'https://images.unsplash.com/photo-1609139206689-a6a3b6187b5a?w=500' },
+    { title: 'Highways', image: 'https://images.unsplash.com/photo-1522277026334-601c4581f1b4?w=500' },
+    { title: 'Hotels', image: 'https://images.unsplash.com/photo-1542314831-068cd1dbb5eb?w=500' },
+    { title: 'Monitoring Center', image: 'https://images.unsplash.com/photo-1581093450029-1a75b2873846?w=500' },
+    { title: 'Parking Lots', image: 'https://images.unsplash.com/photo-1545802187-89fb4703b418?w=500' },
+    { title: 'Schools', image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500' },
+    { title: 'Shopping Malls', image: 'https://images.unsplash.com/photo-1580614521479-723d706346a0?w=500' },
+    { title: 'Transit Bus On-board', image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=500' },
+    { title: 'Warehouses', image: 'https://images.unsplash.com/photo-1565610214489-13a8a3a83a15?w=500' },
+    { title: 'Onshore Oilfields', image: 'https://images.unsplash.com/photo-1627931932375-9c56f709142f?w=500' },
+    { title: 'Supermarkets', image: 'https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=500' },
+    { title: 'Offshore Oil Platform', image: 'https://images.unsplash.com/photo-1533446078393-9031b3152554?w=500' },
+    { title: 'Transmission Line Inspection', image: 'https://images.unsplash.com/photo-1497334734564-2101e9d8f332?w=500' },
+    { title: 'Pipeline Inspection', image: 'https://images.unsplash.com/photo-1619451878437-0f862c129482?w=500' },
+    { title: 'Solar Farms', image: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e78?w=500' },
+    { title: 'Hydroelectric Power Plants', image: 'https://images.unsplash.com/photo-1599446483647-36b1397b97a2?w=500' }
 ];
 
 const solutionsByFunction = [
@@ -47,39 +83,38 @@ const solutionsByFunction = [
     solutions: [
       { title: 'Smart Campus Solution', icon: 'fas fa-school' },
       { title: 'Intelligent Campus Solution', icon: 'fas fa-chalkboard-teacher' },
-      { title: 'Big Data for Educational Informatization', icon: 'fas fa-database' },
+      { title: 'Big Data Solution for Educational Informatization and Smart Campus', icon: 'fas fa-database' },
     ]
   },
   {
     category: "Healthcare & Hospitality",
     solutions: [
-      { title: 'Smart Hospital Entrance Management', icon: 'fas fa-hospital-user' },
-      { title: 'Intelligent Design for Medical Centers', icon: 'fas fa-clinic-medical' },
-      { title: 'Hotel Security System Design', icon: 'fas fa-hotel' },
+      { title: 'Design Scheme for Integrated Management of Smart Hospital Entrances and Exits', icon: 'fas fa-hospital-user' },
+      { title: 'Intelligent Design Scheme for International Medical Center', icon: 'fas fa-clinic-medical' },
+      { title: 'Network Architecture Diagram of the Three Major Systems in the International Medical Center', icon: 'fas fa-network-wired' },
+      { title: 'Hotel Security System Design Scheme', icon: 'fas fa-hotel' },
       { title: 'Intelligent Design Scheme for Hotels', icon: 'fas fa-concierge-bell' },
-      { title: 'Medical Center Network Architecture', icon: 'fas fa-network-wired' },
     ]
   },
   {
     category: "Smart Venues & Public Spaces",
     solutions: [
       { title: 'Intelligent Building System Solution', icon: 'fas fa-building' },
-      { title: 'Intelligent Project Scheme for Sports Centers', icon: 'fas fa-futbol' },
-      { title: 'Reporting Scheme for Stadiums & Gymnasiums', icon: 'fas fa-chart-line' },
+      { title: 'Intelligent Project Scheme for Sports Center', icon: 'fas fa-futbol' },
+      { title: 'Intelligent System Reporting Scheme for Stadiums and Gymnasiums', icon: 'fas fa-chart-line' },
       { title: 'Smart Public Toilet Solution', icon: 'fas fa-restroom' },
     ]
   },
   {
     category: "Industrial & Infrastructure",
     solutions: [
-      { title: 'Integrated Smart Park Solution', icon: 'fas fa-industry' },
-      { title: 'Smart Low-Carbon Park Solution', icon: 'fas fa-leaf' },
-      { title: 'Smart Park Management Platform', icon: 'fas fa-sitemap' },
-      { title: 'Big Data & Cloud for Smart Ports', icon: 'fas fa-anchor' },
+      { title: 'Integrated Smart Park Solution combining Hardware and Software', icon: 'fas fa-industry' },
+      { title: 'Intelligent Solution for Smart Low-Carbon Parks', icon: 'fas fa-leaf' },
+      { title: 'Solution for Smart Park Integrated Management Platform', icon: 'fas fa-sitemap' },
+      { title: 'Solutions for Big Data Cloud Computing and Intelligent Smart Ports', icon: 'fas fa-anchor' },
     ]
   }
 ];
-
 
 const downloads = [
   { id: 1, title: 'T-IPC-101 Datasheet.pdf', type: 'Datasheet', productId: 'ipc-101' },

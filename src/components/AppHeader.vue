@@ -7,7 +7,6 @@
           <span><i class="fas fa-phone-alt"></i> +251-911-249-722</span>
           <span><i class="fas fa-envelope"></i> info@tongfangbms.com</span>
         </div>
-        <!-- Language Selector -->
         <div class="language-selector" @mouseenter="isLangOpen = true" @mouseleave="isLangOpen = false">
           <div class="current-language">
             <i class="fas fa-globe"></i>
@@ -33,9 +32,8 @@
       </router-link>
       <nav class="navbar">
         <ul class="nav-links">
-          <!-- Looping through our navLinks data -->
-          <li 
-            v-for="link in navLinks" 
+          <li
+            v-for="link in navLinks"
             :key="link.name"
             @mouseenter="activeMegaMenu = link.megaMenu ? link.name : null"
             @mouseleave="activeMegaMenu = null">
@@ -51,7 +49,6 @@
                   <h4>{{ category.title }}</h4>
                   <ul>
                     <li v-for="subLink in category.links" :key="subLink.name">
-                      <!-- Use router-link for internal navigation -->
                       <router-link :to="subLink.path">
                         <i :class="subLink.icon"></i> {{ subLink.name }}
                       </router-link>
@@ -63,13 +60,13 @@
           </li>
         </ul>
       </nav>
-      <!-- Header Actions: Search and Login -->
+      <!-- Header Actions -->
       <div class="header-actions">
         <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')">
           <i class="fas fa-search"></i>
         </a>
         <div class="action-icon-wrapper">
-          <router-link to="/login" class="action-icon" aria-label="Login">
+          <router-link to="/partner" class="action-icon" aria-label="Login">
             <i class="fas fa-user"></i>
           </router-link>
           <div class="tooltip">Partner Login</div>
@@ -82,13 +79,12 @@
 <script>
 export default {
   name: 'AppHeader',
-  emits: ['toggle-search'], // Declare the event that will be emitted to the parent
+  emits: ['toggle-search'],
   data() {
     return {
       isHeaderScrolled: false,
       isLangOpen: false,
       activeMegaMenu: null,
-      // NEW data structure for navigation links with mega menus
       navLinks: [
         { name: 'About Us', path: '/about' },
         {
@@ -99,40 +95,24 @@ export default {
               {
                 title: 'By Industry',
                 links: [
-                  { name: 'Smart Offices', path: '/solutions/smart-offices', icon: 'fas fa-building' },
-                  { name: 'Airport Integration', path: '/solutions/airport-integration', icon: 'fas fa-plane-departure' },
-                  { name: 'Hotels & Hospitality', path: '/solutions', icon: 'fas fa-hotel' },
-                  { name: 'Educational Campuses', path: '/solutions', icon: 'fas fa-school' },
+                  { name: 'Smart Offices', path: '/solutions#solutions-by-industry', icon: 'fas fa-building' },
+                  { name: 'Airport Integration', path: '/solutions#solutions-by-industry', icon: 'fas fa-plane-departure' },
+                  { name: 'Hotels & Hospitality', path: '/solutions#solutions-by-industry', icon: 'fas fa-hotel' },
+                  { name: 'Educational Campuses', path: '/solutions#solutions-by-industry', icon: 'fas fa-school' },
                 ]
               },
               {
                 title: 'By Technology',
                 links: [
-                  { name: 'BMS Decoration', path: '/solutions', icon: 'fas fa-paint-brush' },
-                  { name: 'Data Center Solutions', path: '/solutions', icon: 'fas fa-server' },
-                  { name: 'IoT & Smart Devices', path: '/solutions', icon: 'fas fa-wifi' },
+                  { name: 'BMS Decoration', path: '/solutions#solutions-by-function', icon: 'fas fa-paint-brush' },
+                  { name: 'Data Center Solutions', path: '/solutions#solutions-by-function', icon: 'fas fa-server' },
+                  { name: 'IoT & Smart Devices', path: '/solutions#solutions-by-function', icon: 'fas fa-wifi' },
                 ]
               }
             ]
           }
         },
-        {
-          name: 'Products',
-          path: '/products',
-          megaMenu: {
-            categories: [
-              {
-                title: 'Core Hardware',
-                links: [
-                  { name: 'Computing Devices', path: '/products', icon: 'fas fa-desktop' },
-                  { name: 'Networking Equipment', path: '/products', icon: 'fas fa-network-wired' },
-                  { name: 'Surveillance & Security', path: '/products', icon: 'fas fa-video' },
-                  { name: 'Automation Devices', path: '/products', icon: 'fas fa-cogs' },
-                ]
-              }
-            ]
-          }
-        },
+        { name: 'Products', path: '/products' },
         { name: 'Achievements', path: '/achievements' },
         { name: 'Partner', path: '/partner' },
         { name: 'Support', path: '/support' },
@@ -155,7 +135,7 @@ export default {
 </script>
 
 <style scoped>
-/* Paste ALL CSS from your original header file here, then ADD the new styles below */
+/* All styles remain the same */
 .header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: background-color 0.3s, box-shadow 0.3s; background-color: var(--white-color); box-shadow: 0 4px 15px transparent; }
 .header.scrolled { box-shadow: 0 4px 15px var(--shadow-color); }
 .header-top-bar { background-color: var(--primary-color); color: var(--white-color); padding: 0 40px; transition: all 0.3s ease; height: 40px; display: flex; align-items: center; }
@@ -178,10 +158,6 @@ export default {
 .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); transition: width 0.3s ease; }
 .nav-links a:hover::after, .nav-links a.router-link-exact-active::after { width: 100%; }
 .nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
-
-/* --- NEW STYLES FOR INTERACTIVE ELEMENTS --- */
-
-/* Language Selector Dropdown */
 .language-selector { position: relative; cursor: pointer; }
 .current-language { display: flex; align-items: center; font-weight: 500; transition: color 0.3s; }
 .language-selector:hover .current-language { color: var(--secondary-color); }
@@ -195,8 +171,6 @@ export default {
 .language-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 .language-dropdown li a { display: block; padding: 10px 20px; color: var(--text-dark); text-decoration: none; font-size: 0.9rem; }
 .language-dropdown li a:hover { background-color: var(--light-bg-color); color: var(--secondary-color); }
-
-/* Header Actions: Search & Login */
 .header-actions { display: flex; align-items: center; gap: 25px; flex-shrink: 0; }
 .action-icon { font-size: 1.2rem; color: var(--text-dark); text-decoration: none; transition: all 0.3s ease; }
 .action-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
@@ -207,8 +181,6 @@ export default {
   visibility: hidden; transition: all 0.3s ease; pointer-events: none; z-index: 10;
 }
 .action-icon-wrapper:hover .tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); }
-
-/* Mega Menu Styles */
 .mega-menu {
   position: absolute; top: 100%; left: 50%; background-color: var(--white-color); padding: 30px; border-radius: 0 0 12px 12px;
   box-shadow: 0 15px 40px var(--shadow-color); border-top: 3px solid var(--secondary-color); opacity: 0; visibility: hidden;
@@ -226,5 +198,5 @@ export default {
 .mega-menu-column li a { padding: 8px 0; font-size: 0.95rem; font-weight: 500; color: var(--text-light); gap: 12px; }
 .mega-menu-column li a:hover { color: var(--secondary-color); }
 .mega-menu-column li a i { color: var(--secondary-color); width: 15px; text-align: center; }
-.mega-menu-column li a::after { display: none; } /* Disable underline for sub-links */
+.mega-menu-column li a::after { display: none; }
 </style>

@@ -60,13 +60,14 @@
           </li>
         </ul>
       </nav>
-      <!-- Header Actions -->
+      <!-- Header Actions: Search and Login -->
       <div class="header-actions">
         <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')">
           <i class="fas fa-search"></i>
         </a>
         <div class="action-icon-wrapper">
-          <router-link to="/partner" class="action-icon" aria-label="Login">
+          <!-- FIXED: This now correctly points to the "/login" path -->
+          <router-link to="/login" class="action-icon" aria-label="Login">
             <i class="fas fa-user"></i>
           </router-link>
           <div class="tooltip">Partner Login</div>
@@ -199,4 +200,61 @@ export default {
 .mega-menu-column li a:hover { color: var(--secondary-color); }
 .mega-menu-column li a i { color: var(--secondary-color); width: 15px; text-align: center; }
 .mega-menu-column li a::after { display: none; }
-</style>
+</style>```
+
+### 2. `src/router/index.js` (Corrected)
+
+Next, we must ensure the `/login` path is properly registered so the router knows which component to load when the link is clicked.
+
+**Please replace the entire content of `src/router/index.js` with this verified code:**
+
+```javascript
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+
+const routes = [
+  { path: '/', name: 'home', component: HomeView },
+  { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
+  { path: '/products', name: 'products', component: () => import('../views/ProductsView.vue') },
+  { path: '/products/:id', name: 'product-detail', component: () => import('../views/ProductDetailView.vue') },
+  { path: '/solutions', name: 'solutions', component: () => import('../views/SolutionsView.vue') },
+  { path: '/solutions/:slug', name: 'solution-detail', component: () => import('../views/SolutionDetailView.vue') },
+  { path: '/achievements', name: 'achievements', component: () => import('../views/AchievementView.vue') },
+  { path: '/partner', name: 'partner', component: () => import('../views/PartnerView.vue') },
+  { path: '/support', name: 'support', component: () => import('../views/SupportView.vue') },
+  { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
+  
+  // --- ENSURE THIS ROUTE EXISTS ---
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+  linkExactActiveClass: 'active-link',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } 
+    else if (to.hash) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ 
+            el: to.hash, 
+            behavior: 'smooth',
+            top: 140, // Offset for sticky headers
+          });
+        }, 500);
+      });
+    }
+    else {
+      return { top: 0, behavior: 'smooth' };
+    }
+  },
+})
+
+export default router

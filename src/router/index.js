@@ -11,13 +11,20 @@ const routes = [
   { path: '/achievements', name: 'achievements', component: () => import('../views/AchievementView.vue') },
   { path: '/partner', name: 'partner', component: () => import('../views/PartnerView.vue') },
   { path: '/support', name: 'support', component: () => import('../views/SupportView.vue') },
-  { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') }
+  { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
+  
+  // --- NEW LOGIN ROUTE ADDED HERE ---
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
-  linkExactActiveClass: 'active-link', 
+  linkExactActiveClass: 'active-link',
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
@@ -28,9 +35,9 @@ const router = createRouter({
           resolve({ 
             el: to.hash, 
             behavior: 'smooth',
-            top: 140, // Offset for main header (70px) + hints bar (70px)
+            top: 140,
           });
-        }, 500); 
+        }, 500);
       });
     }
     else {

@@ -142,10 +142,16 @@ export default {
   text-align: center; color: var(--white-color);
 }
 .hero-background-image {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80');
-  background-size: cover; background-position: center 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('@/assets/images/solution.png'); /* Use local path */
+  background-size: cover;
+  background-position: center 30%;
   filter: brightness(0.6);
+  z-index: -1;
 }
 .hero-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;

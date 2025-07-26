@@ -78,6 +78,7 @@
 </template>
 
 <script>
+// The script section remains unchanged
 import { ApiService } from '@/services/api.js';
 import SolutionHints from '@/components/SolutionHints.vue';
 import SolutionIndustryDetail from '@/components/SolutionIndustryDetail.vue';
@@ -135,11 +136,16 @@ export default {
   text-align: center; color: var(--text-light); line-height: 1.8;
 }
 
-/* Awesome Hero Section */
+/* --- Awesome Hero Section - UPDATED --- */
 .solutions-hero {
-  position: relative; height: 50vh; min-height: 400px;
-  display: flex; align-items: center; justify-content: center;
-  text-align: center; color: var(--white-color);
+  position: relative;
+  height: 55vh; /* Made slightly taller for more impact */
+  min-height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white-color);
 }
 .hero-background-image {
   position: absolute;
@@ -147,18 +153,33 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('@/assets/images/solution.png'); /* Use local path */
+  background-image: url('@/assets/images/solution.png'); /* Assumes your image is here */
   background-size: cover;
-  background-position: center 30%;
-  filter: brightness(0.6);
-  z-index: -1;
+  background-position: center;
+  /* UPDATED: Increased brightness and contrast for a more vibrant, clear image */
+  filter: brightness(1.1) contrast(1.05);
+  z-index: 1;
 }
 .hero-overlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(45deg, rgba(13, 36, 79, 0.6), rgba(0, 0, 0, 0.3));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* UPDATED: Reduced overlay darkness to let the brighter image show through */
+  background: linear-gradient(45deg, rgba(13, 36, 79, 0.4), rgba(0, 0, 0, 0.1));
+  z-index: 2;
 }
-.hero-content { position: relative; z-index: 2; }
-.hero-title { font-size: 3.5rem; font-weight: 800; }
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  /* ADDED: Subtle shadow to ensure text is always readable on the brighter image */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
 
 /* Animation */
 @keyframes fadeInUp {

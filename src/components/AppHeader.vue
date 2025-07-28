@@ -30,7 +30,7 @@
         </div>
       </router-link>
 
-      <!-- Hamburger Menu Button -->
+      <!-- Hamburger Menu Button (Visible on Tablet & Mobile) -->
       <button class="mobile-nav-toggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
         <i :class="isMobileNavOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
       </button>
@@ -48,11 +48,32 @@
               {{ link.name }}
               <i v-if="link.megaMenu || link.simpleDropdown" class="fas fa-chevron-down nav-arrow"></i>
             </router-link>
+
+            <!-- MEGA MENU DROPDOWN (for Solutions) -->
             <div class="mega-menu" v-if="link.megaMenu && activeDropdown === link.name">
-              <!-- Mega Menu Content -->
+              <div class="mega-menu-content">
+                <div class="mega-menu-column" v-for="category in link.megaMenu.categories" :key="category.title">
+                  <h4>{{ category.title }}</h4>
+                  <ul>
+                    <li v-for="subLink in category.links" :key="subLink.name">
+                      <router-link :to="subLink.path">
+                        <i :class="subLink.icon"></i> {{ subLink.name }}
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
+
+            <!-- SIMPLE DROPDOWN (for Products) -->
             <div class="simple-dropdown" v-if="link.simpleDropdown && activeDropdown === link.name">
-              <!-- Simple Dropdown Content -->
+                <ul>
+                    <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name">
+                      <router-link :to="subLink.path">
+                        <i :class="subLink.icon"></i> {{ subLink.name }}
+                      </router-link>
+                    </li>
+                </ul>
             </div>
           </li>
         </ul>
@@ -71,7 +92,7 @@
         </ul>
       </nav>
       
-      <!-- DESKTOP Header Actions -->
+      <!-- Header Actions (Visible on Desktop and Tablet) -->
       <div class="header-actions">
         <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')"><i class="fas fa-search"></i></a>
         <div class="action-icon-wrapper">
@@ -128,10 +149,6 @@ export default {
       ]
     };
   },
-  // --- THIS IS THE FIX ---
-  // This 'watch' block listens for changes to the current route.
-  // When a navigation happens (like clicking "Partner Login"), it will
-  // automatically close any open menus.
   watch: {
     '$route'() {
       this.isLangOpen = false;
@@ -209,7 +226,7 @@ export default {
 .mega-menu-column h4 { font-size: 1rem; font-weight: 700; color: var(--primary-color); margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 .mega-menu-column ul, .simple-dropdown ul { list-style: none; padding: 0; margin: 0; }
 .mega-menu-column li a, .simple-dropdown li a { font-size: 0.95rem; font-weight: 500; color: var(--text-light); }
-.mega-menu-column li a { padding: 8px 0; gap: 12px; }
+.mega-menu-column li a { padding: 8px 0; }
 .mega-menu-column li a i { color: var(--secondary-color); width: 18px; text-align: center; }
 .mega-menu-column li a::after, .simple-dropdown li a::after { display: none; }
 .mega-menu-column li a:hover, .simple-dropdown li a:hover { color: var(--secondary-color); }
@@ -220,7 +237,7 @@ export default {
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .header-main { padding: 0 25px; }
-  .mobile-nav-toggle { display: block; margin-left: auto; }
+  .mobile-nav-toggle { display: block; margin-left: auto; background: none; border: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; z-index: 1002; }
   .navbar-desktop, .header-actions { display: none; }
 }
 @media (max-width: 480px) {

@@ -64,7 +64,7 @@ export default { name: 'AppFooter' }
 .footer-links a { text-decoration: none; color: #A0AEC0; transition: color 0.3s ease, padding-left 0.3s ease; }
 .footer-links a:hover { color: var(--secondary-color); padding-left: 5px; }
 .footer-contact p { margin-bottom: 12px; display: flex; align-items: center; color: #A0AEC0; }
-.footer-contact i { color: var(--secondary-color); margin-right: 12px; width: 18px; text-align: center; }
+.footer-contact i { color: var(--secondary-color); margin-right: 12px; width: 18px; text-align: center; flex-shrink: 0; }
 .footer-contact a { color: #A0AEC0; text-decoration: none; transition: color 0.3s ease; }
 .footer-contact a:hover { color: var(--secondary-color); }
 .footer-map { border-radius: 8px; overflow: hidden; min-height: 200px; }
@@ -73,10 +73,30 @@ export default { name: 'AppFooter' }
 @media (max-width: 992px) {
     .footer-container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 }
+
 @media (max-width: 768px) {
   .site-footer { padding-top: 40px; }
-  .footer-container { text-align: center; gap: 45px; grid-template-columns: 1fr; }
-  .footer-about, .footer-links, .footer-contact, .footer-map { max-width: 350px; margin: 0 auto; }
-  .social-links, .footer-contact p { justify-content: center; }
+  .footer-container {
+    /* This centers the content blocks */
+    text-align: center;
+    gap: 45px;
+    grid-template-columns: 1fr;
+  }
+  .footer-about, .footer-links, .footer-contact, .footer-map {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  /* --- THIS IS THE FIX --- */
+  /* We keep the social links centered as they are a single line. */
+  .social-links {
+    justify-content: center;
+  }
+  /* For the multi-line contact info, we set text-align to left to align the icons,
+     and use inline-block to respect the parent's text-align: center. */
+  .footer-contact {
+    text-align: left;
+    display: inline-block;
+  }
 }
 </style>

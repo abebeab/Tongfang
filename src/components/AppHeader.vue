@@ -44,7 +44,7 @@
               <i v-if="link.megaMenu || link.simpleDropdown" class="fas fa-chevron-down nav-arrow"></i>
             </router-link>
 
-            <!-- MEGA MENU DROPDOWN (for Solutions) - CONTENT RESTORED -->
+            <!-- MEGA MENU DROPDOWN (for Solutions) -->
             <div class="mega-menu" v-if="link.megaMenu && activeDropdown === link.name">
               <div class="mega-menu-content">
                 <div class="mega-menu-column" v-for="category in link.megaMenu.categories" :key="category.title">
@@ -60,7 +60,7 @@
               </div>
             </div>
 
-            <!-- SIMPLE DROPDOWN (for Products) - CONTENT RESTORED -->
+            <!-- SIMPLE DROPDOWN (for Products) -->
             <div class="simple-dropdown" v-if="link.simpleDropdown && activeDropdown === link.name">
                 <ul>
                     <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name" @click="activeDropdown = null">
@@ -195,7 +195,11 @@ export default {
 .header-top-bar { background-color: var(--primary-color); color: var(--white-color); padding: 0 40px; transition: all 0.3s ease; height: 40px; display: flex; align-items: center; }
 .header.scrolled .header-top-bar { height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; visibility: hidden; }
 .top-bar-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto; font-size: 0.85rem; }
-.contact-info-top span { margin-right: 20px; }
+.contact-info-top span {
+  margin-right: 20px;
+  display: inline-flex;
+  align-items: center;
+}
 .contact-info-top i { color: var(--secondary-color); margin-right: 8px; }
 .header-main { display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 40px; max-width: 1400px; margin: 0 auto; }
 .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
@@ -231,8 +235,23 @@ export default {
     padding: 0;
 }
 
-/* Slide-out Menu (Mobile/Tablet) */
-.navbar-mobile { position: fixed; top: 0; right: -100%; width: 300px; max-width: 90vw; height: 100vh; background-color: var(--white-color); box-shadow: -10px 0 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; padding: 100px 30px 30px; transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001; }
+/* --- THIS IS THE FIX --- */
+/* The width of the slide-out menu has been reduced. */
+.navbar-mobile {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px; /* REDUCED from 300px */
+  max-width: 85vw; /* REDUCED from 90vw */
+  height: 100vh;
+  background-color: var(--white-color);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 100px 30px 30px;
+  transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 1001;
+}
 .navbar-mobile.active { right: 0; }
 .nav-links-mobile { list-style: none; padding: 0; margin: 0; width: 100%; }
 .nav-links-mobile > li { width: 100%; padding: 15px 0; }
@@ -282,7 +301,6 @@ export default {
 @media (max-width: 480px) {
   .header-main { padding: 0 20px; }
   .header-top-bar { padding: 0 20px; font-size: 0.75rem; }
-  /* The rule hiding the email is now gone, so it's visible. */
   .logo-text { font-size: 1.5rem; }
   .logo-subtext { display: none; }
 }

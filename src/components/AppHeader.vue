@@ -258,7 +258,7 @@ export default {
 
 /* Desktop Navigation */
 .navbar-desktop { display: none; margin-left: auto; flex-grow: 1; justify-content: center; }
-.nav-links { list-style: none; display: flex; align-items: center; gap: 35px; margin: 0; padding: 0; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; }
 .nav-links > li { position: relative; } /* REMOVED padding: 26px 0; to fix dropdown position */
 .nav-links a { text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--primary-color); padding: 26px 0; position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
 .nav-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }

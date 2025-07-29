@@ -5,6 +5,7 @@
       <div class="top-bar-container">
         <div class="contact-info-top">
           <span><i class="fas fa-phone-alt"></i> +251-911-249-722</span>
+          <!-- The class is still here, but the CSS rule to hide it is now gone -->
           <span class="desktop-only-text"><i class="fas fa-envelope"></i> info@tongfangbms.com</span>
         </div>
         <div class="language-selector" @mouseenter="isLangOpen = true" @mouseleave="isLangOpen = false">
@@ -31,7 +32,7 @@
       </router-link>
 
       <!-- Hamburger Menu Button -->
-      <button class="mobile-nav-toggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
+      <button class="mobile-nav-toggle" ref="mobileToggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
         <i :class="isMobileNavOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
       </button>
 
@@ -80,7 +81,7 @@
       </nav>
 
       <!-- MOBILE / TABLET Slide-out Navigation -->
-      <nav class="navbar-mobile" :class="{ 'active': isMobileNavOpen }">
+      <nav class="navbar-mobile" ref="mobileNav" :class="{ 'active': isMobileNavOpen }">
         <ul class="nav-links-mobile">
           <li v-for="link in navLinks" :key="link.name" @click="handleMobileLinkClick">
             <router-link :to="link.path">{{ link.name }}</router-link>
@@ -161,9 +162,18 @@ export default {
     handleMobileLinkClick() { if (this.isMobileNavOpen) { this.isMobileNavOpen = false; } },
     openSearch(){ this.isMobileNavOpen = false; this.$emit('toggle-search'); },
     handleClickOutside(event) {
+      // Logic for desktop hover dropdowns
       const navContainer = this.$refs.navLinksContainer;
       if (this.activeDropdown && navContainer && !navContainer.contains(event.target)) {
         this.activeDropdown = null;
+      }
+      // Logic for mobile slide-out menu
+      const mobileNav = this.$refs.mobileNav;
+      const mobileToggle = this.$refs.mobileToggle;
+      if (this.isMobileNavOpen) {
+        if (mobileNav && !mobileNav.contains(event.target) && mobileToggle && !mobileToggle.contains(event.target)) {
+          this.isMobileNavOpen = false;
+        }
       }
     }
   },
@@ -224,7 +234,7 @@ export default {
 .nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
 
 /* Desktop Header Actions */
-.header-actions { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; /* <-- FIX: Ensures icons are clickable */ }
+.header-actions { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; }
 .action-icon { font-size: 1.2rem; color: var(--text-dark); text-decoration: none; transition: all 0.3s ease; }
 .action-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
 .action-icon-wrapper { position: relative; }
@@ -256,7 +266,9 @@ export default {
 @media (max-width: 480px) {
   .header-main { padding: 0 20px; }
   .header-top-bar { padding: 0 20px; font-size: 0.75rem; }
-  .desktop-only-text { display: none; }
+  /* --- THIS IS THE FIX --- */
+  /* This CSS rule that was hiding the email has been removed. */
+  /* .desktop-only-text { display: none; } */
   .logo-text { font-size: 1.5rem; }
   .logo-subtext { display: none; }
 }

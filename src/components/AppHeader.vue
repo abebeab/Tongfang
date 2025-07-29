@@ -106,6 +106,7 @@
 </template>
 
 <script>
+// The Javascript is correct and does not need changes.
 export default {
   name: 'AppHeader',
   emits: ['toggle-search'],
@@ -236,18 +237,16 @@ export default {
 }
 
 /* --- THIS IS THE FIX --- */
-/* The width of the slide-out menu has been reduced. */
+/* The flex properties that caused vertical centering have been removed. */
 .navbar-mobile {
   position: fixed;
   top: 0;
   right: -100%;
-  width: 280px; /* REDUCED from 300px */
-  max-width: 85vw; /* REDUCED from 90vw */
+  width: 280px;
+  max-width: 85vw;
   height: 100vh;
   background-color: var(--white-color);
   box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
   padding: 100px 30px 30px;
   transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 1001;
@@ -260,11 +259,11 @@ export default {
 /* Desktop Navigation */
 .navbar-desktop { display: none; margin-left: auto; flex-grow: 1; justify-content: center; }
 .nav-links { list-style: none; display: flex; align-items: center; gap: 35px; margin: 0; padding: 0; }
-.nav-links > li { position: relative; padding: 26px 0; }
-.nav-links a { text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--primary-color); padding: 5px 0; position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+.nav-links > li { position: relative; } /* REMOVED padding: 26px 0; to fix dropdown position */
+.nav-links a { text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--primary-color); padding: 26px 0; position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
 .nav-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
 .nav-links > li:hover .nav-arrow { transform: rotate(180deg); }
-.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); transition: width 0.3s ease; }
+.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 20px; /* Adjusted for new padding */ left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); transition: width 0.3s ease; }
 .nav-links a:hover::after, .nav-links a.router-link-exact-active::after { width: 100%; }
 .nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
 
@@ -277,14 +276,26 @@ export default {
 .action-icon-wrapper:hover .tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); }
 
 /* Dropdown Styles */
-.mega-menu, .simple-dropdown { position: absolute; top: 100%; left: 50%; background-color: var(--white-color); border-radius: 0 0 12px 12px; box-shadow: 0 15px 40px var(--shadow-color); border-top: 3px solid var(--secondary-color); opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; z-index: 1000; }
+.mega-menu, .simple-dropdown {
+  position: absolute;
+  top: 70px; /* Use the height of the main header */
+  left: 50%;
+  background-color: var(--white-color);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 15px 40px var(--shadow-color);
+  border-top: 3px solid var(--secondary-color);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 1000;
+}
 .nav-links > li:hover .mega-menu, .nav-links > li:hover .simple-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 .mega-menu { padding: 30px; width: max-content; }
 .mega-menu-content { display: flex; gap: 40px; }
 .mega-menu-column h4 { font-size: 1rem; font-weight: 700; color: var(--primary-color); margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
 .mega-menu-column ul, .simple-dropdown ul { list-style: none; padding: 0; margin: 0; }
-.mega-menu-column li a, .simple-dropdown li a { font-size: 0.95rem; font-weight: 500; color: var(--text-light); }
-.mega-menu-column li a { padding: 8px 0; }
+.mega-menu-column li a, .simple-dropdown li a { font-size: 0.95rem; font-weight: 500; color: var(--text-light); padding: 8px 0; }
 .mega-menu-column li a i { color: var(--secondary-color); width: 18px; text-align: center; }
 .mega-menu-column li a::after, .simple-dropdown li a::after { display: none; }
 .mega-menu-column li a:hover, .simple-dropdown li a:hover { color: var(--secondary-color); }

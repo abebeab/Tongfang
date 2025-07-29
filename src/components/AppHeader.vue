@@ -5,7 +5,6 @@
       <div class="top-bar-container">
         <div class="contact-info-top">
           <span><i class="fas fa-phone-alt"></i> +251-911-249-722</span>
-          <!-- The class is still here, but the CSS rule to hide it is now gone -->
           <span class="desktop-only-text"><i class="fas fa-envelope"></i> info@tongfangbms.com</span>
         </div>
         <div class="language-selector" @mouseenter="isLangOpen = true" @mouseleave="isLangOpen = false">
@@ -31,11 +30,6 @@
         </div>
       </router-link>
 
-      <!-- Hamburger Menu Button -->
-      <button class="mobile-nav-toggle" ref="mobileToggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
-        <i :class="isMobileNavOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
-      </button>
-
       <!-- DESKTOP Navigation -->
       <nav class="navbar-desktop" ref="navLinksContainer">
         <ul class="nav-links">
@@ -50,7 +44,7 @@
               <i v-if="link.megaMenu || link.simpleDropdown" class="fas fa-chevron-down nav-arrow"></i>
             </router-link>
 
-            <!-- MEGA MENU DROPDOWN (for Solutions) -->
+            <!-- MEGA MENU DROPDOWN (for Solutions) - CONTENT RESTORED -->
             <div class="mega-menu" v-if="link.megaMenu && activeDropdown === link.name">
               <div class="mega-menu-content">
                 <div class="mega-menu-column" v-for="category in link.megaMenu.categories" :key="category.title">
@@ -66,7 +60,7 @@
               </div>
             </div>
 
-            <!-- SIMPLE DROPDOWN (for Products) -->
+            <!-- SIMPLE DROPDOWN (for Products) - CONTENT RESTORED -->
             <div class="simple-dropdown" v-if="link.simpleDropdown && activeDropdown === link.name">
                 <ul>
                     <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name" @click="activeDropdown = null">
@@ -79,28 +73,34 @@
           </li>
         </ul>
       </nav>
-
-      <!-- MOBILE / TABLET Slide-out Navigation -->
-      <nav class="navbar-mobile" ref="mobileNav" :class="{ 'active': isMobileNavOpen }">
-        <ul class="nav-links-mobile">
-          <li v-for="link in navLinks" :key="link.name" @click="handleMobileLinkClick">
-            <router-link :to="link.path">{{ link.name }}</router-link>
-          </li>
-           <li class="mobile-only-actions">
-                <router-link to="/login" class="action-icon mobile" aria-label="Login"><i class="fas fa-user"></i> Partner Login</router-link>
-                <a href="#" class="action-icon mobile" aria-label="Search" @click.prevent="openSearch"><i class="fas fa-search"></i> Search</a>
-            </li>
-        </ul>
-      </nav>
       
-      <!-- Header Actions -->
-      <div class="header-actions">
+      <!-- Desktop Header Actions -->
+      <div class="header-actions desktop">
         <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')"><i class="fas fa-search"></i></a>
         <div class="action-icon-wrapper">
           <router-link to="/login" class="action-icon" aria-label="Login"><i class="fas fa-user"></i></router-link>
           <div class="tooltip">Partner Login</div>
         </div>
       </div>
+
+      <!-- Mobile Controls (Search, Login, Hamburger) -->
+      <div class="mobile-controls">
+        <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')"><i class="fas fa-search"></i></a>
+        <router-link to="/login" class="action-icon" aria-label="Login"><i class="fas fa-user"></i></router-link>
+        <button class="mobile-nav-toggle" ref="mobileToggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
+            <i :class="isMobileNavOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+        </button>
+      </div>
+
+      <!-- MOBILE Slide-out Navigation -->
+      <nav class="navbar-mobile" ref="mobileNav" :class="{ 'active': isMobileNavOpen }">
+        <ul class="nav-links-mobile">
+          <li v-for="link in navLinks" :key="link.name" @click="handleMobileLinkClick">
+            <router-link :to="link.path">{{ link.name }}</router-link>
+          </li>
+        </ul>
+      </nav>
+
     </div>
   </header>
 </template>
@@ -162,12 +162,12 @@ export default {
     handleMobileLinkClick() { if (this.isMobileNavOpen) { this.isMobileNavOpen = false; } },
     openSearch(){ this.isMobileNavOpen = false; this.$emit('toggle-search'); },
     handleClickOutside(event) {
-      // Logic for desktop hover dropdowns
+      // Desktop logic
       const navContainer = this.$refs.navLinksContainer;
       if (this.activeDropdown && navContainer && !navContainer.contains(event.target)) {
         this.activeDropdown = null;
       }
-      // Logic for mobile slide-out menu
+      // Mobile logic
       const mobileNav = this.$refs.mobileNav;
       const mobileToggle = this.$refs.mobileToggle;
       if (this.isMobileNavOpen) {
@@ -211,16 +211,32 @@ export default {
 .language-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 .language-dropdown li a { display: block; padding: 10px 20px; color: var(--text-dark); text-decoration: none; }
 
+/* Mobile Controls */
+.mobile-controls {
+    display: none; 
+    align-items: center;
+    gap: 18px; 
+    margin-left: auto;
+}
+.mobile-controls .action-icon {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+.mobile-controls .mobile-nav-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+}
+
 /* Slide-out Menu (Mobile/Tablet) */
-.mobile-nav-toggle { display: none; }
 .navbar-mobile { position: fixed; top: 0; right: -100%; width: 300px; max-width: 90vw; height: 100vh; background-color: var(--white-color); box-shadow: -10px 0 30px rgba(0,0,0,0.1); display: flex; flex-direction: column; padding: 100px 30px 30px; transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001; }
 .navbar-mobile.active { right: 0; }
 .nav-links-mobile { list-style: none; padding: 0; margin: 0; width: 100%; }
-.nav-links-mobile > li { width: 100%; padding: 10px 0; }
+.nav-links-mobile > li { width: 100%; padding: 15px 0; }
 .nav-links-mobile a { text-decoration: none; font-size: 1.2rem; font-weight: 600; color: var(--primary-color); }
-.mobile-only-actions { display: flex; flex-direction: column; width: 100%; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color); gap: 20px; }
-.mobile-only-actions .action-icon.mobile { font-size: 1.2rem; color: var(--text-dark); display: flex; align-items: center; gap: 15px; }
-.mobile-only-actions .action-icon.mobile i { color: var(--secondary-color); width: 20px; }
 
 /* Desktop Navigation */
 .navbar-desktop { display: none; margin-left: auto; flex-grow: 1; justify-content: center; }
@@ -234,7 +250,7 @@ export default {
 .nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
 
 /* Desktop Header Actions */
-.header-actions { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; }
+.header-actions.desktop { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; }
 .action-icon { font-size: 1.2rem; color: var(--text-dark); text-decoration: none; transition: all 0.3s ease; }
 .action-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
 .action-icon-wrapper { position: relative; }
@@ -260,20 +276,18 @@ export default {
 /* Responsive Breakpoints */
 @media (max-width: 1024px) {
   .header-main { padding: 0 25px; }
-  .mobile-nav-toggle { display: block; margin-left: auto; background: none; border: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; z-index: 1002; }
-  .navbar-desktop, .header-actions { display: none; }
+  .mobile-controls { display: flex; }
+  .navbar-desktop, .header-actions.desktop { display: none; }
 }
 @media (max-width: 480px) {
   .header-main { padding: 0 20px; }
   .header-top-bar { padding: 0 20px; font-size: 0.75rem; }
-  /* --- THIS IS THE FIX --- */
-  /* This CSS rule that was hiding the email has been removed. */
-  /* .desktop-only-text { display: none; } */
+  /* The rule hiding the email is now gone, so it's visible. */
   .logo-text { font-size: 1.5rem; }
   .logo-subtext { display: none; }
 }
 @media (min-width: 1025px) {
-  .mobile-nav-toggle, .navbar-mobile { display: none; }
-  .navbar-desktop, .header-actions { display: flex; }
+  .mobile-controls, .navbar-mobile { display: none; }
+  .navbar-desktop, .header-actions.desktop { display: flex; }
 }
 </style>

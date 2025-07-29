@@ -30,13 +30,13 @@
         </div>
       </router-link>
 
-      <!-- Hamburger Menu Button (Visible on Tablet & Mobile) -->
+      <!-- Hamburger Menu Button -->
       <button class="mobile-nav-toggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
         <i :class="isMobileNavOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
       </button>
 
       <!-- DESKTOP Navigation -->
-      <nav class="navbar-desktop">
+      <nav class="navbar-desktop" ref="navLinksContainer">
         <ul class="nav-links">
           <li
             v-for="link in navLinks"
@@ -55,7 +55,7 @@
                 <div class="mega-menu-column" v-for="category in link.megaMenu.categories" :key="category.title">
                   <h4>{{ category.title }}</h4>
                   <ul>
-                    <li v-for="subLink in category.links" :key="subLink.name">
+                    <li v-for="subLink in category.links" :key="subLink.name" @click="activeDropdown = null">
                       <router-link :to="subLink.path">
                         <i :class="subLink.icon"></i> {{ subLink.name }}
                       </router-link>
@@ -68,7 +68,7 @@
             <!-- SIMPLE DROPDOWN (for Products) -->
             <div class="simple-dropdown" v-if="link.simpleDropdown && activeDropdown === link.name">
                 <ul>
-                    <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name">
+                    <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name" @click="activeDropdown = null">
                       <router-link :to="subLink.path">
                         <i :class="subLink.icon"></i> {{ subLink.name }}
                       </router-link>
@@ -92,7 +92,7 @@
         </ul>
       </nav>
       
-      <!-- Header Actions (Visible on Desktop and Tablet) -->
+      <!-- Header Actions -->
       <div class="header-actions">
         <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')"><i class="fas fa-search"></i></a>
         <div class="action-icon-wrapper">
@@ -153,15 +153,28 @@ export default {
     '$route'() {
       this.isLangOpen = false;
       this.isMobileNavOpen = false;
+      this.activeDropdown = null;
     }
   },
   methods: {
     handleScroll() { this.isHeaderScrolled = window.scrollY > 20; },
     handleMobileLinkClick() { if (this.isMobileNavOpen) { this.isMobileNavOpen = false; } },
-    openSearch(){ this.isMobileNavOpen = false; this.$emit('toggle-search'); }
+    openSearch(){ this.isMobileNavOpen = false; this.$emit('toggle-search'); },
+    handleClickOutside(event) {
+      const navContainer = this.$refs.navLinksContainer;
+      if (this.activeDropdown && navContainer && !navContainer.contains(event.target)) {
+        this.activeDropdown = null;
+      }
+    }
   },
-  mounted() { window.addEventListener('scroll', this.handleScroll); },
-  beforeUnmount() { window.removeEventListener('scroll', this.handleScroll); }
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    document.removeEventListener('click', this.handleClickOutside);
+  }
 };
 </script>
 
@@ -211,7 +224,7 @@ export default {
 .nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
 
 /* Desktop Header Actions */
-.header-actions { display: none; align-items: center; gap: 25px; }
+.header-actions { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; /* <-- FIX: Ensures icons are clickable */ }
 .action-icon { font-size: 1.2rem; color: var(--text-dark); text-decoration: none; transition: all 0.3s ease; }
 .action-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
 .action-icon-wrapper { position: relative; }

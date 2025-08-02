@@ -1,25 +1,25 @@
 <template>
   <div class="solutions-page">
-    <!-- Hero Section -->
+    <!-- 
+      SECTION 1: HERO BANNER (FINAL VERSION)
+    -->
     <section class="solutions-hero">
       <div class="hero-background-image"></div>
-      <div class="hero-overlay"></div>
+      <div class="hero-overlay"></div> 
       <div class="hero-content page-container">
-        <!-- MODIFIED: "Integrated" is now wrapped in a span to apply the brand color -->
         <h1 class="hero-title animate-fade-in-up">
-          <span class="highlight">Integrated</span> Solutions
+          <span class="highlight">Integrated Solutions</span>
         </h1>
-        <!-- MODIFIED: "Engineering" and "smart" are now wrapped in spans -->
         <p class="hero-subtitle animate-fade-in-up">
-          <span class="highlight">Engineering</span> the future of <span class="highlight">smart</span> infrastructure.
+          <span class="highlight">Moving Forward!</span>  <span class="highlight">Smart Systems.</span>
         </p>
       </div>
     </section>
 
-    <!-- Navigation Hints Bar (Sticky on Desktop) -->
+    <!-- 
+      (All other sections remain unchanged)
+    -->
     <SolutionHints />
-
-    <!-- Overview Section -->
     <section id="overview" class="content-section page-container">
       <h2 class="section-heading">A Rich Portfolio of Empowering Solutions</h2>
       <p class="section-text">
@@ -27,7 +27,6 @@
       </p>
     </section>
 
-    <!-- Solutions by Industry -->
     <section id="solutions-by-industry" class="content-section page-container-fullwidth bg-light">
       <div class="page-container">
         <h2 class="section-heading">Solutions by Industry</h2>
@@ -50,7 +49,6 @@
       </div>
     </section>
 
-    <!-- Solutions by Scenario -->
     <section id="solutions-by-scenario" class="content-section page-container">
       <h2 class="section-heading">Solutions by Scenario</h2>
       <h3 class="section-subheading">Focused on each business process</h3>
@@ -63,7 +61,6 @@
       </div>
     </section>
 
-    <!-- Solutions by Function -->
     <section id="solutions-by-function" class="content-section page-container-fullwidth bg-light">
       <div class="page-container">
         <h2 class="section-heading">Solutions by Function</h2>
@@ -125,38 +122,72 @@ export default {
 .page-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .page-container-fullwidth { padding: 80px 0; }
 .bg-light { background-color: #f7f9fc; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-.section-heading { font-size: 2.2rem; font-weight: 700; color: var(--primary-color); text-align: center; margin-bottom: 12px; }
+.section-heading { font-size: 2.2rem; font-weight: 900; color: var(--primary-color); text-align: top; margin-bottom: 12px; }
 .section-subheading { font-size: 1.15rem; font-weight: 500; color: var(--text-dark); text-align: center; margin-bottom: 40px; line-height: 1.6; }
-.section-text { max-width: 800px; margin: 0 auto 10px auto; text-align: center; color: var(--text-light); line-height: 1.8; }
+.section-text { max-width: 800px; margin: 0 auto 10px auto; text-align: top; color: var(--text-light); line-height: 1.8; }
 
-/* Hero Section */
-.solutions-hero { position: relative; height: 50vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white-color); }
-.hero-background-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('@/assets/images/solution.png'); background-size: cover; background-position: center; filter: brightness(1.25) contrast(1.05); z-index: 1; }
-.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.3), rgba(0, 0, 0, 0.1)); z-index: 2; }
+/* --- HERO SECTION (TEXT REPOSITIONED) --- */
+.solutions-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 10px;
+  display: flex;
+  /* MODIFICATION: Align content to the top instead of the center */
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  color: var(--white-color);
+  /* MODIFICATION: Add padding to push the content down from the top edge */
+  padding-top: 5vh;
+  box-sizing: border-box; /* Ensures padding is included in the height */
+}
+
+.hero-background-image {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('@/assets/images/solution.png');
+  background-size: cover; background-position: center;
+  filter: brightness(1.1);
+  z-index: 2;
+}
+
+.hero-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
 .hero-content { position: relative; z-index: 3; }
-.hero-title { font-size: 3.5rem; font-weight: 800; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-.hero-subtitle { font-size: 1.25rem; margin-top: 10px; opacity: 0.9; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 
-/* --- NEW STYLE FOR BRANDED TEXT --- */
+.hero-title {
+  font-size: 3rem; font-weight: 900;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 2rem; margin-top: 10px; opacity: 1;
+  /*text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);*/
+}
+
 .hero-content .highlight {
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .animate-fade-in-up { animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+/* --- END OF HERO SECTION --- */
+
 
 /* Industry Tabs */
 .industry-tabs-wrapper { max-width: 100%; overflow-x: auto; padding-bottom: 25px; margin-bottom: 40px; -ms-overflow-style: none; scrollbar-width: none; }
 .industry-tabs-wrapper::-webkit-scrollbar { display: none; }
 .industry-tabs { display: flex; justify-content: center; border-bottom: 1px solid #dde2e8; width: -moz-fit-content; width: fit-content; margin: 0 auto; }
-.industry-tabs button { padding: 10px 22px; font-size: 1rem; font-weight: 600; border: none; background: none; color: #5a6d82; cursor: pointer; transition: color 0.3s ease; position: relative; white-space: nowrap; flex-shrink: 0; }
+.industry-tabs button { padding: 10px 22px; font-size: 1rem; font-weight: 600; border: none; background: none; color: #5a6d82; cursor: pointer; transition: all 0.3s ease; position: relative; white-space: nowrap; flex-shrink: 0; border-bottom: 3px solid transparent; }
 .industry-tabs button:hover { color: var(--primary-color); }
-.industry-tabs button.active { color: var(--primary-color); }
-.industry-tabs button.active::after { content: ''; position: absolute; bottom: -26px; left: 0; width: 100%; height: 3px; background-color: var(--secondary-color); }
+.industry-tabs button.active { color: var(--primary-color); border-bottom-color: var(--secondary-color); }
 
 /* Grids & Categories */
-.solutions-grid-scenario { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.solutions-grid-function { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+.solutions-grid-scenario { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.solutions-grid-function { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
 .function-category { margin-bottom: 60px; }
 .function-category:last-child { margin-bottom: 0; }
 .function-category-title { font-size: 1.6rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 15px; }
@@ -166,7 +197,7 @@ export default {
 /* Responsive Design */
 @media (max-width: 992px) {
   .hero-title { font-size: 2.8rem; }
-  .solutions-hero { min-height: 350px; height: 40vh; }
+  .solutions-hero { min-height: 350px; height: 40vh; padding-top: 12vh;}
   .industry-tabs { justify-content: flex-start; margin-left: 20px; margin-right: 20px; }
 }
 @media (max-width: 768px) {
@@ -178,6 +209,6 @@ export default {
   .function-category-title { font-size: 1.5rem; }
   .hero-title { font-size: 2.2rem; }
   .hero-subtitle { font-size: 1.1rem; }
-  .solutions-hero { min-height: 300px; height: 35vh; }
+  .solutions-hero { min-height: 300px; height: 35vh; padding-top: 10vh;}
 }
 </style>

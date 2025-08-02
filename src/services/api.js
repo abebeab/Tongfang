@@ -1,109 +1,109 @@
 // This file mocks a connection to a backend API or CMS.
-// Image URLs are optimized to request smaller file sizes.
+
+// --- Helper for images in the 'assets' folder ---
+// To use your images, place them in 'src/assets/images/'
+// and reference them like this: require('@/assets/images/your-image-name.jpg')
 
 const products = [
   { 
     id: 'ipc-101', name: 'Industrial PC T-IPC-101', model: 'T-IPC-101', category: 'Computing Devices', 
-    image: 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=800&auto=format&fit=crop', 
+    image: 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=800&auto=format=fit=crop', 
     features: ['Fanless, Ruggedized Design', 'Intel Core i7 Processor', 'Wide Temp Range (-20°C to 70°C)', 'Dual LAN, 6x COM, 8x USB'], 
     specs: { 'Processor': 'Intel Core i7-8550U', 'Memory': '16GB DDR4', 'Storage': '512GB SSD', 'Power Input': '9-36V DC' } 
   },
   { 
     id: 'nvr-200', name: '32-Channel NVR', model: 'TF-NVR-32CH', category: 'Surveillance & Security', 
-    image: 'https://images.unsplash.com/photo-1617886322207-6f504e7472c2?w=800&auto=format&fit=crop', 
+    image: require('@/assets/images/NVR.jpg'), 
     features: ['Supports 32 IP Cameras', '4K Ultra HD Resolution Output', 'H.265+ High-Efficiency Compression', '2x SATA HDD Bays (Up to 20TB)'], 
     specs: { 'Decoding': 'H.265+/H.265/H.264', 'Bandwidth': '256Mbps', 'Video Output': 'HDMI/VGA', 'Storage': 'Up to 10TB per HDD' } 
-  },
-  { 
-    id: 'plc-303', name: 'Automation PLC Controller', model: 'TF-PLC-303', category: 'Automation Devices', 
-    image: 'https://images.unsplash.com/photo-1633493714962-1849b2075551?w=800&auto=format&fit=crop', 
-    features: ['High-speed processing core', 'Modular I/O Expansion Slots', 'Supports Ethernet/IP and Modbus TCP', 'Built-in Web Server'], 
-    specs: { 'Program Memory': '2MB', 'I/O Points': 'Up to 1,024', 'Communication': 'RS232, RS485, Ethernet', 'Power': '24V DC' } 
-  },
-  { 
-    id: 'nwe-401', name: 'Enterprise Managed Switch', model: 'TF-SW-24P', category: 'Networking Equipment', 
-    image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=800&auto=format&fit=crop', 
-    features: ['24-Port Gigabit Ethernet', '4 SFP Fiber Uplink Ports', 'Layer 2+ Management', 'PoE+ Support (370W)'], 
-    specs: { 'Switching Capacity': '56 Gbps', 'Forwarding Rate': '41.7 Mpps', 'MAC Table': '8K', 'VLANs': 'Supports 4K VLANs' } 
   }
 ];
 
+// Content for the "Solutions by Industry" tabs.
 const solutionsByIndustry = [
     {
-        slug: 'smart-cities-public-safety', title: 'Smart Cities & Public Safety',
-        image: 'https://images.unsplash.com/photo-1549924231-f97aDE7e0344?w=1000&auto=format&fit=crop',
-        description: 'Integrating digital city solutions with advanced security systems to enhance urban management, traffic flow, and public safety for government agencies.',
+        slug: 'smart-campus',
+        title: 'Intelligent Campus Solutions',
+        image: require('@/assets/images/Picture1.jpg'),
+        shortDescription: "Enhancing learning environments with integrated, AIoT-powered campus management.", // <-- Short tagline
+        description: "TONGFANG provides a comprehensive Intelligent Campus Solution that integrates everything from smart classroom technology to campus-wide security and energy management. Our platform uses big data to optimize resource allocation, improve student safety, and create a seamless digital experience for both faculty and students, paving the way for the future of education.", // <-- Full description for detail page
         successStories: [
-            { title: 'Metropolitan Traffic Control', description: 'Deployed an integrated traffic engineering and monitoring system, reducing congestion by 22%.' },
-            { title: 'National Customs Security', description: 'Implemented THSCAN container inspection systems at major ports, significantly improving smuggling detection rates.' }
+            { title: 'Smart Campus Big Data Solution', description: 'Deployed a big data platform for a major university, improving resource management by 30% and increasing student engagement.' },
+            { title: 'Intelligent System Implementation', description: 'Automated access control and surveillance across a 50-building campus, reducing security incidents by 40%.' }
         ]
     },
     {
-        slug: 'education-smart-campus', title: 'Education & Smart Campus',
-        image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1000&auto=format&fit=crop',
-        description: 'Creating connected and intelligent learning environments with unified campus management, digital resources, and enhanced security for educational institutions.',
+        slug: 'smart-healthcare',
+        title: 'Intelligent Medical Centers',
+        image: require('@/assets/images/h.jpg'),
+        shortDescription: "Streamlining hospital operations and enhancing patient care through intelligent system integration.",
+        description: "Our Smart Hospital Solution focuses on the critical integration of patient management, building automation, and security systems. By automating entrance and exit management and unifying network architecture, we help medical centers improve operational efficiency, ensure data security, and provide a safer environment for patients and staff.",
         successStories: [
-            { title: 'University Campus BMS', description: 'Rolled out a building management system across a 30-building campus, centralizing control of HVAC, lighting, and access.' },
-            { title: 'Digital Library Transformation', description: 'Utilized AI facial recognition and RFID to create a seamless, self-service library experience for over 20,000 students.' }
+            { title: 'Integrated Management of Hospital Entrances', description: 'Our system improved patient flow and security at a 500-bed medical center, reducing wait times by 25%.' },
+            { title: 'Network Architecture for Medical Systems', description: 'Designed and deployed a fault-tolerant network for a leading hospital, ensuring 99.99% uptime for critical medical data systems.' }
         ]
     },
     {
-        slug: 'energy-industrial-parks', title: 'Energy & Industrial Parks',
-        image: 'https://images.unsplash.com/photo-1605663849925-8a594e6371a3?w=1000&auto=format&fit=crop',
-        description: 'Developing zero-carbon and energy-efficient industrial parks through smart grids, heat pump technology, and integrated resource management.',
+        // === THIS SECTION IS NOW UPDATED ===
+        slug: 'smart-ports',
+        title: 'Intelligent Smart Ports',
+        image: require('@/assets/images/hero-bg-3.png'),
+        shortDescription: "Transforming traditional ports into agile, data-driven hubs of global trade.", // <-- NEW short tagline for the main page card
+        description: "TONGFANG empowers modern ports with cutting-edge AIoT, big data, and cloud computing technologies to drive operational efficiency, sustainability, and safety. Our solutions integrate real-time monitoring, automated logistics, and intelligent decision-making to streamline cargo handling, reduce energy consumption, and enhance port management. Leveraging 5G, IoT sensors, and AI-driven analytics, we enable seamless coordination between ships, trucks, and terminals.", // <-- Full description for the detail page
         successStories: [
-            { title: 'Zero-Carbon Industrial Zone', description: 'Built a "smart brain" for a new park, integrating solar, energy storage, and smart controls to reduce carbon emissions.' },
-            { title: 'Factory Automation Upgrade', description: 'Implemented a modern Manufacturing Execution System (MES), enabling paperless operations and improving production visualization.' }
+            { 
+              title: 'Big Data & Cloud Computing for Port Logistics', 
+              description: 'By deploying our smart port platform, a major port achieved 30% faster cargo turnover and 20% lower energy costs. Our cloud-based system unified disparate data sources—from GPS-tracked containers to AI-powered predictive maintenance—enabling real-time insights and automated scheduling.' 
+            },
+            {
+              title: 'Terminal Automation & Intelligent Dispatching',
+              description: 'We implemented a Wharf intelligent automation system featuring autonomous loading/unloading and logistics handling robots (AGVs). This integrated control system automated terminal site operations, leading to a significant increase in safety and efficiency.'
+            }
         ]
+        // ===================================
     }
 ];
 
+// Other data remains the same...
 const solutionsByScenario = [
-    { title: 'Urban Traffic Management', image: 'https://images.unsplash.com/photo-1568984315266-b5143493988c?w=500&auto=format&fit=crop' },
-    { title: 'University & School Campuses', image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&auto=format&fit=crop' },
-    { title: 'Industrial Manufacturing Plants', image: 'https://images.unsplash.com/photo-1567789884554-0b844b597180?w=500&auto=format&fit=crop' },
-    { title: 'Airports & Port Terminals', image: 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=500&auto=format&fit=crop' },
+    { title: 'Intelligent Building Systems', image: require('@/assets/images/hero-bg-2.jpg') }, 
+    { title: 'Hotel Security Systems', image: require('@/assets/images/Hotel Security System Design Scheme.jpg') }, 
+    { title: 'Smart Public Toilet Solution', image: require('@/assets/images/Smart Public Toilet Solution.jpg') }, 
     { title: 'Corporate Office Buildings', image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500&auto=format&fit=crop' },
-    { title: 'Hotels & Resorts', image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&auto=format&fit=crop' },
-    { title: 'Data Centers', image: 'https://images.unsplash.com/photo-1581093450029-1a75b2873846?w=500&auto=format&fit=crop' },
-    { title: 'Hospitals & Medical Centers', image: 'https://images.unsplash.com/photo-1586773860414-72d26f7d11e3?w=500&auto=format&fit=crop' }
+    { title: 'University & School Campuses', image: require('@/assets/images/University & School Campuses.png')},
+    { title: 'Data Centers', image: require('@/assets/images/data_center.png') },
 ];
 
 const solutionsByFunction = [
   {
-    category: "Building Management & Automation",
-    solutions: [
-      { title: 'Integrated BMS Platform', icon: 'fas fa-sitemap' }, { title: 'HVAC Control & Optimization', icon: 'fas fa-wind' },
-      { title: 'Intelligent Lighting Control', icon: 'far fa-lightbulb' }, { title: 'Energy Management Systems', icon: 'fas fa-bolt' },
-    ]
-  },
-  {
-    category: "Security & Safety",
-    solutions: [
-      { title: 'Centralized Video Surveillance', icon: 'fas fa-video' }, { title: 'Unified Access Control', icon: 'fas fa-id-card-alt' },
-      { title: 'Intrusion Detection & Alarms', icon: 'fas fa-exclamation-triangle' }, { title: 'Cargo & Vehicle Inspection', icon: 'fas fa-truck-loading' },
-    ]
-  },
-  {
     category: "Digital Information & AIoT",
     solutions: [
-      { title: 'AIoT Edge Computing', icon: 'fas fa-microchip' }, { title: 'Big Data Analytics Platform', icon: 'fas fa-database' },
-      { title: 'Industrial Internet of Things (IIoT)', icon: 'fas fa-industry' }, { title: 'Custom Software Development', icon: 'fas fa-code' },
+      { title: 'Big Data & Cloud Computing', icon: 'fas fa-database' },
+      { title: 'Educational Informatization', icon: 'fas fa-graduation-cap' },
+      { title: 'Network Architecture Design', icon: 'fas fa-network-wired' },
+      { title: 'Custom Software Development', icon: 'fas fa-code' },
     ]
-  }
+  },
+  {
+    category: "Building Management & Automation",
+    solutions: [
+      { title: 'Integrated BMS Platform', icon: 'fas fa-sitemap' },
+      { title: 'HVAC Control & Optimization', icon: 'fas fa-wind' },
+      { title: 'Intelligent Lighting Control', icon: 'far fa-lightbulb' },
+      { title: 'Energy Management Systems', icon: 'fas fa-bolt' },
+    ]
+  },
 ];
 
 const downloads = [
   { id: 1, title: 'T-IPC-101 Datasheet.pdf', type: 'Datasheet', productId: 'ipc-101' },
   { id: 2, title: 'TF-NVR-32CH User Manual.pdf', type: 'Manual', productId: 'nvr-200' },
-  { id: 3, title: 'TF-PLC-303 Programming Guide.pdf', type: 'Manual', productId: 'plc-303' },
-  { id: 4, title: 'Enterprise Switch Firmware v2.1.zip', type: 'Firmware', productId: 'nwe-401' },
 ];
 
 export const ApiService = {
   fetchProducts(category = null) {
     return new Promise(resolve => setTimeout(() => {
-      if (category) { resolve(products.filter(p => p.category === category)); } 
+      if (category && category !== 'All Categories') { resolve(products.filter(p => p.category === category)); } 
       else { resolve(products); }
     }, 200));
   },

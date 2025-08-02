@@ -312,7 +312,7 @@ export default {
 @media (max-width: 480px) {
   .header-main { padding: 0 20px; }
   .header-top-bar { padding: 0 20px; font-size: 0.75rem; }
-  .logo-text { font-size: 1.5rem; }
+  .logo-text { font-size: 3.5rem; }
   .logo-subtext { display: none; }
 }
 @media (min-width: 1025px) {

@@ -66,6 +66,4 @@ export default {
   font-weight: 600;
   line-height: 1.5;
 }
-</style>```
-
-This complete package provides a fully functional, attractive, and user-friendly solutions page that is perfectly aligned with your branding and specific content requirements.
+</style>

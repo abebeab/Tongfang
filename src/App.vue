@@ -1,16 +1,15 @@
 <template>
   <div id="app">
+    <!-- The Global Loading Indicator (from the previous fix) -->
+    <GlobalLoadingIndicator :is-loading="isRouteLoading" />
+
     <!-- 
-      The header component now emits an event called 'toggle-search'.
-      We listen for that event here using '@toggle-search' and run the code
-      to change the value of 'isSearchActive'.
+      RESTORED: The header now listens for the @toggle-search event again.
     -->
     <AppHeader @toggle-search="isSearchActive = !isSearchActive" />
 
     <!-- 
-      This is the Search Overlay. It is always in the HTML,
-      but it is hidden by default with CSS. We add the 'active' class
-      based on the 'isSearchActive' data property to make it visible.
+      RESTORED: The entire search overlay div and its logic are back.
     -->
     <div class="search-overlay" :class="{ 'active': isSearchActive }" @click.self="isSearchActive = false">
       <div class="search-dialog">
@@ -24,7 +23,7 @@
       </div>
     </div>
     
-    <!-- This is where Vue Router renders the current page (Home, About, etc.) -->
+    <!-- The main content area that correctly pushes the footer down -->
     <main>
       <router-view/>
     </main>
@@ -36,23 +35,34 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import GlobalLoadingIndicator from './components/GlobalLoadingIndicator.vue';
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppFooter,
+    GlobalLoadingIndicator,
   },
-  // We add a 'data' property to this component to hold the state
-  // of whether the search overlay is open or closed.
   data() {
     return {
-      isSearchActive: false,
+      isRouteLoading: false, // For the global loading bar
+      isSearchActive: false, // RESTORED: The state for the search overlay
     }
   },
-  // We use a 'watch' property to perform an action whenever
-  // a data property changes. In this case, when 'isSearchActive' changes,
-  // we want to prevent the main page from scrolling in the background.
+  created() {
+    // This logic controls the loading bar and is correct.
+    this.$router.beforeEach((to, from, next) => {
+      this.isRouteLoading = true;
+      next();
+    });
+    this.$router.afterEach(() => {
+      setTimeout(() => {
+        this.isRouteLoading = false;
+      }, 200);
+    });
+  },
+  // RESTORED: The watcher to lock the body scroll when the search overlay is active.
   watch: {
     isSearchActive(newValue) {
       if (newValue) {
@@ -66,10 +76,18 @@ export default {
 </script>
 
 <style>
-/* 
-  These styles are for the Search Overlay feature. 
-  You can keep them here or move them to your global 'src/assets/main.css' file.
-*/
+/* --- Main Application Layout (Sticky Footer Fix) --- */
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* --- Search Overlay Styles (Restored) --- */
 .search-overlay {
   position: fixed;
   top: 0;
@@ -150,7 +168,6 @@ export default {
   transform: translateY(-50%) rotate(90deg);
 }
 
-/* Responsive styles for the search bar */
 @media (max-width: 768px) {
   .search-input {
     font-size: 1.1rem;

@@ -15,7 +15,6 @@
               <a href="tel:+251911249722">+251 911 249722</a>
             </div>
           </div>
-          <!-- UPDATED: WeChat link is now clickable -->
           <div class="info-item">
             <div class="info-icon-wrapper"><i class="fab fa-weixin"></i></div>
             <div class="info-text">
@@ -49,7 +48,8 @@
             <input type="email" name="user_email" placeholder="Your Email" required v-model="form.email" />
           </div>
           <textarea name="message" placeholder="Tell us about your project..." required v-model="form.message"></textarea>
-          <button type="submit" :disabled="isSending">
+          <!-- FIX: Button now uses the global branded cta-button class -->
+          <button type="submit" class="cta-button" :disabled="isSending">
             {{ isSending ? 'Sending...' : 'Send Inquiry' }}
           </button>
         </form>
@@ -180,12 +180,9 @@ export default {
   color: var(--secondary-color);
   font-size: 1.3rem;
 }
-
-/* Specific icon color for wechat */
 .info-icon-wrapper .fa-weixin {
-  color: #09B83E; /* Official WeChat green color */
+  color: #09B83E;
 }
-
 .info-text h4 {
   margin: 0 0 5px 0;
   font-size: 1rem;
@@ -239,29 +236,16 @@ input::placeholder, textarea::placeholder {
 input:focus, textarea:focus {
   outline: none;
   border-color: var(--secondary-color);
-  box-shadow: 0 0 0 3px rgba(0, 209, 178, 0.3);
+  box-shadow: 0 0 0 3px rgba(245, 152, 5, 0.2);
 }
 textarea {
   height: 120px;
   resize: vertical;
 }
-button {
-  padding: 18px;
-  background-color: #d17f00;
-  color: var(--white-color);
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  background-color: #b96e00;
-}
+/* FIX: Removed old button styles; it now uses the global .cta-button class */
 button:disabled {
   background-color: #999;
+  border-color: #999;
   cursor: not-allowed;
 }
 .status-message {
@@ -281,8 +265,6 @@ button:disabled {
   color: #721c24;
   border: 1px solid #f5c6cb;
 }
-
-/* Responsive */
 @media (max-width: 992px) {
   .contact-container {
     grid-template-columns: 1fr;

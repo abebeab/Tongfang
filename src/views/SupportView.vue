@@ -80,7 +80,8 @@ export default {
   font-weight: 600;
   color: var(--white-color);
 }
-.file-type.datasheet { background-color: #007bff; }
-.file-type.manual { background-color: #28a745; }
-.file-type.firmware { background-color: #dc3545; }
+/* FIX: Using brand colors for tags instead of generic ones */
+.file-type.datasheet { background-color: var(--primary-color); }
+.file-type.manual { background-color: var(--secondary-color); }
+.file-type.firmware { background-color: #721c24; } /* Keeping a distinct danger color for firmware */
 </style>

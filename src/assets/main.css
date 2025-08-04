@@ -1,72 +1,100 @@
-/* Global Styles from your original project */
+/* src/assets/main.css */
+
+/*
+  FIX: The broken @font-face rule has been completely removed from the top of this file.
+  This resolves the "Unclosed block" syntax error.
+*/
+
 :root {
-  --primary-color: #0D244F;
-  --secondary-color: #F59805;
+  --primary-color: #0d244f;
+  --secondary-color: #f59805;
   --white-color: #FFFFFF;
-  --light-bg-color: #F8F9FA;
-  --text-dark: #1A202C;
-  --text-light: #5A677B;
+  --text-dark: #2D3748;
+  --text-light: #5A6D82;
   --border-color: #E2E8F0;
-  --shadow-color: rgba(0, 0, 0, 0.07);
+  --light-bg-color: #f7f9fc;
+  --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
-html { scroll-behavior: smooth; }
-
 body {
-  font-family: 'Poppins', sans-serif;
   margin: 0;
-  background-color: var(--white-color);
-  color: var(--text-dark);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white-color);
+  color: var(--text-dark);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-  padding-top: 110px; /* Offset for the fixed header */
-  min-height: calc(100vh - 250px); /* Ensure main content pushes footer down */
+  flex: 1;
+  padding-top: 110px; /* Adjust this value based on your fixed header's total height */
 }
 
-/* Page container for consistent padding */
+/* Global & Branded CTA Button Styles */
+.cta-button {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #d17f00; /* A slightly darker shade for hover */
+  border-color: #d17f00;
+}
+
+/* Page Section Base Styles */
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 80px 20px;
 }
 
 .section-title {
-  font-size: 2.8rem;
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
-  text-align: center;
   margin-bottom: 15px;
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-light);
   text-align: center;
+  font-size: 1.15rem;
+  color: var(--text-light);
   max-width: 700px;
   margin: 0 auto 50px auto;
   line-height: 1.7;
 }
 
-/* Button Styles */
-.cta-button {
-  display: inline-block;
-  padding: 14px 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0, 0.1);
-  cursor: pointer;
-  background-color: var(--secondary-color);
-  color: var(--white-color);
-  border: 2px solid var(--secondary-color);
-}
-.cta-button:hover {
-  background-color: #d17f00;
-  border-color: #d17f00;
-  transform: translateY(-3px);
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  main {
+    padding-top: 70px; /* Adjust for mobile header height */
+  }
+  .page-container {
+    padding: 60px 20px;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+  }
 }

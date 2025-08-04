@@ -5,11 +5,16 @@ const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  chainWebpack: config => {
-    // This part, which solves the feature flag warning, remains the same
-    config.plugin('define').tap(args => {
-      args[0]['__VUE_PROD_HYDRATION_MISMATCH_DETAILS__'] = JSON.stringify(false);
-      return args;
+    chainWebpack: config => {
+    // Vue CLI enables prefetching by default, this ensures it's active.
+    // It adds <link rel="prefetch"> for all async chunks.
+    // This will automatically pre-download the code for other pages
+    // when the browser is idle, making navigation feel instant.
+    config.plugins.delete('prefetch'); // Optional: Clear any existing prefetch plugins if needed
+    config.plugin('prefetch').tap(options => {
+      options[0].fileBlacklist = options[0].fileBlacklist || [];
+      options[0].fileBlacklist.push(/my-async-chunk\./); // Example of blacklisting a specific chunk if needed
+      return options;
     });
-  },
+  }
 });

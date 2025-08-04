@@ -1,4 +1,3 @@
-<!-- src/components/GlobalLoadingIndicator.vue -->
 <template>
   <div class="loading-bar-container" :class="{ 'visible': isLoading }">
     <div class="loading-bar"></div>
@@ -23,11 +22,11 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 3px; /* Bar height */
+  height: 3px;
   z-index: 9999;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* Allows clicks to go through */
+  pointer-events: none;
 }
 
 .loading-bar-container.visible {
@@ -51,7 +50,7 @@ export default {
   }
   100% {
     transform: translateX(100%);
-    width: 20%; /* Makes the bar shrink as it exits */
+    width: 20%;
   }
 }
 </style>

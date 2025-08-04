@@ -1,9 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
-    "baseUrl": "./",
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    
+    // FINAL FIX: This is the key. It tells the editor to not check
+    // the type definitions inside your node_modules libraries, which
+    // eliminates the "Cannot find type definition" warnings.
+    "skipLibCheck": true,
+
+    "baseUrl": "./",
     "paths": {
       "@/*": [
         "src/*"
@@ -11,9 +19,15 @@
     },
     "lib": [
       "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
+      "dom"
     ]
-  }
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

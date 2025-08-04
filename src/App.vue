@@ -1,16 +1,9 @@
 <template>
   <div id="app">
-    <!-- The Global Loading Indicator (from the previous fix) -->
     <GlobalLoadingIndicator :is-loading="isRouteLoading" />
 
-    <!-- 
-      RESTORED: The header now listens for the @toggle-search event again.
-    -->
     <AppHeader @toggle-search="isSearchActive = !isSearchActive" />
 
-    <!-- 
-      RESTORED: The entire search overlay div and its logic are back.
-    -->
     <div class="search-overlay" :class="{ 'active': isSearchActive }" @click.self="isSearchActive = false">
       <div class="search-dialog">
         <div class="search-bar-container">
@@ -23,7 +16,6 @@
       </div>
     </div>
     
-    <!-- The main content area that correctly pushes the footer down -->
     <main>
       <router-view/>
     </main>
@@ -46,12 +38,11 @@ export default {
   },
   data() {
     return {
-      isRouteLoading: false, // For the global loading bar
-      isSearchActive: false, // RESTORED: The state for the search overlay
+      isRouteLoading: false,
+      isSearchActive: false,
     }
   },
   created() {
-    // This logic controls the loading bar and is correct.
     this.$router.beforeEach((to, from, next) => {
       this.isRouteLoading = true;
       next();
@@ -62,32 +53,21 @@ export default {
       }, 200);
     });
   },
-  // RESTORED: The watcher to lock the body scroll when the search overlay is active.
   watch: {
     isSearchActive(newValue) {
-      if (newValue) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+      document.body.style.overflow = newValue ? 'hidden' : '';
     }
   }
 };
 </script>
 
 <style>
-/* --- Main Application Layout (Sticky Footer Fix) --- */
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+/* 
+  Note: The main layout styles for #app and main are now in src/assets/main.css 
+  to keep this file cleaner.
+*/
 
-main {
-  flex: 1;
-}
-
-/* --- Search Overlay Styles (Restored) --- */
+/* Search Overlay Styles */
 .search-overlay {
   position: fixed;
   top: 0;

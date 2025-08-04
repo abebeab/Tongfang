@@ -1,10 +1,5 @@
 /* src/assets/main.css */
 
-/*
-  FIX: The broken @font-face rule has been completely removed from the top of this file.
-  This resolves the "Unclosed block" syntax error.
-*/
-
 :root {
   --primary-color: #0d244f;
   --secondary-color: #f59805;
@@ -25,6 +20,7 @@ body {
   color: var(--text-dark);
 }
 
+/* FINAL FIX: This creates the "sticky footer" layout */
 #app {
   display: flex;
   flex-direction: column;
@@ -32,11 +28,11 @@ body {
 }
 
 main {
-  flex: 1;
-  padding-top: 110px; /* Adjust this value based on your fixed header's total height */
+  flex: 1; /* Makes the main content area grow, pushing the footer down */
+  padding-top: 110px; /* Space for the fixed header */
 }
 
-/* Global & Branded CTA Button Styles */
+/* FINAL FIX: Centralized, branded button styles */
 .cta-button {
   display: inline-block;
   padding: 12px 28px;
@@ -52,7 +48,7 @@ main {
   color: var(--white-color);
 }
 
-.cta-button:hover {
+.cta-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   background-color: #d17f00; /* A slightly darker shade for hover */
@@ -86,7 +82,7 @@ main {
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   main {
-    padding-top: 70px; /* Adjust for mobile header height */
+    padding-top: 70px;
   }
   .page-container {
     padding: 60px 20px;

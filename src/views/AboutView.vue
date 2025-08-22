@@ -5,7 +5,7 @@
 
     <div class="about-grid">
       <div class="about-image">
-         <img :src="require('@/assets/images/team.jpg')" alt="Our Team at Tongfang"/>
+         <img :src="require('@/assets/images/team_1.jpg')" alt="Our Team at Tongfang"/>
       </div>
       <div class="about-content">
         <h3>Our Mission</h3>

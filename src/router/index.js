@@ -5,6 +5,15 @@ const routes = [
   { path: '/', name: 'home', component: HomeView },
   { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
   { path: '/products', name: 'products', component: () => import('../views/ProductsView.vue') },
+  
+  // --- FIX 1: ADDED A SPECIFIC ROUTE FOR PRODUCT CATEGORIES ---
+  // This route is placed *before* the individual product route to ensure it's matched first.
+  { 
+    path: '/products/category/:categorySlug', 
+    name: 'product-category-detail', 
+    component: () => import('../views/ProductCategoryDetailView.vue') 
+  },
+  
   { path: '/products/:id', name: 'product-detail', component: () => import('../views/ProductDetailView.vue') },
   { path: '/solutions', name: 'solutions', component: () => import('../views/SolutionsView.vue') },
   { path: '/solutions/:slug', name: 'solution-detail', component: () => import('../views/SolutionDetailView.vue') },
@@ -12,8 +21,6 @@ const routes = [
   { path: '/partner', name: 'partner', component: () => import('../views/PartnerView.vue') },
   { path: '/support', name: 'support', component: () => import('../views/SupportView.vue') },
   { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
-  
-  // --- NEW LOGIN ROUTE ADDED HERE ---
   {
     path: '/login',
     name: 'login',

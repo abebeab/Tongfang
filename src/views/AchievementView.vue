@@ -5,21 +5,21 @@
 
     <div class="achievements-grid">
       <div class="achievement-card">
-        <img src="https://images.unsplash.com/photo-1579548122204-688199b5015b?w=500" alt="Achievement" class="achievement-image">
+                <img :src="require('@/assets/images/products/Achievement.jpg')" alt="Achievement" class="achievement-image">
         <div class="achievement-content">
           <h4>Project of the Year Award</h4>
           <p>Recognized for our groundbreaking work on the Smart City Grid project, integrating over 10,000 IoT devices.</p>
         </div>
       </div>
       <div class="achievement-card">
-        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500" alt="Achievement" class="achievement-image">
+        <img :src="require('@/assets/images/tongfng.png')" alt="Achievement" class="achievement-image">
         <div class="achievement-content">
           <h4>Top-Rated Technology Partner</h4>
           <p>Acknowledged by our international technology partners for outstanding collaboration and seamless system integration.</p>
         </div>
       </div>
       <div class="achievement-card">
-        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=500" alt="Achievement" class="achievement-image">
+          <img :src="require('@/assets/images/sustain.jpg')" alt="Achievement" class="achievement-image">
         <div class="achievement-content">
           <h4>Innovation in Sustainability</h4>
           <p>Awarded for developing energy-efficient BMS solutions that reduce carbon footprints by an average of 30% for our clients.</p>

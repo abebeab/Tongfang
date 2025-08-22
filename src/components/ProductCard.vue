@@ -1,13 +1,15 @@
 <template>
-  <div class="product-card">
+  <!-- FIX: The entire card is now a clickable router-link -->
+  <router-link :to="`/products/${product.id}`" class="product-card">
     <img :src="product.image" :alt="product.name" class="product-image">
     <div class="product-content">
       <span class="product-category">{{ product.category }}</span>
       <h4 class="product-name">{{ product.name }}</h4>
       <p class="product-model">Model: {{ product.model }}</p>
-      <router-link :to="`/products/${product.id}`" class="details-button">View Details</router-link>
+      <!-- FIX: The button is now a visual element, not a separate link -->
+      <div class="details-button">View Details</div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -23,6 +25,7 @@ export default {
 </script>
 
 <style scoped>
+/* FIX: Changed the root element to a router-link */
 .product-card {
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -30,10 +33,12 @@ export default {
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
+  text-decoration: none; /* Removes underline from the new link */
 }
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px var(--shadow-color);
+  border-color: var(--secondary-color); /* Added highlight on hover */
 }
 .product-image {
   width: 100%;
@@ -65,6 +70,7 @@ export default {
   margin: 0 0 20px 0;
   flex-grow: 1;
 }
+/* FIX: Adjusted the button style for the new context */
 .details-button {
   text-align: center;
   text-decoration: none;
@@ -77,7 +83,7 @@ export default {
   transition: all 0.3s ease;
   margin-top: auto;
 }
-.details-button:hover {
+.product-card:hover .details-button {
   background: var(--secondary-color);
   color: var(--white-color);
 }

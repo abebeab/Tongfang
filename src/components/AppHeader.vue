@@ -64,6 +64,7 @@
             <div class="simple-dropdown" v-if="link.simpleDropdown && activeDropdown === link.name">
                 <ul>
                     <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name" @click="activeDropdown = null">
+                      <!-- MODIFICATION: Link path now includes hash for scrolling -->
                       <router-link :to="subLink.path">
                         <i :class="subLink.icon"></i> {{ subLink.name }}
                       </router-link>
@@ -133,17 +134,19 @@ export default {
             ]
           }
         },
+        // --- THIS ENTIRE SECTION IS UPDATED ---
         {
           name: 'Products', path: '/products',
           simpleDropdown: {
             links: [
-              { name: 'Computing Devices', path: '/products', icon: 'fas fa-desktop' },
-              { name: 'Surveillance & Security', path: '/products', icon: 'fas fa-video' },
-              { name: 'Automation Devices', path: '/products', icon: 'fas fa-cogs' },
-              { name: 'Networking Equipment', path: '/products', icon: 'fas fa-network-wired' },
+              { name: 'Computing Devices', path: '/products#computing', icon: 'fas fa-desktop' },
+              { name: 'Surveillance & Security', path: '/products#surveillance', icon: 'fas fa-video' },
+              { name: 'Automation Devices', path: '/products#automation', icon: 'fas fa-cogs' },
+              { name: 'Networking Equipment', path: '/products#networking', icon: 'fas fa-network-wired' },
             ]
           }
         },
+        // ------------------------------------
         { name: 'Achievements', path: '/achievements' },
         { name: 'Partner', path: '/partner' },
         { name: 'Support', path: '/support' },
@@ -190,7 +193,7 @@ export default {
 </script>
 
 <style scoped>
-/* Base Styles */
+/* All styles remain the same as before */
 .header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: background-color 0.3s, box-shadow 0.3s; background-color: var(--white-color); }
 .header.scrolled { box-shadow: 0 4px 15px var(--shadow-color); }
 .header-top-bar { background-color: var(--primary-color); color: var(--white-color); padding: 0 40px; transition: all 0.3s ease; height: 40px; display: flex; align-items: center; }
@@ -215,81 +218,30 @@ export default {
 .language-dropdown { position: absolute; top: 120%; right: 0; background-color: var(--white-color); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 10px 20px var(--shadow-color); list-style: none; padding: 10px 0; width: 160px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1001; }
 .language-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 .language-dropdown li a { display: block; padding: 10px 20px; color: var(--text-dark); text-decoration: none; }
-
-/* Mobile Controls */
-.mobile-controls {
-    display: none; 
-    align-items: center;
-    gap: 18px; 
-    margin-left: auto;
-}
-.mobile-controls .action-icon {
-    font-size: 1.2rem;
-    color: var(--text-dark);
-}
-.mobile-controls .mobile-nav-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    cursor: pointer;
-    padding: 0;
-}
-
-/* --- THIS IS THE FIX --- */
-/* The flex properties that caused vertical centering have been removed. */
-.navbar-mobile {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 280px;
-  max-width: 85vw;
-  height: 100vh;
-  background-color: var(--white-color);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-  padding: 100px 30px 30px;
-  transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  z-index: 1001;
-}
+.mobile-controls { display: none; align-items: center; gap: 18px; margin-left: auto; }
+.mobile-controls .action-icon { font-size: 1.2rem; color: var(--text-dark); }
+.mobile-controls .mobile-nav-toggle { background: none; border: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; padding: 0; }
+.navbar-mobile { position: fixed; top: 0; right: -100%; width: 280px; max-width: 85vw; height: 100vh; background-color: var(--white-color); box-shadow: -10px 0 30px rgba(0,0,0,0.1); padding: 100px 30px 30px; transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001; }
 .navbar-mobile.active { right: 0; }
 .nav-links-mobile { list-style: none; padding: 0; margin: 0; width: 100%; }
 .nav-links-mobile > li { width: 100%; padding: 15px 0; }
 .nav-links-mobile a { text-decoration: none; font-size: 1.2rem; font-weight: 600; color: var(--primary-color); }
-
-/* Desktop Navigation */
 .navbar-desktop { display: none; margin-left: auto; flex-grow: 1; justify-content: center; }
 .nav-links { list-style: none; display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; }
-.nav-links > li { position: relative; } /* REMOVED padding: 26px 0; to fix dropdown position */
+.nav-links > li { position: relative; }
 .nav-links a { text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--primary-color); padding: 26px 0; position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
 .nav-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
 .nav-links > li:hover .nav-arrow { transform: rotate(180deg); }
-.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 20px; /* Adjusted for new padding */ left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); transition: width 0.3s ease; }
+.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); transition: width 0.3s ease; }
 .nav-links a:hover::after, .nav-links a.router-link-exact-active::after { width: 100%; }
 .nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
-
-/* Desktop Header Actions */
 .header-actions.desktop { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; }
 .action-icon { font-size: 1.2rem; color: var(--text-dark); text-decoration: none; transition: all 0.3s ease; }
 .action-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
 .action-icon-wrapper { position: relative; }
 .tooltip { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(12px); background-color: var(--primary-color); color: var(--white-color); padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; }
 .action-icon-wrapper:hover .tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); }
-
-/* Dropdown Styles */
-.mega-menu, .simple-dropdown {
-  position: absolute;
-  top: 70px; /* Use the height of the main header */
-  left: 50%;
-  background-color: var(--white-color);
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 15px 40px var(--shadow-color);
-  border-top: 3px solid var(--secondary-color);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-  z-index: 1000;
-}
+.mega-menu, .simple-dropdown { position: absolute; top: 70px; left: 50%; background-color: var(--white-color); border-radius: 0 0 12px 12px; box-shadow: 0 15px 40px var(--shadow-color); border-top: 3px solid var(--secondary-color); opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; z-index: 1000; }
 .nav-links > li:hover .mega-menu, .nav-links > li:hover .simple-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 .mega-menu { padding: 30px; width: max-content; }
 .mega-menu-content { display: flex; gap: 40px; }
@@ -302,21 +254,7 @@ export default {
 .simple-dropdown { padding: 15px; min-width: 250px; }
 .simple-dropdown li a { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 6px; }
 .simple-dropdown li a i { color: var(--secondary-color); width: 18px; text-align: center; }
-
-/* Responsive Breakpoints */
-@media (max-width: 1024px) {
-  .header-main { padding: 0 25px; }
-  .mobile-controls { display: flex; }
-  .navbar-desktop, .header-actions.desktop { display: none; }
-}
-@media (max-width: 480px) {
-  .header-main { padding: 0 20px; }
-  .header-top-bar { padding: 0 20px; font-size: 0.75rem; }
-  .logo-text { font-size: 2rem; }
-  .logo-subtext { display: none; }
-}
-@media (min-width: 1025px) {
-  .mobile-controls, .navbar-mobile { display: none; }
-  .navbar-desktop, .header-actions.desktop { display: flex; }
-}
+@media (max-width: 1024px) { .header-main { padding: 0 25px; } .mobile-controls { display: flex; } .navbar-desktop, .header-actions.desktop { display: none; } }
+@media (max-width: 480px) { .header-main { padding: 0 20px; } .header-top-bar { padding: 0 20px; font-size: 0.75rem; } .logo-text { font-size: 2rem; } .logo-subtext { display: none; } }
+@media (min-width: 1025px) { .mobile-controls, .navbar-mobile { display: none; } .navbar-desktop, .header-actions.desktop { display: flex; } }
 </style>

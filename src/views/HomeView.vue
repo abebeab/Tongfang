@@ -17,7 +17,7 @@
         <p class="hero-slogan">"Moving Forward" - We integrate technology, from factory to facility.</p>
         <div class="hero-cta-buttons">
           <router-link to="/solutions" class="cta-button primary">Explore Our Solutions</router-link>
-          <router-link to="/contact" class="cta-button secondary">Talk to Our Experts</router-link>
+          <router-link to="/contact" class="cta-button primary">Talk to Our Experts</router-link>
         </div>
       </div>
 
@@ -198,7 +198,7 @@ export default {
 .hero-content { position: relative; z-index: 3; max-width: 950px; padding: 0 20px; animation: fadeIn 1.5s ease-in-out; }
 .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
 .hero-slogan { font-size: 1.8rem; font-weight: 500; font-style: italic; color: var(--secondary-color); margin-bottom: 2.5rem; opacity: 0.9; text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
-.hero-cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.hero-cta-buttons { display: flex; justify-content: center; gap: 200px; flex-wrap: wrap; }
 .cta-button { text-decoration: none; }
 .cta-button.primary { background-color: var(--secondary-color); color: var(--white-color); border: 2px solid var(--secondary-color); }
 .cta-button.secondary { background-color: transparent; color: var(--white-color); border: 2px solid var(--white-color); }

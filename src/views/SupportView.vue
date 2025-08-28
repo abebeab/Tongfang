@@ -5,7 +5,7 @@
     
     <div class="support-section">
       <h3>Download Center</h3>
-      <p>Access the latest manuals, datasheets, drivers, and firmware for your Tongfang products.</p>
+      <p>Access the latest manuals, datasheets, drivers, firmware, and flyers for your Tongfang products.</p>
       <div class="download-table-wrapper">
         <table class="download-table">
           <thead>
@@ -21,7 +21,11 @@
               <td>{{ file.title }}</td>
               <td><span class="file-type" :class="file.type.toLowerCase()">{{ file.type }}</span></td>
               <td>{{ file.productId.toUpperCase() }}</td>
-              <td><a href="#" class="download-link">Download</a></td>
+              <td>
+                <a :href="file.url || '#'" target="_blank" class="download-link">
+                  Download
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -45,7 +49,19 @@ export default {
     return { downloads: [] }
   },
   async created() {
-    this.downloads = await ApiService.fetchDownloads();
+    // Fetch existing downloads
+    const apiDownloads = await ApiService.fetchDownloads();
+
+    // Add your business flyer
+    const flyer = {
+      id: 'flyer-001',
+      title: 'Tongfang BMS Business Flyer',
+      type: 'Manual',
+      productId: 'GENERAL',
+      url: 'https://drive.google.com/uc?export=download&id=1rq-Qr0-VMOcXifYLBMX4GFqbj8mDJzaJ'
+    };
+
+    this.downloads = [...apiDownloads, flyer];
   }
 }
 </script>
@@ -80,8 +96,8 @@ export default {
   font-weight: 600;
   color: var(--white-color);
 }
-/* FIX: Using brand colors for tags instead of generic ones */
+/* Brand colors for tags */
 .file-type.datasheet { background-color: var(--primary-color); }
 .file-type.manual { background-color: var(--secondary-color); }
-.file-type.firmware { background-color: #721c24; } /* Keeping a distinct danger color for firmware */
+.file-type.firmware { background-color: #721c24; } /* distinct color for firmware */
 </style>

@@ -22,7 +22,12 @@
               <td><span class="file-type" :class="file.type.toLowerCase()">{{ file.type }}</span></td>
               <td>{{ file.productId.toUpperCase() }}</td>
               <td>
-                <a :href="file.url || '#'" target="_blank" class="download-link">
+                <!-- direct download -->
+                <a 
+                  :href="file.url || '#'" 
+                  class="download-link" 
+                  :download="file.title"
+                >
                   Download
                 </a>
               </td>
@@ -88,7 +93,7 @@ export default {
 .download-table { width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; background-color: var(--white-color); }
 .download-table th, .download-table td { padding: 15px; border-bottom: 1px solid var(--border-color); }
 .download-table thead { background-color: var(--primary-color); color: var(--white-color); }
-.download-link { color: var(--secondary-color); text-decoration: none; font-weight: 600; }
+.download-link { color: var(--secondary-color); text-decoration: none; font-weight: 600; cursor: pointer; }
 .file-type {
   padding: 4px 8px;
   border-radius: 4px;

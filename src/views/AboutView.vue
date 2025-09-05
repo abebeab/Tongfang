@@ -1,5 +1,15 @@
 <template>
   <div class="page-container">
+    <section class="solutions-hero">
+      <div class="hero-background-image"></div>
+      <div class="hero-content">
+        <!-- You can add content here for your hero section if needed -->
+        <!-- For example: -->
+        <!-- <h2 class="hero-title">Our Integrated Solutions</h2> -->
+        <!-- <p class="hero-subtitle">Innovating for a smarter, more connected world.</p> -->
+      </div>
+    </section>
+
     <h1 class="section-title">About TONGFANG</h1>
     <p class="section-subtitle">A Factory of Innovation, a Partner in Design. We are dedicated to building the smart infrastructure of tomorrow, from the factory floor to the finished building.</p>
 
@@ -28,10 +38,72 @@ export default { name: 'AboutView' }
 </script>
 
 <style scoped>
-.page-container {
-    padding-top: 60px;
-    padding-bottom: 80px;
+/* --- New Hero Section Styles --- */
+.solutions-hero {
+  position: relative;
+  width: 100vw; /* Make it full viewport width */
+  left: 50%; /* Center it */
+  transform: translateX(-50%); /* Adjust to truly center it */
+  height: 700px; /* Adjust height as needed */
+  overflow: hidden;
+  margin-bottom: 60px; /* Space between hero and content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff; /* For any text you might add inside the hero */
 }
+
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('~@/assets/images/Untitled-1.svg');
+  background-size: cover; /* Ensures the image covers the entire area */
+  background-position: center top;
+  background-repeat: no-repeat;
+  filter: brightness(1.05) contrast(1.1); /* Increased brightness and contrast */
+  z-index: 1;
+  
+}
+    
+
+.hero-content {
+  position: relative;
+  z-index: 2; /* Ensures content is above the background image */
+  text-align: center;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  color: white; /* Example styling for hero title */
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9); /* Example styling for hero subtitle */
+}
+/* --- End New Hero Section Styles --- */
+
+.page-container {
+    padding-top: 0; /* Remove top padding from page-container if hero is full width */
+    padding-bottom: 80px;
+    /* Max width on page-container might interfere with full width hero, consider removing or adjusting */
+    /* max-width: 1200px; /* Example: adjust or remove if it conflicts with full-width hero */
+    /* margin: 0 auto; /* Example: adjust or remove */
+}
+.section-title, .section-subtitle, .about-grid {
+    max-width: 1200px; /* Re-apply max-width to main content if page-container had it */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px; /* Add some padding on sides for smaller screens */
+    padding-right: 20px; /* Add some padding on sides for smaller screens */
+}
+
+/* Original styles below */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -87,7 +159,8 @@ export default { name: 'AboutView' }
 }
 @media (max-width: 768px) {
     .page-container {
-        padding-top: 40px;
+        /* Adjust if hero section is now full width */
+        padding-top: 0;
         padding-bottom: 60px;
     }
     .about-content h3 { font-size: 1.5rem; }

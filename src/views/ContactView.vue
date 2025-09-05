@@ -19,7 +19,7 @@
             <div class="info-icon-wrapper"><i class="fab fa-weixin"></i></div>
             <div class="info-text">
               <h4>Chat on WeChat</h4>
-              <a href="weixin://user/wxid_3jxtp7rz3p8e22" target="_blank" rel="noopener noreferrer">wxid_3jxtp7rz3p8e22</a>
+              <a href="weixin://user/wxid_3jxtp7rz3p8e22" target="_blank" rel="noopener noreferrer">Contact via WeChat</a>
             </div>
           </div>
           <div class="info-item">

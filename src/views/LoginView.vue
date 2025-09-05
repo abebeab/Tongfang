@@ -31,7 +31,7 @@
               <div class="input-wrapper">
                 <i class="fas fa-lock icon"></i>
                 <input :type="passwordFieldType" id="password" v-model="password" placeholder="••••••••" required>
-                <!-- NEW: Password Toggle Button -->
+                <!-- Password Toggle Button -->
                 <button type="button" class="password-toggle" @click="togglePasswordVisibility" aria-label="Toggle password visibility">
                   <i :class="['fas', passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash']"></i>
                 </button>
@@ -44,10 +44,16 @@
               </div>
               <a href="#" class="forgot-password">Forgot Password?</a>
             </div>
-            <button type="submit" class="login-button">
-              <i class="fas fa-sign-in-alt"></i> Log In
+            <button type="submit" class="login-button" :disabled="loading">
+              <i class="fas fa-sign-in-alt" v-if="!loading"></i>
+              <i class="fas fa-spinner fa-spin" v-else></i>
+              {{ loading ? 'Logging In...' : 'Log In' }}
             </button>
           </form>
+          <!-- Error Message Display -->
+          <div v-if="errorMessage" class="error-message">
+            <p>{{ errorMessage }}</p>
+          </div>
           <div class="signup-link">
             <p>Don't have an account? <router-link to="/contact">Become a Partner</router-link></p>
           </div>
@@ -58,6 +64,8 @@
 </template>
 
 <script>
+import { supabase } from '@/supabase'; // Import the supabase client
+
 export default {
   name: 'LoginView',
   data() {
@@ -65,20 +73,54 @@ export default {
       email: '',
       password: '',
       rememberMe: false,
-      // NEW: Data property to control the input type
       passwordFieldType: 'password', 
+      loading: false, // Loading state for the button
+      errorMessage: null, // To display error messages
     };
   },
   methods: {
-    handleLogin() {
-      console.log('Logging in with:', {
-        email: this.email,
-        password: this.password,
-        rememberMe: this.rememberMe,
-      });
-      alert('Login functionality would be handled here!');
+    async handleLogin() { 
+      this.loading = true; // Start loading
+      this.errorMessage = null; // Clear previous errors
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: this.email,
+          password: this.password,
+          // You could also add `options: { redirectTo: '/dashboard' }` here,
+          // but the current router push works well for direct login.
+        });
+
+        if (error) {
+          throw error; // Propagate error to the catch block
+        }
+
+        if (data && data.user) {
+          console.log('Supabase: User logged in successfully!', data.user);
+          // Supabase client handles session tokens in local storage automatically.
+          // Setting a custom flag `userLoggedIn` is optional but can be used for app-specific logic.
+          localStorage.setItem('userLoggedIn', 'true'); 
+          
+          this.$router.push('/dashboard'); // Redirect to dashboard
+        } else {
+          // Fallback error for unexpected scenarios where no error object but no user data
+          this.errorMessage = 'Login failed. Please check your credentials.';
+        }
+
+      } catch (error) {
+        console.error('Supabase Login Error:', error.message);
+        // Display user-friendly error messages based on Supabase's error messages
+        if (error.message.includes('Invalid login credentials')) {
+          this.errorMessage = 'Incorrect email or password.';
+        } else if (error.message.includes('Email not confirmed')) {
+          this.errorMessage = 'Please confirm your email address.';
+        } else {
+          this.errorMessage = error.message || 'An unexpected error occurred during login.';
+        }
+      } finally {
+        this.loading = false; // Stop loading, regardless of success or failure
+      }
     },
-    // NEW: Method to toggle the password field type
     togglePasswordVisibility() {
       this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
     },
@@ -195,7 +237,7 @@ export default {
   box-shadow: 0 0 0 3px rgba(245, 152, 5, 0.2);
 }
 
-/* --- NEW: Password Toggle Styles --- */
+/* --- Password Toggle Styles --- */
 input[type="password"], input[type="text"] {
   padding-right: 45px; /* Add space for the icon on the right */
 }
@@ -217,7 +259,7 @@ input[type="password"], input[type="text"] {
 .password-toggle:hover {
   color: var(--secondary-color);
 }
-/* --- END: New Styles --- */
+/* --- END Password Toggle Styles --- */
 
 .form-options {
   display: flex;
@@ -261,6 +303,20 @@ input[type="password"], input[type="text"] {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+/* Styles for disabled button and spinner */
+.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .signup-link {
   text-align: center;
   margin-top: 30px;
@@ -271,6 +327,19 @@ input[type="password"], input[type="text"] {
   font-weight: 600;
   text-decoration: none;
 }
+
+/* Error message styling */
+.error-message {
+  color: #d9534f; /* A common red for error messages */
+  background-color: #fcebeb;
+  border: 1px solid #d9534f;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
 
 /* --- Responsive Design --- */
 @media (max-width: 900px) {

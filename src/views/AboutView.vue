@@ -8,7 +8,7 @@
          <img :src="require('@/assets/images/team.jpg')" alt="Our Team at Tongfang"/>
       </div>
       <div class="about-content">
-        <h3>Our Mission</h3>
+        <h3>Our Mission and Vission</h3>
         <p>To design, manufacture, and implement cutting-edge integrated systems that enhance efficiency, security, and productivity for our clients globally. We bridge the gap between architectural design and technology implementation.</p>
         
         <h3>Our Core Values</h3>

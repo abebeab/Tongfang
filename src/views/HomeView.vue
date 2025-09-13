@@ -7,8 +7,8 @@
           v-for="slide in activeSlide"
           :key="slide.image"
           class="slide"
-          :style="{ backgroundImage: `url(${slide.image})` }">
-        </div>
+          :style="{ backgroundImage: `url(${slide.image})` }"
+        ></div>
       </transition-group>
 
       <div class="hero-overlay"></div>
@@ -87,7 +87,13 @@
     <section class="why-choose-us-section">
       <div class="page-container why-choose-us-grid">
         <div class="why-choose-us-image">
-          <img :src="require('@/assets/images/光电.png')" alt="Tongfang Engineering and Manufacturing">
+          <!-- Using only the original image with native lazy loading -->
+          <img 
+            :src="whyChooseUsImage" 
+            alt="Tongfang Engineering and Manufacturing"
+            loading="lazy"
+            class="lazyload-img"
+          >
         </div>
         <div class="why-choose-us-content">
           <h2 class="section-title" style="text-align: left;">The Tongfang Advantage</h2>
@@ -123,6 +129,13 @@
 </template>
 
 <script>
+// Import all images explicitly. We are only using the original existing images here.
+import heroBg3 from '@/assets/images/hero-bg-3.png';
+import heroBgPexels from '@/assets/images/pexels-jakubzerdzicki-18186205.jpg';
+import heroBg2 from '@/assets/images/hero-bg-2.jpg';
+import heroBg4 from '@/assets/images/hero-bg-4.png';
+import whyChooseUsOriginal from '@/assets/images/光电.png'; // Only the original image
+
 export default {
   name: 'HomeView',
   data() {
@@ -130,78 +143,80 @@ export default {
       currentSlideIndex: 0,
       slideInterval: null,
       slides: [
-        { image: require('@/assets/images/hero-bg-3.png') },
-        { image: require('@/assets/images/pexels-jakubzerdzicki-18186205.jpg') },
-        { image: require('@/assets/images/hero-bg-2.jpg') },
-        { image: require('@/assets/images/hero-bg-4.png') },
+        { image: heroBg3 },
+        { image: heroBgPexels },
+        { image: heroBg2 },
+        { image: heroBg4 },
       ],
-      // NEW DATA FOR SLIDE NAVIGATION COUNTDOWN
-      slideCountdownValue: 6, // Initial countdown value (matches slideInterval duration)
+      slideCountdownValue: 6, 
       initialSlideCountdownValue: 6,
       slideCountdownInterval: null,
+
+      // Data for why-choose-us image - only the original source
+      whyChooseUsImage: whyChooseUsOriginal, 
+      // Responsive image srcset is removed as we are not using multiple sizes
     };
   },
   computed: {
     activeSlide() {
+      // Use slice to create a new array for transition-group,
+      // and ensure only the current slide is passed.
       return [this.slides[this.currentSlideIndex]];
     },
-    // NEW COMPUTED PROPERTIES FOR SLIDE NAVIGATION COUNTDOWN
     slideCircumference() {
-      // Circumference for the smaller progress ring (r=45 for SVG, but SVG itself is 40x40)
-      // This means the effective radius in CSS pixels is 40/2 * (45/50) = 18px radius.
-      // So, if SVG has r=45, and width/height is 40px, the scaling means the circle fills the 40x40.
-      // We still use r=45 for stroke-dasharray calculations relative to viewBox.
       return 2 * Math.PI * 45; 
     },
     slideProgressDasharray() {
       return `${this.slideCircumference} ${this.slideCircumference}`;
     },
     slideProgressDashoffset() {
-      // Calculate how much of the circle should be filled (0% to 100%)
-      // As slideCountdownValue goes from initial (e.g., 7) down to 0,
-      // the progress should go from 0% filled to 100% filled.
       const progressPercentage = (this.initialSlideCountdownValue - this.slideCountdownValue) / this.initialSlideCountdownValue;
       return this.slideCircumference * (1 - progressPercentage);
     },
   },
   methods: {
+    preloadSlideImage(index) {
+        // Preload the next slide's image in the background
+        const nextIndex = (index + 1) % this.slides.length;
+        const img = new Image();
+        img.src = this.slides[nextIndex].image;
+    },
     startSlideTimer() {
       clearInterval(this.slideInterval);
-      clearInterval(this.slideCountdownInterval); // Clear existing countdown
-      this.slideCountdownValue = this.initialSlideCountdownValue; // Reset countdown
-      this.startSlideCountdown(); // Start new countdown
+      clearInterval(this.slideCountdownInterval);
+      this.slideCountdownValue = this.initialSlideCountdownValue; 
+      this.startSlideCountdown(); 
       
       this.slideInterval = setInterval(() => {
         this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
-        clearInterval(this.slideCountdownInterval); // Clear on slide change
-        this.slideCountdownValue = this.initialSlideCountdownValue; // Reset for new slide
-        this.startSlideCountdown(); // Start countdown for the new slide
-      }, 6000); // This is your main slide transition time
+        clearInterval(this.slideCountdownInterval); 
+        this.slideCountdownValue = this.initialSlideCountdownValue; 
+        this.startSlideCountdown(); 
+        this.preloadSlideImage(this.currentSlideIndex); // Preload the image after the *next* slide
+      }, 6000); 
     },
     goToSlide(index) {
       this.currentSlideIndex = index;
-      this.startSlideTimer(); // Reset both timers on manual navigation
+      this.startSlideTimer(); 
     },
-    // NEW METHOD FOR SLIDE NAVIGATION COUNTDOWN
     startSlideCountdown() {
       this.slideCountdownInterval = setInterval(() => {
         if (this.slideCountdownValue > 0) {
           this.slideCountdownValue--;
         } else {
-          // The main slide timer handles the actual slide change,
-          // this just ensures the number goes to 0 if the main timer lags slightly.
           clearInterval(this.slideCountdownInterval);
           this.slideCountdownInterval = null;
         }
-      }, 1000); // Update every 1 second
+      }, 1000); 
     },
   },
   mounted() {
     this.startSlideTimer();
+    this.preloadSlideImage(-1); // Preload the first *next* slide (index 1) initially
   },
   beforeUnmount() {
     clearInterval(this.slideInterval);
-    clearInterval(this.slideCountdownInterval); // Clear both intervals
+    clearInterval(this.slideCountdownInterval);
   }
 }
 </script>
@@ -220,11 +235,18 @@ export default {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-size: cover;
   background-position: center top;
-  /* ✅ BRIGHTNESS MAXIMIZED: Pushed to 1.3 for a very bright effect */
   filter: brightness(1.3) contrast(1.1);
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
+  /* Added opacity for better fade-in on load, in case background-image is slow */
+  opacity: 0;
+  transition: opacity 0.5s ease-in; /* for when image initially loads */
 }
+/* Style for background images once they are deemed "loaded" or active */
+.slide[style*="background-image"] { /* Checks if background-image style is set, implying it's loaded */
+    opacity: 1;
+}
+
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: opacity 1.5s ease;
@@ -276,13 +298,11 @@ export default {
 .progress-container.slide-nav-progress {
     width: 40px;
     height: 40px;
-    /* Remove default progress-container styles that might conflict */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Optional: add a subtle box-shadow for active state */
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
-    border-radius: 50%; /* To match the circular shape */
+    border-radius: 50%;
 }
 
 .progress-container.slide-nav-progress .progress-ring {
@@ -295,26 +315,26 @@ export default {
 }
 
 .progress-container.slide-nav-progress .progress-bg {
-    stroke-width: 4; /* Thinner stroke for smaller circle */
-    stroke: rgba(255, 255, 255, 0.3); /* Lighter background for the ring */
+    stroke-width: 4;
+    stroke: rgba(255, 255, 255, 0.3);
     fill: transparent;
 }
 
 .progress-container.slide-nav-progress .progress-fill {
-    stroke-width: 4; /* Matches background stroke width */
-    stroke: var(--secondary-color); /* Your orange color */
+    stroke-width: 4;
+    stroke: var(--secondary-color);
     fill: transparent;
-    transition: stroke-dashoffset 1s linear; /* Smooth transition */
+    transition: stroke-dashoffset 1s linear;
     stroke-linecap: round;
 }
 
 .current-slide-number {
-  color: var(--secondary-color); /* Orange number */
+  color: var(--secondary-color);
   font-size: 1.1rem;
   font-weight: 700;
-  line-height: 1; /* Ensure text is centered vertically */
-  position: relative; /* Keep text centered over the progress bar */
-  z-index: 10; /* Ensure number is above SVG */
+  line-height: 1;
+  position: relative;
+  z-index: 10;
 }
 
 
@@ -329,6 +349,15 @@ export default {
 .cta-button.secondary { background-color: transparent; color: var(--white-color); border: 2px solid var(--white-color); }
 .cta-button.secondary:hover { background-color: var(--white-color); color: var(--primary-color); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* For images that are lazy loaded with `loading="lazy"` */
+.lazyload-img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.lazyload-img[src] { /* Apply opacity 1 once the src attribute is populated */
+  opacity: 1;
+}
 
 /* --- [ALL YOUR OTHER EXISTING STYLES REMAIN UNCHANGED BELOW] --- */
 .trusted-by-section { background-color: var(--light-bg-color); padding: 30px 20px; border-bottom: 1px solid var(--border-color); }

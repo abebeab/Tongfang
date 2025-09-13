@@ -1,12 +1,9 @@
 <template>
   <div class="page-container">
     <section class="solutions-hero">
-      <div class="hero-background-image"></div>
+      <div class="hero-background-image" :style="heroBackgroundStyle"></div>
       <div class="hero-content">
-        <!-- You can add content here for your hero section if needed -->
-        <!-- For example: -->
-        <!-- <h2 class="hero-title">Our Integrated Solutions</h2> -->
-        <!-- <p class="hero-subtitle">Innovating for a smarter, more connected world.</p> -->
+        <!-- Optional content for hero section -->
       </div>
     </section>
 
@@ -15,7 +12,12 @@
 
     <div class="about-grid">
       <div class="about-image">
-         <img :src="require('@/assets/images/team_1.jpg')" alt="Our Team at Tongfang"/>
+         <!-- Use only the original image, but still apply native lazy loading -->
+         <img 
+            :src="aboutImageSrc" 
+            alt="Our Team at Tongfang"
+            loading="lazy"
+         />
       </div>
       <div class="about-content">
         <h3>Our Mission</h3>
@@ -34,23 +36,37 @@
 </template>
 
 <script>
-export default { name: 'AboutView' }
+// Import images explicitly to let Webpack process them for optimal paths/hashes
+import heroBg from '@/assets/images/Untitled-1.svg';
+import teamOriginal from '@/assets/images/team_1.jpg'; // Only import the original image
+
+export default { 
+  name: 'AboutView',
+  data() {
+    return {
+      heroBackgroundStyle: {
+        backgroundImage: `url(${heroBg})`
+      },
+      aboutImageSrc: teamOriginal // Only store the original image path
+    };
+  },
+}
 </script>
 
 <style scoped>
 /* --- New Hero Section Styles --- */
 .solutions-hero {
   position: relative;
-  width: 100vw; /* Make it full viewport width */
-  left: 50%; /* Center it */
-  transform: translateX(-50%); /* Adjust to truly center it */
-  height: 700px; /* Adjust height as needed */
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 700px;
   overflow: hidden;
-  margin-bottom: 60px; /* Space between hero and content */
+  margin-bottom: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff; /* For any text you might add inside the hero */
+  color: #fff;
 }
 
 .hero-background-image {
@@ -59,51 +75,33 @@ export default { name: 'AboutView' }
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('~@/assets/images/Untitled-1.svg');
-  background-size: cover; /* Ensures the image covers the entire area */
+  background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  filter: brightness(1.05) contrast(1.1); /* Increased brightness and contrast */
+  filter: brightness(1.05) contrast(1.1);
   z-index: 1;
-  
 }
     
-
 .hero-content {
   position: relative;
-  z-index: 2; /* Ensures content is above the background image */
+  z-index: 2;
   text-align: center;
   padding: 20px;
 }
 
-.hero-title {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: white; /* Example styling for hero title */
-}
-
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.9); /* Example styling for hero subtitle */
-}
-/* --- End New Hero Section Styles --- */
-
+/* Original styles below */
 .page-container {
-    padding-top: 0; /* Remove top padding from page-container if hero is full width */
+    padding-top: 0;
     padding-bottom: 80px;
-    /* Max width on page-container might interfere with full width hero, consider removing or adjusting */
-    /* max-width: 1200px; /* Example: adjust or remove if it conflicts with full-width hero */
-    /* margin: 0 auto; /* Example: adjust or remove */
 }
 .section-title, .section-subtitle, .about-grid {
-    max-width: 1200px; /* Re-apply max-width to main content if page-container had it */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px; /* Add some padding on sides for smaller screens */
-    padding-right: 20px; /* Add some padding on sides for smaller screens */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
-/* Original styles below */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -115,10 +113,12 @@ export default { name: 'AboutView' }
   width: 100%;
   border-radius: 12px;
   box-shadow: 0 15px 40px var(--shadow-color);
-
-  /* --- THIS IS THE CHANGE --- */
-  /* This filter applies the brightness and contrast boost, similar to your example. */
   filter: brightness(1.1) contrast(1.05);
+
+  transition: opacity 0.3s ease-in-out;
+}
+.about-image img:not([src]) {
+  visibility: hidden;
 }
 .about-content h3 {
   font-size: 1.8rem;
@@ -152,14 +152,13 @@ export default { name: 'AboutView' }
     gap: 40px;
   }
   .about-image {
-    order: -1; /* Puts image on top on mobile */
+    order: -1;
     max-width: 500px;
     margin: 0 auto;
   }
 }
 @media (max-width: 768px) {
     .page-container {
-        /* Adjust if hero section is now full width */
         padding-top: 0;
         padding-bottom: 60px;
     }

@@ -5,21 +5,39 @@
 
     <div class="achievements-grid">
       <div class="achievement-card">
-                <img :src="require('@/assets/images/products/Achievement.jpg')" alt="Achievement" class="achievement-image">
+        <!-- Optimized Image: Native Lazy Loading -->
+        <img 
+          :src="achievementImage1" 
+          alt="Achievement: Project of the Year Award" 
+          class="achievement-image"
+          loading="lazy" 
+        >
         <div class="achievement-content">
           <h4>Project of the Year Award</h4>
           <p>Recognized for our groundbreaking work on the Smart City Grid project, integrating over 10,000 IoT devices.</p>
         </div>
       </div>
       <div class="achievement-card">
-        <img :src="require('@/assets/images/tongfng.png')" alt="Achievement" class="achievement-image">
+        <!-- Optimized Image: Native Lazy Loading -->
+        <img 
+          :src="achievementImage2" 
+          alt="Achievement: Top-Rated Technology Partner" 
+          class="achievement-image"
+          loading="lazy"
+        >
         <div class="achievement-content">
           <h4>Top-Rated Technology Partner</h4>
           <p>Acknowledged by our international technology partners for outstanding collaboration and seamless system integration.</p>
         </div>
       </div>
       <div class="achievement-card">
-          <img :src="require('@/assets/images/sustain.jpg')" alt="Achievement" class="achievement-image">
+        <!-- Optimized Image: Native Lazy Loading -->
+        <img 
+          :src="achievementImage3" 
+          alt="Achievement: Innovation in Sustainability" 
+          class="achievement-image"
+          loading="lazy"
+        >
         <div class="achievement-content">
           <h4>Innovation in Sustainability</h4>
           <p>Awarded for developing energy-efficient BMS solutions that reduce carbon footprints by an average of 30% for our clients.</p>
@@ -30,12 +48,52 @@
 </template>
 
 <script>
+// Explicitly import images. Webpack will process these paths.
+import imgAchievement1 from '@/assets/images/products/Achievement.jpg';
+import imgAchievement2 from '@/assets/images/tongfng.png'; // Assuming 'tongfng.png' is correct
+import imgAchievement3 from '@/assets/images/sustain.jpg';
+
 export default {
-  name: 'AchievementView'
+  name: 'AchievementView',
+  data() {
+    return {
+      achievementImage1: imgAchievement1,
+      achievementImage2: imgAchievement2,
+      achievementImage3: imgAchievement3,
+    };
+  },
+  // You might consider lazy loading the component itself if it's not immediately visible on page load.
+  // This is typically handled at the router level.
 }
 </script>
 
 <style scoped>
+/* Basic page container styles, assuming these are global or from a layout */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 80px 20px; /* Adjust padding as needed */
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Original styles below */
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -56,6 +114,12 @@ export default {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  /* Add transition for smoother lazy load appearance */
+  transition: opacity 0.3s ease-in-out;
+}
+/* Hide broken image icon while image is loading, or if src is empty initially */
+.achievement-image:not([src]) {
+  visibility: hidden;
 }
 .achievement-content {
   padding: 25px;
@@ -70,5 +134,22 @@ export default {
   color: var(--text-light);
   line-height: 1.6;
   margin: 0;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .achievement-content h4 {
+    font-size: 1.2rem;
+  }
+  .achievement-content p {
+    font-size: 0.95rem;
+  }
 }
 </style>

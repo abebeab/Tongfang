@@ -1,0 +1,4634 @@
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\main.js 
+============================= 
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import './assets/main.css' // <-- IMPORT GLOBAL CSS
+
+createApp(App).use(router).mount('#app')
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\supabase.js 
+============================= 
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.VUE_APP_SUPABASE_URL;
+const supabaseKey = process.env.VUE_APP_SUPABASE_ANON_KEY;
+
+export const supabase = createClient(supabaseUrl, supabaseKey);
+
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\App.vue 
+============================= 
+<template>
+  <div id="app">
+    <GlobalLoadingIndicator :is-loading="isRouteLoading" />
+
+    <AppHeader @toggle-search="isSearchActive = !isSearchActive" />
+
+    <div class="search-overlay" :class="{ 'active': isSearchActive }" @click.self="isSearchActive = false">
+      <div class="search-dialog">
+        <div class="search-bar-container">
+            <i class="fas fa-search search-icon-inside"></i>
+            <input type="text" placeholder="What are you looking for?" class="search-input" autofocus>
+        </div>
+        <button class="close-search-btn" @click="isSearchActive = false" aria-label="Close search">
+            <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    
+    <main>
+      <router-view/>
+    </main>
+
+    <AppFooter />
+  </div>
+</template>
+
+<script>
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
+import GlobalLoadingIndicator from './components/GlobalLoadingIndicator.vue';
+
+export default {
+  name: 'App',
+  components: {
+    AppHeader,
+    AppFooter,
+    GlobalLoadingIndicator,
+  },
+  data() {
+    return {
+      isRouteLoading: false,
+      isSearchActive: false,
+    }
+  },
+  created() {
+    this.$router.beforeEach((to, from, next) => {
+      this.isRouteLoading = true;
+      next();
+    });
+    this.$router.afterEach(() => {
+      setTimeout(() => {
+        this.isRouteLoading = false;
+      }, 200);
+    });
+  },
+  watch: {
+    isSearchActive(newValue) {
+      document.body.style.overflow = newValue ? 'hidden' : '';
+    }
+  }
+};
+</script>
+
+<style>
+/* 
+  Note: The main layout styles for #app and main are now in src/assets/main.css 
+  to keep this file cleaner.
+*/
+
+/* Search Overlay Styles */
+.search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 15vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.search-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.search-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  transform: scale(0.95);
+  transition: transform 0.4s ease;
+}
+
+.search-overlay.active .search-dialog {
+  transform: scale(1);
+}
+
+.search-bar-container {
+  position: relative;
+}
+
+.search-icon-inside {
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.3rem;
+}
+
+.search-input {
+  width: 100%;
+  height: 70px;
+  padding: 0 80px 0 70px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  box-sizing: border-box;
+}
+
+.close-search-btn {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.close-search-btn:hover {
+  color: var(--primary-color);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    font-size: 1.1rem;
+    height: 60px;
+  }
+  .search-dialog {
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+}
+</style>
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\AppFooter.vue 
+============================= 
+<template>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>TONGFANG</h3>
+        <p class="footer-subtext">System Integration</p>
+        <p class="footer-slogan">"Moving Forward - Innovating the future..."</p>
+        <div class="social-links">
+          <a href="https://t.me/admassb" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          <a href="https://www.instagram.com/tongfang_system_integrated1" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@tongfangbmis" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><router-link to="/about">About Us</router-link></li>
+          <li><router-link to="/solutions">Solutions</router-link></li>
+          <li><router-link to="/products">Products</router-link></li>
+          <li><router-link to="/achievements">Achievements</router-link></li>
+          <li><router-link to="/partner">Partner</router-link></li>
+          <li><router-link to="/support">Support</router-link></li>
+          <li><router-link to="/contact">Contact Us</router-link></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact & Location</h4>
+        <p><i class="fas fa-globe-asia"></i> Headquarters: Beijing, China</p>
+        <p><i class="fas fa-building"></i> Branch Office: Bole Bulbula, Addis Ababa, Ethiopia</p>
+        <p><i class="fas fa-phone-alt"></i> <a href="tel:+251911249722">+251-911-249-722</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:info@tongfangbms.com">info@tongfangbms.com</a></p>
+        <p><i class="fas fa-headset"></i> Service: 24/7 Customer Support</p>
+      </div>
+      <div class="footer-map">
+         <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3978.5328209167046!2d38.77678621522729!3d9.034121993507252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b854440a5ea17%3A0x91a4933ac17a8e44!2sBole%20Bulbula%2C%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1690079170016!5m2!1sen!2set"
+            width="100%" height="100%" style="border:0;"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© {{ new Date().getFullYear() }} TONGFANG System Integration. All Rights Reserved.</p>
+    </div>
+  </footer>
+</template>
+
+<script>
+export default { name: 'AppFooter' }
+</script>
+
+<style scoped>
+.site-footer { background-color: var(--primary-color); color: #E2E8F0; padding: 50px 20px 15px; font-size: 0.9rem; border-top: 4px solid var(--secondary-color); }
+.footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; padding-bottom: 30px; }
+.footer-about h3 { color: var(--white-color); font-size: 1.5rem; font-weight: 700; margin: 0 0 5px; }
+.footer-subtext { font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--secondary-color); margin-bottom: 10px; }
+.footer-slogan { font-style: italic; color: #CBD5E0; font-size: 0.85rem; margin-bottom: 15px; }
+.social-links { display: flex; gap: 12px; }
+.social-links a { color: var(--white-color); background-color: rgba(255, 255, 255, 0.08); width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1rem; transition: background-color 0.3s ease, transform 0.3s ease; }
+.social-links a:hover { background-color: var(--secondary-color); transform: translateY(-3px); }
+.footer-links h4, .footer-contact h4 { color: var(--white-color); font-size: 1.2rem; font-weight: 600; margin-bottom: 20px; }
+.footer-links ul { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { text-decoration: none; color: #A0AEC0; transition: color 0.3s ease, padding-left 0.3s ease; }
+.footer-links a:hover { color: var(--secondary-color); padding-left: 5px; }
+.footer-contact p { margin-bottom: 12px; display: flex; align-items: center; color: #A0AEC0; }
+.footer-contact i { color: var(--secondary-color); margin-right: 12px; width: 18px; text-align: center; flex-shrink: 0; }
+.footer-contact a { color: #A0AEC0; text-decoration: none; transition: color 0.3s ease; }
+.footer-contact a:hover { color: var(--secondary-color); }
+.footer-map { border-radius: 8px; overflow: hidden; min-height: 200px; }
+.footer-bottom { max-width: 1200px; margin: 0 auto; padding: 25px 0 10px 0; border-top: 1px solid #2D3748; text-align: center; font-size: 0.8rem; color: #94A3B8; }
+
+@media (max-width: 992px) {
+    .footer-container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+  .site-footer { padding-top: 40px; }
+  .footer-container {
+    /* This centers the content blocks */
+    text-align: center;
+    gap: 45px;
+    grid-template-columns: 1fr;
+  }
+  .footer-about, .footer-links, .footer-contact, .footer-map {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  /* --- THIS IS THE FIX --- */
+  /* We keep the social links centered as they are a single line. */
+  .social-links {
+    justify-content: center;
+  }
+  /* For the multi-line contact info, we set text-align to left to align the icons,
+     and use inline-block to respect the parent's text-align: center. */
+  .footer-contact {
+    text-align: left;
+    display: inline-block;
+  }
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\AppHeader.vue 
+============================= 
+<template>
+  <header class="header" :class="{ 'scrolled': isHeaderScrolled }">
+    <!-- TOP BAR -->
+    <div class="header-top-bar">
+      <div class="top-bar-container">
+        <div class="contact-info-top">
+          <span><i class="fas fa-phone-alt"></i> +251-911-249-722</span>
+          <span class="desktop-only-text"><i class="fas fa-envelope"></i> info@tongfangbms.com</span>
+        </div>
+        <div class="language-selector" @mouseenter="isLangOpen = true" @mouseleave="isLangOpen = false">
+          <div class="current-language">
+            <i class="fas fa-globe"></i> <span>EN</span>
+            <i class="fas fa-chevron-down dropdown-arrow" :class="{ 'open': isLangOpen }"></i>
+          </div>
+          <ul class="language-dropdown" :class="{ 'active': isLangOpen }">
+            <li><a href="#">English (EN)</a></li>
+            <li><a href="#">中文 (ZH)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <div class="header-main">
+      <router-link to="/" class="logo-container">
+        <img src="/logo.png" alt="Tongfang Logo" class="logo-img" />
+        <div class="logo-text-group">
+          <span class="logo-text">TONGFANG</span>
+          <span class="logo-subtext">System Integration</span>
+        </div>
+      </router-link>
+
+      <!-- DESKTOP Navigation -->
+      <nav class="navbar-desktop" ref="navLinksContainer">
+        <ul class="nav-links">
+          <li
+            v-for="link in navLinks"
+            :key="link.name"
+            @mouseenter="activeDropdown = link.name"
+            @mouseleave="activeDropdown = null"
+          >
+            <router-link :to="link.path">
+              {{ link.name }}
+              <i v-if="link.megaMenu || link.simpleDropdown" class="fas fa-chevron-down nav-arrow"></i>
+            </router-link>
+
+            <!-- MEGA MENU DROPDOWN (for Solutions) -->
+            <div class="mega-menu" v-if="link.megaMenu && activeDropdown === link.name">
+              <div class="mega-menu-content">
+                <div class="mega-menu-column" v-for="category in link.megaMenu.categories" :key="category.title">
+                  <h4>{{ category.title }}</h4>
+                  <ul>
+                    <li v-for="subLink in category.links" :key="subLink.name" @click="activeDropdown = null">
+                      <router-link :to="subLink.path">
+                        <i :class="subLink.icon"></i> {{ subLink.name }}
+                      </router-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- SIMPLE DROPDOWN (for Products) -->
+            <div class="simple-dropdown" v-if="link.simpleDropdown && activeDropdown === link.name">
+                <ul>
+                    <li v-for="subLink in link.simpleDropdown.links" :key="subLink.name" @click="activeDropdown = null">
+                      <!-- MODIFICATION: Link path now includes hash for scrolling -->
+                      <router-link :to="subLink.path">
+                        <i :class="subLink.icon"></i> {{ subLink.name }}
+                      </router-link>
+                    </li>
+                </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      
+      <!-- Desktop Header Actions -->
+      <div class="header-actions desktop">
+        <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')"><i class="fas fa-search"></i></a>
+        <div class="action-icon-wrapper">
+          <router-link to="/login" class="action-icon" aria-label="Login"><i class="fas fa-user"></i></router-link>
+          <div class="tooltip">Partner Login</div>
+        </div>
+      </div>
+
+      <!-- Mobile Controls (Search, Login, Hamburger) -->
+      <div class="mobile-controls">
+        <a href="#" class="action-icon" aria-label="Search" @click.prevent="$emit('toggle-search')"><i class="fas fa-search"></i></a>
+        <router-link to="/login" class="action-icon" aria-label="Login"><i class="fas fa-user"></i></router-link>
+        <button class="mobile-nav-toggle" ref="mobileToggle" @click="isMobileNavOpen = !isMobileNavOpen" aria-label="Toggle navigation">
+            <i :class="isMobileNavOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+        </button>
+      </div>
+
+      <!-- MOBILE Slide-out Navigation -->
+      <nav class="navbar-mobile" ref="mobileNav" :class="{ 'active': isMobileNavOpen }">
+        <ul class="nav-links-mobile">
+          <li v-for="link in navLinks" :key="link.name" @click="handleMobileLinkClick">
+            <router-link :to="link.path">{{ link.name }}</router-link>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+</template>
+
+<script>
+// The Javascript is correct and does not need changes.
+export default {
+  name: 'AppHeader',
+  emits: ['toggle-search'],
+  data() {
+    return {
+      isMobileNavOpen: false, isHeaderScrolled: false, isLangOpen: false,
+      activeDropdown: null,
+      navLinks: [
+        { name: 'About Us', path: '/about' },
+        {
+          name: 'Solutions', path: '/solutions',
+          megaMenu: {
+            categories: [
+              { title: 'By Industry', links: [
+                  { name: 'Smart Cities & Public Safety', path: '/solutions#solutions-by-industry', icon: 'fas fa-city' },
+                  { name: 'Education & Smart Campus', path: '/solutions#solutions-by-industry', icon: 'fas fa-school' },
+                  { name: 'Energy & Industrial Parks', path: '/solutions#solutions-by-industry', icon: 'fas fa-industry' },
+              ]},
+              { title: 'By Function', links: [
+                  { name: 'Building Management', path: '/solutions#solutions-by-function', icon: 'fas fa-sitemap' },
+                  { name: 'Security & Safety', path: '/solutions#solutions-by-function', icon: 'fas fa-shield-alt' },
+                  { name: 'Energy Efficiency', path: '/solutions#solutions-by-function', icon: 'fas fa-leaf' },
+              ]}
+            ]
+          }
+        },
+        // --- THIS ENTIRE SECTION IS UPDATED ---
+        {
+          name: 'Products', path: '/products',
+          simpleDropdown: {
+            links: [
+              { name: 'Computing Devices', path: '/products#computing', icon: 'fas fa-desktop' },
+              { name: 'Surveillance & Security', path: '/products#surveillance', icon: 'fas fa-video' },
+              { name: 'Automation Devices', path: '/products#automation', icon: 'fas fa-cogs' },
+              { name: 'Networking Equipment', path: '/products#networking', icon: 'fas fa-network-wired' },
+            ]
+          }
+        },
+        // ------------------------------------
+        { name: 'Achievements', path: '/achievements' },
+        { name: 'Partner', path: '/partner' },
+        { name: 'Support', path: '/support' },
+        { name: 'Contact Us', path: '/contact' },
+      ]
+    };
+  },
+  watch: {
+    '$route'() {
+      this.isLangOpen = false;
+      this.isMobileNavOpen = false;
+      this.activeDropdown = null;
+    }
+  },
+  methods: {
+    handleScroll() { this.isHeaderScrolled = window.scrollY > 20; },
+    handleMobileLinkClick() { if (this.isMobileNavOpen) { this.isMobileNavOpen = false; } },
+    openSearch(){ this.isMobileNavOpen = false; this.$emit('toggle-search'); },
+    handleClickOutside(event) {
+      // Desktop logic
+      const navContainer = this.$refs.navLinksContainer;
+      if (this.activeDropdown && navContainer && !navContainer.contains(event.target)) {
+        this.activeDropdown = null;
+      }
+      // Mobile logic
+      const mobileNav = this.$refs.mobileNav;
+      const mobileToggle = this.$refs.mobileToggle;
+      if (this.isMobileNavOpen) {
+        if (mobileNav && !mobileNav.contains(event.target) && mobileToggle && !mobileToggle.contains(event.target)) {
+          this.isMobileNavOpen = false;
+        }
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+    document.addEventListener('click', this.handleClickOutside);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+    document.removeEventListener('click', this.handleClickOutside);
+  }
+};
+</script>
+
+<style scoped>
+/* All styles remain the same as before */
+.header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: background-color 0.3s, box-shadow 0.3s; background-color: var(--white-color); }
+.header.scrolled { box-shadow: 0 4px 15px var(--shadow-color); }
+.header-top-bar { background-color: var(--primary-color); color: var(--white-color); padding: 0 40px; transition: all 0.3s ease; height: 40px; display: flex; align-items: center; }
+.header.scrolled .header-top-bar { height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; visibility: hidden; }
+.top-bar-container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: 1400px; margin: 0 auto; font-size: 0.85rem; }
+.contact-info-top span {
+  margin-right: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+.contact-info-top i { color: var(--secondary-color); margin-right: 8px; }
+.header-main { display: flex; justify-content: space-between; align-items: center; height: 70px; padding: 0 40px; max-width: 1400px; margin: 0 auto; }
+.logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+.logo-img { width: 45px; height: auto; }
+.logo-text-group { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-text { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); }
+.logo-subtext { font-size: 0.8rem; letter-spacing: 0.5px; color: var(--text-light); }
+.language-selector { position: relative; cursor: pointer; }
+.current-language { display: flex; align-items: center; font-weight: 500; }
+.dropdown-arrow { font-size: 0.7rem; margin-left: 8px; transition: transform 0.3s ease; }
+.dropdown-arrow.open { transform: rotate(180deg); }
+.language-dropdown { position: absolute; top: 120%; right: 0; background-color: var(--white-color); border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 10px 20px var(--shadow-color); list-style: none; padding: 10px 0; width: 160px; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1001; }
+.language-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+.language-dropdown li a { display: block; padding: 10px 20px; color: var(--text-dark); text-decoration: none; }
+.mobile-controls { display: none; align-items: center; gap: 18px; margin-left: auto; }
+.mobile-controls .action-icon { font-size: 1.2rem; color: var(--text-dark); }
+.mobile-controls .mobile-nav-toggle { background: none; border: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; padding: 0; }
+.navbar-mobile { position: fixed; top: 0; right: -100%; width: 280px; max-width: 85vw; height: 100vh; background-color: var(--white-color); box-shadow: -10px 0 30px rgba(0,0,0,0.1); padding: 100px 30px 30px; transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); z-index: 1001; }
+.navbar-mobile.active { right: 0; }
+.nav-links-mobile { list-style: none; padding: 0; margin: 0; width: 100%; }
+.nav-links-mobile > li { width: 100%; padding: 15px 0; }
+.nav-links-mobile a { text-decoration: none; font-size: 1.2rem; font-weight: 600; color: var(--primary-color); }
+.navbar-desktop { display: none; margin-left: auto; flex-grow: 1; justify-content: center; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 30px; margin: 0; padding: 0; }
+.nav-links > li { position: relative; }
+.nav-links a { text-decoration: none; font-size: 1rem; font-weight: 600; color: var(--primary-color); padding: 26px 0; position: relative; transition: color 0.3s; display: flex; align-items: center; gap: 8px; }
+.nav-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
+.nav-links > li:hover .nav-arrow { transform: rotate(180deg); }
+.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 20px; left: 50%; transform: translateX(-50%); background-color: var(--secondary-color); transition: width 0.3s ease; }
+.nav-links a:hover::after, .nav-links a.router-link-exact-active::after { width: 100%; }
+.nav-links a:hover, .nav-links a.router-link-exact-active { color: var(--secondary-color); }
+.header-actions.desktop { display: none; align-items: center; gap: 25px; position: relative; z-index: 1001; }
+.action-icon { font-size: 1.2rem; color: var(--text-dark); text-decoration: none; transition: all 0.3s ease; }
+.action-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
+.action-icon-wrapper { position: relative; }
+.tooltip { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(12px); background-color: var(--primary-color); color: var(--white-color); padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; opacity: 0; visibility: hidden; transition: all 0.3s ease; pointer-events: none; }
+.action-icon-wrapper:hover .tooltip { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(8px); }
+.mega-menu, .simple-dropdown { position: absolute; top: 70px; left: 50%; background-color: var(--white-color); border-radius: 0 0 12px 12px; box-shadow: 0 15px 40px var(--shadow-color); border-top: 3px solid var(--secondary-color); opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; z-index: 1000; }
+.nav-links > li:hover .mega-menu, .nav-links > li:hover .simple-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.mega-menu { padding: 30px; width: max-content; }
+.mega-menu-content { display: flex; gap: 40px; }
+.mega-menu-column h4 { font-size: 1rem; font-weight: 700; color: var(--primary-color); margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+.mega-menu-column ul, .simple-dropdown ul { list-style: none; padding: 0; margin: 0; }
+.mega-menu-column li a, .simple-dropdown li a { font-size: 0.95rem; font-weight: 500; color: var(--text-light); padding: 8px 0; }
+.mega-menu-column li a i { color: var(--secondary-color); width: 18px; text-align: center; }
+.mega-menu-column li a::after, .simple-dropdown li a::after { display: none; }
+.mega-menu-column li a:hover, .simple-dropdown li a:hover { color: var(--secondary-color); }
+.simple-dropdown { padding: 15px; min-width: 250px; }
+.simple-dropdown li a { display: flex; align-items: center; gap: 12px; padding: 12px 15px; border-radius: 6px; }
+.simple-dropdown li a i { color: var(--secondary-color); width: 18px; text-align: center; }
+@media (max-width: 1024px) { .header-main { padding: 0 25px; } .mobile-controls { display: flex; } .navbar-desktop, .header-actions.desktop { display: none; } }
+@media (max-width: 480px) { .header-main { padding: 0 20px; } .header-top-bar { padding: 0 20px; font-size: 0.75rem; } .logo-text { font-size: 2rem; } .logo-subtext { display: none; } }
+@media (min-width: 1025px) { .mobile-controls, .navbar-mobile { display: none; } .navbar-desktop, .header-actions.desktop { display: flex; } }
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\ComparisonBar.vue 
+============================= 
+<template>
+  <transition name="slide-up">
+    <div v-if="products.length > 0" class="comparison-bar">
+      <div class="comparison-container">
+        <div class="comparison-items">
+          <div v-for="product in products" :key="product.id" class="item-card">
+            <img :src="product.image" :alt="product.model" class="item-image">
+            <span class="item-model">{{ product.model }}</span>
+            <button class="remove-item" @click="$emit('remove', product)" aria-label="Remove item">&times;</button>
+          </div>
+          <div v-for="i in (4 - products.length)" :key="`placeholder-${i}`" class="item-placeholder">
+            <span>Add Product</span>
+          </div>
+        </div>
+        <div class="comparison-actions">
+          <button class="compare-btn" :disabled="products.length < 2">
+            Compare ({{ products.length }}/4)
+          </button>
+          <button class="clear-btn" @click="$emit('clear')">Clear All</button>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  name: 'ComparisonBar',
+  props: {
+    products: {
+      type: Array,
+      required: true,
+    },
+  },
+  emits: ['remove', 'clear'],
+};
+</script>
+
+<style scoped>
+.comparison-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  z-index: 1100;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  border-top: 3px solid var(--secondary-color);
+}
+.comparison-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comparison-items {
+  display: flex;
+  gap: 15px;
+}
+.item-card, .item-placeholder {
+  width: 120px;
+  height: 70px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  position: relative;
+}
+.item-card {
+  border-style: solid;
+}
+.item-placeholder {
+  justify-content: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+.item-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.item-model {
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.remove-item {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 1rem;
+  line-height: 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.remove-item:hover {
+  transform: scale(1.1);
+}
+.comparison-actions {
+  display: flex;
+  gap: 15px;
+}
+.compare-btn, .clear-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.compare-btn {
+  background-color: var(--secondary-color);
+  color: white;
+}
+.compare-btn:disabled {
+  background-color: #777;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.clear-btn {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+.clear-btn:hover {
+  background-color: white;
+  color: var(--primary-color);
+}
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.slide-up-enter-from, .slide-up-leave-to {
+  transform: translateY(100%);
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\GlobalLoadingIndicator.vue 
+============================= 
+<template>
+  <div class="loading-bar-container" :class="{ 'visible': isLoading }">
+    <div class="loading-bar"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'GlobalLoadingIndicator',
+  props: {
+    isLoading: {
+      type: Boolean,
+      required: true,
+    },
+  },
+};
+</script>
+
+<style scoped>
+.loading-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.loading-bar-container.visible {
+  opacity: 1;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  transform-origin: left;
+  animation: loading-animation 1.5s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+@keyframes loading-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+    width: 20%;
+  }
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\ProductCard.vue 
+============================= 
+<template>
+  <!-- FIX: The entire card is now a clickable router-link -->
+  <router-link :to="`/products/${product.id}`" class="product-card">
+    <img :src="product.image" :alt="product.name" class="product-image">
+    <div class="product-content">
+      <span class="product-category">{{ product.category }}</span>
+      <h4 class="product-name">{{ product.name }}</h4>
+      <p class="product-model">Model: {{ product.model }}</p>
+      <!-- FIX: The button is now a visual element, not a separate link -->
+      <div class="details-button">View Details</div>
+    </div>
+  </router-link>
+</template>
+
+<script>
+export default {
+  name: 'ProductCard',
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+/* FIX: Changed the root element to a router-link */
+.product-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none; /* Removes underline from the new link */
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+  border-color: var(--secondary-color); /* Added highlight on hover */
+}
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: var(--light-bg-color);
+}
+.product-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.product-category {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.product-name {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin: 0 0 5px 0;
+}
+.product-model {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+/* FIX: Adjusted the button style for the new context */
+.details-button {
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+.product-card:hover .details-button {
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\ProductGridItem.vue 
+============================= 
+<template>
+  <div class="product-card-item">
+    <div v-if="product.new" class="new-badge">NEW</div>
+    <div class="product-image-container">
+        <img :src="product.image" :alt="product.model">
+    </div>
+    <div class="product-info">
+        <h5>{{ product.model }}</h5>
+        <p>{{ product.name }}</p>
+        <!-- FIX: This is now a controlled component that emits an event -->
+        <div class="compare-box">
+            <input 
+              type="checkbox" 
+              :id="`compare-${product.id}`"
+              :checked="isCompared"
+              @change="toggleCompare"
+            >
+            <label :for="`compare-${product.id}`">Compare</label>
+        </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ProductGridItem',
+  props: {
+    product: {
+      type: Object,
+      required: true
+    },
+    // FIX: Receives its "compared" state from the parent
+    isCompared: {
+      type: Boolean,
+      default: false
+    }
+  },
+  emits: ['toggle-compare'],
+  methods: {
+    // FIX: Emits an event to the parent view instead of managing its own state
+    toggleCompare() {
+      this.$emit('toggle-compare', this.product);
+    }
+  }
+}
+</script>
+
+<style scoped>
+.product-card-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+.product-card-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+.new-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #e53935;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 3px 7px;
+    border-radius: 4px;
+}
+.product-image-container {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+.product-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.product-info h5 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+.product-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0 0 15px 0;
+    min-height: 2.7em; /* to align compare boxes */
+}
+.compare-box {
+    text-align: left;
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\SolutionCard.vue 
+============================= 
+<template>
+  <div class="solution-card">
+    <img :src="solution.image" :alt="solution.title" class="solution-image">
+    <div class="solution-content">
+      <h4 class="solution-title">{{ solution.title }}</h4>
+      <p class="solution-description">{{ solution.shortDescription }}</p>
+      <router-link :to="`/solutions/${solution.slug}`" class="details-button">Learn More</router-link>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SolutionCard',
+  props: {
+    solution: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+/* This uses similar styling to ProductCard for consistency */
+.solution-card {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white-color);
+}
+.solution-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+.solution-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background-color: var(--light-bg-color);
+}
+.solution-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.solution-title {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+}
+.solution-description {
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+.details-button {
+  text-align: center;
+  text-decoration: none;
+  background-color: transparent;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+.details-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\SolutionFunctionCard.vue 
+============================= 
+<template>
+  <div class="function-card">
+    <div class="icon-wrapper">
+      <i :class="solution.icon"></i>
+    </div>
+    <h4 class="function-title">{{ solution.title }}</h4>
+    <p class="function-description">{{ solution.description }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SolutionFunctionCard',
+  props: {
+    solution: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+.function-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to top */
+  text-align: center;
+  background-color: var(--white-color);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 30px 25px;
+  height: 100%; /* Ensure cards in a grid have consistent height */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.function-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  border-color: var(--secondary-color);
+}
+
+.icon-wrapper {
+  font-size: 2.5rem; /* Slightly larger icon */
+  color: var(--secondary-color);
+  background-color: #eef5ff; /* Light blue background for icon */
+  width: 80px; /* Larger wrapper */
+  height: 80px; /* Larger wrapper */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 25px; /* More space below icon */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Subtle shadow for icon */
+}
+
+.function-card:hover .icon-wrapper {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  transform: scale(1.1) rotate(5deg); /* Subtle rotate on hover */
+}
+
+.function-title {
+  font-size: 1.15rem; /* Slightly larger title */
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+  font-weight: 700; /* Bolder title */
+  line-height: 1.4;
+}
+
+.function-description {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1; /* Allow description to take available space */
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\SolutionHints.vue 
+============================= 
+<template>
+  <div class="navigation-hints">
+    <div class="page-container hints-container">
+      <a href="#overview" @click.prevent="scrollTo('overview')">Overview</a>
+      <i class="fas fa-chevron-right separator"></i>
+      <a href="#solutions-by-industry" @click.prevent="scrollTo('solutions-by-industry')">By Industry</a>
+      <i class="fas fa-chevron-right separator"></i>
+      <a href="#solutions-by-scenario" @click.prevent="scrollTo('solutions-by-scenario')">By Scenario</a>
+      <i class="fas fa-chevron-right separator"></i>
+      <a href="#solutions-by-function" @click.prevent="scrollTo('solutions-by-function')">By Function</a>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SolutionHints',
+  methods: {
+    scrollTo(elementId) {
+      const el = document.getElementById(elementId);
+      if (el) {
+        const headerOffset = 140; 
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.navigation-hints {
+  background-color: var(--white-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 18px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 70px;
+  z-index: 900;
+  height: 70px;
+}
+.hints-container {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 15px; font-size: 1rem; font-weight: 600;
+}
+.hints-container a {
+  color: var(--text-light); text-decoration: none;
+  transition: color 0.3s ease;
+}
+.hints-container a:hover { color: var(--secondary-color); }
+.hints-container .separator { color: var(--border-color); font-size: 0.8rem; }
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\SolutionIndustryCard.vue 
+============================= 
+<template>
+  <router-link :to="`/solutions/${solution.slug}`" class="industry-card">
+    <div class="card-background" :style="{ backgroundImage: `url(${solution.hero.image})` }"></div>
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h3 class="card-title">{{ solution.hero.title }}</h3>
+      <p class="card-description">{{ solution.hero.subtitle }}</p>
+      <div class="details-button">Explore Solutions <i class="fas fa-arrow-right"></i></div>
+    </div>
+  </router-link>
+</template>
+
+<script>
+export default {
+  name: 'SolutionIndustryCard',
+  props: {
+    solution: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+.industry-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  color: var(--white-color);
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end; /* Align content to the bottom */
+  text-decoration: none; /* Remove underline from router-link */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+.industry-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+  filter: brightness(0.9); /* Slightly darken image */
+}
+
+.industry-card:hover .card-background {
+  transform: scale(1.08);
+  filter: brightness(1); /* Brighten on hover */
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(13, 36, 79, 0.9) 0%, rgba(13, 36, 79, 0.2) 70%, transparent 100%);
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  width: 100%;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.details-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.details-button i {
+  transition: transform 0.3s ease;
+}
+
+.industry-card:hover .details-button {
+  background-color: #d17f00; /* Darker secondary */
+  transform: translateY(-3px);
+}
+
+.industry-card:hover .details-button i {
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .card-content { padding: 20px; }
+  .card-title { font-size: 1.5rem; }
+  .card-description { font-size: 0.9rem; }
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\SolutionIndustryDetail.vue 
+============================= 
+<template>
+  <div class="industry-detail-container">
+    <div class="banner-section" :style="{ backgroundImage: `url(${solution.image})` }">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <h3 class="banner-title">{{ solution.title }}</h3>
+        <p class="banner-description">{{ solution.description }}</p>
+        <div class="related-solutions">
+          <router-link :to="`/solutions/${solution.slug}`">
+            Explore {{ solution.title }} Solutions <i class="fas fa-arrow-right"></i>
+          </router-link>
+        </div>
+      </div>
+    </div>
+    <div class="stories-section">
+      <h4 class="stories-title">Success Stories</h4>
+      <div class="stories-grid">
+        <div v-for="(story, index) in solution.successStories" :key="index" class="story-card">
+          <h5>{{ story.title }}</h5>
+          <p>{{ story.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SolutionIndustryDetail',
+  props: {
+    solution: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+.industry-detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: var(--white-color);
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.banner-section {
+  position: relative; padding: 50px; color: var(--white-color);
+  background-size: cover; background-position: center;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.banner-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(13, 36, 79, 0.95) 0%, rgba(13, 36, 79, 0.2) 100%);
+}
+.banner-content { position: relative; z-index: 2; }
+.banner-title { font-size: 2.2rem; font-weight: 700; margin: 0 0 15px 0; }
+.banner-description { font-size: 1.05rem; line-height: 1.7; opacity: 0.9; margin-bottom: 25px; }
+.related-solutions a {
+  color: var(--white-color); background-color: var(--secondary-color);
+  padding: 12px 24px; border-radius: 50px; text-decoration: none;
+  font-weight: 600; transition: all 0.3s ease; display: inline-block;
+}
+.related-solutions a:hover {
+  background-color: #d17f00; transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.stories-section { padding: 40px; }
+.stories-title {
+  font-size: 1.4rem; color: var(--primary-color);
+  margin: 0 0 25px 0; padding-bottom: 10px;
+}
+.stories-grid { display: grid; gap: 25px; }
+.story-card {
+  padding-bottom: 25px;
+  border-bottom: 1px solid var(--border-color);
+}
+.story-card:last-child { border-bottom: none; padding-bottom: 0; }
+.story-card h5 {
+  font-size: 1.1rem; margin: 0 0 8px 0;
+  color: var(--text-dark); font-weight: 600;
+}
+.story-card p {
+  font-size: 0.95rem; color: var(--text-light);
+  line-height: 1.6; margin: 0;
+}
+
+@media (max-width: 900px) {
+  .industry-detail-container { grid-template-columns: 1fr; }
+  .banner-section { min-height: 350px; }
+}
+</style>.
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\components\SolutionScenarioCard.vue 
+============================= 
+<template>
+  <router-link :to="`/solutions/scenario/${solution.slug || solution.title.toLowerCase().replace(/\s/g, '-')}`" class="scenario-card">
+    <img v-if="solution.image" :src="solution.image" :alt="solution.title" class="scenario-image">
+    <div v-else class="scenario-icon-fallback">{{ solution.icon }}</div>
+    
+    <div class="card-overlay"></div>
+    <div class="card-content">
+      <h4 class="scenario-title">{{ solution.title }}</h4>
+    </div>
+  </router-link>
+</template>
+
+<script>
+export default {
+  name: 'SolutionScenarioCard',
+  props: {
+    solution: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style scoped>
+.scenario-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 280px; /* Fixed height for consistency */
+  display: flex; /* To center icon fallback */
+  flex-direction: column;
+  justify-content: flex-end; /* Align content to bottom */
+  text-decoration: none; /* Remove underline from router-link */
+  color: var(--white-color); /* Default text color */
+}
+
+.scenario-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+}
+
+.scenario-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.scenario-card:hover .scenario-image {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.scenario-icon-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  background-color: var(--primary-color-light); /* Fallback background */
+  color: var(--primary-color); /* Fallback icon color */
+  transition: all 0.4s ease;
+}
+
+.scenario-card:hover .scenario-icon-fallback {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(13, 36, 79, 0.9) 0%, transparent 60%);
+  z-index: 1; /* Ensure overlay is above image but below content */
+}
+
+.card-content {
+  position: relative;
+  z-index: 2; /* Ensure content is above overlay */
+  padding: 25px;
+  width: 100%;
+}
+
+.scenario-title {
+  color: var(--white-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  margin: 0;
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\router\index.js 
+============================= 
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import { supabase } from '@/supabase'; // Import the supabase client for the guard
+
+const routes = [
+  { path: '/', name: 'home', component: HomeView },
+  { path: '/about', name: 'about', component: () => import('../views/AboutView.vue') },
+  { path: '/products', name: 'products', component: () => import('../views/ProductsView.vue') },
+  
+  // Route for product categories (must be before individual product route)
+  { 
+    path: '/products/category/:categorySlug', 
+    name: 'product-category-detail', 
+    component: () => import('../views/ProductCategoryDetailView.vue') 
+  },
+  
+  { path: '/products/:id', name: 'product-detail', component: () => import('../views/ProductDetailView.vue') },
+  { path: '/solutions', name: 'solutions', component: () => import('../views/SolutionsView.vue') },
+  { path: '/solutions/:slug', name: 'solution-detail', component: () => import('../views/SolutionDetailView.vue') },
+  { path: '/achievements', name: 'achievements', component: () => import('../views/AchievementView.vue') },
+  { path: '/partner', name: 'partner', component: () => import('../views/PartnerView.vue') },
+  { path: '/support', name: 'support', component: () => import('../views/SupportView.vue') },
+  { path: '/contact', name: 'contact', component: () => import('../views/ContactView.vue') },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginView.vue')
+  },
+  // Dashboard Route
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('../views/DashboardView.vue'),
+    meta: { requiresAuth: true } // Add meta field to protect this route
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+  linkExactActiveClass: 'active-link',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } 
+    else if (to.hash) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ 
+            el: to.hash, 
+            behavior: 'smooth',
+            top: 140,
+          });
+        }, 500);
+      });
+    }
+    else {
+      return { top: 0, behavior: 'smooth' };
+    }
+  },
+});
+
+// Navigation Guard for Authentication
+router.beforeEach(async (to, from, next) => { // Make the guard async
+  // Check if the route requires authentication
+  if (to.meta.requiresAuth) {
+    const { data: { session } } = await supabase.auth.getSession(); // Get current Supabase session
+    const isLoggedIn = !!session; // True if a session exists, false otherwise
+
+    if (!isLoggedIn) {
+      // If the route requires auth and no active Supabase session, redirect to login
+      next('/login');
+    } else {
+      // If there's an active session, allow access
+      next();
+    }
+  } else {
+    // If the route doesn't require authentication, always allow access
+    next();
+  }
+});
+
+export default router;..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\services\api.js 
+============================= 
+// src/services/api.js
+export const ApiService = {
+  async fetchDownloads() {
+    // Simulate API call for downloads
+    return [
+      {
+        id: 'manual-001',
+        title: 'BMS Product Manual v2.1',
+        type: 'Manual',
+        productId: 'BMS-PROD-001',
+        url: 'https://example.com/bms-manual-v2.1.pdf'
+      },
+      {
+        id: 'datasheet-001',
+        title: 'Sensor X Specifications',
+        type: 'Datasheet',
+        productId: 'SENSOR-X-001',
+        url: 'https://example.com/sensor-x-datasheet.pdf'
+      },
+      {
+        id: 'firmware-001',
+        title: 'Firmware Update v1.5 for Gateway',
+        type: 'Firmware',
+        productId: 'GATEWAY-001',
+        url: 'https://example.com/gateway-firmware-v1.5.zip'
+      }
+    ];
+  },
+
+  async fetchSolutionsByIndustry() {
+    // Simulate API call
+    return [
+      {
+        slug: 'campus',
+        title: 'Intelligent Campus Solutions',
+        hero: {
+          title: 'Smart Campus Solutions',
+          subtitle: 'Integrated systems for educational institutions',
+          image: require('@/assets/images/campus.jpg') // Ensure you have this image
+        },
+        introduction: 'Our comprehensive Smart Campus solutions integrate cutting-edge technology to create connected, efficient, and sustainable educational environments.',
+        description: 'We provide end-to-end systems that enhance learning experiences, improve operational efficiency, and ensure campus safety. Our solutions include smart classrooms, campus security, energy management, and digital administration systems.',
+        successStories: [
+          {
+            title: 'Integrated Management of University Systems',
+            description: 'Implemented a centralized management system for a major university, reducing energy costs by 25% and improving security response times by 40%.'
+          }
+        ],
+        // Add more detail properties for a full page
+        features: [
+          'Smart Classroom Integration',
+          'Advanced Security Systems',
+          'Energy Efficiency Management',
+          'Digital Administration'
+        ]
+      },
+      {
+        slug: 'medical',
+        title: 'Intelligent Medical Centers',
+        hero: {
+          title: 'Smart Healthcare Solutions',
+          subtitle: 'Advanced technology for modern medical facilities',
+          image: require('@/assets/images/medical.jpg') // Ensure you have this image
+        },
+        introduction: 'Our Smart Hospital platform focuses on the critical integration of patient management, building automation and security systems.',
+        description: 'By automating continuous and low radio systems and enabling network architecture for long-coded centers, we improve operational efficiency, ensure data integrity, and provide a stable environment for patients and staff.',
+        successStories: [
+          {
+            title: 'Integrated Management of Hospital Expenses',
+            description: 'Our system improved patient flow and security at a 300-bed medical center, reducing unit time by 15%.'
+          },
+          {
+            title: 'Network Architecture for Medical Systems',
+            description: 'Designed and deployed a multi-tier unit network for a leading hospital, ensuring 99.97% uptime for critical medical data systems.'
+          }
+        ],
+        features: [
+          'Patient Management Integration',
+          'Building Automation',
+          'Enhanced Security Systems',
+          'Data Integrity Assurance'
+        ]
+      },
+      {
+        slug: 'pests',
+        title: 'Intelligent Smart Pests',
+        hero: {
+          title: 'Smart Pest Management',
+          subtitle: 'IoT-based solutions for pest control',
+          image: require('@/assets/images/pests.jpg') // Ensure you have this image
+        },
+        introduction: 'Our innovative pest management solutions leverage IoT sensors and data analytics.',
+        description: 'We monitor, detect, and manage pest activities in agricultural and urban environments. This proactive approach reduces crop damage, minimizes pesticide use, and improves overall yield quality.',
+        successStories: [
+          {
+            title: 'Smart Pest Monitoring System',
+            description: 'Deployed across 5000 acres of farmland, reducing pesticide use by 35% while increasing crop yield by 18%.'
+          }
+        ],
+        features: [
+          'IoT Sensor Monitoring',
+          'Data Analytics for Pest Activity',
+          'Proactive Pest Management',
+          'Reduced Pesticide Use'
+        ]
+      }
+    ];
+  },
+
+  async fetchSolutionsByScenario() {
+    // Simulate API call
+    return [
+      {
+        title: 'Corporate Office Buildings',
+        slug: 'corporate-office-buildings', // Add slug
+        icon: '🏢',
+        image: require('@/assets/images/office-building.jpg'), // Add image for better cards
+        description: 'Comprehensive smart building solutions for modern corporate environments.',
+        fullDescription: 'Our solutions for Corporate Office Buildings focus on creating intelligent, efficient, and secure workspaces. This includes advanced access control, environmental monitoring, energy management, and smart meeting room solutions to enhance productivity and occupant comfort.',
+        benefits: [
+          'Enhanced Security',
+          'Optimized Energy Consumption',
+          'Improved Occupant Comfort',
+          'Streamlined Operations'
+        ]
+      },
+      {
+        title: 'University & School Campuses',
+        slug: 'university-school-campuses', // Add slug
+        icon: '🎓',
+        image: require('@/assets/images/university-campus.jpg'), // Add image
+        description: 'Integrated educational ecosystem solutions.',
+        fullDescription: 'We provide integrated solutions for University & School Campuses, covering everything from smart classroom technology and campus-wide security to student information systems and energy management, creating a connected learning environment.',
+        benefits: [
+          'Modernized Learning Spaces',
+          'Comprehensive Campus Safety',
+          'Efficient Resource Management',
+          'Enhanced Student Experience'
+        ]
+      },
+      {
+        title: 'Data Centers',
+        slug: 'data-centers', // Add slug
+        icon: '💻',
+        image: require('@/assets/images/data-center.jpg'), // Add image
+        description: 'Advanced monitoring and management systems for data centers.',
+        fullDescription: 'Our Data Center solutions ensure optimal performance, reliability, and security. We offer precise environmental control, power monitoring, physical security, and intelligent asset management to keep your critical infrastructure running smoothly.',
+        benefits: [
+          'High Availability & Uptime',
+          'Energy Efficiency',
+          'Enhanced Security',
+          'Proactive Monitoring'
+        ]
+      },
+      {
+        title: 'Smart Public Toilet Solution',
+        slug: 'smart-public-toilet-solution', // Add slug
+        icon: '🚽',
+        image: require('@/assets/images/public-toilet (2).jpg'), // Add image
+        description: 'IoT-enabled public sanitation facilities with automated systems.',
+        fullDescription: 'The Smart Public Toilet Solution integrates IoT sensors for real-time monitoring of occupancy, air quality, supplies, and cleaning status. It aims to improve hygiene, user experience, and operational efficiency for public facilities.',
+        benefits: [
+          'Improved Hygiene',
+          'Enhanced User Experience',
+          'Efficient Maintenance',
+          'Resource Optimization'
+        ]
+      }
+    ];
+  },
+
+  async fetchSolutionsByFunction() {
+    // Simulate API call
+    return [
+      {
+        category: 'Big Data & Cloud Computing',
+        solutions: [
+          {
+            title: 'Big Data Solution for Educational Informatization',
+            slug: 'big-data-educational-informatization', // Add slug
+            icon: 'fas fa-chart-bar', // Using FontAwesome now
+            description: 'Comprehensive data analytics platform for educational institutions.',
+            fullDescription: 'This solution provides a robust big data platform tailored for educational institutions, enabling advanced analytics on student performance, resource utilization, and administrative efficiency to drive informed decision-making and personalized learning experiences.',
+            benefits: ['Data-driven Insights', 'Personalized Learning', 'Operational Efficiency']
+          },
+          {
+            title: 'Cloud Computing Solutions',
+            slug: 'cloud-computing-solutions', // Add slug
+            icon: 'fas fa-cloud', // Using FontAwesome now
+            description: 'Scalable cloud infrastructure for enterprises and institutions.',
+            fullDescription: 'Our cloud computing solutions offer flexible, scalable, and secure infrastructure to support various business needs, from data storage and application hosting to virtualized environments and disaster recovery.',
+            benefits: ['Scalability', 'Cost-Efficiency', 'Enhanced Security', 'Flexibility']
+          }
+        ]
+      },
+      {
+        category: 'Network Architecture Design',
+        solutions: [
+          {
+            title: 'Medical Center Network Architecture',
+            slug: 'medical-center-network-architecture', // Add slug
+            icon: 'fas fa-network-wired', // Using FontAwesome now
+            description: 'Robust and secure network designs for healthcare environments.',
+            fullDescription: 'Specialized network architecture design for medical centers, ensuring high availability, data security, and compliance with healthcare regulations. Supports critical medical devices, patient data, and seamless communication.',
+            benefits: ['High Availability', 'Data Security', 'Regulatory Compliance', 'Seamless Communication']
+          }
+        ]
+      },
+      {
+        category: 'Building Management & Automation',
+        solutions: [
+          {
+            title: 'Hotel Security System Design',
+            slug: 'hotel-security-system-design', // Add slug
+            icon: 'fas fa-hotel', // Using FontAwesome now
+            description: 'Comprehensive security solutions for hospitality industry.',
+            fullDescription: 'Integrated security systems for hotels, including access control, video surveillance, alarm systems, and emergency response protocols, designed to ensure guest safety and property protection.',
+            benefits: ['Guest Safety', 'Property Protection', 'Operational Efficiency']
+          },
+          {
+            title: 'HT BMS System',
+            slug: 'ht-bms-system', // Add slug
+            icon: 'fas fa-building', // Using FontAwesome now
+            description: 'Advanced Building Management System for intelligent control.',
+            fullDescription: 'The HT BMS System offers centralized control and monitoring of building systems like HVAC, lighting, and power, optimizing energy use, maintaining comfort, and providing proactive maintenance alerts.',
+            benefits: ['Energy Optimization', 'Comfort Control', 'Predictive Maintenance']
+          },
+          {
+            title: 'Stadium Intelligent Systems',
+            slug: 'stadium-intelligent-systems', // Add slug
+            icon: 'fas fa-futbol', // Using FontAwesome now
+            description: 'Integrated solutions for sports venues.',
+            fullDescription: 'Comprehensive intelligent systems for stadiums, covering crowd management, security, smart concessions, and environmental control to enhance fan experience and operational efficiency.',
+            benefits: ['Enhanced Fan Experience', 'Improved Security', 'Operational Efficiency']
+          }
+        ]
+      },
+      {
+        category: 'Integrated Platform Solutions',
+        solutions: [
+          {
+            title: 'Smart Park Integrated Platform',
+            slug: 'smart-park-integrated-platform', // Add slug
+            icon: 'fas fa-tree', // Using FontAwesome now
+            description: 'Comprehensive management platform for intelligent park operations.',
+            fullDescription: 'A unified platform for managing smart parks, integrating environmental monitoring, visitor services, security, and facility management to create an intelligent and sustainable urban green space.',
+            benefits: ['Integrated Management', 'Environmental Monitoring', 'Enhanced Visitor Experience']
+          },
+          {
+            title: 'Smart Low-Carbon Parks',
+            slug: 'smart-low-carbon-parks', // Add slug
+            icon: 'fas fa-leaf', // Using FontAwesome now
+            description: 'Sustainable solutions for eco-friendly industrial parks.',
+            fullDescription: 'Solutions for developing smart, low-carbon industrial parks, focusing on renewable energy integration, energy efficiency, waste management, and green infrastructure to achieve environmental sustainability goals.',
+            benefits: ['Carbon Footprint Reduction', 'Energy Efficiency', 'Sustainable Operations']
+          }
+        ]
+      }
+    ];
+  },
+
+  // NEW: findSolutionBySlug method
+  async findSolutionBySlug(slug) {
+    // Combine all solutions into a single array for searching
+    const allSolutions = [
+      ...(await this.fetchSolutionsByIndustry()),
+      ...(await this.fetchSolutionsByScenario()),
+      // Flatten the function solutions to get individual solutions
+      ...(await this.fetchSolutionsByFunction()).flatMap(category => category.solutions)
+    ];
+    
+    // Find the solution that matches the slug
+    return allSolutions.find(solution => solution.slug === slug);
+  }
+};
+
+export default ApiService;..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\AboutView.vue 
+============================= 
+<template>
+  <div class="page-container">
+    <section class="solutions-hero">
+      <div class="hero-background-image" :style="heroBackgroundStyle"></div>
+      <div class="hero-content">
+        <!-- Optional content for hero section -->
+      </div>
+    </section>
+
+    <h1 class="section-title">About TONGFANG</h1>
+    <p class="section-subtitle">A Factory of Innovation, a Partner in Design. We are dedicated to building the smart infrastructure of tomorrow, from the factory floor to the finished building.</p>
+
+    <div class="about-grid">
+      <div class="about-image">
+         <!-- Use only the original image, but still apply native lazy loading -->
+         <img 
+            :src="aboutImageSrc" 
+            alt="Our Team at Tongfang"
+            loading="lazy"
+         />
+      </div>
+      <div class="about-content">
+        <h3>Our Mission</h3>
+        <p>To design, manufacture, and implement cutting-edge integrated systems that enhance efficiency, security, and productivity for our clients globally. We bridge the gap between architectural design and technology implementation.</p>
+        
+        <h3>Our Core Values</h3>
+        <ul>
+          <li><strong>Innovation:</strong> Continuously pioneering new technologies and finding smarter ways to integrate them.</li>
+          <li><strong>Excellence:</strong> Adhering to the highest international standards (ISO 9001, ISO/IEC 27001) in everything we do.</li>
+          <li><strong>Partnership:</strong> Working collaboratively with our clients as a unified team to achieve shared goals and long-term success.</li>
+          <li><strong>Reliability:</strong> Building robust, dependable systems that stand the test of time and provide peace of mind.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+// Import images explicitly to let Webpack process them for optimal paths/hashes
+import heroBg from '@/assets/images/Untitled-1.svg';
+import teamOriginal from '@/assets/images/team_1.jpg'; // Only import the original image
+
+export default { 
+  name: 'AboutView',
+  data() {
+    return {
+      heroBackgroundStyle: {
+        backgroundImage: `url(${heroBg})`
+      },
+      aboutImageSrc: teamOriginal // Only store the original image path
+    };
+  },
+}
+</script>
+
+<style scoped>
+/* --- New Hero Section Styles --- */
+.solutions-hero {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 700px;
+  overflow: hidden;
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  filter: brightness(1.05) contrast(1.1);
+  z-index: 1;
+}
+    
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Original styles below */
+.page-container {
+    padding-top: 0;
+    padding-bottom: 80px;
+}
+.section-title, .section-subtitle, .about-grid {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+  margin-top: 50px;
+}
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px var(--shadow-color);
+  filter: brightness(1.1) contrast(1.05);
+
+  transition: opacity 0.3s ease-in-out;
+}
+.about-image img:not([src]) {
+  visibility: hidden;
+}
+.about-content h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.about-content p {
+  line-height: 1.8;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  margin-bottom: 30px;
+}
+.about-content ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+.about-content li {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+.about-content li strong {
+    color: var(--primary-color);
+}
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-image {
+    order: -1;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+    .page-container {
+        padding-top: 0;
+        padding-bottom: 60px;
+    }
+    .about-content h3 { font-size: 1.5rem; }
+    .about-content p, .about-content li { font-size: 1rem; }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\AchievementView.vue 
+============================= 
+<template>
+  <div class="page-container">
+    <h1 class="section-title">Our Achievements</h1>
+    <p class="section-subtitle">A testament to our commitment to excellence, innovation, and partnership in delivering world-class integrated systems.</p>
+
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <!-- Optimized Image: Native Lazy Loading -->
+        <img 
+          :src="achievementImage1" 
+          alt="Achievement: Project of the Year Award" 
+          class="achievement-image"
+          loading="lazy" 
+        >
+        <div class="achievement-content">
+          <h4>Project of the Year Award</h4>
+          <p>Recognized for our groundbreaking work on the Smart City Grid project, integrating over 10,000 IoT devices.</p>
+        </div>
+      </div>
+      <div class="achievement-card">
+        <!-- Optimized Image: Native Lazy Loading -->
+        <img 
+          :src="achievementImage2" 
+          alt="Achievement: Top-Rated Technology Partner" 
+          class="achievement-image"
+          loading="lazy"
+        >
+        <div class="achievement-content">
+          <h4>Top-Rated Technology Partner</h4>
+          <p>Acknowledged by our international technology partners for outstanding collaboration and seamless system integration.</p>
+        </div>
+      </div>
+      <div class="achievement-card">
+        <!-- Optimized Image: Native Lazy Loading -->
+        <img 
+          :src="achievementImage3" 
+          alt="Achievement: Innovation in Sustainability" 
+          class="achievement-image"
+          loading="lazy"
+        >
+        <div class="achievement-content">
+          <h4>Innovation in Sustainability</h4>
+          <p>Awarded for developing energy-efficient BMS solutions that reduce carbon footprints by an average of 30% for our clients.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+// Explicitly import images. Webpack will process these paths.
+import imgAchievement1 from '@/assets/images/products/Achievement.jpg';
+import imgAchievement2 from '@/assets/images/tongfng.png'; // Assuming 'tongfng.png' is correct
+import imgAchievement3 from '@/assets/images/sustain.jpg';
+
+export default {
+  name: 'AchievementView',
+  data() {
+    return {
+      achievementImage1: imgAchievement1,
+      achievementImage2: imgAchievement2,
+      achievementImage3: imgAchievement3,
+    };
+  },
+  // You might consider lazy loading the component itself if it's not immediately visible on page load.
+  // This is typically handled at the router level.
+}
+</script>
+
+<style scoped>
+/* Basic page container styles, assuming these are global or from a layout */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 80px 20px; /* Adjust padding as needed */
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Original styles below */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+.achievement-card {
+  background: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.achievement-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.achievement-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  /* Add transition for smoother lazy load appearance */
+  transition: opacity 0.3s ease-in-out;
+}
+/* Hide broken image icon while image is loading, or if src is empty initially */
+.achievement-image:not([src]) {
+  visibility: hidden;
+}
+.achievement-content {
+  padding: 25px;
+}
+.achievement-content h4 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin: 0 0 10px 0;
+}
+.achievement-content p {
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  .achievement-content h4 {
+    font-size: 1.2rem;
+  }
+  .achievement-content p {
+    font-size: 0.95rem;
+  }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\ContactView.vue 
+============================= 
+<template>
+  <section id="contact">
+    <div class="contact-container">
+      <!-- Contact Info -->
+      <div class="contact-details">
+        <h2 class="section-title">Let's Build Together</h2>
+        <p class="section-description">
+          Ready to enhance your building's efficiency and security? Contact us today for a consultation. Our experts are ready to help you move forward.
+        </p>
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon-wrapper"><i class="fas fa-phone-alt"></i></div>
+            <div class="info-text">
+              <h4>Call Us Directly</h4>
+              <a href="tel:+251911249722">+251 911 249722</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon-wrapper"><i class="fab fa-weixin"></i></div>
+            <div class="info-text">
+              <h4>Chat on WeChat</h4>
+              <a href="weixin://user/wxid_3jxtp7rz3p8e22" target="_blank" rel="noopener noreferrer">Contact via WeChat</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon-wrapper"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <h4>Email for Inquiries</h4>
+              <a href="mailto:info@tongfangbms.com">info@tongfangbms.com</a>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <h4>Our Office</h4>
+              <p>Bole Bulbula, Addis Ababa, Ethiopia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrapper">
+        <form @submit.prevent="handleSubmit" ref="form">
+          <h4>Send Us a Message</h4>
+          <div class="form-group">
+            <input type="text" name="user_name" placeholder="Your Name" required v-model="form.name" />
+            <input type="email" name="user_email" placeholder="Your Email" required v-model="form.email" />
+          </div>
+          <textarea name="message" placeholder="Tell us about your project..." required v-model="form.message"></textarea>
+          <!-- FIX: Button now uses the global branded cta-button class -->
+          <button type="submit" class="cta-button" :disabled="isSending">
+            {{ isSending ? 'Sending...' : 'Send Inquiry' }}
+          </button>
+        </form>
+        <div v-if="statusMessage" :class="['status-message', formStatus]">
+          {{ statusMessage }}
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+import emailjs from '@emailjs/browser';
+
+export default {
+  name: 'ContactSection',
+  data() {
+    return {
+      isSending: false,
+      formStatus: '',
+      statusMessage: '',
+      form: {
+        name: '',
+        email: '',
+        message: '',
+      },
+    };
+  },
+  methods: {
+    handleSubmit() {
+      this.isSending = true;
+      this.statusMessage = '';
+
+      const templateParams = {
+        user_name: this.form.name,
+        user_email: this.form.email,
+        message: this.form.message,
+      };
+
+      emailjs.send(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      )
+        .then(() => {
+          this.sendAutoResponse(templateParams);
+          this.formStatus = 'success';
+          this.statusMessage = 'Thank you! Your message has been sent successfully.';
+          this.form.name = '';
+          this.form.email = '';
+          this.form.message = '';
+        })
+        .catch((err) => {
+          this.formStatus = 'error';
+          this.statusMessage = 'Sorry, an error occurred. Please try again later.';
+          console.error('FAILED...', err);
+        })
+        .finally(() => {
+          this.isSending = false;
+          setTimeout(() => {
+            this.statusMessage = '';
+          }, 5000);
+        });
+    },
+    sendAutoResponse(params) {
+      emailjs.send(
+        process.env.VUE_APP_EMAILJS_SERVICE_ID,
+        process.env.VUE_APP_EMAILJS_AUTOREPLY_TEMPLATE_ID,
+        params,
+        process.env.VUE_APP_EMAILJS_PUBLIC_KEY
+      )
+        .then(() => console.log('Auto-response sent.'))
+        .catch((err) => console.error('Auto-response failed:', err));
+    },
+  },
+};
+</script>
+
+<style scoped>
+#contact {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--white-color) 0%, #f0f4f8 100%);
+  color: var(--primary-color);
+}
+.contact-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+}
+.contact-details {
+  text-align: left;
+}
+.section-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.section-description {
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  color: #555;
+  line-height: 1.7;
+}
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.info-item {
+  display: flex;
+  align-items: center;
+}
+.info-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e6f7f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+.info-icon-wrapper i {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+}
+.info-icon-wrapper .fa-weixin {
+  color: #09B83E;
+}
+.info-text h4 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.info-text p, .info-text a {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.info-text a:hover {
+  color: var(--secondary-color);
+}
+.contact-form-wrapper {
+  background: var(--white-color);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+.contact-form-wrapper h4 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  text-align: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+input, textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #dddddd;
+  background-color: #faf9fb;
+  color: var(--text-dark);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+input::placeholder, textarea::placeholder {
+  color: #888;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(245, 152, 5, 0.2);
+}
+textarea {
+  height: 120px;
+  resize: vertical;
+}
+/* FIX: Removed old button styles; it now uses the global .cta-button class */
+button:disabled {
+  background-color: #999;
+  border-color: #999;
+  cursor: not-allowed;
+}
+.status-message {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+@media (max-width: 992px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contact-details {
+    text-align: center;
+  }
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .info-icon-wrapper {
+    margin: 0 0 15px 0;
+  }
+}
+@media (max-width: 768px) {
+  .contact-form-wrapper {
+    padding: 30px;
+  }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\DashboardView.vue 
+============================= 
+<template>
+  <div class="dashboard-page">
+    <h1>Welcome to the Dashboard!</h1>
+    <p>This is your authenticated area.</p>
+    <button @click="handleLogout">Log Out</button>
+  </div>
+</template>
+
+<script>
+import { supabase } from '@/supabase'; // Import the supabase client
+
+export default {
+  name: 'DashboardView',
+  methods: {
+    async handleLogout() { // Make method async
+      try {
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+          throw error;
+        }
+
+        console.log('Supabase: User logged out successfully!');
+        // Clear local storage items that your app might use for custom flags
+        // Supabase client usually handles its own session data cleanup.
+        localStorage.removeItem('userLoggedIn'); 
+        
+        alert('You have been logged out.'); // Optional: provide user feedback
+        this.$router.push('/login'); // Redirect to login page after logout
+      } catch (error) {
+        console.error('Supabase Logout Error:', error.message);
+        alert('An error occurred during logout: ' + error.message);
+      }
+    }
+  }
+}
+</script>
+
+<style scoped>
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  text-align: center;
+  padding: 20px;
+}
+h1 {
+  color: var(--primary-color); /* Assuming you have primary-color defined globally */
+  margin-bottom: 20px;
+}
+p {
+  color: var(--text-dark); /* Assuming you have text-dark defined globally */
+  margin-bottom: 30px;
+}
+button {
+  padding: 12px 25px;
+  background-color: var(--secondary-color); /* Assuming you have secondary-color defined globally */
+  color: var(--white-color); /* Assuming you have white-color defined globally */
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background-color: #d88904; /* A slightly darker shade for hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\HomeView.vue 
+============================= 
+<template>
+  <div>
+    <!-- Section 1: Hero Section -->
+    <section class="hero-section">
+      <transition-group name="slide-fade" tag="div" class="hero-slideshow">
+        <div
+          v-for="slide in activeSlide"
+          :key="slide.image"
+          class="slide"
+          :style="{ backgroundImage: `url(${slide.image})` }"
+        ></div>
+      </transition-group>
+
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="hero-title">BMS System Integration</h1>
+        <p class="hero-slogan">"Moving Forward" - We integrate technology, from factory to facility.</p>
+        <div class="hero-cta-buttons">
+          <router-link to="/solutions" class="cta-button primary">Explore Our Solutions</router-link>
+          <router-link to="/contact" class="cta-button primary">Talk to Our Experts</router-link>
+        </div>
+      </div>
+
+      <!-- VERTICALLY GROUPED SLIDE NAVIGATION CONTROLS -->
+      <div class="slide-nav-group">
+        <div 
+          v-for="(slide, index) in slides" 
+          :key="index" 
+          class="slide-dot-wrapper" 
+          :class="{ active: currentSlideIndex === index }"
+          @click="goToSlide(index)">
+          
+          <div class="progress-container slide-nav-progress" v-if="currentSlideIndex === index">
+              <svg class="progress-ring" width="40" height="40" viewBox="0 0 100 100">
+                  <circle class="progress-bg" r="45" cx="50" cy="50" />
+                  <circle
+                      class="progress-fill"
+                      r="45" cx="50" cy="50"
+                      :style="{ 'stroke-dasharray': slideProgressDasharray, 'stroke-dashoffset': slideProgressDashoffset }"
+                  />
+              </svg>
+              <div class="current-slide-number">{{ slideCountdownValue }}</div>
+          </div>
+          <div class="slide-dot" v-else></div> <!-- Regular dot when not active -->
+        </div>
+      </div>
+    </section>
+
+    <!-- The rest of your page remains exactly the same -->
+    <section class="trusted-by-section">
+      <div class="trusted-by-container">
+        <h3 class="trusted-by-title">Trusted By Industry Leaders and Government Agencies in Ethiopia & Beyond</h3>
+        <div class="logos-container">
+          <i class="fas fa-building logo-placeholder" title="Commercial Real Estate"></i>
+          <i class="fas fa-university logo-placeholder" title="Educational Institutions"></i>
+          <i class="fas fa-hotel logo-placeholder" title="Hospitality Sector"></i>
+          <i class="fas fa-industry logo-placeholder" title="Industrial Manufacturing"></i>
+          <i class="fas fa-shield-alt logo-placeholder" title="Government & Security"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="core-services-section">
+      <div class="page-container">
+        <h2 class="section-title">A Complete Integration Partner</h2>
+        <p class="section-subtitle">We don't just supply products; we deliver end-to-end engineered solutions that unify your operations.</p>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-cogs"></i></div>
+            <h4>End-to-End System Integration</h4>
+            <p>From initial design and architecture to hardware deployment and software configuration, we ensure all systems work in perfect harmony.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <h4>Building Management Systems (BMS)</h4>
+            <p>Our intelligent BMS solutions provide a central command center to monitor, control, and optimize energy, security, and climate systems.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"><i class="fas fa-server"></i></div>
+            <h4>Enterprise Hardware & Factory Power</h4>
+            <p>Leverage our direct access to enterprise-grade servers, networking gear, and custom-manufactured components from our own factories.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-choose-us-section">
+      <div class="page-container why-choose-us-grid">
+        <div class="why-choose-us-image">
+          <!-- Using only the original image with native lazy loading -->
+          <img 
+            :src="whyChooseUsImage" 
+            alt="Tongfang Engineering and Manufacturing"
+            loading="lazy"
+            class="lazyload-img"
+          >
+        </div>
+        <div class="why-choose-us-content">
+          <h2 class="section-title" style="text-align: left;">The Tongfang Advantage</h2>
+          <p class="section-subtitle" style="text-align: left; margin-left: 0;">We are unique because we control the entire lifecycle of your solution.</p>
+          <ul>
+            <li><strong>Factory Direct:</strong> As a manufacturer, we eliminate supply chain issues and provide hardware perfectly matched to your needs.</li>
+            <li><strong>Expert Design:</strong> Our Addis Ababa-based engineers design and customize solutions for the local context and international standards.</li>
+            <li><strong>Single Point of Contact:</strong> From the first blueprint to long-term support, you have one dedicated partner for your entire project.</li>
+            <li><strong>Guaranteed Compatibility:</strong> By integrating our own hardware and software, we guarantee a seamless, reliable, and secure system.</li>
+          </ul>
+          <router-link to="/about" class="cta-button primary-outline">Learn More About Us</router-link>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-project-section">
+      <div class="project-overlay"></div>
+      <div class="page-container project-content">
+        <h2 class="section-title">Featured Project: Addis Ababa Commercial Tower</h2>
+        <p class="section-subtitle">A successful deployment of a fully integrated smart building solution, enhancing security and reducing energy costs by 35%.</p>
+        <router-link to="/achievements" class="cta-button">View Our Achievements</router-link>
+      </div>
+    </section>
+
+    <section class="final-cta-section">
+      <div class="page-container">
+        <h2>Let's Build the Future Together</h2>
+        <p>Discuss your project with our integration experts today. We're ready to help you move forward.</p>
+        <router-link to="/contact" class="cta-button">Get a Free Consultation</router-link>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+// Import all images explicitly. We are only using the original existing images here.
+import heroBg3 from '@/assets/images/hero-bg-3.png';
+import heroBgPexels from '@/assets/images/pexels-jakubzerdzicki-18186205.jpg';
+import heroBg2 from '@/assets/images/hero-bg-2.jpg';
+import heroBg4 from '@/assets/images/hero-bg-4.png';
+import whyChooseUsOriginal from '@/assets/images/光电.png'; // Only the original image
+
+export default {
+  name: 'HomeView',
+  data() {
+    return {
+      currentSlideIndex: 0,
+      slideInterval: null,
+      slides: [
+        { image: heroBg3 },
+        { image: heroBgPexels },
+        { image: heroBg2 },
+        { image: heroBg4 },
+      ],
+      slideCountdownValue: 6, 
+      initialSlideCountdownValue: 6,
+      slideCountdownInterval: null,
+
+      // Data for why-choose-us image - only the original source
+      whyChooseUsImage: whyChooseUsOriginal, 
+      // Responsive image srcset is removed as we are not using multiple sizes
+    };
+  },
+  computed: {
+    activeSlide() {
+      // Use slice to create a new array for transition-group,
+      // and ensure only the current slide is passed.
+      return [this.slides[this.currentSlideIndex]];
+    },
+    slideCircumference() {
+      return 2 * Math.PI * 45; 
+    },
+    slideProgressDasharray() {
+      return `${this.slideCircumference} ${this.slideCircumference}`;
+    },
+    slideProgressDashoffset() {
+      const progressPercentage = (this.initialSlideCountdownValue - this.slideCountdownValue) / this.initialSlideCountdownValue;
+      return this.slideCircumference * (1 - progressPercentage);
+    },
+  },
+  methods: {
+    preloadSlideImage(index) {
+        // Preload the next slide's image in the background
+        const nextIndex = (index + 1) % this.slides.length;
+        const img = new Image();
+        img.src = this.slides[nextIndex].image;
+    },
+    startSlideTimer() {
+      clearInterval(this.slideInterval);
+      clearInterval(this.slideCountdownInterval);
+      this.slideCountdownValue = this.initialSlideCountdownValue; 
+      this.startSlideCountdown(); 
+      
+      this.slideInterval = setInterval(() => {
+        this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
+        clearInterval(this.slideCountdownInterval); 
+        this.slideCountdownValue = this.initialSlideCountdownValue; 
+        this.startSlideCountdown(); 
+        this.preloadSlideImage(this.currentSlideIndex); // Preload the image after the *next* slide
+      }, 6000); 
+    },
+    goToSlide(index) {
+      this.currentSlideIndex = index;
+      this.startSlideTimer(); 
+    },
+    startSlideCountdown() {
+      this.slideCountdownInterval = setInterval(() => {
+        if (this.slideCountdownValue > 0) {
+          this.slideCountdownValue--;
+        } else {
+          clearInterval(this.slideCountdownInterval);
+          this.slideCountdownInterval = null;
+        }
+      }, 1000); 
+    },
+  },
+  mounted() {
+    this.startSlideTimer();
+    this.preloadSlideImage(-1); // Preload the first *next* slide (index 1) initially
+  },
+  beforeUnmount() {
+    clearInterval(this.slideInterval);
+    clearInterval(this.slideCountdownInterval);
+  }
+}
+</script>
+
+<style scoped>
+/* --- HERO SECTION STYLES (MERGED) --- */
+.hero-section {
+  display: flex; justify-content: center; align-items: center; text-align: center; height: calc(100vh - 110px); min-height: 650px;
+  position: relative; color: var(--white-color); overflow: hidden;
+}
+.hero-slideshow {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+.slide {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center top;
+  filter: brightness(1.3) contrast(1.1);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  /* Added opacity for better fade-in on load, in case background-image is slow */
+  opacity: 0;
+  transition: opacity 0.5s ease-in; /* for when image initially loads */
+}
+/* Style for background images once they are deemed "loaded" or active */
+.slide[style*="background-image"] { /* Checks if background-image style is set, implying it's loaded */
+    opacity: 1;
+}
+
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: opacity 1.5s ease;
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  opacity: 0;
+}
+
+/* NEW STYLES FOR VERTICALLY GROUPED SLIDE NAVIGATION (MODIFIED) */
+.slide-nav-group {
+  position: absolute;
+  right: 40px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between dots */
+}
+
+/* Wrapper for both active progress bar and inactive dot */
+.slide-dot-wrapper {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 40px; /* Fixed size for wrapper to maintain spacing */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the inactive dot */
+.slide-dot {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.4); /* Light grey dot */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slide-dot-wrapper:hover .slide-dot {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Styles for the active progress bar container */
+.progress-container.slide-nav-progress {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+.progress-container.slide-nav-progress .progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Start progress from top */
+}
+
+.progress-container.slide-nav-progress .progress-bg {
+    stroke-width: 4;
+    stroke: rgba(255, 255, 255, 0.3);
+    fill: transparent;
+}
+
+.progress-container.slide-nav-progress .progress-fill {
+    stroke-width: 4;
+    stroke: var(--secondary-color);
+    fill: transparent;
+    transition: stroke-dashoffset 1s linear;
+    stroke-linecap: round;
+}
+
+.current-slide-number {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
+
+/* ✅ OVERLAY LIGHTENED MAXIMALLY: Opacity is now very low for maximum image visibility */
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.2), rgba(13, 36, 79, 0.1)); z-index: 2; }
+.hero-content { position: relative; z-index: 3; max-width: 950px; padding: 0 20px; animation: fadeIn 1.5s ease-in-out; }
+.hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
+.hero-slogan { font-size: 1.8rem; font-weight: 500; font-style: italic; color: var(--secondary-color); margin-bottom: 2.5rem; opacity: 0.9; text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
+.hero-cta-buttons { display: flex; justify-content: center; gap: 200px; flex-wrap: wrap; }
+.cta-button { text-decoration: none; }
+.cta-button.primary { background-color: var(--secondary-color); color: var(--white-color); border: 2px solid var(--secondary-color); }
+.cta-button.secondary { background-color: transparent; color: var(--white-color); border: 2px solid var(--white-color); }
+.cta-button.secondary:hover { background-color: var(--white-color); color: var(--primary-color); }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* For images that are lazy loaded with `loading="lazy"` */
+.lazyload-img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.lazyload-img[src] { /* Apply opacity 1 once the src attribute is populated */
+  opacity: 1;
+}
+
+/* --- [ALL YOUR OTHER EXISTING STYLES REMAIN UNCHANGED BELOW] --- */
+.trusted-by-section { background-color: var(--light-bg-color); padding: 30px 20px; border-bottom: 1px solid var(--border-color); }
+.trusted-by-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+.trusted-by-title { font-size: 1rem; font-weight: 600; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 25px; }
+.logos-container { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 40px; }
+.logo-placeholder { font-size: 40px; color: #A0AEC0; transition: color 0.3s ease; }
+.logo-placeholder:hover { color: var(--secondary-color); }
+
+.core-services-section { background-color: var(--white-color); padding: 80px 20px; }
+.page-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-title { text-align: center; font-size: 2.5rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.section-subtitle { text-align: center; font-size: 1.1rem; color: var(--text-light); max-width: 650px; margin: 0 auto 50px auto; }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.service-card { text-align: center; padding: 30px; border: 1px solid var(--border-color); border-radius: 12px; transition: all 0.3s ease; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px var(--shadow-color); }
+.service-icon { font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 20px; }
+.service-card h4 { font-size: 1.3rem; color: var(--primary-color); margin-bottom: 15px; }
+.service-card p { color: var(--text-light); line-height: 1.7; }
+
+.why-choose-us-section { background-color: var(--light-bg-color); padding: 80px 20px; }
+.why-choose-us-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center; }
+.why-choose-us-image img { width: 100%; border-radius: 12px; }
+.why-choose-us-content ul { list-style: none; padding: 0; margin-top: 20px; margin-bottom: 30px; }
+.why-choose-us-content li { padding-left: 30px; margin-bottom: 15px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="%23F59805" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center; }
+.cta-button.primary-outline { background-color: transparent; color: var(--primary-color); border: 2px solid var(--secondary-color); }
+.cta-button.primary-outline:hover { background-color: var(--secondary-color); color: var(--white-color); }
+
+.featured-project-section { padding: 100px 20px; text-align: center; position: relative; background: url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200') no-repeat center center/cover; color: var(--white-color); }
+.project-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(13, 36, 79, 0.85); }
+.project-content { position: relative; z-index: 2; }
+.project-content .section-title, .project-content .section-subtitle { color: var(--white-color); }
+.project-content .section-subtitle { max-width: 600px; opacity: 0.9; }
+
+.final-cta-section { padding: 80px 20px; text-align: center; background-color: var(--white-color); }
+.final-cta-section h2 { font-size: 2.2rem; color: var(--primary-color); margin-bottom: 15px; }
+.final-cta-section p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; }
+
+@media (max-width: 900px) {
+  .hero-title { font-size: 2.8rem; }
+  .hero-slogan { font-size: 1.2rem; }
+  .why-choose-us-grid { grid-template-columns: 1fr; text-align: center; }
+  .why-choose-us-content .section-title, .why-choose-us-content .section-subtitle { text-align: center !important; margin-left: auto; margin-right: auto; }
+  .why-choose-us-content ul { text-align: left; }
+}
+@media (max-width: 768px) {
+  .hero-cta-buttons { flex-direction: column; align-items: center; }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\LoginView.vue 
+============================= 
+<template>
+  <div class="login-page">
+    <div class="login-container">
+      <!-- Left Side: Branding and Welcome Message -->
+      <div class="login-branding">
+        <div class="branding-content">
+          <router-link to="/" class="logo-link">
+            <img src="/logo.png" alt="Tongfang Logo" class="logo-img" />
+            <h2>TONGFANG</h2>
+          </router-link>
+          <h1>Partner Portal Access</h1>
+          <p>Unlock exclusive resources, training materials, and support by logging into your partner account.</p>
+        </div>
+      </div>
+
+      <!-- Right Side: Login Form -->
+      <div class="login-form-section">
+        <div class="form-wrapper">
+          <h3>Welcome Back</h3>
+          <p class="form-subtext">Please enter your credentials to log in.</p>
+          <form @submit.prevent="handleLogin">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <div class="input-wrapper">
+                <i class="fas fa-envelope icon"></i>
+                <input type="email" id="email" v-model="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-wrapper">
+                <i class="fas fa-lock icon"></i>
+                <input :type="passwordFieldType" id="password" v-model="password" placeholder="••••••••" required>
+                <!-- Password Toggle Button -->
+                <button type="button" class="password-toggle" @click="togglePasswordVisibility" aria-label="Toggle password visibility">
+                  <i :class="['fas', passwordFieldType === 'password' ? 'fa-eye' : 'fa-eye-slash']"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-options">
+              <div class="remember-me">
+                <input type="checkbox" id="remember" v-model="rememberMe">
+                <label for="remember">Remember Me</label>
+              </div>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit" class="login-button" :disabled="loading">
+              <i class="fas fa-sign-in-alt" v-if="!loading"></i>
+              <i class="fas fa-spinner fa-spin" v-else></i>
+              {{ loading ? 'Logging In...' : 'Log In' }}
+            </button>
+          </form>
+          <!-- Error Message Display -->
+          <div v-if="errorMessage" class="error-message">
+            <p>{{ errorMessage }}</p>
+          </div>
+          <div class="signup-link">
+            <p>Don't have an account? <router-link to="/contact">Become a Partner</router-link></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { supabase } from '@/supabase'; // Import the supabase client
+
+export default {
+  name: 'LoginView',
+  data() {
+    return {
+      email: '',
+      password: '',
+      rememberMe: false,
+      passwordFieldType: 'password', 
+      loading: false, // Loading state for the button
+      errorMessage: null, // To display error messages
+    };
+  },
+  methods: {
+    async handleLogin() { 
+      this.loading = true; // Start loading
+      this.errorMessage = null; // Clear previous errors
+
+      try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: this.email,
+          password: this.password,
+          // You could also add `options: { redirectTo: '/dashboard' }` here,
+          // but the current router push works well for direct login.
+        });
+
+        if (error) {
+          throw error; // Propagate error to the catch block
+        }
+
+        if (data && data.user) {
+          console.log('Supabase: User logged in successfully!', data.user);
+          // Supabase client handles session tokens in local storage automatically.
+          // Setting a custom flag `userLoggedIn` is optional but can be used for app-specific logic.
+          localStorage.setItem('userLoggedIn', 'true'); 
+          
+          this.$router.push('/dashboard'); // Redirect to dashboard
+        } else {
+          // Fallback error for unexpected scenarios where no error object but no user data
+          this.errorMessage = 'Login failed. Please check your credentials.';
+        }
+
+      } catch (error) {
+        console.error('Supabase Login Error:', error.message);
+        // Display user-friendly error messages based on Supabase's error messages
+        if (error.message.includes('Invalid login credentials')) {
+          this.errorMessage = 'Incorrect email or password.';
+        } else if (error.message.includes('Email not confirmed')) {
+          this.errorMessage = 'Please confirm your email address.';
+        } else {
+          this.errorMessage = error.message || 'An unexpected error occurred during login.';
+        }
+      } finally {
+        this.loading = false; // Stop loading, regardless of success or failure
+      }
+    },
+    togglePasswordVisibility() {
+      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+    },
+  },
+};
+</script>
+
+<style scoped>
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--light-bg-color);
+  padding: 40px 20px;
+}
+.login-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  max-width: 1100px;
+  width: 100%;
+  background: var(--white-color);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* --- Branding Side --- */
+.login-branding {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a7a 100%);
+  color: var(--white-color);
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.branding-content .logo-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: var(--white-color);
+  margin-bottom: 25px;
+}
+.branding-content .logo-img {
+  width: 50px;
+  height: auto;
+}
+.branding-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+.branding-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.8;
+}
+
+/* --- Form Side --- */
+.login-form-section {
+  padding: 60px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+.form-wrapper h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+.form-subtext {
+  color: var(--text-light);
+  margin-bottom: 30px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.input-wrapper {
+  position: relative;
+}
+.input-wrapper .icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  z-index: 2; /* Ensure icon is above input */
+}
+.form-group input {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: #f7f9fc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(245, 152, 5, 0.2);
+}
+
+/* --- Password Toggle Styles --- */
+input[type="password"], input[type="text"] {
+  padding-right: 45px; /* Add space for the icon on the right */
+}
+.password-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 45px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+.password-toggle:hover {
+  color: var(--secondary-color);
+}
+/* --- END Password Toggle Styles --- */
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+}
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.remember-me label {
+  cursor: pointer;
+  color: var(--text-light);
+}
+.forgot-password {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+.login-button {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.login-button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+/* Styles for disabled button and spinner */
+.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.fa-spinner {
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 30px;
+  color: var(--text-light);
+}
+.signup-link a {
+  color: var(--secondary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Error message styling */
+.error-message {
+  color: #d9534f; /* A common red for error messages */
+  background-color: #fcebeb;
+  border: 1px solid #d9534f;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 900px) {
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+  .login-branding {
+    display: none;
+  }
+  .login-form-section {
+    padding: 40px;
+  }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\PartnerView.vue 
+============================= 
+<template>
+  <div class="page-container">
+    <h1 class="section-title">Grow With Us</h1>
+    <p class="section-subtitle">Join our network of partners to leverage innovative products, world-class training, and collaborative marketing opportunities.</p>
+
+    <div class="partner-container">
+      <div class="partner-card">
+        <h3>Why Partner with TONGFANG?</h3>
+        <p>Gain a competitive edge by offering cutting-edge integrated solutions. We provide the tools, training, and support you need to succeed.</p>
+        <ul>
+          <li>Access to innovative products & solutions</li>
+          <li>Comprehensive training and certification</li>
+          <li>Co-marketing and lead generation support</li>
+          <li>Lucrative partner-only pricing tiers</li>
+        </ul>
+      </div>
+      <div class="partner-card cta-card">
+        <h3>Become a Partner</h3>
+        <p>We offer flexible partnership models tailored to your business. Apply today to discover the right fit for you.</p>
+        <router-link to="/contact" class="cta-button">Apply Now</router-link>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'PartnerView'
+}
+</script>
+
+<style scoped>
+.partner-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+.partner-card {
+    background-color: var(--light-bg-color);
+    border-radius: 12px;
+    padding: 40px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+.partner-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0 0 15px 0;
+}
+.partner-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    flex-grow: 1;
+}
+.partner-card ul { 
+  list-style: none; 
+  padding: 0; 
+  margin: 20px 0; 
+}
+.partner-card li { 
+  margin-bottom: 12px; 
+  padding-left: 25px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2328a745" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') no-repeat left center;
+}
+.cta-card {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  text-align: center;
+}
+.cta-card h3 {
+  color: var(--white-color);
+}
+.cta-card p {
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 30px;
+}
+.cta-card .cta-button {
+  margin-top: auto;
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\ProductCategoryDetailView.vue 
+============================= 
+<template>
+  <div v-if="categoryData" class="category-detail-page">
+    <!-- Hero Section -->
+    <section class="detail-hero" :style="{ backgroundImage: `url(${categoryData.hero.image})` }">
+      <div class="hero-overlay-gradient"></div>
+      <div class="hero-content-detail">
+        <h1>{{ categoryData.hero.title }}</h1>
+        <p>{{ categoryData.hero.subtitle }}</p>
+        <button class="cta-button primary" @click="scrollToProducts">Learn More</button>
+      </div>
+    </section>
+
+    <div class="page-container main-content-area">
+      <!-- Intro and Sub-Categories Sections -->
+      <section class="intro-section">
+        <h2>{{ categoryData.name }}</h2>
+        <p>{{ categoryData.introduction }}</p>
+      </section>
+
+      <section class="sub-categories-section">
+        <h3>Product categories</h3>
+        <div class="sub-category-cards">
+          <div v-for="sub in categoryData.subCategories" :key="sub.name" class="sub-category-card">
+            <img :src="sub.image" :alt="sub.name" />
+            <div class="sub-category-info">
+              <h4>{{ sub.name }}</h4>
+              <p>{{ sub.description }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Main Product Listing with Sidebar -->
+      <div class="product-listing-layout" id="product-listing">
+        <aside class="filter-sidebar">
+          <h4>Search List</h4>
+          <div class="search-box">
+            <input type="text" v-model="searchTerm" placeholder="Search Product Models" />
+            <i class="fas fa-search"></i>
+          </div>
+          <div class="filter-group">
+            <h5 @click="toggleFilter('subcategory')">
+              Subcategory <i :class="['fas', filtersOpen.subcategory ? 'fa-minus' : 'fa-plus']"></i>
+            </h5>
+            <ul v-show="filtersOpen.subcategory">
+              <li v-for="sub in categoryData.subCategories" :key="sub.name">
+                <input type="checkbox" :id="sub.name" :value="sub.name" v-model="activeSubcategories" />
+                <label :for="sub.name">{{ sub.name }}</label>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <main class="product-grid-area">
+          <div class="grid-header">
+            <span>{{ filteredProducts.length }} Products Matches</span>
+          </div>
+          <div class="product-grid">
+            <div 
+              v-for="product in paginatedProducts" 
+              :key="product.id"
+              class="product-grid-item-wrapper"
+            >
+              <router-link :to="`/products/${product.id}`" class="product-link-area"></router-link>
+              <ProductGridItem 
+                :product="product"
+                :is-compared="comparisonList.some(p => p.id === product.id)"
+                @toggle-compare="handleToggleCompare"
+              />
+            </div>
+          </div>
+          <!-- FIX: Corrected the typo from class. to class= -->
+          <div class="pagination">
+             <button @click="prevPage" :disabled="currentPage === 1">&lt;</button>
+             <span>Page {{ currentPage }} of {{ totalPages }}</span>
+             <button @click="nextPage" :disabled="currentPage === totalPages">&gt;</button>
+          </div>
+        </main>
+      </div>
+
+       <!-- Application Scenarios Section -->
+       <section class="application-scenarios">
+        <h2>Application scenarios</h2>
+        <div class="scenario-grid">
+          <div class="scenario-card" v-for="scenario in categoryData.applicationScenarios" :key="scenario.name">
+            <img :src="scenario.image" :alt="scenario.name">
+            <div class="scenario-name">{{ scenario.name }}</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    
+    <!-- The new ComparisonBar component -->
+    <ComparisonBar 
+      :products="comparisonList" 
+      @remove="handleToggleCompare"
+      @clear="comparisonList = []"
+    />
+  </div>
+  <div v-else class="loading-state">Loading Category...</div>
+</template>
+
+<script>
+import { ApiService } from '@/services/api.js';
+import ProductGridItem from '@/components/ProductGridItem.vue';
+import ComparisonBar from '@/components/ComparisonBar.vue';
+
+export default {
+  name: 'ProductCategoryDetailView',
+  components: { ProductGridItem, ComparisonBar },
+  data() {
+    return {
+      categoryData: null,
+      searchTerm: '',
+      activeSubcategories: [],
+      filtersOpen: { subcategory: true, },
+      currentPage: 1,
+      itemsPerPage: 9,
+      comparisonList: [],
+    };
+  },
+  computed: {
+    filteredProducts() {
+      if (!this.categoryData) return [];
+      let products = this.categoryData.products;
+      if (this.searchTerm) {
+        products = products.filter(p => p.model.toLowerCase().includes(this.searchTerm.toLowerCase()));
+      }
+      if (this.activeSubcategories.length > 0) {
+        products = products.filter(p => this.activeSubcategories.includes(p.subCategory));
+      }
+      return products;
+    },
+    totalPages() {
+      return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+    },
+    paginatedProducts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.filteredProducts.slice(start, end);
+    }
+  },
+  methods: {
+    async fetchCategoryData() {
+      const slug = this.$route.params.categorySlug;
+      this.categoryData = await ApiService.fetchCategoryDetails(slug);
+    },
+    toggleFilter(filter) {
+      this.filtersOpen[filter] = !this.filtersOpen[filter];
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) this.currentPage++;
+    },
+    prevPage() {
+      if (this.currentPage > 1) this.currentPage--;
+    },
+    scrollToProducts() {
+      const el = document.getElementById('product-listing');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    },
+    handleToggleCompare(product) {
+      const index = this.comparisonList.findIndex(p => p.id === product.id);
+      if (index > -1) {
+        this.comparisonList.splice(index, 1);
+      } else {
+        if (this.comparisonList.length < 4) {
+          this.comparisonList.push(product);
+        } else {
+          alert('You can only compare up to 4 products at a time.');
+        }
+      }
+    },
+  },
+  watch: {
+    '$route.params.categorySlug': 'fetchCategoryData', // Re-fetch data when route changes
+    activeSubcategories() { this.currentPage = 1; },
+    searchTerm() { this.currentPage = 1; },
+  },
+  created() {
+    this.fetchCategoryData();
+  }
+};
+</script>
+
+<style scoped>
+/* All styles are correct and unchanged */
+.product-grid-item-wrapper {
+  position: relative;
+}
+.product-link-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 50px); 
+  z-index: 1; 
+}
+.detail-hero { position: relative; height: 450px; background-size: cover; background-position: center; color: var(--white-color); display: flex; align-items: center; padding: 0 5%; }
+.hero-overlay-gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, #0d244f 10%, rgba(13, 36, 79, 0.5) 50%, transparent 100%); }
+.hero-content-detail { position: relative; z-index: 2; max-width: 500px; }
+.hero-content-detail h1 { font-size: 2.5rem; margin-bottom: 15px; }
+.hero-content-detail p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 25px; }
+.main-content-area { padding-top: 50px; padding-bottom: 50px; }
+.intro-section { text-align: center; max-width: 800px; margin: 0 auto 60px auto; }
+.intro-section h2 { font-size: 2rem; margin-bottom: 15px; color: var(--primary-color); }
+.intro-section p { color: var(--text-light); line-height: 1.7; }
+.sub-categories-section { margin-bottom: 60px; }
+.sub-categories-section h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 20px; }
+.sub-category-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+.sub-category-card { display: flex; gap: 20px; align-items: center; background: #f9fafb; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; }
+.sub-category-card img { width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; }
+.sub-category-card h4 { margin: 0 0 5px 0; font-size: 1.1rem; }
+.sub-category-card p { margin: 0; color: var(--text-light); font-size: 0.9rem; }
+.product-listing-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; }
+.filter-sidebar { border-right: 1px solid var(--border-color); padding-right: 30px; }
+.filter-sidebar h4 { font-size: 1.2rem; margin-bottom: 20px; }
+.search-box { position: relative; margin-bottom: 20px; }
+.search-box input { width: 100%; padding: 10px 35px 10px 10px; border-radius: 6px; border: 1px solid var(--border-color); }
+.search-box i { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: #aaa; }
+.filter-group h5 { display: flex; justify-content: space-between; align-items: center; cursor: pointer; margin-bottom: 15px; font-size: 1rem; }
+.filter-group ul { list-style: none; padding: 0; margin: 0; }
+.filter-group li { margin-bottom: 10px; }
+.filter-group label { margin-left: 8px; }
+.grid-header { margin-bottom: 20px; color: var(--text-light); }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.pagination { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 40px; }
+.pagination button { padding: 8px 12px; border: 1px solid var(--border-color); background: var(--white-color); cursor: pointer; }
+.pagination button:disabled { cursor: not-allowed; opacity: 0.5; }
+.application-scenarios { margin-top: 80px; text-align: center; }
+.application-scenarios h2 { font-size: 2rem; margin-bottom: 40px; }
+.scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.scenario-card { border-radius: 8px; overflow: hidden; }
+.scenario-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.scenario-name { background: #f1f1f1; padding: 15px; font-weight: 500; }
+.loading-state { text-align: center; padding: 80px; font-size: 1.2rem; color: var(--text-light); }
+@media (max-width: 992px) {
+  .product-listing-layout { grid-template-columns: 1fr; }
+  .filter-sidebar { border-right: none; border-bottom: 1px solid var(--border-color); padding-right: 0; padding-bottom: 30px; margin-bottom: 30px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .sub-category-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .product-grid { grid-template-columns: 1fr; }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\ProductDetailView.vue 
+============================= 
+<template>
+  <div class="page-container" v-if="product">
+    <!-- Main Product Section Layout -->
+    <div class="product-detail-layout">
+      
+      <!-- Left Column: Large Product Image -->
+      <div class="product-image-gallery">
+        <img :src="product.image" :alt="product.name" class="main-product-image">
+      </div>
+
+      <!-- Right Column: Product Details -->
+      <div class="product-details-content">
+        <router-link to="/products" class="back-link">← Back to All Products</router-link>
+        
+        <span class="product-brand">{{ product.brand }}</span>
+        <h1 class="product-title">{{ product.name }}</h1>
+        <p class="product-model">Model: {{ product.model }}</p>
+        
+        <hr class="divider" />
+
+        <h3>Key Features</h3>
+        <ul class="feature-list">
+          <li v-for="feature in product.features" :key="feature">
+            {{ feature }}
+          </li>
+        </ul>
+
+        <router-link to="/contact" class="cta-button">Request a Quote</router-link>
+      </div>
+    </div>
+
+    <!-- Full-Width Technical Specifications Section -->
+    <div class="product-specs-section">
+      <h2 class="specs-section-title">Technical Specifications</h2>
+      <div class="specs-table-container">
+        <table class="specs-table">
+          <tbody>
+            <tr v-for="(value, key) in product.specs" :key="key">
+              <td class="spec-key">{{ key }}</td>
+              <td class="spec-value">{{ value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+  <div v-else class="page-container loading-state">
+    <p>Loading product details...</p>
+  </div>
+</template>
+
+<script>
+import { ApiService } from '@/services/api.js';
+
+export default {
+  name: 'ProductDetailView',
+  data() {
+    return {
+      product: null,
+    };
+  },
+  async created() {
+    // This logic correctly fetches a specific product by its ID from the URL
+    const productId = this.$route.params.id;
+    this.product = await ApiService.findProductById(productId);
+  }
+}
+</script>
+
+<style scoped>
+/* Main Layout */
+.product-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr; /* Image column is slightly smaller */
+  gap: 50px;
+  align-items: flex-start;
+  margin-bottom: 60px;
+}
+
+/* Image Gallery (Left Column) */
+.product-image-gallery .main-product-image {
+  width: 100%;
+  border-radius: 16px;
+  background-color: var(--light-bg-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Product Details (Right Column) */
+.product-details-content {
+  position: sticky;
+  top: 140px; /* Adjust based on header height */
+}
+.back-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.back-link:hover {
+  color: var(--primary-color);
+}
+.product-brand {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.product-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 5px 0;
+  line-height: 1.2;
+}
+.product-model {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin: 0 0 20px 0;
+}
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 20px 0;
+}
+.product-details-content h3 {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+.feature-list li {
+  padding-left: 30px;
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23F59805" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>') no-repeat left center;
+}
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Specifications Section */
+.product-specs-section {
+  padding: 50px 0;
+  background-color: var(--light-bg-color);
+  border-radius: 16px;
+  margin: 40px 0;
+}
+.specs-section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+}
+.specs-table-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0 5px 25px var(--shadow-color);
+  overflow: hidden;
+}
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.specs-table tr:nth-child(even) {
+  background-color: #fcfdfe;
+}
+.specs-table td {
+  padding: 18px 25px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1rem;
+}
+.specs-table tr:last-child td {
+  border-bottom: none;
+}
+.spec-key {
+  font-weight: 600;
+  color: var(--primary-color);
+  width: 40%;
+}
+.spec-value {
+  color: var(--text-light);
+}
+
+/* Loading State & Responsive */
+.loading-state {
+  text-align: center;
+  padding: 80px;
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 900px) {
+  .product-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .product-details-content {
+    position: static; /* Remove sticky positioning on mobile */
+  }
+  .product-title {
+    font-size: 2.2rem;
+  }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\ProductsView.vue 
+============================= 
+<template>
+  <div class="products-page">
+    <section class="products-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Pioneering Security and Integrated Solutions</h1>
+        <p class="hero-subtitle">The hardware and software backbone for your integrated solutions.</p>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+    <div class="page-container">
+      <h2 class="section-title">Product Categories</h2>
+    </div>
+
+    <div class="page-container">
+      <section
+        v-for="(group, groupKey) in productGroups"
+        :key="groupKey"
+        :id="groupKey"
+        class="categories-section"
+      >
+        <h2 class="group-title">{{ group.title }}</h2>
+        <div class="category-grid">
+          <!-- --- FIX 2: UPDATED THE LINK TO MATCH THE NEW ROUTE --- -->
+          <router-link
+            v-for="category in group.items"
+            :key="category.name"
+            :to="'/products/category/' + category.slug" 
+            class="category-card"
+          >
+            <div class="category-image-wrapper">
+              <img :src="category.image" :alt="category.name" class="category-image" />
+            </div>
+            <h3 class="category-name">{{ category.name }}</h3>
+          </router-link>
+        </div>
+      </section>
+    </div>
+
+    <section class="related-links-section page-container">
+      <h2 class="section-title">Related links</h2>
+      <div class="links-grid">
+        <router-link to="/solutions" class="related-link-card">
+          <img
+            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800"
+            alt="Solutions"
+          />
+          <div class="link-card-overlay"></div>
+          <h3>Solutions</h3>
+        </router-link>
+        <router-link to="/achievements" class="related-link-card">
+          <img
+            src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"
+            alt="Success Stories"
+          />
+          <div class="link-card-overlay"></div>
+          <h3>Success Stories</h3>
+        </router-link>
+        <router-link to="/about" class="related-link-card">
+          <img
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800"
+            alt="Core Technologies"
+          />
+          <div class="link-card-overlay"></div>
+          <h3>Core Technologies</h3>
+        </router-link>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+// Script remains unchanged
+export default {
+  name: 'ProductsView',
+  data() {
+    return {
+      productGroups: {
+        computing: {
+          title: 'Computing Devices',
+          items: [
+            { name: 'HT-IPC Industrial PCs', slug: 'industrial-pcs', image: require('@/assets/images/products/jpg.jpg'), },
+            { name: 'Power Distribution Units', slug: 'pdus', image: require('@/assets/images/products/distribution.jpg'), },
+            { name: 'Integrated Management Software', slug: 'bms-software', image: require('@/assets/images/products/software.jpg'), },
+          ],
+        },
+        surveillance: {
+          title: 'Surveillance & Security',
+          items: [
+            { name: 'IP Network Cameras', slug: 'ip-cameras', image: require('@/assets/images/products/network-products.jpg'), },
+            { name: 'HD Analog Cameras', slug: 'analog-cameras', image: require('@/assets/images/products/turbo-hd.jpg'), },
+            { name: 'Thermal Imaging Systems', slug: 'thermal-systems', image: require('@/assets/images/products/thermal.png'), },
+            { name: 'Intelligent Alarm Systems', slug: 'alarm-system', image: require('@/assets/images/products/alarm.png'), },
+            { name: 'Security Inspection Gates', slug: 'inspection-gates', image: require('@/assets/images/products/inspection.jpg'), },
+            { name: 'HiLook by TONGFANG', slug: 'hilook', image: require('@/assets/images/products/hilook.jpg'), },
+          ],
+        },
+        automation: {
+          title: 'Automation Devices',
+          items: [
+            { name: 'Smart Access Control', slug: 'access-control', image: require('@/assets/images/products/access-control.jpg'), },
+            { name: 'Building Video Intercom', slug: 'video-intercom', image: require('@/assets/images/products/intercom.jpg'), },
+            { name: 'Automated Speed Gates', slug: 'speed-gates', image: require('@/assets/images/products/turnstile.png'), },
+            { name: 'Intelligent Traffic Control', slug: 'traffic-control', image: require('@/assets/images/products/traffic.png'), },
+            { name: 'Parking Management Systems', slug: 'parking-management', image: require('@/assets/images/products/parking.jpg'), },
+            { name: 'Perimeter Radar Detection', slug: 'radar-detection', image: require('@/assets/images/products/radar.png'), },
+          ],
+        },
+        networking: {
+          title: 'Networking Equipment',
+          items: [
+            { name: 'Enterprise Switches & Routers', slug: 'networking-hardware', image: require('@/assets/images/products/networking.png'), },
+            { name: 'Audio & Sensing Devices', slug: 'audio-sensing', image: require('@/assets/images/products/audio.png'), },
+            { name: 'Cabling & Accessories', slug: 'accessories', image: require('@/assets/images/products/accessories.jpg'), },
+            { name: 'Central Control Displays', slug: 'display-control', image: require('@/assets/images/products/display.jpeg'), },
+            { name: 'Commercial LED Displays', slug: 'led-displays', image: require('@/assets/images/products/led.png'), },
+            { name: 'Interactive Smart Panels', slug: 'interactive-panels', image: require('@/assets/images/products/interactive-flat-panel.png'), },
+          ],
+        },
+      },
+    };
+  },
+};
+</script>
+
+<style scoped>
+/* Styles remain unchanged */
+.products-page { background-color: var(--white-color); }
+.products-hero { background-color: #3103daea; color: var(--white-color); padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
+.hero-title { font-size: 2.8rem; font-weight: 700; margin: 0 0 10px 0; }
+.hero-subtitle { font-size: 1.2rem; font-weight: 400; opacity: 0.9; }
+.hero-wave { position: absolute; bottom: 0; left: 0; width: 100%; height: 100px; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3e%3cpath class='elementor-shape-fill' d='M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7 c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4 c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z' fill='%23fff'%3e%3c/path%3e%3c/svg%3e"); background-size: 100% 100%; }
+.category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.category-card { text-decoration: none; background-color: var(--white-color); border-radius: 12px; text-align: center; border: 1px solid transparent; padding: 20px; transition: all 0.3s ease; cursor: pointer; }
+.category-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12); border-color: var(--border-color); }
+.category-image-wrapper { height: 180px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; }
+.category-image { max-width: 100%; max-height: 100%; object-fit: contain; }
+.category-name { font-size: 1.1rem; font-weight: 500; color: var(--text-dark); }
+.related-links-section { padding-bottom: 80px; }
+.links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.related-link-card { position: relative; height: 250px; border-radius: 12px; overflow: hidden; color: var(--white-color); text-decoration: none; display: flex; align-items: flex-end; justify-content: flex-start; padding: 25px; transition: transform 0.3s ease; }
+.related-link-card:hover { transform: translateY(-5px); }
+.related-link-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.related-link-card:hover img { transform: scale(1.05); }
+.link-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%); }
+.related-link-card h3 { position: relative; z-index: 2; font-size: 1.5rem; font-weight: 600; }
+.section-title { text-align: center; font-size: 2.2rem; font-weight: 600; color: var(--primary-color); margin-bottom: 15px; }
+.categories-section:first-of-type { padding-top: 10px; }
+.group-title { font-size: 2rem; font-weight: 600; color: var(--primary-color); margin-top: 0; margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\SolutionDetailView.vue 
+============================= 
+<template>
+  <div class="page-container" v-if="solution">
+    <div class="solution-header">
+      <router-link to="/solutions" class="back-link">← Back to Solutions</router-link>
+      <h1 class="solution-title">{{ solution.title }}</h1>
+    </div>
+
+    <img :src="solution.image" :alt="solution.title" class="solution-main-image">
+
+    <div class="solution-content">
+      <h3>Overview</h3>
+      <p>{{ solution.description }}</p>
+
+      <h3>Related Products for this Solution</h3>
+      <div class="products-grid">
+         <!-- This is an advanced feature showing how to fetch related products -->
+         <ProductCard v-for="product in relatedProducts" :key="product.id" :product="product" />
+      </div>
+    </div>
+  </div>
+   <div v-else class="page-container">
+    <p>Loading solution...</p>
+  </div>
+</template>
+
+<script>
+import { ApiService } from '@/services/api.js';
+import ProductCard from '@/components/ProductCard.vue';
+
+export default {
+  name: 'SolutionDetailView',
+  components: { ProductCard },
+  data() {
+    return {
+      solution: null,
+      relatedProducts: [],
+    }
+  },
+  async created() {
+    const slug = this.$route.params.slug;
+    this.solution = await ApiService.findSolutionBySlug(slug);
+
+    if (this.solution && this.solution.relatedProducts) {
+      // Fetch the full product details for each related product ID
+      const productPromises = this.solution.relatedProducts.map(id => ApiService.findProductById(id));
+      this.relatedProducts = await Promise.all(productPromises);
+    }
+  }
+}
+</script>
+
+<style scoped>
+.solution-header { text-align: center; margin-bottom: 30px; }
+.back-link { display: block; margin-bottom: 20px; color: var(--secondary-color); text-decoration: none; font-weight: 600; }
+.solution-title { font-size: 2.5rem; margin: 0; color: var(--primary-color); }
+.solution-main-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+.solution-content h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.solution-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-light);
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\SolutionsView.vue 
+============================= 
+<template>
+  <div class="solutions-page">
+    <!-- HERO SECTION -->
+    <section class="solutions-hero">
+      <div class="hero-background-image"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content page-container">
+        <h1 class="hero-title animate-fade-in-up">
+          Integrated Solutions
+        </h1>
+        <p class="hero-subtitle animate-fade-in-up">
+          Moving Forward! Smart Systems
+        </p>
+      </div>
+    </section>
+
+    <!-- OVERVIEW SECTION -->
+    <section id="overview" class="content-section page-container">
+      <h2 class="section-heading">A Rich Portfolio of Empowering Solutions</h2>
+      <p class="section-text">
+        TONGFANG offers an abundance of solution options to facilitate digital transformation.
+        Our AIoT-powered applications provide comprehensive, end-to-end capabilities that open
+        doors to new business opportunities, optimized operations, and a winning edge in the competition.
+      </p>
+    </section>
+
+    <!-- SOLUTIONS BY INDUSTRY -->
+    <section id="solutions-by-industry" class="content-section page-container-fullwidth bg-light">
+      <div class="page-container">
+        <h2 class="section-heading">Solutions by Industry</h2>
+        <h3 class="section-subheading">Tailored to meet varied needs for specific sectors</h3>
+        
+        <div class="industry-grid">
+          <SolutionIndustryCard
+            v-for="industry in industrySolutions"
+            :key="industry.slug"
+            :solution="industry"
+            @click="goToSolutionDetail(industry.slug)" 
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUTIONS BY SCENARIO -->
+    <section id="solutions-by-scenario" class="content-section page-container">
+      <h2 class="section-heading">Solutions by Scenario</h2>
+      <h3 class="section-subheading">Targeting specific business processes and environments</h3>
+      
+      <div class="solutions-grid-scenario">
+        <SolutionScenarioCard
+          v-for="(solution, index) in scenarioSolutions"
+          :key="index"
+          :solution="solution"
+          @click="goToScenarioDetail(solution.slug || solution.title.toLowerCase().replace(/\s/g, '-'))"
+        />
+      </div>
+    </section>
+
+    <!-- SOLUTIONS BY FUNCTION -->
+    <section id="solutions-by-function" class="content-section page-container-fullwidth bg-light">
+      <div class="page-container">
+        <h2 class="section-heading">Solutions by Function</h2>
+        <h3 class="section-subheading">Leveraging Digital Information & AIoT Capabilities</h3>
+        
+        <div class="function-categories-wrapper">
+          <div v-for="category in functionSolutions" :key="category.category" class="function-category">
+            <h4 class="function-category-title">{{ category.category }}</h4>
+            <div class="solutions-grid-function">
+              <SolutionFunctionCard
+                v-for="(solution, index) in category.solutions"
+                :key="index"
+                :solution="solution"
+                @click="goToFunctionDetail(solution.slug || solution.title.toLowerCase().replace(/\s/g, '-'))"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+import { ApiService } from '@/services/api.js';
+import SolutionIndustryCard from '@/components/SolutionIndustryCard.vue';
+import SolutionScenarioCard from '@/components/SolutionScenarioCard.vue';
+import SolutionFunctionCard from '@/components/SolutionFunctionCard.vue';
+
+export default {
+  name: 'SolutionsView',
+  components: {
+    SolutionIndustryCard,
+    SolutionScenarioCard,
+    SolutionFunctionCard
+  },
+  data() {
+    return {
+      industrySolutions: [],
+      scenarioSolutions: [],
+      functionSolutions: []
+    };
+  },
+  async created() {
+    try {
+      this.industrySolutions = await ApiService.fetchSolutionsByIndustry();
+      this.scenarioSolutions = await ApiService.fetchSolutionsByScenario();
+      this.functionSolutions = await ApiService.fetchSolutionsByFunction();
+    } catch (error) {
+      console.error('Error loading solutions:', error);
+    }
+  },
+  methods: {
+    goToSolutionDetail(slug) {
+      this.$router.push(`/solutions/${slug}`);
+    },
+    goToScenarioDetail(slug) {
+      // Assuming a specific route for scenario details, adjust as needed
+      this.$router.push(`/solutions/scenario/${slug}`);
+    },
+    goToFunctionDetail(slug) {
+      // Assuming a specific route for function details, adjust as needed
+      this.$router.push(`/solutions/function/${slug}`);
+    }
+  }
+};
+</script>
+
+<style scoped>
+:root {
+  --primary-color: #0d244f;
+  --secondary-color: #ff8c00;
+  --white-color: #ffffff;
+  --text-dark: #333333;
+  --text-light: #666666;
+  --border-color: #e0e0e0;
+  --light-bg-color: #f8f9fa;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-color-light: #e6f0ff;
+}
+
+/* General Section Styling */
+.content-section {
+  padding: 80px 20px;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.page-container-fullwidth {
+  padding: 80px 0;
+}
+
+.bg-light {
+  background-color: var(--light-bg-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.section-heading {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.section-subheading {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 60px;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-text {
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  text-align: center;
+  color: var(--text-light);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* HERO SECTION */
+.solutions-hero {
+  position: relative;
+  height: 50vh;
+  min-height: 10px;
+  display: flex;
+  /* MODIFICATION: Align content to the top instead of the center */
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  color: var(--white-color);
+  /* MODIFICATION: Add padding to push the content down from the top edge */
+  padding-top: 5vh;
+  box-sizing: border-box; /* Ensures padding is included in the height */
+}
+
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('@/assets/images/hero-solutions-bg.png');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(1.1) contrast(1.05) saturate(1.1);
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-title {
+  font-size: 4rem; /* reduced */
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(90deg,   #ff8c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 5px 16px rgba(0,0,0,0.55);
+}
+
+.hero-subtitle {
+  font-size: 2rem; /* reduced */
+  font-weight: 700;
+  line-height: 1.3;
+  color: #010129cc;   /* pure blue */
+
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.9s ease-out forwards;
+  opacity: 0;
+}
+
+.hero-title.animate-fade-in-up {
+  animation-delay: 0.2s;
+}
+.hero-subtitle.animate-fade-in-up {
+  animation-delay: 0.5s;
+}
+
+/* Grids */
+.industry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 35px;
+  padding: 0 20px;
+}
+
+.solutions-grid-scenario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.function-categories-wrapper {
+  padding: 0 20px;
+}
+
+.function-category {
+  margin-bottom: 70px;
+}
+
+.function-category:last-child {
+  margin-bottom: 0;
+}
+
+.function-category-title {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 18px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.solutions-grid-function {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .industry-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .solutions-hero {
+    height: 55vh;
+    min-height: 380px;
+  }
+  .hero-title {
+    font-size: 3.2rem;
+  }
+  .hero-subtitle {
+    font-size: 1.8rem;
+  }
+  .section-heading {
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: 50px 0;
+  }
+  .page-container, .page-container-fullwidth .page-container {
+    padding: 0 15px;
+  }
+  .solutions-hero {
+    height: 45vh;
+    min-height: 300px;
+  }	
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+  .section-heading {
+    font-size: 2rem;
+  }
+}
+</style>..
+============================= 
+FILE: C:\Users\123\Documents\Website\Tongfang\src\views\SupportView.vue 
+============================= 
+<template>
+  <div class="page-container">
+    <h1 class="section-title">Support Center</h1>
+    <p class="section-subtitle">We are committed to your success long after deployment. Find resources, downloads, and contact information here.</p>
+    
+    <div class="support-section">
+      <h3>Download Center</h3>
+      <p>Access the latest manuals, datasheets, drivers, firmware, and flyers for your Tongfang products.</p>
+      <div class="download-table-wrapper">
+        <table class="download-table">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th>Type</th>
+              <th>Related Product</th>
+              <th>Download</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="file in downloads" :key="file.id">
+              <td>{{ file.title }}</td>
+              <td><span class="file-type" :class="file.type.toLowerCase()">{{ file.type }}</span></td>
+              <td>{{ file.productId.toUpperCase() }}</td>
+              <td>
+                <!-- direct download -->
+                <a 
+                  :href="file.url || '#'" 
+                  class="download-link" 
+                  :download="file.title"
+                >
+                  Download
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="support-section">
+        <h3>Need Help?</h3>
+        <p>If you can't find what you are looking for, our expert team is ready to assist you. Please visit our contact page for direct support.</p>
+        <router-link to="/contact" class="cta-button">Contact Support</router-link>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ApiService } from '@/services/api.js';
+
+export default {
+  name: 'SupportView',
+  data() {
+    return { downloads: [] }
+  },
+  async created() {
+    // Fetch existing downloads
+    const apiDownloads = await ApiService.fetchDownloads();
+
+    // Add your business flyer
+    const flyer = {
+      id: 'flyer-001',
+      title: 'Tongfang BMS Business Flyer',
+      type: 'Manual',
+      productId: 'GENERAL',
+      url: 'https://drive.google.com/uc?export=download&id=1rq-Qr0-VMOcXifYLBMX4GFqbj8mDJzaJ'
+    };
+
+    this.downloads = [...apiDownloads, flyer];
+  }
+}
+</script>
+
+<style scoped>
+.support-section {
+  background-color: var(--light-bg-color);
+  padding: 40px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+.support-section h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-top: 0;
+}
+.support-section p {
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+.download-table-wrapper { overflow-x: auto; }
+.download-table { width: 100%; min-width: 600px; border-collapse: collapse; text-align: left; background-color: var(--white-color); }
+.download-table th, .download-table td { padding: 15px; border-bottom: 1px solid var(--border-color); }
+.download-table thead { background-color: var(--primary-color); color: var(--white-color); }
+.download-link { color: var(--secondary-color); text-decoration: none; font-weight: 600; cursor: pointer; }
+.file-type {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--white-color);
+}
+/* Brand colors for tags */
+.file-type.datasheet { background-color: var(--primary-color); }
+.file-type.manual { background-color: var(--secondary-color); }
+.file-type.firmware { background-color: #721c24; } /* distinct color for firmware */
+</style>
+..

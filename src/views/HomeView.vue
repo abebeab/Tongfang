@@ -7,8 +7,8 @@
           v-for="slide in activeSlide"
           :key="slide.image"
           class="slide"
-          :style="{ backgroundImage: `url(${slide.image})` }">
-        </div>
+          :style="{ backgroundImage: `url(${slide.image})` }"
+        ></div>
       </transition-group>
 
       <div class="hero-overlay"></div>
@@ -17,16 +17,32 @@
         <p class="hero-slogan">"Moving Forward" - We integrate technology, from factory to facility.</p>
         <div class="hero-cta-buttons">
           <router-link to="/solutions" class="cta-button primary">Explore Our Solutions</router-link>
-          <router-link to="/contact" class="cta-button secondary">Talk to Our Experts</router-link>
+          <router-link to="/contact" class="cta-button primary">Talk to Our Experts</router-link>
         </div>
       </div>
 
-      <!-- MANUAL SLIDE NAVIGATION CONTROLS -->
-      <div class="slide-nav prev" @click="prevSlide">
-        <i class="fas fa-chevron-left"></i>
-      </div>
-      <div class="slide-nav next" @click="nextSlide">
-        <i class="fas fa-chevron-right"></i>
+      <!-- VERTICALLY GROUPED SLIDE NAVIGATION CONTROLS -->
+      <div class="slide-nav-group">
+        <div 
+          v-for="(slide, index) in slides" 
+          :key="index" 
+          class="slide-dot-wrapper" 
+          :class="{ active: currentSlideIndex === index }"
+          @click="goToSlide(index)">
+          
+          <div class="progress-container slide-nav-progress" v-if="currentSlideIndex === index">
+              <svg class="progress-ring" width="40" height="40" viewBox="0 0 100 100">
+                  <circle class="progress-bg" r="45" cx="50" cy="50" />
+                  <circle
+                      class="progress-fill"
+                      r="45" cx="50" cy="50"
+                      :style="{ 'stroke-dasharray': slideProgressDasharray, 'stroke-dashoffset': slideProgressDashoffset }"
+                  />
+              </svg>
+              <div class="current-slide-number">{{ slideCountdownValue }}</div>
+          </div>
+          <div class="slide-dot" v-else></div> <!-- Regular dot when not active -->
+        </div>
       </div>
     </section>
 
@@ -71,7 +87,13 @@
     <section class="why-choose-us-section">
       <div class="page-container why-choose-us-grid">
         <div class="why-choose-us-image">
-          <img :src="require('@/assets/images/光电.png')" alt="Tongfang Engineering and Manufacturing">
+          <!-- Using only the original image with native lazy loading -->
+          <img 
+            :src="whyChooseUsImage" 
+            alt="Tongfang Engineering and Manufacturing"
+            loading="lazy"
+            class="lazyload-img"
+          >
         </div>
         <div class="why-choose-us-content">
           <h2 class="section-title" style="text-align: left;">The Tongfang Advantage</h2>
@@ -107,6 +129,13 @@
 </template>
 
 <script>
+// Import all images explicitly. We are only using the original existing images here.
+import heroBg3 from '@/assets/images/hero-bg-3.png';
+import heroBgPexels from '@/assets/images/pexels-jakubzerdzicki-18186205.jpg';
+import heroBg2 from '@/assets/images/hero-bg-2.jpg';
+import heroBg4 from '@/assets/images/hero-bg-4.png';
+import whyChooseUsOriginal from '@/assets/images/光电.png'; // Only the original image
+
 export default {
   name: 'HomeView',
   data() {
@@ -114,44 +143,80 @@ export default {
       currentSlideIndex: 0,
       slideInterval: null,
       slides: [
-         { image: require('@/assets/images/hero-bg-3.png') },
-        { image: require('@/assets/images/pexels-jakubzerdzicki-18186205.jpg') },
-              { image: require('@/assets/images/hero-bg-2.jpg') },
-        { image: require('@/assets/images/hero-bg-4.png') },
-  
+        { image: heroBg3 },
+        { image: heroBgPexels },
+        { image: heroBg2 },
+        { image: heroBg4 },
       ],
+      slideCountdownValue: 6, 
+      initialSlideCountdownValue: 6,
+      slideCountdownInterval: null,
+
+      // Data for why-choose-us image - only the original source
+      whyChooseUsImage: whyChooseUsOriginal, 
+      // Responsive image srcset is removed as we are not using multiple sizes
     };
   },
   computed: {
     activeSlide() {
+      // Use slice to create a new array for transition-group,
+      // and ensure only the current slide is passed.
       return [this.slides[this.currentSlideIndex]];
-    }
+    },
+    slideCircumference() {
+      return 2 * Math.PI * 45; 
+    },
+    slideProgressDasharray() {
+      return `${this.slideCircumference} ${this.slideCircumference}`;
+    },
+    slideProgressDashoffset() {
+      const progressPercentage = (this.initialSlideCountdownValue - this.slideCountdownValue) / this.initialSlideCountdownValue;
+      return this.slideCircumference * (1 - progressPercentage);
+    },
   },
   methods: {
+    preloadSlideImage(index) {
+        // Preload the next slide's image in the background
+        const nextIndex = (index + 1) % this.slides.length;
+        const img = new Image();
+        img.src = this.slides[nextIndex].image;
+    },
     startSlideTimer() {
       clearInterval(this.slideInterval);
+      clearInterval(this.slideCountdownInterval);
+      this.slideCountdownValue = this.initialSlideCountdownValue; 
+      this.startSlideCountdown(); 
+      
       this.slideInterval = setInterval(() => {
         this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
-      }, 9000);
+        clearInterval(this.slideCountdownInterval); 
+        this.slideCountdownValue = this.initialSlideCountdownValue; 
+        this.startSlideCountdown(); 
+        this.preloadSlideImage(this.currentSlideIndex); // Preload the image after the *next* slide
+      }, 6000); 
     },
-    nextSlide() {
-      this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
-      this.startSlideTimer();
+    goToSlide(index) {
+      this.currentSlideIndex = index;
+      this.startSlideTimer(); 
     },
-    prevSlide() {
-      if (this.currentSlideIndex === 0) {
-        this.currentSlideIndex = this.slides.length - 1;
-      } else {
-        this.currentSlideIndex--;
-      }
-      this.startSlideTimer();
-    }
+    startSlideCountdown() {
+      this.slideCountdownInterval = setInterval(() => {
+        if (this.slideCountdownValue > 0) {
+          this.slideCountdownValue--;
+        } else {
+          clearInterval(this.slideCountdownInterval);
+          this.slideCountdownInterval = null;
+        }
+      }, 1000); 
+    },
   },
   mounted() {
     this.startSlideTimer();
+    this.preloadSlideImage(-1); // Preload the first *next* slide (index 1) initially
   },
   beforeUnmount() {
     clearInterval(this.slideInterval);
+    clearInterval(this.slideCountdownInterval);
   }
 }
 </script>
@@ -170,11 +235,18 @@ export default {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   background-size: cover;
   background-position: center top;
-  /* ✅ BRIGHTNESS MAXIMIZED: Pushed to 1.3 for a very bright effect */
   filter: brightness(1.3) contrast(1.1);
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
+  /* Added opacity for better fade-in on load, in case background-image is slow */
+  opacity: 0;
+  transition: opacity 0.5s ease-in; /* for when image initially loads */
 }
+/* Style for background images once they are deemed "loaded" or active */
+.slide[style*="background-image"] { /* Checks if background-image style is set, implying it's loaded */
+    opacity: 1;
+}
+
 .slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: opacity 1.5s ease;
@@ -183,27 +255,109 @@ export default {
 .slide-fade-leave-to {
   opacity: 0;
 }
-.slide-nav {
-  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; cursor: pointer;
-  width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.25); border-radius: 50%;
-  color: white; display: flex; justify-content: center; align-items: center; font-size: 20px;
-  transition: background-color 0.3s ease;
+
+/* NEW STYLES FOR VERTICALLY GROUPED SLIDE NAVIGATION (MODIFIED) */
+.slide-nav-group {
+  position: absolute;
+  right: 40px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between dots */
 }
-.slide-nav:hover { background-color: rgba(0, 0, 0, 0.5); }
-.prev { left: 30px; }
-.next { right: 30px; }
+
+/* Wrapper for both active progress bar and inactive dot */
+.slide-dot-wrapper {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 40px; /* Fixed size for wrapper to maintain spacing */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the inactive dot */
+.slide-dot {
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.4); /* Light grey dot */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.slide-dot-wrapper:hover .slide-dot {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Styles for the active progress bar container */
+.progress-container.slide-nav-progress {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+
+.progress-container.slide-nav-progress .progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg); /* Start progress from top */
+}
+
+.progress-container.slide-nav-progress .progress-bg {
+    stroke-width: 4;
+    stroke: rgba(255, 255, 255, 0.3);
+    fill: transparent;
+}
+
+.progress-container.slide-nav-progress .progress-fill {
+    stroke-width: 4;
+    stroke: var(--secondary-color);
+    fill: transparent;
+    transition: stroke-dashoffset 1s linear;
+    stroke-linecap: round;
+}
+
+.current-slide-number {
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+  position: relative;
+  z-index: 10;
+}
+
 
 /* ✅ OVERLAY LIGHTENED MAXIMALLY: Opacity is now very low for maximum image visibility */
 .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(13, 36, 79, 0.2), rgba(13, 36, 79, 0.1)); z-index: 2; }
 .hero-content { position: relative; z-index: 3; max-width: 950px; padding: 0 20px; animation: fadeIn 1.5s ease-in-out; }
 .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; letter-spacing: -1px; }
 .hero-slogan { font-size: 1.8rem; font-weight: 500; font-style: italic; color: var(--secondary-color); margin-bottom: 2.5rem; opacity: 0.9; text-shadow: 0 1px 5px rgba(0,0,0,0.2); }
-.hero-cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.hero-cta-buttons { display: flex; justify-content: center; gap: 200px; flex-wrap: wrap; }
 .cta-button { text-decoration: none; }
 .cta-button.primary { background-color: var(--secondary-color); color: var(--white-color); border: 2px solid var(--secondary-color); }
 .cta-button.secondary { background-color: transparent; color: var(--white-color); border: 2px solid var(--white-color); }
 .cta-button.secondary:hover { background-color: var(--white-color); color: var(--primary-color); }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* For images that are lazy loaded with `loading="lazy"` */
+.lazyload-img {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+.lazyload-img[src] { /* Apply opacity 1 once the src attribute is populated */
+  opacity: 1;
+}
 
 /* --- [ALL YOUR OTHER EXISTING STYLES REMAIN UNCHANGED BELOW] --- */
 .trusted-by-section { background-color: var(--light-bg-color); padding: 30px 20px; border-bottom: 1px solid var(--border-color); }

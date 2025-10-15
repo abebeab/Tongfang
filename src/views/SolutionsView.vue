@@ -1,81 +1,67 @@
 <template>
   <div class="solutions-page">
-    <!-- 
-      SECTION 1: HERO BANNER (FINAL VERSION)
-    -->
+    <!-- HERO SECTION -->
     <section class="solutions-hero">
       <div class="hero-background-image"></div>
-      <div class="hero-overlay"></div> 
+      <div class="hero-overlay"></div>
       <div class="hero-content page-container">
-        <h1 class="hero-title animate-fade-in-up">
-          <span class="highlight">Integrated Solutions</span>
-        </h1>
-        <p class="hero-subtitle animate-fade-in-up">
-          <span class="highlight">Moving Forward!</span>  <span class="highlight">Smart Systems.</span>
-        </p>
+        <h1 class="hero-title animate-fade-in-up">Integrated Solutions</h1>
+        <p class="hero-subtitle animate-fade-in-up">Moving Forward! Smart Systems</p>
       </div>
     </section>
 
-    <!-- 
-      (All other sections remain unchanged)
-    -->
-    <SolutionHints />
+    <!-- OVERVIEW SECTION -->
     <section id="overview" class="content-section page-container">
       <h2 class="section-heading">A Rich Portfolio of Empowering Solutions</h2>
       <p class="section-text">
-        TONGFANG offers an abundance of solution options to facilitate digital transformation. Our AIoT-powered applications provide comprehensive, end-to-end capabilities that open doors to new business opportunities, optimized operations, and a winning edge in the competition.
+        TONGFANG offers an abundance of solution options to facilitate digital transformation.
+        Our AIoT-powered applications provide comprehensive, end-to-end capabilities that open
+        doors to new business opportunities, optimized operations, and a winning edge in the competition.
       </p>
     </section>
 
+    <!-- SOLUTIONS BY INDUSTRY -->
     <section id="solutions-by-industry" class="content-section page-container-fullwidth bg-light">
       <div class="page-container">
         <h2 class="section-heading">Solutions by Industry</h2>
-        <h3 class="section-subheading">Tailored to meet varied needs</h3>
-        <div class="industry-tabs-wrapper">
-            <div class="industry-tabs">
-              <button
-                v-for="industry in industrySolutions"
-                :key="industry.slug"
-                :class="{ active: currentIndustry === industry.slug }"
-                @click="currentIndustry = industry.slug"
-              >
-                {{ industry.title }}
-              </button>
-            </div>
+        <h3 class="section-subheading">Tailored to meet varied needs for specific sectors</h3>
+        <div class="industry-grid">
+          <SolutionIndustryCard
+            v-for="industry in industrySolutions"
+            :key="industry.slug"
+            :solution="industry"
+            @click="navigateToSolution(industry.slug)"
+          />
         </div>
-        <transition name="fade" mode="out-in">
-          <SolutionIndustryDetail v-if="selectedIndustry" :solution="selectedIndustry" :key="selectedIndustry.slug" />
-        </transition>
       </div>
     </section>
 
+    <!-- SOLUTIONS BY SCENARIO -->
     <section id="solutions-by-scenario" class="content-section page-container">
       <h2 class="section-heading">Solutions by Scenario</h2>
-      <h3 class="section-subheading">Focused on each business process</h3>
-      <div class="solutions-grid-scenario">
-        <SolutionScenarioCard 
-          v-for="(solution, index) in scenarioSolutions" 
-          :key="index" 
+      <h3 class="section-subheading">Targeting specific business processes and environments</h3>
+      <div class="industry-grid">
+        <SolutionIndustryCard
+          v-for="solution in scenarioSolutions"
+          :key="solution.slug"
           :solution="solution"
+          @click="navigateToSolution(solution.slug)"
         />
       </div>
     </section>
 
+    <!-- SOLUTIONS BY FUNCTION -->
     <section id="solutions-by-function" class="content-section page-container-fullwidth bg-light">
       <div class="page-container">
         <h2 class="section-heading">Solutions by Function</h2>
-        <h3 class="section-subheading">Designed to resolve everyday issues</h3>
-        <div class="function-categories-wrapper">
-          <div v-for="category in functionSolutions" :key="category.category" class="function-category">
-            <h4 class="function-category-title">{{ category.category }}</h4>
-            <div class="solutions-grid-function">
-              <SolutionFunctionCard 
-                v-for="(solution, index) in category.solutions" 
-                :key="index" 
-                :solution="solution"
-              />
-            </div>
-          </div>
+        <h3 class="section-subheading">Leveraging Digital Information & AIoT Capabilities</h3>
+        <div class="industry-grid">
+          <SolutionIndustryCard
+            v-for="solution in allFunctionSolutions"
+            :key="solution.slug"
+            :solution="solution"
+            @click="navigateToSolution(solution.slug)"
+          />
         </div>
       </div>
     </section>
@@ -83,132 +69,251 @@
 </template>
 
 <script>
-// The script is unchanged and remains correct
 import { ApiService } from '@/services/api.js';
-import SolutionHints from '@/components/SolutionHints.vue';
-import SolutionIndustryDetail from '@/components/SolutionIndustryDetail.vue';
-import SolutionScenarioCard from '@/components/SolutionScenarioCard.vue';
-import SolutionFunctionCard from '@/components/SolutionFunctionCard.vue';
+import SolutionIndustryCard from '@/components/SolutionIndustryCard.vue';
 
 export default {
   name: 'SolutionsView',
   components: {
-    SolutionHints, SolutionIndustryDetail, SolutionScenarioCard, SolutionFunctionCard
+    SolutionIndustryCard,
   },
   data() {
     return {
-      currentIndustry: null, industrySolutions: [], scenarioSolutions: [], functionSolutions: []
+      industrySolutions: [],
+      scenarioSolutions: [],
+      functionSolutions: [],
     };
   },
   computed: {
-    selectedIndustry() {
-      return this.industrySolutions.find(i => i.slug === this.currentIndustry);
+    allFunctionSolutions() {
+      if (!this.functionSolutions) return [];
+      return this.functionSolutions.flatMap(category => category.solutions);
     }
   },
   async created() {
     this.industrySolutions = await ApiService.fetchSolutionsByIndustry();
     this.scenarioSolutions = await ApiService.fetchSolutionsByScenario();
     this.functionSolutions = await ApiService.fetchSolutionsByFunction();
-    if (this.industrySolutions.length > 0) {
-        this.currentIndustry = this.industrySolutions[0].slug;
-    }
-  }
+  },
+  methods: {
+    navigateToSolution(slug) {
+      if (slug) {
+        this.$router.push(`/solutions/${slug}`);
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
-/* General Section Styling */
-.content-section { padding: 80px 20px; }
-.page-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.page-container-fullwidth { padding: 80px 0; }
-.bg-light { background-color: #f7f9fc; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-.section-heading { font-size: 2.2rem; font-weight: 900; color: var(--primary-color); text-align: top; margin-bottom: 12px; }
-.section-subheading { font-size: 1.15rem; font-weight: 500; color: var(--text-dark); text-align: center; margin-bottom: 40px; line-height: 1.6; }
-.section-text { max-width: 800px; margin: 0 auto 10px auto; text-align: top; color: var(--text-light); line-height: 1.8; }
-
-/* --- HERO SECTION (TEXT REPOSITIONED) --- */
-.solutions-hero {
-  position: relative;
-  height: 50vh;
-  min-height: 10px;
-  display: flex;
-  /* MODIFICATION: Align content to the top instead of the center */
-  align-items: flex-start;
-  justify-content: center;
-  text-align: center;
-  color: var(--white-color);
-  /* MODIFICATION: Add padding to push the content down from the top edge */
-  padding-top: 5vh;
-  box-sizing: border-box; /* Ensures padding is included in the height */
+:root { 
+  --primary-color: #0d244f; 
+  --secondary-color: #ff8c00; 
+  --white-color: #ffffff; 
+  --text-dark: #333333; 
+  --text-light: #666666; 
+  --border-color: #e0e0e0; 
+  --light-bg-color: #f8f9fa; 
+  --shadow-color: rgba(0, 0, 0, 0.1); 
+  --primary-color-light: #e6f0ff; 
 }
 
-.hero-background-image {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background-image: url('@/assets/images/solution.png');
-  background-size: cover; background-position: center;
-  filter: brightness(1.1);
-  z-index: 2;
+.content-section { 
+  padding: 80px 20px; 
 }
 
-.hero-overlay {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  background: transparent;
-  z-index: 2;
+.page-container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 20px; 
 }
 
-.hero-content { position: relative; z-index: 3; }
-
-.hero-title {
-  font-size: 3rem; font-weight: 900;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+.page-container-fullwidth { 
+  padding: 80px 0; 
 }
 
-.hero-subtitle {
-  font-size: 2rem; margin-top: 10px; opacity: 1;
-  /*text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);*/
+.bg-light { 
+  background-color: var(--light-bg-color); 
+  border-top: 1px solid var(--border-color); 
+  border-bottom: 1px solid var(--border-color); 
 }
 
-.hero-content .highlight {
-  color: var(--primary-color);
+.section-heading { 
+  font-size: 2.6rem; 
+  font-weight: 800; 
+  color: var(--primary-color); 
+  text-align: center; 
+  margin-bottom: 15px; 
+  line-height: 1.2; 
+  font-family: 'Segoe UI', Arial, sans-serif; 
 }
 
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-.animate-fade-in-up { animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }
-/* --- END OF HERO SECTION --- */
-
-
-/* Industry Tabs */
-.industry-tabs-wrapper { max-width: 100%; overflow-x: auto; padding-bottom: 25px; margin-bottom: 40px; -ms-overflow-style: none; scrollbar-width: none; }
-.industry-tabs-wrapper::-webkit-scrollbar { display: none; }
-.industry-tabs { display: flex; justify-content: center; border-bottom: 1px solid #dde2e8; width: -moz-fit-content; width: fit-content; margin: 0 auto; }
-.industry-tabs button { padding: 10px 22px; font-size: 1rem; font-weight: 600; border: none; background: none; color: #5a6d82; cursor: pointer; transition: all 0.3s ease; position: relative; white-space: nowrap; flex-shrink: 0; border-bottom: 3px solid transparent; }
-.industry-tabs button:hover { color: var(--primary-color); }
-.industry-tabs button.active { color: var(--primary-color); border-bottom-color: var(--secondary-color); }
-
-/* Grids & Categories */
-.solutions-grid-scenario { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.solutions-grid-function { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-.function-category { margin-bottom: 60px; }
-.function-category:last-child { margin-bottom: 0; }
-.function-category-title { font-size: 1.6rem; color: var(--primary-color); margin-bottom: 30px; border-bottom: 2px solid var(--border-color); padding-bottom: 15px; }
-.fade-enter-active, .fade-leave-active { transition: opacity 0.4s ease; }
-.fade-enter-from, .fade-leave-to { opacity: 0; }
-
-/* Responsive Design */
-@media (max-width: 992px) {
-  .hero-title { font-size: 2.8rem; }
-  .solutions-hero { min-height: 350px; height: 40vh; padding-top: 12vh;}
-  .industry-tabs { justify-content: flex-start; margin-left: 20px; margin-right: 20px; }
+.section-subheading { 
+  font-size: 1.25rem; 
+  font-weight: 500; 
+  color: var(--text-light); 
+  text-align: center; 
+  margin-bottom: 60px; 
+  line-height: 1.6; 
+  max-width: 800px; 
+  margin-left: auto; 
+  margin-right: auto; 
 }
-@media (max-width: 768px) {
-  .content-section { padding: 60px 0; }
-  .page-container { padding: 0 20px; }
-  .section-heading { font-size: 2rem; }
-  .section-subheading { font-size: 1rem; }
-  .solutions-grid-scenario, .solutions-grid-function { grid-template-columns: 1fr; gap: 20px; }
-  .function-category-title { font-size: 1.5rem; }
-  .hero-title { font-size: 2.2rem; }
-  .hero-subtitle { font-size: 1.1rem; }
-  .solutions-hero { min-height: 300px; height: 35vh; padding-top: 10vh;}
+
+.section-text { 
+  max-width: 800px; 
+  margin: 0 auto 50px auto; 
+  text-align: center; 
+  color: var(--text-light); 
+  line-height: 1.8; 
+  font-size: 1.1rem; 
+}
+
+.solutions-hero { 
+  position: relative; 
+  height: 50vh; 
+  min-height: 400px; 
+  display: flex; 
+  align-items: flex-start; 
+  justify-content: center; 
+  text-align: center; 
+  color: var(--white-color); 
+  padding-top: 5vh; 
+  box-sizing: border-box; 
+}
+
+.hero-background-image { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-image: url('@/assets/images/hero-solutions-bg.png'); 
+  background-size: cover; 
+  background-position: center; 
+  filter: brightness(1.1) contrast(1.05) saturate(1.1); 
+  z-index: 1; 
+}
+
+.hero-overlay { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background: transparent; 
+  z-index: 2; 
+}
+
+.hero-content { 
+  position: relative; 
+  z-index: 3; 
+}
+
+.hero-title { 
+  font-size: 4rem; 
+  font-weight: 800; 
+  margin-bottom: 15px; 
+  letter-spacing: -0.5px; 
+  background: linear-gradient(90deg, #ff8c00, #ffaa33); 
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+  text-shadow: 0 5px 16px rgba(0,0,0,0.55); 
+}
+
+.hero-subtitle { 
+  font-size: 2rem; 
+  font-weight: 700; 
+  line-height: 1.3; 
+  color: #010129cc; 
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6); 
+}
+
+@keyframes fadeInUp { 
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  } 
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  } 
+}
+
+.animate-fade-in-up { 
+  animation: fadeInUp 0.9s ease-out forwards; 
+  opacity: 0; 
+}
+
+.hero-title.animate-fade-in-up { 
+  animation-delay: 0.2s; 
+}
+
+.hero-subtitle.animate-fade-in-up { 
+  animation-delay: 0.5s; 
+}
+
+.industry-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+  gap: 35px; 
+  padding: 0 20px; 
+}
+
+@media (max-width: 1200px) { 
+  .industry-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+  } 
+}
+
+@media (max-width: 992px) { 
+  .solutions-hero { 
+    height: 55vh; 
+    min-height: 380px; 
+  } 
+  
+  .hero-title { 
+    font-size: 3.2rem; 
+  } 
+  
+  .hero-subtitle { 
+    font-size: 1.8rem; 
+  } 
+  
+  .section-heading { 
+    font-size: 2.3rem; 
+  } 
+}
+
+@media (max-width: 768px) { 
+  .content-section { 
+    padding: 50px 0; 
+  } 
+  
+  .page-container, .page-container-fullwidth .page-container { 
+    padding: 0 15px; 
+  } 
+  
+  .solutions-hero { 
+    height: 45vh; 
+    min-height: 300px; 
+  } 
+  
+  .hero-title { 
+    font-size: 2.6rem; 
+  } 
+  
+  .hero-subtitle { 
+    font-size: 1.5rem; 
+  } 
+  
+  .section-heading { 
+    font-size: 2rem; 
+  } 
+  
+  .industry-grid { 
+    grid-template-columns: 1fr; 
+    padding: 0 15px; 
+  } 
 }
 </style>

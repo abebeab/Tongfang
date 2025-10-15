@@ -1,0 +1,308 @@
+C:\Users\123\Documents\Website\Tongfang\src\all_code.txt
+C:\Users\123\Documents\Website\Tongfang\src\App.vue
+C:\Users\123\Documents\Website\Tongfang\src\assets
+C:\Users\123\Documents\Website\Tongfang\src\components
+C:\Users\123\Documents\Website\Tongfang\src\filelist.txt
+C:\Users\123\Documents\Website\Tongfang\src\main.js
+C:\Users\123\Documents\Website\Tongfang\src\router
+C:\Users\123\Documents\Website\Tongfang\src\services
+C:\Users\123\Documents\Website\Tongfang\src\supabase.js
+C:\Users\123\Documents\Website\Tongfang\src\views
+C:\Users\123\Documents\Website\Tongfang\src\assets\apprnt.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\d.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\download-icon.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\head.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons
+C:\Users\123\Documents\Website\Tongfang\src\assets\images
+C:\Users\123\Documents\Website\Tongfang\src\assets\main.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\sdk.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\tec.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\download-icon.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\etworking-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\github-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\graphic-design-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\java-icon.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\laravel-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\linkedin-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\location-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\logo.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\logo.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\message-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\mobile-app-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\networking-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\python-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\s-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\seo-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\telegram-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\upwork-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\vue-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\web-design-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\icons\web-development-icon.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\44.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Access control.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Achievement
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\blue river.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\BMS.mp4
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\campus-classroom.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\campus-energy.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\campus-library.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\campus-security.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\campus.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\data-center-monitoring.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\data-center.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\data_center.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures.html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\h.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hall.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-bg-1.gif
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-bg-1.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-bg-2.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-bg-2.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-bg-3.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-bg-4.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hero-solutions-bg.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\hme.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Hotel Security System Design Scheme.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Image_2025-08-05_091032_345.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Innovation in Sustainability.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\medical-security.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\medical-ward.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\medical.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\network-map.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\network-products.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\NVR.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\office-building.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\office-meeting.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\pest-sensor.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\pests.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\pexels-jakubzerdzicki-18186205.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\pexels-jakubzerdzicki-27934787.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\pexels-pixabay-248547.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Picture1.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\product model.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\public-toilet (2).jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\public-toilet.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Smart Public Toilet Solution.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\solution.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\solutions-hero.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\sustain.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\team.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\team1.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\team1.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\team_1.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\thermal.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\tongfng.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\tongfng.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\turbo.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\University & School Campuses.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\university-campus.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Untitled-1.svg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Video-Intercom_Homepage_product_IP.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\X-Ray-Inspection-Systems_Preview.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\your-featured-project.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\高窮.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\1298671233649970
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\1904241839800487
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\application-9b12beb45c12bca797fb8988fa91a20d46b9c7e8ee4dd60dfd75da9f4f8d5930.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\aqua-blue-river-lined-with-buildings.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\black-and-white-photo-of-a-narrow-city-street.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\black-and-white-photo-of-a-worn-city-staircase.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\black-and-white-photo-of-two-people-looking-out-a-window.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\black-hightop-LED-shoes.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\blue-sky-clouds-and-a-yellow-building.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\building-top-restaurant-sign.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\burstMain-85f881ffba3a56d0045dc2ddd1f6f4952dcec8aff5622eef452bbe3148a79b48.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\double-pearl-earrings.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\fbevents.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\fitness-band-womens.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\gtm.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\index-8ed72b7ea060fe4d7a4c39449900ef733cf0cd84316133318b459ac10a12674e.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\insight.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\insight.old.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\js
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\looking-out-to-buildings-on-the-other-side-of-the-water.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\monochrome-image-of-people-looking-out-at-the-water.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\person-wearing-a-virtual-reality-headset.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\photo-of-a-cityscape-with-a-ferris-wheel.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\runtime-4b48493e368e1361a332d6c7aadd6abcc92859a801d938bb1e9b9da3930733e8.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\saved_resource(1).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\saved_resource.html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\trekkie.marketing-misc.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\two-people-walk-down-a-long-hallway.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\vendors-caches_app_node_modules_buffer_index_js-bf1b04304822ef02909d4ec5af9e2d04b2e657754ce8638468c13f91bb744112.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\vendors-caches_app_node_modules_clipboard_dist_clipboard_js-caches_app_node_modules_dropzone_-eb680a-26b323228c85f5b7b3547c803.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\vendors-caches_app_node_modules_jquery_dist_jquery_js-4dc9f043a7357115d26c31e2432bb6d9ab8775c76a4c104e20f618118b979f04.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\Free Building Top Restaurant Sign Photo ！ High Res Pictures_files\vendors-caches_app_node_modules_shopify_marketing-assets_dist_javascripts_index_js-f63ebf372019db3506c92e07acde382a84aef6ae477.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\0
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\1012071506(1).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\1012071506.html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\1407587539516826
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\4334b29c-e25d-4a2a-8aff-7c0d17624e37.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\451168143.html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\5625326.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\5fc7a936d9b12c49-min.en-US.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\7cc91cb1960809aa-min.en-US.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\A1325362-caba-4d3f-a83b-1ca7492ec0a51.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\activityi(1).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\activityi(2).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\activityi(3).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\activityi.html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\adsct
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\adsct(1)
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\adsct(2)
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\adsct(3)
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\amzn.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\bat.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\beinginhistory-500w.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\BHoSZTIOG8c4sLxwmWoiPQhAdMwDXqZ933_k3mkakv9feCb2fFHN4UJLFRbh52jhWDjkFeJuw2FKFAbawD6twQIkFe9aweIXFgn0MKG0jAFu-WsoShFGZAsude80ZkoRdhXCHKoyjamTiY8Djhy8ZYmC-Ao1Oco8if37OcBDOcu8OfG0da4yd1F.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\cldr-resource-pack-9902ec3244984e7d-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\common-6cb6a52dfa679460-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\common-vendors-ed70ccc9ee03f359-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\common-vendors-stable-54bab8bb8a15366b-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\connect.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\core.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\css2
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\DEFAULT_UNSPECIFIED.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\destination
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\destination(1)
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\drinkminna-500w.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\dynamic-templates-preview-c7ef5ac84d74c3f2-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\extract-css-moment-js-vendor-088ec0120fdbcfed-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\extract-css-runtime-aca3c9e9b3b9087e-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\f.txt
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\fbevents.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\floatingPanels-d0bdd8ab5d.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\form-rendering-utils-354d6f08f6c69d55-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\globals.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\grid.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Group+64Icon+components.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Group+65Icon+components.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Group+67Icon+components.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Group+73icon+components.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\gtm.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(1).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(10).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(11).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(12).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(13).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(14).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(2).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(3).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(4).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(5).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(6).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(7).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(8).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset(9).jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\image-asset.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\index(1).css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\index(1).js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\index(2).js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\index(3).js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\index.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\index.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\init.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\insight.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\insight.old.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\js
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\js(1)
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\legacy.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\main.31a98a45.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\modern.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\nav.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\notice
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\notice(1)
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\onemag-500w.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\performance-7b43a43d6da409a6-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\performance.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Picture1.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\pixel.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\pixel.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\promo-banner.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Rectangle+1474.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Rectangle+1475.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Rectangle+1476.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Rectangle+1477.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\Rectangle+29-1.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\rosetta.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\saved_resource(1).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\saved_resource(2).html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\saved_resource.html
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\scevent.min.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\sectionPanelText-e5137126c3.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\sign-up-pill-8dfd1c5b0b2be374-min.en-US.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\sign-up-pill-e83921eb480bf837-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\site-bundle.3baf78f3d3a3bf9a686b5b727e3b950b.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\site.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\sqs.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\static.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\style-guide-grid.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\style-guide-grid.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\teads-fellow.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\token_create.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\track
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\trustarc.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\user-account-core-03b6f9bbfaa7e2f5-min.en-US.css
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\user-account-core-719dce1521da8334-min.en-US.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\uwt.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\vendor.js.download
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\ip_files\wireFrame-ccfecbdbcf.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\access-control.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\accessories.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\Achievement.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\alarm.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\audio.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\display.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\distribution.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\hilook.jpeg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\hilook.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\inspection.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\interactive-flat-panel.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\intercom.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\jpg.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\led.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\network-products.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\networking.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\onboard.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\parking.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\radar.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\software.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\software.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\solutions-hero.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\thermal.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\traffic.png
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\turbo-hd.jpg
+C:\Users\123\Documents\Website\Tongfang\src\assets\images\products\turnstile.png
+C:\Users\123\Documents\Website\Tongfang\src\components\AppFooter.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\AppHeader.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\ComparisonBar.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\GlobalLoadingIndicator.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\ProductCard.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\ProductGridItem.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionCard.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionDetailModal.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionFunctionCard.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionHints.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionIndustryCard.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionIndustryDetail.vue
+C:\Users\123\Documents\Website\Tongfang\src\components\SolutionScenarioCard.vue
+C:\Users\123\Documents\Website\Tongfang\src\router\index.js
+C:\Users\123\Documents\Website\Tongfang\src\services\api.js
+C:\Users\123\Documents\Website\Tongfang\src\views\AboutView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\AchievementView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\ContactView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\DashboardView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\HomeView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\LoginView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\PartnerView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\ProductCategoryDetailView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\ProductDetailView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\ProductsView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\SolutionDetailView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\SolutionsView.vue
+C:\Users\123\Documents\Website\Tongfang\src\views\SupportView.vue

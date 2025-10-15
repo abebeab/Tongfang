@@ -1,0 +1,347 @@
+Folder PATH listing
+Volume serial number is 00000058 4EE5:8E77
+C:\USERS\123\DOCUMENTS\WEBSITE\TONGFANG\SRC
+|   all_code.txt
+|   App.vue
+|   filelist.txt
+|   file_structure.txt
+|   main.js
+|   supabase.js
+|   
++---assets
+|   |   apprnt.jpg
+|   |   d.jpeg
+|   |   download-icon.jpeg
+|   |   head.jpg
+|   |   main.css
+|   |   sdk.jpg
+|   |   tec.jpg
+|   |   
+|   +---icons
+|   |       download-icon.jpeg
+|   |       etworking-icon.jpg
+|   |       github-icon.jpg
+|   |       graphic-design-icon.jpg
+|   |       java-icon.png
+|   |       laravel-icon.jpg
+|   |       linkedin-icon.jpg
+|   |       location-icon.jpg
+|   |       logo.jpg
+|   |       logo.png
+|   |       message-icon.jpg
+|   |       mobile-app-icon.jpg
+|   |       networking-icon.jpg
+|   |       python-icon.jpg
+|   |       s-icon.jpg
+|   |       seo-icon.jpg
+|   |       telegram-icon.jpg
+|   |       upwork-icon.jpg
+|   |       vue-icon.jpg
+|   |       web-design-icon.jpg
+|   |       web-development-icon.jpg
+|   |       
+|   \---images
+|       |   44.jpg
+|       |   Access control.jpg
+|       |   Achievement
+|       |   blue river.jpg
+|       |   BMS.mp4
+|       |   BMS_Hero.jpg
+|       |   campus-classroom.jpg
+|       |   campus-energy.jpg
+|       |   campus-security.jpg
+|       |   campus.jpg
+|       |   cloud-computing.jpg
+|       |   data-center-monitoring.jpg
+|       |   data-center.jpg
+|       |   data_center.png
+|       |   edu-data-governance.png
+|       |   Free Building Top Restaurant Sign Photo ¡ª High Res Pictures.html
+|       |   function-access-1.jpg
+|       |   function-access-2.jpg
+|       |   function-access.jpg
+|       |   function-energy-1.jpg
+|       |   function-energy-2.jpg
+|       |   function-energy.jpg
+|       |   h.jpg
+|       |   hall.png
+|       |   hero-bg-1.gif
+|       |   hero-bg-1.png
+|       |   hero-bg-2.jpg
+|       |   hero-bg-2.png
+|       |   hero-bg-3.png
+|       |   hero-bg-4.png
+|       |   hero-solutions-bg.png
+|       |   hme.jpg
+|       |   hospital-entrance..jpg
+|       |   hospital-entrance.jpg
+|       |   Hotel Security System Design Scheme.jpg
+|       |   hotel-security.jpg
+|       |   Image_2025-08-05_091032_345.jpg
+|       |   Innovation in Sustainability.jpg
+|       |   ip.jpg
+|       |   medical-security.jpg
+|       |   medical-ward.jpg
+|       |   medical.jpg
+|       |   network-map.jpg
+|       |   network-products.jpg
+|       |   NVR.jpg
+|       |   office-building.jpg
+|       |   office-meeting.jpg
+|       |   pest-sensor.jpg
+|       |   pests.jpg
+|       |   pexels-jakubzerdzicki-18186205.jpg
+|       |   pexels-jakubzerdzicki-27934787.jpg
+|       |   pexels-pixabay-248547.jpg
+|       |   Picture1.jpg
+|       |   product model.jpg
+|       |   products.jpg
+|       |   public-toilet (2).jpg
+|       |   public-toilet.jpg
+|       |   scenario-classroom-1.jpg
+|       |   scenario-classroom-2.jpg
+|       |   scenario-classroom.jpg
+|       |   scenario-hospital-1.jpg
+|       |   scenario-hospital-2.jpg
+|       |   scenario-hospital.jpg
+|       |   Smart Public Toilet Solution.jpg
+|       |   solution-bms.jpg
+|       |   solution-detail-generic.jpg
+|       |   solution-hotel.jpg
+|       |   solution-low-carbon.jpg
+|       |   solution-park.jpg
+|       |   solution-port.jpg
+|       |   solution-stadium.jpg
+|       |   solution.png
+|       |   solutions-hero.jpg
+|       |   sustain.jpg
+|       |   team.jpg
+|       |   team1.jpeg
+|       |   team1.jpg
+|       |   team_1.jpg
+|       |   thermal.jpg
+|       |   tongfng.jpg
+|       |   tongfng.png
+|       |   turbo.jpg
+|       |   University & School Campuses.png
+|       |   university-campus.jpg
+|       |   Untitled-1.svg
+|       |   Video-Intercom_Homepage_product_IP.png
+|       |   X-Ray-Inspection-Systems_Preview.png
+|       |   your-featured-project.png
+|       |   ¹âµç.png
+|       |   
+|       +---Free Building Top Restaurant Sign Photo ¡ª High Res Pictures_files
+|       |       1298671233649970
+|       |       1904241839800487
+|       |       application-9b12beb45c12bca797fb8988fa91a20d46b9c7e8ee4dd60dfd75da9f4f8d5930.css
+|       |       aqua-blue-river-lined-with-buildings.jpg
+|       |       black-and-white-photo-of-a-narrow-city-street.jpg
+|       |       black-and-white-photo-of-a-worn-city-staircase.jpg
+|       |       black-and-white-photo-of-two-people-looking-out-a-window.jpg
+|       |       black-hightop-LED-shoes.jpg
+|       |       blue-sky-clouds-and-a-yellow-building.jpg
+|       |       building-top-restaurant-sign.jpg
+|       |       burstMain-85f881ffba3a56d0045dc2ddd1f6f4952dcec8aff5622eef452bbe3148a79b48.js.download
+|       |       double-pearl-earrings.jpg
+|       |       fbevents.js.download
+|       |       fitness-band-womens.jpg
+|       |       gtm.js.download
+|       |       index-8ed72b7ea060fe4d7a4c39449900ef733cf0cd84316133318b459ac10a12674e.js.download
+|       |       insight.min.js.download
+|       |       insight.old.min.js.download
+|       |       js
+|       |       looking-out-to-buildings-on-the-other-side-of-the-water.jpg
+|       |       monochrome-image-of-people-looking-out-at-the-water.jpg
+|       |       person-wearing-a-virtual-reality-headset.jpg
+|       |       photo-of-a-cityscape-with-a-ferris-wheel.jpg
+|       |       runtime-4b48493e368e1361a332d6c7aadd6abcc92859a801d938bb1e9b9da3930733e8.js.download
+|       |       saved_resource(1).html
+|       |       saved_resource.html
+|       |       trekkie.marketing-misc.min.js.download
+|       |       two-people-walk-down-a-long-hallway.jpg
+|       |       vendors-caches_app_node_modules_buffer_index_js-bf1b04304822ef02909d4ec5af9e2d04b2e657754ce8638468c13f91bb744112.js.download
+|       |       vendors-caches_app_node_modules_clipboard_dist_clipboard_js-caches_app_node_modules_dropzone_-eb680a-26b323228c85f5b7b3547c803.download
+|       |       vendors-caches_app_node_modules_jquery_dist_jquery_js-4dc9f043a7357115d26c31e2432bb6d9ab8775c76a4c104e20f618118b979f04.js.download
+|       |       vendors-caches_app_node_modules_shopify_marketing-assets_dist_javascripts_index_js-f63ebf372019db3506c92e07acde382a84aef6ae477.download
+|       |       
+|       +---ip_files
+|       |       0
+|       |       1012071506(1).html
+|       |       1012071506.html
+|       |       1407587539516826
+|       |       4334b29c-e25d-4a2a-8aff-7c0d17624e37.js.download
+|       |       451168143.html
+|       |       5625326.js.download
+|       |       5fc7a936d9b12c49-min.en-US.css
+|       |       7cc91cb1960809aa-min.en-US.css
+|       |       A1325362-caba-4d3f-a83b-1ca7492ec0a51.js.download
+|       |       activityi(1).html
+|       |       activityi(2).html
+|       |       activityi(3).html
+|       |       activityi.html
+|       |       adsct
+|       |       adsct(1)
+|       |       adsct(2)
+|       |       adsct(3)
+|       |       amzn.js.download
+|       |       bat.js.download
+|       |       beinginhistory-500w.jpg
+|       |       BHoSZTIOG8c4sLxwmWoiPQhAdMwDXqZ933_k3mkakv9feCb2fFHN4UJLFRbh52jhWDjkFeJuw2FKFAbawD6twQIkFe9aweIXFgn0MKG0jAFu-WsoShFGZAsude80ZkoRdhXCHKoyjamTiY8Djhy8ZYmC-Ao1Oco8if37OcBDOcu8OfG0da4yd1F.download
+|       |       cldr-resource-pack-9902ec3244984e7d-min.en-US.js.download
+|       |       common-6cb6a52dfa679460-min.en-US.js.download
+|       |       common-vendors-ed70ccc9ee03f359-min.en-US.js.download
+|       |       common-vendors-stable-54bab8bb8a15366b-min.en-US.js.download
+|       |       connect.min.js.download
+|       |       core.js.download
+|       |       css2
+|       |       DEFAULT_UNSPECIFIED.jpeg
+|       |       destination
+|       |       destination(1)
+|       |       drinkminna-500w.jpg
+|       |       dynamic-templates-preview-c7ef5ac84d74c3f2-min.en-US.js.download
+|       |       extract-css-moment-js-vendor-088ec0120fdbcfed-min.en-US.js.download
+|       |       extract-css-runtime-aca3c9e9b3b9087e-min.en-US.js.download
+|       |       f.txt
+|       |       fbevents.js.download
+|       |       floatingPanels-d0bdd8ab5d.png
+|       |       form-rendering-utils-354d6f08f6c69d55-min.en-US.js.download
+|       |       globals.css
+|       |       grid.css
+|       |       Group+64Icon+components.png
+|       |       Group+65Icon+components.png
+|       |       Group+67Icon+components.png
+|       |       Group+73icon+components.png
+|       |       gtm.js.download
+|       |       image-asset(1).jpeg
+|       |       image-asset(10).jpeg
+|       |       image-asset(11).jpeg
+|       |       image-asset(12).jpeg
+|       |       image-asset(13).jpeg
+|       |       image-asset(14).jpeg
+|       |       image-asset(2).jpeg
+|       |       image-asset(3).jpeg
+|       |       image-asset(4).jpeg
+|       |       image-asset(5).jpeg
+|       |       image-asset(6).jpeg
+|       |       image-asset(7).jpeg
+|       |       image-asset(8).jpeg
+|       |       image-asset(9).jpeg
+|       |       image-asset.jpeg
+|       |       index(1).css
+|       |       index(1).js.download
+|       |       index(2).js.download
+|       |       index(3).js.download
+|       |       index.css
+|       |       index.js.download
+|       |       init.js.download
+|       |       insight.min.js.download
+|       |       insight.old.min.js.download
+|       |       js
+|       |       js(1)
+|       |       legacy.js.download
+|       |       main.31a98a45.js.download
+|       |       modern.js.download
+|       |       nav.css
+|       |       notice
+|       |       notice(1)
+|       |       onemag-500w.jpg
+|       |       performance-7b43a43d6da409a6-min.en-US.js.download
+|       |       performance.js.download
+|       |       Picture1.jpg
+|       |       pixel.js.download
+|       |       pixel.min.js.download
+|       |       promo-banner.css
+|       |       Rectangle+1474.jpg
+|       |       Rectangle+1475.jpg
+|       |       Rectangle+1476.jpg
+|       |       Rectangle+1477.jpg
+|       |       Rectangle+29-1.jpg
+|       |       rosetta.js.download
+|       |       saved_resource(1).html
+|       |       saved_resource(2).html
+|       |       saved_resource.html
+|       |       scevent.min.js.download
+|       |       sectionPanelText-e5137126c3.jpeg
+|       |       sign-up-pill-8dfd1c5b0b2be374-min.en-US.css
+|       |       sign-up-pill-e83921eb480bf837-min.en-US.js.download
+|       |       site-bundle.3baf78f3d3a3bf9a686b5b727e3b950b.js.download
+|       |       site.css
+|       |       sqs.js.download
+|       |       static.css
+|       |       style-guide-grid.css
+|       |       style-guide-grid.js.download
+|       |       teads-fellow.js.download
+|       |       token_create.js.download
+|       |       track
+|       |       trustarc.css
+|       |       user-account-core-03b6f9bbfaa7e2f5-min.en-US.css
+|       |       user-account-core-719dce1521da8334-min.en-US.js.download
+|       |       uwt.js.download
+|       |       vendor.js.download
+|       |       wireFrame-ccfecbdbcf.png
+|       |       
+|       \---products
+|               access-control.jpg
+|               accessories.jpg
+|               Achievement.jpg
+|               alarm.png
+|               audio.png
+|               display.jpeg
+|               distribution.jpg
+|               hilook.jpeg
+|               hilook.jpg
+|               inspection.jpg
+|               interactive-flat-panel.png
+|               intercom.jpg
+|               jpg.jpg
+|               led.png
+|               network-products.jpg
+|               networking.png
+|               onboard.jpg
+|               parking.jpg
+|               radar.png
+|               software.jpg
+|               software.png
+|               solutions-hero.jpg
+|               thermal.png
+|               traffic.png
+|               turbo-hd.jpg
+|               turnstile.png
+|               
++---components
+|       AppFooter.vue
+|       AppHeader.vue
+|       ComparisonBar.vue
+|       GlobalLoadingIndicator.vue
+|       ProductCard.vue
+|       ProductGridItem.vue
+|       SolutionCard.vue
+|       SolutionDetailModal.vue
+|       SolutionFunctionCard.vue
+|       SolutionHints.vue
+|       SolutionIndustryCard.vue
+|       SolutionIndustryDetail.vue
+|       SolutionScenarioCard.vue
+|       
++---router
+|       index.js
+|       
++---services
+|       api.js
+|       
+\---views
+        AboutView.vue
+        AchievementView.vue
+        ContactView.vue
+        DashboardView.vue
+        HomeView.vue
+        LoginView.vue
+        PartnerView.vue
+        ProductCategoryDetailView.vue
+        ProductDetailView.vue
+        ProductsView.vue
+        SolutionDetailView.vue
+        SolutionsView.vue
+        SupportView.vue
+        

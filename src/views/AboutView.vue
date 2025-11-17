@@ -8,7 +8,7 @@
     </section>
 
     <h1 class="section-title">About TONGFANG</h1>
-    <p class="section-subtitle">A Factory of Innovation, a Partner in Design. We are dedicated to building the smart infrastructure of tomorrow, from the factory floor to the finished building.</p>
+    <p class="section-subtitle">A Factory of Innovation, a Partner in Design. We are dedicated to building the smart infrastructure of tomorrow, from the factory floor to the finished building under  the help of AIot.</p>
 
     <div class="about-grid">
       <div class="about-image">

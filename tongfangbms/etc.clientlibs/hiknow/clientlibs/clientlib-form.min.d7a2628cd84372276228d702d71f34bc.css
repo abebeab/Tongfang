@@ -1,0 +1,378 @@
+.btn{height:2.5rem;border-radius:1.875rem}
+.btn.regular-btn{min-width:10rem;font-size:1.25rem;font-weight:600;line-height:1.35}
+.btn.small-btn{min-width:5rem;height:1.25rem;font-size:.75rem;font-weight:600;line-height:1.35;padding:1px 10px}
+.btn.primary-btn{color:#fff;background-color:#d7000f}
+.btn.primary-btn:hover{background-color:#ff0012}
+.btn.primary-btn:active,.btn.primary-btn:focus{background-color:#ba000d}
+.btn.primary-btn:disabled{color:#737373;background-color:#f2f2f2}
+.btn.outline-dark-btn{min-width:10rem;border-radius:30px;color:#505050;border:solid 1px #505050}
+.btn.outline-dark-small-btn{min-width:5rem;border-radius:1.875rem;height:1.25rem;border:solid 1px #fff;background-color:#505050}
+.btn.outline-light-btn{min-width:10rem;border-radius:30px;border:solid 1px #505050}
+.btn.form-outline-light-small-btn{min-width:5rem;border:solid 1px #505050;border-radius:30px;height:1.25rem;font-size:.75rem}
+.mandatory{position:relative;display:inline-block}
+.mandatory:before{content:'*';position:absolute;top:.125rem;right:.125rem}
+.text-primary-color-1{color:#f7000f}
+.bg-primary-color-1{background-color:#f7000f}
+.text-primary-color-2{color:#505050}
+.bg-primary-color-2{background-color:#505050}
+.text-primary-color-3{color:#707070}
+.bg-primary-color-3{background-color:#707070}
+.text-secondary-color-1{color:#f2f2f2}
+.bg-secondary-color-1{color:#f2f2f2}
+.text-secondary-color-2{color:#fff}
+.bg-secondary-color-2{color:#fff}
+.text-secondary-color-3{color:#737373}
+.bg-secondary-color-3{color:#737373}
+.text-secondary-color-4{color:#d2d2d2}
+.bg-secondary-color-4{color:#d2d2d2}
+.text-secondary-color-5{color:#989898}
+.bg-secondary-color-5{color:#989898}
+.text-highlights-color-1{color:#fff100}
+.bg-highlights-color-1{color:#fff100}
+.text-highlights-color-2{color:#d7000f}
+.bg-highlights-color-2{color:#d7000f}
+.text-highlights-color-3{color:#000}
+.bg-highlights-color-3{color:#000}
+.text-highlights-color-4{color:#2b2b2b}
+.bg-highlights-color-4{color:#2b2b2b}
+.text-highlights-color-5{color:#80b722}
+.bg-highlights-color-5{color:#80b722}
+.form-elements{width:100%;margin:0 auto;padding:0 .9375rem;max-width:81.875rem}
+.form-elements ul{list-style-type:none !important;margin:0;padding:0}
+.form-elements li .nd-email-options{display:none}
+.form-elements .online-enquiry-form{margin-left:4.0625rem;margin-right:4.0625rem;text-align:center;padding:0}
+.form-elements .online-enquiry-form .header{font-weight:600;font-size:1.875rem;padding-top:2rem;margin-bottom:1.25rem}
+.form-elements .online-enquiry-form .content{font-size:1rem;color:#505050}
+.form-elements .enquiry-form-container .required{position:relative;vertical-align:middle;padding-top:.125rem;padding-right:.25rem;margin-top:.625rem}
+.form-elements .enquiry-form-container .required:before{content:"*";color:#d7000f;padding-right:2px}
+.form-elements .enquiry-form-container input{outline:0;margin-top:.25rem;margin-bottom:.25rem;margin-right:.625rem}
+.form-elements .enquiry-form-container input.keys{margin-top:0rem;margin-bottom:0rem;margin-right:0rem;width:100%;border:0}
+.form-elements .enquiry-form-container input[type="radio"]{-webkit-appearance:initial;appearance:initial;padding:0;position:relative;vertical-align:sub;width:.5625rem;height:.5625rem;border-radius:.625rem}
+.form-elements .enquiry-form-container input[type="radio"]:checked{background:#707070;vertical-align:sub;border-radius:.1875rem}
+.form-elements .enquiry-form-container input[type="radio"]:after{position:absolute;width:16px;height:16px;border:1px solid black;content:'';background:#ffffff00;left:45%;top:45%;-webkit-transform:translate(-48%,-49%);-moz-transform:translate(-48%,-49%);-ms-transform:translate(-48%,-49%);transform:translate(-48%,-49%);border-radius:100%;vertical-align:sub}
+.form-elements .enquiry-form-container input[type="checkbox"]{-webkit-appearance:initial;appearance:initial;width:16px;height:16px;padding:0;position:relative;border-radius:3px;vertical-align:sub}
+.form-elements .enquiry-form-container input[type="checkbox"]:checked{background:#707070;border-radius:3px;vertical-align:sub}
+.form-elements .enquiry-form-container input[type="checkbox"]:after{position:absolute;width:16px;height:16px;border:1px solid black;content:'';background:#ffffff00;left:47%;top:46%;-webkit-transform:translate(-48%,-49%);-moz-transform:translate(-48%,-49%);-ms-transform:translate(-48%,-49%);transform:translate(-48%,-49%);border-radius:3px;vertical-align:sub}
+.form-elements .enquiry-form-container .card{border:0;padding:7px}
+.form-elements .enquiry-form-container .card ::-webkit-input-placeholder{padding-left:.625rem}
+.form-elements .enquiry-form-container .card input[type="date"]{width:26.875rem;display:block;border:1px solid #707070;border-radius:5px;height:37px}
+.form-elements .enquiry-form-container .card .no-spin::-webkit-inner-spin-button{-webkit-appearance:none}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none !important;margin:0}
+.form-elements .enquiry-form-container .card input[type="number"]{-moz-appearance:textfield;-webkit-appearance:none;width:26.875rem;display:block;border:1px solid #707070;border-radius:5px;height:37px;padding:0 10px}
+.form-elements .enquiry-form-container .card input[type="text"]{width:26.875rem;display:block;border:1px solid #707070;border-radius:5px;height:37px;padding:0 10px}
+.form-elements .enquiry-form-container .card select{margin-top:.5rem;width:26.875rem;display:block;border:1px solid #707070;border-radius:5px;height:37px}
+.form-elements .enquiry-form-container .card .card-header{padding:0;border:0;background-color:#fff;cursor:pointer}
+.form-elements .enquiry-form-container .card .card-header .card-header-text{margin-left:2.25rem;font-size:1.5rem;font-weight:600}
+.form-elements .enquiry-form-container.training-form-container .card .card-header .card-header-text{margin-left:1.25rem}
+.form-elements .enquiry-form-container .card .card-header .show-alert{width:24px;height:24px;display:block;float:right;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-warning.svg')}
+.form-elements .enquiry-form-container .card .card-body{font-size:1rem;margin-left:1.125rem;padding-top:0;margin-top:1rem}
+.form-elements .enquiry-form-container .card button:focus{box-shadow:none}
+.form-elements .enquiry-form-container .card .row{margin:0}
+.form-elements .enquiry-form-container .card .row.verif{display:none}
+.form-elements .enquiry-form-container .card .half-body{display:flex;flex-flow:row;flex-wrap:wrap}
+.form-elements .enquiry-form-container .card .half-body .half-row{width:49%;flex-grow:0;flex-shrink:0}
+.form-elements .enquiry-form-container .card .half-body .line-row{width:100%;flex-grow:0;flex-shrink:0}
+.form-elements .enquiry-form-container .card label{margin-right:1.875rem;margin-top:1.875rem;display:inline}
+.form-elements .enquiry-form-container .card label p{margin-bottom:0}
+.form-elements .enquiry-form-container .card .options-radio-btn{width:100%;margin-left:.125rem}
+.form-elements .enquiry-form-container .card .enquiry-question-list{line-height:2.2}
+.form-elements .enquiry-form-container .card .enquiry-upload-remove-file .file-label{font-size:1rem}
+.form-elements .enquiry-form-container .card .enquiry-upload-remove-file .file-name{margin-left:.5rem;color:#d7000f}
+.hilook-page .form-elements .enquiry-form-container .card .enquiry-upload-remove-file .file-name{color:#00a7e2}
+.form-elements .enquiry-form-container .card .radio-button-wrapper{margin-top:1rem;margin-bottom:.4375rem;line-height:2;position:relative;display:inline}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .left-options{width:50%;float:left;list-style-type:none;padding:0;margin:0}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .right-options{width:50%;float:right}
+.form-elements .enquiry-form-container .card .checkbox-wrapper{margin-top:1rem;line-height:2}
+.form-elements .enquiry-form-container .card .checkbox-wrapper li{margin-left:3px}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-left{width:50%;float:left;list-style-type:none;padding:0;margin:0}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-right{width:50%;float:right}
+.form-elements .enquiry-form-container .card .collapsed .triangle-indicator{width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:12px solid #505050;display:inline-block;border-bottom:0;margin-left:22px;margin-bottom:3px;margin-top:0}
+.form-elements .enquiry-form-container .card .triangle-indicator{height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:12px solid #505050;display:inline-block;border-top:0;margin-left:22px;margin-bottom:3px;transition:all .25s ease-in}
+.form-elements .enquiry-form-container .num-btn{width:1.5625rem;height:1.5625rem;border-radius:100%;background-color:#d7000f;color:#fff;font-size:.8125rem;text-align:center;padding:.125rem 0;margin-top:.3125rem;display:inline-block;position:absolute}
+.hilook-page .form-elements .enquiry-form-container .num-btn{background-color:#00a7e2}
+.form-elements .enquiry-form-container .radio-button-wrapper{width:50%}
+.form-elements .enquiry-form-container .enquiry-description{width:50%;margin-top:1rem}
+.form-elements .enquiry-form-container .enquiry-description .enquiry-form__text-area{width:26.875rem;height:10rem;border-radius:.3125rem;padding:.625rem;outline:0;resize:none}
+.form-elements .enquiry-form-container .enquiry-description ::-webkit-input-placeholder{font-size:1rem;margin-left:.625rem}
+.form-elements .enquiry-form-container .select-date-wrapper{margin-top:1rem;width:50%;position:relative}
+.form-elements .enquiry-form-container .select-date-wrapper input{margin-top:.5rem;font-size:1rem;color:#505050}
+.form-elements .enquiry-form-container .date-wrapper{width:26.875rem;position:relative}
+.form-elements .enquiry-form-container .date-wrapper:after{content:'';position:absolute;border-top:10px solid #505050;border-left:10px solid transparent;border-right:10px solid transparent;top:40%;right:10px;transition:all .5s ease-in;pointer-events:none}
+.form-elements .enquiry-form-container .select-region-wrapper{margin-top:.5rem}
+.form-elements .select-region-wrapper{width:50%;position:relative;margin-bottom:.625rem}
+.form-elements .enquiry-form-container .enquiry-upload-file label,.form-elements .enquiry-form-container .enquiry-upload-remove-file label{padding:1px 10px;cursor:pointer}
+.form-elements .enquiry-form-container .dropdown-wrapper{position:relative;width:26.875rem;margin-top:.625rem}
+.form-elements .enquiry-form-container .dropdown-wrapper .region-selector-label{border:1px solid #707070;padding:.4375rem .625rem;border-radius:.375rem;position:relative}
+.form-elements .enquiry-form-container .dropdown-wrapper .region-selector-label.remove-top-border{border-bottom-right-radius:0;border-bottom-left-radius:0;border-bottom:0}
+.form-elements .enquiry-form-container .dropdown-wrapper .region-selector-label:after{content:'';position:absolute;top:40%;right:.375rem;border-left:11px solid transparent;border-right:11px solid transparent;border-top:12px solid #505050;display:inline-block;border-bottom:0;transition:all .15s ease-in}
+.form-elements .enquiry-form-container .dropdown-wrapper .region-selector-label.remove-top-border:after{border-left:11px solid transparent;border-right:11px solid transparent;border-bottom:12px solid #505050;display:inline-block;border-top:0;margin-left:22px;margin-bottom:3px;transition:all .15s ease-in}
+.form-elements .enquiry-form-container .dropdown-wrapper .dropdown.region-options{list-style-type:none;border:1px solid #707070;border-radius:.375rem;padding:0;position:absolute;width:100%;display:none;background-color:white;z-index:1}
+.form-elements ul.dropdown{max-height:270px;overflow-y:auto}
+.form-elements .enquiry-form-container .card .input-box-wrapper.m125{margin-top:1.25rem}
+.form-elements .enquiry-form-container .card .select-region-wrapper.m125{margin-top:1.25rem}
+.form-elements .enquiry-form-container .dropdown-wrapper .dropdown.region-options.remove-top-border{border-top-right-radius:0;border-top-left-radius:0}
+.form-elements .enquiry-form-container .dropdown-wrapper .dropdown.region-options li{padding:.3125rem .625rem;border-bottom:1px solid #707070}
+.form-elements .enquiry-form-container .dropdown-wrapper .dropdown.region-options li:last-child{border:0}
+.form-elements .enquiry-form-container .dropdown-wrapper .dropdown.region-options li:hover{background-color:#d2d2d2}
+.form-elements .enquiry-form-container .enquiry-input-box{width:50%;position:relative}
+.form-elements .enquiry-form-container .enquiry-search-button{margin-top:1.25rem;margin-bottom:.875rem}
+.form-elements .input-box-wrapper{width:50%;position:relative;margin-bottom:.625rem}
+.form-elements .enquiry-result-table{font-size:1.5rem;font-weight:600}
+.form-elements .enquiry-form-submit{width:100%;height:5rem;padding-top:1.25rem;padding-right:3.5rem;margin-top:1rem;background-color:#f2f2f2;text-align:right;position:-webkit-sticky;position:sticky;bottom:0;z-index:10}
+.form-elements .enquiry-form-submit .enquiry-reset{margin-right:1.875rem;box-shadow:none}
+.form-elements .enquiry-form-submit .enquiry-submit{box-shadow:none}
+.form-elements .enquiry-form-submit .enquiry-submit:disabled{color:#737373;opacity:.5;background-color:#f2f2f2;border:1px solid #505050}
+.form-elements .enquiry-form-submit .enquiry-submit{position:relative}
+.form-elements .enquiry-form-submit .enquiry-submit .loading{-webkit-animation:animal 1s infinite linear;-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;position:absolute;right:1rem;top:.75rem;display:none}
+.form-elements .enquiry-form-submit .enquiry-submit.loading .loading{display:block}
+.form-elements .enquiry-form-submit .btn.primary-btn:focus{box-shadow:none}
+.form-elements .enquiry-form-container .card .dropdown-wrapper{cursor:pointer}
+.form-elements .form-note{color:#007bff}
+.form-elements .form-note b{color:#d7000f}
+@media only screen and (max-width:767.98px){.form-elements .enquiry-form-container .card .half-body .half-row{width:100%}
+.form-elements .online-enquiry-form{margin-left:1.0625rem;margin-right:1.0625rem}
+.form-elements .enquiry-form-container .card .card-header .card-header-text{font-size:1.25rem;display:inline-block;margin-left:26px}
+.form-elements .enquiry-form-container.training-form-container .card .card-header .card-header-text{margin-left:0}
+.form-elements .enquiry-form-container .card .card-body{margin-top:0rem;margin-left:0rem;padding:0;padding-top:.5rem}
+.form-elements .enquiry-form-container .card .radio-button-wrapper{width:100%}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .left-options{width:100%}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .right-options{width:100%}
+.form-elements .enquiry-form-container .card .checkbox-wrapper{width:100%}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-left{width:100%;padding:0;list-style-type:none}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-right{width:100%}
+.form-elements .enquiry-form-container .card input[type="date"]{width:100%;height:2.5rem}
+.form-elements .enquiry-form-container .card input[type="number"]{width:100%;height:2.5rem}
+.form-elements .enquiry-form-container .card input[type="text"]{width:100%;height:2.5rem}
+.form-elements .enquiry-form-container .card .select-date-wrapper{width:100%}
+.form-elements .enquiry-form-container .card .date-wrapper{width:100%}
+.form-elements .enquiry-form-container .card .select-region-wrapper{width:100%}
+.form-elements .enquiry-form-container .card .dropdown-wrapper{width:100%}
+.form-elements .enquiry-form-container .card .dropdown-wrapper select{margin-top:.5rem;width:100%;height:2.5rem}
+.form-elements .enquiry-form-container .card .input-box-wrapper{width:100%;margin-bottom:10px}
+.form-elements .enquiry-form-container .card .enquiry-description{width:100%}
+.form-elements .enquiry-form-container .card .enquiry-description .enquiry-form__text-area{width:100%}
+.form-elements .enquiry-form-container .card .textarea-wrapper{width:100%;position:relative}
+.form-elements .enquiry-form-container .card .char-counter{position:absolute;right:0;top:100%}
+.form-elements .enquiry-form-container .card .enquiry-input-box{width:100%;margin-top:1rem}
+.form-elements .enquiry-form-container .card .enquiry-result-table{font-size:1rem}
+.form-elements .enquiry-form-container .card input{margin-right:.5rem}
+.form-elements .enquiry-form-container .card input.class{margin-right:0}
+.form-elements .enquiry-form-container .num-btn{width:1.25rem;height:1.25rem;font-size:.8125rem}
+.form-elements .enquiry-form-submit{width:100%;text-align:center;padding-right:0}
+.form-elements .enquiry-form-submit .enquiry-reset{margin-right:0}
+}
+@media only screen and (min-width:768px){.form-elements .enquiry-form-container .card .half-body .half-row{width:100%}
+.form-elements .enquiry-form-container .card .card-body{margin-left:1.125rem}
+.form-elements .enquiry-form-container .card input{margin-right:.625rem}
+.form-elements .enquiry-form-container .card input.keys{margin-top:0rem}
+.form-elements .enquiry-form-container .card input.class{margin-right:0rem}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .left-options{width:100%}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .right-options{width:100%}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-left{width:100%;padding:0;list-style-type:none}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-right{width:100%}
+.form-elements .enquiry-form-container .card input[type="date"]{width:19.5rem;height:2.5rem}
+.form-elements .enquiry-form-container .card input[type="number"]{width:19.5rem;height:2.5rem}
+.form-elements .enquiry-form-container .card input[type="text"]{width:19.5rem;height:2.5rem}
+.form-elements .enquiry-form-container .card .date-wrapper{width:19.5rem}
+.form-elements .enquiry-form-container .card .dropdown-wrapper{width:19.5rem}
+.form-elements .enquiry-form-container .card .dropdown-wrapper select{width:19.5rem;height:2.5rem}
+.form-elements .enquiry-form-container .enquiry-description .enquiry-form__text-area{width:19.5rem;height:10rem}
+.form-elements .enquiry-form-container .textarea-wrapper{width:19.5rem;position:relative}
+.form-elements .enquiry-form-container .char-counter{position:absolute;right:0;top:100%}
+.form-elements .enquiry-form-container .enquiry-result-table{font-size:1.5rem;font-weight:600}
+.form-elements .enquiry-form-container .num-btn{width:1.5625rem;height:1.5625rem}
+}
+@media only screen and (min-width:992px){.form-elements .enquiry-form-container .card .half-body .half-row{width:49%}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .left-options{width:50%}
+.form-elements .enquiry-form-container .card .radio-button-wrapper .right-options{width:50%}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-left{width:50%;padding:0;list-style-type:none}
+.form-elements .enquiry-form-container .card .checkbox-wrapper .checkbox-right{width:50%}
+.form-elements .enquiry-form-container .card input[type="date"]{width:26.875rem;height:2.5rem}
+.form-elements .enquiry-form-container .card input[type="number"]{width:26.875rem;height:2.5rem}
+.form-elements .enquiry-form-container .card input[type="text"]{width:26.875rem;height:2.5rem}
+.form-elements .enquiry-form-container .card .date-wrapper{width:26.875rem}
+.form-elements .enquiry-form-container .card .dropdown-wrapper{width:26.875rem}
+.form-elements .enquiry-form-container .card .dropdown-wrapper select{width:26.875rem;height:2.5rem}
+.form-elements .enquiry-form-container .enquiry-description .enquiry-form__text-area{width:26.875rem;height:10rem}
+.form-elements .enquiry-form-container .textarea-wrapper{width:26.875rem;position:relative}
+.form-elements .enquiry-form-container .char-counter{position:absolute;right:0;top:100%}
+}
+.form-elements .error{position:absolute;top:-2.1875rem;left:0;color:#d7000f;font-size:.625rem;font-style:normal}
+.form-elements :required+.error.help-block{position:initial;display:block}
+.form-elements .error.help-block{position:initial;display:block}
+.form-elements .help-block+img+.error{position:initial}
+.form-elements .input-box-wrapper .error{top:-0.625rem}
+.form-elements .enquiry-detail .error{top:-0.625rem}
+.form-elements .select-date-wrapper .error{top:-2.8125rem}
+@media only screen and (max-width:767.98px){.wholesaler .layout1-wrapper .layout1-content-wrapper .result-grid-layout1__text .tile-content{max-height:9.9em;padding-left:0;padding-top:0}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .tile-lists,.wholesaler .font-highlight{font-size:.8125rem}
+.form-elements .enquiry-form-container .card .select-region-wrapper.m50{margin-top:.5rem}
+.form-elements .enquiry-form-container .card .input-box-wrapper.m50{margin-top:1.5rem}
+}
+@media only screen and (min-width:768px){.wholesaler .font-highlight{font-size:1rem}
+}
+.wholesaler .font-highlight{color:#d7000f;font-weight:600;font-size:1rem}
+.wholesaler .layout1-wrapper .layout1-content-wrapper{background-color:#fff;position:relative;border-radius:.3125rem;margin-bottom:.625rem;padding:1.5rem}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .result-grid-layout1__text .tile-heading{font-size:1.2rem;font-weight:600}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .result-grid-layout1__text .tile-content{margin-top:.25rem;margin-right:.375rem;padding-right:.8125rem;font-size:.8rem}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .tile-lists{list-style-type:none;width:100%;padding:0}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .tile-lists .item{display:table;padding:.25rem 0 .1rem 0}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .tile-lists .item .parameter{color:#555;font-weight:bold}
+.wholesaler .layout1-wrapper .layout1-content-wrapper .tile-lists .item .separator{margin-right:.2rem}
+.form-elements .enquiry-form-submit-left{height:5rem;padding-top:1.25rem;margin-top:1rem;text-align:start;background-color:#f2f2f2;position:-webkit-sticky;position:sticky;bottom:0}
+.form-elements .enquiry-form-container .card .enquiry-checkbox1{display:flex;justify-content:start}
+.form-elements .enquiry-form-container .card .enquiry-checkbox1 input[type=checkbox]{flex-shrink:0;margin-top:.875rem;margin-bottom:.625rem}
+.form-elements .enquiry-form-container .card .enquiry-checkbox1 label{flex-grow:0;margin-top:.625rem;margin-bottom:.625rem;padding-top:0;display:flex;justify-content:start}
+@media only screen and (min-width:768px){.form-elements .enquiry-form-submit-left{padding-left:3.5rem}
+}
+@media only screen and (max-width:768px){.cpf-wrap .val-item{width:22.7% !important}
+.input-box-wrapper .val-item:not(:nth-last-of-type(1)){margin-right:3% !important}
+}
+.form-elements .enquiry-form-container .input-box-wrapper{margin-top:.5rem}
+.form-elements .enquiry-form-container .cpf-wrap{overflow:hidden}
+.form-elements .enquiry-form-container .cpf-wrap .required{margin-top:-5px}
+.cpf-wrap>span{float:left;display:block;width:100%}
+.cpf-wrap .item-wrap{height:40px;width:100%;overflow:hidden;margin-top:35px}
+.form-elements .error.help-block.cpf-error{display:none}
+.cpf-wrap .val-item{float:left;width:100px;height:39px;background:#fff;border:1px solid #707070;border-radius:4px;overflow:hidden}
+.cpf-wrap .val-item input{display:block;width:100%;height:39px;text-align:center;font-size:14px;color:#505050;margin-top:0 !important;border:0;outline:0}
+.input-box-wrapper .val-item:not(:nth-last-of-type(1)){margin-right:10px}
+.enquiry-upload-remove-file{margin-top:.5rem;margin-bottom:.625rem}
+.form-elements .enquiry-form-container input{margin-top:.625rem}
+.form-elements .enquiry-form-container input.keys{margin-top:0}
+.form-elements .enquiry-form-container .select-date-wrapper{margin-top:.55rem}
+.form-elements .enquiry-form-container .required{vertical-align:baseline}
+.form-elements .enquiry-checkbox1 p{display:inline-block}
+.form-elements .enquiry-form-container .verification span{display:block}
+.form-elements .enquiry-form-container .verification input[type="text"]{display:inline;width:13rem}
+.form-elements .enquiry-form-container .verification img{height:2.7rem}
+@media only screen and (max-width:480px){.btn.outline-light-btn{min-width:7.5rem}
+.btn.regular-btn{min-width:7.5rem}
+}
+.result-list .layout1-content-wrapper{background-color:#fff;position:relative;display:flex;flex-wrap:wrap;border-radius:.3125rem;margin-bottom:.625rem}
+.result-list .layout1-content-wrapper .image-wrapper{padding:.625rem;height:auto;flex:2}
+.result-list .layout1-content-wrapper .image-wrapper .product-image-event{width:20rem;height:10rem}
+.result-list .layout1-content-wrapper .result-grid-layout1__text{position:relative;flex:8}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-heading{font-size:1.25rem;font-weight:600;margin-top:.4375rem}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-content{font-size:1.25rem;margin-top:.25rem;padding-right:.8125rem;margin-right:.375rem;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;display:-webkit-box;-webkit-line-clamp:3}
+.result-list .layout1-content-wrapper .tile-lists{list-style-type:none;display:flex;width:100%;justify-content:space-between;flex-wrap:wrap;padding:0}
+.result-list .layout1-content-wrapper .tile-lists .item{flex:1 0 33.3%;padding-top:.375rem;padding-right:0rem;padding-bottom:.375rem;padding-left:0rem}
+.result-list .layout1-content-wrapper .tile-lists .item .details{font-weight:600;font-size:1rem}
+.result-list .layout1-content-wrapper .tile-lists .item .separator{padding:.625rem}
+.result-list .layout1-content-wrapper .buttons-wrapper{margin-bottom:.625rem;flex:2}
+.result-list .layout1-content-wrapper .buttons-wrapper .tile-list-display{display:none}
+.result-list .layout1-content-wrapper .buttons-wrapper .buttons{font-weight:600;padding-top:.40625rem;padding-right:3.4375rem;padding-bottom:.40625rem;padding-left:3.4375rem;border-radius:1.25rem;outline:0;border:0;font-size:1.25rem}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-register{margin-bottom:.625rem;color:#fff;background-color:#d7000f}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-learn{border:1px solid #505050;background-color:#fff}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-register:hover{background-color:#ff0012}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-register:active{background-color:#ba000d}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-register:disabled{background-color:#f2f2f2;color:#737373}
+@media only screen and (max-width:767.98px){.news-event-list__layout1-wrapper{padding:0}
+.result-list-tab{display:block;padding-left:.625rem;width:100%}
+.buttons-wrapper-tab{display:block;width:100%;margin:5%}
+.buttons-wrapper-tab .buttons{width:46%;border-radius:1.25rem;outline:0;border:0;font-size:.875rem;font-weight:600;padding-top:.625rem;padding-right:0rem;padding-left:0rem;padding-bottom:.625rem}
+.buttons-wrapper-tab .btn-register{color:#fff;background-color:#d7000f;margin-right:.875rem;display:inline-block;text-align:center}
+.buttons-wrapper-tab .btn-learn{border:1px solid #505050;background-color:#fff;padding-top:.625rem;padding-right:0rem;padding-left:0rem;padding-bottom:.625rem;display:inline-block;text-align:center}
+.result-list .layout1-content-wrapper{background-color:#fff;position:relative;height:auto;margin-bottom:.625rem}
+.result-list .layout1-content-wrapper .image-wrapper{height:auto}
+.result-list .layout1-content-wrapper .image-wrapper .product-image-event{width:13.5rem;height:9rem}
+.result-list .layout1-content-wrapper .result-list-tab{position:relative}
+.result-list .layout1-content-wrapper .result-list-tab .tile-heading{font-size:1rem}
+.result-list .layout1-content-wrapper .result-list-tab .tile-content{font-size:.75rem;max-height:9.9em;padding-right:.8125rem;margin-right:.375rem;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;display:-webkit-box;-webkit-line-clamp:3}
+.result-list .layout1-content-wrapper .result-list-tab .tile-lists{list-style-type:none;width:100%;justify-content:space-between;flex-wrap:wrap;display:none}
+.result-list .layout1-content-wrapper .result-list-tab .tile-lists .item{display:inline-block;width:50%;padding-top:.625rem;padding-bottom:.625rem;padding-left:0rem;padding-right:0rem}
+.result-list .layout1-content-wrapper .result-list-tab .tile-lists .item .details{font-weight:600}
+.result-list .layout1-content-wrapper .buttons-wrapper{display:none}
+}
+@media only screen and (min-width:768px){.news-event-list__layout1-wrapper{padding:0}
+.result-list-tab{display:block;padding-left:.625rem;width:100%}
+.result-list-tab .tile-lists{margin-bottom:1.25rem}
+.buttons-wrapper-tab{display:flex;margin-bottom:.625rem;width:100%;justify-content:flex-end;margin-right:1.875rem}
+.buttons-wrapper-tab .buttons{padding-top:.40625rem;padding-right:3.4375rem;padding-bottom:.40625rem;padding-left:3.4375rem;border-radius:1.25rem;outline:0;border:0;font-size:1.25rem;font-weight:600}
+.buttons-wrapper-tab .btn-register{color:#fff;background-color:#d7000f;margin-right:1.5rem;display:inline-block;text-align:center}
+.buttons-wrapper-tab .btn-learn{border:1px solid #505050;background-color:#fff}
+.result-list .layout1-content-wrapper{background-color:#fff;position:relative}
+.result-list .layout1-content-wrapper .image-wrapper{height:auto}
+.result-list .layout1-content-wrapper .image-wrapper .product-image-event{width:13.125rem;height:8.4375rem}
+.result-list .layout1-content-wrapper .result-list-tab{position:relative}
+.result-list .layout1-content-wrapper .result-list-tab .tile-content{font-size:1rem}
+.result-list .layout1-content-wrapper .result-list-tab .tile-lists{list-style-type:none;width:100%;justify-content:space-between;flex-wrap:wrap;display:none;margin-top:.625rem}
+.result-list .layout1-content-wrapper .result-list-tab .tile-lists .item{display:inline-block;width:50%;padding-top:.625rem;padding-bottom:.625rem;padding-left:0rem;padding-right:0rem}
+.result-list .layout1-content-wrapper .buttons-wrapper{margin-bottom:.625rem;display:none}
+.result-list .layout1-content-wrapper .buttons-wrapper .buttons{padding-top:.40625rem;padding-right:3.4375rem;padding-bottom:.40625rem;padding-left:3.4375rem;border-radius:1.25rem;outline:0;border:0;font-size:1.25rem}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-register{color:#fff;background-color:#d7000f}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-learn{border:1px solid #505050;background-color:#fff}
+}
+@media only screen and (min-width:992px){.news-event-list__layout1-wrapper{padding:0}
+.result-list-tab{display:none}
+.buttons-wrapper-tab{display:none}
+.result-list .layout1-content-wrapper{background-color:#fff;position:relative;height:auto}
+.result-list .layout1-content-wrapper .image-wrapper{height:auto}
+.result-list .layout1-content-wrapper .image-wrapper .product-image-event{width:20rem;height:10rem}
+.result-list .layout1-content-wrapper .result-grid-layout1__text{position:relative}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-heading{font-size:1.25rem;font-weight:600}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-content{font-size:1.25rem;margin-top:.25rem;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;display:-webkit-box;-webkit-line-clamp:3}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-lists{list-style-type:none;display:flex;width:100%;justify-content:space-between;flex-wrap:wrap;margin-top:.875rem;margin-bottom:0}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-lists .item{display:inline-block;width:50%;padding-top:.25rem;padding-bottom:.25rem;padding-left:0rem;padding-right:0rem}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-lists .item .details{font-weight:600;font-size:1rem}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-lists .item .parameter{font-size:1rem}
+.result-list .layout1-content-wrapper .result-grid-layout1__text .tile-lists .item .separator{padding:.625rem}
+.result-list .layout1-content-wrapper .buttons-wrapper{margin-bottom:.9375rem;margin-right:1.25rem;display:block;align-self:flex-end}
+.result-list .layout1-content-wrapper .buttons-wrapper .buttons{padding-top:.40625rem;padding-right:3.4375rem;padding-bottom:.40625rem;padding-left:3.4375rem;border-radius:1.25rem;outline:0;border:0;font-size:1.25rem}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-register{color:#fff;background-color:#d7000f;display:block}
+.result-list .layout1-content-wrapper .buttons-wrapper .btn-learn{border:1px solid #505050;background-color:transparent;display:block;text-align:center;padding-top:.28125rem;padding-right:0rem;padding-bottom:.28125rem;padding-left:0rem;border-radius:1.25rem;outline:0;font-size:1.25rem;font-weight:600}
+}
+.rtl .form-elements .form-container{direction:rtl;text-align:right}
+.rtl .form-elements .form-container .card .card-header-text{margin-right:2.25rem}
+.rtl .form-elements .enquiry-form-container .dropdown-wrapper .region-selector-label:after{left:.37rem;right:auto;margin-left:0;width:10px}
+.rtl .form-elements .enquiry-form-container .date-wrapper:after{left:.37rem;right:auto}
+.rtl .form-elements .enquiry-form-container .card input[type="text"]{margin-right:0}
+.rtl .industry-group .industry-options-group .option-list .options-item{padding-left:0;padding-right:30px}
+.rtl .form-elements .enquiry-form-submit .enquiry-reset{margin-left:1.875rem}
+.rtl .enquiry-upload-remove-file{direction:rtl}
+.rtl .enquiry-upload-remove-file span{display:inline-block}
+.rtl .form-elements .enquiry-form-submit{text-align:center}
+.rtl .form-elements .enquiry-form-container .card .card-body{margin-left:0;margin-right:1.125rem}
+.rtl .form-elements .enquiry-form-container .card .phone{margin-right:0}
+.rtl .form-elements .enquiry-form-submit-left{text-align:center}
+.rtl .form-elements .enquiry-form-container .verification span{padding-right:0}
+.rtl .form-elements .input-box-wrapper .error{right:0}
+.rtl .form-elements .enquiry-form-container .char-counter{right:auto;left:.5rem}
+.rtl .industry-group .industry-options-group .checkbox-inline input[type="checkbox"]{right:-20px;left:auto}
+.form-elements .enquiry-form-container .hidden{display:none !important}
+.training-form-message-block{display:none}
+.training-form-message-block.show-message{background-color:#fff;display:block;margin:15px 0;padding:100px 15px}
+.training-form-message-block.show-message .message-content{text-align:center}
+.training-form-message-block.show-message .alert-icon-box{display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;margin-bottom:10px}
+@media(min-width:768px){.training-form-message-block.show-message .alert-icon-box{font-size:24px;margin-bottom:20px}
+}
+.training-form-message-block.show-message .alert-icon-box img{margin-right:5px;width:28px}
+@media(min-width:768px){.training-form-message-block.show-message .alert-icon-box img{margin-right:10px;width:30px}
+}
+.training-form-message-block.show-message .message-text{font-size:16px}
+@media(min-width:768px){.training-form-message-block.show-message .message-text{font-size:24px}
+}
+.training-form-message-block.show-popup{display:block;position:fixed;background:#fff;box-shadow:0 4px 12px 0 rgba(0,0,0,0.2);border-radius:8px;bottom:50%;right:50%;transform:translate(50%,50%);z-index:10001;padding:3rem 0;width:90%;max-width:450px}
+@media(min-width:992px){.training-form-message-block.show-popup{width:450px}
+}
+.training-form-message-block.show-popup .btn-close{background-image:url('../../../etc/clientlibs/it/resources/icons/text-grid-close.png');width:1.25rem;height:1.25rem;background-repeat:no-repeat;position:relative;top:-2.25rem;background-size:100% 100%;float:right;margin-right:.75rem;cursor:pointer}
+.training-form-message-block.show-popup .alert-icon-box{text-align:center;margin-bottom:15px}
+.training-form-message-block.show-popup .alert-icon-box img{max-width:50px;max-height:50px}
+.training-form-message-block.show-popup .alert-icon-box span{font-size:24px;margin-left:10px;vertical-align:middle}
+.training-form-message-block.show-popup .message-text{color:#333;font-size:17px;text-align:center}
+.training-form-alert-bg{background:rgba(0,0,0,0.4);display:none;position:fixed;bottom:0;left:0;top:0;right:0;z-index:10000}
+.training-form-alert-bg.active{display:block}
+.hilook-page .hik-multiple-select .hik-multiple-selection ul li.selected{background:#e6f6fc}
+.hilook-page .hik-outlined-select .hik-select-selection ul li.active{background:#e6f6fc}
+.hilook-page .hik-outlined-select .hik-select-selection ul li.selected{background:#e6f6fc}
+.hilook-page .form-wrapper .dropdown-wrapper .dropdown.options li.active{background-color:#e6f6fc}
+.hilook-page .form-wrapper.outlined-wrapper form.outlined-form .form-container .form-info .form-group .dropdown-wrapper .dropdown.options.remove-top-border li.active{background:#e6f6fc}
+.hilook-page .hik-multiple-select .hik-multiple-selection ul li:hover input[type=checkbox]::after{border-color:#00a7e2 !important}
+.hilook-page .outlined input[type=checkbox]:checked{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg') !important}
+.hilook-page .form-wrapper.outlined-wrapper form.outlined-form .form-container .form-submit-group .hiknow-submit{background:#00a7e2}
+.hilook-page .checkbox-inline input[type="checkbox"]:checked{background:#00a7e2}
+.hilook-page .form-wrapper input[type="radio"]:checked:before{border:1px solid #00a7e2}
+.hilook-page .form-wrapper.outlined-wrapper form.outlined-form .form-container .form-info .form-group input[type="radio"]:checked::after{background-color:#00a7e2}
+.hilook-page .outlined input[type=checkbox]:checked::after{border-color:#00a7e2 !important}
+.hilook-page .form-wrapper.outlined-wrapper form.outlined-form .form-container .form-info .form-group input[type="radio"]:checked::after{border:1px solid #00a7e2}
+.hilook-page .Newsletter .enquiry-form-container #accordion .enquiry-form-submit .enquiry-submit{background:#00a7e2}

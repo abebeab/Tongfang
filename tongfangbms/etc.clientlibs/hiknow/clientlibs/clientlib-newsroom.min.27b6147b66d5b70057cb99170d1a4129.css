@@ -1,0 +1,905 @@
+.newsroom-hero-banner-box{max-width:1370px;padding:20px 30px 0;margin:0 auto}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container{background:#fff;box-shadow:0 0 26px 0 rgba(0,0,0,0.07);border-radius:10px;height:458px;z-index:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper{cursor:pointer;height:100%;position:relative}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-list{width:100%;height:100%;border-radius:10px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-list .slick-track{width:100%}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide{width:100%;height:458px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box{display:block;width:100%;height:100%;display:flex;align-items:center}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box:hover{text-decoration:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-bgc{width:64%;height:100%;overflow:hidden;position:relative}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-bgc .newsroom-hero-banner-swiper-slide-img-a{background:center / cover no-repeat;width:100%;height:100%;transition:all .5s}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-bgc .newsroom-hero-banner-swiper-slide-img-a:hover{transform:scale(1.1)}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center{width:36%}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news{margin:0 40px 0 44px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{font-family:OpenSansSemiBold;display:none;font-size:14px;color:#666;line-height:14px;font-weight:600;margin-bottom:16px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{font-family:'TStarBold'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-title{font-family:OpenSansBold;font-size:32px;color:#333;letter-spacing:0;font-weight:700;overflow:hidden;line-height:43px;display:-webkit-box;-webkit-box-orient:vertical;text-overflow:ellipsis;-webkit-line-clamp:5}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-title{font-family:'TStarHeavy'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top{display:flex;margin-top:20px;font-family:OpenSans}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author{display:flex;font-size:14px;line-height:19px;font-weight:400}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-left{font-family:OpenSans;font-size:14px;color:#666;line-height:19px;font-weight:400;margin-right:4px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-left{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-right{font-family:OpenSans;font-size:14px;line-height:19px;font-weight:400;color:#094f9c}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-right{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-right:hover{text-decoration:underline}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-line{width:1px;height:14px;background-color:#979797;border:0 solid #979797;margin:3px 12px 0 11px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom{display:flex;font-weight:400;font-family:OpenSans}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom.a{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-left{margin-top:16px;line-height:19px;font-family:OpenSans;font-size:14px;color:#333;font-weight:400}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-left{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right{margin-top:17px;margin-left:8px;font-size:12px;color:#094f9c;font-family:OpenSans;line-height:17px;font-weight:400}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span{position:relative;margin-right:5px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span::after{content:', ';position:absolute;right:-4px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span.inactive::after{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right span:hover{text-decoration:underline}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{display:block}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top{margin-top:16px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-line{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-data{font-family:OpenSans;font-size:16px;color:#666;letter-spacing:0;font-weight:400;line-height:22px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-data{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news-latest{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news-data{font-family:OpenSans;font-size:14px;color:#666;font-weight:400;line-height:19px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news-data{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots{position:absolute;left:0;text-align:center;bottom:8px;overflow:hidden;width:64%;font-size:0;margin-bottom:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li{display:inline-block;width:60px;height:20px;position:relative;text-align:left;margin-right:8px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li button{top:50%;left:0;width:0;height:4px;border:0;outline:0;overflow:hidden;position:absolute;text-indent:200px;transform:translateY(-50%);padding:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li::after{content:"";width:100%;top:50%;left:0;height:4px;position:absolute;transform:translateY(-50%);opacity:.15;background-color:#fff}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li.slick-active button{background-color:#fff}
+@keyframes move{0{width:0}
+50%{width:50%}
+100%{width:100%}
+}
+.newsroom-hero-banner-box .newsroom-hero-banner-line{max-width:1370px;height:1px;background-color:transparent;margin:25px auto 5px}
+.newsroom-landing-page .newsroom-hero-banner-box .newsroom-hero-banner-line{background-color:#eaeaea}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc.change-cursor{cursor:default}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);cursor:pointer}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+@media screen and (max-width:991px){.newsroom-hero-banner-box{width:100%;padding:10px 0 0 0;position:relative;margin-bottom:5px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container{width:100%;height:auto;box-shadow:none;border-radius:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-list{border-radius:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide{height:auto}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box{flex-direction:column;height:auto}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-bgc{width:100%}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-bgc .newsroom-hero-banner-swiper-slide-img-a{width:100%;height:210px;border-radius:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center{width:100%}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news{font-size:20px;color:#2a2e2e;font-weight:700;margin:16px 15px 10px 15px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{font-family:OpenSansSemiBold;font-size:12px;color:#666;font-weight:600;margin-bottom:8px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{font-family:'TStarBold'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-title{font-family:OpenSansBold;font-size:20px;color:#2a2e2e;letter-spacing:0;font-weight:700;line-height:27px;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;text-overflow:ellipsis;-webkit-line-clamp:4}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-title{font-family:'TStarHeavy'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top{margin-top:12px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author{font-size:12px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-left{font-family:OpenSans;font-size:12px;color:#666;line-height:17px;font-weight:400}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-left{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-right{font-family:OpenSans;font-size:12px;color:#094f9c;line-height:17px;font-weight:400}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author .newsroom-hero-banner-swiper-slide-news-Author-right{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-line{margin:2px 12px 0 11px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-data{font-size:12px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-left{margin-top:8px;font-family:OpenSans;font-size:12px;color:#666;line-height:17px;font-weight:400}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-left{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right{margin-top:8px;margin-left:4px;font-family:OpenSans;font-size:12px;color:#0b519d;line-height:17px;font-weight:400}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{display:block}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top{margin-top:8px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-Author{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-line{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-data{font-family:OpenSansSemiBold;font-size:12px;color:#666;font-weight:600;line-height:17px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.latestNews .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-data{font-family:'TStarBold'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news-latest{display:none}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news-data{font-family:OpenSans;font-size:12px;color:#666;font-weight:400;line-height:17px}
+.hilook-page .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news-data{font-family:'TStarRegular'}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots{top:189px;left:50%;height:18px;transform:translateX(-50%);padding-left:0}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li{width:30px}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li button{top:50%;left:0;width:0;height:2px;border:0;outline:0;overflow:hidden;position:absolute;text-indent:200px;transform:translateY(-50%)}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li::after{content:"";width:100%;top:50%;left:0;height:2px;position:absolute;transform:translateY(-50%);opacity:.15;background:#fff}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li.slick-active button{background-color:#fff}
+.newsroom-hero-banner-box .newsroom-hero-banner-line{height:1px;background-color:transparent;width:calc(100% - 30px);position:absolute;left:15px;bottom:0;margin:0}
+.newsroom-landing-page .newsroom-hero-banner-box .newsroom-hero-banner-line{background-color:#eaeaea}
+}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-list{direction:rtl}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news{direction:ltr;margin:0 44px 0 40px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-latest{text-align:right}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-title{direction:rtl;text-align:right}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top{flex-direction:row-reverse}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top-block{flex-direction:column;text-align:right}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top-block .newsroom-hero-banner-swiper-slide-news-Author-block{display:block}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top-block .newsroom-hero-banner-swiper-slide-news-Author-block .newsroom-hero-banner-swiper-slide-news-Author-left{display:inline}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top-block .newsroom-hero-banner-swiper-slide-news-Author-block .newsroom-hero-banner-swiper-slide-news-Author-right{display:inline}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-line{margin:3px 11px 0 12px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top-block .newsroom-hero-banner-swiper-slide-news-line{display:none}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom{flex-direction:row-reverse}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right{flex:1;margin-left:0;margin-right:8px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic{width:100%;display:inline-flex;flex-direction:row-reverse;flex-wrap:wrap}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span{margin-right:0;margin-left:5px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span::after{display:none}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span::before{content:' ,';position:absolute;left:-6px;white-space:pre}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right .newsroom-hero-banner-swiper-slide-news-bottom-right-topic span.inactive::before{display:none}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide.blog .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top-block .newsroom-hero-banner-swiper-slide-news-data-block{margin-top:8px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots{left:auto;right:0}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots{direction:rtl}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li button{transform:translateX(60px) translateY(-50%) scaleX(-1);transform-origin:left}
+@media screen and (max-width:991px){.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news{margin:16px 15px 10px 15px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-top .newsroom-hero-banner-swiper-slide-news-line{margin:2px 11px 0 12px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .newsroom-hero-banner-swiper-slide .newsroom-hero-banner-swiper-slide-box .newsroom-hero-banner-swiper-slide-center .newsroom-hero-banner-swiper-slide-news .newsroom-hero-banner-swiper-slide-news-bottom .newsroom-hero-banner-swiper-slide-news-bottom-right{margin-left:0;margin-right:4px}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots{left:50%;right:auto;padding-right:0}
+.rtl .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-dots li button{transform:translateX(30px) translateY(-50%) scaleX(-1);transform-origin:left}
+}
+.newsroom-hero-banner-wrapper.newsroom-hero-banner-success{padding:0 30px}
+.newsroom-hero-banner-success-pc{max-width:1310px;height:512.71px;justify-content:space-between;display:flex;overflow:hidden;margin:20px auto 5px;border-bottom:solid 1px #eaeaea;padding-bottom:25px}
+.newsroom-hero-banner-success-mob{display:none}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex{display:flex;overflow:hidden}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .newsroom-hero-banner-success-content{position:relative;width:100%}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .newsroom-hero-banner-success-content .newsroom-hero-banner-success-mantle{opacity:.7;background-image:linear-gradient(180deg,rgba(0,0,0,0) 0,#000 100%);height:100%;position:absolute;width:100%;bottom:0}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .newsroom-hero-banner-success-content .newsroom-hero-banner-success-a{display:block;width:100%;height:100%}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .newsroom-hero-banner-success-content .newsroom-hero-banner-success-a .newsroom-hero-banner-success-img{width:100%;height:100%;cursor:pointer}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .newsroom-hero-banner-success-content .newsroom-hero-banner-success-commontext{margin:0;padding:0;color:#fff}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item{width:15%;transform:translate3d(0,0,0);transition:all .5s linear}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item .newsroom-hero-banner-success-contenttext{transition:opacity .6s linear .4s;opacity:0;position:absolute;width:91.3%;bottom:30px;left:30px}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item .mantle{height:294px !important}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active{width:66%}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext{opacity:1}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext .newsroom-hero-banner-success-flex-direction{display:flex;overflow:hidden;flex-direction:column}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext .newsroom-hero-banner-success-flex-direction h5{line-height:14px;opacity:.8;font-family:OpenSans;font-size:14px;color:#fff;line-height:16px;font-weight:400}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext .newsroom-hero-banner-success-flex-direction h2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:33px;text-overflow:ellipsis;margin:12px 0;font-family:OpenSansBold;font-size:24px;color:#fff;font-weight:700}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .video-play-btn-center{opacity:1}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center{cursor:pointer;opacity:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+@media screen and (max-width:991px){.newsroom-hero-banner-wrapper.newsroom-hero-banner-success{padding:0}
+.newsroom-hero-banner-success-pc{display:none}
+.newsroom-hero-banner-success-mob{display:block;height:400px;width:calc(100% - 30px);margin:10px 15px 5px 15px;padding-bottom:19px;border-bottom:solid 1px #eaeaea}
+.newsroom-hero-banner-success-mob div{height:100%}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item{position:relative;height:100%}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item .newsroom-hero-banner-success-mantle{opacity:.7;background-image:linear-gradient(180deg,rgba(0,0,0,0) 0,#000 100%);height:218px;position:absolute;width:100%;bottom:0}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item img{width:100%;height:100%;object-fit:cover}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item .newsroom-hero-banner-success-contenttext-mob{position:absolute;left:15px;bottom:30px;height:auto;opacity:1;margin:0;padding:0;color:#fff;width:90%;animation-fill-mode:forwards}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item .newsroom-hero-banner-success-contenttext-mob h5{line-height:17px;font-family:OpenSansSemibold;font-size:12px;color:#fff;font-weight:600;margin:0}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item .newsroom-hero-banner-success-contenttext-mob h2{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;line-height:27px;overflow:hidden;text-overflow:ellipsis;margin:8px 0;font-family:OpenSansBold;font-size:20px;color:#fff;letter-spacing:.1px;font-weight:700}
+.newsroom-hero-banner-success-mob ul{position:absolute;bottom:25px;left:50%;padding-left:0;transform:translateX(-50%);margin:0}
+.newsroom-hero-banner-success-mob ul li{display:inline-block;width:30px;height:2px;background-color:rgba(255,255,255,0.15);margin:0 4px}
+.newsroom-hero-banner-success-mob ul li button{display:none}
+.newsroom-hero-banner-success-mob ul li.slick-active{position:relative;width:30px;height:2px}
+.newsroom-hero-banner-success-mob ul li.slick-active::before,.newsroom-hero-banner-success-mob ul li.slick-active::after{content:"";position:absolute}
+.newsroom-hero-banner-success-mob ul li.slick-active::after{top:0;left:0;width:0;height:100%;background-color:#fff;animation:move 4.5s linear}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:42px}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .hik-video-trigger{height:42px}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+@keyframes move{0{width:0}
+50%{width:50%}
+100%{width:100%}
+}
+}
+.rtl .newsroom-hero-banner-success-pc{flex-direction:row-reverse}
+.rtl .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext{direction:rtl;text-align:right}
+@media screen and (max-width:991px){.rtl .newsroom-hero-banner-success-mob .newsroom-hero-banner-success-item .newsroom-hero-banner-success-contenttext-mob{text-align:right}
+.rtl .newsroom-hero-banner-success-mob ul{padding-right:0}
+.rtl .newsroom-hero-banner-success-mob ul li{transform:translateX(30px) translateY(-50%) scaleX(-1) !important;transform-origin:left !important}
+}
+.newsroom-filter-bar-wrapper{box-shadow:0 1px 0 0 #eaeaea;background-color:#fff}
+.newsroom-filter-bar-wrapper .newsroom-filter-bar-container{position:relative;margin:0 auto;max-width:1370px;padding:14px 30px 8px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;z-index:2}
+.newsroom-filter-bar-wrapper .newsroom-filter-title{cursor:pointer;display:block;margin-bottom:7px;text-decoration:none}
+.newsroom-filter-bar-wrapper .newsroom-filter-title.inactive{cursor:default}
+.newsroom-filter-bar-wrapper .newsroom-filter-title .newsroom-title{font-family:'OpenSansBold';font-size:20px;line-height:27px;color:#333;letter-spacing:0;text-align:center;font-weight:700;margin-bottom:0}
+.hilook-page .newsroom-filter-bar-wrapper .newsroom-filter-title .newsroom-title{font-family:'TStarHeavy'}
+.newsroom-filter-bar-wrapper .newsroom-filter-container{display:flex;flex-wrap:wrap;align-items:center}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container{display:flex;flex-wrap:wrap;margin-bottom:8px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container{position:relative;cursor:pointer;margin:0 60px 8px 40px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container .newsroom-reset-btn-pc{font-family:OpenSansSemiBold;font-size:16px;color:#094f9c;line-height:24px;font-weight:600}
+.hilook-page .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container .newsroom-reset-btn-pc{font-family:'TStarBold'}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container .newsroom-reset-btn-pc:hover{text-decoration:underline}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container::before{content:'';height:20px;border-left:1px solid rgba(234,234,234,1);position:absolute;top:50%;transform:translateY(-50%);left:-40px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-group{display:none;flex-wrap:wrap}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-group.active{display:flex}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item{position:relative;margin-right:60px;cursor:pointer}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item.has-reset:last-child{margin-right:40px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type{position:relative;font-size:16px;color:#333;font-weight:400;padding-right:22px;line-height:22px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type::after{content:'';position:absolute;right:0;top:0;display:inline-block;pointer-events:none;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-newsroom.svg');height:100%;width:10px;transition:all .1s}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type:hover{color:#d7150e}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type:hover::after{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-red-newsroom.svg')}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type.collpse::after{transform:rotate(180deg)}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type.active{color:#d7150e}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type.active::after{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-red-newsroom.svg')}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list{display:none;position:absolute;top:32px;width:259px;max-height:340px;overflow-y:auto;right:0;background:#fff;padding:12px 0;box-shadow:0 5px 12px 0 rgba(0,0,0,0.16);border-top-left-radius:8px;border-bottom-left-radius:8px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list.active{display:block}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list::-webkit-scrollbar{width:8px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list::-webkit-scrollbar-track{width:8px;background-color:#f8f8f8}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list::-webkit-scrollbar-thumb{width:8px;background-color:#c9c9c9}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-primary{padding:8px 20px;font-size:14px;line-height:19px;color:#333;letter-spacing:0;font-weight:400}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-primary.only-useless{display:none}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-primary:hover{color:#666}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-primary.active{background-color:#f5f5f5}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-title{padding:6px 20px;font-size:14px;line-height:19px;color:#666;letter-spacing:0;font-weight:400;cursor:not-allowed}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-sub{padding:6px 36px;font-size:14px;line-height:19px;color:#333;letter-spacing:0;font-weight:400}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-sub-list .newsroom-dropdown-primary{padding:6px 36px;font-size:14px;line-height:19px;color:#333;letter-spacing:0;font-weight:400}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-sub:hover{color:#666}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list .newsroom-dropdown-sub.active{background-color:#f5f5f5}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-wrapper{display:block;position:relative;margin-bottom:8px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-wrapper.inactive{display:none}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-wrapper .newsroom-search-placeholder{cursor:pointer;font-size:16px;color:#333;letter-spacing:0;font-weight:400;padding-left:27px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-wrapper .newsroom-search-btn{cursor:pointer;background-size:contain;background-repeat:no-repeat;background-position:center;outline:0;position:absolute;height:100%;top:0;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsroom-search.svg');display:block;left:0;width:15px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form{display:none;position:relative;overflow:hidden;font-size:0;padding-bottom:8px;border-bottom:1px solid #999}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form.active{display:block}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search{border:0;outline:0;letter-spacing:0;width:100%;font-size:16px;line-height:22px;font-weight:400;width:300px;padding-right:15px;overflow:hidden;color:#333}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search::-ms-clear,.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search::-ms-reveal{display:none}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search::-webkit-search-cancel-button{-webkit-appearance:none}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search::placeholder{color:#999}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search::-webkit-input-placeholder{color:#999 9}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search::-moz-placeholder{color:#999}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search:-ms-input-placeholder{color:#999 9}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search-clear-btn{cursor:pointer;background-size:contain;background-repeat:no-repeat;background-position:center;outline:0;position:absolute;height:100%;top:0;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-close-bold.svg');right:0;width:14px}
+.newsroom-filter-bar-mobile-wrapper{display:none}
+.filter-layout{position:fixed;left:0;right:0;width:100%;height:100%;z-index:998;background:rgba(0,0,0,0.4)}
+@media screen and (max-width:1200px){.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item{margin-right:32px}
+.newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search{width:240px}
+}
+@media screen and (max-width:991px){.newsroom-filter-bar-wrapper{display:none}
+.newsroom-filter-bar-mobile-wrapper{display:block;background:#fff;position:relative;z-index:9}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-bar-container{box-shadow:0 1px 0 0 #eaeaea;padding:9px 15px;display:flex;justify-content:space-between}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-bar-container .newsroom-filter-title .newsroom-title{font-family:'OpenSansSemiBold';line-height:22px;font-size:16px;color:#333;font-weight:600;margin-bottom:0}
+.hilook-page .newsroom-filter-bar-mobile-wrapper .newsroom-filter-bar-container .newsroom-filter-title .newsroom-title{font-family:'TStarBold'}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-container{display:flex;align-items:center}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-search-icon{cursor:pointer;background-size:contain;background-repeat:no-repeat;background-position:center;height:16px;margin-top:2px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsroom-search-mobile.svg');width:16px;margin-right:20px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon{cursor:pointer;font-size:14px;color:#333;font-weight:400;line-height:19px;position:relative;padding-left:22px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon::before{content:'';position:absolute;left:0;background-size:contain;background-repeat:no-repeat;background-position:center;height:16px;top:2px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsroom-filter.svg');width:16px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon.active::before{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsroom-filter-active.svg')}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper{display:none}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-search-mobile-container{display:flex;padding:15px;margin-top:1px;background-color:#fff;align-items:center;position:absolute;top:40px;width:100%;z-index:1}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search{width:100%;outline:0;border:0;height:36px;font-size:14px;line-height:19px;background:#f5f5f5;border-radius:4px;padding:8px 12px 9px;color:#333}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search::-ms-clear,.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search::-ms-reveal{display:none}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search::-webkit-search-cancel-button{-webkit-appearance:none}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search::placeholder{color:#999}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search::-webkit-input-placeholder{color:#999}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search::-moz-placeholder{color:#999}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search:-ms-input-placeholder{color:#999}
+.newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-search-clear-btn{font-size:14px;color:#094f9c;font-weight:400;line-height:19px;padding-left:12px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper{display:none;position:absolute;width:100%;top:40px;max-height:530px;padding-bottom:44px;margin-top:1px;z-index:1}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper.active{display:block}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-group-container{background-color:#fff;max-height:466px;overflow-y:auto;overflow-x:hidden;padding:0 0 20px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group{display:none}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group.active{display:block}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-title{padding:15px;border-bottom:1px solid #eaeaea;position:relative}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box.active .newsroom-filter-items{display:block}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-items{display:none;padding-bottom:15px;padding:0 15px 15px 30px;border-bottom:1px solid #eaeaea}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-items .newsroom-filter-item:first-child{padding-top:15px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-items .newsroom-filter-item:last-child{padding-bottom:0}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-items.line{border-bottom:1px solid #eaeaea}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-desc{font-size:14px;color:#333;font-weight:400;line-height:19px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-title .newsroom-filter-desc::after{content:'';position:absolute;right:15px;background-size:contain;background-repeat:no-repeat;background-position:center;height:12px;top:20px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-open-black.svg');width:12px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box.active .newsroom-filter-title .newsroom-filter-desc::after{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-close-black.svg')}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-desc.clear{border-top:0}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-desc.clear-all{border-top:0;padding-top:0}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-item{padding:0 11px 15px 0;line-height:19px;font-size:14px;color:#333;letter-spacing:0;font-weight:400}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-item.active{color:#d7150e}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-sub-container{margin-bottom:15px;background-color:#f5f5f5}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-sub-container .newsroom-filter-item:nth-child(2){padding-top:12px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-sub-container .newsroom-filter-desc{color:#999;background-color:#fff;padding-bottom:12px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-sub-container .newsroom-filter-item{padding:0 12px 12px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-sub-container .newsroom-filter-item:last-child{padding-bottom:12px !important}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-sub-container.clear{border-bottom:0;margin-bottom:0}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-primary-item{font-size:14px;color:#333;font-weight:400;line-height:19px;padding-bottom:15px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-primary-item:last-child{padding-bottom:0}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-primary-item:first-child{padding-top:15px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-primary-item.active{color:#d7150e}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-btn-container{position:absolute;bottom:0;display:flex;width:100%;font-size:15px;text-align:center;font-weight:400;line-height:20px}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-btn-container .newsroom-reset-btn{color:#333;flex:1;padding:12px 0;background:#fff;box-shadow:inset 0 1px 0 0 rgba(0,0,0,0.1)}
+.newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-btn-container .newsroom-submit-btn{color:#fff;flex:1;padding:12px 0;background:#d7150e}
+.filter-layout{display:block !important;top:0;z-index:2}
+}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-bar-container{direction:rtl}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-title .newsroom-title{text-align:right}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container{direction:ltr;flex-direction:row-reverse}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container{flex-direction:row-reverse}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container{position:relative;cursor:pointer;margin:0 40px 8px 60px}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-reset-container::before{left:auto;right:-40px}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-group.active{flex-direction:row-reverse}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item{margin-right:0;margin-left:60px}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item.has-reset:last-child{margin-right:0;margin-left:40px}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type{padding-right:0;padding-left:22px}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type::after{display:none}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type::before{content:'';position:absolute;left:0;top:0;display:inline-block;pointer-events:none;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-newsroom.svg');height:100%;width:10px;transition:all .1s}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type:hover::before{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-red-newsroom.svg')}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-type.active::before{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-red-newsroom.svg')}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item .newsroom-dropdown-list{direction:rtl;text-align:right;right:auto;left:0}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container{direction:ltr}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-wrapper .newsroom-search-placeholder{padding-left:0;padding-right:27px}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-wrapper .newsroom-search-btn{left:auto;right:0}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search{padding-right:0;padding-left:15px;text-align:right}
+.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-search-container .newsroom-search-form .newsroom-search-clear-btn{right:auto;top:-4px;left:0}
+@media screen and (max-width:1200px){.rtl .newsroom-filter-bar-wrapper .newsroom-filter-container .newsroom-dropdown-container .newsroom-dropdown-item{margin-right:0;margin-left:32px}
+}
+@media screen and (max-width:991px){.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-bar-container{direction:rtl}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-bar-container .newsroom-filter-title .newsroom-title{text-align:right}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-container{direction:ltr;flex-direction:row-reverse}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-search-icon{margin-right:0;margin-left:20px}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon{padding-left:0;padding-right:22px}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon::before{display:none}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon::after{content:'';position:absolute;right:0;background-size:contain;background-repeat:no-repeat;background-position:center;height:16px;top:2px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsroom-filter.svg');width:16px}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-container .newsroom-filter-select-icon.active::after{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsroom-filter-active.svg')}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-search-mobile-container{flex-direction:row-reverse}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-mobile-search{text-align:right}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-search-mobile-wrapper .newsroom-search-clear-btn{padding-left:0;padding-right:12px}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper.active{display:block;direction:rtl}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper.active .newsroom-btn-container{direction:ltr}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-items{padding:0 30px 15px 15px}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-desc{text-align:right}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-title .newsroom-filter-desc::after{display:none}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box .newsroom-filter-title .newsroom-filter-desc::before{content:'';position:absolute;left:15px;background-size:contain;background-repeat:no-repeat;background-position:center;height:12px;top:20px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-open-black.svg');width:12px}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-mobile-group .newsroom-filter-box.active .newsroom-filter-title .newsroom-filter-desc::before{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-close-black.svg')}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-item{text-align:right}
+.rtl .newsroom-filter-bar-mobile-wrapper .newsroom-filter-mobile-wrapper .newsroom-filter-primary-item{text-align:right}
+}
+.newsroom-landing-list-wrapper{max-width:1370px;margin:0 auto;padding:20px 30px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container{display:none;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card-big-container.active{display:flex}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{width:calc(50% - 12px);margin-right:24px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(2n){margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-right:24px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container{display:flex;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.title-setting-height .newsroom-card .newsroom-card-title{height:81px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container .newsroom-card{width:calc(33.33% - 16.67px);margin-right:25px}
+.newsroom-landing-list-wrapper .newsroom-card{display:block;cursor:pointer;background:#fff;box-shadow:0 2px 14px 0 rgba(0,0,0,0.07);border-radius:4px;margin-bottom:25px;text-decoration:none}
+.newsroom-landing-list-wrapper .newsroom-card:hover{box-shadow:0 2px 20px 0 rgba(0,0,0,0.16)}
+.newsroom-landing-list-wrapper .newsroom-card:hover .newsroom-card-img-container .newsroom-card-img{transform:scale(1.1)}
+.newsroom-landing-list-wrapper .newsroom-card:nth-child(3n){margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container{padding-bottom:56.19%;overflow:hidden;position:relative;width:100%;border-radius:4px 4px 0 0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .newsroom-card-img{position:absolute;top:0;left:0;width:100%;padding-bottom:56.19%;background-position:center;background-repeat:no-repeat;background-size:cover;border-radius:4px 4px 0 0;transition:transform .5s}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .newsroom-card-img.change-cursor{cursor:default}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .video-play-btn-center{cursor:pointer;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:42px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-content{padding:20px 24px 19px;border-radius:0 0 4px 4px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre{display:none;font-size:14px;color:#666;letter-spacing:.07px;line-height:22px;font-weight:400;margin-bottom:10px;width:100%}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{font-family:'OpenSansBold';font-size:20px;line-height:27px;color:#333;letter-spacing:0;font-weight:700;margin-bottom:12px;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{font-family:'TStarHeavy'}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-wrapper{display:none;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-wrapper.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container{margin-bottom:11px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container.last{margin-bottom:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{font-size:14px;color:#666;line-height:19px;font-weight:400;padding-right:24px;position:relative}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child{padding-right:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child::after{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::after{content:'';position:relative;display:inline-block;background-color:#979797;right:-13px;top:2px;width:1px;height:14px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::after{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc .newsroom-card-link{font-size:14px;color:#094f9c;line-height:19px;font-weight:400}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc .newsroom-card-link:hover{text-decoration:underline}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container{font-size:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container span:last-child{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-right:8px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc::after{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic{font-size:12px;color:#094f9c;font-weight:400;line-height:17px;padding-top:1px;position:relative}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic:hover{text-decoration:underline}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic-comma{color:#094f9c;font-size:12px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-time{display:none;color:#666;font-weight:400}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-time.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{display:flex;flex-direction:column;justify-content:space-between}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-content{padding:24px;display:flex;flex:1;flex-direction:column}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-title-wrapper{flex:1}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-title{font-size:24px;line-height:33px;margin-bottom:16px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-time{font-size:14px;letter-spacing:.07px;line-height:22px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card{display:flex;flex-direction:column;justify-content:space-between}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-content{display:flex;flex:1;flex-direction:column}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper{flex:1}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box{display:flex;justify-content:right}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box{margin-bottom:12px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box .highly-recommend{display:flex}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box .highly-recommend .recommend:first-child{margin-right:12px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .recommend{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/card-recommend-pc.svg');background-position:center;background-repeat:no-repeat;background-size:cover;width:20px;height:20px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-time{font-size:14px;letter-spacing:.07px;line-height:19px}
+.newsroom-landing-list-wrapper .newsroom-card-view-all{margin-top:15px;text-align:center;font-size:0}
+.newsroom-landing-list-wrapper .newsroom-card-view-all.inactive{display:none}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn{display:inline-block;padding:7px 16px;background:#d71820;border-radius:18px;font-size:16px;color:#fff;font-weight:400;line-height:22px;cursor:pointer}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn.inactive{cursor:default}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn:hover{background:#c1120b}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn.inactive:hover{background:#d71820}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page{display:none;text-align:center;margin-top:80px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-blank-img{background:center / cover no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/images/img-newsroom-blank-page.svg');width:226px;height:226px;margin:0 auto 16px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-size:20px;line-height:27px;color:#333;text-align:center;font-weight:700;font-family:OpenSansBold}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'TStarHeavy'}
+@media screen and (max-width:991px){.newsroom-landing-list-wrapper{padding:10px 15px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container{display:none;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card-big-container.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{width:100%;margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card-small-container{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.title-setting-height .newsroom-card .newsroom-card-title{height:auto}
+.newsroom-landing-list-wrapper .newsroom-card-small-container .newsroom-card{width:100%;margin-left:0;margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card{margin-bottom:15px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .recommend{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/card-recommend.svg');background-position:center;background-repeat:no-repeat;background-size:cover;width:17px;height:16px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre{font-size:12px;margin-bottom:8px;font-family:'OpenSansSemiBold';line-height:17px}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre{font-family:'TStarBold'}
+.newsroom-landing-list-wrapper .newsroom-card:last-child{margin-bottom:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img{padding-bottom:56.1%}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-content{padding:15px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container{margin-bottom:8px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{-webkit-line-clamp:4}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{font-size:12px;line-height:17px;padding-right:20px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::after{right:-10px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc .newsroom-card-link{font-size:12px;line-height:17px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-right:2px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic{margin-top:0}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-content,.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-content{padding:15px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-title,.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title{font-size:20px;line-height:27px;margin-bottom:8px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-time,.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-time{font-size:12px;line-height:17px;font-family:'OpenSansSemiBold'}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-time,.hilook-page .newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-time{font-family:'TStarBold'}
+.newsroom-landing-list-wrapper .newsroom-card-view-all{margin-top:20px}
+.newsroom-landing-list-wrapper .newsroom-card-view-all.inactive{display:none}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn{padding:7px 20px 6px 19px;font-size:14px;line-height:19px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page{height:100%;.newsroom-landing-list-wrapper{max-width:1370px;margin:0 auto;padding:20px 30px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container{display:none;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card-big-container.active{display:flex}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{width:calc(50% - 12px);margin-right:24px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(2n){margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-right:24px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container{display:flex;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.title-setting-height .newsroom-card .newsroom-card-title{height:81px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container .newsroom-card{width:calc(33.33% - 16.67px);margin-right:25px}
+.newsroom-landing-list-wrapper .newsroom-card{display:block;cursor:pointer;background:#fff;box-shadow:0 2px 14px 0 rgba(0,0,0,0.07);border-radius:4px;margin-bottom:25px;text-decoration:none}
+.newsroom-landing-list-wrapper .newsroom-card:hover{box-shadow:0 2px 20px 0 rgba(0,0,0,0.16)}
+.newsroom-landing-list-wrapper .newsroom-card:hover .newsroom-card-img-container .newsroom-card-img{transform:scale(1.1)}
+.newsroom-landing-list-wrapper .newsroom-card:nth-child(3n){margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container{padding-bottom:56.19%;overflow:hidden;position:relative;width:100%;border-radius:4px 4px 0 0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .newsroom-card-img{position:absolute;top:0;left:0;width:100%;padding-bottom:56.19%;background-position:center;background-repeat:no-repeat;background-size:cover;border-radius:4px 4px 0 0;transition:transform .5s}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .newsroom-card-img.change-cursor{cursor:default}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .video-play-btn-center{cursor:pointer;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:42px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img-container .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-content{padding:20px 24px 19px;border-radius:0 0 4px 4px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre{display:none;font-size:14px;color:#666;letter-spacing:.07px;line-height:22px;font-weight:400;margin-bottom:10px;width:100%}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{font-family:'OpenSansBold';font-size:20px;line-height:27px;color:#333;letter-spacing:0;font-weight:700;margin-bottom:12px;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{font-family:'TStarHeavy'}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-wrapper{display:none;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-wrapper.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container{margin-bottom:11px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container.last{margin-bottom:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{font-size:14px;color:#666;line-height:19px;font-weight:400;padding-right:24px;position:relative}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child{padding-right:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child::after{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::after{content:'';position:relative;display:inline-block;background-color:#979797;right:-13px;top:2px;width:1px;height:14px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::after{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc .newsroom-card-link{font-size:14px;color:#094f9c;line-height:19px;font-weight:400}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc .newsroom-card-link:hover{text-decoration:underline}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container{font-size:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container span:last-child{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-right:8px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc::after{display:none}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic{font-size:12px;color:#094f9c;font-weight:400;line-height:17px;padding-top:1px;position:relative}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic:hover{text-decoration:underline}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic-comma{color:#094f9c;font-size:12px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-time{display:none;color:#666;font-weight:400}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-time.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{display:flex;flex-direction:column;justify-content:space-between}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-content{padding:24px;display:flex;flex:1;flex-direction:column}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-title-wrapper{flex:1}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-title{font-size:24px;line-height:33px;margin-bottom:16px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-time{font-size:14px;letter-spacing:.07px;line-height:22px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card{display:flex;flex-direction:column;justify-content:space-between}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-content{display:flex;flex:1;flex-direction:column}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper{flex:1}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box{display:flex;justify-content:right}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box{margin-bottom:12px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box .highly-recommend{display:flex}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box .highly-recommend .recommend:first-child{margin-right:12px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .recommend{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/card-recommend-pc.svg');background-position:center;background-repeat:no-repeat;background-size:cover;width:20px;height:20px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-time{font-size:14px;letter-spacing:.07px;line-height:19px}
+.newsroom-landing-list-wrapper .newsroom-card-view-all{margin-top:15px;text-align:center;font-size:0}
+.newsroom-landing-list-wrapper .newsroom-card-view-all.inactive{display:none}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn{display:inline-block;padding:7px 16px;background:#d71820;border-radius:18px;font-size:16px;color:#fff;font-weight:400;line-height:22px;cursor:pointer}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn.inactive{cursor:default}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn:hover{background:#c1120b}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn.inactive:hover{background:#d71820}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page{display:none;text-align:center;margin-top:80px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-blank-img{background:center / cover no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/images/img-newsroom-blank-page.svg');width:226px;height:226px;margin:0 auto 16px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-size:20px;line-height:27px;color:#333;text-align:center;font-weight:700;font-family:OpenSansBold}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'TStarHeavy'}
+@media screen and (max-width:991px){.newsroom-landing-list-wrapper{padding:10px 15px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container{display:none;flex-wrap:wrap}
+.newsroom-landing-list-wrapper .newsroom-card-big-container.active{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{width:100%;margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card-small-container{display:block}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.title-setting-height .newsroom-card .newsroom-card-title{height:auto}
+.newsroom-landing-list-wrapper .newsroom-card-small-container .newsroom-card{width:100%;margin-left:0;margin-right:0}
+.newsroom-landing-list-wrapper .newsroom-card{margin-bottom:15px}
+.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .recommend{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/card-recommend.svg');background-position:center;background-repeat:no-repeat;background-size:cover;width:17px;height:16px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre{font-size:12px;margin-bottom:8px;font-family:'OpenSansSemiBold';line-height:17px}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre{font-family:'TStarBold'}
+.newsroom-landing-list-wrapper .newsroom-card:last-child{margin-bottom:0}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-img{padding-bottom:56.1%}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-content{padding:15px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container{margin-bottom:8px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{-webkit-line-clamp:4}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{font-size:12px;line-height:17px;padding-right:20px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::after{right:-10px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc .newsroom-card-link{font-size:12px;line-height:17px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-right:2px}
+.newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic{margin-top:0}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-content,.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-content{padding:15px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-title,.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title{font-size:20px;line-height:27px;margin-bottom:8px}
+.newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-time,.newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-time{font-size:12px;line-height:17px;font-family:'OpenSansSemiBold'}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card .newsroom-card-time,.hilook-page .newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-time{font-family:'TStarBold'}
+.newsroom-landing-list-wrapper .newsroom-card-view-all{margin-top:20px}
+.newsroom-landing-list-wrapper .newsroom-card-view-all.inactive{display:none}
+.newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn{padding:7px 20px 6px 19px;font-size:14px;line-height:19px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page{height:100%}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-blank-img{width:154px;height:154px;margin:0 auto 10px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'OpenSansSemiBold';font-size:16px;line-height:22px;font-weight:600}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'TStarBold'}
+}
+}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-blank-img{width:154px;height:154px;margin:0 auto 10px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'OpenSansSemiBold';font-size:16px;line-height:22px;font-weight:600}
+.hilook-page .newsroom-landing-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'TStarBold'}
+}
+.rtl .newsroom-landing-list-wrapper{direction:rtl}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{margin-right:0;margin-left:24px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(2n){margin-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-right:0;margin-left:24px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-small-container .newsroom-card{margin-right:0;margin-left:25px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card:nth-child(3n){margin-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre.active{text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-wrapper.active{direction:ltr}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container{display:flex;flex-direction:row-reverse}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container-block{flex-direction:column;align-items:flex-end}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{padding-right:0;padding-left:24px;text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block{padding-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block{margin-bottom:10px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block:last-child{margin-bottom:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child{padding-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child::before{display:none}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::before{content:'';position:relative;display:inline-block;background-color:#979797;left:-13px;top:2px;width:1px;height:14px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block::before{display:none}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container{display:flex;flex-direction:row-reverse;flex-wrap:wrap}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-right:0;padding-left:8px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc::before{display:none}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic-comma{white-space:pre}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-time.active{text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box{justify-content:left}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box .highly-recommend .recommend:first-child{margin-right:0;margin-left:12px}
+@media screen and (max-width:991px){.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{padding-right:0;padding-left:20px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block{padding-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::before{left:-10px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn{padding:7px 19px 6px 20px}
+.newsroom-landing-list-wrapper .newsroom-card-blank-page{.rtl .newsroom-landing-list-wrapper{direction:rtl}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card{margin-right:0;margin-left:24px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(2n){margin-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-right:0;margin-left:24px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-small-container .newsroom-card{margin-right:0;margin-left:25px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card:nth-child(3n){margin-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-genre.active{text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-title{text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-wrapper.active{direction:ltr}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container{display:flex;flex-direction:row-reverse}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-container-block{flex-direction:column;align-items:flex-end}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{padding-right:0;padding-left:24px;text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block{padding-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block{margin-bottom:10px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block:last-child{margin-bottom:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child{padding-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc:last-child::before{display:none}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::before{content:'';position:relative;display:inline-block;background-color:#979797;left:-13px;top:2px;width:1px;height:14px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block::before{display:none}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container{display:flex;flex-direction:row-reverse;flex-wrap:wrap}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-right:0;padding-left:8px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-desc::before{display:none}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-topic-container .newsroom-card-topic-comma{white-space:pre}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-time.active{text-align:right}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box{justify-content:left}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-small-container.bottom-to-show .newsroom-card .newsroom-card-title-wrapper .newsroom-card-title-box .newsroom-card-recommend-box .highly-recommend .recommend:first-child{margin-right:0;margin-left:12px}
+@media screen and (max-width:991px){.rtl .newsroom-landing-list-wrapper .newsroom-card-big-container .newsroom-card:nth-child(3n){margin-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc{padding-right:0;padding-left:20px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc-block{padding-left:0}
+.rtl .newsroom-landing-list-wrapper .newsroom-card .newsroom-card-desc::before{left:-10px}
+.rtl .newsroom-landing-list-wrapper .newsroom-card-view-all .view-all-btn{padding:7px 19px 6px 20px}
+}
+}
+}
+.newsroom-archive-list-wrapper{max-width:1370px;margin:0 auto;padding:8px 30px 20px}
+.newsroom-archive-list-wrapper .newsroom-archive-item{display:flex;align-items:center;text-decoration:none;padding:32px 0;border-bottom:1px solid #eaeaea}
+.newsroom-archive-list-wrapper .newsroom-archive-img-container{overflow:hidden;margin-right:30px;width:295px;flex:0 0 295px}
+.newsroom-archive-list-wrapper .newsroom-archive-img-container .newsroom-archive-img{width:100%;padding-bottom:56.27%;background-position:center;background-repeat:no-repeat;background-size:cover}
+.newsroom-archive-list-wrapper .newsroom-archive-type{font-family:'OpenSansSemiBold';font-size:14px;color:#666;line-height:14px;font-weight:600;margin-bottom:16px}
+.hilook-page .newsroom-archive-list-wrapper .newsroom-archive-type{font-family:'TStarBold'}
+.newsroom-archive-list-wrapper .newsroom-archive-title{font-family:'OpenSansBold';line-height:33px;font-size:24px;color:#333;font-weight:700;margin-bottom:16px;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.hilook-page .newsroom-archive-list-wrapper .newsroom-archive-title{font-family:'TStarHeavy'}
+.newsroom-archive-list-wrapper .newsroom-archive-wrapper{font-size:0}
+.newsroom-archive-list-wrapper .newsroom-archive-desc{display:none;position:relative;font-size:14px;color:#333;letter-spacing:0;font-weight:400;line-height:20px;padding-right:31px}
+.newsroom-archive-list-wrapper .newsroom-archive-desc.active{display:inline}
+.newsroom-archive-list-wrapper .newsroom-archive-desc .newsroom-archive-desc-topic{display:inline}
+.newsroom-archive-list-wrapper .newsroom-archive-desc.active:last-child{padding-right:0}
+.newsroom-archive-list-wrapper .newsroom-archive-desc.active:last-child::after{display:none}
+.newsroom-archive-list-wrapper .newsroom-archive-desc::after{content:'';position:absolute;background-color:#979797;right:15px;top:50%;transform:translateY(-50%);width:1px;height:14px}
+.newsroom-archive-list-wrapper .newsroom-archive-link{padding-left:4px;font-size:14px;color:#094f9c;line-height:19px;font-weight:400}
+.newsroom-archive-list-wrapper .newsroom-archive-link:hover{text-decoration:underline}
+.newsroom-archive-list-wrapper .newsroom-archive-flag{font-size:14px;color:#333;font-weight:400;line-height:20px}
+.newsroom-archive-list-wrapper .newsroom-archive-tip{position:relative;font-size:14px;color:#094f9c;font-weight:400;line-height:20px}
+.newsroom-archive-list-wrapper span.newsroom-archive-tip-comma:last-child{display:none}
+.newsroom-archive-list-wrapper .newsroom-archive-tip:hover{text-decoration:underline}
+.newsroom-archive-list-wrapper .newsroom-archive-tip-comma{font-size:14px;color:#094f9c}
+.newsroom-archive-list-wrapper .newsroom-archive-view-more{display:none}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination{display:none;align-items:center;justify-content:center;margin-top:40px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination.active{display:flex}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a{cursor:pointer;color:#333;display:inline-block;font-size:14px;line-height:20px;margin-right:20px;padding:0 5px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-previous,.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-next{border-radius:4px;border:1px solid #ddd;font-size:18px;line-height:28px;height:31px;text-align:center;width:31px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-next{margin-right:12px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-previous::after{content:'<'}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-next::after{content:'>'}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a:hover{color:#d7150e;text-decoration:none}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-current,.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-current:hover{color:#d7150e;font-weight:700}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-disabled,.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-disabled:hover{color:#bbb}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-current,.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-current:hover,.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-disabled,.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section a.jp-disabled:hover{cursor:default}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .pagination-section span{color:#ccc;display:inline-block;letter-spacing:2px;font-size:22px;font-weight:600;margin-right:20px;position:relative;top:-2px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page{min-width:80px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown{background-color:transparent;height:32px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle{border:1px solid #ddd;border-radius:4px;background-color:transparent;font-size:0;height:auto;padding:5px 30px 5px 8px;position:relative}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle:focus,.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle:active{outline:none !important;box-shadow:none}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle::after{border:0;border-top:1px solid #333;border-right:1px solid #333;position:absolute;height:7px;right:14px;top:12px;width:7px;transform:rotate(135deg)}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle .filter-option .filter-option-inner-inner{color:#333;font-size:14px;line-height:20px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown div.dropdown-menu{background-color:rgba(255,255,255,0.65);box-shadow:0 5px 8px 0 rgba(0,0,0,0.18);border-color:#ddd;border-top:0;border-radius:0 0 5px 5px;padding:0;margin-top:-1px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown div.dropdown-menu[x-placement*="top-start"]{border-radius:5px 5px 0 0;box-shadow:0 -5px 8px 0 rgba(0,0,0,0.18);border-top:1px solid #ddd;border-bottom:0;margin-top:1px;margin-bottom:0}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown div.dropdown-menu .dropdown-item{color:#333;font-size:14px;line-height:24px;padding:2px 8px;white-space:normal}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown div.dropdown-menu .dropdown-item.active{background-color:rgba(254,246,246,0.65);color:#333}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown div.dropdown-menu .dropdown-item:not(.active):hover{background-color:rgba(243,245,247,0.65);color:#333}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown.show .dropdown-toggle{background-color:rgba(255,255,255,0.65);border-radius:0;box-shadow:0 0 8px 0 rgba(0,0,0,0.18)}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown.show .dropdown-toggle::after{top:15px;transform:rotate(-45deg)}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page{display:none;text-align:center;margin-top:40px}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page.active{display:block}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page .newsroom-card-blank-img{background:center / cover no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/images/img-newsroom-blank-page.svg');width:226px;height:226px;margin:0 auto 16px}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-size:20px;line-height:27px;color:#333;text-align:center;font-weight:700;font-family:OpenSansBold}
+.hilook-page .newsroom-archive-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'TStarHeavy'}
+@media screen and (max-width:991px){.newsroom-archive-list-wrapper{padding:15px 15px 10px}
+.newsroom-archive-list-wrapper .newsroom-archive-item{display:block;padding:15px 0}
+.newsroom-archive-list-wrapper .newsroom-archive-item:first-child{padding-top:0}
+.newsroom-archive-list-wrapper .newsroom-archive-img-container{width:100%;margin-bottom:15px}
+.newsroom-archive-list-wrapper .newsroom-archive-img-container .newsroom-archive-img{height:195px;padding-bottom:0}
+.newsroom-archive-list-wrapper .newsroom-archive-type{font-size:12px;margin-bottom:8px}
+.newsroom-archive-list-wrapper .newsroom-archive-title{line-height:24px;font-size:16px;margin-bottom:8px;-webkit-line-clamp:4}
+.newsroom-archive-list-wrapper .newsroom-archive-title.blog{margin-bottom:12px}
+.newsroom-archive-list-wrapper .newsroom-archive-desc{color:#666;font-size:12px;line-height:17px;padding-right:21px}
+.newsroom-archive-list-wrapper .newsroom-archive-desc::after{content:'';right:-11px;top:2px;transform:none;height:12px;position:relative;display:inline-block}
+.newsroom-archive-list-wrapper .newsroom-archive-link{font-size:12px;line-height:17px}
+.newsroom-archive-list-wrapper .newsroom-archive-flag{font-size:12px;line-height:17px;color:#666}
+.newsroom-archive-list-wrapper .newsroom-archive-tip{font-size:12px;line-height:17px}
+.newsroom-archive-list-wrapper .newsroom-archive-tip-comma{font-size:12px}
+.newsroom-archive-list-wrapper .newsroom-archive-view-more{display:block;text-align:center;padding-top:15px}
+.newsroom-archive-list-wrapper .newsroom-archive-view-more.inactive{display:none}
+.newsroom-archive-list-wrapper .newsroom-archive-view-more .view-more-content{display:inline-block;border:1px solid #ddd;border-radius:76.92px;padding:6px 16.5px 7px;font-size:14px;color:#2e2c2a;text-align:center;font-weight:400;line-height:19px}
+.newsroom-archive-list-wrapper .newsroom-archive-pagination{display:none !important}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page{height:100%}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page .newsroom-card-blank-img{width:154px;height:154px;margin:0 auto 10px}
+.newsroom-archive-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'OpenSansSemiBold';font-size:16px;line-height:22px;font-weight:600}
+.hilook-page .newsroom-archive-list-wrapper .newsroom-card-blank-page .newsroom-card-title{font-family:'TStarBold'}
+}
+.rtl .newsroom-archive-list-wrapper{direction:rtl;text-align:right}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-img-container{margin-left:30px;margin-right:0}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-content{flex:1}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-wrapper{direction:ltr;width:100%;display:flex;justify-content:flex-end;flex-wrap:wrap}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-calBlock{display:flex;padding-right:0;justify-content:flex-end;margin-top:8px;order:2}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-calBlock:last-child{margin-top:0}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-calBlock::after{display:none}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-block{flex-wrap:wrap;padding-right:0;margin-top:8px;order:1;flex-basis:100%}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-wrapper .newsroom-archive-desc.newsroom-archive-desc-rtl{display:flex;flex-direction:row-reverse}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-block::after{display:none}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-block .newsroom-archive-desc-topic{flex:1}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc.newsroom-archive-desc-block{display:inline-flex;flex-direction:row-reverse;flex-wrap:wrap}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc-block .newsroom-archive-tip-comma{white-space:pre}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-desc .newsroom-archive-desc-topic{display:inline-flex;flex-direction:row-reverse}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-flag{margin-left:8px}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle{padding:5px 8px 5px 30px;margin-left:0;margin-right:10px}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-pagination .item-num-for-page .dropdown .dropdown-toggle::after{right:auto;left:14px}
+@media screen and (max-width:991px){.rtl .newsroom-archive-list-wrapper .newsroom-archive-wrapper-calBlock{flex-direction:column-reverse}
+.rtl .newsroom-archive-list-wrapper .newsroom-archive-tip-comma{white-space:pre}
+}
+.blog-author-box{max-width:1370px;padding:0 30px;margin:0 auto}
+.blog-author-box .blog-author-box-top{width:100%;display:flex;align-items:center;border-bottom:1px solid #eaeaea;padding:40px 0}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left{flex:5;margin-right:118px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top{display:flex;align-items:center}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-image{background:center / cover no-repeat;width:76px;height:76px;flex:0 0 76px;border-radius:50%}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-name{font-family:OpenSansBold;font-size:32px;color:#333;letter-spacing:.16px;font-weight:700;line-height:43px;margin-left:24px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-bottom{font-size:16px;color:#333;letter-spacing:0;line-height:24px;font-weight:400;margin-top:16px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-bottom p{margin-bottom:0}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right{flex:3;background:#f1f1f1;padding:40px 58px 40px 52px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-title{font-family:OpenSansBold;font-size:32px;color:#333;letter-spacing:.16px;font-weight:700;line-height:43px;margin-bottom:16px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-center{font-size:16px;color:#333;letter-spacing:.08px;line-height:24px;font-weight:400;margin-bottom:24px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-btn{background:#d7150e;border-radius:20px;text-decoration:none;border:0;cursor:pointer;display:inline-block;line-height:22px;font-size:16px;color:#fff;letter-spacing:.08px;font-weight:400;padding:7px 16px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-btn:hover{background-color:#c1120b;text-decoration:none}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .btn-defalut{cursor:default}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .btn-defalut:hover{background-color:#d7150e;text-decoration:none}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-name{font-family:OpenSansBold;font-size:32px;color:#333;letter-spacing:0;font-weight:700;line-height:43px;margin:30px 0}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container{display:flex;flex-wrap:wrap;margin-bottom:-5px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card{width:calc(33.33% - 16.67px);margin-right:25px}
+.blog-author-box .blog-author-box-bottom .newsroom-card{display:block;cursor:pointer;background:#fff;box-shadow:0 2px 14px 0 rgba(0,0,0,0.07);border-radius:4px;margin-bottom:25px;text-decoration:none}
+.blog-author-box .blog-author-box-bottom .newsroom-card:hover{box-shadow:0 2px 20px 0 rgba(0,0,0,0.16)}
+.blog-author-box .blog-author-box-bottom .newsroom-card:hover .newsroom-card-img-container .newsroom-card-img{transform:scale(1.1)}
+.blog-author-box .blog-author-box-bottom .newsroom-card:nth-child(3n){margin-right:0}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-img-container{padding-bottom:56.19%;overflow:hidden;position:relative;width:100%;border-radius:4px 4px 0 0}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-img-container .newsroom-card-img{position:absolute;top:0;left:0;width:100%;padding-bottom:56.19%;background-position:center;background-repeat:no-repeat;background-size:cover;border-radius:4px 4px 0 0;transition:transform .5s}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-content{padding:20px 24px 19px;border-radius:0 0 4px 4px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-title{height:81px;font-family:OpenSansBold;font-size:20px;line-height:27px;color:#333;letter-spacing:0;font-weight:700;margin-bottom:12px;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-wrapper{flex-wrap:wrap}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-wrapper.active{display:block}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc-container{font-size:0;margin-bottom:11px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc-container.last{margin-bottom:0}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc{font-size:14px;color:#666;line-height:19px;font-weight:400;padding-right:24px;position:relative}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc:last-child{padding-right:0}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc:last-child::after{display:none}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc::after{content:'';position:relative;background-color:#979797;left:13px;top:2px;width:1px;height:14px;display:inline-block}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc .newsroom-card-link{font-size:14px;line-height:19px;font-weight:400}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container{font-size:0}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .comma{display:inline-block;color:#094f9c;font-size:12px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .comma:last-child{display:none}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{display:inline-block;padding-right:8px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-desc::after{display:none}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-topic{font-size:12px;color:#094f9c;font-weight:400;line-height:17px;padding-top:1px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-topic:hover{text-decoration:underline}
+@media screen and (max-width:991px){.blog-author-box{width:100%;padding:0}
+.blog-author-box .blog-author-box-top{display:block;padding:0;margin-bottom:15px;padding-bottom:15px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left{padding:0 15px;margin:0}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top{margin:20px 0 15px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-image{margin-right:20px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-name{font-size:20px;color:#333;font-weight:700;margin:0;line-height:27px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-bottom{margin:0;margin-bottom:15px;font-size:14px;color:#333;letter-spacing:0;line-height:22px;font-weight:400}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right{width:100%;padding:0;margin:0;text-align:center;background-color:#f5f5f5}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-title{font-size:24px;color:#333;letter-spacing:.12px;text-align:center;font-weight:700;margin-bottom:12px;line-height:33px;padding-top:15px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-center{font-size:14px;color:#333;letter-spacing:.07px;text-align:center;font-weight:400;margin:0 14px 20px 16px}
+.blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-btn{border-radius:18px;font-size:14px;padding:7px 16px 6px 16px;line-height:19px;margin-bottom:15px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-name{font-size:20px;color:#333;font-weight:700;line-height:27px;margin:0 0 15px 16px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container{margin:0 15.5px;margin-bottom:10px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card{width:100%;margin-right:0;margin-bottom:15px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card:nth-child(3n){margin-right:0}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card:last-child{margin-bottom:0}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card .newsroom-card-content{padding:15px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card .newsroom-card-content .newsroom-card-wrapper .newsroom-card-desc-container{margin-bottom:8px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc{font-size:12px}
+.blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc .newsroom-card-link{font-size:12px}
+.blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card .newsroom-card-title{height:auto;color:#2a2e2e;letter-spacing:.1px;-webkit-line-clamp:4}
+.blog-author-box .blog-author-box-line{display:block;width:calc(100% - 30px);height:1px;background-color:#eaeaea;margin:15px auto}
+}
+.rtl .blog-author-box{direction:rtl;text-align:right}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-left{margin-left:118px;margin-right:0}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-name{margin-left:0;margin-right:24px}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-bottom{text-align:right}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-right{text-align:right}
+.rtl .blog-author-box .blog-author-box-bottom .blog-author-box-bottom-name{text-align:right}
+.rtl .blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card{margin-left:25px;margin-right:0}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card:nth-child(3n){margin-left:0}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-wrapper{direction:ltr}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc-container-block{display:flex;flex-direction:column-reverse}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc:last-child{padding-right:0}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc-block{display:block;padding-right:0;margin-top:8px}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc-block::after{display:none}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-desc-block:last-child{margin-top:0}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container{display:flex;flex-direction:row-reverse;justify-content:flex-start;flex-wrap:wrap}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .comma{white-space:pre;order:2}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{order:1}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-desc{padding-left:8px;padding-right:0}
+.rtl .blog-author-box .blog-author-box-bottom .newsroom-card .newsroom-card-topic-container .newsroom-card-topic{order:2}
+@media screen and (max-width:991px){.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-left{margin:0}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-image{margin-left:20px;margin-right:0}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-left .blog-author-box-top-left-top .blog-author-box-top-left-top-name{margin:0}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-right{text-align:center}
+.rtl .blog-author-box .blog-author-box-top .blog-author-box-top-right .blog-author-box-top-right-center{margin:0 16px 20px 14px}
+.rtl .blog-author-box .blog-author-box-bottom .blog-author-box-bottom-name{margin:0 16px 15px 0}
+.rtl .blog-author-box .blog-author-box-bottom .blog-author-box-bottom-container .newsroom-card{margin-left:0}
+}
+.newsroom-related-links-box{max-width:655px;margin:20px auto;margin-top:0}
+.newsroom-related-links-box .newsroom-related-links-content{display:flex;border-bottom:1px solid #eaeaea;padding:30px 0;align-items:center}
+.newsroom-related-links-box .newsroom-related-links-content:hover{text-decoration:none}
+.newsroom-related-links-box .newsroom-related-links-content:first-child{padding-top:20px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-left{width:265px;height:149px;flex:0 0 265px;margin-right:24.5px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-left .newsroom-related-links-card-img{background:center / cover no-repeat;width:100%;height:100%}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-type{font-family:OpenSansSemiBold;font-size:14px;color:#666;line-height:14px;font-weight:600;margin-bottom:16px}
+.hilook-page .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-type{font-family:'TStarBold'}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-title{font-family:OpenSansBold;font-size:20px;color:#333;font-weight:700;line-height:27px;display:-webkit-box;-webkit-box-orient:vertical;text-overflow:ellipsis;-webkit-line-clamp:2;overflow:hidden}
+.hilook-page .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-title{font-family:'TStarHeavy'}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right h3{margin-bottom:0}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box{padding-top:16px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box.inactive{display:none}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author{display:none;position:relative;padding-right:24px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author.active{display:inline}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author::after{content:'';width:1px;height:14px;background:#ddd;position:absolute;right:13px;top:5px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author:last-child::after{display:none}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author .newsroom-related-links-card-right-application-author-left{font-size:14px;color:#333;line-height:19px;font-weight:400}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author .newsroom-related-links-card-right-application-author-right{font-size:14px;color:#094f9c;line-height:19px;font-weight:400}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author .newsroom-related-links-card-right-application-author-right:hover{text-decoration:underline}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-data{font-size:14px;color:#333;font-weight:400;line-height:19px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-topic-container{font-size:0}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-topic-container .common:last-child{display:none}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-topic-container .newsroom-card-desc{font-size:14px;color:#333;line-height:20px;font-weight:400;padding-right:7px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-topic-container .newsroom-card-topic{font-size:14px;color:#094f9c;font-weight:400}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-topic-container .newsroom-card-topic:hover{text-decoration:underline}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-topic-container .common{font-size:14px;color:#094f9c}
+@media screen and (max-width:991px){.newsroom-related-links-box{padding:0 15px;margin:10px auto;margin-top:0;max-width:none}
+.newsroom-related-links-box .newsroom-related-links-content{padding-top:17px;padding-bottom:16px}
+.newsroom-related-links-box .newsroom-related-links-content:first-child{padding-top:10px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-left{width:112px;height:63px;flex:0 0 112px;margin-right:15px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-type{font-size:12px;margin-bottom:8px}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-title{font-size:14px;line-height:22px;font-weight:600;margin:0;font-family:OpenSansSemiBold}
+.hilook-page .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-title{font-family:'TStarBold'}
+.newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box{display:none}
+}
+.rtl .newsroom-related-links-box .newsroom-related-links-content{direction:rtl}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-left{margin-right:0;margin-left:24.5px}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-type{text-align:right}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-title{text-align:right}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box{direction:ltr;text-align:right}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box-block{display:flex;flex-direction:column-reverse}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author{padding-right:0}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box-block .newsroom-related-links-card-right-application-author-block{display:block}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box-block .newsroom-related-links-card-right-application-author-block:last-child{margin-bottom:10px}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-application-author::after{display:none}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-data{position:relative;padding-right:24px}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-data::after{content:'';width:1px;height:14px;background:#ddd;position:absolute;right:13px;top:5px}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box-block .newsroom-related-links-card-right-data-block{display:block;padding-right:0}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box-block .newsroom-related-links-card-right-data-block:after{display:none}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-data:last-child{padding-right:0}
+.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box .newsroom-related-links-card-right-data:last-child:after{display:none}
+@media screen and (max-width:991px){.rtl .newsroom-related-links-box .newsroom-related-links-content .newsroom-related-links-card-right .newsroom-related-links-card-right-application-author-box-block{display:none}
+}
+.newsroom-topic-box{max-width:655px;margin:0 auto 24px}
+.newsroom-topic-box .newsroom-topic-content{min-width:88px;border-radius:18px;border:1px solid #ddd;padding:8px 16px;font-size:14px;color:#333;text-align:center;line-height:14px;font-weight:400;margin-right:16px;margin-bottom:16px;display:inline-block;font-family:OpenSans;cursor:pointer}
+.hilook-page .newsroom-topic-box .newsroom-topic-content{font-family:'TStarRegular'}
+.newsroom-topic-box .newsroom-topic-content:hover{background-color:#f8f8f8}
+@media screen and (max-width:991px){.newsroom-topic-box{padding:0 15px;margin-bottom:0;max-width:none}
+}
+.rtl .newsroom-topic-box{direction:rtl;text-align:right}
+.rtl .newsroom-topic-box .newsroom-topic-content{margin-left:16px;margin-right:0}
+.newsroom-socialshare-box-top{max-width:655px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding-bottom:20px}
+.newsroom-socialshare-box-top.active .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{display:none}
+.newsroom-socialshare-box-top.active .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author{display:none}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left{display:flex;align-items:center}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{background:center / cover no-repeat;width:76px;height:76px;flex:0 0 76px;border-radius:50%;margin-right:20px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author{margin-bottom:10px;font-size:0}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author.inactive{margin-bottom:0}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author .newsroom-socialshare-box-top-left-author-left{font-size:16px;color:#666;line-height:22px;font-weight:400;margin-right:5px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author .newsroom-socialshare-box-top-left-author-right{font-size:16px;color:#094f9c;line-height:22px;font-weight:400;cursor:pointer}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-data{font-size:14px;color:#666;font-weight:400}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right{height:36px;font-size:0}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content{display:inline-block;background:center no-repeat;width:36px;height:36px;border-radius:50%;border:1px solid #ddd;cursor:pointer;margin-left:36px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content:hover{background-color:#f8f8f8}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content:first-child{margin-left:0}
+@media screen and (max-width:991px){.newsroom-socialshare-box-top{padding:0 15px 10px 15px;max-width:none}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-data{font-size:12px;color:#666;font-weight:400}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{width:42px;height:42px;flex:0 0 42px;margin-right:12px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author{margin-bottom:8px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author .newsroom-socialshare-box-top-left-author-left{font-size:12px;color:#666;line-height:17px;font-weight:400;margin-right:4px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-author .newsroom-socialshare-box-top-left-author-right{font-size:12px;color:#094f9c;line-height:17px;font-weight:400}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-author-data .newsroom-socialshare-box-top-left-data{font-size:12px;color:#666;font-weight:400}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right{height:28px;font-size:0}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content{width:28px;height:28px;margin-left:12px;background-size:15px 15px}
+}
+@media screen and (max-width:320px){.newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{margin-right:6px}
+.newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content{margin-left:4px}
+}
+.newsroom-socialshare-box-bottom{max-width:655px;margin:0 auto;text-align:center;border-bottom:1px solid #eaeaea;padding-bottom:20px;font-size:0}
+.newsroom-socialshare-box-bottom .newsroom-socialshare-content{display:inline-block;background:center no-repeat;width:36px;height:36px;border-radius:50%;border:1px solid #ddd;cursor:pointer;margin-left:36px}
+.newsroom-socialshare-box-bottom .newsroom-socialshare-content:hover{background-color:#f8f8f8}
+@media screen and (max-width:991px){.newsroom-socialshare-box-bottom-box{margin:0 15px 20px 15px}
+.newsroom-socialshare-box-bottom-box .newsroom-socialshare-box-bottom{max-width:none}
+.newsroom-socialshare-box-bottom-box .newsroom-socialshare-content{width:28px;height:28px;margin-left:12px;background-size:15px 15px}
+}
+.rtl .newsroom-socialshare-box-top{direction:rtl;text-align:right}
+.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{margin-left:20px;margin-right:0}
+.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content{margin-left:0;margin-right:36px}
+.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content:first-child{margin-right:0}
+@media screen and (max-width:991px){.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{margin-left:12px;margin-right:0}
+.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content{margin-left:0;margin-right:12px}
+}
+@media screen and (max-width:320px){.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-left .newsroom-socialshare-box-top-left-img{margin-left:6px;margin-right:0}
+.rtl .newsroom-socialshare-box-top .newsroom-socialshare-box-top-right .newsroom-socialshare-content{margin-left:0;margin-right:4px}
+}
+.rtl .newsroom-socialshare-box-bottom{direction:rtl}
+.rtl .newsroom-socialshare-box-bottom .newsroom-socialshare-content{margin:0 18px}

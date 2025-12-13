@@ -6259,7 +6259,7 @@ var filterOptions = (function ($) {
                     var optionKey = $(this).data('option-type');
                     if (IsChecked) {
                         $('#tagContainer-' + containerId).append('<button data-value ="' + value + '" data-option-type="' + optionKey + '" class="btn-products btn">' + value
-                            + '<img class="close-btn close-btn-filter" src="/etc/clientlibs/it/resources/icons/baseline-close-24px.svg" alt="Close" id="closeFilter-'
+                            + '<img class="close-btn close-btn-filter" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/baseline-close-24px.svg" alt="Close" id="closeFilter-'
                             + containerId + '-' + optionId + '"></button>');
                     } else {
                         $('#tagContainer-' + containerId).find(".btn[data-value='" + value + "']").remove();
@@ -7916,4 +7916,5 @@ $(document).ready(function () {
     })
 
 });
+
 

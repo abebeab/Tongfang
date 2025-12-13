@@ -85,7 +85,7 @@ function debounce(fn, delay = 500) {
   ***/
  function showToast(message, time, top){
   if(!$('.toast-wrapper').length){
-    var htmlWapper = '<div class="toast-wrapper" style="top: ' + (top ? top + 'px' : '50%') + '"><img src="/etc/clientlibs/it/resources/icons/toast.png"/>'+
+    var htmlWapper = '<div class="toast-wrapper" style="top: ' + (top ? top + 'px' : '50%') + '"><img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/toast.png"/>'+
     '<span>'+message+'</span></div>'
     $("body").append(htmlWapper) 
     if(time){
@@ -850,7 +850,7 @@ var imageLazyLoad = function () {
         // + isSure ? '<div class="card-bottom card-x"><span class="card-bottom-btn">'+Granite.I18n.get('Sure')+'</span></div>' : null+
         if (!$('.form-popup').length) {
             var modalDiv = '<div class="form-popup"><div class="popup-wrap"><div class="popup-card"><div class="card-top">' +
-                '<img src="/etc/clientlibs/it/resources/images/jingshi.png" alt=""> <span>' + Granite.I18n.get('Reminder') + ':</span></div>' +
+                '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/images/jingshi.png" alt=""> <span>' + Granite.I18n.get('Reminder') + ':</span></div>' +
                 '<div class="card-middle"></div>' +
                 '</div><span class="card-x card-close">x</span></div></div>'
             $("body").append(modalDiv)
@@ -867,8 +867,8 @@ var imageLazyLoad = function () {
     var loadingUI = function () {
         if (!$('.loading-wrap').length) {
             var isHilookSite = $('body').hasClass('hilook-page')
-            var loadingDiv = '<div class="loading-wrap"><div class="loading-box"><img src="/etc/clientlibs/it/resources/images/loading.gif"/></div></div>'
-            var hilookLoadingDiv = '<div class="loading-wrap"><div class="loading-box"><img src="/etc/clientlibs/it/resources/icons/hilook-loading.gif"/></div></div>'
+            var loadingDiv = '<div class="loading-wrap"><div class="loading-box"><img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/images/loading.gif"/></div></div>'
+            var hilookLoadingDiv = '<div class="loading-wrap"><div class="loading-box"><img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/hilook-loading.gif"/></div></div>'
             $("body").append(isHilookSite ? hilookLoadingDiv : loadingDiv)
         }
     }
@@ -1160,7 +1160,7 @@ var accountLocation = (function ($) {
                         value: locationJson.name,
                         expirationDays: 1,
                         path: '/',
-                        domain: '.hikvision.com'
+                        domain: '.tongfangbms.com'
                     };
                     storeManager.cookie.set(config, true, false);
                 }, 6000)
@@ -1524,7 +1524,7 @@ var loginUtil = (function ($) {
         } catch (error) {
             console.log("Login Error:" + error);
         }
-        var verifyUrl = "/content/hikvision/en/jcr:content/header";
+        var verifyUrl = "/content/tongfang/en/jcr:content/header";
         var checkUserTypeUrl = verifyUrl + ".usertype.json";
         if(currentPagePath){
             $.ajax({
@@ -1568,7 +1568,7 @@ var loginUtil = (function ($) {
         var ticket = getLoginCookie("ticket");
         var serviceUrl = getServiceUrl();
         if (ticket && serviceUrl) {
-            var verifyUrl = "/content/hikvision/en/jcr:content/header";
+            var verifyUrl = "/content/tongfang/en/jcr:content/header";
             var checkTicketUrl = verifyUrl + ".json";
             var userName = "";
             $.ajax({
@@ -2099,7 +2099,7 @@ var hikPlayer = (function ($) {
             var html = '<div class="modal fade video" id="hik-video" tabindex="-1" role="dialog" aria-hidden="true">'
                 + ' <div class="modal-dialog modal-lg modal-dialog-centered">'
                 + '   <div class="modal-content">'
-                + '     <div class="modal-header"><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="/etc/clientlibs/it/resources/icons/icon-close-white.svg"/></span></button></div>'
+                + '     <div class="modal-header"><button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-close-white.svg"/></span></button></div>'
                 + '     <div class="modal-body">'
                 + '       <div class="video-wrapper" id="modal-video-container" data-autoplay="true">'
                 + '       </div>'
@@ -2175,7 +2175,7 @@ var hikPlayer = (function ($) {
                 }
                 var videoTag = $("<video/>", videoConfig);
                 videoTag.append($('<source src="' + config.videoPath + '" type="' + config.videoType + '"/>'));
-                videoTag.append($('<noscript className="loading-lazy"><img src="/etc/clientlibs/it/resources/images/video-bg.jpg" loading="lazy" className="static-device animated-videos" alt="Landing Animation Video"/></noscript>'));
+                videoTag.append($('<noscript className="loading-lazy"><img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/images/video-bg.jpg" loading="lazy" className="static-device animated-videos" alt="Landing Animation Video"/></noscript>'));
 
                 plyrContainer.empty();
                 plyrContainer.html(videoTag);
@@ -3008,3 +3008,4 @@ function upperCaseWord(word){
   return word[0].toUpperCase() + word.substr(1)
 }
 })(document, $);
+

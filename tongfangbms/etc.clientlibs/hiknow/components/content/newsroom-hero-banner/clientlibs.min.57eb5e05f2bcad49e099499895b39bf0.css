@@ -58,8 +58,8 @@
 .newsroom-landing-page .newsroom-hero-banner-box .newsroom-hero-banner-line{background-color:#eaeaea}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc.change-cursor{cursor:default}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);cursor:pointer}
-.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
-.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 @media screen and (max-width:991px){.newsroom-hero-banner-box{width:100%;padding:10px 0 0 0;position:relative;margin-bottom:5px}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container{width:100%;height:auto;box-shadow:none;border-radius:0}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-list{border-radius:0}
@@ -150,8 +150,8 @@
 .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext .newsroom-hero-banner-success-flex-direction h2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:33px;text-overflow:ellipsis;margin:12px 0;font-family:OpenSansBold;font-size:24px;color:#fff;font-weight:700}
 .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .video-play-btn-center{opacity:1}
 .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center{cursor:pointer;opacity:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
-.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 @media screen and (max-width:991px){.newsroom-hero-banner-wrapper.newsroom-hero-banner-success{padding:0}
 .newsroom-hero-banner-success-pc{display:none}
 .newsroom-hero-banner-success-mob{display:block;height:400px;width:calc(100% - 30px);margin:10px 15px 5px 15px;padding-bottom:19px;border-bottom:solid 1px #eaeaea}
@@ -170,8 +170,8 @@
 .newsroom-hero-banner-success-mob ul li.slick-active::after{top:0;left:0;width:0;height:100%;background-color:#fff;animation:move 4.5s linear}
 .newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:42px}
 .newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .hik-video-trigger{height:42px}
-.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
-.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 @keyframes move{0{width:0}
 50%{width:50%}
 100%{width:100%}

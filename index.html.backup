@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="Tongfang Global - BMS Leading the future of AIoT" />
+  <meta name="keywords" content="Tongfang, BMS, AIoT, Technology, Innovation" />
+
+  <style>
+    body {
+      margin: 8px 0 15px 0;
+      padding: 0;
+      background: rgb(0, 17, 253);
+      font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+    }
+
+    #pageContent {
+      border-bottom: 6px solid #000;
+      padding: 20px 10px;
+      line-height: 1.65em;
+      background: #ccd url("backblue.gif") no-repeat top right;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    a:link {
+      color: #00f;
+    }
+
+    a:visited {
+      color: #000;
+    }
+
+    a:hover {
+      color: #f59805;
+    }
+
+    a:active {
+      color: #00f;
+    }
+
+    .tblRegular {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .tblRegular td {
+      padding: 6px;
+      border: 2px solid #99c;
+      background: url("fade.gif");
+    }
+
+    small {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #fff;
+    }
+  </style>
+
+  <!-- Instant redirect: NO flash -->
+  <script>
+    window.location.replace("http://127.0.0.1:5501/tongfangbms/en/index.html");
+  </script>
+</head>
+
+<body>
+
+  <div id="pageContent">
+    <table class="tblRegular">
+      <tr>
+        <td>
+          · <a href="http://127.0.0.1:5501/tongfangbms/en/index.html">
+            Tongfang Global - BMS Leading the future of AIoT
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <small>&copy; Tongfang System Integration PLC</small>
+
+</body>
+
+</html>
+
+
+

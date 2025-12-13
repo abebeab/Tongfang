@@ -841,8 +841,8 @@ $(document).ready(function(){
           "@context": "https://schema.org",
           "@type": "ImageObject",
           "contentUrl": mainSlideUrl,
-          "license": "https://www.hikvision.com/en/policies/website-image-copyright-statement",
-          "acquireLicensePage": "https://www.hikvision.com/en/how-to-use-our-images",
+          "license": "https://www.tongfangbms.com/en/policies/website-image-copyright-statement",
+          "acquireLicensePage": "https://www.tongfangbms.com/en/how-to-use-our-images",
           "creditText": "Hikvision",
           "creator": {
             "@type": "Organization",
@@ -2085,8 +2085,8 @@ var toggleTabCarouselSlick = function(livePreviewNav) {
       arrows: true,
       accessibility: true,
       useCss: true,
-      prevArrow: "<button class='slick-prev slick-arrow btn live-preview-btn' type='button' style=''><img src='/etc/clientlibs/it/resources/icons/icon-prev.png' alt=''></button>",
-      nextArrow: "<button class='slick-next slick-arrow btn live-preview-btn' type='button' style=''><img src='/etc/clientlibs/it/resources/icons/icon-next.png' alt=''></button>",
+      prevArrow: "<button class='slick-prev slick-arrow btn live-preview-btn' type='button' style=''><img src='https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-prev.png' alt=''></button>",
+      nextArrow: "<button class='slick-next slick-arrow btn live-preview-btn' type='button' style=''><img src='https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-next.png' alt=''></button>",
       lazyload: "ondemand"
   });
 
@@ -2467,7 +2467,7 @@ var productComparisonBottom = (function ($) {
     }
     return [];
   };
-  var oHtml = "<div id='toast-to' ><img src='/etc/clientlibs/it/resources/icons/toast.png'/>Exceeds the maximum number of options</div>"
+  var oHtml = "<div id='toast-to' ><img src='https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/toast.png'/>Exceeds the maximum number of options</div>"
   productComparisonBottom.addCompareDataItem = function (productUrl, event) {
     var compareArrary = productComparisonBottom.getCompareArray();
     var title = $(event.currentTarget).data('at-module');
@@ -2543,7 +2543,7 @@ var productComparisonBottom = (function ($) {
         '<div class="item-title">' + productModel.productNo + '</div>' +
         '<div class="close-item" data-product-url="' + productModel.productUrl + '">' +
           '<div  class="remove-items" id="remove-item-1" data-at-module="compare_bottom::compare::remove' + productModel.productNo + '" >' +
-            '<img src="/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
+            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
           '</div >' +
         '</div>' +
      '</div>';
@@ -2553,7 +2553,7 @@ var productComparisonBottom = (function ($) {
       '<div class="item-title">' + productModel.productNo + '</div>' +
       '<div class="close-item" data-product-url="' + productModel.productUrl + '">' +
         '<div  class="remove-items" id="remove-item-1" data-at-module="compare_bottom::compare::remove' + productModel.productNo + '" >' +
-          '<img src="/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
+          '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
         '</div >' +
       '</div>';
 
@@ -2676,7 +2676,7 @@ var productComparisonBottom = (function ($) {
             '</div>' +
           '</div>' +
           '<div class="close-compare-tab" id="closeCompare">' +
-            '<img src="/etc/clientlibs/it/resources/icons/close-defaults-big-1.svg" alt="Close" id="">' +
+            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-big-1.svg" alt="Close" id="">' +
           '</div>' +
           '<div class="compare-item-empty">' +
             '<div class="empty-cont active-compare-cont">' +
@@ -4502,3 +4502,4 @@ var newsPromotion = (function($) {
 })($);
 
 newsPromotion.init();
+

@@ -1,0 +1,6 @@
+C:\Users\Admin\Documents\Website\Tongfangbms\tongfangbms\etc\clientlibs\it\resources\icons
+C:\Users\Admin\Documents\Website\Tongfangbms\tongfangbms\etc\clientlibs\it\resources\images
+C:\Users\Admin\Documents\Website\Tongfangbms\tongfangbms\en
+C:\Users\Admin\Documents\Website\Tongfangbms\tongfangbms\content\dam\hikvision
+
+

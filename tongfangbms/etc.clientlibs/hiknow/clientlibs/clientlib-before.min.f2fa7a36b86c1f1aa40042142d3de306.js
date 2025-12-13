@@ -10612,7 +10612,7 @@ var storeManager = (function ($) {
     var dayInMiliseconds = 864e5;
     var yearExpirationDate = 360 * dayInMiliseconds;
     var defaultExpirationDate = 10 * dayInMiliseconds;
-    manager.hikvision_domain = ".hikvision.com";
+    manager.hikvision_domain = ".tongfangbms.com";
 
     manager.STORE_NAMES = {
         cookieDisclaimer: "cookie-disclaimer",
@@ -11641,7 +11641,7 @@ function initAnalytics() {
         var allAppKey = window.cn_allAppKey
         for(var i=0;i<allAppKey.length;i++){
             if( allAppKey[i].env == CurrentDomain && cnLanguages.indexOf(pageLang) >= 0){
-                if( CurrentDomain != 'www.hikvision.com' ){
+                if( CurrentDomain != 'www.tongfangbms.com' ){
                     CurrenHaenv='uat'
                 }else{
                     CurrenHaenv='prd'
@@ -11658,7 +11658,7 @@ function initAnalytics() {
                 "ha.sessionCookieTimeout= 30;"+
                 "</script>"
                 $('head').append(scp);  
-                $('head').append('<script src="https://huap-collect.hikvision.com/@hi/analytics/hi-analytics.min.js" async></script>')
+                $('head').append('<script src="https://huap-collect.tongfangbms.com/@hi/analytics/hi-analytics.min.js" async></script>')
             }
         }
     }
@@ -11741,7 +11741,7 @@ var  HiAnalyticsCn  = (function ($) {
     },
     initOperation:function(operation,tag){
       if(operation == '跳转'){
-        if(new RegExp("^https:|http:|www.*$").test(tag) && tag.indexOf('hikvision.com') < 0 ){
+        if(new RegExp("^https:|http:|www.*$").test(tag) && tag.indexOf('tongfangbms.com') < 0 ){
             return '跳出官网'
         }else{
             return '跳转页面' 
@@ -11856,7 +11856,7 @@ function toggleOnScrollJq($el, opt = {}) {
 }
 var searchProvider = (function ($) {
     var provider = {};
-    var skipUrlHost = ["partners.hikvision.com"]
+    var skipUrlHost = ["partners.tongfangbms.com"]
 
     provider.notEditorOrPreviewMode = function () {
         var runMode = storeManager.cookie.get("wcmmode");
@@ -12147,4 +12147,5 @@ var searchProvider = (function ($) {
 
     return provider;
 })($);
+
 

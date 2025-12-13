@@ -99,7 +99,7 @@
 .super-big-banner-full .edit-swiper-container{display:none !important}
 .rtl .hero-banner-full__text-container{width:100%;text-align:right;direction:rtl}
 .rtl .super-big-banner-full .hero-banner-full__text-container{text-align:right}
-.hero-banner-full .swiper-slide .image-wrapper{background-image:url('../../../../../../etc/clientlibs/it/resources/icons/calender.png')}
+.hero-banner-full .swiper-slide .image-wrapper{background-image:url('https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/calender.png')}
 .hero-banner-full .watch-video-btn-link{font-size:.75rem;padding-top:.25rem;padding-bottom:.25rem;padding-left:16px;padding-right:16px;border-radius:1.25rem;color:#fff;font-weight:500;background-color:#d7150e;min-height:2.5rem}
 .hero-banner-full .explore-btn-link{font-size:18rem;padding-left:1.255rem;padding-right:1.255rem;border-radius:2.25rem;color:#fff;font-weight:500;background-color:#d7150e;height:40px;display:inline-block;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:20px}
 .banner-carousel .hero-banner-full__text-container .explore-btn-link:nth-of-type(2){margin-left:40px}
@@ -179,11 +179,11 @@
 .rtl .super-big-banner-full .explore-btn-link:nth-of-type(2),.rtl .super-big-banner-full .cta-button:nth-of-type(2){margin-left:0;margin-right:40px}
 .super-big-banner-full .explore-btn-link.hik-video.text-highlights-color-2{color:#fff}
 .super-big-banner-full .explore-btn-link.text-secondary-color-2{color:#fff}
-.super-big-banner-full .explore-btn-link.text-secondary-color-2 .video-img{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hiknow2/icon-player-white.svg')}
+.super-big-banner-full .explore-btn-link.text-secondary-color-2 .video-img{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hiknow2/icon-player-white.svg')}
 .super-big-banner-full .explore-btn-link span:nth-of-type(2){position:relative}
 .super-big-banner-full .explore-btn-link.text-primary-color-2 span:nth-of-type(2){top:0}
-.super-big-banner-full .explore-btn-link.text-primary-color-2 .video-img{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hiknow2/icon-player-black.svg')}
-.super-big-banner-full .explore-btn-link.hik-video.text-highlights-color-2 .video-img{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hiknow2/icon-player-white.svg')}
+.super-big-banner-full .explore-btn-link.text-primary-color-2 .video-img{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hiknow2/icon-player-black.svg')}
+.super-big-banner-full .explore-btn-link.hik-video.text-highlights-color-2 .video-img{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hiknow2/icon-player-white.svg')}
 .big-banner-full .watch-video-btn-link{font-size:.75rem;padding:.25rem 16px;border-radius:1.25rem;color:#fff;font-weight:600;background-color:#d7150e;min-height:2.5rem}
 .big-banner-full .explore-btn-link:hover,.super-big-banner-full .explore-btn-link:hover{background-color:#c1120b}
 .big-banner-full .explore-btn-link:hover,.big-banner-full .watch-video-btn-link:hover,.super-big-banner-full .explore-btn-link:hover,.super-big-banner-full .watch-video-btn-link:hover{text-decoration:none}
@@ -516,10 +516,10 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 }
 .background-color-black .mult-tabs-container-comp .tabs-wrapper::before{background-color:#505050}
 .mult-tabs-container-comp .tabs-wrapper ul,.mult-tabs-container-comp .tabs-wrapper li{list-style-type:none;margin:0;padding:0;font-size:0}
-.mult-tabs-container-comp .tabs-wrapper .action-btn{position:absolute;height:64px;width:64px;top:-3px;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-black.svg');z-index:1;display:none;cursor:pointer}
-.background-color-black .mult-tabs-container-comp .tabs-wrapper .action-btn{background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/background-color-black-icon-arrow-back.svg')}
-.mult-tabs-container-comp .tabs-wrapper .action-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-arrow-hover.svg')}
-.background-color-black .mult-tabs-container-comp .tabs-wrapper .action-btn:hover{background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/background-color-black-icon-arrow-black-hover.svg')}
+.mult-tabs-container-comp .tabs-wrapper .action-btn{position:absolute;height:64px;width:64px;top:-3px;background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-arrow-black.svg');z-index:1;display:none;cursor:pointer}
+.background-color-black .mult-tabs-container-comp .tabs-wrapper .action-btn{background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/background-color-black-icon-arrow-back.svg')}
+.mult-tabs-container-comp .tabs-wrapper .action-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-arrow-hover.svg')}
+.background-color-black .mult-tabs-container-comp .tabs-wrapper .action-btn:hover{background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/background-color-black-icon-arrow-black-hover.svg')}
 .mult-tabs-container-comp .tabs-wrapper .action-btn.show{display:block}
 .mult-tabs-container-comp .tabs-wrapper .pre-btn{left:30px;transform:rotate(0)}
 .mult-tabs-container-comp .tabs-wrapper .pre-btn.show{display:block}
@@ -568,12 +568,12 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .mult-tabs-container-comp .tabs-section .tab-item .content:hover{color:#333;font-weight:400}
 .mult-mob-tabs-container-comp ul{padding:0 15px 0 15px;margin-bottom:10px}
 .mult-mob-tabs-container-comp li{list-style:none;line-height:52px;border-bottom:1px solid rgba(234,234,234,1);position:relative}
-.mult-mob-tabs-container-comp li::after{position:absolute;content:"";background-image:url("https://www.hikvision.com/etc/clientlibs/it/resources/icons/icons9-circled-right-50.svg");right:5px;width:12px;height:8px;background-size:cover;top:23px}
+.mult-mob-tabs-container-comp li::after{position:absolute;content:"";background-image:url("https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icons9-circled-right-50.svg");right:5px;width:12px;height:8px;background-size:cover;top:23px}
 .mult-mob-tabs-container-comp li a{font-family:"OpenSansSemiBold";font-size:14px;font-weight:bold;color:#333}
 .background-color-black .mult-tabs-container-comp .tabs-section .tab-item.active{border:0;border-bottom:1px solid #d71502;height:45px}
 .background-color-black .mult-tabs-container-comp .tabs-section .tab-item.active .content{color:#fff}
 }
-.hilook-page .mult-tabs-container-comp .tabs-wrapper .action-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-icon-arrow-hover2.svg')}
+.hilook-page .mult-tabs-container-comp .tabs-wrapper .action-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hilook-icon-arrow-hover2.svg')}
 .hilook-page .mult-tabs-container-comp .tabs-section .tab-item.active .content{color:#00a7e2}
 .hilook-page .mult-tabs-container-comp .tabs-section .tab-item .content:hover{color:#00a7e2}
 @media(max-width:991px){.hilook-page .mult-tabs-container-comp .tabs-section .tab-item.active .content{border-bottom:2px solid #00a7e2}
@@ -644,11 +644,11 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .product-carousel-wrap .swiper-wrapper .swiper-slide:not(.has-video){cursor:zoom-in}
 .product-preview-wrap{position:fixed;width:100%;height:100%;top:0;left:0;background-color:rgba(0,0,0,0.4);z-index:10001}
 .product-preview-wrap .product-preview{width:60%;max-width:1097px;height:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background-color:#fff;overflow:hidden}
-.product-preview-wrap .product-preview .close-btn{position:absolute;top:18px;right:18px;width:20px;height:20px;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/close-defaults-1.svg');z-index:99}
+.product-preview-wrap .product-preview .close-btn{position:absolute;top:18px;right:18px;width:20px;height:20px;background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/close-defaults-1.svg');z-index:99}
 .product-preview-wrap .product-preview .swiper-slide{width:100%;height:0;padding-bottom:65.72%}
 .product-preview-wrap .product-preview .swiper-slide .product-preview-item{width:73%;max-width:800px;padding-bottom:41%;background-position:center;background-size:contain;background-repeat:no-repeat;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.product-preview-wrap .carousel-control-next-icon:before{content:'';background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/jiantou.svg');height:40px;width:40px;display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat;transform:rotate(180deg)}
-.product-preview-wrap .carousel-control-prev-icon:before{content:'';background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/jiantou.svg');height:40px;width:40px;display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat}
+.product-preview-wrap .carousel-control-next-icon:before{content:'';background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/jiantou.svg');height:40px;width:40px;display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat;transform:rotate(180deg)}
+.product-preview-wrap .carousel-control-prev-icon:before{content:'';background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/jiantou.svg');height:40px;width:40px;display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat}
 .product-preview-wrap .carousel-control-prev,.product-preview-wrap .carousel-control-next{width:auto;height:40px;top:50%;transform:translateY(-50%)}
 .product-preview-wrap .carousel-control-prev{margin-inline-start:18px}
 .product-preview-wrap .carousel-control-next{margin-inline-end:18px}
@@ -668,7 +668,7 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .product-preview-wrap .carousel-control-next-icon,.product-preview-wrap .carousel-control-prev-icon{width:32px;height:32px}
 .product-preview-wrap .carousel-control-prev{margin-inline-start:15px}
 .product-preview-wrap .carousel-control-next{margin-inline-end:15px}
-.product-carousel-wrap .swiper-wrapper .swiper-slide:not(.has-video) .item-inner::after{content:'';display:block;position:absolute;width:22px;height:22px;top:0;right:0;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-fangdajing.svg');z-index:2}
+.product-carousel-wrap .swiper-wrapper .swiper-slide:not(.has-video) .item-inner::after{content:'';display:block;position:absolute;width:22px;height:22px;top:0;right:0;background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-fangdajing.svg');z-index:2}
 }
 .product-spotlight-wrapper.bg-white{background-color:#fff}
 .product-spotlight-container{max-width:1370px;margin:0 auto;padding:0 30px 20px 30px;position:relative}
@@ -710,8 +710,8 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .product-spotlight-container .product-item-img-wrapper .tag.tag-cn{font-style:normal;text-shadow:none;left:12px;top:12px;line-height:20px;padding-left:24px}
 .product-spotlight-container .product-item-img-wrapper .tag.tag-cn::before{content:'';position:absolute;top:0;left:0;width:20px;height:17px;background:center / contain no-repeat}
 .product-spotlight-container .product-item-img-wrapper .tag.tag-cn.recommend{color:#ff8723}
-.product-spotlight-container .product-item-img-wrapper .tag.tag-cn.recommend::before{background-image:url("https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-recommend.svg")}
-.product-spotlight-container .product-item-img-wrapper .tag.tag-cn.hot::before{background-image:url("https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-hot.svg")}
+.product-spotlight-container .product-item-img-wrapper .tag.tag-cn.recommend::before{background-image:url("https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-recommend.svg")}
+.product-spotlight-container .product-item-img-wrapper .tag.tag-cn.hot::before{background-image:url("https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-hot.svg")}
 .product-spotlight-container .product-item-img-wrapper .tag.tag-dc{color:#999}
 .product-spotlight-container .product-item-wrapper .product-item-info{color:#333;height:100px}
 .product-spotlight-container .product-item-wrapper .product-item-info .title{line-height:22px;max-height:22px;font-size:16px;font-weight:600;margin-bottom:12px;overflow:hidden}
@@ -723,7 +723,7 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]{-webkit-appearance:initial;appearance:initial;padding:0;position:relative;border-radius:3px;margin-right:6px;width:16px;height:16px;top:3px}
 .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:after{position:absolute;width:16px;height:16px;border:1px solid #ddd;content:'';background-color:#fff;border-radius:3px}
 .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:hover:after{border-color:#d7150e}
-.product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:checked{background-color:#d7150e;background-image:url("../../../../../../etc/clientlibs/it/resources/icons/checkbox-checked.png");background-size:cover}
+.product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:checked{background-color:#d7150e;background-image:url("https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/checkbox-checked.png");background-size:cover}
 .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:checked:after{border:0;background-color:transparent}
 @media(max-width:991px){.product-spotlight-wrapper{background-color:transparent}
 .product-spotlight-container{padding:0;overflow:hidden}
@@ -782,14 +782,14 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]{width:16px;height:16px;-webkit-appearance:initial;appearance:initial;position:absolute;top:3px;border-radius:3px;outline:0}
 .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:after{content:'';width:16px;height:16px;border:1px solid #a0a0a0;position:absolute;left:0;top:0;border-radius:3px;vertical-align:baseline;cursor:pointer}
 .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:hover::after{border-color:#d7150e}
-.related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:checked{background-color:#d7150e;background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-sle-check.svg);background-size:cover;position:absolute;top:3px}
+.related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:checked{background-color:#d7150e;background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-sle-check.svg);background-size:cover;position:absolute;top:3px}
 .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:checked::after{border:0}
 .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare label{margin-bottom:0;margin-left:23px}
 .related-accessories-comp .tag.tag-cn{padding-left:24px;position:absolute;left:12px;top:12px;font-size:14px;font-weight:600;line-height:10px;color:#d7150e}
 .related-accessories-comp .tag.tag-cn::before{content:'';position:absolute;top:-6px;left:0;width:20px;height:17px;background:center / contain no-repeat}
 .related-accessories-comp .tag.tag-cn.recommend{color:#ff8723}
-.related-accessories-comp .tag.tag-cn.recommend::before{background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-recommend.svg)}
-.related-accessories-comp .tag.tag-cn.hot::before{background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-hot.svg)}
+.related-accessories-comp .tag.tag-cn.recommend::before{background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-recommend.svg)}
+.related-accessories-comp .tag.tag-cn.hot::before{background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-hot.svg)}
 @media(max-width:991px){.related-accessories-comp{padding:10px 15px}
 .related-accessories-comp .related-accessories-container{display:block}
 .related-accessories-comp .related-accessories-container .related-accessories-card{margin-right:0;margin-bottom:15px;height:auto;min-height:113px;max-height:135px;box-shadow:0 2px 16px 0 rgba(0,0,0,0.07);border-radius:4px}
@@ -812,9 +812,9 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .related-accessories-comp .tag.tag-cn::before{width:16px;height:16px}
 }
 .hilook-page .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:hover:after{border-color:#00a7e2}
-.hilook-page .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:checked{background-color:#00a7e2;background-image:url("https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg")}
+.hilook-page .product-spotlight-container .product-item-wrapper .add-to-compare input[type="checkbox"]:checked{background-color:#00a7e2;background-image:url("https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg")}
 .hilook-page .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:hover::after{border-color:#00a7e2}
-.hilook-page .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:checked{background-color:#00a7e2;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-icon-radio-checked.svg')}
+.hilook-page .related-accessories-comp .related-accessories-container .related-accessories-card .add-to-compare input[type=checkbox]:checked{background-color:#00a7e2;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hilook-icon-radio-checked.svg')}
 .rtl .new-split-banner-col-smail.public-style{direction:rtl}
 .rtl .new-split-banner-container-2 .new-split-banner-wrapper{direction:rtl}
 .rtl .new-split-banner-container-2 .new-split-banner-wrapper .new-split-banner-col-des{text-align:right;padding-right:0}
@@ -875,7 +875,7 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .product-detail-category-container .category-title{height:3.5rem;background-color:#f5f5f5;position:relative;cursor:pointer}
 .product-detail-category-container .category-title h3{font-size:1rem;font-weight:700;line-height:24px;padding:16px 24px;font-family:'OpenSansBold'}
 .hilook-page .product-detail-category-container .category-title h3{font-family:'TStarHeavy'}
-.product-detail-category-container .category-title h3::after{content:"";background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-collapse-open.svg);height:8px;width:13px;display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat;position:absolute;right:1.5rem;cursor:pointer;top:0;bottom:0;margin-top:auto;margin-bottom:auto}
+.product-detail-category-container .category-title h3::after{content:"";background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-collapse-open.svg);height:8px;width:13px;display:inline-block;background-size:contain;background-position:center;background-repeat:no-repeat;position:absolute;right:1.5rem;cursor:pointer;top:0;bottom:0;margin-top:auto;margin-bottom:auto}
 .product-detail-category-container .category-title.collapsed h3::after{transform:rotate(180deg)}
 .product-detail-category-container .technical-document-wrapper{width:100%;display:flex;justify-content:space-between;flex-wrap:wrap}
 .product-detail-category-container .technical-document-wrapper .technical-document{width:47.86%;min-height:3.375rem}
@@ -888,7 +888,7 @@ ul.carousel-indicators>li:first-of-type:last-of-type{display:none}
 .product-detail-category-container .technical-document-wrapper .resource-icon-container{margin:0 .75rem 0 .75rem;overflow:hidden}
 .product-detail-category-container .technical-document-wrapper .resource-icon-container a,.product-detail-category-container .technical-document-wrapper .resource-icon-container span{margin:0 .75rem;cursor:pointer}
 .product-detail-category-container .technical-document-wrapper .resource-icon-container .document-preview-icon,.product-detail-category-container .technical-document-wrapper .resource-icon-container .text-grid-preview-icon{display:none}
-@media(any-hover:hover){.product-detail-category-container .technical-document-wrapper .resource-icon-container .document-preview-icon>img:hover,.product-detail-category-container .technical-document-wrapper .resource-icon-container .text-grid-preview-icon>img:hover{content:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-preview-red.svg')}
+@media(any-hover:hover){.product-detail-category-container .technical-document-wrapper .resource-icon-container .document-preview-icon>img:hover,.product-detail-category-container .technical-document-wrapper .resource-icon-container .text-grid-preview-icon>img:hover{content:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-preview-red.svg')}
 .product-detail-category-container .technical-document-wrapper .resource-icon-container .document-download-icon .download-svg:hover,.product-detail-category-container .technical-document-wrapper .resource-icon-container .text-grid-download-icon .download-svg:hover{color:#d7150e}
 .hilook-page .product-detail-category-container .technical-document-wrapper .resource-icon-container .document-download-icon .download-svg:hover,.hilook-page .product-detail-category-container .technical-document-wrapper .resource-icon-container .text-grid-download-icon .download-svg:hover{color:#00a7e2}
 }
@@ -986,7 +986,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .text-grid-form-check input[type=checkbox]{padding:0;margin:4px 12px 0 0;width:1rem;height:1rem;-webkit-appearance:initial;appearance:initial;outline:0;border-radius:1px;float:left;cursor:pointer}
 .text-grid-form-check input[type=checkbox]:after{position:absolute;transform:none;content:'';top:auto;left:auto;width:1rem;height:1rem;border:1px solid #ced4da;vertical-align:baseline;border-radius:0}
 .text-grid-form-check input[type=checkbox]:hover::after{border-color:#d7150e}
-.text-grid-form-check input[type=checkbox]:checked{background-color:#d7150e;background-image:url(../../../../../../etc/clientlibs/it/resources/icons/icon-checkbox-checked.png);background-size:cover;border-radius:0}
+.text-grid-form-check input[type=checkbox]:checked{background-color:#d7150e;background-image:url(https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-checkbox-checked.png);background-size:cover;border-radius:0}
 .text-grid-form-check input[type=checkbox]:checked::after{border:0}
 .text-grid-form-check p{margin:0;line-height:20px;color:#333;font-size:14px;font-weight:400}
 .text-grid-form-check.err{position:relative;margin-bottom:22px}
@@ -1001,7 +1001,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .text-grid-form-submit:disabled{color:#fff;opacity:.5;border:0;background:#d7150e;cursor:default}
 .text-grid-form-error-message{transform:translateY(50%);position:fixed;background:#fff;box-shadow:0 4px 12px 0 rgba(0,0,0,0.2);border-radius:4px;bottom:50%;right:50%;transform:translate(50%,50%);z-index:23;width:430px;display:none;padding:3rem 0}
 .text-grid-form-error-message.active{display:block}
-.text-grid-form-error-message-close{background-image:url('../../../../../../etc/clientlibs/it/resources/icons/text-grid-close.png');width:1.25rem;height:1.25rem;background-repeat:no-repeat;position:relative;top:-2.25rem;background-size:100% 100%;float:right;margin-right:.75rem;display:block;cursor:pointer}
+.text-grid-form-error-message-close{background-image:url('https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/text-grid-close.png');width:1.25rem;height:1.25rem;background-repeat:no-repeat;position:relative;top:-2.25rem;background-size:100% 100%;float:right;margin-right:.75rem;display:block;cursor:pointer}
 .text-grid-form-error-message-image{display:inline-block;position:relative;left:50%;transform:translateX(-50%);margin-bottom:1rem}
 .text-grid-form-error-message-text{width:13rem;position:relative;left:50%;transform:translateX(-50%);text-align:center}
 .text-grid-form-thanks-message{width:100%;background:#fff;padding:3rem 0;display:none;position:absolute;top:0;transform:translateY(-50%)}
@@ -1034,7 +1034,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .hilook-page .text-grid-wrapper-check a.text-grid-pdp-link:hover{color:#00a7e2}
 .hilook-page .text-grid-wrapper-check .resource-icon-container .download-svg:hover{color:#00a7e2}
 .hilook-page .text-grid-form-check input[type=checkbox]:hover::after{border-color:#00a7e2}
-.hilook-page .text-grid-form-check input[type=checkbox]:checked{background-color:#00a7e2;background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg)}
+.hilook-page .text-grid-form-check input[type=checkbox]:checked{background-color:#00a7e2;background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg)}
 .hilook-page .text-grid-form-reset:hover{border-color:#00a7e2;color:#00a7e2}
 .hilook-page .text-grid-form-submit{background:#00a7e2}
 .hilook-page .text-grid-form-submit:hover{background:#0086b5}
@@ -1172,7 +1172,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .hiknow-button:disabled{background-color:#f2f2f2;color:#737373}
 .hiknow-view a:hover{text-decoration:underline}
 .hiknow-view .view-all{font-size:16px;color:#094f9c !important;line-height:24px;font-weight:600;text-transform:capitalize;display:inline-flex;align-items:center}
-.hiknow-view .view-all::after{width:16px;height:16px;margin-left:8px;display:inline-block;content:" ";background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-2.svg') center/100% no-repeat}
+.hiknow-view .view-all::after{width:16px;height:16px;margin-left:8px;display:inline-block;content:" ";background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-2.svg') center/100% no-repeat}
 .hiknow-view .view-all-arrow{width:1.25rem;margin-left:.5625rem;height:auto}
 .show-button .hiknow-button{display:flex;justify-content:flex-start}
 .show-viewall .hiknow-view{display:flex;max-width:1310px;width:100%;margin:0 auto;box-sizing:border-box}
@@ -1290,8 +1290,8 @@ body.hideScroll{overflow:hidden;height:100%}
 .grid-list-wrapper .grid-item a{text-decoration:none}
 .grid-list-wrapper .grid-item-content{display:flex;align-items:center;justify-content:space-between;height:100%;background:#fff;color:#333;padding:0 24px;font-weight:400;font-size:16px;box-shadow:0 0 14px 0 rgba(0,0,0,0.15);text-decoration:none}
 .grid-list-wrapper .grid-item-title{display:flex;align-items:center;justify-content:space-between;height:100%}
-.grid-list-wrapper .grid-item-icon{display:inline-block;width:6px;height:10px;background:url("../../../../../../etc/clientlibs/it/resources/icons/icon-dropdown-1.png") no-repeat}
-.grid-list-wrapper .grid-item-content:hover .grid-item-icon{background:url("../../../../../../etc/clientlibs/it/resources/icons/icon-arrow-right-red.png") no-repeat}
+.grid-list-wrapper .grid-item-icon{display:inline-block;width:6px;height:10px;background:url("https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-dropdown-1.png") no-repeat}
+.grid-list-wrapper .grid-item-content:hover .grid-item-icon{background:url("https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-arrow-right-red.png") no-repeat}
 .grid-list-wrapper .grid-item-content:hover{color:#d7150e !important}
 @media(max-width:991px){.grid-list-wrapper{padding:5px 15px;margin:0 auto}
 .grid-list-wrapper .grid-item{width:100%;height:60px;font-size:14px;padding:5px 0}
@@ -1300,13 +1300,13 @@ body.hideScroll{overflow:hidden;height:100%}
 .card-gallery-wrapper{display:flex;flex-wrap:wrap;max-width:1370px;margin:0 auto;padding:0 30px;margin-top:20px;margin-bottom:20px}
 .card-gallery-content{box-shadow:0 2px 14px 0 rgba(0,0,0,0.07);border-radius:4px;padding-bottom:20px;overflow:hidden;height:100%;background:#fff;cursor:default;display:flex;flex-direction:column}
 .card-gallery-content .plyr__control.plyr__control--overlaid svg{display:none}
-.card-gallery-content .plyr__control.plyr__control--overlaid{background-color:transparent;border-radius:0;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg');background-size:center;box-shadow:none}
-.card-gallery-content .plyr__control.plyr__control--overlaid:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg');background-color:transparent}
+.card-gallery-content .plyr__control.plyr__control--overlaid{background-color:transparent;border-radius:0;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg');background-size:center;box-shadow:none}
+.card-gallery-content .plyr__control.plyr__control--overlaid:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg');background-color:transparent}
 .card-gallery-content:not(.no-link):not(.hide-card-border):hover{box-shadow:0 2px 14px 0 rgba(0,0,0,0.16)}
 .card-gallery-content-img{margin-bottom:20px;position:relative;overflow:hidden}
 .card-gallery-content-img .hik-video-trigger{display:block;width:100%;position:relative;background-size:cover;height:0;padding-bottom:calc(100%* 9 / 16);cursor:default}
-.card-gallery-content-img .hik-video-trigger button.player-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg');background-color:transparent;border-radius:0;width:58px;height:42px;background-size:center;box-shadow:none;border:0;outline:0}
-.card-gallery-content-img .hik-video-trigger button.player-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.card-gallery-content-img .hik-video-trigger button.player-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg');background-color:transparent;border-radius:0;width:58px;height:42px;background-size:center;box-shadow:none;border:0;outline:0}
+.card-gallery-content-img .hik-video-trigger button.player-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 .card-gallery-content-img .hik-video-trigger #video-player-container{position:absolute;top:0;width:100%;height:100%}
 .card-gallery-content-img .hik-video-trigger .video-youtube-wrap,.card-gallery-content-img .hik-video-trigger #video-container-youtube{height:100%}
 .card-gallery-content:not(.no-link):not(.hide-card-border):hover .card-gallery-content-img .content-img{transform:scale(1.1,1.1)}
@@ -1335,9 +1335,9 @@ body.hideScroll{overflow:hidden;height:100%}
 .card-gallery-content-more .card-gallery-content-more-link span{margin-right:5px}
 .card-gallery-content-more .card-gallery-content-more-link span:hover{text-decoration:underline}
 .cn-card-gallery .card-gallery-content-more .card-gallery-content-more-link span:hover{text-decoration:none}
-.card-gallery-content-more .label-icon{display:inline-block;width:12px;height:12px;background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-2.svg') center/100% no-repeat;margin-bottom:-1px}
-.cn-card-gallery .card-gallery-content-more .label-icon{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-cn-1.svg') center/100% no-repeat}
-.cn-card-gallery .card-gallery-content-more:hover .label-icon{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-cn-2.svg') center/100% no-repeat;transform:translateX(3px)}
+.card-gallery-content-more .label-icon{display:inline-block;width:12px;height:12px;background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-2.svg') center/100% no-repeat;margin-bottom:-1px}
+.cn-card-gallery .card-gallery-content-more .label-icon{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-cn-1.svg') center/100% no-repeat}
+.cn-card-gallery .card-gallery-content-more:hover .label-icon{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-cn-2.svg') center/100% no-repeat;transform:translateX(3px)}
 .card-gallery .transparent{background:0}
 .card-gallery .cursor{cursor:pointer}
 .card-gallery .modal-header{padding:0;border:0}
@@ -1397,7 +1397,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .card-gallery.black .card-gallery-content .card-gallery-content-title{color:rgba(255,255,255,.85)}
 .card-gallery.black .card-gallery-content .card-gallery-content-desc{color:rgba(255,255,255,.65)}
 .card-gallery.black .card-gallery-content .card-gallery-content-more .card-gallery-content-more-link{color:rgba(255,255,255,.85)}
-.card-gallery.black .card-gallery-content .card-gallery-content-more .label-icon{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-white-2.svg') center/100% no-repeat}
+.card-gallery.black .card-gallery-content .card-gallery-content-more .label-icon{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-white-2.svg') center/100% no-repeat}
 .card-gallery.black .card-gallery-content-prod h5{color:rgba(255,255,255,0.85)}
 .card-gallery.black .col-md-6 .card-gallery-content-prod .card-gallery-content-prod-content div{border:1px solid #505050}
 .card-gallery.black .col-md-6 .card-gallery-content-prod .card-gallery-content-prod-content div:hover{border:1px solid #999}
@@ -1556,7 +1556,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .compare-cont .compare-items-cont .compare-item .item-cont .item-title{position:absolute;font-family:OpenSansSemiBold;font-size:12px;color:#333;text-align:center;line-height:18px;font-weight:600;top:108px;left:50%;transform:translateX(-50%);width:100%;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .compare-cont .compare-items-cont .compare-item .item-cont .close-item .remove-items{background-color:transparent;border:0;position:absolute;right:4px;top:0;cursor:pointer;height:16px}
 .compare-cont .compare-items-cont .compare-item .item-cont .close-item .remove-items img{width:16px;height:16px}
-.compare-cont .compare-items-cont .compare-item .item-cont .close-item .remove-items img:hover{content:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-smallClose-hover.svg')}
+.compare-cont .compare-items-cont .compare-item .item-cont .close-item .remove-items img:hover{content:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-smallClose-hover.svg')}
 .compare-cont .compare-items-cont .empty-cont{background:#fff;border:1px solid rgba(234,234,234,1);min-height:100%;padding:1rem;position:relative}
 .compare-cont .compare-items-cont .empty-cont .add-item{position:absolute;top:107px;left:50%;transform:translateX(-50%);width:100%;display:flex;justify-content:center;animation-duration:100ms;font-family:OpenSansSemiBold;font-size:12px;color:#999;line-height:18px;font-weight:600}
 .compare-cont .compare-btn-wrapper{border-left:1px solid rgba(234,234,234,1);padding-left:64px}
@@ -1592,7 +1592,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .rtl #toast-to img{margin-right:0;margin-left:10px}
 .close-compare-tab{cursor:pointer;position:absolute;top:15px;right:10px}
 .rtl .close-compare-tab{left:10px;right:auto}
-.close-compare-tab img:hover{content:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/close-hover-big-1.svg')}
+.close-compare-tab img:hover{content:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/close-hover-big-1.svg')}
 @media only screen and (max-width:1024px){.compare-contbox::before{content:'MOBILE'}
 .layout.compare{top:0}
 .compare-cont{width:100%;right:auto;display:block;bottom:0;border-radius:0;box-shadow:0 0 20px 0 rgb(0 0 0 / 15%)}
@@ -1600,7 +1600,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .compare-mobile-bar .compare-bar-sum-container .compare-bar-sum{font-family:OpenSansSemiBold;font-size:14px;color:#333;line-height:18px;font-weight:600;margin-bottom:9px}
 .compare-mobile-bar .compare-bar-sum-container .compare-bar-sum .compare-bar-active-product{color:#d7150e}
 .compare-mobile-bar .compare-bar-sum-container .compare-view-detail{font-size:12px;line-height:17px;color:#d7150e;letter-spacing:0;font-weight:400}
-.compare-mobile-bar .compare-bar-sum-container .compare-view-detail::after{content:'';width:11px;height:8px;background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/mobile-RightArrow.svg') center/100% no-repeat;display:inline-block;margin-left:5px}
+.compare-mobile-bar .compare-bar-sum-container .compare-view-detail::after{content:'';width:11px;height:8px;background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/mobile-RightArrow.svg') center/100% no-repeat;display:inline-block;margin-left:5px}
 .compare-mobile-bar .compare-bar-sum-container .compare-view-detail.expand::after{transform:rotate(180deg)}
 .rtl .compare-mobile-bar .compare-bar-sum-container .compare-view-detail{position:relative;text-align:right}
 .rtl .compare-mobile-bar .compare-bar-sum-container .compare-view-detail::after{position:absolute;right:75px;top:5px}
@@ -1648,7 +1648,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .hilook-page .compare-btn-cont .compare-btn .comp-count{color:#00a7e2}
 @media only screen and (max-width:1024px){.hilook-page .compare-mobile-bar .compare-bar-sum-container .compare-bar-sum .compare-bar-active-product{color:#00a7e2}
 .hilook-page .compare-mobile-bar .compare-bar-sum-container .compare-view-detail{color:#00a7e2}
-.hilook-page .compare-mobile-bar .compare-bar-sum-container .compare-view-detail::after{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-mobile-RightArrow.svg') center/100% no-repeat}
+.hilook-page .compare-mobile-bar .compare-bar-sum-container .compare-view-detail::after{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hilook-mobile-RightArrow.svg') center/100% no-repeat}
 .hilook-page .compare-cont .compare-btn-wrapper .compare-btn:hover{background-color:#00a7e2;border-color:#00a7e2}
 }
 .widget-combination-wrapper::-webkit-scrollbar{width:0;height:0}
@@ -1812,11 +1812,11 @@ body.hideScroll{overflow:hidden;height:100%}
 .card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-image .card-stream-video-button{right:20px}
 .card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video{width:100%;padding-bottom:56.2%;position:relative;overflow:hidden;border-radius:20px}
 .card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video .video-image{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;background-repeat:no-repeat;z-index:1;opacity:0}
-.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video .card-video-button{position:absolute;right:40px;bottom:40px;width:44px;height:44px;border-radius:100px;background-size:100%;background-position:center;cursor:pointer;z-index:2;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-switching.svg')}
-.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.play .card-video-button{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-switching.svg')}
-.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.pause .card-video-button{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
-.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video .card-video-button.pause{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
-.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.ended .card-video-button{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
+.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video .card-video-button{position:absolute;right:40px;bottom:40px;width:44px;height:44px;border-radius:100px;background-size:100%;background-position:center;cursor:pointer;z-index:2;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-switching.svg')}
+.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.play .card-video-button{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-switching.svg')}
+.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.pause .card-video-button{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
+.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video .card-video-button.pause{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
+.card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.ended .card-video-button{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
 .card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video.ended .video-image{opacity:1 !important;background-image:none}
 .card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video #video-player-container{width:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 .card-stream-wrapper .card-stream-list .card-stream-item .card-stream-img-wrap .card-stream-video #video-player-container .plyr--video{background:0}
@@ -1889,9 +1889,9 @@ body.hideScroll{overflow:hidden;height:100%}
 .sticky-wrap.sticky .sticky-content{position:fixed;top:0;left:50%;transform:translateX(-50%)}
 .multi-scenario-switching-wrapper{width:100%;padding-top:60px;padding-bottom:40px}
 .multi-scenario-switching-wrapper.background-color-white{background-color:#fff}
-.multi-scenario-switching-wrapper.background-color-white .scenario-tab-container .next-btn,.multi-scenario-switching-wrapper.background-color-white .scenario-tab-container .prev-btn{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-vague-white.svg');background-color:#fff;box-shadow:-5px 0 5px #fff}
+.multi-scenario-switching-wrapper.background-color-white .scenario-tab-container .next-btn,.multi-scenario-switching-wrapper.background-color-white .scenario-tab-container .prev-btn{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-vague-white.svg');background-color:#fff;box-shadow:-5px 0 5px #fff}
 .multi-scenario-switching-wrapper.background-color-black{background-color:#000}
-.multi-scenario-switching-wrapper.background-color-black .scenario-tab-container .next-btn,.multi-scenario-switching-wrapper.background-color-black .scenario-tab-container .prev-btn{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-vague-black.svg');background-color:#000;box-shadow:-5px 0 5px #000}
+.multi-scenario-switching-wrapper.background-color-black .scenario-tab-container .next-btn,.multi-scenario-switching-wrapper.background-color-black .scenario-tab-container .prev-btn{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-vague-black.svg');background-color:#000;box-shadow:-5px 0 5px #000}
 .multi-scenario-switching-wrapper.background-color-black pre{color:#fff}
 .multi-scenario-switching-wrapper.background-color-black .tabs-wapper .scenario-tabs-section .scenario-tab-item .tab-title{color:#fff}
 .multi-scenario-switching-wrapper.background-color-black .tabs-wapper .scenario-tabs-section .scenario-tab-item.active .tab-background{background-color:#fff}
@@ -1899,7 +1899,7 @@ body.hideScroll{overflow:hidden;height:100%}
 .multi-scenario-switching-wrapper.background-color-black .scenario-tabs-section .scenario-tab-item.active .tab-background{background-color:#fff}
 .multi-scenario-switching-wrapper.background-color-black .scenario-tabs-section .scenario-tab-item.active .tab-title{color:#333}
 .multi-scenario-switching-wrapper.background-color-grey{background-color:#f5f5f5}
-.multi-scenario-switching-wrapper.background-color-grey .scenario-tab-container .next-btn,.multi-scenario-switching-wrapper.background-color-grey .scenario-tab-container .prev-btn{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-vague-gray.svg');background-color:#f5f5f5;box-shadow:-5px 0 5px #f5f5f5}
+.multi-scenario-switching-wrapper.background-color-grey .scenario-tab-container .next-btn,.multi-scenario-switching-wrapper.background-color-grey .scenario-tab-container .prev-btn{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-vague-gray.svg');background-color:#f5f5f5;box-shadow:-5px 0 5px #f5f5f5}
 .multi-scenario-switching-wrapper .multi-scenario-switching-container{max-width:1370px;padding:0 30px;margin:0 auto}
 .multi-scenario-switching-wrapper .component-title{margin-bottom:30px}
 .multi-scenario-switching-wrapper .component-title pre{overflow:hidden;line-height:65px;font-size:48px;font-weight:700;text-align:center;margin-bottom:0;white-space:pre-wrap;font-family:"OpenSansBold","Microsoft YaHei","Helvetica Neue","PingFang SC","Hiragino Sans GB","WenQuanYi Micro Hei","sans-serif"}
@@ -1924,9 +1924,9 @@ body.hideScroll{overflow:hidden;height:100%}
 .multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .plyr__video-wrapper{background:0}
 .multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section.cursor:hover{cursor:pointer}
 .multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container{max-width:1310px;overflow:hidden;position:relative;border-radius:20px}
-.multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.play .switching-video-button span{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-switching.svg')}
-.multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.pause .switching-video-button span{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
-.multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.ended .switching-video-button span{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
+.multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.play .switching-video-button span{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-switching.svg')}
+.multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.pause .switching-video-button span{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
+.multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.ended .switching-video-button span{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-stop-switching.svg')}
 .multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container.ended .video-image{opacity:1 !important}
 .multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container .tabs-content-img{position:relative;overflow:hidden;background-repeat:no-repeat;background-size:cover;background-position:center;transition:all .5s;width:100%;padding-bottom:48.9%;border-radius:20px}
 .multi-scenario-switching-wrapper .tabs-content-wrapper .tabs-content-section .tabs-content-container .tabs-content-video{width:100%;padding-bottom:48.9%;position:relative;overflow:hidden;border-radius:20px}
@@ -2019,8 +2019,8 @@ body.hideScroll{overflow:hidden;height:100%}
 .text-over-image-comp .content-container .text-container .text-cta{font-size:16px;font-size:clamp(12px,0.8333vw,16px);font-weight:600;color:#094f9c}
 .text-over-image-comp .content-container .text-container .text-cta:hover{text-decoration:underline}
 .text-over-image-comp .content-container .text-container .text-cta.cta-color-white{color:#fff}
-.text-over-image-comp .content-container .text-container .text-cta::after{content:'';display:inline-block;width:14px;height:10px;background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-2.svg') center no-repeat;margin-inline-start:8px}
-.text-over-image-comp .content-container .text-container .text-cta.cta-color-white::after{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-circled-right-2-white.svg') center no-repeat}
+.text-over-image-comp .content-container .text-container .text-cta::after{content:'';display:inline-block;width:14px;height:10px;background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-2.svg') center no-repeat;margin-inline-start:8px}
+.text-over-image-comp .content-container .text-container .text-cta.cta-color-white::after{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-circled-right-2-white.svg') center no-repeat}
 .text-over-image-comp .content-container .text-container.white{color:#fff}
 .text-over-image-comp .content-container .text-container .title.product-spotlight-header-wrapper{text-align:unset;padding:0;margin:0 0 20px 0}
 @media(min-width:992px){.text-over-image-comp .content-container .text-container .title.small-style{font-size:28px;font-size:clamp(12px,1.4583vw,28px)}
@@ -2128,8 +2128,8 @@ body.hideScroll{overflow:hidden;height:100%}
 .newsroom-landing-page .newsroom-hero-banner-box .newsroom-hero-banner-line{background-color:#eaeaea}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc.change-cursor{cursor:default}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);cursor:pointer}
-.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
-.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-box .newsroom-hero-banner-swiper-slide-bgc .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 @media screen and (max-width:991px){.newsroom-hero-banner-box{width:100%;padding:10px 0 0 0;position:relative;margin-bottom:5px}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container{width:100%;height:auto;box-shadow:none;border-radius:0}
 .newsroom-hero-banner-box .newsroom-hero-banner-swiper-container .newsroom-hero-banner-swiper-wrapper .slick-list{border-radius:0}
@@ -2220,8 +2220,8 @@ body.hideScroll{overflow:hidden;height:100%}
 .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .newsroom-hero-banner-success-contenttext .newsroom-hero-banner-success-flex-direction h2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:33px;text-overflow:ellipsis;margin:12px 0;font-family:OpenSansBold;font-size:24px;color:#fff;font-weight:700}
 .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-item.active .video-play-btn-center{opacity:1}
 .newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center{cursor:pointer;opacity:0;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
-.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
-.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-success-pc .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 @media screen and (max-width:991px){.newsroom-hero-banner-wrapper.newsroom-hero-banner-success{padding:0}
 .newsroom-hero-banner-success-pc{display:none}
 .newsroom-hero-banner-success-mob{display:block;height:400px;width:calc(100% - 30px);margin:10px 15px 5px 15px;padding-bottom:19px;border-bottom:solid 1px #eaeaea}
@@ -2240,8 +2240,8 @@ body.hideScroll{overflow:hidden;height:100%}
 .newsroom-hero-banner-success-mob ul li.slick-active::after{top:0;left:0;width:0;height:100%;background-color:#fff;animation:move 4.5s linear}
 .newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:42px}
 .newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .hik-video-trigger{height:42px}
-.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
-.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn{display:block;width:58px;height:42px;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play.svg')}
+.newsroom-hero-banner-success-mob .newsroom-hero-banner-success-flex .video-play-btn-center .video-play-btn:hover{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-video-play-hover.svg')}
 @keyframes move{0{width:0}
 50%{width:50%}
 100%{width:100%}
@@ -2253,9 +2253,9 @@ body.hideScroll{overflow:hidden;height:100%}
 .rtl .newsroom-hero-banner-success-mob ul{padding-right:0}
 .rtl .newsroom-hero-banner-success-mob ul li{transform:translateX(30px) translateY(-50%) scaleX(-1) !important;transform-origin:left !important}
 }
-@font-face{font-family:OpenSans;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Regular.ttf')}
-@font-face{font-family:OpenSans-Light;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Light.ttf')}
-@font-face{font-family:OpenSans-SemiBold;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/OpenSans-SemiBold.ttf')}
+@font-face{font-family:OpenSans;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Regular.ttf')}
+@font-face{font-family:OpenSans-Light;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Light.ttf')}
+@font-face{font-family:OpenSans-SemiBold;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/OpenSans-SemiBold.ttf')}
 body{font-family:OpenSans;font-weight:normal;font-style:normal;font-stretch:normal;letter-spacing:normal}
 .btn{height:2.5rem;border-radius:1.875rem}
 .btn.regular-btn{min-width:5rem;min-width:10rem;font-size:1.25rem;font-weight:600;line-height:1.35;text-transform:uppercase}
@@ -2298,9 +2298,9 @@ body{font-family:OpenSans;font-weight:normal;font-style:normal;font-stretch:norm
 .bg-highlights-color-5{color:#80b722}
 .interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper .content-box .btn-box .cta-btn:hover{background-color:rgba(255,255,255,0.2)}
 .interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper.text-primary-color-2 .content-box .btn-box .cta-btn:hover{background-color:rgba(0,0,0,0.05)}
-.interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper .content-box .btn-box .cta-btn .video-img{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/display/video-btn.svg');width:20px;height:20px;display:inline-block;margin-right:6px;background-position:center;background-repeat:no-repeat;background-size:cover}
-.interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper.text-primary-color-2 .content-box .btn-box .cta-btn .video-img{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/display/video-btn-dark.svg');width:20px;height:20px}
-.interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper.text-primary-color-2 .content-box .btn-box .cta-btn.red-bgc .video-img{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/display/video-btn.svg')}
+.interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper .content-box .btn-box .cta-btn .video-img{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/display/video-btn.svg');width:20px;height:20px;display:inline-block;margin-right:6px;background-position:center;background-repeat:no-repeat;background-size:cover}
+.interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper.text-primary-color-2 .content-box .btn-box .cta-btn .video-img{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/display/video-btn-dark.svg');width:20px;height:20px}
+.interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper.text-primary-color-2 .content-box .btn-box .cta-btn.red-bgc .video-img{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/display/video-btn.svg')}
 .interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-slide .content-wrapper .content-box .btn-box .cta-btn.red-bgc:hover{background-color:#c1120b}
 @keyframes move{from{width:0}
 to{width:inherit}
@@ -2345,8 +2345,8 @@ body.rtl .interactive-banner-carousel .swiper-container .swiper-wrapper .swiper-
 .image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-info-spitLine{width:100%;height:1px;border-bottom:1px dashed rgba(255,255,255,0.3);margin:32px 0}
 .image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-info-subTitle{line-height:24px;font-size:20px;font-weight:700}
 .image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-info-description{line-height:24px;margin-top:24px;font-size:16px;color:rgba(255,255,255,0.8);word-wrap:break-word}
-.image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-arrow{position:absolute;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:url("https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-arrow.svg") no-repeat;background-size:100% 100%;cursor:pointer}
-.image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-arrow.active{background:url("https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-activeArrow.svg") no-repeat}
+.image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-arrow{position:absolute;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:url("https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-arrow.svg") no-repeat;background-size:100% 100%;cursor:pointer}
+.image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item .image-cardTooltip-link .image-cardTooltip-info .image-cardTooltip-arrow.active{background:url("https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-activeArrow.svg") no-repeat}
 .image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content .image-cardTooltip-item:last-child{margin-right:0}
 .rtl .image-cardTooltip-comp{direction:rtl}
 .rtl .image-cardTooltip-comp .image-cardTooltip-wrapper .image-cardTooltip-content{text-align:right}
@@ -2423,7 +2423,7 @@ to{opacity:1}
 .multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button:hover,.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .next-button:hover{opacity:.85}
 .multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button.disabled,.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .next-button.disabled{opacity:.6;cursor:default}
 .multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button.disabled:hover,.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .next-button.disabled:hover{opacity:.6}
-.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button .arrow-wrapper,.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .next-button .arrow-wrapper{width:10px;height:18px;background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-multiMediaSwitch-arrow-black.svg');background-size:100% 100%}
+.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button .arrow-wrapper,.multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .next-button .arrow-wrapper{width:10px;height:18px;background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-multiMediaSwitch-arrow-black.svg');background-size:100% 100%}
 .multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button{margin-left:0;margin-right:120px}
 .multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .prev-button .arrow-wrapper{transform:scaleX(-1)}
 .multi-mediaSwitch-comp .multi-mediaSwitch-wrapper .carousel-controller .carousel-indicators{display:flex;align-items:center;position:relative;margin:0}
@@ -2434,7 +2434,7 @@ to{opacity:1}
 .multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-inner .carousel-item .carousel-item-con .content-wrapper .multiMedia-content__button{border:2px solid #FFF;color:#FFF}
 .multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-inner .carousel-item .carousel-item-con .content-wrapper .multiMedia-content__button:hover{background:rgba(255,255,255,0.2)}
 .multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .prev-button,.multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .next-button{background:rgba(255,255,255,0.2)}
-.multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .prev-button .arrow-wrapper,.multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .next-button .arrow-wrapper{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-multiMediaSwitch-arrow.svg')}
+.multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .prev-button .arrow-wrapper,.multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .next-button .arrow-wrapper{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-multiMediaSwitch-arrow.svg')}
 .multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .carousel-indicators li{background:#FFF}
 .multi-mediaSwitch-comp-black .multi-mediaSwitch-wrapper .carousel-controller .carousel-indicators .active{border:2px solid #FFF}
 .rtl .multi-mediaSwitch-comp{direction:rtl}
@@ -2477,9 +2477,9 @@ to{opacity:1}
 .news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .show-image img,.news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-MOBILE .show-image img{width:100%;height:100%;object-fit:cover}
 .news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .swiper-content-imageVideo-mask{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0),rgba(0,0,0,1));opacity:.4;z-index:100}
 .news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .video-show{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:98}
-.news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .video-control{display:none;position:absolute;bottom:24px;right:24px;width:43px;height:43px;border-radius:50%;background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsCarousel-pause.svg');background-size:100% 100%;cursor:pointer;z-index:999}
+.news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .video-control{display:none;position:absolute;bottom:24px;right:24px;width:43px;height:43px;border-radius:50%;background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-newsCarousel-pause.svg');background-size:100% 100%;cursor:pointer;z-index:999}
 .news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .video-control:hover{opacity:.85}
-.news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .video-control-play{background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-newsCarousel-play.svg')}
+.news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-content-image .show-imageVideo-PC .video-control-play{background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-newsCarousel-play.svg')}
 .news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide-active .swiper-content .swiper-content-image .show-imageVideo-PC .video-control{display:block}
 .news-carousel-comp .swiper-container .swiper-wrapper .swiper-slide .swiper-content .swiper-specCon{display:flex;flex-direction:column;justify-content:flex-end;width:80%;height:auto;padding-bottom:40px;margin:0 auto 100px 100px;font-size:16px;color:#FFF;box-sizing:border-box;z-index:999;cursor:pointer}
 .news-carousel-comp .swiper-container.single-slide .swiper-wrapper .swiper-slide .swiper-content .swiper-specCon{padding-bottom:60px;margin:0 auto 0 100px}
@@ -2499,7 +2499,7 @@ to{opacity:1}
 .news-carousel-comp .swiper-container .swiper-controller .prev-button-con,.news-carousel-comp .swiper-container .swiper-controller .next-button-con{display:flex;justify-content:center;align-items:center;width:68px;height:68px;margin-left:140px;z-index:9;cursor:pointer}
 .news-carousel-comp .swiper-container .swiper-controller .prev-button-con{margin-left:0;margin-right:140px}
 .news-carousel-comp .swiper-container .swiper-controller .prev-button-con .prev-button,.news-carousel-comp .swiper-container .swiper-controller .next-button-con .next-button{display:flex;justify-content:center;align-items:center;width:48px;height:48px;border-radius:100%;background:rgba(0,0,0,0.4)}
-.news-carousel-comp .swiper-container .swiper-controller .prev-button-con .prev-button .arrow-wrapper,.news-carousel-comp .swiper-container .swiper-controller .next-button-con .next-button .arrow-wrapper{width:10px;height:18px;background:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-multiMediaSwitch-arrow.svg');background-size:100% 100%}
+.news-carousel-comp .swiper-container .swiper-controller .prev-button-con .prev-button .arrow-wrapper,.news-carousel-comp .swiper-container .swiper-controller .next-button-con .next-button .arrow-wrapper{width:10px;height:18px;background:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-multiMediaSwitch-arrow.svg');background-size:100% 100%}
 .news-carousel-comp .swiper-container .swiper-controller .prev-button-con .prev-button:hover,.news-carousel-comp .swiper-container .swiper-controller .next-button-con .next-button:hover{opacity:.85}
 .news-carousel-comp .swiper-container .swiper-controller .prev-button-con .prev-button .arrow-wrapper{transform:scaleX(-1)}
 .news-carousel-comp .swiper-container .swiper-controller .swiper-pagination{position:relative;display:flex;align-items:center}
@@ -2580,9 +2580,9 @@ to{opacity:1}
 .company-snapshot-box .snapshot-item:not(.no-des.no-href).activeHover .text-mask{background:0}
 .company-snapshot-box .snapshot-item:not(.no-des).activeHover .descrption{display:-webkit-box;transition:all .6s ease-in-out}
 .company-snapshot-box .snapshot-item:not(.no-des.no-href).activeHover .see-href{display:block}
-.company-snapshot-box .see-href{position:absolute;width:40px;height:40px;background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-arrow.svg);background-repeat:no-repeat;background-size:cover;right:1.5vw;bottom:1.5vw;cursor:pointer;display:none}
+.company-snapshot-box .see-href{position:absolute;width:40px;height:40px;background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-arrow.svg);background-repeat:no-repeat;background-size:cover;right:1.5vw;bottom:1.5vw;cursor:pointer;display:none}
 .rtl .company-snapshot-box .see-href{transform:rotate(180deg);left:1.5vw;right:auto}
-.company-snapshot-box .see-href:hover{pointer-events:auto !important;background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-activeArrow.svg)}
+.company-snapshot-box .see-href:hover{pointer-events:auto !important;background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-imageCardTooltip-activeArrow.svg)}
 .rtl .company-snapshot-box .txt-wrapper .text-mask.hover::after{left:40px;right:auto;transform:rotate(180deg)}
 }
 @media(min-width:991px) and (max-width:1620px){.company-snapshot-box .wrapper{width:calc(100%)}
@@ -2671,7 +2671,7 @@ to{opacity:1}
 .company-snapshot-box .txt-wrapper .text-mask.expand .descrption p{max-height:240px;animation:autoShow .5s .2s ease forwards}
 .company-snapshot-box .txt-wrapper .text-mask.hover.expand{position:relative;display:block}
 .company-snapshot-box .txt-wrapper .text-mask.hover.expand .href-a{position:relative}
-.company-snapshot-box .txt-wrapper .text-mask.hover.expand .href-a::after{content:"";position:absolute;width:32px;height:32px;background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/see-href.svg);background-repeat:no-repeat;background-size:cover;right:0;bottom:0;cursor:pointer}
+.company-snapshot-box .txt-wrapper .text-mask.hover.expand .href-a::after{content:"";position:absolute;width:32px;height:32px;background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/see-href.svg);background-repeat:no-repeat;background-size:cover;right:0;bottom:0;cursor:pointer}
 .rtl .company-snapshot-box .txt-wrapper .text-mask.hover.expand .href-a::after{left:0;right:auto;transform:rotate(180deg)}
 .company-snapshot-box .txt-wrapper .text-mask .descrption{font-size:14px;line-height:22px}
 .company-snapshot-box .txt-wrapper .text-mask .mobile-see-more{display:block;width:56px;height:56px;position:absolute;top:50%;right:5px;transform:translateY(-50%);padding:10px}

@@ -434,8 +434,8 @@ $(document).ready(function(){
           "@context": "https://schema.org",
           "@type": "ImageObject",
           "contentUrl": mainSlideUrl,
-          "license": "https://www.hikvision.com/en/policies/website-image-copyright-statement",
-          "acquireLicensePage": "https://www.hikvision.com/en/how-to-use-our-images",
+          "license": "https://www.tongfangbms.com/en/policies/website-image-copyright-statement",
+          "acquireLicensePage": "https://www.tongfangbms.com/en/how-to-use-our-images",
           "creditText": "Hikvision",
           "creator": {
             "@type": "Organization",
@@ -2904,7 +2904,7 @@ $(document).ready(function () {
             '<div class="video-play-btn">' +
             '<a class="hik-video-trigger at-action" data-at-module="product_carousel" data-internal-video="'+ (item.isInternalVideoLink ? 'true' : 'false') +
                 '" data-ezviz-video="'+ (item.isEZVIZVideo ? 'true' : 'false') + '" data-video-path="' + item.videoPath +'" href="javaScript:void(0);">' +
-                '<img class="img-fluid" src="/etc/clientlibs/it/resources/images/icons-play.png" alt="VideoIcon" />' +
+                '<img class="img-fluid" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/images/icons-play.png" alt="VideoIcon" />' +
             '</a>' +
             '</div>' : '';
 
@@ -3131,7 +3131,7 @@ $(document).ready(function () {
                     '</a>' +
                     '<div class="resource-icon-container">' +
                         '<a class="firmware-series at-download hiknow-link firmware-download-icon" data-title="' + res.title + '" href="#download-agreement" data-toggle="modal" target="_blank" data-link="' + res.s3Url + '">' +
-                            /* '<img src="/etc/clientlibs/it/resources/icons/icon-download-black.svg">' + */
+                            /* '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-download-black.svg">' + */
                             '<svg class="icon svg-icon download-svg" aria-hidden="true">' +
                                 '<use xlink:href="#icon-xiazai"></use>' +
                             '</svg>' +
@@ -3148,10 +3148,10 @@ $(document).ready(function () {
                     '</a>' +
                     '<div class="resource-icon-container" data-item-path="' + res.releaseNotesUrl + '" data-title="' + res.releaseNotesName + '">' +
                         '<span class="document-preview-icon at-action" data-item-type="firmware">' +
-                            '<img src="/etc/clientlibs/it/resources/icons/icon-preview-black.svg">' +
+                            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-preview-black.svg">' +
                         '</span>' +
                         '<span class="document-download-icon at-download" data-item-type="firmware">' +
-                            /* '<img src="/etc/clientlibs/it/resources/icons/icon-download-black.svg">' + */
+                            /* '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-download-black.svg">' + */
                             '<svg class="icon svg-icon download-svg" aria-hidden="true">' +
                                 '<use xlink:href="#icon-xiazai"></use>' +
                             '</svg>' +
@@ -3179,7 +3179,7 @@ $(document).ready(function () {
                 '<div class="firmware category-title firmware-title-desktop-view" data-toggle="collapse" data-target="#firmware-document-' + subNumber + '" aria-controls="firmware-document-' + subNumber + '" aria-expanded="true">' +
                     '<h3>' + Granite.I18n.get('Firmware') + '</h3>' +
                     '<div class="firmware-tip-container">' +
-                        '<img class="firmware-tip-icon" src="/etc/clientlibs/it/resources/icons/firmware-info-icon.svg" alt="">' +
+                        '<img class="firmware-tip-icon" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/firmware-info-icon.svg" alt="">' +
                         '<span class="firmware-tip-text">' + Granite.I18n.get('For better user experience, we highly recommend you to update your device to the latest firmware asap.') + '</span>' +
                     '</div>' +
                 '</div>' +
@@ -3188,7 +3188,7 @@ $(document).ready(function () {
                 '</div>' +
                 '<div id="firmware-document-' + subNumber + '" class="collapse show">' +
                     '<div class="firmware-tip-container firmware-title-mobile-view">' +
-                    '<img class="firmware-tip-icon" src="/etc/clientlibs/it/resources/icons/firmware-info-icon.svg" alt="">' +
+                    '<img class="firmware-tip-icon" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/firmware-info-icon.svg" alt="">' +
                     '<span class="firmware-tip-text">' + Granite.I18n.get('For better user experience, we highly recommend you to update your device to the latest firmware asap.') + '</span>' +
                 '</div>' +
                 '<div class="section-container">' +
@@ -3330,7 +3330,7 @@ function renderDownloadCenter(item, subNumber, hideEnProductDocuments) {
                     '<span>' + Granite.I18n.get('Language: Other') + '</span>' +
                 '</div>' +
                 '<div class="other-language-wrapper">' +
-                    '<img class="tips-icon" src="/etc/clientlibs/it/resources/icons/firmware-info-icon.svg" alt="">' +
+                    '<img class="tips-icon" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/firmware-info-icon.svg" alt="">' +
                     '<span class="other-language-tips">' + Granite.I18n.get('The latest update can be found in the English version.') + '</span>' +
                 '</div>' +
             '</div>' +
@@ -3442,7 +3442,7 @@ function getResourceItem(item, turnOnTranslated, siteLanguage){
                 '<div class="technical-item">' + showTextGridAgreementHtml(res, fileName, title, languageText, showTextGridAgreement) +
                     '<div class="resource-icon-container download-form" data-item-path="' + res.path + '" data-file-name="' + fileName + '">' +
                     /*  '<span class="document-preview-icon">' +
-                            '<img src="/etc/clientlibs/it/resources/icons/icon-preview-black.svg">' +
+                            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-preview-black.svg">' +
                         '</span>' + */
                         showPDFDownloadButton(res, showTextGridAgreement) +
                     '</div>' +
@@ -3463,7 +3463,7 @@ function getResourceItem(item, turnOnTranslated, siteLanguage){
                 '<div class="technical-item">' + showTextGridAgreementHtml(res, fileName, title, languageText, showTextGridAgreement) +
                     '<div class="resource-icon-container">' +
                         '<a href="' + res.path + '" class="hiknow-link text-grid-pdp-link text-grid-preview-icon" target="_blank"  data-file-name="' + fileName + '">' +
-                            /* '<img src="/etc/clientlibs/it/resources/icons/icon-preview-black.svg">' + */
+                            /* '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-preview-black.svg">' + */
                         '</a>' +
                     '</div>' +
                 '</div>' +
@@ -4867,7 +4867,7 @@ var productComparisonBottom = (function ($) {
     }
     return [];
   };
-  var oHtml = "<div id='toast-to' ><img src='/etc/clientlibs/it/resources/icons/toast.png'/>Exceeds the maximum number of options</div>"
+  var oHtml = "<div id='toast-to' ><img src='https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/toast.png'/>Exceeds the maximum number of options</div>"
   productComparisonBottom.addCompareDataItem = function (productUrl, event) {
     var compareArrary = productComparisonBottom.getCompareArray();
     var title = $(event.currentTarget).data('at-module');
@@ -4943,7 +4943,7 @@ var productComparisonBottom = (function ($) {
         '<div class="item-title">' + productModel.productNo + '</div>' +
         '<div class="close-item" data-product-url="' + productModel.productUrl + '">' +
           '<div  class="remove-items" id="remove-item-1" data-at-module="compare_bottom::compare::remove' + productModel.productNo + '" >' +
-            '<img src="/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
+            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
           '</div >' +
         '</div>' +
      '</div>';
@@ -4953,7 +4953,7 @@ var productComparisonBottom = (function ($) {
       '<div class="item-title">' + productModel.productNo + '</div>' +
       '<div class="close-item" data-product-url="' + productModel.productUrl + '">' +
         '<div  class="remove-items" id="remove-item-1" data-at-module="compare_bottom::compare::remove' + productModel.productNo + '" >' +
-          '<img src="/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
+          '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
         '</div >' +
       '</div>';
 
@@ -5076,7 +5076,7 @@ var productComparisonBottom = (function ($) {
             '</div>' +
           '</div>' +
           '<div class="close-compare-tab" id="closeCompare">' +
-            '<img src="/etc/clientlibs/it/resources/icons/close-defaults-big-1.svg" alt="Close" id="">' +
+            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-big-1.svg" alt="Close" id="">' +
           '</div>' +
           '<div class="compare-item-empty">' +
             '<div class="empty-cont active-compare-cont">' +
@@ -5400,4 +5400,5 @@ var buttonEvents = (function ($) {
   return buttonEvents;
 }($));
 buttonEvents.init();
+
 

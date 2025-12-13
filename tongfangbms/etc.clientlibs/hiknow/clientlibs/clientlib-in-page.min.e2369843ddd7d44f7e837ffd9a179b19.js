@@ -2540,7 +2540,7 @@ var downloadAgreementModule = (function ($) {
         e.preventDefault()
         var ahref = $(this).attr('href')
         if(isCnAnalytics && $(this).attr('data-contact')== 'download-button' ){
-          var analyticsLinkData='《海康威视软件许可协议》::download agreement::跳转页面::'+'[complete-link]https://www.hikvision.com/cn/support/Downloads/_/'+'::'+pageTitle
+          var analyticsLinkData='《海康威视软件许可协议》::download agreement::跳转页面::'+'[complete-link]https://www.tongfangbms.com/cn/support/Downloads/_/'+'::'+pageTitle
           HiAnalyticsCn.clickDown(analyticsLinkData)
         }
         setTimeout(function() {
@@ -3000,7 +3000,7 @@ $(document).ready(function () {
             + filterKey
             + '" class="btn-products btn">'
             + filterVal
-            + '<img class="close-btn close-btn-filter" src="/etc/clientlibs/it/resources/icons/baseline-close-24px.svg" alt="Close"></button>');
+            + '<img class="close-btn close-btn-filter" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/baseline-close-24px.svg" alt="Close"></button>');
         filteredTagArray.push(filteredTag);
         // when an item in the filtered tag cloud is
         // clicked, that particular filter will be
@@ -3035,7 +3035,7 @@ $(document).ready(function () {
         var filterHTML = $(".filterContainer");
         if (!isJobOpportunitiesFilter) {
             filterHTML
-                .append('<nav class="navbar navbar-expand-lg navbar-light bg-light rounded filter-dropdown-nav"><div class= "filterIconCont"><img class="filter-icon" src="/etc/clientlibs/it/resources/icons/icon-filter-white.svg" alt="filter-icon" /><a class="navbar-brand" href="#">' + Granite.I18n.get("Filter by") + '</a></div><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="resetAll resetAllMob">' + Granite.I18n.get("Reset") + '</div><div class="collapse navbar-collapse" id="navbar"><ul class="navbar-nav mr-auto"></ul></div><div class="resetAll resetAllWeb">' + Granite.I18n.get("Reset") + '</div></nav><div class ="filterTagContainer" ></div>');
+                .append('<nav class="navbar navbar-expand-lg navbar-light bg-light rounded filter-dropdown-nav"><div class= "filterIconCont"><img class="filter-icon" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-filter-white.svg" alt="filter-icon" /><a class="navbar-brand" href="#">' + Granite.I18n.get("Filter by") + '</a></div><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="resetAll resetAllMob">' + Granite.I18n.get("Reset") + '</div><div class="collapse navbar-collapse" id="navbar"><ul class="navbar-nav mr-auto"></ul></div><div class="resetAll resetAllWeb">' + Granite.I18n.get("Reset") + '</div></nav><div class ="filterTagContainer" ></div>');
         } else {
             filterHTML.html(tmpl("tmpl-job-opportunities-nav", obj));
         }
@@ -3900,5 +3900,6 @@ $(document).ready(function () {
         });
     };
 });
+
 
 

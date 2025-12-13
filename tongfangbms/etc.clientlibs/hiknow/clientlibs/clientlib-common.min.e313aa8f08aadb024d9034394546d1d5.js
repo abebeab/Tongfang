@@ -2800,8 +2800,8 @@ $(document).ready(function(){
           "@context": "https://schema.org",
           "@type": "ImageObject",
           "contentUrl": mainSlideUrl,
-          "license": "https://www.hikvision.com/en/policies/website-image-copyright-statement",
-          "acquireLicensePage": "https://www.hikvision.com/en/how-to-use-our-images",
+          "license": "https://www.tongfangbms.com/en/policies/website-image-copyright-statement",
+          "acquireLicensePage": "https://www.tongfangbms.com/en/how-to-use-our-images",
           "creditText": "Hikvision",
           "creator": {
             "@type": "Organization",
@@ -4911,7 +4911,7 @@ var stories = (function($) {
                 type: "post",
                 url:baseUrl+'.card.json',
                 data: {
-                    resource: "/content/hikvision/en/newsroom/success-stories/jcr:content/root/responsivegrid/newsroom_card_list"
+                    resource: "/content/tongfang/en/newsroom/success-stories/jcr:content/root/responsivegrid/newsroom_card_list"
                 },
                 success: function (data) {
                     handleSuccessTags2(data)
@@ -5380,7 +5380,7 @@ stories.init();
             + filterKey
             + '" class="btn-products btn">'
             + filterVal
-            + '<img class="close-btn close-btn-filter" src="/etc/clientlibs/it/resources/icons/baseline-close-24px.svg" alt="Close"></button>');
+            + '<img class="close-btn close-btn-filter" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/baseline-close-24px.svg" alt="Close"></button>');
         filteredTagArray.push(filteredTag);
         // when an item in the filtered tag cloud is
         // clicked, that particular filter will be
@@ -5415,7 +5415,7 @@ stories.init();
         var filterHTML = $(".filterContainer");
         if (!isJobOpportunitiesFilter) {
             filterHTML
-                .append('<nav class="navbar navbar-expand-lg navbar-light bg-light rounded filter-dropdown-nav"><div class= "filterIconCont"><img class="filter-icon" src="/etc/clientlibs/it/resources/icons/icon-filter-white.svg" alt="filter-icon" /><a class="navbar-brand" href="#">' + Granite.I18n.get("Filter by") + '</a></div><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="resetAll resetAllMob">' + Granite.I18n.get("Reset") + '</div><div class="collapse navbar-collapse" id="navbar"><ul class="navbar-nav mr-auto"></ul></div><div class="resetAll resetAllWeb">' + Granite.I18n.get("Reset") + '</div></nav><div class ="filterTagContainer" ></div>');
+                .append('<nav class="navbar navbar-expand-lg navbar-light bg-light rounded filter-dropdown-nav"><div class= "filterIconCont"><img class="filter-icon" src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-filter-white.svg" alt="filter-icon" /><a class="navbar-brand" href="#">' + Granite.I18n.get("Filter by") + '</a></div><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="resetAll resetAllMob">' + Granite.I18n.get("Reset") + '</div><div class="collapse navbar-collapse" id="navbar"><ul class="navbar-nav mr-auto"></ul></div><div class="resetAll resetAllWeb">' + Granite.I18n.get("Reset") + '</div></nav><div class ="filterTagContainer" ></div>');
         } else {
             filterHTML.html(tmpl("tmpl-job-opportunities-nav", obj));
         }
@@ -6014,7 +6014,7 @@ var productComparisonBottom = (function ($) {
     }
     return [];
   };
-  var oHtml = "<div id='toast-to' ><img src='/etc/clientlibs/it/resources/icons/toast.png'/>Exceeds the maximum number of options</div>"
+  var oHtml = "<div id='toast-to' ><img src='https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/toast.png'/>Exceeds the maximum number of options</div>"
   productComparisonBottom.addCompareDataItem = function (productUrl, event) {
     var compareArrary = productComparisonBottom.getCompareArray();
     var title = $(event.currentTarget).data('at-module');
@@ -6090,7 +6090,7 @@ var productComparisonBottom = (function ($) {
         '<div class="item-title">' + productModel.productNo + '</div>' +
         '<div class="close-item" data-product-url="' + productModel.productUrl + '">' +
           '<div  class="remove-items" id="remove-item-1" data-at-module="compare_bottom::compare::remove' + productModel.productNo + '" >' +
-            '<img src="/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
+            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
           '</div >' +
         '</div>' +
      '</div>';
@@ -6100,7 +6100,7 @@ var productComparisonBottom = (function ($) {
       '<div class="item-title">' + productModel.productNo + '</div>' +
       '<div class="close-item" data-product-url="' + productModel.productUrl + '">' +
         '<div  class="remove-items" id="remove-item-1" data-at-module="compare_bottom::compare::remove' + productModel.productNo + '" >' +
-          '<img src="/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
+          '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-1.svg" alt="Close">' +
         '</div >' +
       '</div>';
 
@@ -6223,7 +6223,7 @@ var productComparisonBottom = (function ($) {
             '</div>' +
           '</div>' +
           '<div class="close-compare-tab" id="closeCompare">' +
-            '<img src="/etc/clientlibs/it/resources/icons/close-defaults-big-1.svg" alt="Close" id="">' +
+            '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/close-defaults-big-1.svg" alt="Close" id="">' +
           '</div>' +
           '<div class="compare-item-empty">' +
             '<div class="empty-cont active-compare-cont">' +
@@ -6789,7 +6789,7 @@ var productComparison = (function($) {
           var compareItemTemplate = '<div class="pc__block pc__mainInfo" data-product-url="{0}">'
                   + '<div class="pc__image">'
                   + '<img src="{3}" class="product_image">'
-                  + '<img src="/etc/clientlibs/it/resources/icons/icon-close.png" class="pc__remove" alt="X">'
+                  + '<img src="https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-close.png" class="pc__remove" alt="X">'
                   + '<span class="pc__selectedTag">' + Granite.I18n.get("Selected Product") + '</span>'
                   + '<button class="btn primary-btn small-btn pc__selectBtn at-action" data-at-module="compare::select::{1}"><nav>' + Granite.I18n.get("COMPARE") + '</nav></button>'
                   + '</div>'
@@ -41042,4 +41042,5 @@ try {
 module.exports = jsPDF;
 }
 catch (e) {}
+
 

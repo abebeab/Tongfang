@@ -1,0 +1,35 @@
+ 
+# Media files (anywhere)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.mp3
+*.wav
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.zip
+*.rar
+*.7z
+*.pdf
+
+# Environment
+.env
+node_modules/
+node_modules/
+dist/
+build/
+.env
+*.zip
+*.rar
+*.mp4
+*.mp3
+*.iso
+*.psd
+*.exe
+*.bak
+*.log
+uploads/

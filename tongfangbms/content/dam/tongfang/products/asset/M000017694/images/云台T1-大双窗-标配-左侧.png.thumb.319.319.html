@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tongfang Product Page</title>
+<style>
+body { 
+    margin: 0; 
+    padding: 0; 
+    font-family: "Microsoft YaHei", "Microsoft YaHei UI Light", sans-serif;
+    background-color: #f5f5f5;
+    font-size: 14px;
+}
+
+.container {
+    width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.image-gallery img {
+    width: 319px;
+    height: 319px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #fff;
+}
+
+.product-info {
+    margin-left: 5%;
+    color: #313131;
+}
+
+.product-info p {
+    line-height: 24px;
+    margin: 8px 0;
+}
+
+.time {
+    font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Product Details</h1>
+
+    <div class="image-gallery">
+        <img src="content/dam/tongfang/products/asset/M000017694/images/stamp.png" alt="Product Image 1">
+        <img src="content/dam/tongfang/products/asset/M000017694/images/云台T1-大双窗-标配-左侧.png.thumb.319.319.png" alt="Product Image 2">
+        <!-- Add more images here if needed -->
+    </div>
+
+    <div class="product-info">
+        <p><strong>Product Name:</strong> Tongfang 云台 T1</p>
+        <p><strong>Event ID:</strong> 07361ac2-384d-4231-ad49-fe5c6723b895</p>
+        <p><strong>Client IP:</strong> 196.188.33.215</p>
+        <p><strong>Current Time:</strong> <span id="currentTime" class="time"></span></p>
+        <p><strong>User Agent:</strong> Mozilla/5.0 (Windows NT 10.0; Win64; x64)</p>
+        <p><strong>Request ID:</strong> 6891e8e2_PS-FRA-04N8Y183_30208-9911</p>
+        <p><strong>Description:</strong> This product is a high-quality Tongfang surveillance camera, perfect for indoor and outdoor use.</p>
+    </div>
+</div>
+
+<script>
+// Display live local time
+function updateTime() {
+    const now = new Date();
+    document.getElementById('currentTime').textContent = now.toLocaleString();
+}
+updateTime();
+setInterval(updateTime, 1000); // Update every second
+</script>
+
+</body>
+</html>
+
+
+

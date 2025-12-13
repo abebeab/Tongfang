@@ -1,0 +1,302 @@
+tongfangbms-assets
+│
+├── global/
+│     ├── logo.png
+│     ├── icon-global.svg
+│     ├── icon-language.svg
+│     ├── icon-user.svg
+│     └── header-bg.jpg
+│
+├── header/
+│     ├── products.png
+│     ├── solutions.png
+│     ├── support.png
+│     ├── technologies.png
+│     ├── commercial-display.png
+│     └── languages/
+│           ├── en.svg
+│           ├── cn.svg
+│           ├── ar.svg
+│           ├── fr.svg
+│
+├── products/
+│     ├── ip-products/
+│     │     ├── hero-banner.jpg
+│     │     ├── categories-banner.jpg
+│     │     ├── network-camera/
+│     │     │     ├── banners/
+│     │     │     │      ├── deepinview-banner.jpg
+│     │     │     │      ├── ultra-series-banner.jpg
+│     │     │     │      └── panoramic-banner.jpg
+│     │     │     ├── deepinview-series/
+│     │     │     │      ├── banner.jpg
+│     │     │     │      ├── intro.jpg
+│     │     │     │      ├── features/
+│     │     │     │      │      ├── ai-detection.jpg
+│     │     │     │      │      ├── lowlight.jpg
+│     │     │     │      │      └── heatmap.jpg
+│     │     │     │      ├── downloads/
+│     │     │     │      │      ├── brochure.pdf
+│     │     │     │      │      ├── flyer.pdf
+│     │     │     │      │      └── poster.pdf
+│     │     │     │      └── models/
+│     │     │     │            ├── DS-2CD7A46G0.jpg
+│     │     │     │            └── DS-2CD7A26G0.jpg
+│     │     │     ├── ptz-series/
+│     │     │     ├── explosion-proof-series/
+│     │     │     ├── value-series/
+│     │     │     ├── ultra-series/   ← (your DarkFighter / Ultra images here)
+│     │     │     │      ├── cover.jpg
+│     │     │     │      ├── features/
+│     │     │     │      │      ├── smart-hybrid-light.jpg
+│     │     │     │      │      └── eco-friendly.jpg
+│     │     │     │      ├── downloads/
+│     │     │     │      │      ├── ultra-series-brochure.pdf
+│     │     │     │      │      ├── carbon-footprint-poster.pdf
+│     │     │     │      │      └── flyer.pdf
+│     │     │     │      └── product-list/
+│     │     │     │            └── json-data.json
+│     │     │     └── application-scenarios/
+│     │     │           ├── mall.jpg
+│     │     │           ├── school.jpg
+│     │     │           └── factory.jpg
+│     │
+│     ├── networking/
+│     │     ├── switches/
+│     │     ├── wireless/
+│     │     ├── soho/
+│     │     └── routing/
+│     │
+│     ├── transmission/
+│     ├── access-control/
+│     └── commercial-display/
+│
+├── solutions/
+│     ├── by-scenario/
+│     │     ├── apartment/
+│     │     │     ├── hero.jpg
+│     │     │     ├── intro.jpg
+│     │     │     ├── challenges.jpg
+│     │     │     ├── benefits.jpg
+│     │     │     ├── features/
+│     │     │     │      ├── anpr.jpg
+│     │     │     │      ├── led-display.jpg
+│     │     │     │      └── intercom.jpg
+│     │     │     ├── product-images/
+│     │     │     ├── scenario-diagrams/
+│     │     │     └── downloads/
+│     │     │            ├── apartment-brochure.pdf
+│     │     │            └── apartment-flyer.pdf
+│     │
+│     ├── by-industry/
+│     │     ├── education/
+│     │     │     ├── hero.jpg
+│     │     │     ├── what-we-offer.jpg
+│     │     │     ├── smart-classroom.jpg
+│     │     │     ├── remote-learning.jpg
+│     │     │     ├── classroom-hub.jpg
+│     │     │     ├── related-images/
+│     │     │     └── downloads/
+│     │
+│     ├── by-function/
+│     │     ├── ar-live-interaction/
+│     │     │     ├── hero.jpg
+│     │     │     ├── diagram.jpg
+│     │     │     ├── features.jpg
+│     │     │     └── downloads/
+│     │
+│     ├── smb/
+│     │     ├── small-offices/
+│     │     │     ├── hero.jpg
+│     │     │     └── intro.jpg
+│
+├── success-stories/
+│     ├── dubai.jpg
+│     ├── india.jpg
+│     ├── indonesia.jpg
+│     └── more/
+│
+├── downloads/
+│     ├── brochures/
+│     ├── flyers/
+│     ├── leaflets/
+│     └── manuals/
+│
+└── blog/
+      ├── distance-learning.jpg
+      ├── safe-campus.jpg
+      └── education-tech.jpg
+
+
+
+
+
+✅ FINAL SUPABASE STRUCTURE (ALL INCLUSIVE – READY FOR PRODUCTION)
+==================================================================
+
+These tables support EVERYTHING you posted.
+
+⭐ 1. navigation (HEADER LINKS)
+id
+label
+slug
+url
+position   → 'left' or 'right'
+order_index
+type       → 'link', 'language', 'global'
+icon_url
+
+Your header links:
+LEFT
+
+Products → /products
+
+Solutions → /solutions
+
+Support → /support
+
+Technologies → /technologies
+
+Commercial Display → /commercial-display
+
+RIGHT
+
+Global → /global
+
+EN → /language/en
+
+⭐ 2. categories
+id
+name
+slug
+type ('product','solution','scenario','industry','function','smb')
+parent_id
+banner_url
+icon_url
+description
+
+
+Matches:
+
+Solutions-by-Scenario
+
+Solutions-by-Industry
+
+Solutions-by-Function
+
+SMB Solutions
+
+All Product categories
+
+⭐ 3. solutions
+
+Handles ALL solution types.
+
+id
+name
+slug
+type ('scenario','industry','function','smb')
+banner_url
+overview
+challenges (json)
+benefits (json)
+features (json)
+related_products (json)
+downloads (json)
+created_at
+
+⭐ 4. products
+id
+series_id
+model
+name
+subtitle
+description
+banner_url
+thumbnail_url
+specsheet_url
+brochure_url
+poster_url
+flyer_url
+features (json)
+technologies (json)
+created_at
+
+⭐ 5. series
+id
+category_id
+name
+slug
+banner_url
+description
+created_at
+
+⭐ 6. product_images
+id
+product_id
+image_url
+order_index
+
+⭐ 7. downloads
+id
+title
+file_type ('brochure','flyer','poster','manual')
+file_url
+product_id
+solution_id
+category_id
+created_at
+
+⭐ 8. success_stories
+id
+title
+country
+industry
+image_url
+description
+story_url
+created_at
+
+⭐ 9. blog
+id
+title
+slug
+image_url
+content
+category
+tags (json)
+created_at
+
+🎯 DONE — COMPLETE STRUCTURE PROVIDED
+
+This is the final, complete, enterprise-grade structure for:
+
+✔ Cloudflare R2
+✔ Supabase
+✔ All Solutions pages
+✔ All Product pages
+✔ All multimedia
+✔ Your header links
+
+Nothing missing.
+
+⭐ NEXT
+
+If you want, I can generate:
+
+✔ SQL file to paste into Supabase
+✔ Full folder creation script for R2
+✔ All JSON data templates
+✔ Frontend code to load this dynamically
+
+Tell me:
+
+👉 “Generate SQL + JSON templates”
+
+
+
+
+
+
+
+

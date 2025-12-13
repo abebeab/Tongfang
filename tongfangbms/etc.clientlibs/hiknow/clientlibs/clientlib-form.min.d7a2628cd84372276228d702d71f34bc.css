@@ -64,7 +64,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appear
 .form-elements .enquiry-form-container .card .card-header{padding:0;border:0;background-color:#fff;cursor:pointer}
 .form-elements .enquiry-form-container .card .card-header .card-header-text{margin-left:2.25rem;font-size:1.5rem;font-weight:600}
 .form-elements .enquiry-form-container.training-form-container .card .card-header .card-header-text{margin-left:1.25rem}
-.form-elements .enquiry-form-container .card .card-header .show-alert{width:24px;height:24px;display:block;float:right;background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-warning.svg')}
+.form-elements .enquiry-form-container .card .card-header .show-alert{width:24px;height:24px;display:block;float:right;background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-warning.svg')}
 .form-elements .enquiry-form-container .card .card-body{font-size:1rem;margin-left:1.125rem;padding-top:0;margin-top:1rem}
 .form-elements .enquiry-form-container .card button:focus{box-shadow:none}
 .form-elements .enquiry-form-container .card .row{margin:0}
@@ -355,7 +355,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appear
 .training-form-message-block.show-popup{display:block;position:fixed;background:#fff;box-shadow:0 4px 12px 0 rgba(0,0,0,0.2);border-radius:8px;bottom:50%;right:50%;transform:translate(50%,50%);z-index:10001;padding:3rem 0;width:90%;max-width:450px}
 @media(min-width:992px){.training-form-message-block.show-popup{width:450px}
 }
-.training-form-message-block.show-popup .btn-close{background-image:url('../../../etc/clientlibs/it/resources/icons/text-grid-close.png');width:1.25rem;height:1.25rem;background-repeat:no-repeat;position:relative;top:-2.25rem;background-size:100% 100%;float:right;margin-right:.75rem;cursor:pointer}
+.training-form-message-block.show-popup .btn-close{background-image:url('https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/text-grid-close.png');width:1.25rem;height:1.25rem;background-repeat:no-repeat;position:relative;top:-2.25rem;background-size:100% 100%;float:right;margin-right:.75rem;cursor:pointer}
 .training-form-message-block.show-popup .alert-icon-box{text-align:center;margin-bottom:15px}
 .training-form-message-block.show-popup .alert-icon-box img{max-width:50px;max-height:50px}
 .training-form-message-block.show-popup .alert-icon-box span{font-size:24px;margin-left:10px;vertical-align:middle}
@@ -368,7 +368,7 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appear
 .hilook-page .form-wrapper .dropdown-wrapper .dropdown.options li.active{background-color:#e6f6fc}
 .hilook-page .form-wrapper.outlined-wrapper form.outlined-form .form-container .form-info .form-group .dropdown-wrapper .dropdown.options.remove-top-border li.active{background:#e6f6fc}
 .hilook-page .hik-multiple-select .hik-multiple-selection ul li:hover input[type=checkbox]::after{border-color:#00a7e2 !important}
-.hilook-page .outlined input[type=checkbox]:checked{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg') !important}
+.hilook-page .outlined input[type=checkbox]:checked{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/hilook-icon-check-box-checked.svg') !important}
 .hilook-page .form-wrapper.outlined-wrapper form.outlined-form .form-container .form-submit-group .hiknow-submit{background:#00a7e2}
 .hilook-page .checkbox-inline input[type="checkbox"]:checked{background:#00a7e2}
 .hilook-page .form-wrapper input[type="radio"]:checked:before{border:1px solid #00a7e2}

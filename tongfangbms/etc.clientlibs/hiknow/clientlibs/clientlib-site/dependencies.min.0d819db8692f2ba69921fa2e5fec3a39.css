@@ -1,10 +1,10 @@
-@font-face{font-family:OpenSans;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Light.ttf');font-weight:300;font-display:swap}
-@font-face{font-family:OpenSans;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Regular.ttf');font-weight:400;font-display:swap}
-@font-face{font-family:OpenSans;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-SemiBold.ttf');font-weight:600;font-display:swap}
-@font-face{font-family:OpenSansLight;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Light.ttf');font-display:swap}
-@font-face{font-family:OpenSansRegular;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Regular.ttf');font-display:swap}
-@font-face{font-family:OpenSansSemiBold;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-SemiBold.ttf');font-display:swap}
-@font-face{font-family:OpenSansBold;src:url('https://www.hikvision.com/etc/clientlibs/it/resources/fonts/OpenSans-Bold.ttf');font-weight:600;font-display:swap}
+@font-face{font-family:OpenSans;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Light.ttf');font-weight:300;font-display:swap}
+@font-face{font-family:OpenSans;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Regular.ttf');font-weight:400;font-display:swap}
+@font-face{font-family:OpenSans;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-SemiBold.ttf');font-weight:600;font-display:swap}
+@font-face{font-family:OpenSansLight;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Light.ttf');font-display:swap}
+@font-face{font-family:OpenSansRegular;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Regular.ttf');font-display:swap}
+@font-face{font-family:OpenSansSemiBold;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-SemiBold.ttf');font-display:swap}
+@font-face{font-family:OpenSansBold;src:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/fonts/OpenSans-Bold.ttf');font-weight:600;font-display:swap}
 .icon{width:1em;height:1em;vertical-align:-0.15em;fill:currentColor;overflow:hidden}
 *{scrollbar-width:thin;scrollbar-color:#c1c1c1 #eee}
 ::-webkit-scrollbar{width:6px}
@@ -60,7 +60,7 @@ input.hiknow-line-input::-webkit-input-placeholder{font-size:.875rem;color:#999;
 input.hiknow-line-input:-moz-placeholder{font-size:.875rem;color:#999;line-height:1.125rem}
 input.hiknow-line-input::-moz-placeholder{font-size:.875rem;color:#999;line-height:1.125rem}
 input.hiknow-line-input:-ms-input-placeholder{font-size:.875rem;color:#999;line-height:1.125rem}
-.icon-important{float:left;background-image:url("../../../../etc/clientlibs/it/resources/icons/icon-important.png");width:1rem;height:1rem;border-radius:100%;margin-top:5px;margin-right:.5rem}
+.icon-important{float:left;background-image:url("https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/icon-important.png");width:1rem;height:1rem;border-radius:100%;margin-top:5px;margin-right:.5rem}
 .hiknow-submit{position:relative;box-shadow:none;width:8rem;height:2rem;background:#ca1d22;border-radius:1.25rem;font-size:.875rem;color:#fff;text-align:center;line-height:.875rem;border:0;cursor:pointer}
 .hiknow-submit:disabled{opacity:.5;border:0;cursor:default}
 .hiknow-submit:hover{color:#fff;border:0}
@@ -116,7 +116,7 @@ body .hiknow-alert{margin:auto}
 .ip-wrap .ip-box p{position:relative;left:20px}
 .ip-wrap .ip-box a.hrefa::after{position:absolute;content:'>';font-size:14px;top:-4px;right:-12px}
 .ip-wrap .ip-box span.font{font-size:16px;line-height:30px;word-break:break-all;display:block}
-.ip-wrap .ip-box span.cha{position:absolute;top:-12px;right:0;width:14px;height:14px;cursor:pointer;background-image:url('../../../../etc/clientlibs/it/resources/images/close.png')}
+.ip-wrap .ip-box span.cha{position:absolute;top:-12px;right:0;width:14px;height:14px;cursor:pointer;background-image:url('https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/images/close.png')}
 .form-wrapper .form-container .checkbox-required:after{display:none}
 .webp-lazy:nth-of-type(1) picture{display:none}
 @media only screen and (max-width:1024px){.fixed-width-container{margin-bottom:13px}
@@ -187,7 +187,7 @@ h2.h2-seo,h3.h3-seo,h4.h4-seo{display:inline;font-size:inherit;font-weight:inher
 }
 .login-required-bg{background:rgba(0,0,0,0.9);position:fixed;bottom:0;left:0;top:0;right:0;z-index:10000}
 .login-required-content{background:#fff;box-shadow:0 4px 12px 0 rgba(0,0,0,0.2);bottom:50%;max-width:575px;position:fixed;right:50%;transform:translate(50%,50%);width:calc(100% - 30px);z-index:10001}
-.login-required-content .close-icon{cursor:pointer;background-image:url('../../../../etc/clientlibs/it/resources/icons/text-grid-close.png');background-size:contain;background-repeat:no-repeat;height:20px;position:absolute;top:12px;right:12px;width:20px}
+.login-required-content .close-icon{cursor:pointer;background-image:url('https://ce8375bef864f468685f027588f3cada.r2.cloudflarestorage.com/tongfang-assets/etc/clientlibs/it/resources/icons/text-grid-close.png');background-size:contain;background-repeat:no-repeat;height:20px;position:absolute;top:12px;right:12px;width:20px}
 .login-required-content .login-content{padding:30px 8%;text-align:center;color:#333;font-size:14px}
 .login-required-content .login-content .icon-img{max-width:200px;margin-bottom:30px}
 .login-required-content .login-content .title{margin-bottom:16px;font-size:20px;font-weight:600}
@@ -257,7 +257,7 @@ h2.h2-seo,h3.h3-seo,h4.h4-seo{display:inline;font-size:inherit;font-weight:inher
 .checkmark:after{content:"";position:absolute;display:none}
 .check-box-container input:checked ~ .checkmark:after{display:block}
 .check-box-container .checkmark:after{left:.25rem;top:.1rem;width:.4rem;height:.6rem;border:solid #000;border-width:0 3px 3px 0;-webkit-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
-.ui-dialog-titlebar-close{background-image:url(https://www.hikvision.com/etc/clientlibs/it/resources/icons/baseline-close-24px.svg) !important;background-position:center !important;margin:0 !important;position:absolute;right:.3em;top:5px !important;width:22px;padding:1px;height:22px}
+.ui-dialog-titlebar-close{background-image:url(https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/baseline-close-24px.svg) !important;background-position:center !important;margin:0 !important;position:absolute;right:.3em;top:5px !important;width:22px;padding:1px;height:22px}
 @media only screen and (max-width:1024px){.alert-cmp-container .alert-container{justify-content:flex-end;flex-direction:column}
 .alert-cmp-container .alert-container .alert-main-cont{justify-content:start;width:auto;padding-top:2rem;padding-left:2rem}
 .alert-cmp-container .alert-container .alert-text-cont{width:auto;flex-direction:row}
@@ -1432,10 +1432,10 @@ h2.h2-seo,h3.h3-seo,h4.h4-seo{display:inline;font-size:inherit;font-weight:inher
 .form-wrapper .dropdown-wrapper .dropdown.options li[disabled='disabled']{color:#737373;opacity:.5}
 .form-wrapper .dropdown-wrapper .dropdown.options li{position:relative}
 .form-wrapper .dropdown-wrapper .dropdown.options li.not-selectable{color:#999;cursor:not-allowed}
-.form-wrapper .dropdown-wrapper .dropdown.options li .option-tooltip-icon{cursor:pointer;width:16px;height:16px;top:50%;right:25px;transform:translateY(-50%);position:absolute;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-tooltip-info.svg')}
-.form-wrapper .dropdown-wrapper .dropdown.options li .option-tooltip-icon.question{background-image:url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-tooltip-question.svg')}
+.form-wrapper .dropdown-wrapper .dropdown.options li .option-tooltip-icon{cursor:pointer;width:16px;height:16px;top:50%;right:25px;transform:translateY(-50%);position:absolute;background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-tooltip-info.svg')}
+.form-wrapper .dropdown-wrapper .dropdown.options li .option-tooltip-icon.question{background-image:url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-tooltip-question.svg')}
 .form-wrapper .dropdown-wrapper .tooltip-container{z-index:10;padding:12px;width:266px;right:12px;transform:translateX(100%) translateY(-50%);font-size:12px;color:#666;letter-spacing:-0.14px;font-weight:400;position:absolute;background:#fff;border:1px solid rgba(234,234,234,1);box-shadow:0 0 9px 0 rgba(0,0,0,0.11)}
-.form-wrapper .dropdown-wrapper .tooltip-container::before{content:'';position:absolute;left:-13px;top:50%;width:16px;height:16px;background:center / contain no-repeat url('https://www.hikvision.com/etc/clientlibs/it/resources/icons/icon-triangle-shadow.svg');transform:translateY(-50%)}
+.form-wrapper .dropdown-wrapper .tooltip-container::before{content:'';position:absolute;left:-13px;top:50%;width:16px;height:16px;background:center / contain no-repeat url('https://www.tongfangbms.com/etc/clientlibs/it/resources/icons/icon-triangle-shadow.svg');transform:translateY(-50%)}
 .form-wrapper .dropdown-wrapper .tooltip-container.show-tooltip-on-top{right:0;transform:translateY(-100%)}
 .form-wrapper .dropdown-wrapper .tooltip-container.show-tooltip-on-top::before{top:auto;bottom:-13px;left:auto;right:35px;transform:translateY(0) rotate(-90deg)}
 .form-wrapper .form-container .form-group.row-half{margin-right:50%;padding-right:75px;position:relative}

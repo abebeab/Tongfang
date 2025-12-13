@@ -1,5 +1,29 @@
- 
-# Media files (anywhere)
+# =====================
+# Dependencies
+# =====================
+node_modules/
+vendor/
+
+# =====================
+# Build outputs
+# =====================
+.next/
+dist/
+build/
+out/
+
+# =====================
+# Cache & temp
+# =====================
+.cache/
+.tmp/
+logs/
+hts-cache/
+mirror/
+
+# =====================
+# Media & large files (anywhere)
+# =====================
 *.mp4
 *.mov
 *.avi
@@ -15,21 +39,34 @@
 *.rar
 *.7z
 *.pdf
-
-# Environment
-.env
-node_modules/
-node_modules/
-dist/
-build/
-.env
-*.zip
-*.rar
-*.mp4
-*.mp3
 *.iso
 *.psd
 *.exe
-*.bak
-*.log
+
+# =====================
+# Fonts & maps
+# =====================
+*.woff
+*.woff2
+*.ttf
+*.map
+
+# =====================
+# Uploads
+# =====================
 uploads/
+media/
+assets/
+
+# =====================
+# Environment & logs
+# =====================
+.env
+*.log
+*.bak
+
+# =====================
+# OS files
+# =====================
+.DS_Store
+Thumbs.db

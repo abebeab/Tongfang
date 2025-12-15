@@ -28,13 +28,13 @@ body{
 }
 .page-bottom-tip{
    text-align:center;
-   color: #7d7d7d;
+   color: -hash-7d7d7d;
    padding:16px 0 10px 0;
    font-size:16px;
 }
 .page-bottom-word{
    margin-left:30%;
-   color:#313131
+   color:-hash-313131
 }
 .page-bottom-word p{
   font-weight:unset;
@@ -65,7 +65,7 @@ body{
 <script type="text/javascript" src="https://blocksrc.haplat.net/waf_forbidden_file/waf-jquery-min.js"></script>
 <script>
 jQuery(document).ready(function($) {
-    $("#time_id").html(toLT(1754406860000));
+    $("-hash-time_id").html(toLT(1754406860000));
     winHeight = $(window).height();
     $(".page").stop(true,false).animate({"margin-top":winHeight/2-312},0);
     $(window).resize(function(){  
@@ -73,8 +73,8 @@ jQuery(document).ready(function($) {
         $(".page").stop(true,false).animate({"margin-top":winHeight/2-312},0);
     });
     changePageElem();
-    if($('#innerBot').html().length<=0){
-        $('#botId').remove();
+    if($('-hash-innerBot').html().length<=0){
+        $('-hash-botId').remove();
     }
 });
 
@@ -122,6 +122,7 @@ function changePageElem(){
 </script>
 </body>
 </html>
+
 
 
 

@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Smart Traffic Solutions | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-red: #e60012;        
+            
+            /* UI COLORS */
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+
+        .header-fix {
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.65),
+                rgba(0, 0, 0, 0.35)
+            );
+            backdrop-filter: blur(6px);
+            transition: var(--transition);
+             z-index: 3500;
+            transition: transform 0.35s ease, background 0.3s ease;
+        }
+        
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        
+        .nav-link-custom { 
+            color: #fff; font-weight: 700; font-size: 13px; transition: 0.3s; 
+            text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px; text-decoration: none;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4); 
+        }
+        .nav-link-custom:hover { color: var(--tf-yellow); }
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
+            text-shadow: none; 
+        }
+        .header-fix.scrolled .nav-link-custom:hover { color: var(--tf-blue); }
+        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
+        .header-fix.scrolled .header-logo h2 span { color: var(--tf-yellow) !important; }
+        .header-fix.scrolled .header-icons { color: var(--tf-dark) !important; }
+        
+        .header-logo a {
+            text-decoration: none;
+        }
+
+        /* DROPDOWN */
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 4000;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; text-decoration: none; text-shadow: none; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+        /* --- HERO SECTION --- */
+        /* Add to your CSS */
+.nav-item-dropdown:hover .header-fix {
+    transform: translateY(0) !important;
+}
+
+.dropdown-menu-custom {
+    pointer-events: auto; /* Ensure dropdown can be interacted with */
+}
+        .hero-section {
+            height: 65vh; min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/smart  trafic hero.jpg');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; position: relative;
+        }
+        .hero-content { 
+            position: relative; z-index: 2; padding-top: 60px; animation: fadeUp 1s ease-out; 
+            text-shadow: 0 2px 20px rgba(0,0,0,0.7); 
+        }
+       .hero-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    margin-top: -100px;   /* moves text UP */
+    margin-bottom: 95px;
+}
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .project-nav-bar {
+             z-index: 3000;
+            position: sticky;
+            top: 0;                         /* stick to TOP */
+            z-index: 3000;                  /* higher than header */
+            background: #ffffff;            /* NEVER transparent */
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-breadcrumb .breadcrumb-item a { color: #666; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; text-decoration: none; }
+        .nav-breadcrumb .breadcrumb-item a:hover, .nav-breadcrumb .breadcrumb-item.active a { color: var(--tf-blue) !important; }
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 3px; background: var(--tf-yellow); border-radius: 10px;
+        }
+        .nav-breadcrumb .breadcrumb-item { position: relative; }
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { content: "|"; color: #ccc; padding: 0 10px; }
+
+        /* --- CONTENT SECTIONS --- */
+        .scroll-target { scroll-margin-top: 160px; }
+        
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .section-header h2 { font-size: 36px; text-transform: uppercase; letter-spacing: -1px; }
+        .section-header .line { width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px; }
+
+        .traffic-card {
+            background: #fff; padding: 40px; border-radius: var(--card-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 4px solid var(--tf-yellow);
+            height: 100%; transition: var(--transition); text-align: center;
+        }
+        .traffic-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+        .traffic-icon { font-size: 3rem; color: var(--tf-blue); margin-bottom: 25px; display: block; }
+
+        /* ROI BANNER */
+        .roi-banner {
+            background: linear-gradient(135deg, var(--tf-blue), #002c5f);
+            padding: 80px 0; color: #fff; border-radius: var(--card-radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .stat-circle {
+            width: 150px; height: 150px; border: 4px solid var(--tf-yellow); border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin: 0 auto 20px; background: rgba(255,255,255,0.05);
+        }
+        .stat-circle h3 { color: var(--tf-yellow); font-size: 2.5rem; margin: 0; font-weight: 800; }
+
+        /* INTERACTIVE CONTAINER */
+        .interactive-container {
+            background: #fff; border: 1px solid #eee; padding: 10px; border-radius: 15px; 
+            margin: 0 auto 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .traffic-btn {
+            background: transparent; border: 2px solid var(--tf-blue);
+            padding: 10px 22px; font-weight: 800; font-size: 13px; text-transform: uppercase;
+            border-radius: 30px; color: var(--tf-blue); transition: var(--transition); cursor: pointer;
+        }
+        .traffic-btn:hover { background: var(--tf-yellow); border-color: var(--tf-yellow); color: #000; }
+        .traffic-btn.active { background: var(--tf-yellow); border-color: var(--tf-yellow); color: #000; box-shadow: 0 5px 15px rgba(255,204,0,0.3); }
+
+        /* TRAFFIC SYSTEM SPECS */
+        .system-specs {
+            background: #fff; padding: 40px; border-radius: var(--card-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-top: 30px;
+        }
+        .spec-row { 
+            display: flex; justify-content: space-between; 
+            padding: 15px 0; border-bottom: 1px solid #eee;
+        }
+        .spec-label { font-weight: 700; color: var(--tf-dark); }
+        .spec-value { color: var(--tf-text); }
+
+        /* --- FOOTER --- */
+        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; }
+        
+        /* Blue Links in Footer */
+        .footer a { 
+            color: var(--tf-blue) !important; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            font-weight: 600;
+        }
+        .footer a:hover { 
+            color: var(--tf-yellow) !important; 
+            text-decoration: underline;
+        }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+
+        /* Feature List */
+        .feature-list li { 
+            margin-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .feature-list i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+        }
+
+        /* Traffic-specific styles */
+        .traffic-intersection {
+            position: relative;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .signal-light {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            transition: all 0.5s;
+        }
+        .signal-red { background: #e60012; box-shadow: 0 0 15px rgba(230,0,18,0.5); }
+        .signal-yellow { background: #ffcc00; box-shadow: 0 0 15px rgba(255,204,0,0.5); }
+        .signal-green { background: #28a745; box-shadow: 0 0 15px rgba(40,167,69,0.5); }
+        
+        /* Traffic Flow Animation */
+        .road-container {
+            width: 100%;
+            height: 200px;
+            background: #4a5568;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .road-lane {
+            position: absolute;
+            width: 100%;
+            height: 40px;
+            border-top: 2px dashed #e2e8f0;
+            border-bottom: 2px dashed #e2e8f0;
+        }
+        .vehicle {
+            position: absolute;
+            width: 30px;
+            height: 20px;
+            background: var(--tf-blue);
+            border-radius: 4px;
+            animation: moveVehicle linear infinite;
+        }
+        .vehicle:nth-child(2) {
+            background: var(--tf-red);
+            animation-delay: -2s;
+        }
+        .vehicle:nth-child(3) {
+            background: var(--tf-yellow);
+            animation-delay: -4s;
+        }
+        @keyframes moveVehicle {
+            0% { left: -50px; }
+            100% { left: 100%; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                
+<nav class="d-none d-lg-block">
+    <div class="nav-menu">
+        <a href="/about/index.html" class="nav-link-custom">About</a>
+        
+        <!-- SOLUTIONS DROPDOWN -->
+        <div class="nav-item-dropdown">
+            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+            <div class="dropdown-menu-custom">
+                <!-- Col 1: Buildings -->
+                <div>
+                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                </div>
+                <!-- Col 2: Infrastructure -->
+                <div>
+                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                </div>
+                <!-- Col 3: Cities & Systems -->
+                <div>
+                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">parking-lots</a>
+                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                </div>
+            </div>
+        </div> <!-- END SOLUTIONS DROPDOWN -->
+
+        <!-- PRODUCTS DROPDOWN - FIXED -->
+        <div class="nav-item-dropdown">
+            <a href="/products/index.html" class="nav-link-custom">
+                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+            </a>
+            <div class="dropdown-menu-custom">
+                <!-- Col 1 -->
+                <div>
+                    <div class="dropdown-category">Core Controllers</div>
+                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                </div>
+                <!-- Col 2 -->
+                <div>
+                    <div class="dropdown-category">Field Instrumentation</div>
+                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                </div>
+                <!-- Col 3 -->
+                <div>
+                    <div class="dropdown-category">Management & Power</div>
+                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                        View All Products >
+                    </a>
+                </div>
+            </div>
+        </div> <!-- END PRODUCTS DROPDOWN - ADD THIS CLOSING DIV -->
+
+        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+    </div>
+</nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Smart Traffic <br>Solutions</h1>
+                 </div>
+        </div>
+    </section>
+
+    <!-- SUB-NAVIGATION -->
+    <div class="project-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#interactive">Interactive Lab</a></li>
+                    <li class="breadcrumb-item"><a href="#systems">Core Systems</a></li>
+                    <li class="breadcrumb-item"><a href="#impact">Urban Impact</a></li>
+                </ol>
+            </nav>
+
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-traffic-light text-primary me-2"></i>
+                    FLUID URBAN MOBILITY
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE TRAFFIC EXPERIENCE -->
+    <section class="py-5 bg-white scroll-target" id="interactive">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="text-uppercase" style="color:var(--tf-blue); font-weight:800;">The Future of Urban Mobility</h2>
+                <div class="line" style="width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+                <p class="text-muted" style="max-width:700px; margin:0 auto;">Interactive experience: Explore intelligent traffic management systems for urban transportation.</p>
+            </div>
+
+            <div class="traffic-controls text-center mb-4">
+                <button class="traffic-btn active" onclick="switchTrafficView('signals')">
+                    <i class="fa fa-traffic-light me-2"></i>Adaptive Signals
+                </button>
+                <button class="traffic-btn" onclick="switchTrafficView('anpr')">
+                    <i class="fa fa-car me-2"></i>ANPR & Enforcement
+                </button>
+                <button class="traffic-btn" onclick="switchTrafficView('control')">
+                    <i class="fa fa-tv me-2"></i>Traffic Control Center
+                </button>
+            </div>
+
+            <div class="interactive-container">
+                <!-- Traffic Flow Visualization -->
+                <div class="road-container">
+                    <div class="road-lane" style="top: 40px;"></div>
+                    <div class="road-lane" style="top: 100px;"></div>
+                    <div class="vehicle" style="top: 50px;"></div>
+                    <div class="vehicle" style="top: 110px;"></div>
+                    <div class="vehicle" style="top: 110px; animation-delay: -3s;"></div>
+                </div>
+                
+                <!-- Traffic Simulation -->
+                <div id="traffic-simulation" class="text-center">
+                    <h5 class="mb-4">Live Intersection Simulation</h5>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="traffic-intersection">
+                                <div class="row mb-4">
+                                    <div class="col-3">
+                                        <div class="signal-light signal-red" id="north-light"></div>
+                                        <small>North</small>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="signal-light signal-yellow" id="east-light"></div>
+                                        <small>East</small>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="signal-light signal-green" id="south-light"></div>
+                                        <small>South</small>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="signal-light signal-red" id="west-light"></div>
+                                        <small>West</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="traffic-stats">
+                                    <div class="row text-center">
+                                        <div class="col-md-3 mb-3">
+                                            <h3 id="vehicle-count">0</h3>
+                                            <small class="text-muted">Vehicles/min</small>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <h3 id="avg-speed">45</h3>
+                                            <small class="text-muted">Avg Speed (km/h)</small>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <h3 id="queue-length">8</h3>
+                                            <small class="text-muted">Queue Length</small>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <h3 id="wait-time">25</h3>
+                                            <small class="text-muted">Wait Time (sec)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <button class="btn btn-sm btn-outline-primary me-2" onclick="increaseTraffic()">
+                                        <i class="fa fa-plus"></i> Increase Traffic
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-success me-2" onclick="optimizeSignals()">
+                                        <i class="fa fa-magic"></i> Optimize Signals
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="resetSimulation()">
+                                        <i class="fa fa-redo"></i> Reset
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="traffic-legend mt-4">
+                        <div class="d-flex justify-content-center gap-4 flex-wrap">
+                            <div><span class="badge bg-danger me-2">●</span> Heavy Traffic</div>
+                            <div><span class="badge bg-warning me-2">●</span> Moderate Traffic</div>
+                            <div><span class="badge bg-success me-2">●</span> Light Traffic</div>
+                            <div><span class="badge bg-primary me-2">●</span> Emergency Vehicle</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Traffic System Information -->
+                <div class="system-info mt-4 p-4 bg-light rounded">
+                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Adaptive Signals Work</h5>
+                    <p class="mb-0">Our intelligent traffic signals use real-time vehicle detection, AI algorithms, and predictive analytics to optimize signal timing based on actual traffic conditions, reducing congestion by up to 40%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAFFIC SYSTEM SPECIFICATIONS -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="system-specs">
+                <h4 class="mb-4 fw-bold"><i class="fa fa-cogs text-primary me-2"></i>Traffic System Specifications</h4>
+                <div class="spec-row">
+                    <span class="spec-label">Platform</span>
+                    <span class="spec-value text-primary fw-bold">ITS Command Center v3.5</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Signal Control</span>
+                    <span class="spec-value">Adaptive, Coordinated, Emergency Preemption</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Detection Systems</span>
+                    <span class="spec-value">Video Analytics, Radar, Inductive Loops, ANPR</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Communications</span>
+                    <span class="spec-value">Fiber Optic, 4G/5G, DSRC, Ethernet</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">Protocols</span>
+                    <span class="spec-value">NTCIP, ITS Standards, TCP/IP, SNMP</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE SYSTEMS -->
+    <section class="py-5 bg-white scroll-target" id="systems">
+        <div class="container py-5">
+            <div class="section-header">
+                <h2>Intelligent Traffic Systems</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Comprehensive solutions for modern urban transportation.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="traffic-card">
+                        <i class="fa fa-traffic-light traffic-icon"></i>
+                        <h4>Adaptive Signal Control</h4>
+                        <p class="text-muted">AI-powered traffic signals that adjust timing based on real-time traffic flow, weather conditions, and special events.</p>
+                        <ul class="feature-list list-unstyled mt-3 text-start">
+                            <li><i class="fa fa-check"></i> 40% reduction in travel time</li>
+                            <li><i class="fa fa-check"></i> Emergency vehicle preemption</li>
+                            <li><i class="fa fa-check"></i> Pedestrian crossing optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="traffic-card">
+                        <i class="fa fa-camera traffic-icon"></i>
+                        <h4>ANPR & Enforcement</h4>
+                        <p class="text-muted">Automatic Number Plate Recognition for traffic enforcement, toll collection, and security monitoring.</p>
+                        <ul class="feature-list list-unstyled mt-3 text-start">
+                            <li><i class="fa fa-check"></i > 99.5% recognition accuracy</li>
+                            <li><i class="fa fa-check"></i> Real-time violation detection</li>
+                            <li><i class="fa fa-check"></i> Integrated with police databases</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="traffic-card">
+                        <i class="fa fa-tv traffic-icon"></i>
+                        <h4>Traffic Control Center</h4>
+                        <p class="text-muted">Centralized monitoring and control platform with real-time analytics, incident management, and reporting.</p>
+                        <ul class="feature-list list-unstyled mt-3 text-start">
+                            <li><i class="fa fa-check"></i> Unified dashboard view</li>
+                            <li><i class="fa fa-check"></i> Predictive analytics</li>
+                            <li><i class="fa fa-check"></i> Mobile command capability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI BANNER -->
+    <section class="container mb-5 scroll-target" id="impact">
+        <div class="roi-banner text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4">Transforming Urban Mobility Across Africa</h2>
+                    <p class="lead mb-5 text-white-50">"To create smarter, safer, and more efficient transportation networks that connect communities and drive economic growth."</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <div class="stat-circle">
+                                <h3>40%</h3>
+                                <p class="small m-0 text-uppercase fw-bold text-white">Travel Time</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-circle">
+                                <h3>30%</h3>
+                                <p class="small m-0 text-uppercase fw-bold text-white">Emissions</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-circle">
+                                <h3>25%</h3>
+                                <p class="small m-0 text-uppercase fw-bold text-white">Accidents</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="stat-circle">
+                                <h3>99.5%</h3>
+                                <p class="small m-0 text-uppercase fw-bold text-white">ANPR Accuracy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="container py-5 mb-5 text-center">
+        <div class="p-5 border rounded shadow-sm bg-white">
+            <h2 class="fw-bold mb-3">Ready to Optimize Your City's Traffic Flow?</h2>
+            <p class="text-secondary mb-4">Let our traffic engineering specialists conduct a comprehensive assessment of your transportation network.</p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="/contact/index.html" class="btn btn-primary btn-lg px-5">Request Traffic Study</a>
+                <a href="/solutions/smart-city/index.html" class="btn btn-outline-dark btn-lg px-4">Smart City Integration</a>
+                <a href="/projects/index.html" class="btn btn-outline-primary btn-lg px-4">View Traffic Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="btn-link" href="../index.html">Home</a><br>
+                    <a class="btn-link" href="/about/index.html">About Us</a><br>
+                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                    <a class="btn-link" href="/products/index.html">Products</a><br>
+                    <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+                    <a class="btn-link" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get smart traffic & urban mobility updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Header Scroll Logic
+        const header = document.getElementById('navBox');
+        const hero = document.querySelector('.hero-section');
+
+        function handleHeaderScroll() {
+            if (!hero) return;
+
+            const triggerPoint = hero.offsetHeight - header.offsetHeight;
+
+            if (window.scrollY > triggerPoint) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
+        // Run on scroll
+        window.addEventListener('scroll', handleHeaderScroll);
+        // Run once on load
+        handleHeaderScroll();
+
+        // Interactive Button Toggle
+        document.querySelectorAll('.traffic-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.traffic-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // FIXED: Subnav hides header functionality
+const subNav = document.querySelector('.project-nav-bar');
+const headerBar = document.getElementById('navBox');
+let isDropdownHovered = false;
+
+// Prevent hiding header when dropdown is hovered
+document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+    dropdown.addEventListener('mouseenter', () => {
+        isDropdownHovered = true;
+    });
+    dropdown.addEventListener('mouseleave', () => {
+        isDropdownHovered = false;
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const subNavTop = subNav.getBoundingClientRect().top;
+    
+    // Don't hide header if dropdown is being used
+    if (!isDropdownHovered && subNavTop <= 0) {
+        headerBar.style.transform = 'translateY(-100%)';
+    } else {
+        headerBar.style.transform = 'translateY(0)';
+    }
+});
+
+        // Traffic Simulation Variables
+        let vehicleCount = 0;
+        let avgSpeed = 45;
+        let queueLength = 8;
+        let waitTime = 25;
+        let isSimulationRunning = false;
+        let simulationInterval;
+
+        // Traffic Light States
+        const lightStates = {
+            north: 'red',
+            east: 'yellow',
+            south: 'green',
+            west: 'red'
+        };
+
+        // Update Traffic Stats Display
+        function updateStats() {
+            document.getElementById('vehicle-count').textContent = vehicleCount;
+            document.getElementById('avg-speed').textContent = avgSpeed;
+            document.getElementById('queue-length').textContent = queueLength;
+            document.getElementById('wait-time').textContent = waitTime;
+        }
+
+        // Initialize Stats
+        updateStats();
+
+        // Start Simulation
+        function startSimulation() {
+            if (isSimulationRunning) return;
+            isSimulationRunning = true;
+            
+            simulationInterval = setInterval(() => {
+                // Random traffic fluctuations
+                vehicleCount += Math.floor(Math.random() * 5) - 2;
+                if (vehicleCount < 0) vehicleCount = 0;
+                
+                avgSpeed = 45 + Math.floor(Math.random() * 20) - 10;
+                if (avgSpeed < 20) avgSpeed = 20;
+                if (avgSpeed > 80) avgSpeed = 80;
+                
+                queueLength = 8 + Math.floor(Math.random() * 10) - 5;
+                if (queueLength < 0) queueLength = 0;
+                
+                waitTime = 25 + Math.floor(Math.random() * 15) - 7;
+                if (waitTime < 10) waitTime = 10;
+                if (waitTime > 60) waitTime = 60;
+                
+                updateStats();
+            }, 2000);
+        }
+
+        // Stop Simulation
+        function stopSimulation() {
+            clearInterval(simulationInterval);
+            isSimulationRunning = false;
+        }
+
+        // Increase Traffic Function
+        function increaseTraffic() {
+            if (!isSimulationRunning) startSimulation();
+            
+            vehicleCount += 10;
+            avgSpeed -= 5;
+            if (avgSpeed < 20) avgSpeed = 20;
+            
+            queueLength += 3;
+            waitTime += 8;
+            
+            updateStats();
+            
+            // Change light to yellow if heavy traffic
+            if (vehicleCount > 30) {
+                changeLightColor('east', 'yellow');
+                changeLightColor('south', 'yellow');
+            }
+        }
+
+        // Optimize Signals Function
+        function optimizeSignals() {
+            // Simulate optimization
+            avgSpeed += 15;
+            if (avgSpeed > 80) avgSpeed = 80;
+            
+            queueLength = Math.max(0, queueLength - 4);
+            waitTime = Math.max(10, waitTime - 12);
+            
+            // Change lights to green
+            changeLightColor('north', 'green');
+            changeLightColor('east', 'red');
+            changeLightColor('south', 'red');
+            changeLightColor('west', 'green');
+            
+            updateStats();
+            
+            // Show optimization message
+            const infoDiv = document.querySelector('.system-info');
+            infoDiv.innerHTML = `
+                <h5><i class="fa fa-magic text-primary me-2"></i>Signals Optimized!</h5>
+                <p class="mb-0">AI algorithms have adjusted signal timing. Traffic flow improved by 25%.</p>
+            `;
+            
+            // Revert message after 3 seconds
+            setTimeout(() => {
+                infoDiv.innerHTML = `
+                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Adaptive Signals Work</h5>
+                    <p class="mb-0">Our intelligent traffic signals use real-time vehicle detection, AI algorithms, and predictive analytics to optimize signal timing based on actual traffic conditions, reducing congestion by up to 40%.</p>
+                `;
+            }, 3000);
+        }
+
+        // Reset Simulation
+        function resetSimulation() {
+            stopSimulation();
+            
+            vehicleCount = 0;
+            avgSpeed = 45;
+            queueLength = 8;
+            waitTime = 25;
+            
+            // Reset lights
+            changeLightColor('north', 'red');
+            changeLightColor('east', 'yellow');
+            changeLightColor('south', 'green');
+            changeLightColor('west', 'red');
+            
+            updateStats();
+        }
+
+        // Change Traffic Light Color
+        function changeLightColor(direction, color) {
+            const light = document.getElementById(`${direction}-light`);
+            light.className = `signal-light signal-${color}`;
+            lightStates[direction] = color;
+        }
+
+        // Switch Traffic View
+        function switchTrafficView(view) {
+            const infoDiv = document.querySelector('.system-info');
+            
+            switch(view) {
+                case 'signals':
+                    infoDiv.innerHTML = `
+                        <h5><i class="fa fa-traffic-light text-primary me-2"></i>Adaptive Signal Control</h5>
+                        <p class="mb-0">Intelligent traffic signals adjust timing in real-time based on vehicle detection, reducing congestion by up to 40% and improving traffic flow.</p>
+                    `;
+                    break;
+                    
+                case 'anpr':
+                    infoDiv.innerHTML = `
+                        <h5><i class="fa fa-camera text-primary me-2"></i>ANPR & Enforcement</h5>
+                        <p class="mb-0">Automatic Number Plate Recognition with 99.5% accuracy for traffic enforcement, toll collection, and security monitoring across city networks.</p>
+                    `;
+                    break;
+                    
+                case 'control':
+                    infoDiv.innerHTML = `
+                        <h5><i class="fa fa-tv text-primary me-2"></i>Traffic Control Center</h5>
+                        <p class="mb-0">Centralized platform for monitoring, control, and analytics of city-wide transportation networks with predictive incident management.</p>
+                    `;
+                    break;
+            }
+        }
+
+        // Initialize simulation
+        startSimulation();
+    </script>
+</body>
+</html>

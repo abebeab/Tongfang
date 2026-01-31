@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Smart Campus Hub | Tongfang BMS Integration</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lightbox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <style>
+        :root {
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            --header-height: 80px; /* Official template height */
+            --card-radius: 20px;
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 60px rgba(0, 76, 163, 0.12);
+        }
+
+        body { background-color: var(--tf-white); font-family: 'Open Sans', sans-serif; color: var(--tf-text); line-height: 1.8; overflow-x: hidden; }
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-blue); }
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* --- 1. MASTER GLASS HEADER --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(12px);
+            transition: var(--transition); border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-fix.scrolled { background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        .nav-link-custom { color: #fff; font-weight: 600; font-size: 13px; text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px; }
+        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); }
+        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
+
+        /* MEGA MENU */
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px;
+            padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100; text-align: left;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; border-bottom: 1px solid #eee; margin-bottom: 5px; margin-top: 10px; }
+
+        /* --- 2. PRESERVED HERO (FIXED TOP VISIBILITY) --- */
+        .industry-hero {
+            position: relative; 
+            height: 500px;
+            margin-top: var(--header-height); /* 👈 FIX: Push section below fixed header */
+            background: url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/by-scenario/smart-campus-hub/campus.jpg') center/cover no-repeat;
+            display: flex; align-items: center; overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-overlay-shape {
+            position: absolute; top: 0; left: 0; width: 55%; height: 100%;
+            background: rgba(0, 76, 163, 0.9);
+            clip-path: ellipse(85% 100% at 0% 50%);
+            display: flex; align-items: center; padding-left: 80px; color: white; z-index: 2;
+        }
+        .hero-overlay-shape h1 { font-size: 3.2rem; font-weight: 800; font-family: 'Montserrat'; color: #fff !important; line-height: 1.1; }
+
+        /* --- BREADCRUMB BAR OFFSET --- */
+        .sticky-breadcrumb {
+            top: var(--header-height); /* 👈 FIX: Sit exactly below the 80px header */
+            z-index: 999;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* --- 3. SHOWCASE SECTIONS --- */
+        .showcase-section { padding: 120px 0; position: relative; }
+        .showcase-section:nth-child(even) { background-color: var(--tf-bg-light); }
+        
+        .showcase-img-box { border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow-soft); transition: var(--transition); }
+        .showcase-img-box img { width: 100%; height: 450px; object-fit: cover; transition: 0.6s; cursor: zoom-in; }
+        .showcase-img-box:hover img { transform: scale(1.05); }
+
+        .showcase-content { padding: 40px; }
+        .showcase-title { font-size: 42px; margin-bottom: 25px; line-height: 1.2; letter-spacing: -1px; border-left: 6px solid var(--tf-yellow); padding-left: 20px; }
+        
+        .pillar-card { 
+            background: #fff; padding: 40px; border-radius: var(--card-radius); text-align: center;
+            border: 1px solid #eee; transition: var(--transition); height: 100%;
+        }
+        .pillar-card:hover { transform: translateY(-12px); border-color: var(--tf-yellow); box-shadow: var(--shadow-lift); }
+        .pillar-icon { font-size: 45px; color: var(--tf-blue); margin-bottom: 25px; }
+
+        /* --- SYSTEM ARCHITECTURE --- */
+        .arch-card {
+            background: var(--tf-blue); color: #fff; padding: 40px; border-radius: var(--card-radius);
+            border-bottom: 6px solid var(--tf-yellow); position: relative; overflow: hidden; height: 100%;
+        }
+        .arch-card i { position: absolute; right: -20px; bottom: -20px; font-size: 120px; color: rgba(255,255,255,0.05); }
+
+        /* --- 4. MASTER FOOTER --- */
+        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                      <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (FIXED FRAMING) -->
+    <div class="industry-hero">
+        <div class="hero-overlay-shape">
+            <div>
+                <h6 class="text-uppercase mb-2 text-warning" style="font-weight:700; letter-spacing:2px;">Scenario Solutions</h6>
+                <h1>Smart Campus Hub<br>Integrated Ecosystem</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- STICKY BREADCRUMB BAR -->
+    <div class="sticky-breadcrumb py-3 shadow-sm sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0 small fw-bold">
+                    <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/solutions/index.html">Solutions</a></li>
+                    <li class="breadcrumb-item active text-primary">Smart Campus Hub</li>
+                </ol>
+            </nav>
+            <span class="text-uppercase fw-800 small text-dark d-none d-md-inline">Institutional Automation</span>
+        </div>
+    </div>
+
+    <!-- SHOWCASE 1: UNIFIED TRANSFORMATION -->
+    <section class="showcase-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="showcase-content">
+                        <h2 class="showcase-title">Digital Transformation</h2>
+                        <p class="lead">Connecting educational, residential, and administrative zones into a single digital nervous system. Managers can monitor the entire landscape from a centralized cockpit.</p>
+                        <ul class="list-unstyled fw-bold mt-4">
+                            <li><i class="fa fa-check-circle text-primary me-2"></i> Institutional 3D Visualization</li>
+                            <li><i class="fa fa-check-circle text-primary me-2"></i> Campus Energy Sub-metering</li>
+                            <li><i class="fa fa-check-circle text-primary me-2"></i> AI Safety & Surveillance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="showcase-img-box">
+                        <a href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/smart campus.jpg" class="glightbox">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/smart campus.jpg" alt="Campus Hub">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="pillar-card">
+                        <i class="fa fa-university pillar-icon"></i>
+                        <h5>Learning Automation</h5>
+                        <p class="small text-muted">HVAC and lighting control synced with institutional timetable data.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pillar-card">
+                        <i class="fa fa-user-shield pillar-icon"></i>
+                        <h5>Unified Security</h5>
+                        <p class="small text-muted">Student ID access converged with AI perimeter monitoring.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pillar-card">
+                        <i class="fa fa-network-wired pillar-icon"></i>
+                        <h5>Server Monitoring</h5>
+                        <p class="small text-muted">24/7 environment tracking for campus data centers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOWCASE 2: CIM -->
+    <section class="showcase-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="showcase-content">
+                        <h2 class="showcase-title" style="border-left-color: var(--tf-blue);">Campus Information Model</h2>
+                        <p class="lead">We integrate multi-building spatial plans and utility pipeline data into a unified 3D map. Administrators track structural health and utility tunnels in real-time.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="showcase-img-box">
+                        <a href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/CIM.jpg" class="glightbox">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/CIM.jpg" alt="CIM Model">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SYSTEM ARCHITECTURE -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold">Layered institutional Architecture</h2>
+            </div>
+            <div class="row g-4 text-start">
+                <div class="col-lg-4">
+                    <div class="arch-card shadow">
+                        <i class="fa fa-desktop"></i>
+                        <h5 class="small fw-bold text-uppercase" style="color:var(--tf-yellow)">Layer 01</h5>
+                        <h5>Management Visualization</h5>
+                        <p class="small opacity-75">WEBtalk-100 Platform providing centralized dashboards and multi-site monitoring.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="arch-card shadow">
+                        <i class="fa fa-cogs"></i>
+                        <h5 class="small fw-bold text-uppercase" style="color:var(--tf-yellow)">Layer 02</h5>
+                        <h5>Logic & Control</h5>
+                        <p class="small opacity-75">BCU Series High-Speed Engines handling dormitory energy metering and safety interlocks.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="arch-card shadow">
+                        <i class="fa fa-microchip"></i>
+                        <h5 class="small fw-bold text-uppercase" style="color:var(--tf-yellow)">Layer 03</h5>
+                        <h5>Field Level Intelligence</h5>
+                        <p class="small opacity-75">BLC field controllers managing terminal HVAC units, smart lighting, and sensing nodes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope me-2"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="d-block mb-2" href="/index.html">Home</a>
+                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
+                    <a class="d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe for updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+        const lightbox = GLightbox({ selector: '.glightbox' });
+    </script>
+</body>
+</html>

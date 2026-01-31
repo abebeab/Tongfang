@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Field Sensors & Technical Devices | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/assets/img/logo.png" rel="icon" type="image/jpeg">
+    <!-- CSS Assets -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- PROFESSIONAL SENSOR INTERACTION --- */
+        .sensor-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* High-Contrast Professional Hover */
+        .sensor-card:hover {
+            background: #02245B !important; /* Dark Blue Contrast */
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(2, 36, 91, 0.4);
+            border-color: #FF5E14;
+        }
+
+        /* Image Display Area */
+        .img-display-area {
+            position: relative;
+            background: #fdfdfd;
+            padding: 30px;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .product-photo {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .sensor-card:hover .product-photo {
+            transform: scale(1.15); /* Detail Zoom on hover */
+        }
+
+        /* Zoom Label Overlay */
+        .click-to-zoom {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: #FF5E14;
+            color: white;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .sensor-card:hover .click-to-zoom { opacity: 1; }
+
+        /* Text Contrast Logic */
+        .sensor-card h4, .sensor-card h5, .sensor-card p, .sensor-card span { transition: 0.3s; }
+        .sensor-card:hover h4, .sensor-card:hover h5 { color: #ffffff !important; }
+        .sensor-card:hover p, .sensor-card:hover span { color: rgba(255,255,255,0.7) !important; }
+
+        /* Technical Badges */
+        .tech-pill {
+            font-size: 10px;
+            background: rgba(2, 36, 91, 0.05);
+            color: #02245B;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .sensor-card:hover .tech-pill { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #fff; }
+
+        /* Modal Customization */
+        .zoom-modal-content { background: #000; border: 2px solid #FF5E14; }
+        .full-view-img { background: #fff; padding: 20px; border-radius: 8px; width: 100%; }
+        
+        .tail-end-header { background: #f8f9fa; border-left: 10px solid #FF5E14; padding: 15px 30px; margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+    <div id="spinner-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <!-- Page Header -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn">
+        <div class="container py-5 text-center">
+            <h1 class="display-3 text-white animated slideInDown">Technical Tail-End Layer</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center animated slideInDown mb-0">
+                    <li class="breadcrumb-item"><a href="/home/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Architecture</a></li>
+                    <li class="breadcrumb-item active text-white">Sensing Nodes</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Technical Intro -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="fw-bold text-primary text-uppercase mb-2">The Senses of the Building</p>
+                    <h1 class="display-5 mb-4">Precision Senses & Technical Nodes</h1>
+                    <p class="mb-4">The "Tail End" is the most critical physical layer of the BMS. Hysine technical sensors provide high-fidelity environmental data directly to the logic layer. From <strong>BVC-series</strong> duct probes to <strong>differential pressure switches</strong>, we ensure absolute accuracy for clean rooms, hospitals, and industrial facilities.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-microchip text-primary me-3"></i><span>Linearized Signal Processing</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-shield-alt text-primary me-3"></i><span>IP65 Industrial Protection</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-sync text-primary me-3"></i><span>Low-Drift Long-Term Stability</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-network-wired text-primary me-3"></i><span>4-20mA / 0-10V Standard</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-dark p-5 rounded shadow-lg text-white border-start border-5 border-primary">
+                        <h4 class="text-white mb-3">Field Connectivity</h4>
+                        <p class="small opacity-75">Our technical nodes are designed for 24/7 mission-critical data acquisition. Featuring removable header screw terminals for easy maintenance and aviation-grade housing for harsh mechanical environments.</p>
+                        <hr class="bg-secondary">
+                        <span class="badge bg-primary px-3 py-2">Spain & EU Technical Standards Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Model Catalog -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="tail-end-header wow fadeInLeft">
+                <h3 class="mb-0 fw-bold">Integrated Field Device Catalog</h3>
+            </div>
+            
+            <div class="row g-4">
+                
+                <!-- 1. Differential Pressure Switch -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="sensor-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/pressure-switch.jpg" data-title="Technical Differential Pressure Switch">
+                            <img src="/assets/img/products/pressure-switch.jpg" class="product-photo" alt="Pressure Switch">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">Differential Pressure Switch</h5>
+                            <span class="tech-pill">Filter Clog Monitor</span>
+                            <p class="small text-muted mb-0">Mechanical switch for verifying fan status and monitoring clean-room pressure differentials. Built-in adjustable setpoints.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SE-HM20W Sensor -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="sensor-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/se-hm20w-wired.jpg" data-title="SE-HM20W Wired Motion & Lux Sensor">
+                            <img src="/assets/img/products/se-hm20w-wired.jpg" class="product-photo" alt="SE-HM20W">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">SE-HM20W Sensor</h5>
+                            <span class="tech-pill">Motion & Illuminance</span>
+                            <p class="small text-muted mb-0">High-sensitivity sensing node for daylight harvesting and automated occupancy triggers in offices and hospitals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. BVC-442-P Probe -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="sensor-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bvc-442-p.jpg" data-title="BVC-442-P Duct Mounted Sensor">
+                            <img src="/assets/img/products/bvc-442-p.jpg" class="product-photo" alt="BVC-442-P">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BVC-442-P Probe</h5>
+                            <span class="tech-pill">Duct Temp & Humidity</span>
+                            <p class="small text-muted mb-0">Industrial-grade duct probe featuring a rapid-response thin-film element for precise AHU and VAV control logic.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Air Valve Actuator -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="sensor-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/damper-actuator.jpg" data-title="Modulating Air Valve Actuator">
+                            <img src="/assets/img/products/damper-actuator.jpg" class="product-photo" alt="Actuator">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">Air Valve Actuator</h5>
+                            <span class="tech-pill">0-10V Modulating</span>
+                            <p class="small text-muted mb-0">Modulating damper control for mechanical air balancing. Integrated with BLC logic for precision airflow.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Specialized Status Nodes -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="sensor-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/status-node.jpg" data-title="Elevator & Plant Status Interface">
+                            <img src="/assets/img/products/status-node.jpg" class="product-photo" alt="Status Node">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">Machine Status Nodes</h5>
+                            <span class="tech-pill">Plant Monitoring</span>
+                            <p class="small text-muted mb-0">Technical interfaces for capturing operational data from Elevators, Distribution Boards, and Refrigeration Units.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Wind Environment Node -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="sensor-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/wind-sensor.jpg" data-title="Wind Temperature & Humidity Node">
+                            <img src="/assets/img/products/wind-sensor.jpg" class="product-photo" alt="Wind Sensor">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">Environmental Node</h5>
+                            <span class="tech-pill">Wind Temp & Hum</span>
+                            <p class="small text-muted mb-0">Field collector node for outdoor weather stations and fresh air intake monitoring logic.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- HARDWARE VIEW MODAL -->
+    <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content zoom-modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white" id="zoomTitle">Hardware Deep Observation</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="" id="zoomImg" class="img-fluid full-view-img shadow-lg" alt="Hardware Detail">
+                    <div class="mt-4 p-3 bg-dark rounded border border-secondary text-center">
+                        <p class="text-primary mb-0 small fw-bold">
+                            <i class="fa fa-info-circle me-2"></i>Observe technical terminal markings, probe build quality, and industrial housing labels for wiring verification.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Specs Table -->
+    <div class="container py-5 my-5">
+        <h3 class="text-center mb-5 border-bottom pb-3">Tail-End Integration Standards</h3>
+        <div class="table-responsive shadow-sm">
+            <table class="table table-bordered align-middle text-center bg-white">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th style="width: 30%;">Technical Parameter</th>
+                        <th>Standard Specification Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="fw-bold">Signal Standards</td><td>4-20mA, 0-10V DC, NTC10K, PT1000, Dry Contact SPDT</td></tr>
+                    <tr><td class="fw-bold">Measurement Accuracy</td><td>Temperature: ±0.3°C | Humidity: ±2%RH | Pressure: ±1%FS</td></tr>
+                    <tr><td class="fw-bold">Protection Class</td><td>IP65 (Outdoor/Duct) / IP20 (Indoor Technical Rooms)</td></tr>
+                    <tr><td class="fw-bold">Operating Temp</td><td>-30°C to 110°C (Category dependent)</td></tr>
+                    <tr><td class="fw-bold">Compliance</td><td>CE, RoHS, GB/T 17626 Industrial EMC Rated</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="container-xxl py-5 bg-dark text-white rounded shadow-lg my-5">
+        <div class="container text-center p-5">
+            <h2 class="text-white mb-4">Complete Your Integration Architecture</h2>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 800px;">These field nodes provide the raw data required for our high-precision logic layer. Click below to see how we manage these signals in the Master Controllers.</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="/products/bas-control/index.html" class="btn btn-primary py-3 px-5 shadow fw-bold">View Control Engines</a>
+                <a href="/contact/index.html" class="btn btn-outline-light py-3 px-5 fw-bold">Technical Consulting</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
+
+    <script>
+        // Modal Image Injector
+        $('#zoomModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imgSrc = button.data('img');
+            var title = button.data('title');
+            var modal = $(this);
+            modal.find('#zoomImg').attr('src', imgSrc);
+            modal.find('#zoomTitle').text(title);
+        });
+    </script>
+</body>
+</html>

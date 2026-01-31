@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Wireless IoT Infrastructure | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/assets/img/logo.png" rel="icon" type="image/jpeg">
+    <!-- CSS Assets -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- PROFESSIONAL PRODUCT INTERACTION --- */
+        .iot-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* High-Contrast Professional Hover */
+        .iot-card:hover {
+            background: #02245B !important; /* Dark Blue Contrast */
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(2, 36, 91, 0.4);
+            border-color: #FF5E14;
+        }
+
+        /* Image Display Area */
+        .img-display-area {
+            position: relative;
+            background: #fdfdfd;
+            padding: 30px;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .product-photo {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .iot-card:hover .product-photo {
+            transform: scale(1.15); /* Interactive Zoom */
+        }
+
+        /* Zoom Label Overlay */
+        .click-to-zoom {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: #FF5E14;
+            color: white;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .iot-card:hover .click-to-zoom { opacity: 1; }
+
+        /* Text Contrast Logic */
+        .iot-card h4, .iot-card h5, .iot-card p, .iot-card span { transition: 0.3s; }
+        .iot-card:hover h4, .iot-card:hover h5 { color: #ffffff !important; }
+        .iot-card:hover p, .iot-card:hover span { color: rgba(255,255,255,0.7) !important; }
+
+        /* Technical Headers */
+        .iot-header { background: #f8f9fa; padding: 10px; font-weight: 800; font-size: 11px; letter-spacing: 2px; color: var(--primary); text-transform: uppercase; text-align: center; }
+        .iot-card:hover .iot-header { background: rgba(255,255,255,0.05); color: #fff; }
+
+        /* Protocol Badge */
+        .protocol-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        /* Modal Customization */
+        .zoom-modal-content { background: #000; border: 2px solid #FF5E14; }
+        .full-view-img { background: #fff; padding: 20px; border-radius: 8px; width: 100%; }
+        
+        .tech-feature-box { border-left: 5px solid var(--primary); padding-left: 20px; margin-bottom: 30px; }
+    </style>
+</head>
+<body>
+    <div id="spinner-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <!-- Page Header -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn">
+        <div class="container py-5 text-center">
+            <h1 class="display-3 text-white animated slideInDown">Wireless IoT Infrastructure</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center animated slideInDown mb-0">
+                    <li class="breadcrumb-item"><a href="/home/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products Architecture</a></li>
+                    <li class="breadcrumb-item active text-white">Wireless IoT</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Technology Intro -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="fw-bold text-primary text-uppercase mb-2">Retrofit & Flexibility Specialist</p>
+                    <h1 class="display-5 mb-4">Hysine ZigBee Mesh: No-Wiring Digital Control</h1>
+                    <p class="mb-4">Our Wireless IoT infrastructure is the ultimate solution for high-end office retrofits and flexible facility management. Built on the ZigBee 3.0 protocol, our self-healing mesh network provides industrial-grade data reliability with AES-128 bit encryption, ensuring your facility data remains secure without the cost of complex communication cabling.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6"><i class="fa fa-shield-alt text-primary me-2"></i><span>AES-128 Secure Encryption</span></div>
+                        <div class="col-sm-6"><i class="fa fa-project-diagram text-primary me-2"></i><span>Self-Healing Mesh Logic</span></div>
+                        <div class="col-sm-6"><i class="fa fa-battery-full text-primary me-2"></i><span>2-Year Node Battery Life</span></div>
+                        <div class="col-sm-6"><i class="fa fa-sync text-primary me-2"></i><span>Zero-Config Hub Pairing</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-dark p-5 rounded shadow-lg text-white border-start border-5 border-primary">
+                        <h4 class="text-white mb-3">Total Cloud Integration</h4>
+                        <p class="small opacity-75">Unlike consumer-grade smart home devices, Hysine wireless nodes are mapped directly into the <strong>ESCloud Management Layer</strong>. This ensures that wireless sensors can trigger complex automation sequences in wired plant controllers across the entire building backbone.</p>
+                        <hr class="bg-secondary">
+                        <span class="badge bg-primary px-3 py-2">Mission-Critical Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wireless Model Selection -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 600px;">
+                <h2 class="display-6">IoT Selection Matrix</h2>
+                <p>Click any device image for <strong>Observation Mode</strong> to inspect terminal numbering and build quality.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- BG-ZIGB Gateway -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="iot-card shadow-sm">
+                        <div class="iot-header">Mesh Master Hub</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bg-zigb.jpg" data-title="BG-ZIGB Wireless Master Gateway">
+                            <img src="/assets/img/products/bg-zigb.jpg" class="product-photo" alt="BG-ZIGB">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BG-ZIGB</h4>
+                            <p class="small text-muted">Bridges wireless mesh child-nodes to the central BACnet IP/MSTP backbone. Supports 50+ nodes per hub.</p>
+                            <div class="mt-auto"><span class="protocol-badge">Master Gateway</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RH-5W-R-T Sensor -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="iot-card shadow-sm">
+                        <div class="iot-header">Climate Sensing</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/rh-5w-r-t.jpg" data-title="RH-5W-R-T Wireless Climate Sensor">
+                            <img src="/assets/img/products/rh-5w-r-t.jpg" class="product-photo" alt="RH-5W-R-T">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">RH-5W-R-T</h4>
+                            <p class="small text-muted">Wireless Technical Sensor for Temperature and Humidity. Digital feedback for precise HVAC adjustment.</p>
+                            <div class="mt-auto"><span class="protocol-badge">ZigBee 3.0 Node</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ECP-W16 Switch -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="iot-card shadow-sm">
+                        <div class="iot-header">Scene Interface</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/ecp-w16.jpg" data-title="ECP-W16 Wireless Smart Switch">
+                            <img src="/assets/img/products/ecp-w16.jpg" class="product-photo" alt="ECP-W16">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">ECP-W16</h4>
+                            <p class="small text-muted">Integrated wireless smart switch panel. Trigger complex Lighting and HVAC scenes without any wall-wiring.</p>
+                            <div class="mt-auto"><span class="protocol-badge">Smart Wall Control</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TCU-FC2-W Thermostat -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="iot-card shadow-sm">
+                        <div class="iot-header">HVAC Terminal Control</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/tcu-fc2-w.jpg" data-title="TCU-FC2-W Wireless Thermostat">
+                            <img src="/assets/img/products/tcu-fc2-w.jpg" class="product-photo" alt="TCU-FC2-W">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">TCU-FC2-W</h4>
+                            <p class="small text-muted">Wireless Fan Coil Unit (FCU) Thermostat. Total room climate management over the digital mesh.</p>
+                            <div class="mt-auto"><span class="protocol-badge">Wireless Thermostat</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SE-HM20W Wireless IR/Motion -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="iot-card shadow-sm">
+                        <div class="iot-header">Infrared & Motion</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/se-hm20w-wireless.jpg" data-title="SE-HM20W Wireless PIR Sensor">
+                            <img src="/assets/img/products/se-hm20w-wireless.jpg" class="product-photo" alt="SE-HM20W">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">SE-HM20W</h4>
+                            <p class="small text-muted">Wireless node for motion detection and illuminance sensing. Triggers automated light-level compensation.</p>
+                            <div class="mt-auto"><span class="protocol-badge">Dual-Sensor Logic</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wireless Infrared -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="iot-card shadow-sm">
+                        <div class="iot-header">Media Control</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/wireless-ir.jpg" data-title="Wireless Infrared Blaster">
+                            <img src="/assets/img/products/wireless-ir.jpg" class="product-photo" alt="IR Blaster">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">Wireless Infrared</h4>
+                            <p class="small text-muted">Integrated IR blaster for controlling split-unit ACs and AV systems wirelessly via the BMS software.</p>
+                            <div class="mt-auto"><span class="protocol-badge">Universal Integration</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HARDWARE VIEW MODAL -->
+    <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content zoom-modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white" id="zoomTitle">Hardware Deep Inspection</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="" id="zoomImg" class="img-fluid full-view-img shadow-lg" alt="Hardware Detail">
+                    <div class="mt-4 p-3 bg-dark rounded border border-secondary text-center">
+                        <p class="text-primary mb-0 small fw-bold"><i class="fa fa-info-circle me-2"></i>Observe battery compartments, technical labeling, and hardware build quality for project verification.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Specs Table -->
+    <div class="container py-5 my-5">
+        <h3 class="text-center mb-5 border-bottom pb-3">Technical Wireless Performance</h3>
+        <div class="table-responsive shadow-sm">
+            <table class="table table-bordered align-middle text-center bg-white">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th style="width: 35%;">Engineering Parameter</th>
+                        <th>Hysine IoT Standard Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="fw-bold">Wireless Protocol</td><td>ZigBee 3.0 / IEEE 802.15.4 (Self-Healing Mesh)</td></tr>
+                    <tr><td class="fw-bold">RF Frequency</td><td>2.4 GHz ISM Band (Global Standard)</td></tr>
+                    <tr><td class="fw-bold">Data Security</td><td>AES-128 bit Dynamic Encryption Support</td></tr>
+                    <tr><td class="fw-bold">Transmission Range</td><td>Indoor: 30-50m | Line-of-Sight: up to 100m</td></tr>
+                    <tr><td class="fw-bold">Network Topology</td><td>Supports Mesh, Star, and Cluster configurations</td></tr>
+                    <tr><td class="fw-bold">Latency Timing</td><td>< 200ms (High-speed trigger logic)</td></tr>
+                    <tr><td class="fw-bold">Operating Temp</td><td>-10°C to 50°C (Digital Room Control optimized)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="container-xxl py-5 bg-dark text-white rounded shadow-lg my-5">
+        <div class="container text-center p-5">
+            <h2 class="text-white mb-4">Professional Retrofit Design</h2>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 800px;">Hysine wireless IoT nodes are fully mapped into our ESCloud Integration Layer, providing seamless management for high-end digital offices and industrial centers.</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="/products/index.html" class="btn btn-primary py-3 px-5 shadow fw-bold">Full Product Map</a>
+                <a href="/contact/index.html" class="btn btn-outline-light py-3 px-5 fw-bold">Consult an Integration Engineer</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
+
+    <script>
+        // Modal Image Injector
+        $('#zoomModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imgSrc = button.data('img');
+            var title = button.data('title');
+            var modal = $(this);
+            modal.find('#zoomImg').attr('src', imgSrc);
+            modal.find('#zoomTitle').text(title);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Solutions Hub | Tongfang BMS - World Leading Building AIoT Solution Provider</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 16px;
+            --btn-radius: 50px;
+            
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-blue); }
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* --- 1. HEADER --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(12px);
+            transition: var(--transition); border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        .nav-link-custom { 
+            color: #fff; font-weight: 600; font-size: 13px; transition: 0.3s; 
+            text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px;
+        }
+        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); }
+        .header-fix.scrolled .nav-link-custom:hover, .nav-link-custom:hover { color: var(--tf-yellow); }
+        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
+
+        /* Mega Dropdown CSS */
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px;
+            padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+        /* --- 2. HERO SECTION - FIXED --- */
+        .solutions-hero {
+            position: relative;
+            background: 
+                linear-gradient(to right, 
+                    rgba(0, 43, 91, 0.85) 0%,
+                    rgba(0, 43, 91, 0.7) 50%,
+                    rgba(0, 43, 91, 0.85) 100%),
+                url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/home/solution-hero.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Optional: parallax effect */
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: var(--header-height);
+            overflow: hidden;
+        }
+
+        /* Add overlay pattern for better text readability */
+        .solutions-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 76, 163, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 204, 0, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Hero content container */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .solutions-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .solutions-hero h1 span {
+            color: var(--tf-yellow);
+            display: block;
+        }
+
+        .hero-line {
+            width: 100px;
+            height: 4px;
+            background: var(--tf-yellow);
+            margin: 25px 0;
+            border-radius: 2px;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+
+        .solutions-hero p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            max-width: 600px;
+            opacity: 0.9;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ensure hero image displays properly on all devices */
+        @media (max-width: 768px) {
+            .solutions-hero {
+                height: 400px;
+                background-attachment: scroll; /* Remove parallax on mobile */
+            }
+            
+            .solutions-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .solutions-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-content {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .solutions-hero {
+                height: 350px;
+            }
+            
+            .solutions-hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Fallback background in case image doesn't load */
+        .solutions-hero {
+            background-color: #002b5b; /* Dark blue matching your gradient */
+       color-interpolation-filters: auto; }
+
+        /* --- 3. SECTION HEADERS --- */
+        .section-header { 
+            text-align: center; 
+            margin: 90px 0 60px; 
+        }
+        
+        .section-header h2 { 
+            font-size: 42px; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+            margin-bottom: 15px; 
+        }
+        
+        .section-header .line { 
+            width: 70px; 
+            height: 5px; 
+            background: var(--tf-yellow); 
+            margin: 0 auto 20px; 
+            border-radius: 10px; 
+        }
+
+        /* --- 4. SOLUTIONS BODY GRID --- */
+        .sol-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 30px; 
+        }
+        
+        .sol-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 80px; 
+        }
+        
+        .sol-card-premium {
+            background: #fff; 
+            border-radius: var(--card-radius); 
+            overflow: hidden; 
+            box-shadow: var(--shadow-soft); 
+            border: 1px solid rgba(0,76,163,0.05); 
+            transition: var(--transition);
+            display: flex; 
+            flex-direction: column; 
+            height: 100%;
+        }
+        
+        .sol-card-premium:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-lift); 
+            border-color: var(--tf-yellow); 
+        }
+        
+        .sol-card-img { 
+            height: 220px; 
+            width: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease; 
+        }
+        
+        .sol-card-premium:hover .sol-card-img { 
+            transform: scale(1.05); 
+        }
+
+        .sol-card-body { 
+            padding: 30px; 
+            flex-grow: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .sol-card-body h4 { 
+            font-size: 20px; 
+            margin-bottom: 15px; 
+            color: var(--tf-blue); 
+        }
+        
+        .sol-card-body p { 
+            font-size: 14.5px; 
+            color: var(--tf-text); 
+            margin-bottom: 20px; 
+        }
+        
+        .sol-category-tag { 
+            font-size: 11px; 
+            font-weight: 800; 
+            color: var(--tf-blue); 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 8px; 
+            display: block; 
+        }
+        
+        .card-link { 
+            margin-top: auto; 
+            font-weight: 700; 
+            font-size: 14px; 
+            color: var(--tf-blue); 
+        }
+        
+        .card-link:hover { 
+            color: var(--tf-yellow); 
+        }
+
+        /* --- 5. FOOTER --- */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        
+        .footer .btn-link { 
+            color: #007bff !important;
+            text-decoration: none; 
+            display: inline-block; 
+            margin-bottom: 5px;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow) !important; 
+            padding-left: 5px; 
+        }
+        
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+        
+        .btn-square { 
+            width: 40px; 
+            height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: rgba(255,255,255,0.05); 
+            color: #fff; 
+            border-radius: 4px; 
+            transition: 0.3s; 
+        }
+        
+        .btn-square:hover { 
+            background: var(--tf-blue); 
+            color: #fff; 
+            transform: translateY(-3px); 
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--tf-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            transform: translateY(-5px);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fa fa-chevron-up"></i>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 class="brand-text" style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a> 
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a> 
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">parking-lots</a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS DROPDOWN - FIXED -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO - FIXED VERSION -->
+    <section class="solutions-hero">
+        <div class="hero-content">
+            <h1>Integrated AIoT<br><span>Solutions Hub</span></h1>
+            <div class="hero-line"></div>
+            
+        </div>
+    </section>
+
+    <!-- BODY: SOLUTIONS BY NAV CATEGORIES -->
+    <div class="sol-container">
+
+        <!-- CATEGORY 1: COMMERCIAL & RESIDENTIAL -->
+        <section class="section-header">
+            <div class="line"></div>
+            <h2>Commercial & Residential</h2>
+            <p class="text-secondary small">Smart ecosystems for lifestyle, workspace, and hospitality.</p>
+        </section>
+
+        <div class="sol-grid">
+            
+            <!-- CARD 1: SMART CAMPUS (FIXED - Static Text, Zooming Image) -->
+            <div class="sol-card-premium">
+                <!-- Image Wrapper: Triggers Zoom -->
+                <a href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg"
+                   class="glightbox"
+                   data-gallery="solutions"
+                   data-title="Smart Campus Hubs"
+                   data-description="Integrated ICT and facility control for universities, enhancing campus safety and creating sustainable learning environments.">
+                    
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg"
+                         alt="Smart Campus Hub"
+                         class="sol-card-img">
+                </a>
+
+                <!-- Text Body: Static (Separate from Image Link) -->
+                <div class="sol-card-body">
+                    <span class="sol-category-tag">Education</span>
+                    <h4>Smart Campus Hubs</h4>
+                    <p>
+                        Integrated ICT and facility control for universities, enhancing campus safety and creating sustainable learning environments.
+                    </p>
+                    <!-- Detail Link -->
+                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="card-link">
+                        View Solution Details →
+                    </a>
+                </div>
+            </div>
+
+            <!-- CARD 2: OFFICE -->
+            <div class="sol-card-premium">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" class="sol-card-img">
+                <div class="sol-card-body">
+                    <span class="sol-category-tag">Corporate</span>
+                    <h4>Modern Office Infrastructure</h4>
+                    <p>Optimizing workspace productivity through occupancy-driven HVAC control, daylight harvesting, and integrated asset management platforms.</p>
+                    <a href="/solutions/office/index.html" class="card-link">View Solution Details →</a>
+                </div>
+            </div>
+
+            <!-- CARD 3: HOTELS -->
+            <div class="sol-card-premium">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800" class="sol-card-img">
+                <div class="sol-card-body">
+                    <span class="sol-category-tag">Hospitality</span>
+                    <h4>Hotels & Smart Hospitality</h4>
+                    <p>Comprehensive Guest Room Management Systems (GRMS) providing 5-star comfort with centralized operational efficiency and energy savings.</p>
+                    <a href="/solutions/hotel-smart-security/index.html" class="card-link">View Solution Details →</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CATEGORY 2: INFRASTRUCTURE & INDUSTRY -->
+        <section class="section-header">
+            <div class="line"></div>
+            <h2>Infrastructure & Industry</h2>
+            <p class="text-secondary small">Mission-critical systems for high-performance operations.</p>
+        </section>
+        
+        <div class="sol-grid">
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Digital Hospital Systems"
+       data-description="Precision control for clean rooms and negative pressure environments, alongside unified patient security and monitoring.">
+
+        <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800"
+             alt="Digital Hospital Systems"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Healthcare</span>
+        <h4>Digital Hospital Systems</h4>
+        <p>
+            Precision control for clean rooms and negative pressure environments,
+            alongside unified patient security and monitoring.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/smart-hospital-access/index.html" class="card-link"> 
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Smart Airports & Transit"
+       data-description="Integrating passenger flow analytics with high-availability terminal climate control for global aviation hubs.">
+
+        <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=800"
+             alt="Smart Airports & Transit"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Airport</span>
+        <h4>Smart Airports & Transit</h4>
+        <p>
+            Integrating passenger flow analytics with high-availability
+            terminal climate control for global aviation hubs.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/airport/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Industrial AIoT Platforms"
+       data-description="Converging industrial automation and facility management to ensure plant uptime and peak energy efficiency.">
+
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800"
+             alt="Industrial AIoT Platforms"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Industrial</span>
+        <h4>Industrial AIoT Platforms</h4>
+        <p>
+            Converging industrial automation and facility management to ensure
+            plant uptime and peak energy efficiency.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/industrial/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Data Centers & IPDC"
+       data-description="Highly reliable cooling, power quality monitoring, and PUE optimization for mission-critical IT infrastructure.">
+
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800"
+             alt="Data Centers & IPDC"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Data Center</span>
+        <h4>Data Centers & IPDC</h4>
+        <p>
+            Highly reliable cooling, power quality monitoring,
+            and PUE optimization for mission-critical IT infrastructure.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/ipdc/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1521503862198-2ae9a997bbc9?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Smart Logistics Ports"
+       data-description="Unified digital platforms for crane automation, automated gate management, and high-security port surveillance.">
+
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg"
+             alt="Smart Logistics Ports"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Logistics</span>
+        <h4>Smart Logistics Ports</h4>
+        <p>
+            Unified digital platforms for crane automation, automated gate management,
+            and high-security port surveillance.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/smart-port-platform/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+        </div>
+
+        <!-- CATEGORY 3: URBAN, PUBLIC & SYSTEMS -->
+        <section class="section-header">
+            <div class="line"></div>
+            <h2>Urban & Core Systems</h2>
+            <p class="text-secondary small">Foundational technologies for city-scale intelligence.</p>
+        </section>
+        
+        <div class="sol-grid">
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Urban IoT Platforms"
+       data-description="Centrally managed smart street lighting, environment monitoring, and civic data backbones for intelligent cities.">
+
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=800"
+             alt="Urban IoT Platforms"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Smart City</span>
+        <h4>Urban IoT Platforms</h4>
+        <p>
+            Centrally managed smart street lighting, environment monitoring,
+            and civic data backbones for intelligent cities.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/smart-city/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+           <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Smart Traffic Management"
+       data-description="AI-driven traffic signal control and intelligent transport systems (ITS) for safer, smoother urban mobility.">
+
+        <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800"
+             alt="Smart Traffic Management"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Mobility</span>
+        <h4>Smart Traffic Management</h4>
+        <p>
+            AI-driven traffic signal control and intelligent transport systems (ITS)
+            for safer, smoother urban mobility.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/traffic/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+            <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Sports & Stadium Control"
+       data-description="Coordinated arena lighting, mass crowd safety integration, and high-efficiency environmental control.">
+
+        <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=800"
+             alt="Sports & Stadium Control"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Stadium</span>
+        <h4>Sports & Stadium Control</h4>
+        <p>
+            Coordinated arena lighting, mass crowd safety integration,
+            and high-efficiency environmental control.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/sports-center-automation/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+           <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Building Management System"
+       data-description="Our flagship, vendor-neutral platform using BACnet and Modbus to converge HVAC, Power, and Lighting.">
+
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800"
+             alt="Building Management System"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">TITAN BMS</span>
+        <h4>Building Management System</h4>
+        <p>
+            Our flagship, vendor-neutral platform using BACnet and Modbus
+            to converge HVAC, Power, and Lighting.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+           <div class="sol-card-premium">
+
+    <!-- IMAGE (Lightbox zoom) -->
+    <a href="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600"
+       class="glightbox"
+       data-gallery="solutions"
+       data-title="Energy & Carbon Optimization"
+       data-description="Deep analytics for real-time power monitoring, enabling buildings to reach Net-Zero operational targets.">
+
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800"
+             alt="Energy & Carbon Optimization"
+             class="sol-card-img">
+    </a>
+
+    <!-- TEXT (Static content) -->
+    <div class="sol-card-body">
+        <span class="sol-category-tag">Energy</span>
+        <h4>Energy & Carbon Optimization</h4>
+        <p>
+            Deep analytics for real-time power monitoring,
+            enabling buildings to reach Net-Zero operational targets.
+        </p>
+
+        <!-- Optional detail page -->
+        <a href="/solutions/energy-carbon-optimization/index.html" class="card-link">
+            View Solution Details →
+        </a>
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="btn-link" href="/index.html">Home</a><br>
+                    <a class="btn-link" href="/about/index.html">About Us</a><br>
+                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                    <a class="btn-link" href="/products/index.html">Products</a><br>
+                    <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+                    <a class="btn-link" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6"><h5>Business Hours</h5><p>Mon – Fri: 8:30 AM – 5:30 PM</p><p>Saturday: 9:00 AM – 1:00 PM</p><p>Sunday: Closed</p></div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get smart building & automation updates.</p>
+                    <div class="position-relative"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button></div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script>
+        // Initialize Lightbox
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: false,
+            moreLength: 60
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+            
+            // Show/hide back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Image loading fallback
+        document.addEventListener('DOMContentLoaded', function() {
+            const heroImage = new Image();
+            heroImage.onload = function() {
+                console.log('Hero image loaded successfully');
+            };
+            heroImage.onerror = function() {
+                console.log('Hero image failed to load, using gradient fallback');
+            };
+            heroImage.src = 'https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/home/solution-hero.png';
+        });
+    </script>
+</body>
+</html>

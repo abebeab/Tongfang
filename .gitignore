@@ -1,0 +1,26 @@
+# Media files stored on Cloudflare R2
+assets/img/
+assets/images/
+assets/media/
+assets/video/
+assets/videos/
+assets/uploads/
+
+# Binary / large files
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.mov
+*.avi
+*.zip
+*.rar
+*.7z
+*.pdf
+
+# System / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

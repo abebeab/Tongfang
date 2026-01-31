@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Smart Hotel & Hospitality | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-red: #e60012;        
+            
+            /* UI COLORS */
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        .header-logo a,
+        .header-logo a:hover {
+            text-decoration: none !important;
+        }
+
+        /* --- 1. HEADER & NAV --- */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1030; 
+            height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            transition: background-color 0.4s ease, box-shadow 0.4s ease; 
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-fix.scrolled .header-logo h2 {
+            color: var(--tf-blue) !important;
+        }
+
+        .header-fix.scrolled .header-logo span {
+            color: var(--tf-yellow) !important;
+        }
+
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            height: 100%; 
+            padding: 0 30px; 
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: #fff; 
+            font-weight: 700; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4); 
+        }
+        
+        .nav-link-custom:hover { 
+            color: var(--tf-yellow); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
+            text-shadow: none; 
+        }
+        
+        .header-fix.scrolled .nav-link-custom:hover { 
+            color: var(--tf-blue); 
+        }
+
+        /* DROPDOWN */
+        .nav-item-dropdown { 
+            position: relative; 
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+        }
+        
+        .dropdown-menu-custom {
+            position: absolute; 
+            top: 100%; 
+            left: 50%; 
+            transform: translateX(-50%) translateY(20px);
+            width: 700px; 
+            background: #fff; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); 
+            border-radius: 0 0 8px 8px; 
+            padding: 30px;
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px;
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.3s ease; 
+            z-index: 1100;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        
+        .dropdown-link { 
+            color: #555; 
+            font-size: 13px; 
+            font-weight: 600; 
+            padding: 6px 10px; 
+            border-radius: 4px; 
+            display: block; 
+            border-left: 2px solid transparent; 
+            text-decoration: none; 
+            text-shadow: none; 
+        }
+        
+        .dropdown-link:hover { 
+            background: #f4f7fa; 
+            color: var(--tf-blue); 
+            border-left: 2px solid var(--tf-blue); 
+            padding-left: 15px; 
+        }
+        
+        .dropdown-category { 
+            grid-column: span 3; 
+            color: var(--tf-blue); 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 10px; 
+            margin-bottom: 5px; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px; 
+        }
+
+        /* --- 2. HERO SECTION --- */
+        .hero-section {
+            height: 65vh; 
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), 
+                       url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; 
+            background-position: center;
+            display: flex; 
+            align-items: center; 
+            position: relative;
+            margin-top: var(--header-height);
+        }
+        
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            padding-top: 60px; 
+            animation: fadeUp 1s ease-out; 
+            text-shadow: 0 2px 20px rgba(0,0,0,0.7); 
+        }
+        
+        .hero-title { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 15px; 
+        }
+        
+        .hero-sub { 
+            color: #fff; 
+            font-size: 1.25rem; 
+            max-width: 700px; 
+            font-weight: 600; 
+        }
+        
+        @keyframes fadeUp { 
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
+
+        /* --- 3. SUB-NAV --- */
+        .project-nav-bar {
+            position: sticky; 
+            top: 80px; 
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        .nav-breadcrumb .breadcrumb-item a { 
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none; 
+        }
+        
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a { 
+            color: var(--tf-blue) !important; 
+        }
+        
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            bottom: -6px; 
+            width: 100%; 
+            height: 3px; 
+            background: var(--tf-yellow); 
+            border-radius: 10px;
+        }
+        
+        .nav-breadcrumb .breadcrumb-item { 
+            position: relative; 
+        }
+        
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { 
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px; 
+        }
+
+        /* --- 4. INTERACTIVE MAP --- */
+        .scroll-target { 
+            scroll-margin-top: 160px; 
+        }
+        
+        .interactive-map-container {
+            position: relative; 
+            width: 100%; 
+            border-radius: var(--card-radius); 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border: 1px solid rgba(0,0,0,0.05); 
+            margin-bottom: 40px;
+        }
+        
+        .map-img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+        
+        .hotspot {
+            position: absolute; 
+            display: flex; 
+            align-items: center; 
+            cursor: pointer; 
+            z-index: 10; 
+            transform: translate(-50%, -50%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hotspot:hover { 
+            z-index: 20; 
+            transform: translate(-50%, -50%) scale(1.1); 
+        }
+        
+        .hotspot-dot {
+            width: 36px; 
+            height: 36px; 
+            background-color: var(--tf-blue); 
+            color: #fff;
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-weight: 800; 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+            border: 2px solid #fff;
+            transition: 0.3s;
+        }
+        
+        .hotspot.active .hotspot-dot {
+            background-color: var(--tf-yellow); 
+            color: var(--tf-dark);
+            transform: scale(1.3); 
+            box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
+        }
+
+        .hotspot-label {
+            background-color: #fff;
+            color: #333;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left: 10px;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+            z-index: 5;
+        }
+
+        .hotspot.active .hotspot-label { 
+            background: var(--tf-dark); 
+            color: #fff; 
+        }
+
+        /* --- 5. SECTIONS GENERAL --- */
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 60px; 
+        }
+        
+        .section-header h2 { 
+            font-size: 36px; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+        }
+        
+        .section-header .line { 
+            width: 60px; 
+            height: 5px; 
+            background: var(--tf-yellow); 
+            margin: 15px auto; 
+            border-radius: 10px; 
+        }
+
+        .scenario-wrapper { 
+            background: #f8f9fa; 
+            border-top: 1px solid #eee; 
+            padding: 60px 0; 
+            min-height: 500px; 
+        }
+       
+        .scenario-box {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .scenario-box.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Challenge Section */
+        .challenge-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: var(--card-radius);
+            margin: 40px 0;
+            border-left: 4px solid var(--tf-red);
+        }
+        
+        .challenge-section h4 {
+            color: var(--tf-red);
+            margin-bottom: 20px;
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--card-radius);
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--tf-blue);
+        }
+        
+        .solution-section h3 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+        
+        /* Feature Columns */
+        .feature-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .feature-column h4 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--tf-yellow);
+        }
+        
+        .feature-column img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Benefits Section */
+        .benefits-list {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: var(--card-radius);
+            margin: 30px 0;
+        }
+        
+        .benefits-list h4 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+        
+        .benefits-list ul {
+            padding-left: 20px;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* Features Section */
+        .features-section {
+            margin: 40px 0;
+        }
+        
+        .features-section h4 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--tf-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-item h6 {
+            color: var(--tf-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* Topology Section */
+        .topology-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--card-radius);
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .topology-section h3 {
+            color: var(--tf-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .topology-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- 6. BENEFITS SECTION --- */
+        .benefits-section {
+            background: linear-gradient(135deg, var(--tf-blue), #002244);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--tf-yellow);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-item h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-item p {
+            opacity: 0.9;
+        }
+
+        /* --- 7. PRODUCT SHOWCASE --- */
+        .product-card {
+            background: #fff; 
+            padding: 40px 20px; 
+            border-radius: var(--card-radius);
+            text-align: center; 
+            border: 1px solid #f0f0f0; 
+            transition: 0.3s;
+            height: 100%;
+        }
+        
+        .product-card:hover { 
+            border-color: var(--tf-blue); 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+        }
+        
+        .product-card img { 
+            height: 160px; 
+            object-fit: contain; 
+            margin-bottom: 25px; 
+        }
+        
+        .product-card h5 {
+            color: var(--tf-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #004ca3, #002244);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--tf-yellow);
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* --- 8. FOOTER --- */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+        }
+        
+        .footer a { 
+            color: var(--tf-blue) !important; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            font-weight: 600; 
+        }
+        
+        .footer a:hover { 
+            color: var(--tf-yellow) !important; 
+            text-decoration: underline; 
+        }
+        
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                height: 50vh;
+            }
+            
+            .feature-columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-menu-custom {
+                width: 90vw;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .nav-menu {
+                gap: 15px;
+                margin-right: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .hotspot-label {
+                font-size: 10px;
+                padding: 4px 8px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/data-centreipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="col-lg-8 hero-content">
+                <h1 class="hero-title">Smart Hotel & Hospitality Solutions</h1>
+                <p class="hero-sub">Intelligent automation for enhanced guest experiences and operational excellence in hospitality venues</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUB-NAVIGATION -->
+    <div class="project-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
+                    <li class="breadcrumb-item"><a href="#scenarios">Scenarios</a></li>
+                    <li class="breadcrumb-item"><a href="#benefits">Benefits</a></li>
+                    <li class="breadcrumb-item"><a href="#stats">Impact</a></li>
+                    <li class="breadcrumb-item"><a href="#products">Products</a></li>
+                </ol>
+            </nav>
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-concierge-bell text-primary me-2"></i>
+                    INTELLIGENT HOSPITALITY MANAGEMENT
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: SOLUTION OVERVIEW -->
+    <section class="py-5 bg-white scroll-target" id="overview">
+        <div class="container py-4">
+            
+            <div class="text-center mb-5">
+                <h2 style="font-size: 2.5rem;">Solution Overview</h2>
+                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
+                <p class="text-muted" style="max-width: 900px; margin: 30px auto; font-size: 1.1rem;">
+                    Modern hotels face increasing challenges in guest satisfaction, operational efficiency, and sustainability. As guest expectations rise, hotels must deliver personalized experiences while optimizing energy usage, security, and resource management.
+                </p>
+                <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 1.1rem;">
+                    Tongfang's Smart Hotel Platform integrates intelligent automation across all hotel operations, creating seamless guest experiences while maximizing operational efficiency and reducing environmental impact.
+                </p>
+            </div>
+
+            <!-- INTERACTIVE MAP -->
+            <div class="text-center mb-5">
+                <h3 class="mb-4">Interactive Hotel Platform Map</h3>
+                <p class="text-muted mb-4">Click on the numbered hotspots to explore different hotel management scenarios</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="interactive-map-container">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Hotels-3D-map.jpg" alt="Smart Hotel Platform Map" class="map-img">
+                        
+                        <!-- Hotspots -->
+                        <div id="hotspot-1" class="hotspot" onclick="showScenario(1)" style="top: 70%; left: 65%;">
+                            <div class="hotspot-dot">1</div>
+                            <div class="hotspot-label">Parking Lot</div>
+                        </div>
+                        <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 85%; left: 45%;">
+                            <div class="hotspot-dot">2</div>
+                            <div class="hotspot-label">Indoor Public Space</div>
+                        </div>
+                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 74%; left: 25%;">
+                            <div class="hotspot-dot">3</div>
+                            <div class="hotspot-label">Inventory</div>
+                        </div>
+                        <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 75%; left:45%;">
+                            <div class="hotspot-dot">4</div>
+                            <div class="hotspot-label">Perimeter</div>
+                        </div>
+                        <div id="hotspot-5" class="hotspot" onclick="showScenario(5)" style="top: 50%; left:40%;">
+                            <div class="hotspot-dot">5</div>
+                            <div class="hotspot-label">Control Room</div>
+                        </div>
+                        <div id="hotspot-6" class="hotspot" onclick="showScenario(6)" style="top: 50%; left: 60%;">
+                            <div class="hotspot-dot">6</div>
+                            <div class="hotspot-label">Lobby</div>
+                        </div>
+                        <div id="hotspot-7" class="hotspot" onclick="showScenario(7)" style="top: 60%; left: 55%;">
+                            <div class="hotspot-dot">7</div>
+                            <div class="hotspot-label">Reception</div>
+                        </div>
+                        <div id="hotspot-8" class="hotspot" onclick="showScenario(8)" style="top: 65%; left: 40%;">
+                            <div class="hotspot-dot">8</div>
+                            <div class="hotspot-label">Meeting Rooms</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SCENARIO DETAILS -->
+    <section id="scenarios" class="scenario-wrapper">
+        <div class="container">
+            
+            <!-- 1. PARKING LOT -->
+            <div id="content-1" class="scenario-box active">
+                <h2 class="mb-4 text-primary">1. Smart Parking Lot Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel parking facilities often face congestion, inefficient space utilization, security concerns, and high energy consumption from 24/7 lighting. Guests struggle to find available spaces, leading to frustration and potential safety issues.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional parking systems lack real-time monitoring, automated guidance, and energy-efficient operations, resulting in poor guest experiences and increased operational costs.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides intelligent parking solutions with real-time space detection, automated guidance systems, energy-efficient lighting control, and integrated security monitoring for seamless guest parking experiences.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Real-time Space Detection</h4>
+                        <p style="line-height: 1.7;">
+                            Ultrasonic sensors and camera systems detect available parking spaces. Real-time updates displayed on digital signage throughout the parking area.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Parking Space Detection">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Automated Guidance Systems</h4>
+                        <p style="line-height: 1.7;">
+                            LED guidance lights direct guests to available spaces. Mobile app integration for pre-booking and navigation. License plate recognition for automated entry/exit.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Parking Guidance">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Increase parking space utilization by 30-40%</li>
+                        <li>Reduce guest parking time by 50%</li>
+                        <li>Lower energy costs with smart lighting control</li>
+                        <li>Enhance security with comprehensive monitoring</li>
+                        <li>Improve guest satisfaction with hassle-free parking</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Smart Lighting Control</h6>
+                            <p>Motion-activated LED lighting with energy optimization</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>License Plate Recognition</h6>
+                            <p>Automated vehicle identification and access control</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Real-time Monitoring</h6>
+                            <p>Continuous surveillance and occupancy tracking</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Mobile Integration</h6>
+                            <p>Guest app for parking status and navigation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Parking-lot-03.jpg" alt="Parking Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 2. INDOOR PUBLIC SPACE -->
+            <div id="content-2" class="scenario-box">
+                <h2 class="mb-4 text-primary">2. Indoor Public Space Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel indoor public spaces including corridors, lounges, and common areas require consistent environmental control, efficient lighting, and air quality management. Manual adjustments lead to energy waste and inconsistent guest comfort.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional systems operate independently, lacking coordinated control and real-time optimization based on occupancy and environmental conditions.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides integrated solutions for indoor public spaces with intelligent HVAC control, adaptive lighting systems, air quality monitoring, and occupancy-based optimization for enhanced guest comfort and energy efficiency.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Intelligent HVAC Control</h4>
+                        <p style="line-height: 1.7;">
+                            Zoned temperature control based on occupancy patterns. Humidity regulation for optimal comfort. Energy recovery ventilation for fresh air management.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="HVAC Control">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Adaptive Lighting Systems</h4>
+                        <p style="line-height: 1.7;">
+                            DALI lighting with programmable scenes for different times. Motion sensors for energy conservation. Daylight harvesting for natural light optimization.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Lighting Systems">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce energy consumption by 25-35%</li>
+                        <li>Maintain optimal indoor air quality</li>
+                        <li>Enhance guest comfort with consistent environments</li>
+                        <li>Automate operations based on occupancy</li>
+                        <li>Extend equipment lifespan with optimal operation</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Occupancy-based Control</h6>
+                            <p>Automated adjustments based on real-time occupancy</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Air Quality Monitoring</h6>
+                            <p>Continuous CO2, VOC, and particulate monitoring</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Zoned Control</h6>
+                            <p>Independent control of different public areas</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Energy Optimization</h6>
+                            <p>AI-driven efficiency algorithms</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Hotels-36.jpg" alt="Public Space Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 3. INVENTORY -->
+            <div id="content-3" class="scenario-box">
+                <h2 class="mb-4 text-primary">3. Hotel Inventory Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotels manage complex inventory systems including housekeeping supplies, F&B stocks, linen management, and maintenance materials. Manual tracking leads to stockouts, overstocking, and inefficient resource allocation.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional inventory systems lack real-time visibility, automated replenishment, and integration with operational workflows.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides intelligent inventory management solutions with RFID tracking, automated replenishment systems, environmental monitoring for storage areas, and integrated supply chain management.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Automated Inventory Tracking</h4>
+                        <p style="line-height: 1.7;">
+                            RFID-based tracking of linen, supplies, and equipment. Real-time inventory visibility and automated reordering. Integration with housekeeping and maintenance systems.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="Inventory Tracking">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Smart Storage Management</h4>
+                        <p style="line-height: 1.7;">
+                            Environmental monitoring for food and beverage storage. Temperature and humidity control for sensitive items. Automated alerts for stock levels and expiration dates.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Storage Management">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce inventory costs by 15-25%</li>
+                        <li>Minimize stockouts and overstock situations</li>
+                        <li>Improve operational efficiency with automated tracking</li>
+                        <li>Enhance food safety with proper storage monitoring</li>
+                        <li>Streamline supply chain operations</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>RFID Tracking Systems</h6>
+                            <p>Real-time tracking of all hotel assets and supplies</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Automated Replenishment</h6>
+                            <p>Smart reordering based on consumption patterns</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Environmental Monitoring</h6>
+                            <p>Optimal conditions for storage areas</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Integrated Logistics</h6>
+                            <p>Seamless coordination between departments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Inventory-06.jpg" alt="Inventory Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 4. PERIMETER -->
+            <div id="content-4" class="scenario-box">
+                <h2 class="mb-4 text-primary">4. Perimeter Security Systems</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel perimeters require robust security measures to prevent unauthorized access, theft, and safety threats. Traditional security systems often have gaps, false alarms, and lack integration with other hotel security measures.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Manual monitoring is inefficient, and standalone systems don't provide comprehensive coverage or rapid response capabilities.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides comprehensive perimeter security solutions with intrusion detection, video analytics, automated lighting, and integrated response systems for complete hotel property protection.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Intrusion Detection Systems</h4>
+                        <p style="line-height: 1.7;">
+                            Fiber optic sensors, microwave barriers, and thermal imaging for perimeter protection. Intelligent algorithms to reduce false alarms. Integration with CCTV and access control.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1590333746438-201b1249da9e?auto=format&fit=crop&w=800&q=80" alt="Intrusion Detection">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Video Analytics & Monitoring</h4>
+                        <p style="line-height: 1.7;">
+                            AI-powered video analytics for automatic threat detection. License plate recognition for vehicle monitoring. Real-time alerts and response coordination.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?auto=format&fit=crop&w=800&q=80" alt="Video Analytics">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Enhance guest safety with comprehensive coverage</li>
+                        <li>Reduce false alarms with intelligent detection</li>
+                        <li>Improve response time with automated alerts</li>
+                        <li>Integrate with overall hotel security systems</li>
+                        <li>Comply with security standards and regulations</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Multi-sensor Detection</h6>
+                            <p>Combined technologies for reliable perimeter protection</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>AI Video Analytics</h6>
+                            <p>Intelligent threat recognition and behavior analysis</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Automated Response</h6>
+                            <p>Integrated lighting and security response protocols</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Centralized Monitoring</h6>
+                            <p>Unified control of all perimeter security systems</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Hotels-control-8.jpg" alt="Perimeter Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 5. CONTROL ROOM -->
+            <div id="content-5" class="scenario-box">
+                <h2 class="mb-4 text-primary">5. Hotel Control Center</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel operations require coordination of multiple systems including BMS, security, fire, and guest services. Disconnected systems, poor situational awareness, and manual reporting can lead to operational inefficiencies and guest service issues.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional control rooms often lack integration between different hotel systems, making comprehensive monitoring and coordinated response challenging.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides a comprehensive hotel control center solution with unified dashboards, real-time monitoring, predictive analytics, and integrated incident management for complete operational visibility and control.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Unified Operations Dashboard</h4>
+                        <p style="line-height: 1.7;">
+                            Single interface for all hotel systems and operations. Real-time status monitoring of equipment and guest services. Customizable views for different operational roles.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Operations Dashboard">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Predictive Analytics & Reporting</h4>
+                        <p style="line-height: 1.7;">
+                            AI-driven insights for equipment maintenance and guest patterns. Automated reporting for energy, occupancy, and operational metrics. Proactive alerts for potential issues.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Analytics Dashboard">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Improve operational efficiency with unified control</li>
+                        <li>Reduce response time for incidents and guest requests</li>
+                        <li>Enhance decision-making with comprehensive data</li>
+                        <li>Optimize resource allocation with real-time insights</li>
+                        <li>Improve guest satisfaction with proactive service</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Integrated System Management</h6>
+                            <p>Unified control of all hotel systems and operations</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Real-time Monitoring</h6>
+                            <p>Live status of all equipment and guest services</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Predictive Maintenance</h6>
+                            <p>AI alerts for equipment before failure</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Performance Analytics</h6>
+                            <p>Comprehensive reporting and analysis tools</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Hotels-19-control room.jpg" alt="Control Center Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 6. LOBBY -->
+            <div id="content-6" class="scenario-box">
+                <h2 class="mb-4 text-primary">6. Lobby Automation</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel lobbies create first impressions but often suffer from inconsistent climate control, inefficient lighting, and poor air quality management. High energy consumption and manual adjustments impact guest comfort and operational costs.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional lobby systems lack integration between lighting, HVAC, and security, leading to suboptimal guest experiences.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides comprehensive lobby automation with intelligent climate control, programmable lighting scenes, air quality management, and integrated welcome systems for enhanced guest arrivals.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Intelligent Climate Control</h4>
+                        <p style="line-height: 1.7;">
+                            Zoned temperature control based on occupancy and external conditions. Humidity regulation for optimal comfort. Energy-efficient operation with occupancy sensors.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Lobby Climate Control">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Programmable Lighting Systems</h4>
+                        <p style="line-height: 1.7;">
+                            DALI lighting with scenes for different times and events. Motion-activated lighting for energy conservation. Integration with natural light sensors.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80" alt="Lobby Lighting">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Create memorable first impressions with perfect ambiance</li>
+                        <li>Reduce lobby energy consumption by 30-40%</li>
+                        <li>Maintain optimal comfort for guests and staff</li>
+                        <li>Automate operations based on occupancy patterns</li>
+                        <li>Enhance security with integrated monitoring</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Welcome Sequence Automation</h6>
+                            <p>Automated lighting and climate for guest arrivals</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Air Quality Management</h6>
+                            <p>Continuous monitoring and ventilation control</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Energy Optimization</h6>
+                            <p>Intelligent algorithms for efficient operation</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Integrated Security</h6>
+                            <p>Combined monitoring and access control</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+
+            <!-- 7. RECEPTION -->
+            <div id="content-7" class="scenario-box">
+                <h2 class="mb-4 text-primary">7. Reception Area Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel reception areas require efficient operations, comfortable environments, and seamless guest interactions. Manual systems for check-in/out, room assignment, and service requests can lead to delays and guest dissatisfaction.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional reception systems lack integration with hotel operations, leading to inefficient workflows and poor guest experiences.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides integrated reception solutions with automated check-in systems, environmental control, queue management, and service coordination for efficient guest processing and enhanced experiences.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Automated Check-in Systems</h4>
+                        <p style="line-height: 1.7;">
+                            Self-service kiosks with biometric verification. Mobile check-in integration. Automated room assignment and key dispensing.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80" alt="Check-in Systems">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Queue & Service Management</h4>
+                        <p style="line-height: 1.7;">
+                            Digital queue management systems. Service request tracking and routing. Staff allocation optimization based on demand.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="Queue Management">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce check-in/out time by 50-60%</li>
+                        <li>Improve staff efficiency with automated workflows</li>
+                        <li>Enhance guest satisfaction with seamless processes</li>
+                        <li>Optimize resource allocation with demand-based staffing</li>
+                        <li>Integrate with overall hotel operations</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Biometric Verification</h6>
+                            <p>Secure and efficient guest identification</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Mobile Integration</h6>
+                            <p>Seamless connection with guest mobile apps</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Service Coordination</h6>
+                            <p>Automated routing of guest requests</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Environmental Control</h6>
+                            <p>Optimal conditions for reception areas</p>
+                        </div>
+                    </div>
+                </div>
+                
+              
+            <!-- 8. MEETING ROOMS -->
+            <div id="content-8" class="scenario-box">
+                <h2 class="mb-4 text-primary">8. Meeting & Conference Rooms</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Hotel meeting and conference rooms require flexible environmental control, integrated AV systems, and efficient booking management. Manual setup, inconsistent conditions, and complex controls can impact event success.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional meeting room systems operate independently, lacking coordinated control and integration with hotel booking systems.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides comprehensive meeting room solutions with one-touch scene control, integrated AV systems, booking management, and environmental optimization for successful events and conferences.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>One-Touch Scene Control</h4>
+                        <p style="line-height: 1.7;">
+                            Preset configurations for different event types (presentation, video conference, training). Integrated control of lighting, AV, and environmental systems.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" alt="Scene Control">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Integrated AV Systems</h4>
+                        <p style="line-height: 1.7;">
+                            Seamless integration of projectors, screens, audio systems, and video conferencing. Automated setup based on event requirements.
+                        </p>
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80" alt="AV Systems">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce setup time by 70-80%</li>
+                        <li>Enhance event success with perfect environments</li>
+                        <li>Improve energy efficiency with occupancy-based control</li>
+                        <li>Streamline booking and resource management</li>
+                        <li>Increase meeting room utilization</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Booking System Integration</h6>
+                            <p>Automated room preparation based on bookings</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Environmental Optimization</h6>
+                            <p>Intelligent control of temperature, lighting, and air quality</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Video Conferencing</h6>
+                            <p>Integrated systems for remote participation</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Resource Management</h6>
+                            <p>Efficient allocation of equipment and services</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION 3: STATS & IMPACT -->
+    <section id="stats" class="stats-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="color: white;">Smart Hotel Impact Metrics</h2>
+                <div style="width: 60px; height: 4px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">30-40%</div>
+                        <div class="stat-label">Energy Cost Reduction</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Increase in Guest Satisfaction</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Reduction in Check-in Time</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="stat-item">
+                        <div class="stat-number">99.8%</div>
+                        <div class="stat-label">System Reliability</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: BENEFITS -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="color: white;">Key Benefits</h2>
+                <div style="width: 60px; height: 4px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Enhanced Guest Experience</h4>
+                        <p>Personalized comfort, intuitive controls, and seamless services for superior guest satisfaction</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Operational Efficiency</h4>
+                        <p>Streamlined operations, automated workflows, and optimized resource utilization</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Sustainability</h4>
+                        <p>Reduced environmental impact through energy optimization and resource management</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Enhanced Security</h4>
+                        <p>Comprehensive security systems for guest safety and property protection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: PRODUCTS -->
+    <section id="products" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2>Recommended Products</h2>
+                <div style="width: 60px; height: 4px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+                <p class="text-muted">Specialized products for smart hotel applications</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="Hotel DDC Controllers">
+                        <h5>Hotel DDC Controllers</h5>
+                        <p>Programmable controllers for room automation and HVAC control</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Guest Room Controllers">
+                        <h5>Guest Room Controllers</h5>
+                        <p>Touchscreen controls for lighting, temperature, and curtain automation</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80" alt="Energy Meters">
+                        <h5>Hotel Energy Meters</h5>
+                        <p>Sub-metering solutions for department-level energy tracking</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Hotel Management Software">
+                        <h5>Hotel Management Software</h5>
+                        <p>Unified platform for hotel automation and operational management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope me-2"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="d-block mb-2" href="/index.html">Home</a>
+                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
+                    <a class="d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe for updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Interactive map functionality
+        function showScenario(scenarioNumber) {
+            // Remove active class from all hotspots
+            document.querySelectorAll('.hotspot').forEach(hotspot => {
+                hotspot.classList.remove('active');
+            });
+            
+            // Add active class to clicked hotspot
+            document.getElementById(`hotspot-${scenarioNumber}`).classList.add('active');
+            
+            // Hide all scenario content
+            document.querySelectorAll('.scenario-box').forEach(box => {
+                box.classList.remove('active');
+            });
+            
+            // Show selected scenario content
+            document.getElementById(`content-${scenarioNumber}`).classList.add('active');
+            
+            // Smooth scroll to scenarios section
+            document.getElementById('scenarios').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Initialize first scenario as active on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Activate first hotspot
+            document.getElementById('hotspot-1').classList.add('active');
+            
+            // Initialize header state
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.getElementById('navBox').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Breadcrumb navigation highlighting
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id], div[id]');
+            const navLinks = document.querySelectorAll('.nav-breadcrumb .breadcrumb-item a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                const headerHeight = document.getElementById('navBox').offsetHeight + 50;
+                
+                if (scrollY >= (sectionTop - headerHeight) && scrollY < (sectionTop + sectionHeight - headerHeight)) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.parentElement.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

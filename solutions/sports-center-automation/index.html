@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sports Center Automation | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-red: #e60012;        
+            
+            /* UI COLORS */
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+.header-logo a,
+.header-logo a:hover {
+    text-decoration: none !important;
+}
+
+        /* --- 1. HEADER & NAV --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+    background: rgba(0, 0, 0, 0.45);   /* blocks hero image */
+    backdrop-filter: blur(6px);   
+            backdrop-filter: none;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease; 
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        background: #0b111a;
+    }
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+            backdrop-filter: blur(10px);
+        }
+        .header-fix.scrolled .header-logo h2 {
+    color: var(--tf-blue) !important;
+}
+
+.header-fix.scrolled .header-logo span {
+    color: var(--tf-yellow) !important;
+}
+
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        
+        .nav-link-custom { 
+            color: #fff; font-weight: 700; font-size: 13px; transition: 0.3s; 
+            text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px; text-decoration: none;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4); 
+        }
+        .nav-link-custom:hover { color: var(--tf-yellow); }
+        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); text-shadow: none; }
+        .header-fix.scrolled .nav-link-custom:hover { color: var(--tf-blue); }
+
+        /* DROPDOWN */
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; text-decoration: none; text-shadow: none; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+
+        /* --- 2. HERO SECTION --- */
+        .hero-section {
+            height: 65vh; min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/sports-center-hero.png');
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; position: relative;
+        }
+        .hero-content { 
+            position: relative; z-index: 2; padding-top: 60px; animation: fadeUp 1s ease-out; 
+            text-shadow: 0 2px 20px rgba(0,0,0,0.7); 
+        }
+        .hero-title { font-size: 3.5rem; font-weight: 900; color: #fff; margin-bottom: 15px; }
+        .hero-sub { color: #fff; font-size: 1.25rem; max-width: 700px; font-weight: 600; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- 3. SUB-NAV --- */
+        .project-nav-bar {
+            position: sticky; top: 80px; z-index: 1020;
+            background: #fff; padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        .nav-breadcrumb .breadcrumb-item a { color: #666; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; text-decoration: none; }
+        .nav-breadcrumb .breadcrumb-item a:hover, .nav-breadcrumb .breadcrumb-item.active a { color: var(--tf-blue) !important; }
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 3px; background: var(--tf-yellow); border-radius: 10px;
+        }
+        .nav-breadcrumb .breadcrumb-item { position: relative; }
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { content: "|"; color: #ccc; padding: 0 10px; }
+
+        /* --- 4. INTERACTIVE MAP --- */
+        .scroll-target { scroll-margin-top: 160px; }
+        
+        .interactive-map-container {
+            position: relative; width: 100%; border-radius: var(--card-radius); 
+            overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            border: 1px solid rgba(0,0,0,0.05); margin-bottom: 40px;
+        }
+        .map-img { width: 100%; height: auto; display: block; }
+        
+        .hotspot {
+            position: absolute; display: flex; align-items: center; 
+            cursor: pointer; z-index: 10; transform: translate(-50%, -50%);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hotspot:hover { z-index: 20; transform: translate(-50%, -50%) scale(1.1); }
+        
+        .hotspot-dot {
+            width: 36px; height: 36px; background-color: var(--tf-blue); color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-family: 'Montserrat', sans-serif; font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid #fff;
+            transition: 0.3s;
+        }
+        .hotspot.active .hotspot-dot {
+            background-color: var(--tf-yellow); color: var(--tf-dark);
+            transform: scale(1.3); box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
+        }
+
+      .hotspot-label {
+    background-color: #fff;
+    color: #333;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-left: 10px;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    z-index: 5;
+}
+
+        .hotspot.active .hotspot-label { background: var(--tf-dark); color: #fff; }
+
+        /* --- 5. SECTIONS GENERAL --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 36px; text-transform: uppercase; letter-spacing: -1px; }
+        .section-header .line { width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px; }
+
+        .scenario-wrapper { background: #f8f9fa; border-top: 1px solid #eee; padding: 60px 0; min-height: 500px; }
+        .scenario-box { display: none; opacity: 0; transform: translateY(20px); transition: 0.5s ease; }
+        .scenario-box.active { display: block; opacity: 1; transform: translateY(0); }
+        
+        /* Challenge Cards Side by Side */
+        .challenge-cards-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .challenge-image-card {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-image-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .challenge-image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .challenge-image-card h5 {
+            padding: 20px;
+            margin: 0;
+            border-top: 4px solid var(--tf-red);
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--card-radius);
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--tf-blue);
+        }
+        
+        .solution-section h3 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+        
+        /* Feature Columns */
+        .feature-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .feature-column h4 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--tf-yellow);
+        }
+        
+        .feature-column img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Benefits Section */
+        .benefits-list {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: var(--card-radius);
+            margin: 30px 0;
+        }
+        
+        .benefits-list h4 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+        
+        .benefits-list ul {
+            padding-left: 20px;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        /* Features Section */
+        .features-section {
+            margin: 40px 0;
+        }
+        
+        .features-section h4 {
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--tf-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .feature-item h6 {
+            color: var(--tf-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* Topology Section */
+        .topology-section {
+            background: white;
+            padding: 40px;
+            border-radius: var(--card-radius);
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .topology-section h3 {
+            color: var(--tf-blue);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .topology-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- 6. RELATED --- */
+        .related-card {
+            background: #fff; border-radius: var(--card-radius); overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; text-decoration: none; color: inherit; height: 100%; display: block;
+        }
+        .related-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .related-card img { width: 100%; height: 200px; object-fit: cover; }
+        .related-content { padding: 20px; }
+        .related-title { font-weight: 700; color: var(--tf-blue); margin-bottom: 10px; font-size: 1.1rem; }
+
+        /* --- 7. PRODUCT SHOWCASE --- */
+        .product-card {
+            background: #fff; padding: 40px 20px; border-radius: var(--card-radius);
+            text-align: center; border: 1px solid #f0f0f0; transition: 0.3s;
+        }
+        .product-card:hover { border-color: var(--tf-blue); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .product-card img { height: 160px; object-fit: contain; margin-bottom: 25px; }
+
+        /* --- 8. FOOTER --- */
+        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; }
+        .footer a { color: var(--tf-blue) !important; text-decoration: none; transition: 0.3s; font-weight: 600; }
+        .footer a:hover { color: var(--tf-yellow) !important; text-decoration: underline; }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+
+        /* --- 9. BENEFITS SECTION --- */
+        .benefits-section {
+            background: linear-gradient(135deg, var(--tf-blue), #002244);
+            color: white;
+            padding: 80px 0;
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--tf-yellow);
+            margin-bottom: 20px;
+        }
+        .benefit-item h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            
+        </div>
+    </section>
+
+    <!-- SUB-NAVIGATION -->
+    <div class="project-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
+                    <li class="breadcrumb-item"><a href="#scenarios">Scenarios</a></li>
+                    <li class="breadcrumb-item"><a href="#benefits">Benefits</a></li>
+                    <li class="breadcrumb-item"><a href="#products">Products</a></li>
+                </ol>
+            </nav>
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-futbol text-primary me-2"></i>
+                    SMART SPORTS FACILITIES
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: SOLUTION OVERVIEW -->
+    <section class="py-5 bg-white scroll-target" id="overview">
+        <div class="container py-4">
+            
+            <div class="text-center mb-5">
+                <h2 style="font-size: 2.5rem;">Solution Overview</h2>
+                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
+                <p class="text-muted" style="max-width: 900px; margin: 30px auto; font-size: 1.1rem;">
+                    Modern sports facilities require sophisticated automation systems to manage complex operations, ensure spectator safety, optimize energy consumption, and provide exceptional visitor experiences during both event days and non-event periods.
+                </p>
+                <p class="text-muted" style="max-width: 900px; margin: 0 auto; font-size: 1.1rem;">
+                    Tongfang's Sports Center Automation Solution integrates lighting, HVAC, access control, crowd management, and energy systems into a unified platform for efficient stadium and arena management.
+                </p>
+            </div>
+
+            <!-- INTERACTIVE MAP -->
+            <div class="text-center mb-5">
+                <h3 class="mb-4">Interactive Solution Map</h3>
+                <p class="text-muted mb-4">Click on the numbered hotspots to explore different sports facility scenarios</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="interactive-map-container">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/stadium.jpg" alt="Sports Center Solution Map" class="map-img">
+                        
+                        <!-- Hotspots -->
+                        <div id="hotspot-1" class="hotspot " onclick="showScenario(1)" style="top: 45%; left: 20%;">
+                            <div class="hotspot-dot">1</div>
+                            <div class="hotspot-label">Access & Crowd Control</div>
+                        </div>
+                        <div id="hotspot-2" class="hotspot active" onclick="showScenario(2)" style="top: 60%; left: 30%;">
+                            <div class="hotspot-dot">2</div>
+                            <div class="hotspot-label">HVAC & Air Quality</div>
+                        </div>
+                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 75%; left: 60%;">
+                            <div class="hotspot-dot">3</div>
+                            <div class="hotspot-label">Lighting & Media Systems</div>
+                        </div>
+                        <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 35%; left: 80%;">
+                            <div class="hotspot-dot">4</div>
+                            <div class="hotspot-label">Operations Center</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SCENARIO DETAILS -->
+    <section id="scenarios" class="scenario-wrapper">
+        <div class="container">
+            
+            <!-- 1. ACCESS & CROWD CONTROL -->
+            <div id="content-1" class="scenario-box ">
+                <h2 class="mb-4 text-primary">1. Access & Crowd Control Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Sports venues face unique security challenges with thousands of spectators entering and exiting within short timeframes. Managing ticket validation, preventing unauthorized access, and ensuring smooth crowd flow during peak periods requires advanced automation and real-time monitoring systems.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional manual security checks create bottlenecks, while inadequate crowd monitoring can lead to safety hazards during emergency situations.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides integrated access control and crowd management solutions with automated ticket scanning, facial recognition, real-time occupancy monitoring, and emergency response coordination for enhanced safety and efficient spectator movement.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Smart Access Control</h4>
+                        <p style="line-height: 1.7;">
+                            Multi-modal authentication including RFID tickets, mobile QR codes, and facial recognition. Automated turnstile control with real-time validation and anti-tailgating features.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/access-control.jpg" alt="Smart Access Control">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Crowd Analytics</h4>
+                        <p style="line-height: 1.7;">
+                            AI-powered video analytics for crowd density monitoring, flow optimization, and early detection of potential safety issues. Real-time occupancy tracking across all zones.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/crowd-analytics.jpg" alt="Crowd Analytics">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce entry processing time by 70% during peak hours</li>
+                        <li>Enhance security with automated threat detection</li>
+                        <li>Optimize crowd flow and prevent overcrowding</li>
+                        <li>Improve emergency response with real-time evacuation guidance</li>
+                        <li>Reduce operational staffing requirements</li>
+                    </ul>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <h6>Multi-Modal Authentication</h6>
+                            <p>Support for RFID, QR codes, facial recognition, and mobile ticketing</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Real-time Monitoring</h6>
+                            <p>Live occupancy tracking and crowd density analytics across all areas</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Emergency Integration</h6>
+                            <p>Automatic emergency response coordination and evacuation guidance</p>
+                        </div>
+                        <div class="feature-item">
+                            <h6>Anti-Tailgating</h6>
+                            <p>Advanced detection systems to prevent unauthorized entry attempts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/access-control-topology.jpg" alt="Access Control Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 2. HVAC & AIR QUALITY -->
+            <div id="content-2" class="scenario-box active">
+                <h2 class="mb-4 text-primary">2. HVAC & Air Quality Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Large sports facilities consume massive amounts of energy for heating, cooling, and ventilation. Maintaining optimal air quality and temperature for both athletes and spectators while minimizing energy costs requires sophisticated climate control systems.
+                    </p>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Traditional HVAC systems operate at fixed schedules, leading to energy waste during low-occupancy periods and inadequate ventilation during peak events.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides intelligent HVAC systems with occupancy-based control, air quality monitoring, and predictive energy optimization to ensure optimal comfort while reducing energy consumption by up to 40%.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Smart Climate Control</h4>
+                        <p style="line-height: 1.7;">
+                            Zone-based temperature and humidity control with occupancy sensors. Automatic adjustment based on real-time crowd density and external weather conditions.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/climate-control.jpg" alt="Smart Climate Control">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Air Quality Monitoring</h4>
+                        <p style="line-height: 1.7;">
+                            Continuous monitoring of CO2 levels, particulate matter, and ventilation efficiency. Automated adjustment of fresh air intake and filtration systems.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/air-quality.jpg" alt="Air Quality Monitoring">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce HVAC energy consumption by 30-40%</li>
+                        <li>Maintain optimal air quality for athlete performance</li>
+                        <li>Ensure spectator comfort during all events</li>
+                        <li>Automated maintenance alerts and predictive servicing</li>
+                        <li>Compliance with indoor air quality regulations</li>
+                    </ul>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/HVAC Topology.jpg" alt="HVAC Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 3. LIGHTING & MEDIA SYSTEMS -->
+            <div id="content-3" class="scenario-box">
+                <h2 class="mb-4 text-primary">3. Lighting & Media Systems</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Sports venues require versatile lighting systems that can adapt to different events – from bright illumination for televised competitions to dramatic effects for entertainment shows. Managing complex lighting rigs, video displays, and sound systems requires precise coordination and control.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides integrated lighting and media control systems with pre-programmed scenes for different event types, automated scheduling, and centralized management of all audiovisual equipment.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Intelligent Lighting</h4>
+                        <p style="line-height: 1.7;">
+                            LED lighting systems with dynamic control for different sports and events. Automated dimming, color temperature adjustment, and emergency lighting integration.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/intelligent-lighting.jpg" alt="Intelligent Lighting">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Media Integration</h4>
+                        <p style="line-height: 1.7;">
+                            Centralized control of video walls, scoreboards, sound systems, and broadcast equipment. Synchronized operation with lighting systems for enhanced event experiences.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/media-integration.jpg" alt="Media Integration">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Reduce lighting energy consumption by up to 60%</li>
+                        <li>Create optimal viewing conditions for athletes and spectators</li>
+                        <li>Enable seamless event transitions with pre-programmed scenes</li>
+                        <li>Simplify complex AV system operations</li>
+                        <li>Extend equipment lifespan through smart scheduling</li>
+                    </ul>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/lighting-topology.jpg" alt="Lighting Topology" class="topology-img">
+                </div>
+            </div>
+
+            <!-- 4. OPERATIONS CENTER -->
+            <div id="content-4" class="scenario-box">
+                <h2 class="mb-4 text-primary">4. Central Operations Management</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Managing a modern sports facility involves coordinating multiple disparate systems - security, HVAC, lighting, communications, and concessions. Without integrated monitoring and control, facility managers struggle to respond effectively to incidents and optimize operations.
+                    </p>
+                </div>
+                
+                <!-- What We Offer Section -->
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
+                        Tongfang provides a unified operations center with real-time dashboards, predictive analytics, and centralized control of all building systems, enabling efficient facility management and rapid incident response.
+                    </p>
+                </div>
+                
+                <!-- Feature Columns -->
+                <div class="feature-columns">
+                    <div class="feature-column">
+                        <h4>Unified Dashboard</h4>
+                        <p style="line-height: 1.7;">
+                            Centralized interface displaying real-time status of all systems, energy consumption, occupancy data, and security alerts. Customizable views for different operational roles.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/unified-dashboard.jpg" alt="Unified Dashboard">
+                    </div>
+                    
+                    <div class="feature-column">
+                        <h4>Predictive Analytics</h4>
+                        <p style="line-height: 1.7;">
+                            AI-driven insights for maintenance scheduling, energy optimization, and crowd prediction. Historical data analysis for continuous improvement.
+                        </p>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/predictive-analytics.jpg" alt="Predictive Analytics">
+                    </div>
+                </div>
+                
+                <!-- Benefits Section -->
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        <li>Single-point control for all facility systems</li>
+                        <li>Rapid incident detection and response coordination</li>
+                        <li>Data-driven decision making for operational optimization</li>
+                        <li>Reduced staffing requirements through automation</li>
+                        <li>Improved overall facility safety and efficiency</li>
+                    </ul>
+                </div>
+                
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/operations-topology.jpg" alt="Operations Topology" class="topology-img">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: BENEFITS -->
+    <section id="benefits" class="benefits-section scroll-target">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-white">Solution Benefits</h2>
+                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Enhanced Safety</h4>
+                        <p class="opacity-75">Advanced crowd control and emergency response systems for maximum spectator safety</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Energy Efficiency</h4>
+                        <p class="opacity-75">Reduce energy consumption by 30-40% through intelligent climate and lighting control</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Visitor Experience</h4>
+                        <p class="opacity-75">Improved comfort, shorter queues, and enhanced entertainment experiences</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Operational Efficiency</h4>
+                        <p class="opacity-75">Streamlined operations with centralized control and automated systems</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PRODUCT SHOWCASE -->
+    <section class="py-5 bg-white scroll-target" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recommended Products</h2>
+                <div class="line"></div>
+                <p class="text-muted">Specialized hardware and software for sports facility automation</p>
+            </div>
+
+            <div class="swiper swiper-products pb-5">
+                <div class="swiper-wrapper">
+                    <!-- Product 1 -->
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/ddc-controllers/main-controller.jpg" alt="DDC Controller">
+                            <h5>Advanced DDC Controller</h5>
+                            <p class="small text-muted">High-capacity controller for managing complex HVAC and lighting systems in large venues</p>
+                            <a href="/products/ddc-controllers/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/sensors/air-quality-sensor.jpg" alt="Air Quality Sensor">
+                            <h5>Air Quality Monitor</h5>
+                            <p class="small text-muted">Multi-parameter sensor for monitoring CO2, particulates, temperature, and humidity</p>
+                            <a href="/products/sensors-thermostats/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/facial-recognition.jpg" alt="Access Control">
+                            <h5>Facial Recognition Terminal</h5>
+                            <p class="small text-muted">High-speed biometric access control for staff and VIP areas</p>
+                            <a href="/products/bms-software/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/energy/metering-panel.jpg" alt="Energy Meter">
+                            <h5>Smart Energy Meter</h5>
+                            <p class="small text-muted">Sub-metering solutions for tracking energy consumption across different facility zones</p>
+                            <a href="/products/energy-meters/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: RELATED SOLUTIONS -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>You May Also Be Interested In</h2>
+                <div class="line"></div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Related 1 -->
+                <div class="col-md-5">
+                    <a href="/solutions/smart-city/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-city/smart-city-banner.jpg" alt="Smart City">
+                        <div class="related-content">
+                            <div class="related-title">Smart City Integration</div>
+                            <p class="small text-muted">Comprehensive urban management solutions for modern cities</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Related 2 -->
+                <div class="col-md-5">
+                    <a href="/solutions/energy-carbon-optimization/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/energy-carbon/energy-banner.jpg" alt="Energy Optimization">
+                        <div class="related-content">
+                            <div class="related-title">Energy & Carbon Optimization</div>
+                            <p class="small text-muted">Sustainable energy management for large facilities</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope me-2"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="d-block mb-2" href="/index.html">Home</a>
+                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
+                    <a class="d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe for updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        // Header Scroll
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+        });
+
+        // Interactive Map Logic - FIXED VERSION
+        function showScenario(id) {
+            // Update hotspots
+            document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
+            const activeHotspot = document.getElementById('hotspot-' + id);
+            if (activeHotspot) activeHotspot.classList.add('active');
+            
+            // Hide all scenario boxes
+            document.querySelectorAll('.scenario-box').forEach(el => {
+                el.classList.remove('active');
+                el.style.display = 'none';
+            });
+            
+            // Show only the selected one
+            const selected = document.getElementById('content-' + id);
+            if (selected) {
+                selected.style.display = 'block';
+                // Force reflow before adding active class for animation
+                selected.offsetHeight;
+                selected.classList.add('active');
+                
+                // Scroll to the scenario section
+                const offset = 140;
+                window.scrollTo({
+                    top: selected.offsetTop - offset,
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        // Initialize Swiper
+        var swiper = new Swiper(".swiper-products", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+            },
+        });
+        
+        // Initialize first scenario as active on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide all scenarios except the first one
+            const allScenarios = document.querySelectorAll('.scenario-box');
+            allScenarios.forEach(el => {
+                if (el.id !== 'content-2') {
+                    el.style.display = 'none';
+                    el.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

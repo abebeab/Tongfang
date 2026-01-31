@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Energy & Carbon Optimization | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-red: #e60012;        
+            
+            /* UI COLORS */
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: var(--header-height);
+        }
+        
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-blue); }
+
+        /* --- HEADER (MATCHING RESIDENTIAL/OFFICE) --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+            background: #0b111a; border-bottom: 1px solid rgba(255,255,255,0.15); transition: 0.4s;
+        }
+        .header-fix.scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .brand-text { margin: 0; font-family: 'Montserrat', sans-serif; font-weight: 900; color: #fff; text-decoration: none; }
+        .header-fix.scrolled .brand-text { color: #0b111a; }
+        .brand-accent { color: var(--tf-yellow); }
+        .nav-menu { display: flex; gap: 30px; align-items: center; margin-left: auto; margin-right: 40px; }
+        .nav-link-custom { color: #fff; font-weight: 700; font-size: 13px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
+        .header-fix.scrolled .nav-link-custom { color: #0b111a; }
+        .nav-link-custom:hover { color: var(--tf-yellow); }
+
+        /* DROPDOWN */
+        .nav-item-dropdown { position: relative; height: var(--header-height); display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; display: block; text-decoration: none; border-left: 2px solid transparent; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-top: 10px; }
+
+        /* --- HERO --- */
+        .hero-section {
+            height: 60vh; min-height: 500px;
+            background: linear-gradient(rgba(0, 76, 163, 0.6), rgba(0, 20, 50, 0.8)), url('/assets/img/solutions/carbon and energy/background.jpg');
+            background-size: cover; background-position: center; display: flex; align-items: center;
+        }
+        .hero-title { font-size: 3.5rem; color: #fff; font-weight: 900; text-shadow: 0 3px 10px rgba(0,0,0,0.3); }
+        .hero-sub { color: #fff; font-size: 1.25rem; max-width: 700px; font-weight: 600; }
+
+        /* --- CONTENT BLOCKS --- */
+        .pillar-card {
+            background: #fff; padding: 40px; border-radius: var(--card-radius);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); border-top: 4px solid var(--tf-yellow);
+            height: 100%; transition: var(--transition);
+        }
+        .pillar-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0, 76, 163, 0.15); }
+        .pillar-icon { font-size: 2.5rem; color: var(--tf-blue); margin-bottom: 20px; display: block; }
+
+        /* --- ROI / MISSION SECTION --- */
+        .roi-banner {
+            background: linear-gradient(135deg, var(--tf-blue), #002c5f);
+            padding: 80px 0; color: #fff; border-radius: 20px;
+        }
+        .stat-circle {
+            width: 150px; height: 150px; border: 4px solid var(--tf-yellow); border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+        }
+        .stat-circle h3 { color: var(--tf-yellow); font-size: 2.5rem; margin: 0; }
+
+        /* --- FOOTER --- */
+        .footer { background: #0b111a; color: #aaa; padding: 80px 0 0 0; }
+        .footer h5 { color: #fff; margin-bottom: 30px; }
+        .footer a { color: var(--tf-blue); text-decoration: none; font-weight: 600; }
+        .copyright { background: #05080c; padding: 25px 0; margin-top: 60px; font-size: 13px; color: #666; }
+
+        /* CEROS EMBED CONTAINER */
+        .interactive-container {
+            background: #f8f9fa; border: 1px solid #eee; padding: 20px; border-radius: 15px; margin: 40px 0;
+        }
+        .offline-energy {
+    background: linear-gradient(135deg, #f8f9fa, #ffffff);
+}
+
+.energy-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.energy-card h5 {
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: var(--tf-blue);
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 class="brand-text">
+                            TONGFANG <span class="brand-accent">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Energy & Carbon Optimization</h1>
+            <p class="hero-sub">Driving Africa’s infrastructure toward Net Zero through precision metering, load management, and AI-driven sustainability analytics.</p>
+        </div>
+    </section>
+
+    <!-- MISSION & OVERVIEW -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Driving Measurable Sustainability</h2>
+                    <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin-bottom: 30px; border-radius:10px;"></div>
+                    <p class="lead fw-bold text-dark">We deliver intelligent environments that balance world-class performance with carbon responsibility.</p>
+                    <p>Our mission is to empower Africa’s digital transformation. Our Energy solution uses AIoT data to identify waste, automate peak-shaving, and generate actionable ESG reports. We focus on <strong>Rapid Value Creation</strong>, reducing utility costs by up to 30% through integrated logic control.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-5 bg-light rounded shadow-sm border">
+                        <h4 class="mb-4 fw-bold text-dark"><i class="fa fa-microchip text-primary me-2"></i>Optimization Pillars</h4>
+                        <div class="d-flex justify-content-between border-bottom py-2"><span class="fw-bold">HMI Platform</span> <span class="text-primary">EMS-500 Master</span></div>
+                        <div class="d-flex justify-content-between border-bottom py-2"><span class="fw-bold">Utility Gateways</span> <span class="text-primary">EMC Series</span></div>
+                        <div class="d-flex justify-content-between border-bottom py-2"><span class="fw-bold">Protocols</span> <span class="text-primary">Modbus, BACnet, M-Bus</span></div>
+                        <div class="d-flex justify-content-between py-2"><span class="fw-bold">Analytics</span> <span class="text-primary">Carbon Footprint</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE ENERGY STORAGE EXPERIENCE -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="text-uppercase">The Future of Energy Storage</h2>
+                <p class="text-muted">Interactive experience: Explore integrated management for next-generation energy storage.</p>
+            </div>
+            
+          <div class="interactive-container offline-energy">
+
+    <div class="text-center mb-4">
+        <h3 class="fw-bold text-primary">Integrated Energy Storage Management</h3>
+        <p class="text-muted">Offline simulation of storage optimization, peak shaving, and carbon reduction</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-4">
+            <div class="energy-card">
+                <img src="/assets/img/energy/battery.png" class="img-fluid mb-3" alt="">
+                <h5>Battery SOC</h5>
+                <canvas id="socChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="energy-card">
+                <img src="/assets/img/energy/load.png" class="img-fluid mb-3" alt="">
+                <h5>Peak Load Reduction</h5>
+                <canvas id="loadChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="energy-card">
+                <img src="/assets/img/energy/carbon.png" class="img-fluid mb-3" alt="">
+                <h5>Carbon Offset</h5>
+                <canvas id="carbonChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+        </div>
+    </section>
+
+    <!-- CORE MODULES -->
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pillar-card">
+                        <i class="fa fa-tachometer-alt pillar-icon"></i>
+                        <h4>Sub-metering</h4>
+                        <p class="small text-muted">Granular tracking of electricity, water, and gas at the floor or machine level using high-precision gateways.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pillar-card">
+                        <i class="fa fa-leaf pillar-icon"></i>
+                        <h4>Carbon Tracking</h4>
+                        <p class="small text-muted">Automated conversion of energy data into CO2 equivalent metrics for ESG and sustainability reporting.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="pillar-card">
+                        <i class="fa fa-bolt pillar-icon"></i>
+                        <h4>Demand Management</h4>
+                        <p class="small text-muted">Automated peak-shaving logic that sheds non-critical loads during high-tariff periods to avoid utility penalties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI BANNER -->
+    <section class="container mb-5">
+        <div class="roi-banner text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4">Our Vision for East Africa</h2>
+                    <p class="lead mb-5 text-white-50">"To be the partner of choice for intelligent integration solutions by combining Innovation and Integrity."</p>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="stat-circle">
+                                <h3>30%</h3>
+                                <p class="small m-0 text-uppercase fw-bold">Avg. Savings</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="stat-circle">
+                                <h3>ROI</h3>
+                                <p class="small m-0 text-uppercase fw-bold">Rapid Value</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope me-2"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="d-block mb-2 text-muted" href="/index.html">Home</a>
+                    <a class="d-block mb-2 text-muted" href="/about/index.html">About Us</a>
+                    <a class="d-block mb-2 text-muted" href="/solutions/index.html">Solutions</a>
+                    <a class="d-block mb-2 text-muted" href="/projects/index.html">Projects</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
+</body>
+</html>

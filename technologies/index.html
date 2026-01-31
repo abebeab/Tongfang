@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tongfang BMS | Core Technologies</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 12px;
+            
+            /* SHADOWS & TRANSITIONS */
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* --- HEADER --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(12px);
+            transition: var(--transition); border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+        
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        
+        .nav-link-custom { 
+            color: #fff; font-weight: 600; font-size: 13px; transition: 0.3s; 
+            text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px;
+        }
+        .nav-link-custom:hover { color: var(--tf-yellow); }
+        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); }
+        .header-fix.scrolled .nav-link-custom:hover { color: var(--tf-blue); }
+        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
+        .header-fix.scrolled .header-logo h2 span { color: var(--tf-yellow) !important; }
+        .header-fix.scrolled .header-icons { color: var(--tf-dark) !important; }
+        .header-fix.scrolled .btn-mobile-toggle { color: var(--tf-dark) !important; }
+
+        /* DROPDOWN */
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+        /* --- HERO SECTION --- */
+        .tech-hero {
+            position: relative; height: 60vh; min-height: 500px;
+            background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center;
+        }
+        
+        .tech-hero-bg {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6;
+            animation: slowZoom 20s infinite alternate;
+        }
+        @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        
+        .hero-content { position: relative; z-index: 2; color: #fff; max-width: 900px; padding: 0 20px; padding-top: 80px; }
+        .hero-content h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+        .hero-content p { font-size: 1.25rem; font-weight: 400; opacity: 0.9; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+
+        /* --- TECH CARDS --- */
+        .tech-showcase { padding: 80px 0; background: #fff; }
+        
+        .t-card {
+            background: #fff; border-radius: var(--card-radius); overflow: hidden;
+            box-shadow: var(--shadow-soft); transition: var(--transition); height: 100%; 
+            display: flex; flex-direction: column; border: 1px solid #f0f0f0;
+        }
+        .t-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lift); border-color: rgba(0, 76, 163, 0.2); }
+
+        .t-img-box {
+            height: 260px; width: 100%; position: relative; overflow: hidden; cursor: zoom-in; background: #000;
+        }
+        .t-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; opacity: 0.95; }
+        .t-img-box:hover img { transform: scale(1.1); opacity: 1; }
+        
+        .t-action-icon {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.5);
+            width: 60px; height: 60px; background: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(5px); border-radius: 50%; border: 1px solid rgba(255,255,255,0.5);
+            display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px;
+            opacity: 0; transition: all 0.4s ease;
+        }
+        .t-img-box:hover .t-action-icon { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+        .t-content {
+            padding: 30px; flex-grow: 1; background: #fff; z-index: 2;
+            border-top: 4px solid var(--tf-yellow);
+        }
+        .t-header h3 { font-size: 20px; color: var(--tf-dark); margin-bottom: 15px; font-weight: 800; text-transform: uppercase; }
+        .t-header span { font-size: 11px; font-weight: 700; color: var(--tf-blue); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px; }
+
+        .t-list { list-style: none; padding: 0; margin: 0; }
+        .t-list li {
+            position: relative; padding-left: 20px; margin-bottom: 10px; 
+            font-size: 14px; color: #555; border-bottom: 1px dashed #eee; padding-bottom: 5px;
+        }
+        .t-list li:last-child { border-bottom: none; }
+        .t-list li::before {
+            content: "\f0da"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; top: 4px; color: var(--tf-yellow); font-size: 12px;
+        }
+
+        /* ==== BMS SUBSYSTEMS CARDS ==== */
+        .subsystems-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f7ff 100%);
+        }
+        
+        .subsystem-card {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .subsystem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--tf-blue);
+        }
+        
+        .subsystem-img {
+            height: 200px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+        }
+        
+        .subsystem-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .subsystem-card:hover .subsystem-img img {
+            transform: scale(1.05);
+        }
+        
+        .subsystem-img-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(0, 76, 163, 0.2), rgba(0, 0, 0, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .subsystem-img-icon {
+            font-size: 48px;
+            opacity: 0.9;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subsystem-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .subsystem-header {
+            margin-bottom: 15px;
+        }
+        
+        .subsystem-header h4 {
+            color: var(--tf-blue);
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .subsystem-header h4 i {
+            color: var(--tf-yellow);
+            font-size: 18px;
+        }
+        
+        .subsystem-description {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .subsystem-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            flex-grow: 1;
+        }
+        
+        .subsystem-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 13px;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+        }
+        
+        .subsystem-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .subsystem-list li:before {
+            content: "▸";
+            color: var(--tf-yellow);
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+        
+        .subsystem-note {
+            background: #eff6ff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 11px;
+            color: #1e40af;
+            font-weight: 600;
+            border-left: 3px solid var(--tf-yellow);
+        }
+        
+        .subsystem-link {
+            background: var(--tf-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--tf-blue);
+        }
+        
+        .subsystem-link:hover {
+            background: transparent;
+            color: var(--tf-blue);
+        }
+        
+        .subsystem-link i {
+            margin-left: 5px;
+            font-size: 10px;
+        }
+        
+        /* ==== GRID LAYOUT ==== */
+        .subsystems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        /* ==== SPECIALIZED SUBSYSTEMS SECTION ==== */
+        .specialized-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .specialized-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fefce8 100%);
+            border-radius: var(--card-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border-left: 5px solid var(--tf-yellow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .specialized-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lift);
+        }
+        
+        /* --- LIGHTBOX --- */
+        .lightbox-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 1100;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease; cursor: zoom-out;
+        }
+        .lightbox-modal.active { display: flex; opacity: 1; }
+        .lightbox-img { max-width: 90%; max-height: 85vh; border-radius: 4px; box-shadow: 0 0 50px rgba(255,255,255,0.1); transform: scale(0.9); transition: 0.3s; }
+        .lightbox-modal.active .lightbox-img { transform: scale(1); }
+        .lightbox-caption { position: absolute; bottom: 30px; color: #fff; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- FOOTER --- */
+        .footer { background: #0b111a; color: #aaa; margin-top: 0; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+        
+        .btn-mobile-toggle { font-size: 24px; color: #fff; background: none; border: none; }
+        .header-fix.scrolled .btn-mobile-toggle { color: var(--tf-dark) !important; }
+    </style>
+</head>
+
+<body>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox-modal">
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Full Screen">
+        <div id="lightboxCaption" class="lightbox-caption"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                
+                <!-- NAVIGATION -->
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div> <div class="dropdown-category">Critical Infrastructure</div>
+                                     <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a> 
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                     
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END DROPDOWN -->
+
+                        <!-- PRODUCTS DROPDOWN - UPDATED CATEGORIES -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END PRODUCTS DROPDOWN -->
+
+                        <a href="/#/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="tech-hero">
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/technologyes/See-smarter_tech02.jpg" class="tech-hero-bg" alt="Technology Background">
+        <div class="hero-content">
+            <h1>Our BMS Technologies</h1>
+            <p>A comprehensive ecosystem of Security, AIoT, and Automation Systems designed for intelligent infrastructure.</p>
+        </div>
+    </section>
+
+    <!-- UNIFIED NAV BAR -->
+    <div class="tech-nav-bar border-bottom bg-white">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center py-3">
+
+            <!-- LEFT: Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                        <a href="/index.html" class="text-decoration-none fw-semibold">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active fw-bold text-primary">
+                        Technologies
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- RIGHT: Section Context -->
+            <div class="d-flex align-items-center gap-3 mt-2 mt-md-0">
+                <span class="text-primary fw-bold text-uppercase small">
+                    <i class="fa fa-microchip me-2"></i> System Architecture
+                </span>
+                <span class="text-muted small fw-bold d-none d-md-inline">
+                    INTEGRATED SOLUTIONS
+                </span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SYSTEM ARCHITECTURE CARDS -->
+    <section class="tech-showcase">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 style="font-size:36px; font-weight:800; text-transform: uppercase; color:var(--tf-blue);">Core Tech Ecosystem</h2>
+                <div style="width:70px; height:4px; background:var(--tf-yellow); margin:15px auto; border-radius:10px;"></div>
+                <p style="color:#777; max-width:600px; margin:0 auto;">Interactive technology stacks tailored for modern smart cities and buildings.</p>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- 1. Security & Surveillance -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="t-card">
+                        <div class="t-img-box" onclick="openLightbox(this)" data-title="Security & Surveillance">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/technologyes/security-surveillance.jpg" alt="Security System">
+                            <div class="t-action-icon"><i class="fa fa-expand"></i></div>
+                        </div>
+                        <div class="t-content">
+                            <div class="t-header">
+                                <span>Protection & Safety</span>
+                                <h3>Security & Surveillance</h3>
+                            </div>
+                            <ul class="t-list">
+                                <li>Video surveillance system</li>
+                                <li>Access control system</li>
+                                <li>Fire alarm system</li>
+                                <li>Electronic fence system</li>
+                                <li>Patrol system</li>
+                                <li>Anti-theft alarm system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Communication & Audio -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="t-card">
+                        <div class="t-img-box" onclick="openLightbox(this)" data-title="Communication & Audio">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/technologyes/network-speaker_Background-Music.jpg" alt="Audio System">
+                            <div class="t-action-icon"><i class="fa fa-expand"></i></div>
+                        </div>
+                        <div class="t-content">
+                            <div class="t-header">
+                                <span>Connectivity</span>
+                                <h3>Communication & Audio</h3>
+                            </div>
+                            <ul class="t-list">
+                                <li>Intercom system</li>
+                                <li>Background music system</li>
+                                <li>Information dissemination</li>
+                                <li>Cable TV system</li>
+                                <li>Queue calling</li>
+                                <li>Conference system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Building Automation -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="t-card">
+                        <div class="t-img-box" onclick="openLightbox(this)" data-title="Building Automation">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" alt="Building Automation">
+                            <div class="t-action-icon"><i class="fa fa-expand"></i></div>
+                        </div>
+                        <div class="t-content">
+                            <div class="t-header">
+                                <span>Smart Control</span>
+                                <h3>Building Automation</h3>
+                            </div>
+                            <ul class="t-list">
+                                <li>Building control equipment</li>
+                                <li>Intelligent lighting system</li>
+                                <li>BMS automation (SKD factory)</li>
+                                <li>HVAC Integration</li>
+                                <li>Water Supply & Drainage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Networking & Infrastructure -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="t-card">
+                        <div class="t-img-box" onclick="openLightbox(this)" data-title="Networking & Infrastructure">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/technologyes/Networking & Infrastructure.jpg" alt="Networking">
+                            <div class="t-action-icon"><i class="fa fa-expand"></i></div>
+                        </div>
+                        <div class="t-content">
+                            <div class="t-header">
+                                <span>Data Backbone</span>
+                                <h3>Networking & Infra</h3>
+                            </div>
+                            <ul class="t-list">
+                                <li>Network data system</li>
+                                <li>Integrated wiring</li>
+                                <li>Computer room installation</li>
+                                <li>Static floor installation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Access & Facility Mgmt -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="t-card">
+                        <div class="t-img-box" onclick="openLightbox(this)" data-title="Access & Facility Management">
+                            <img src="https://images.unsplash.com/photo-1621929747188-0b4dc28498d2?auto=format&fit=crop&w=800" alt="Facility Management">
+                            <div class="t-action-icon"><i class="fa fa-expand"></i></div>
+                        </div>
+                        <div class="t-content">
+                            <div class="t-header">
+                                <span>Operations</span>
+                                <h3>Access & Facility Mgmt</h3>
+                            </div>
+                            <ul class="t-list">
+                                <li>Parking management system</li>
+                                <li>Speed door system</li>
+                                <li>Guest room management system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Educational & Display -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="t-card">
+                        <div class="t-img-box" onclick="openLightbox(this)" data-title="Educational & Display Systems">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800" alt="Education System">
+                            <div class="t-action-icon"><i class="fa fa-expand"></i></div>
+                        </div>
+                        <div class="t-content">
+                            <div class="t-header">
+                                <span>Interactive</span>
+                                <h3>Educational & Display</h3>
+                            </div>
+                            <ul class="t-list">
+                                <li>Electronic blackboard</li>
+                                
+                                <li>Interactive display systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= COMPLETE BMS SUBSYSTEMS INTEGRATION - ALL 13 ================= -->
+    <section class="subsystems-section" id="bms-subsystems">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold" style="color:var(--tf-blue);">Complete BMS Subsystems Integration</h2>
+                <p class="lead text-muted mb-4">Tongfang BMS seamlessly integrates all 13 critical building systems into a unified intelligent platform</p>
+                <div style="width:70px; height:4px; background:var(--tf-yellow); margin:20px auto; border-radius:10px;"></div>
+            </div>
+
+            <div class="subsystems-grid">
+                <!-- 1. HVAC Control -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80" alt="HVAC Control System">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-wind subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-wind"></i> HVAC Control</h4>
+                        </div>
+                        <p class="subsystem-description">Complete heating, ventilation, and air conditioning management for optimal indoor climate control.</p>
+                        <ul class="subsystem-list">
+                            <li>Chillers & Cooling Towers</li>
+                            <li>AHUs & FCUs</li>
+                            <li>VAV boxes & Dampers</li>
+                            <li>Exhaust & Fresh Air Fans</li>
+                            <li>CHW/HW Pumps</li>
+                        </ul>
+                        <div class="subsystem-note">Main BMS Scope - Full Control & Optimization</div>
+                        <a href="/#/hvac-control.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 2. Electrical Power Monitoring -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80" alt="Electrical Power Monitoring">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-bolt subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-bolt"></i> Electrical Power Monitoring</h4>
+                        </div>
+                        <p class="subsystem-description">Real-time monitoring and management of electrical distribution systems for energy optimization.</p>
+                        <ul class="subsystem-list">
+                            <li>Main LV Panels</li>
+                            <li>Sub-distribution Boards</li>
+                            <li>Energy Meters (kWh, kVA)</li>
+                            <li>Generator & UPS Monitoring</li>
+                            <li>Transformer Monitoring</li>
+                        </ul>
+                        <a href="/#/electrical-power.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 3. Lighting Control System -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80" alt="Lighting Control">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-lightbulb subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-lightbulb"></i> Lighting Control (LCS)</h4>
+                        </div>
+                        <p class="subsystem-description">Intelligent lighting automation with occupancy sensing, scheduling, and daylight harvesting.</p>
+                        <ul class="subsystem-list">
+                            <li>Indoor Lighting Control</li>
+                            <li>Outdoor & Façade Lighting</li>
+                            <li>Time Scheduling</li>
+                            <li>Occupancy-based Control</li>
+                            <li>Daylight Harvesting</li>
+                        </ul>
+                        <div class="subsystem-note">Standalone or BMS Integrated</div>
+                        <a href="/#/lighting-control.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 4. Fire & Life Safety -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1589506365943-8873762d2c52?auto=format&fit=crop&w=800&q=80" alt="Fire Safety">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-fire-extinguisher subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-fire-extinguisher"></i> Fire & Life Safety</h4>
+                        </div>
+                        <p class="subsystem-description">Critical interface for monitoring fire alarm systems and life safety equipment.</p>
+                        <ul class="subsystem-list">
+                            <li>Fire Alarm System Status</li>
+                            <li>Fire Dampers</li>
+                            <li>Smoke Exhaust Fans</li>
+                            <li>Staircase Pressurization</li>
+                            <li>Fire Pump Status</li>
+                        </ul>
+                        <div class="subsystem-note">Monitoring only – no control</div>
+                        <a href="/#/fire-safety.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 5. Water Systems -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80" alt="Water Systems">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-tint subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-tint"></i> Water Systems</h4>
+                        </div>
+                        <p class="subsystem-description">Comprehensive water management including supply, drainage, and irrigation systems.</p>
+                        <ul class="subsystem-list">
+                            <li>Domestic Water Pumps</li>
+                            <li>Booster Pumps</li>
+                            <li>Water Tank Level Monitoring</li>
+                            <li>Sump & Drainage Pumps</li>
+                            <li>Irrigation System Monitoring</li>
+                        </ul>
+                        <a href="/#/water-systems.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 6. Gas Monitoring System -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80" alt="Gas Monitoring">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-fire subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-fire"></i> Gas Monitoring System</h4>
+                        </div>
+                        <p class="subsystem-description">Safety monitoring for gas leaks and valve status with alarm interface integration.</p>
+                        <ul class="subsystem-list">
+                            <li>LPG / Natural Gas Detection</li>
+                            <li>Gas Valve Status Monitoring</li>
+                            <li>Leak Detection Sensors</li>
+                            <li>Alarm Interface to BMS</li>
+                            <li>Emergency Shutdown</li>
+                        </ul>
+                        <a href="/#/gas-monitoring.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 7. Elevator / Escalator Monitoring -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Elevator Monitoring">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-elevator subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-elevator"></i> Elevator Monitoring</h4>
+                        </div>
+                        <p class="subsystem-description">Real-time monitoring of elevator and escalator operations for safety and maintenance.</p>
+                        <ul class="subsystem-list">
+                            <li>Lift Status (Run, Stop, Fault)</li>
+                            <li>Elevator Alarms</li>
+                            <li>Escalator Operation Status</li>
+                            <li>Maintenance Alerts</li>
+                            <li>Usage Statistics</li>
+                        </ul>
+                        <div class="subsystem-note">Monitoring only</div>
+                        <a href="/#/elevator-monitoring.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 8. Parking Management -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" alt="Parking Management">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-parking subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-parking"></i> Parking Management</h4>
+                        </div>
+                        <p class="subsystem-description">Smart parking solutions with ventilation control and occupancy monitoring.</p>
+                        <ul class="subsystem-list">
+                            <li>CO / NO₂ Sensors</li>
+                            <li>Jet Fans Control</li>
+                            <li>Parking Exhaust Fans</li>
+                            <li>Occupancy Signals</li>
+                            <li>Ventilation Automation</li>
+                        </ul>
+                        <a href="/#/parking-management.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 9. Security System Interface -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80" alt="Security Systems">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-shield-alt subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-shield-alt"></i> Security System Interface</h4>
+                        </div>
+                        <p class="subsystem-description">Integration with security systems including CCTV, access control, and intrusion detection.</p>
+                        <ul class="subsystem-list">
+                            <li>Access Control System (ACS)</li>
+                            <li>CCTV System Status</li>
+                            <li>Intrusion / Burglar Alarms</li>
+                            <li>Video Surveillance</li>
+                            <li>Perimeter Security</li>
+                        </ul>
+                        <div class="subsystem-note">Status & alarms only</div>
+                        <a href="/#/security-systems.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 10. Energy Management System (EMS) -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Energy Management">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-chart-line subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-chart-line"></i> Energy Management (EMS)</h4>
+                        </div>
+                        <p class="subsystem-description">Advanced energy analytics, demand control, and load shedding for efficiency.</p>
+                        <ul class="subsystem-list">
+                            <li>Energy Analytics & Reporting</li>
+                            <li>Demand Control & Load Shedding</li>
+                            <li>Peak Demand Monitoring</li>
+                            <li>Carbon Footprint Tracking</li>
+                            <li>Cost Optimization</li>
+                        </ul>
+                        <a href="/#/energy-management.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 11. Renewable Energy Monitoring -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80" alt="Renewable Energy">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-solar-panel subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-solar-panel"></i> Renewable Energy</h4>
+                        </div>
+                        <p class="subsystem-description">Monitoring and management of solar PV systems and renewable energy generation.</p>
+                        <ul class="subsystem-list">
+                            <li>Solar PV System Monitoring</li>
+                            <li>Inverter Status & Performance</li>
+                            <li>Energy Generation Data</li>
+                            <li>Grid Integration Analytics</li>
+                            <li>ROI Tracking</li>
+                        </ul>
+                        <a href="/#/renewable-energy.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 12. Weather Monitoring -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&w=800&q=80" alt="Weather Monitoring">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-cloud-sun subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-cloud-sun"></i> Weather Monitoring</h4>
+                        </div>
+                        <p class="subsystem-description">Environmental monitoring for optimizing building systems based on weather conditions.</p>
+                        <ul class="subsystem-list">
+                            <li>Outdoor Temperature</li>
+                            <li>Humidity Monitoring</li>
+                            <li>Wind Speed & Direction</li>
+                            <li>Rain Sensors</li>
+                            <li>Solar Radiation</li>
+                        </ul>
+                        <a href="/#/weather-monitoring.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- 13. Room Automation / Smart Rooms -->
+                <div class="subsystem-card">
+                    <div class="subsystem-img">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="Room Automation">
+                        <div class="subsystem-img-overlay">
+                            <i class="fas fa-home subsystem-img-icon"></i>
+                        </div>
+                    </div>
+                    <div class="subsystem-content">
+                        <div class="subsystem-header">
+                            <h4><i class="fas fa-home"></i> Room Automation</h4>
+                        </div>
+                        <p class="subsystem-description">Intelligent room control for hotels, offices, and residential spaces.</p>
+                        <ul class="subsystem-list">
+                            <li>Hotel Room Control Units</li>
+                            <li>Occupancy Sensors</li>
+                            <li>Curtain & Blind Control</li>
+                            <li>HVAC + Lighting Integration</li>
+                            <li>Presence Detection</li>
+                        </ul>
+                        <a href="/#/room-automation.html" class="subsystem-link">See in Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KEYWORDS STRIP -->
+    <div style="background: var(--tf-blue); padding: 60px 0; color:#fff; position: relative; overflow: hidden;">
+        <div class="container text-center position-relative" style="z-index: 2;">
+            <h4 class="mb-4 text-uppercase" style="letter-spacing:2px; font-size:14px; opacity:0.7; color: var(--tf-yellow);">13 Integrated Subsystems</h4>
+            <div class="row text-uppercase fw-bold g-4" style="font-size:13px; letter-spacing:1px;">
+                <div class="col-md-2 col-6">HVAC Control</div>
+                <div class="col-md-2 col-6">Electrical Power</div>
+                <div class="col-md-2 col-6">Lighting Control</div>
+                <div class="col-md-2 col-6">Fire Safety</div>
+                <div class="col-md-2 col-6">Water Systems</div>
+                <div class="col-md-2 col-6">Gas Monitoring</div>
+                <div class="col-md-2 col-6">Elevator Monitoring</div>
+                <div class="col-md-2 col-6">Parking Management</div>
+                <div class="col-md-2 col-6">Security Interface</div>
+                <div class="col-md-2 col-6">Energy Management</div>
+                <div class="col-md-2 col-6">Renewable Energy</div>
+                <div class="col-md-2 col-6">Weather Monitoring</div>
+                <div class="col-md-2 col-6">Room Automation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="btn-link" href="/index.html">Home</a><br>
+                    <a class="btn-link" href="/about/index.html">About Us</a><br>
+                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                    <a class="btn-link" href="/products/index.html">Products</a><br>
+                    <a class="btn-link" href="/projects/index.html">projects</a><br>
+                    <a class="btn-link" href="/#/index.html">Technologies</a><br>
+                    <a class="btn-link" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get smart building & automation updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            const imgTitle = element.getAttribute('data-title');
+            
+            lightboxImg.src = imgSrc;
+            lightboxCaption.innerText = imgTitle;
+            lightbox.classList.add('active');
+        }
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

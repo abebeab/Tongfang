@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us | Tongfang BMS Integration</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            --header-height: 80px;
+            --card-radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+        }
+
+        body { background-color: var(--tf-white); font-family: 'Open Sans', sans-serif; color: var(--tf-text); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-blue); }
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* --- 1. GLASS HEADER & MEGA MENU --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(12px);
+            transition: var(--transition); border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-fix.scrolled { background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        .nav-link-custom { color: #fff; font-weight: 600; font-size: 13px; text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px; }
+        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); }
+        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
+
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px;
+            padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100; text-align: left;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; border-bottom: 1px solid #eee; margin-bottom: 5px; margin-top: 10px; }
+        .dropdown-category:first-child { margin-top: 0; }
+
+        /* --- 2. CONTACT PAGE SPECIFIC --- */
+        .inner-hero { 
+            height: 45vh; background: linear-gradient(rgba(0, 76, 163, 0.8), rgba(0, 76, 163, 0.8)), url('https://images.unsplash.com/photo-1516387933669-1816dbb8ac22?auto=format&fit=crop&w=1600');
+            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding-top: 80px;
+        }
+
+        .contact-card {
+            background: #fff; padding: 40px; border-radius: var(--card-radius); text-align: center;
+            border: 1px solid rgba(0,76,163,0.08); box-shadow: var(--shadow-soft); transition: var(--transition);
+        }
+        .contact-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lift); }
+
+        .icon-circle {
+            width: 70px; height: 70px; background: var(--tf-bg-light); color: var(--tf-blue);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px; font-size: 24px;
+        }
+
+        /* MAP BOX */
+        .map-container {
+            position: relative; border-radius: var(--card-radius); overflow: hidden;
+            box-shadow: var(--shadow-soft); border: 1px solid #eee; transition: var(--transition);
+            background: #f5f7fa; cursor: pointer;
+        }
+        .map-container:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+        .map-container img { width: 100%; height: auto; max-height: 450px; object-fit: contain; display: block; transition: 0.5s; }
+        
+        .map-overlay-link {
+            position: absolute; bottom: 25px; right: 25px; background: var(--tf-blue);
+            color: #fff; padding: 12px 30px; border-radius: 50px; font-weight: 700;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- 3. FOOTER STYLES --- */
+        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+    </style>
+</head>
+
+<body>
+
+   <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                
+                <!-- NAVIGATION -->
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                     
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                     
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                     
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END DROPDOWN -->
+
+                        
+<!-- PRODUCTS DROPDOWN - UPDATED CATEGORIES -->
+<div class="nav-item-dropdown">
+    <a href="/products/index.html" class="nav-link-custom">
+        Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+    </a>
+
+    <div class="dropdown-menu-custom">
+        <!-- Col 1 -->
+        <div>
+            <div class="dropdown-category">Core Controllers</div>
+            <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+            <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+            <div class="dropdown-category">Field Instrumentation</div>
+            <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+            <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+            <div class="dropdown-category">Management & Power</div>
+            <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+            <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+            <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+            <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                View All Products >
+            </a>
+        </div>
+    </div>
+</div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+<!-- END PRODUCTS DROPDOWN -->
+
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- HERO -->
+    <section class="inner-hero">
+        <div class="container">
+            <h1 class="display-3 fw-800 text-white">Contact Us</h1>
+            <p class="lead text-white-50 fs-4">Engineering the Digital Backbone of East Africa</p>
+        </div>
+    </section>
+
+    <!-- INFO CARDS -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-card">
+                        <div class="icon-circle"><i class="fa fa-phone-alt"></i></div>
+                        <h4>Direct Line</h4>
+                        <p>Technical support & Sales</p>
+                        <h5 class="text-dark">+251 9 11249722</h5>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-card">
+                        <div class="icon-circle"><i class="fa fa-envelope-open"></i></div>
+                        <h4>Email Inquiry</h4>
+                        <p>Project RFQs & Support</p>
+                        <h5 class="text-dark">info@tongfangbms.com</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIT US SECTION -->
+    <section class="py-5 bg-light mt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <h6 class="text-primary text-uppercase fw-bold mb-3">Headquarters</h6>
+                    <h2 class="display-5 mb-4">Visit Our Main Office</h2>
+                    <p class="mb-5 lead text-muted">Maryam Mazoria, Bole Bulbula, Addis Ababa, Ethiopia. We are open for project consultations and technical demonstrations.</p>
+                    
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="icon-circle m-0 me-3" style="width:55px; height:55px; flex-shrink:0;"><i class="fa fa-map-marker-alt"></i></div>
+                        <div>
+                            <h5 class="mb-1">HQ Address</h5>
+                            <p class="mb-0 text-dark">Maryam Mazoria, Bole Bulbula,<br>Addis Ababa, Ethiopia</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start mb-5">
+                        <div class="icon-circle m-0 me-3" style="width:55px; height:55px; flex-shrink:0;"><i class="fa fa-clock"></i></div>
+                        <div>
+                            <h5 class="mb-1">Office Hours</h5>
+                            <p class="mb-0 text-dark">Mon – Fri: 8:30 AM – 5:30 PM<br>Sat: 9:00 AM – 1:00 PM</p>
+                        </div>
+                    </div>
+
+                    <a href="mailto:info@tongfangbms.com" class="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow">
+                        <i class="fa fa-envelope me-2"></i> Email Engineers
+                    </a>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="map-container shadow-lg">
+                        <a href="https://maps.app.goo.gl/T35PdyCEETQNa8dKA?g_st=ipc" target="_blank">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/contact/google map.png" alt="Tongfang BMS Office Map">
+                            <div class="map-overlay-link">
+                                <i class="fa fa-directions me-2"></i> Open Google Maps
+                            </div>
+                        </a>
+                    </div>
+                    <p class="mt-3 small text-center text-muted">Click the map above to get precise directions to our office.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="text-secondary d-block mb-2" href="/index.html">Home</a>
+                    <a class="text-secondary d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="text-secondary d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="text-secondary d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="text-secondary d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="text-secondary d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control border-0" placeholder="Your Email">
+                        <button class="btn btn-primary">Join</button>
+                    </div>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#"><i class="fab fa-facebook-f text-white fs-5"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in text-white fs-5"></i></a>
+                        <a href="#"><i class="fab fa-twitter text-white fs-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+    </script>
+</body>
+</html>

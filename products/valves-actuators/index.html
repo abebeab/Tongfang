@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Valves & Actuators | Tongfang BMS Products</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            --header-height: 80px;
+            --card-radius: 16px;
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { background-color: var(--tf-white); font-family: 'Open Sans', sans-serif; color: var(--tf-text); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, h4, h5 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-blue); }
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* --- MASTER GLASS HEADER --- */
+        .header-fix { 
+            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(12px);
+            transition: var(--transition); border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .header-fix.scrolled { background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        .nav-link-custom { color: #fff; font-weight: 600; font-size: 13px; text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px; }
+        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); }
+        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
+
+        /* --- MEGA MENU --- */
+        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom {
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
+            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px;
+            padding: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100;
+        }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; }
+        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
+        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; border-bottom: 1px solid #eee; margin-bottom: 5px; }
+
+        /* --- HERO SECTION --- */
+        .product-hero {
+            position: relative; height: 60vh; min-height: 500px; background: #000; overflow: hidden; display: flex; align-items: center; padding-top: 80px;
+        }
+        .product-hero img {
+            position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.7;
+        }
+        .product-hero-content {
+            position: relative; z-index: 2; color: #fff; max-width: 800px; padding: 0 20px;
+        }
+        .product-hero-content h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.8); }
+        .product-hero-content p { font-size: 1.25rem; font-weight: 400; opacity: 0.9; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+
+        /* --- BREADCRUMB --- */
+        .breadcrumb-section {
+            background: #f8fafc; padding: 15px 0; border-bottom: 1px solid #e5e7eb;
+        }
+        .breadcrumb { margin: 0; }
+        .breadcrumb-item a { color: var(--tf-blue); font-weight: 600; }
+        .breadcrumb-item.active { color: var(--tf-text); }
+
+        /* --- PRODUCT DETAILS SECTION --- */
+        .product-detail-section { padding: 80px 0; }
+        .product-specs { background: #fff; border-radius: var(--card-radius); padding: 40px; box-shadow: var(--shadow-soft); border: 1px solid #eee; }
+        .spec-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0; }
+        .spec-item:last-child { border-bottom: none; }
+        .spec-label { font-weight: 700; color: var(--tf-blue); font-size: 14px; text-transform: uppercase; margin-bottom: 5px; }
+        .spec-value { font-size: 15px; color: var(--tf-text); }
+        
+        /* --- PRODUCT FEATURES --- */
+        .feature-card {
+            background: #fff; border-radius: var(--card-radius); padding: 30px; height: 100%;
+            border: 1px solid rgba(14,95,172,0.08); box-shadow: var(--shadow-soft); transition: var(--transition);
+        }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lift); border-color: var(--tf-yellow); }
+        .feature-icon { width: 70px; height: 70px; background: linear-gradient(135deg, var(--tf-blue), #0066cc); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: white; font-size: 24px; }
+
+        /* --- VALVE CARDS --- */
+        .valve-card {
+            background: #fff; border-radius: var(--card-radius); padding: 25px; margin-bottom: 25px;
+            border-left: 4px solid var(--tf-blue); box-shadow: var(--shadow-soft); transition: var(--transition);
+        }
+        .valve-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+        .valve-badge {
+            background: var(--tf-yellow); color: var(--tf-blue); padding: 5px 15px; border-radius: 20px;
+            font-size: 12px; font-weight: 800; text-transform: uppercase; display: inline-block; margin-bottom: 15px;
+        }
+
+        /* --- PRODUCT GALLERY --- */
+        .gallery-item { border-radius: var(--card-radius); overflow: hidden; margin-bottom: 25px; box-shadow: var(--shadow-soft); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* --- DOWNLOADS & DOCS --- */
+        .download-card {
+            background: #fff; border-radius: var(--card-radius); padding: 25px; margin-bottom: 20px;
+            border-left: 4px solid var(--tf-yellow); box-shadow: var(--shadow-soft); transition: var(--transition);
+        }
+        .download-card:hover { transform: translateX(5px); box-shadow: var(--shadow-lift); }
+        .download-icon { color: var(--tf-blue); font-size: 24px; margin-right: 15px; }
+        .download-btn { background: var(--tf-blue); color: white; padding: 8px 20px; border-radius: 6px; font-size: 12px; font-weight: 700; text-transform: uppercase; border: 2px solid var(--tf-blue); transition: var(--transition); }
+        .download-btn:hover { background: transparent; color: var(--tf-blue); }
+
+        /* --- RELATED PRODUCTS --- */
+        .related-product-card {
+            background: #fff; border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow-soft);
+            transition: var(--transition); border: 1px solid #eee; margin-bottom: 30px;
+        }
+        .related-product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); border-color: var(--tf-blue); }
+        .related-product-img { height: 200px; width: 100%; object-fit: cover; }
+        .related-product-content { padding: 20px; }
+        .related-product-title { font-size: 16px; font-weight: 700; color: var(--tf-blue); margin-bottom: 10px; }
+        
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #0066cc 100%);
+            padding: 80px 0; color: white; text-align: center;
+        }
+        .cta-section h2 { color: white; font-size: 2.5rem; margin-bottom: 20px; }
+        .cta-btn { background: var(--tf-yellow); color: var(--tf-blue); padding: 15px 40px; border-radius: 50px; font-weight: 800; font-size: 16px; display: inline-block; border: 2px solid var(--tf-yellow); transition: var(--transition); }
+        .cta-btn:hover { background: transparent; color: var(--tf-yellow); }
+
+        /* --- FOOTER --- */
+        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">View All Products ></a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="product-hero">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=80" alt="Valves & Actuators">
+        <div class="container">
+            <div class="product-hero-content">
+                <h1>Valves & Actuators</h1>
+                <p>Precision flow control solutions for HVAC, water, and steam systems with automated actuation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= BREADCRUMB ================= -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products</a></li>
+                    <li class="breadcrumb-item active">Valves & Actuators</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- ================= PRODUCT DETAILS ================= -->
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Precision Flow Control Solutions</h2>
+                    <p class="lead mb-4">Tongfang valves and actuators provide reliable flow control for HVAC, chilled water, hot water, and steam systems with precise modulation and tight shut-off capabilities.</p>
+                    
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fa fa-tachometer-alt"></i>
+                                </div>
+                                <h4>High Precision</h4>
+                                <p>0.1% resolution control valves with linear and equal percentage characteristics.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fa fa-bolt"></i>
+                                </div>
+                                <h4>Spring Return</h4>
+                                <p>Fail-safe spring return actuators for safety-critical applications.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="mb-4">Product Range</h3>
+                    
+                    <!-- Control Valves -->
+                    <div class="valve-card">
+                        <span class="valve-badge">Control Valves</span>
+                        <h4>2-Way & 3-Way Control Valves</h4>
+                        <p>Globe and ball valves for precise flow control in heating, cooling, and mixing applications.</p>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Types</div>
+                                    <div class="spec-value">2-way, 3-way mixing & diverting</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Sizes</div>
+                                    <div class="spec-value">DN15 to DN200 (½" to 8")</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Body Materials</div>
+                                    <div class="spec-value">Bronze, cast iron, stainless steel</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Pressure Rating</div>
+                                    <div class="spec-value">PN16 to PN40 (230 to 580 psi)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Electric Actuators -->
+                    <div class="valve-card">
+                        <span class="valve-badge">Electric Actuators</span>
+                        <h4>Modulating & On/Off Actuators</h4>
+                        <p>Spring return and non-spring return actuators with position feedback for precise control.</p>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Torque Range</div>
+                                    <div class="spec-value">5 Nm to 200 Nm (44 to 1770 in-lb)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Control Signal</div>
+                                    <div class="spec-value">0-10V, 4-20mA, BACnet, Modbus</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Travel Time</div>
+                                    <div class="spec-value">15s to 120s (90° rotation)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Fail-Safe</div>
+                                    <div class="spec-value">Spring return options available</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pressure Independent Valves -->
+                    <div class="valve-card">
+                        <span class="valve-badge">Pressure Independent</span>
+                        <h4>Pressure Independent Control Valves (PICV)</h4>
+                        <p>Automatic flow regulation regardless of pressure fluctuations in the system.</p>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Flow Range</div>
+                                    <div class="spec-value">0.1 to 50 m³/h (0.44 to 220 GPM)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">ΔP Range</div>
+                                    <div class="spec-value">10 to 300 kPa (1.5 to 43.5 psi)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Accuracy</div>
+                                    <div class="spec-value">±5% of setpoint flow</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Applications</div>
+                                    <div class="spec-value">Fan coil units, chilled beams, VAV</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steam Valves -->
+                    <div class="valve-card">
+                        <span class="valve-badge">Steam Applications</span>
+                        <h4>Steam Control Valves</h4>
+                        <p>Specialized valves for steam heating and process applications with anti-cavitation trim.</p>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Temperature Rating</div>
+                                    <div class="spec-value">Up to 220°C (428°F)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Pressure Class</div>
+                                    <div class="spec-value">PN16 to PN63</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Trim Types</div>
+                                    <div class="spec-value">Cage, micro-port, anti-cavitation</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="spec-item">
+                                    <div class="spec-label">Materials</div>
+                                    <div class="spec-value">Stainless steel, carbon steel</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Specifications -->
+                    <h3 class="mb-4 mt-5">General Specifications</h3>
+                    <div class="product-specs mb-5">
+                        <div class="spec-item">
+                            <div class="spec-label">Control Signals</div>
+                            <div class="spec-value">0-10V DC, 4-20mA, BACnet MS/TP, Modbus RTU</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Power Supply</div>
+                            <div class="spec-value">24V AC/DC, 110V AC, 230V AC</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Position Feedback</div>
+                            <div class="spec-value">0-10V or 4-20mA, potentiometer</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Ingress Protection</div>
+                            <div class="spec-value">IP54 standard, IP67 available</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Operating Temperature</div>
+                            <div class="spec-value">-20°C to +80°C (-4°F to 176°F)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Leakage Class</div>
+                            <div class="spec-value">ANSI/FCI 70-2 Class IV, V, VI</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Certifications</div>
+                            <div class="spec-value">CE, UL, CSA, ISO 9001, ISO 5211</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mb-4">Product Gallery</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://material.dahuasecurity.com/product/20180709/MPTZ1100-2030RA_thumb.png" alt="Control Valve">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="gallery-item">
+                                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" alt="Valve Installation">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="product-specs mb-5">
+                        <h4 class="mb-4">Quick Info</h4>
+                        <div class="spec-item">
+                            <div class="spec-label">Product Line</div>
+                            <div class="spec-value">TF-VALVE Series</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Valve Types</div>
+                            <div class="spec-value">Control, Ball, Butterfly, Globe</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Warranty</div>
+                            <div class="spec-value">2 Years on Valves, 1 Year on Actuators</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Lead Time</div>
+                            <div class="spec-value">2-6 Weeks (standard), 8-12 (custom)</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Support</div>
+                            <div class="spec-value">Sizing & Selection Assistance</div>
+                        </div>
+                    </div>
+
+                    <h4 class="mb-4">Downloads & Documentation</h4>
+                    <div class="download-card">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-file-pdf download-icon"></i>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Product Catalog</h6>
+                                <p class="text-muted small mb-0">Complete Valve & Actuator Range</p>
+                            </div>
+                            <a href="#" class="download-btn">Download</a>
+                        </div>
+                    </div>
+                    <div class="download-card">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-book download-icon"></i>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Installation Manual</h6>
+                                <p class="text-muted small mb-0">Valve Installation & Commissioning</p>
+                            </div>
+                            <a href="#" class="download-btn">Download</a>
+                        </div>
+                    </div>
+                    <div class="download-card">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-calculator download-icon"></i>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Sizing Guide</h6>
+                                <p class="text-muted small mb-0">Valve Sizing & Selection</p>
+                            </div>
+                            <a href="#" class="download-btn">Download</a>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <h4 class="mb-4">Valve Selection Guide</h4>
+                        <div class="feature-card">
+                            <h5>Choosing the Right Valve</h5>
+                            <p class="mb-3">Consider these factors for optimal valve selection:</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-check text-success me-2"></i> Media type (water, steam, glycol)</li>
+                                <li><i class="fa fa-check text-success me-2"></i> Pressure & temperature range</li>
+                                <li><i class="fa fa-check text-success me-2"></i> Required flow characteristics</li>
+                                <li><i class="fa fa-check text-success me-2"></i> Fail-safe requirements</li>
+                                <li><i class="fa fa-check text-success me-2"></i> Control accuracy needs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= RELATED PRODUCTS ================= -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-5 text-center">Related Products</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="/products/ddc-controllers/index.html" class="related-product-card d-block">
+                        <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controllers" class="related-product-img">
+                        <div class="related-product-content">
+                            <div class="related-product-title">DDC Controllers</div>
+                            <p class="small text-muted">Control valve positioning and modulation.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/products/sensors-thermostats/index.html" class="related-product-card d-block">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Sensors" class="related-product-img">
+                        <div class="related-product-content">
+                            <div class="related-product-title">Sensors & Thermostats</div>
+                            <p class="small text-muted">Provide input for valve control decisions.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/products/control-panels/index.html" class="related-product-card d-block">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" alt="Control Panels" class="related-product-img">
+                        <div class="related-product-content">
+                            <div class="related-product-title">Control Panels</div>
+                            <p class="small text-muted">House valve control equipment.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA SECTION ================= -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Valve Solutions for Your System?</h2>
+            <p class="lead mb-4">Contact our team for valve sizing, selection, and control strategy consultation.</p>
+            <a href="/contact/index.html" class="cta-btn">Request Valve Sizing</a>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="btn-link" href="/index.html">Home</a><br>
+                    <a class="btn-link" href="/about/index.html">About Us</a><br>
+                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                    <a class="btn-link" href="/products/index.html">Products</a><br>
+                    <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+                    <a class="btn-link" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get smart building updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+</footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
+            else { header.classList.remove('scrolled'); }
+        });
+    </script>
+</body>
+</html>

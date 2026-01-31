@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BCX Series - Intelligent Lighting Control | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/assets/img/logo.png" rel="icon" type="image/jpeg">
+    <!-- CSS Assets -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- PROFESSIONAL LIGHTING INTERACTION --- */
+        .lighting-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HIGH-CONTRAST PROFESSIONAL HOVER */
+        .lighting-card:hover {
+            background: #02245B !important; /* Dark Blue Contrast */
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(2, 36, 91, 0.4);
+            border-color: #FF5E14;
+        }
+
+        /* Image Display Area */
+        .img-display-area {
+            position: relative;
+            background: #fdfdfd;
+            padding: 30px;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .product-photo {
+            max-width: 100%;
+            height: 180px;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .lighting-card:hover .product-photo {
+            transform: scale(1.15); /* Deep Observation Zoom */
+        }
+
+        /* Zoom Label Overlay */
+        .click-to-zoom {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: #FF5E14;
+            color: white;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .lighting-card:hover .click-to-zoom { opacity: 1; }
+
+        /* Text Contrast Logic */
+        .lighting-card h4, .lighting-card h5, .lighting-card p, .lighting-card span, .lighting-card li { transition: 0.3s; }
+        .lighting-card:hover h4, .lighting-card:hover h5 { color: #ffffff !important; }
+        .lighting-card:hover p, .lighting-card:hover span, .lighting-card:hover li { color: rgba(255,255,255,0.7) !important; }
+
+        /* Technical Badges */
+        .io-tag {
+            font-size: 10px;
+            background: rgba(2, 36, 91, 0.05);
+            color: #02245B;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .lighting-card:hover .io-tag { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #fff; }
+
+        /* Category Header Styling */
+        .category-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .category-bar h4 { margin-bottom: 0; white-space: nowrap; font-weight: 700; color: #02245B; }
+        .category-line { height: 3px; background: #FF5E14; width: 100%; margin-left: 20px; border-radius: 5px; }
+
+        /* Modal Customization */
+        .zoom-modal-content { background: #000; border: 2px solid #FF5E14; }
+        .full-view-img { background: #fff; padding: 20px; border-radius: 8px; width: 100%; }
+    
+    </style>
+</head>
+<body>
+    <div id="spinner-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <!-- Page Header -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn">
+        <div class="container py-5 text-center">
+            <h1 class="display-3 text-white animated slideInDown">Intelligent Lighting Management</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center animated slideInDown mb-0">
+                    <li class="breadcrumb-item"><a href="/home/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products Architecture</a></li>
+                    <li class="breadcrumb-item active text-white">BCX Lighting Series</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Tech Overview Section -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp">
+                    <p class="fw-bold text-primary text-uppercase mb-2">Architectural Scene Management</p>
+                    <h2 class="display-5 mb-4">"Feed-Through" Smart Relay Logic</h2>
+                    <p class="mb-4">Tongfang integrates the Hysine BCX Series to provide industrial-grade lighting control. Designed as a <strong>pole contactor equivalent</strong>, these DIN-rail modules feature independent intelligence—ensuring that localized schedules and safety logic continue to operate even if the BMS server is offline.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-clock text-primary me-3"></i><span>Standalone Real-time Clock</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-network-wired text-primary me-3"></i><span>Dual BACnet & Modbus Ports</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-bolt text-primary me-3"></i><span>16A High-Inrush Capability</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-sliders-h text-primary me-3"></i><span>0~10V Precise LED Dimming</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-dark p-5 rounded shadow-lg text-white border-start border-5 border-primary">
+                        <h4 class="text-white mb-3">Integrator Advantage</h4>
+                        <p class="small opacity-75">We integrate BCX modules directly into switchboards. The DIN-rail mountable design and "Feed-Through" circuit logic minimize heat and maximize electrical safety in mission-critical facilities.</p>
+                        <hr class="bg-secondary">
+                        <span class="badge bg-primary px-3 py-2">Spain & EU Life Safety Compliant</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Catalog Section -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 600px;">
+                <h2 class="display-6">Full Lighting Module Matrix</h2>
+                <p>Click any device image for <strong>Observation Mode</strong> to view hardware quality and technical labeling.</p>
+            </div>
+
+            <!-- Group 1: Switching -->
+            <div class="category-bar wow fadeInLeft">
+                <h4>H-Series: Circuit Switch Controllers (16A)</h4>
+                <div class="category-line"></div>
+            </div>
+            <div class="row g-4 mb-5">
+                <!-- BCX-H1216 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-h1216.jpg" data-title="BCX-H1216 12-Circuit Controller">
+                            <img src="/assets/img/products/lighting-control/bcx-h1216.jpg" class="product-photo" alt="BCX-H1216">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BCX-H1216</h5>
+                            <span class="io-tag">12 Circuits / 16A</span>
+                            <p class="small text-muted mb-0">High-capacity switching for parking lots and large zones.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BCX-H1016 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-h1016.jpg" data-title="BCX-H1016 10-Circuit Controller">
+                            <img src="/assets/img/products/lighting-control/bcx-h1016.jpg" class="product-photo" alt="BCX-H1016">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BCX-H1016</h5>
+                            <span class="io-tag">10 Circuits / 16A</span>
+                            <p class="small text-muted mb-0">Standard for commercial office tower lighting zones.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BCX-H816 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-h816.jpg" data-title="BCX-H816 8-Circuit Controller">
+                            <img src="/assets/img/products/lighting-control/bcx-h816.jpg" class="product-photo" alt="BCX-H816">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BCX-H816</h5>
+                            <span class="io-tag">8 Circuits / 16A</span>
+                            <p class="small text-muted mb-0">Balanced control for hotel lobby and area scenes.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BCX-H616 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-h616.jpg" data-title="BCX-H616 6-Circuit Controller">
+                            <img src="/assets/img/products/lighting-control/bcx-h616.jpg" class="product-photo" alt="BCX-H616">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BCX-H616</h5>
+                            <span class="io-tag">6 Circuits / 16A</span>
+                            <p class="small text-muted mb-0">Compact switching for technical rooms and offices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 2: Dimming & DMX -->
+            <div class="category-bar wow fadeInLeft">
+                <h4>E/S-Series: LED Dimming & Power Architecture</h4>
+                <div class="category-line"></div>
+            </div>
+            <div class="row g-4 mb-5">
+                <!-- BCX-E466 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="lighting-card shadow-sm border-primary">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-e466.jpg" data-title="LED Dimming 0~10V Controller">
+                            <img src="/assets/img/products/lighting-control/bcx-e466.jpg" class="product-photo" alt="BCX-E466">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BCX-E466 / E1043</h5>
+                            <span class="io-tag">0~10V Precise Dimming</span>
+                            <p class="small text-muted mb-0">Precision dimming node for ambient scenes and daylight harvesting logic.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BCX-E305B -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="lighting-card shadow-sm border-primary">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-e305b.jpg" data-title="5A Power Dimmer Module">
+                            <img src="/assets/img/products/lighting-control/bcx-e305b.jpg" class="product-photo" alt="BCX-E305B">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BCX-E305B / S305X</h5>
+                            <span class="io-tag">5A Power Dimming</span>
+                            <p class="small text-muted mb-0">3-Circuit power dimmer for traditional incandescent and architectural halogen loads.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BG-DMX -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="lighting-card shadow-sm border-primary">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bg-dmx.jpg" data-title="DMX512 Architectural Gateway">
+                            <img src="/assets/img/products/lighting-control/bg-dmx.jpg" class="product-photo" alt="BG-DMX">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1 text-center">
+                            <h5 class="fw-bold">BG-DMX Gateway</h5>
+                            <span class="io-tag">DMX512 Integration</span>
+                            <p class="small text-muted mb-0">Bridges professional facade lighting into the central BACnet network.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group 3: Input & Sensors (NEWLY UPDATED WITH IMAGES) -->
+            <div class="category-bar wow fadeInLeft">
+                <h4>Support Nodes & Technical Sensing</h4>
+                <div class="category-line"></div>
+            </div>
+            <div class="row g-4">
+                <!-- BCX-816D -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-816d.jpg" data-title="BCX-816D Control Station Node">
+                            <img src="/assets/img/products/lighting-control/bcx-816d.jpg" class="product-photo" alt="BCX-816D">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h5 class="fw-bold">BCX-816D Station</h5>
+                            <span class="io-tag">Advanced Control Node</span>
+                            <p class="small text-muted mb-0">High-end localized logic unit for large banquet halls and atrium management.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- BCX-SN10 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/bcx-sn10.jpg" data-title="BCX-SN10 Technical Switch Node">
+                            <img src="/assets/img/products/lighting-control/bcx-sn10.jpg" class="product-photo" alt="BCX-SN10">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h5 class="fw-bold">BCX-SN10 Node</h5>
+                            <span class="io-tag">Input Node (Duct Mount)</span>
+                            <p class="small text-muted mb-0">Compact node for mapping local wall switches and triggers to BACnet.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- SE-HM20W -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="lighting-card shadow-sm">
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/lighting-control/se-hm20w.jpg" data-title="SE-HM20W motion & lux Sensor">
+                            <img src="/assets/img/products/lighting-control/se-hm20w.jpg" class="product-photo" alt="SE-HM20W">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 text-center">
+                            <h5 class="fw-bold">SE-HM20W Sensor</h5>
+                            <span class="io-tag">Motion & Illuminance</span>
+                            <p class="small text-muted mb-0">Integrated sensing node for occupancy control and light level compensation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HARDWARE VIEW MODAL -->
+    <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content zoom-modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white" id="zoomTitle">Hardware Deep Inspection</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="" id="zoomImg" class="img-fluid full-view-img shadow-lg" alt="Hardware Detail">
+                    <div class="mt-4 p-3 bg-dark rounded border border-secondary text-center">
+                        <p class="text-primary mb-0 small fw-bold">
+                            <i class="fa fa-info-circle me-2"></i>Observe technical terminal blocks (14-24 AWG), circuit labeling, and industrial "Feed-Through" relay design.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Technical Specs -->
+    <div class="container py-5 my-5">
+        <h3 class="text-center mb-5 border-bottom pb-3">BCX Series Technical Integration Data</h3>
+        <div class="table-responsive shadow-sm">
+            <table class="table table-bordered text-center align-middle bg-white">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th style="width: 30%;">Technical Parameter</th>
+                        <th>Standard Specification Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="fw-bold">Relay Switch Load</td><td>16A / 10A / 5A (Support for High-Inrush inductive loads)</td></tr>
+                    <tr><td class="fw-bold">Cycle Endurance</td><td>100,000 Operations at Full Rated Load</td></tr>
+                    <tr><td class="fw-bold">Communication</td><td>Dual Port Interface: Native BACnet MS/TP and Modbus RTU</td></tr>
+                    <tr><td class="fw-bold">Autonomous logic</td><td>Gold-capacitor backed Real-time clock (Standalone schedules)</td></tr>
+                    <tr><td class="fw-bold">Efficiency Design</td><td>Thermal-optimized "Feed-Through" relay architecture</td></tr>
+                    <tr><td class="fw-bold">Environment</td><td>Industrial Grade Operating Temp: -17°C to 70°C</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
+
+    <script>
+        // Modal Image Injector
+        $('#zoomModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imgSrc = button.data('img');
+            var title = button.data('title');
+            var modal = $(this);
+            modal.find('#zoomImg').attr('src', imgSrc);
+            modal.find('#zoomTitle').text(title);
+        });
+    </script>
+</body>
+</html>

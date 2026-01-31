@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Office Building Solutions | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-red: #e60012;        
+            
+            /* UI COLORS */
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: var(--header-height);
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+
+        .header-fix { 
+    width: 100%; 
+    position: fixed; 
+    top: 0; 
+    z-index: 1030; 
+    height: var(--header-height); 
+    background: rgba(11, 17, 26, 0.6); /* hero-safe */
+    backdrop-filter: blur(8px);
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease; 
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+
+        .brand-text {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .brand-accent {
+            color: var(--tf-yellow);
+        }
+
+        .header-fix.scrolled .brand-text {
+            color: #0b111a;
+        }
+
+        .header-fix.scrolled { 
+            
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+            backdrop-filter: blur(10px);
+
+             background: #fff;
+    
+        }
+
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            height: 100%; 
+            padding: 0 30px; 
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+    color: #fff; 
+    font-weight: 700; 
+    font-size: 13px; 
+    transition: 0.3s; 
+    text-transform: uppercase; 
+    line-height: var(--header-height); 
+    display: block; 
+    position: relative; 
+    letter-spacing: 0.5px; 
+    text-decoration: none;
+    text-shadow: none;
+}
+
+        
+        .nav-link-custom:hover { 
+            color: var(--tf-yellow); 
+        }
+        
+        .header-fix.scrolled .brand-text,
+        .header-fix.scrolled .nav-link-custom {
+            color: #0b111a !important;
+            text-shadow: none !important;
+        }
+
+        .header-fix.scrolled .nav-link-custom:hover { 
+            color: var(--tf-blue); 
+        }
+
+        .header-logo a {
+            text-decoration: none !important;
+        }
+
+        .nav-item-dropdown { 
+            position: relative; 
+            height: 100%; 
+            display: flex; 
+            align-items: center; 
+        }
+        
+        .dropdown-menu-custom {
+            position: absolute; 
+            top: 100%; 
+            left: 50%; 
+            transform: translateX(-50%) translateY(20px);
+            width: 700px; 
+            background: #fff; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); 
+            border-radius: 0 0 8px 8px; 
+            padding: 30px;
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px;
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.3s ease; 
+            z-index: 1100;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        
+        .dropdown-link { 
+            color: #555; 
+            font-size: 13px; 
+            font-weight: 600; 
+            padding: 6px 10px; 
+            border-radius: 4px; 
+            display: block; 
+            border-left: 2px solid transparent; 
+            text-decoration: none; 
+        }
+        
+        .dropdown-link:hover { 
+            background: #f4f7fa; 
+            color: var(--tf-blue); 
+            border-left: 2px solid var(--tf-blue); 
+            padding-left: 15px; 
+        }
+        
+        .dropdown-category { 
+            grid-column: span 3; 
+            color: var(--tf-blue); 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 10px; 
+            margin-bottom: 5px; 
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px; 
+        }
+
+        .hero-section {
+            height: 65vh; 
+            min-height: 500px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; 
+            background-position: center;
+            display: flex; 
+            align-items: center; 
+        }
+
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            animation: fadeUp 1s ease-out; 
+        }
+        
+        .hero-title {
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 15px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.45);
+        }
+        
+        .hero-sub { 
+            color: #fff; 
+            font-size: 1.25rem; 
+            max-width: 700px; 
+            font-weight: 600;
+        }
+.hero-title {
+    margin-top: -200px;   /* move text up slightly */
+}
+
+.hero-line-2 {
+    display: block;
+}
+
+        /* STICKY BREADCRUMB */
+        .project-nav-bar {
+            position: sticky; 
+            top: var(--header-height);
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .nav-breadcrumb .breadcrumb-item a { 
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            text-decoration: none; 
+        }
+        
+        .nav-breadcrumb .breadcrumb-item.active a { color: var(--tf-blue) !important; }
+
+        /* INTERACTIVE MAP */
+        .interactive-map-container {
+            position: relative; 
+            width: 100%; 
+            border-radius: var(--card-radius); 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            margin-bottom: 40px;
+        }
+        
+        .map-img { width: 100%; display: block; filter: brightness(0.8); }
+        
+        .hotspot {
+            position: absolute; display: flex; align-items: center; cursor: pointer; z-index: 10; transform: translate(-50%, -50%);
+        }
+        
+        .hotspot-dot {
+            width: 36px; height: 36px; background-color: var(--tf-blue); color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; border: 2px solid #fff; transition: 0.3s;
+        }
+        
+        .hotspot.active .hotspot-dot {
+            background-color: var(--tf-yellow); color: var(--tf-dark); transform: scale(1.3); 
+        }
+
+        .hotspot-label {
+            background-color: #fff; padding: 6px 15px 6px 25px; border-radius: 0 20px 20px 0; 
+            font-size: 12px; font-weight: 700; margin-left: -20px; z-index: -2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); white-space: nowrap;
+        }
+
+        /* SCENARIO WRAPPER (FIXED OVERLAP) */
+        .scenario-wrapper { 
+            background: #f8f9fa; 
+            border-top: 1px solid #eee; 
+            padding: 80px 0 120px 0; 
+            position: relative;
+            clear: both;
+        }
+        
+        .scenario-box { display: none; opacity: 0; transform: translateY(20px); transition: 0.5s ease; }
+        .scenario-box.active { display: block; opacity: 1; transform: translateY(0); margin-bottom: 60px; }
+        
+        .challenge-card { background: #fff; padding: 30px; border-radius: 12px; border-left: 4px solid var(--tf-red); box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .solution-card { background: #fff; padding: 30px; border-radius: 12px; border-left: 4px solid var(--tf-blue); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .scenario-img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 25px; }
+
+        /* SHOWCASE */
+        #showcase { position: relative; z-index: 10; background: #fff; padding-top: 60px; clear: both; }
+        .product-card { background: #fff; padding: 40px 20px; border-radius: var(--card-radius); text-align: center; border: 1px solid #f0f0f0; transition: 0.3s; }
+        .product-card img { height: 160px; object-fit: contain; margin-bottom: 25px; }
+
+        /* FOOTER */
+        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; }
+        .footer a { color: var(--tf-blue); text-decoration: none; font-weight: 600; }
+        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <h2 class="brand-text">
+                            TONGFANG <span class="brand-accent">BMS</span>
+                        </h2>
+                    </a>
+                </div>
+                <nav class="d-none d-lg-block">
+                    <div class="nav-menu">
+                        <a href="/about/index.html" class="nav-link-custom">About</a>
+                        
+                        <!-- SOLUTIONS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1: Buildings -->
+                                <div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <!-- Col 2: Infrastructure -->
+                                <div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <!-- Col 3: Cities & Systems -->
+                                <div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PRODUCTS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    </div>
+                </nav>
+
+                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+     <h1 class="hero-title">
+    Office Building<br>
+    <span class="hero-line-2">Solutions</span>
+</h1>
+
+
+        </div>
+    </section>
+
+    <!-- SUB-NAV -->
+    <div class="project-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#overview">Overview Map</a></li>
+                    <li class="breadcrumb-item"><a href="#scenarios">Deep Dive</a></li>
+                    <li class="breadcrumb-item"><a href="#showcase">Products</a></li>
+                </ol>
+            </nav>
+            <span class="text-dark fw-bold small"><i class="fa fa-briefcase text-primary me-2"></i>SMART OFFICE</span>
+        </div>
+    </div>
+
+    <!-- MAP -->
+    <section class="py-5 bg-white" id="overview">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 style="font-size: 2.5rem;">Interactive Office Solutions</h2>
+                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
+                <p class="text-muted">Click the numbered hotspots to explore specific office scenarios.</p>
+            </div>
+
+            <div class="interactive-map-container">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/office/senario.png" alt="Office Scenario" class="map-img">
+                
+               <div id="hotspot-1" class="hotspot active"
+     onclick="showScenario(1)"
+     style="top: 80%; left: 53%;">
+
+                    <div class="hotspot-dot">1</div>
+                    <div class="hotspot-label">Underground Parking</div>
+                </div>
+                <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 50%; left: 85%;">
+                    <div class="hotspot-dot">2</div>
+                    <div class="hotspot-label">Smart Lobby</div>
+                </div>
+                <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 48%; left: 18%;">
+                    <div class="hotspot-dot">3</div>
+                    <div class="hotspot-label">Open Office Area</div>
+                </div>
+                <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 25%; left: 75%;">
+                    <div class="hotspot-dot">4</div>
+                    <div class="hotspot-label">Meeting Rooms</div>
+                </div>
+                <div id="hotspot-5" class="hotspot"
+     onclick="showScenario(5)"
+     style="top: 14%; left: 48%;">
+
+                    <div class="hotspot-dot">5</div>
+                    <div class="hotspot-label">Control Room</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENARIOS -->
+    <section id="scenarios" class="scenario-wrapper">
+        <div class="container">
+            
+            <div id="content-1" class="scenario-box active">
+                <h3 class="mb-4 text-primary">1. Underground Parking Guidance</h3>
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <div class="challenge-card">
+                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
+                            <p>Morning rush hour congestion and wasted energy on lighting in empty areas.</p>
+                        </div>
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
+                            <p><strong>Smart Guidance:</strong> Real-time vacancy tracking and LED directional arrows.</p>
+                            <p><strong>CO Linkage:</strong> Ventilation fans activate only based on air quality sensors.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7"><img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=800" class="scenario-img" alt="Parking"></div>
+                </div>
+            </div>
+
+            <div id="content-2" class="scenario-box">
+                <h3 class="mb-4 text-primary">2. Secure Lobby & Entry</h3>
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <div class="challenge-card">
+                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
+                            <p>Slow manual visitor registration and high unauthorized access risks.</p>
+                        </div>
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
+                            <p><strong>Speed Gates:</strong> Facial recognition gates for seamless, hands-free entry.</p>
+                            <p><strong>Elevator Call:</strong> Automatic elevator dispatching to the resident's home floor.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800" class="scenario-img" alt="Lobby"></div>
+                </div>
+            </div>
+
+            <div id="content-3" class="scenario-box">
+                <h3 class="mb-4 text-primary">3. High-Efficiency Office Areas</h3>
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <div class="challenge-card">
+                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
+                            <p>Poor lighting conditions and over-cooling of unoccupied office zones.</p>
+                        </div>
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
+                            <p><strong>VAV Control:</strong> Dynamic airflow adjustment based on occupancy and CO2.</p>
+                            <p><strong>Adaptive Lighting:</strong> Daylight harvesting dims lights near windows automatically.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7"><img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=800" class="scenario-img" alt="Office"></div>
+                </div>
+            </div>
+
+            <div id="content-4" class="scenario-box">
+                <h3 class="mb-4 text-primary">4. Intelligent Meeting Rooms</h3>
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <div class="challenge-card">
+                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
+                            <p>Unused rooms booked but not occupied ("Ghost meetings") and manual curtain control.</p>
+                        </div>
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
+                            <p><strong>Smart Scenes:</strong> "One-touch" presentation mode handles blinds, lights, and AC.</p>
+                            <p><strong>Room Release:</strong> Auto-release room booking if no presence is detected.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7"><img src="https://images.unsplash.com/photo-1431540015161-0bf868a2d407?auto=format&fit=crop&w=800" class="scenario-img" alt="Meeting"></div>
+                </div>
+            </div>
+
+            <div id="content-5" class="scenario-box">
+                <h3 class="mb-4 text-primary">5. Control Room</h3>
+                <div class="row g-5">
+                    <div class="col-lg-5">
+                        <div class="challenge-card">
+                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
+                            <p>Managing silos of data from separate security and building systems.</p>
+                        </div>
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
+                            <p><strong>Unified Dashboard:</strong> Real-time energy monitoring and alarm management in one UI.</p>
+                            <p><strong>Remote Management:</strong> Multi-building control through centralized BMS 5.0.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/office/Self-Service-Commercial-building.jpg" class="scenario-img" alt="Control Room"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- control room -->
+    <section class="py-5 bg-white" id="showcase">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Control Room  Topology</h2>
+                <div class="line" style="width: 500px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+             
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/office/Office-building-control-room-04.jpg" alt=" Office-building-control-room-04">
+                            
+                
+                 
+        </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="py-5 bg-white" id="showcase">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Product Showcase</h2>
+                <div class="line" style="width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+            </div>
+            <div class="swiper swiper-products pb-5">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC">
+                            <h5>Techcon DDC</h5>
+                            <p class="small text-muted">Field Controller for office HVAC.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/field-controllers/smart energy metre.png" alt="Meter">
+                            <h5>Energy Meter</h5>
+                            <p class="small text-muted">Department-level energy billing.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Thermostat">
+                            <h5>Smart Thermostat</h5>
+                            <p class="small text-muted">Digital room control.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="product-card h-100">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Software">
+                            <h5>Techcon BMS 5.0</h5>
+                            <p class="small text-muted">Management platform.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+     <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS Integration</h5>
+                    <p><i class="fa fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt me-2"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope me-2"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="d-block mb-2" href="/index.html">Home</a>
+                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
+                    <a class="d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Subscribe for updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+    const header = document.getElementById('navBox');
+
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+
+        function showScenario(id) {
+            document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
+            document.getElementById('hotspot-' + id).classList.add('active');
+            document.querySelectorAll('.scenario-box').forEach(el => {
+                el.classList.remove('active');
+                el.style.display = 'none';
+            });
+            const selected = document.getElementById('content-' + id);
+            selected.style.display = 'block';
+            setTimeout(() => {
+                selected.classList.add('active');
+                window.scrollTo({ top: selected.offsetTop - 140, behavior: "smooth" });
+            }, 10);
+        }
+
+        new Swiper(".swiper-products", {
+            slidesPerView: 1, spaceBetween: 20, pagination: { el: ".swiper-pagination", clickable: true },
+            breakpoints: { 640: { slidesPerView: 2 }, 768: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } },
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>BCU Series - Professional DDC Integration | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/assets/img/logo.png" rel="icon" type="image/jpeg">
+    <!-- CSS Assets -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- PROFESSIONAL PRODUCT INTERACTION --- */
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HIGH-CONTRAST HOVER */
+        .product-card:hover {
+            background: #02245B !important; /* Dark Blue Contrast */
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(2, 36, 91, 0.4);
+            border-color: #FF5E14;
+        }
+
+        .product-img-wrapper {
+            position: relative;
+            background: #fdfdfd;
+            padding: 30px;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .product-photo {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+            filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.1));
+        }
+
+        .product-card:hover .product-photo {
+            transform: scale(1.1); /* Interactive Zoom */
+        }
+
+        /* Zoom Button */
+        .zoom-overlay {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: #FF5E14;
+            color: white;
+            padding: 5px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .product-card:hover .zoom-overlay { opacity: 1; }
+
+        /* Text Contrast Management */
+        .product-card h4, .product-card p, .product-card li { transition: 0.3s; }
+        .product-card:hover h4 { color: #ffffff !important; }
+        .product-card:hover p, .product-card:hover li { color: rgba(255,255,255,0.7) !important; }
+
+        /* Tech Badges */
+        .io-badge {
+            font-size: 10px;
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+            font-weight: 700;
+        }
+        .product-card:hover .io-badge { background: rgba(255,255,255,0.1); border-color: #fff; color: #fff; }
+
+        /* Modal Customization */
+        .zoom-modal-content { background: #000; border: 2px solid #FF5E14; }
+        .full-view-img { background: #fff; padding: 20px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div id="spinner-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <!-- Header -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn">
+        <div class="container py-5 text-center">
+            <h1 class="display-3 text-white animated slideInDown">BAS Control Units</h1>
+            <p class="text-white lead">High-Precision BACnet Programmable Controllers for Professional Integration</p>
+        </div>
+    </div>
+
+    <!-- Integrator Intro -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp">
+                    <p class="fw-bold text-primary text-uppercase mb-2">Our Integration Philosophy</p>
+                    <h2 class="display-6 mb-4">Precision Logic. Global Interoperability.</h2>
+                    <p>At Tongfang, we integrate the Hysine BCU Series to create the "Logic Backbone" of your facility. These are not just controllers; they are 32-bit ARM-based intelligence nodes designed for 100ms real-time response in airports, hospitals, and high-end industrial parks.</p>
+                    <div class="p-4 bg-light border-start border-5 border-primary">
+                        <p class="small mb-0"><strong>Standard Performance:</strong> Every BCU we deploy features native BACnet MS/TP and Modbus RTU communication, with data integrity protected by non-volatile flash memory.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="bg-dark p-4 rounded shadow-lg text-white">
+                        <h5 class="text-primary"><i class="fa fa-certificate me-2"></i>BTL Certified Integration</h5>
+                        <p class="small opacity-75">We ensure that every integrated node follows the international BACnet Application Specific Controller (ASC) profile for 100% interoperability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 700px;">
+                <h2 class="display-6">Series Model Selection</h2>
+                <p>Click on any image for <strong>Deep Observation Mode</strong> to view terminal details and hardware quality.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- BCU-16160 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-16160.jpg" data-title="BCU-16160 High-Density DDC">
+                            <img src="/assets/img/products/bcu-16160.jpg" class="product-photo" alt="BCU-16160">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-16160</h4>
+                            <p class="small text-muted mb-3">High-density I/O node for central plant monitoring and power distribution.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">16 Universal In</span>
+                                <span class="io-badge">16 Binary Out</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-1666 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-1666.jpg" data-title="BCU-1666 AHU Master">
+                            <img src="/assets/img/products/bcu-1666.jpg" class="product-photo" alt="BCU-1666">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-1666</h4>
+                            <p class="small text-muted mb-3">Professional logic master for large Air Handling Units (AHU) and fresh air systems.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">16 Universal In</span>
+                                <span class="io-badge">6 BO</span>
+                                <span class="io-badge">6 AO (0-10V)</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-1644 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-1644.jpg" data-title="BCU-1644 Balanced DDC">
+                            <img src="/assets/img/products/bcu-1644.jpg" class="product-photo" alt="BCU-1644">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-1644</h4>
+                            <p class="small text-muted mb-3">Balanced controller for secondary mechanical plants and thermal stations.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">16 Universal In</span>
+                                <span class="io-badge">4 BO</span>
+                                <span class="io-badge">4 AO</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-1600 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-1600.jpg" data-title="BCU-1600 Input Node">
+                            <img src="/assets/img/products/bcu-1600.jpg" class="product-photo" alt="BCU-1600">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-1600</h4>
+                            <p class="small text-muted mb-3">Specialized data acquisition node for high-density sensor monitoring.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">16 Universal In</span>
+                                <span class="io-badge">Data Aggregator</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-941 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-941.jpg" data-title="BCU-941 Equipment Interface">
+                            <img src="/assets/img/products/bcu-941.jpg" class="product-photo" alt="BCU-941">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-941</h4>
+                            <p class="small text-muted mb-3">Mechanical equipment controller for Fresh Air Units and status monitoring.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">6 BI / 3 UI</span>
+                                <span class="io-badge">4 BO / 1 AO</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-940 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-940.jpg" data-title="BCU-940 Binary Logic">
+                            <img src="/assets/img/products/bcu-940.jpg" class="product-photo" alt="BCU-940">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-940</h4>
+                            <p class="small text-muted mb-3">Unitary switching controller for valve and pump interlock logic.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">6 BI / 3 UI</span>
+                                <span class="io-badge">4 Binary Out</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-860 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-860.jpg" data-title="BCU-860 Distributed DDC">
+                            <img src="/assets/img/products/bcu-860.jpg" class="product-photo" alt="BCU-860">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-860</h4>
+                            <p class="small text-muted mb-3">Compact logic node for localized mechanical plant and VAV management.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">8 Universal In</span>
+                                <span class="io-badge">6 Binary Out</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-843 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-843.jpg" data-title="BCU-843 VAV Zone Master">
+                            <img src="/assets/img/products/bcu-843.jpg" class="product-photo" alt="BCU-843">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-843</h4>
+                            <p class="small text-muted mb-3">Terminal zone controller with integrated relay and analog logic.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">8 UI / 4 BO / 3 AO</span>
+                                <span class="io-badge">BACnet Node</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BCU-630 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-card">
+                        <div class="product-img-wrapper" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/bcu-630.jpg" data-title="BCU-630 Status Logic">
+                            <img src="/assets/img/products/bcu-630.jpg" class="product-photo" alt="BCU-630">
+                            <div class="zoom-overlay"><i class="fa fa-search-plus me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="p-4 d-flex flex-column flex-grow-1">
+                            <h4 class="fw-bold">BCU-630</h4>
+                            <p class="small text-muted mb-3">Technical interface node for simple binary monitoring and status interlocks.</p>
+                            <div class="mb-4">
+                                <span class="io-badge">6 Binary In</span>
+                                <span class="io-badge">3 Binary Out</span>
+                            </div>
+                            <a href="/contact/index.html" class="btn btn-primary mt-auto py-2">Request Technical Submittal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HIGH-RES HARDWARE MODAL -->
+    <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content zoom-modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white" id="zoomTitle">Hardware Observation Mode</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="" id="zoomImg" class="img-fluid full-view-img shadow-lg" alt="Hardware Full View">
+                    <div class="mt-4 p-3 bg-dark rounded border border-secondary">
+                        <p class="text-primary mb-0 small fw-bold">
+                            <i class="fa fa-info-circle me-2"></i>Observe terminal configurations, communication ports (RS-485), and hardware labeling for wiring verification.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technical Specs Table -->
+    <div class="container py-5 my-5">
+        <h3 class="text-center mb-5 border-bottom pb-3">BCU Series Global Technical Standards</h3>
+        <div class="table-responsive shadow-sm">
+            <table class="table table-bordered text-center align-middle bg-white">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th style="width: 30%;">Technical Parameter</th>
+                        <th>Hysine Industrial Standard Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="fw-bold">Power Supply</td><td>24 VAC @ 10VA (Half-wave rectifier isolation)</td></tr>
+                    <tr><td class="fw-bold">Loop Execution</td><td>100msec (Real-time logical cycle)</td></tr>
+                    <tr><td class="fw-bold">Comm Port</td><td>Native BACnet MS/TP and Modbus RTU (DIP Switchable)</td></tr>
+                    <tr><td class="fw-bold">Resolution</td><td>10-bit A/D Resolution on all Universal Inputs</td></tr>
+                    <tr><td class="fw-bold">Environmental</td><td>-17°C to 70°C, 0-95% RH (Built for Mechanical Plants)</td></tr>
+                    <tr><td class="fw-bold">Memory Support</td><td>Non-volatile flash for Data & Logic sequences</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
+
+    <script>
+        // Modal Image Injector
+        $('#zoomModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imgSrc = button.data('img');
+            var title = button.data('title');
+            var modal = $(this);
+            modal.find('#zoomImg').attr('src', imgSrc);
+            modal.find('#zoomTitle').text(title);
+        });
+    </script>
+</body>
+</html>

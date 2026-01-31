@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Energy Metering Solutions | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="/assets/img/logo.png" rel="icon" type="image/jpeg">
+    <!-- CSS Assets -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* --- PROFESSIONAL PRODUCT INTERACTION --- */
+        .product-card {
+            background: #ffffff;
+            border: 1px solid #eee;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* High-Contrast Professional Hover */
+        .product-card:hover {
+            background: #02245B !important; /* Dark Blue Contrast */
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(2, 36, 91, 0.4);
+            border-color: #FF5E14;
+        }
+
+        /* Image Display Area */
+        .img-display-area {
+            position: relative;
+            background: #fdfdfd;
+            padding: 30px;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+        }
+        
+        .product-photo {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .product-card:hover .product-photo {
+            transform: scale(1.15); /* Deep Observation Zoom */
+        }
+
+        /* Zoom Label Overlay */
+        .click-to-zoom {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: #FF5E14;
+            color: white;
+            padding: 5px 12px;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .product-card:hover .click-to-zoom { opacity: 1; }
+
+        /* Text Contrast Logic */
+        .product-card h4, .product-card h5, .product-card p, .product-card span { transition: 0.3s; }
+        .product-card:hover h4, .product-card:hover h5 { color: #ffffff !important; }
+        .product-card:hover p, .product-card:hover span { color: rgba(255,255,255,0.7) !important; }
+
+        /* Technical Badges */
+        .protocol-tag {
+            font-size: 10px;
+            background: rgba(2, 36, 91, 0.05);
+            color: #02245B;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .product-card:hover .protocol-tag { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid #fff; }
+
+        /* Tech Header styling */
+        .tech-header { background: #f8f9fa; padding: 10px; font-weight: 800; font-size: 11px; letter-spacing: 2px; color: var(--primary); text-transform: uppercase; text-align: center; }
+        .product-card:hover .tech-header { background: rgba(255,255,255,0.05); color: #fff; }
+
+        /* Modal Customization */
+        .zoom-modal-content { background: #000; border: 2px solid #FF5E14; }
+        .full-view-img { background: #fff; padding: 20px; border-radius: 8px; width: 100%; }
+    </style>
+</head>
+<body>
+    <div id="spinner-placeholder"></div>
+    <div id="navbar-placeholder"></div>
+
+    <!-- Page Header -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn">
+        <div class="container py-5 text-center">
+            <h1 class="display-3 text-white animated slideInDown">Energy Metering Gateways</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center animated slideInDown mb-0">
+                    <li class="breadcrumb-item"><a href="/home/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products Architecture</a></li>
+                    <li class="breadcrumb-item active text-white">EMC Gateway Series</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Intro -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 wow fadeInUp">
+                    <p class="fw-bold text-primary text-uppercase mb-2">Energy Conservation Layer</p>
+                    <h1 class="display-5 mb-4">Hysine EMC: Bridging Utilities to Logic</h1>
+                    <p class="mb-4">The EMC-GT series serves as the vital bridge between physical utility meters and the BMS management layer. By aggregating Modbus and M-Bus data from water, electricity, and gas meters, these gateways provide real-time visibility into building resource consumption.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-network-wired text-primary me-3"></i><span>Modbus to BACnet Bridge</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-chart-line text-primary me-3"></i><span>Real-time Usage Billing</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-microchip text-primary me-3"></i><span>Industrial ARM Core</span></div>
+                        <div class="col-sm-6 d-flex align-items-center"><i class="fa fa-shield-alt text-primary me-3"></i><span>GB/T 17626 Rated</span></div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-dark p-5 rounded shadow-lg text-white border-start border-5 border-primary">
+                        <h4 class="text-white mb-3">Integrator Expertise</h4>
+                        <p class="small opacity-75">We integrate EMC gateways to ensure utility data is never lost. Featuring extensive on-board signal filtering and non-volatile memory, our systems provide clean data for LEED certification and automated energy audits.</p>
+                        <hr class="bg-secondary">
+                        <ul class="list-unstyled mb-0 small">
+                            <li><i class="fa fa-check text-primary me-2"></i> Supports GPRS/ADSL/Fiber connectivity</li>
+                            <li><i class="fa fa-check text-primary me-2"></i> Native interface with EMS-500 Software</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EMC Model Catalog -->
+    <div class="container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" style="max-width: 600px;">
+                <h2 class="display-6">Utility Gateway Matrix</h2>
+                <p>Click any gateway image for <strong>Observation Mode</strong> to inspect terminal ports and build quality.</p>
+            </div>
+            
+            <div class="row g-4">
+                <!-- EMC-GT10 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-card shadow-sm">
+                        <div class="tech-header">Power Metering</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/emc-gt10.jpg" data-title="EMC-GT10 Electricity Gateway">
+                            <img src="/assets/img/products/emc-gt10.jpg" class="product-photo" alt="EMC-GT10">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold">EMC-GT10</h4>
+                            <span class="protocol-tag">Modbus RTU / KWh</span>
+                            <p class="small text-muted mb-0">Captures KWh, active power, and voltage data from smart multi-function meters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMC-GT20 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="product-card shadow-sm">
+                        <div class="tech-header">Water Metering</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/emc-gt20.jpg" data-title="EMC-GT20 Water Gateway">
+                            <img src="/assets/img/products/emc-gt20.jpg" class="product-photo" alt="EMC-GT20">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold">EMC-GT20</h4>
+                            <span class="protocol-tag">M-Bus / Pulse Input</span>
+                            <p class="small text-muted mb-0">Captures data from digital water flow meters. Essential for facility leak detection.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMC-GT30 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-card shadow-sm">
+                        <div class="tech-header">Thermal Metering</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/emc-gt30.jpg" data-title="EMC-GT30 Cold/Heat Table Gateway">
+                            <img src="/assets/img/products/emc-gt30.jpg" class="product-photo" alt="EMC-GT30">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold">EMC-GT30</h4>
+                            <span class="protocol-tag">BTU / RS485</span>
+                            <p class="small text-muted mb-0">Bridges thermal energy BTU meters from central cooling and heating plants.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMC-GT40 -->
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="product-card shadow-sm">
+                        <div class="tech-header">Gas Metering</div>
+                        <div class="img-display-area" data-bs-toggle="modal" data-bs-target="#zoomModal" data-img="/assets/img/products/emc-gt40.jpg" data-title="EMC-GT40 Gas Gateway">
+                            <img src="/assets/img/products/emc-gt40.jpg" class="product-photo" alt="EMC-GT40">
+                            <div class="click-to-zoom"><i class="fa fa-expand me-2"></i>DEEP OBSERVE</div>
+                        </div>
+                        <div class="card-body p-4 text-center">
+                            <h4 class="fw-bold">EMC-GT40</h4>
+                            <span class="protocol-tag">Industrial Modbus</span>
+                            <p class="small text-muted mb-0">Dedicated interface for utility monitoring in kitchens and industrial gas stations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HARDWARE VIEW MODAL -->
+    <div class="modal fade" id="zoomModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content zoom-modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white" id="zoomTitle">Hardware Observation Mode</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <img src="" id="zoomImg" class="img-fluid full-view-img shadow-lg" alt="Hardware Detail">
+                    <div class="mt-4 p-3 bg-dark rounded border border-secondary text-center">
+                        <p class="text-primary mb-0 small fw-bold">
+                            <i class="fa fa-info-circle me-2"></i>Inspect terminal configurations, Modbus port labeling (A/B/GND), and technical hardware markings.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Technical Specs -->
+    <div class="container py-5 my-5">
+        <h3 class="text-center mb-5 border-bottom pb-3">Gateway Technical Integration Standards</h3>
+        <div class="table-responsive shadow-sm">
+            <table class="table table-bordered text-center align-middle bg-white">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th style="width: 35%;">Engineering Parameter</th>
+                        <th>Standard Specification Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="fw-bold">Power Supply</td><td>24 VAC @ 10VA (Isolated Half-wave rectifier)</td></tr>
+                    <tr><td class="fw-bold">Field Communication</td><td>Modbus RTU / M-Bus / Digital Pulse Standard</td></tr>
+                    <tr><td class="fw-bold">BMS Communication</td><td>BACnet IP / MS/TP Bridge via Global Router</td></tr>
+                    <tr><td class="fw-bold">Wiring Terminal</td><td>Removable header screw terminals (14-24 AWG support)</td></tr>
+                    <tr><td class="fw-bold">Safety Rating</td><td>Industrial GB/T 17626 Compliance (High EMC Immunity)</td></tr>
+                    <tr><td class="fw-bold">Operating Temp</td><td>-17°C to 70°C (Built for Mechanical Plant Rooms)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="container-xxl py-5 bg-dark text-white rounded shadow-lg my-5">
+        <div class="container text-center p-5">
+            <h2 class="text-white mb-4">Centralized Energy Surveillance</h2>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 800px;">Combine EMC hardware with our EMS-500 management software to unlock automated billing, leak detection, and sustainability reporting.</p>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="/products/hmi-software/index.html" class="btn btn-primary py-3 px-5 shadow fw-bold">View Software Suite</a>
+                <a href="/contact/index.html" class="btn btn-outline-light py-3 px-5 fw-bold">Technical Consulting</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/component-loader.js"></script>
+
+    <script>
+        // Modal Image Injector
+        $('#zoomModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var imgSrc = button.data('img');
+            var title = button.data('title');
+            var modal = $(this);
+            modal.find('#zoomImg').attr('src', imgSrc);
+            modal.find('#zoomTitle').text(title);
+        });
+    </script>
+</body>
+</html>

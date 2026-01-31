@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Certificates & Compliance | Tongfang BMS Integration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="International and local certifications ensuring Tongfang BMS delivers compliant, secure, and world-class system integration solutions.">
+
+<!-- FAVICON -->
+<link href="/assets/img/logo.png" rel="icon" type="image/jpeg">
+
+<!-- CSS -->
+<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+<style>
+.cert-card {
+    transition: .35s;
+    border: 1px solid #eee;
+}
+.cert-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.12);
+}
+.cert-icon {
+    font-size: 40px;
+    color: var(--primary);
+}
+
+/* CERT PREVIEW ENHANCEMENT */
+.cert-preview {
+    background: #f8f9fa;
+    border: 1px dashed #ccc;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+    transition: .3s;
+    position: relative;
+    gap: 8px;
+    font-weight: 500;
+}
+.cert-preview:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 2px rgba(13,110,253,.15);
+}
+
+/* Eye icon and text */
+.cert-preview i {
+    font-size: 26px;
+    color: var(--primary);
+}
+.cert-preview span {
+    font-size: 13px;
+}
+
+/* VERIFIED badge */
+.cert-preview::after {
+    content: "VERIFIED";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #198754;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: .5px;
+}
+
+/* Pulse animation for eye */
+.cert-preview:hover i {
+    animation: pulseEye 1.2s infinite;
+}
+@keyframes pulseEye {
+    0% { transform: scale(1); opacity: .7; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: .7; }
+}
+
+/* MODAL ZOOM IMPROVED */
+.zoom-container {
+    overflow: auto;
+    max-height: 80vh;
+}
+.zoom-container img {
+    width: 100%;
+    max-width: none;
+    transition: transform .4s ease;
+    cursor: grab;
+    display: block;
+}
+.zoom-container img:active {
+    cursor: grabbing;
+}
+.zoom-container img.zoomed {
+    transform: scale(2);
+}
+</style>
+</head>
+
+<body>
+
+<div id="spinner-placeholder"></div>
+<div id="navbar-placeholder"></div>
+
+<!-- PAGE HEADER -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn">
+<div class="container py-5 text-center">
+    <h1 class="display-3 text-white">Compliance & Certifications</h1>
+    <p class="lead text-white opacity-75">
+        Verified standards that guarantee safety, quality, and international compliance
+    </p>
+</div>
+</div>
+
+<!-- INTRO -->
+<section class="container-xxl py-5">
+<div class="container">
+
+<div class="text-center mx-auto mb-5" style="max-width: 720px;">
+    <p class="fw-medium text-uppercase text-primary mb-2">Trusted & Certified</p>
+    <h2 class="display-6">Certifications, Licenses & Compliance Standards</h2>
+    <p>
+        Tongfang System Integration PLC operates under a comprehensive framework of
+        <strong>international standards and local regulatory approvals</strong>,
+        ensuring all projects meet the highest requirements for engineering quality,
+        occupational safety, and environmental responsibility.
+    </p>
+</div>
+
+<!-- LOCAL CERTIFICATION AND LICENSE -->
+<h3 class="mb-4">Local Certification and License</h3>
+<div class="row g-4 mb-5">
+
+<!-- License 1 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-light p-5 text-center h-100 cert-card">
+    <i class="fa fa-university cert-icon mb-4"></i>
+    <h4 class="fw-bold">Federal Republic of Ethiopia License</h4>
+    <p class="small text-muted">
+        Issued by the Ethiopian Investment Commission (AEIC), N 15200.
+    </p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/local-license1.png">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+<!-- License 2 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-light p-5 text-center h-100 cert-card">
+    <i class="fa fa-building cert-icon mb-4"></i>
+    <h4 class="fw-bold">AEIC Registration</h4>
+    <p class="small text-muted">
+        Ethiopian Investment Commission legal registration for company operations.
+    </p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/local-license2.png">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+<!-- License 3 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-light p-5 text-center h-100 cert-card">
+    <i class="fa fa-file-alt cert-icon mb-4"></i>
+    <h4 class="fw-bold">Ethiopian Tax Compliance</h4>
+    <p class="small text-muted">
+        Full tax compliance for lawful operation in Ethiopia.
+    </p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/local-license3.png">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+</div>
+
+<!-- INTERNATIONAL CERTIFICATION AND LICENSE -->
+<h3 class="mb-4">International Certification and License</h3>
+<div class="row g-4 mb-5">
+
+<!-- International 1 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-white p-4 text-center cert-card h-100">
+    <h5 class="fw-bold">
+        <i class="fa fa-star text-primary me-2"></i>AAA Industry Credit Grade
+    </h5>
+    <p class="small text-muted">Highest construction industry rating for Electronics and Intelligent Engineering Integration.</p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/international-aaa.jpg">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+<!-- ISO 9001 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-white p-4 text-center cert-card h-100">
+    <h5 class="fw-bold">
+        <i class="fa fa-certificate text-primary me-2"></i>ISO 9001:2015
+    </h5>
+    <p class="small text-muted">Quality Management System</p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/iso9001.jpg">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+<!-- ISO 14001 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-white p-4 text-center cert-card h-100">
+    <h5 class="fw-bold">
+        <i class="fa fa-leaf text-primary me-2"></i>ISO 14001:2015
+    </h5>
+    <p class="small text-muted">Environmental Management System</p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/iso14001.jpg">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+<!-- ISO 45001 -->
+<div class="col-lg-4 col-md-6">
+<div class="bg-white p-4 text-center cert-card h-100">
+    <h5 class="fw-bold">
+        <i class="fa fa-user-shield text-primary me-2"></i>ISO 45001:2018
+    </h5>
+    <p class="small text-muted">Occupational Health & Safety</p>
+    <div class="cert-preview mt-3"
+         data-bs-toggle="modal"
+         data-bs-target="#certModal"
+         data-img="/assets/img/about/certificates/iso45001.jpg">
+        <i class="fa fa-eye"></i>
+        <span>Click to View Certificate</span>
+    </div>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CERTIFICATE MODAL -->
+<div class="modal fade" id="certModal" tabindex="-1">
+<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title">Certificate Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+        <div class="zoom-container">
+            <img id="certModalImg" src="" alt="Certificate">
+        </div>
+        <p class="text-muted mt-3 small">
+            Hover to zoom · Drag to pan · Pinch on mobile · Scroll to view
+        </p>
+    </div>
+</div>
+</div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/component-loader.js"></script>
+
+<script>
+// Get the certificate image
+const certImg = document.getElementById('certModalImg');
+let isZoomed = false;
+let offsetX = 0, offsetY = 0;
+
+// Show selected certificate in modal
+document.querySelectorAll('.cert-preview').forEach(item => {
+    item.addEventListener('click', function () {
+        certImg.src = this.getAttribute('data-img');
+        resetZoom();
+    });
+});
+
+function resetZoom() {
+    isZoomed = false;
+    offsetX = 0;
+    offsetY = 0;
+    certImg.style.transformOrigin = 'center center';
+    certImg.style.transform = 'scale(1) translate(0px, 0px)';
+}
+
+// Zoom in/out on click
+certImg.addEventListener('click', function (e) {
+    isZoomed = !isZoomed;
+    if (isZoomed) {
+        const rect = certImg.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const px = (x / rect.width) * 100;
+        const py = (y / rect.height) * 100;
+        certImg.style.transformOrigin = `${px}% ${py}%`;
+        certImg.style.transform = 'scale(2) translate(0px, 0px)';
+    } else resetZoom();
+});
+
+// Drag to pan
+let isDragging = false, dragStartX = 0, dragStartY = 0;
+certImg.addEventListener('mousedown', (e) => {
+    if (!isZoomed) return;
+    isDragging = true;
+    dragStartX = e.clientX - offsetX;
+    dragStartY = e.clientY - offsetY;
+    certImg.style.cursor = 'grabbing';
+});
+document.addEventListener('mousemove', (e) => {
+    if (!isZoomed || !isDragging) return;
+    offsetX = e.clientX - dragStartX;
+    offsetY = e.clientY - dragStartY;
+    certImg.style.transform = `scale(2) translate(${offsetX}px, ${offsetY}px)`;
+});
+document.addEventListener('mouseup', () => {
+    if (!isZoomed) return;
+    isDragging = false;
+    certImg.style.cursor = 'grab';
+});
+// Touch support
+certImg.addEventListener('touchstart', (e) => {
+    if (!isZoomed) return;
+    isDragging = true;
+    const touch = e.touches[0];
+    dragStartX = touch.clientX - offsetX;
+    dragStartY = touch.clientY - offsetY;
+});
+certImg.addEventListener('touchmove', (e) => {
+    if (!isZoomed || !isDragging) return;
+    const touch = e.touches[0];
+    offsetX = touch.clientX - dragStartX;
+    offsetY = touch.clientY - dragStartY;
+    certImg.style.transform = `scale(2) translate(${offsetX}px, ${offsetY}px)`;
+    e.preventDefault();
+});
+certImg.addEventListener('touchend', () => { if (!isZoomed) return; isDragging = false; });
+</script>
+
+</body>
+</html>

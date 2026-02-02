@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -24,7 +24,7 @@
             --tf-white: #ffffff;
             
             --header-height: 80px;
-            --card-radius: 12px;
+            --card-radius: 16px;
             
             /* SHADOWS & TRANSITIONS */
             --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
@@ -41,6 +41,7 @@
             overflow-x: hidden; 
             color: var(--tf-text); 
             line-height: 1.7;
+            padding-top: var(--header-height); /* Space for fixed header */
         }
         
         h1, h2, h3, h4, h5 { 
@@ -51,476 +52,873 @@
         
         a { text-decoration: none; transition: var(--transition); }
 
-        /* --- 1. HEADER --- */
+        /* ===== HEADER STYLES ===== */
         .header-fix { 
-            width: 100%; position: fixed; top: 0; z-index: 1030; height: var(--header-height); 
-            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(12px);
-            transition: var(--transition); border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1030; 
+            min-height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(12px);
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        
         .header-fix.scrolled { 
             background: rgba(255, 255, 255, 0.98); 
             border-bottom: 1px solid rgba(0,0,0,0.05); 
             box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
         }
         
-        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 100%; padding: 0 30px; }
-        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        /* HEADER LOGO - FIXED */
+        .header-logo a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .header-logo a .logo-text {
+            color: #fff;
+            transition: var(--transition);
+        }
+        
+        .header-logo a .logo-accent {
+            color: var(--tf-yellow);
+            transition: var(--transition);
+        }
+        
+        .header-fix.scrolled .header-logo a .logo-text {
+            color: var(--tf-blue) !important;
+        }
+        
+        .header-fix.scrolled .header-logo a .logo-accent {
+            color: var(--tf-yellow) !important;
+        }
+        
+        /* Desktop Menu (Hidden on Mobile) */
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
         
         .nav-link-custom { 
-            color: #fff; font-weight: 600; font-size: 13px; transition: 0.3s; 
-            text-transform: uppercase; line-height: var(--header-height); display: block; position: relative; letter-spacing: 0.5px;
+            color: #fff; 
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
         }
-        .nav-link-custom:hover { color: var(--tf-yellow); }
-        .header-fix.scrolled .nav-link-custom { color: var(--tf-dark); }
-        .header-fix.scrolled .nav-link-custom:hover { color: var(--tf-blue); }
-        .header-fix.scrolled .header-logo h2 { color: var(--tf-blue) !important; }
-        .header-fix.scrolled .header-logo h2 span { color: var(--tf-yellow) !important; }
-        .header-fix.scrolled .header-icons { color: var(--tf-dark) !important; }
-        .header-fix.scrolled .btn-mobile-toggle { color: var(--tf-dark) !important; }
-
-        /* DROPDOWN IMPROVEMENTS */
-        .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
-        .dropdown-menu-custom {
-            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
-            width: 750px; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 12px 12px; padding: 35px 40px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-            opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 1100;
-        }
-        .nav-item-dropdown:hover .dropdown-menu-custom { 
-            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); 
-        }
-        .dropdown-link { 
-            color: #555; font-size: 13.5px; font-weight: 600; padding: 8px 12px; border-radius: 6px; 
-            display: block; border-left: 3px solid transparent; transition: all 0.3s ease;
-        }
-        .dropdown-link:hover { 
-            background: #f4f8ff; color: var(--tf-blue); border-left: 3px solid var(--tf-blue); 
-            padding-left: 18px; transform: translateX(3px);
-        }
-        .dropdown-category { 
-            grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; 
-            text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; margin-bottom: 8px; 
-            border-bottom: 1px solid #eef2f7; padding-bottom: 8px; 
-        }
-        .dropdown-main-link {
-            display: block; position: relative; padding-right: 25px;
-        }
-        .dropdown-main-link::after {
-            content: "\f105"; font-family: "Font Awesome 6 Free"; font-weight: 900;
-            position: absolute; right: 0; top: 50%; transform: translateY(-50%);
-            color: #aaa; font-size: 12px;
-        }
-        .dropdown-main-link:hover::after { color: var(--tf-blue); }
-
-        /* --- 2. HERO SECTION --- */
-        .inner-hero {
-            height: 55vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-align: center; color: #fff; padding-top: 80px;
-        }
-        .hero-title { font-size: 3.5rem; font-weight: 900; margin-bottom: 15px; animation: fadeUp 0.8s ease-out; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- 3. STICKY SUB-NAV --- */
-        .project-nav-bar {
-            position: sticky; top: 80px; z-index: 1020;
-            background: #fff; padding: 15px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-        .nav-pill-link {
-            display: inline-block; padding: 8px 25px; border-radius: 50px;
-            color: #666; font-weight: 700; text-transform: uppercase; font-size: 12px;
-            letter-spacing: 1px; border: 1px solid #eee; margin: 0 5px;
-            transition: all 0.3s;
-        }
-        .nav-pill-link:hover, .nav-pill-link.active {
-            background: var(--tf-blue); color: #fff; border-color: var(--tf-blue);
-        }
-        .scroll-target { scroll-margin-top: 160px; } 
-
-        /* --- 4. ABOUT CONTENT --- */
-        .about-img { border-radius: var(--card-radius); box-shadow: var(--shadow-lift); width: 100%; transition: 0.3s; }
-        .about-img:hover { transform: scale(1.02); }
         
-        .feature-check { font-weight: 700; color: var(--tf-dark); margin-bottom: 10px; font-size: 15px; }
-        .feature-check i { color: var(--tf-yellow); margin-right: 10px; background: var(--tf-blue); padding: 4px; border-radius: 50%; font-size: 10px; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; }
-
-        /* --- 5. MISSION & VISION --- */
-        .mv-card {
-            background: #fff; padding: 40px; border-radius: var(--card-radius); height: 100%;
-            box-shadow: var(--shadow-soft); border-bottom: 4px solid transparent; transition: 0.3s;
+        .nav-link-custom:hover { 
+            color: var(--tf-yellow); 
         }
-        .mv-card:hover { transform: translateY(-5px); border-bottom-color: var(--tf-yellow); box-shadow: var(--shadow-lift); }
-        .mv-title { color: var(--tf-blue); font-size: 24px; margin-bottom: 15px; }
-
-        /* --- 6. CORE VALUES & TEAM --- */
-        .value-card {
-            background: #fff; padding: 30px; border-radius: var(--card-radius); border: 1px solid #f0f0f0;
-            text-align: center; height: 100%; transition: var(--transition);
-            position: relative; overflow: hidden;
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
         }
-        .value-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--tf-blue); }
-        .value-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lift); border-color: transparent; }
-        .value-icon { font-size: 40px; color: var(--tf-yellow); margin-bottom: 20px; display: block; }
-        .value-card:hover .value-icon { color: var(--tf-blue); transform: scale(1.1); transition: 0.3s; }
-
-        .team-item { background: #fff; border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow-soft); transition: 0.3s; height: 100%; }
-        .team-item:hover { transform: translateY(-10px); box-shadow: var(--shadow-lift); }
-        .team-photo { width: 100%; height: 500px; object-fit: cover; object-position: top; }
-        .team-content { padding: 25px; position: relative; }
-        .team-role { 
-            background: var(--tf-blue); color: #fff; padding: 5px 15px; border-radius: 50px; 
-            font-size: 11px; font-weight: 700; text-transform: uppercase; position: absolute; top: -15px; left: 25px;
+        
+        .header-fix.scrolled .nav-link-custom:hover { 
+            color: var(--tf-blue); 
+        }
+        
+        .header-fix.scrolled .header-icons i { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        .header-fix.scrolled .mobile-toggle i { 
+            color: var(--tf-dark) !important; 
         }
 
-        /* --- 7. CERTIFICATES & COMPLIANCE (Integrated) --- */
-        .cert-card {
-            transition: .35s; border: 1px solid #eee; background: #fff; padding: 30px; 
-            border-radius: var(--card-radius); text-align: center; height: 100%;
-        }
-        .cert-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lift); border-color: var(--tf-blue); }
-        .cert-icon { font-size: 40px; color: var(--tf-yellow); margin-bottom: 20px; }
-        
-        .cert-preview {
-            background: #f8f9fa; border: 1px dashed #ccc; height: 140px;
-            display: flex; align-items: center; justify-content: center; flex-direction: column;
-            font-size: 14px; color: #888; cursor: pointer; transition: .3s; position: relative; gap: 8px; font-weight: 500;
-            border-radius: 8px; margin-top: 20px;
-        }
-        .cert-preview:hover { border-color: var(--tf-blue); color: var(--tf-blue); background: #fff; box-shadow: 0 0 0 2px rgba(0, 76, 163, 0.1); }
-        .cert-preview i { font-size: 26px; color: var(--tf-blue); }
-        
-        .cert-preview::after {
-            content: "VERIFIED"; position: absolute; top: 10px; right: 10px;
-            background: #198754; color: #fff; font-size: 10px; padding: 3px 8px;
-            border-radius: 20px; letter-spacing: .5px; font-weight: 700;
-        }
-
-        /* MODAL ZOOM */
-        .zoom-container { overflow: auto; max-height: 80vh; text-align: center; }
-        .zoom-container img { width: 100%; max-width: 800px; transition: transform .4s ease; cursor: zoom-in; }
-        .zoom-container img.zoomed { transform: scale(1.5); cursor: zoom-out; }
-
-        /* --- 8. FOOTER --- */
-        .footer { background: #0b111a; color: #aaa; margin-top: 0; padding-top: 80px; font-size: 14px; }
-        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
-        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
-        
-        .btn-mobile-toggle { 
-            font-size: 22px; color: #fff; background: none; border: none; 
-            padding: 5px; min-width: 36px; display: flex; align-items: center; justify-content: center;
-        }
-        .header-fix.scrolled .btn-mobile-toggle { color: var(--tf-dark); }
-        
-        /* Header icons reorder */
-        .header-icons { display: flex; align-items: center; gap: 15px; order: 2; }
-        .nav-menu { order: 1; }
-        
-        /* Mobile styles */
-        @media (max-width: 576px) {
-            .header-icons { gap: 12px !important; }
-            .header-icons i { font-size: 16px !important; }
-            .hero-title { font-size: 2.2rem !important; }
-            .inner-hero { height: 40vh !important; }
-            .header-container { padding: 0 15px; }
-            .btn-mobile-toggle { font-size: 20px; }
-        }
-        
-        @media (max-width: 991px) {
-            .header-container { justify-content: space-between; }
-            .nav-menu { margin-right: 0; }
-        }
-        
-        /* Full height mobile drawer */
-        #mobileMenu.offcanvas {
-            height: 100vh !important;
-        }
-        
-        .offcanvas-body {
-            overflow-y: auto;
-            max-height: calc(100vh - 70px);
-        }
-        
-        /* Mobile dropdown improvements */
-        .mobile-menu-item {
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .mobile-menu-link {
+        /* Make parent links clickable */
+        .dropdown-parent-link {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 14px 0;
-            color: white;
-            text-decoration: none;
+            gap: 5px;
+        }
+
+        /* DROPDOWN MENU */
+        .nav-item-dropdown { 
+            position: relative; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+        
+        .dropdown-menu-custom {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px); 
+            width: 700px;
+            background: #fff;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+        }
+
+        /* Invisible bridge for hover */
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+
+        /* Hover Effect */
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+
+        /* Link Styles */
+        .dropdown-link {
+            color: #555; 
+            font-size: 13px; 
             font-weight: 600;
+            padding: 6px 10px; 
+            border-radius: 4px; 
+            display: block;
+            border-left: 2px solid transparent;
         }
         
-        .mobile-menu-link .arrow {
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-menu-link[aria-expanded="true"] .arrow {
-            transform: rotate(180deg);
-        }
-        
-        .mobile-submenu {
+        .dropdown-link:hover {
+            background: #f4f7fa; 
+            color: var(--tf-blue);
+            border-left: 2px solid var(--tf-blue);
             padding-left: 15px;
-            border-left: 2px solid rgba(255,255,255,0.1);
-            margin-left: 10px;
-            display: none;
         }
         
-        .mobile-submenu.show {
-            display: block;
+        .dropdown-category {
+            grid-column: span 3; 
+            color: var(--tf-blue); 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 10px; 
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px;
+        }
+
+        /* Header icons */
+        .header-icons { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 15px; 
+            color: white;
         }
         
-        .mobile-submenu a {
-            display: block;
-            padding: 10px 0;
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 14px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        .header-fix.scrolled .header-icons { 
+            color: var(--tf-dark) !important; 
         }
         
-        .mobile-submenu a:last-child {
-            border-bottom: none;
+        .header-icons i {
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
         }
         
-        .mobile-submenu a:hover {
+        .header-icons i:hover {
             color: var(--tf-yellow);
         }
         
-        .mobile-submenu-category {
-            color: var(--tf-yellow) !important;
-            font-weight: 700;
-            font-size: 13px !important;
-            margin-top: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+        .header-fix.scrolled .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: white; 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            padding-right: 20px;
         }
         
-        .mobile-view-all {
-            color: var(--tf-yellow) !important;
-            font-weight: 700;
-            margin-top: 10px;
+        .header-fix.scrolled .mobile-toggle { 
+            color: var(--tf-dark) !important; 
+        }
+
+        /* SEARCH OVERLAY */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .search-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .search-container {
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 25px 60px 25px 30px;
+            font-size: 28px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid var(--tf-yellow);
+            color: white;
+            outline: none;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .search-close {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .search-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--tf-yellow);
+        }
+        
+        .search-hint {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        /* LANGUAGE SELECTOR */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            min-width: 160px;
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .language-selector:hover .language-dropdown {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .language-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            color: var(--tf-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .language-option:last-child {
+            border-bottom: none;
+        }
+        
+        .language-option:hover {
+            background: #f8fafc;
+            color: var(--tf-blue);
+        }
+        
+        .language-option.active {
+            background: var(--tf-blue);
+            color: white;
+        }
+        
+        .language-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        /* Mobile Adjustments for Dropdown */
+        @media (max-width: 991px) {
+            /* Fix Header Height and Layout */
+            .header-fix { height: auto; }
+            
+            /* Show Hamburger and rearrange layout */
+            .mobile-toggle { 
+                display: block; 
+                order: 2; /* Hamburger after logo */
+            }
+            
+            /* Keep header-icons visible - placed after hamburger */
+            .header-icons { 
+                display: flex !important; 
+                order: 3; /* Icons after hamburger */
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .header-icons i {
+                font-size: 18px !important;
+            }
+
+            /* Adjust header container for mobile */
+            .header-container {
+                padding: 0 15px;
+                flex-wrap: nowrap;
+                justify-content: flex-start; /* Align items to start */
+            }
+            
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto; /* Push everything else to the right */
+            }
+            
+            .nav-menu {
+                display: none; /* Controlled by JS */
+                position: absolute;
+                top: 80px; left: 0; width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
+            }
+            
+            .nav-menu.active { display: flex; }
+
+            .nav-link-custom { 
+                color: #333; 
+                width: 100%; 
+                padding: 10px 30px; 
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+            }
+            
+            /* Fix Dropdowns on Mobile */
+            .nav-item-dropdown { 
+                width: 100%; 
+                flex-direction: column; 
+                align-items: flex-start;
+                height: auto;
+            }
+            
+            .dropdown-menu-custom {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1; 
+                visibility: visible;
+                display: none; /* Hidden until toggled */
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px;
+                background: #f9f9f9;
+                grid-template-columns: 1fr; /* Stack columns */
+            }
+            
+            /* Remove the bridge on mobile since we click, not hover */
+            .dropdown-menu-custom::before { display: none; }
+            
+            .nav-item-dropdown.active .dropdown-menu-custom { 
+                display: grid; 
+                opacity: 1; 
+                visibility: visible;
+                transform: none;
+            }
+            
+            .dropdown-category { grid-column: span 1; }
+
+            /* Language dropdown adjustment */
+            .language-dropdown {
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                left: auto;
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-icons {
+                gap: 12px !important;
+            }
+            
+            .header-icons i {
+                font-size: 16px !important;
+            }
+            
+            .header-logo a {
+                font-size: 1.3rem !important;
+            }
+            
+            .mobile-toggle {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+            
+            .header-container {
+                padding: 0 10px;
+            }
+            
+            .search-input {
+                font-size: 22px;
+                padding: 20px 50px 20px 20px;
+            }
+        }
+
+        /* --- HERO SECTION --- */
+        .inner-hero {
+            height: 55vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: #fff; 
+        }
+        
+        .hero-title { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            margin-bottom: 15px; 
+            animation: fadeUp 0.8s ease-out; 
+        }
+        
+        @keyframes fadeUp { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        /* --- STICKY SUB-NAV --- */
+        .project-nav-bar {
+            position: sticky; 
+            top: 80px; 
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+        
+        .nav-pill-link {
+            display: inline-block; 
+            padding: 8px 25px; 
+            border-radius: 50px;
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px;
+            letter-spacing: 1px; 
+            border: 1px solid #eee; 
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-pill-link:hover, 
+        .nav-pill-link.active {
+            background: var(--tf-blue); 
+            color: #fff; 
+            border-color: var(--tf-blue);
+        }
+        
+        .scroll-target { scroll-margin-top: 160px; }
+
+        /* --- ABOUT CONTENT --- */
+        .about-img { 
+            border-radius: var(--card-radius); 
+            box-shadow: var(--shadow-lift); 
+            width: 100%; 
+            transition: 0.3s; 
+        }
+        
+        .about-img:hover { 
+            transform: scale(1.02); 
+        }
+        
+        .feature-check { 
+            font-weight: 700; 
+            color: var(--tf-dark); 
+            margin-bottom: 10px; 
+            font-size: 15px; 
+        }
+        
+        .feature-check i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            background: var(--tf-blue); 
+            padding: 4px; 
+            border-radius: 50%; 
+            font-size: 10px; 
+            width: 20px; 
+            height: 20px; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+
+        /* --- MISSION & VISION --- */
+        .mv-card {
+            background: #fff; 
+            padding: 40px; 
+            border-radius: var(--card-radius); 
+            height: 100%;
+            box-shadow: var(--shadow-soft); 
+            border-bottom: 4px solid transparent; 
+            transition: 0.3s;
+        }
+        
+        .mv-card:hover { 
+            transform: translateY(-5px); 
+            border-bottom-color: var(--tf-yellow); 
+            box-shadow: var(--shadow-lift); 
+        }
+        
+        .mv-title { 
+            color: var(--tf-blue); 
+            font-size: 24px; 
+            margin-bottom: 15px; 
+        }
+
+        /* --- CORE VALUES --- */
+        .value-card {
+            background: #fff; 
+            padding: 30px; 
+            border-radius: var(--card-radius); 
+            border: 1px solid #f0f0f0;
+            text-align: center; 
+            height: 100%; 
+            transition: var(--transition);
+            position: relative; 
+            overflow: hidden;
+        }
+        
+        .value-card::before { 
+            content: ""; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: var(--tf-blue); 
+        }
+        
+        .value-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: var(--shadow-lift); 
+            border-color: transparent; 
+        }
+        
+        .value-icon { 
+            font-size: 40px; 
+            color: var(--tf-yellow); 
+            margin-bottom: 20px; 
+            display: block; 
+        }
+        
+        .value-card:hover .value-icon { 
+            color: var(--tf-blue); 
+            transform: scale(1.1); 
+            transition: 0.3s; 
+        }
+
+        /* --- FOOTER --- */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            margin-top: 0; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+        
+        .btn-link {
+            color: #aaa;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+        
+        .btn-link:hover {
+            color: var(--tf-yellow);
+        }
+        
+        .btn-square {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: #aaa;
+            transition: var(--transition);
+        }
+        
+        .btn-square:hover {
+            background: var(--tf-blue);
+            color: white;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem !important;
+            }
+            
+            .inner-hero {
+                height: 40vh !important;
+            }
+            
+            .mv-card {
+                padding: 25px;
+            }
+            
+            .value-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .project-nav-bar {
+                top: 70px;
+                padding: 10px 0;
+            }
+            
+            .nav-pill-link {
+                padding: 6px 15px;
+                font-size: 11px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search products, solutions, technologies..." 
+                   id="searchInput" autocomplete="off">
+            <button class="search-close" id="searchClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="search-hint">
+                Press Enter to search • ESC to close
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
                 <div class="header-logo">
-                    <a href="/index.html">
-                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
-                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
-                        </h2>
-                    </a>
+                   <a href="/index.html">
+    <span class="logo-text">TONGFANG</span>
+    <span class="logo-accent" style="margin-left: 6px;">BMS</span>
+</a>
                 </div>
                 
                 <!-- NAVIGATION -->
-                <nav class="d-none d-lg-block">
-                    <div class="nav-menu">
-                        <a href="/about/index.html" class="nav-link-custom">About</a>
-                        
-                        <!-- SOLUTIONS DROPDOWN -->
-                        <div class="nav-item-dropdown">
-                            <a href="/solutions/index.html" class="nav-link-custom dropdown-main-link">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
-                            <div class="dropdown-menu-custom">
-                                <!-- Col 1: Buildings -->
-                                <div>
-                                    <div class="dropdown-category">Buildings & Hospitality</div>
-                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                    <a href="/solutions/by-scenario/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                                </div>
-                                <!-- Col 2: Infrastructure -->
-                                <div>
-                                    <div class="dropdown-category">Critical Infrastructure</div>
-                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a> 
-                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a> 
-                                </div>
-                                <!-- Col 3: Cities & Systems -->
-                                <div>
-                                    <div class="dropdown-category">City & Systems</div>
-                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; border-left: 3px solid var(--tf-blue); padding-left: 18px; background: #f4f8ff;">
-                                        View All Systems >
-                                    </a>
-                                </div>
+                <nav id="mainNav" class="nav-menu">
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    
+                    <!-- SOLUTIONS DROPDOWN - Parent link is clickable -->
+                    <div class="nav-item-dropdown">
+                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1: Buildings -->
+                            <div>
+                                <div class="dropdown-category">Buildings</div>
+                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                            </div>
+                            <!-- Col 2: Infrastructure -->
+                            <div>
+                                <div class="dropdown-category">Infrastructure</div>
+                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
+                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
+                            </div>
+                            <!-- Col 3: Cities & Systems -->
+                            <div>
+                                <div class="dropdown-category">City Systems</div>
+                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
                             </div>
                         </div>
-                        
-                        <!-- PRODUCTS DROPDOWN -->
-                        <div class="nav-item-dropdown">
-                            <a href="/products/index.html" class="nav-link-custom dropdown-main-link">
-                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
-                            </a>
-                            <div class="dropdown-menu-custom">
-                                <!-- Col 1 -->
-                                <div>
-                                    <div class="dropdown-category">Core Controllers</div>
-                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                </div>
-                                <!-- Col 2 -->
-                                <div>
-                                    <div class="dropdown-category">Field Instrumentation</div>
-                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
-                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
-                                </div>
-                                <!-- Col 3 -->
-                                <div>
-                                    <div class="dropdown-category">Management & Power</div>
-                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
-                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
-                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
-                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; border-left: 3px solid var(--tf-blue); padding-left: 18px; background: #f4f8ff;">
-                                        View All Products >
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
-                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                     </div>
+                    
+                    <!-- PRODUCTS DROPDOWN - Parent link is clickable -->
+                    <div class="nav-item-dropdown">
+                        <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                            Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1 -->
+                            <div>
+                                <div class="dropdown-category">Core Controllers</div>
+                                <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                            </div>
+                            <!-- Col 2 -->
+                            <div>
+                                <div class="dropdown-category">Field Instrumentation</div>
+                                <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                            </div>
+                            <!-- Col 3 -->
+                            <div>
+                                <div class="dropdown-category">Management & Power</div>
+                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
 
-                <!-- Header Icons - Reordered with hamburger first -->
+                <!-- HAMBURGER ICON (Visible on Mobile) -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Header Icons - Always visible -->
                 <div class="header-icons d-flex align-items-center">
-                    <!-- Mobile Menu Toggle Button -->
-                    <button class="btn-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <!-- Search and Language icons -->
-                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
-                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                    <!-- Search Icon -->
+                    <i class="fa fa-search fs-5" id="searchToggleIcon" style="cursor: pointer;"></i>
+                    
+                    <!-- Language Selector -->
+                    <div class="language-selector">
+                        <i class="fa fa-globe fs-5" id="languageToggleIcon" style="cursor: pointer;"></i>
+                        <div class="language-dropdown">
+                            <a href="#" class="language-option active" data-lang="en">
+                                <img src="https://flagcdn.com/w20/gb.png" class="language-flag" alt="English">
+                                English
+                            </a>
+                            <a href="#" class="language-option" data-lang="zh">
+                                <img src="https://flagcdn.com/w20/cn.png" class="language-flag" alt="Chinese">
+                                中文 (Chinese)
+                            </a>
+                            <a href="#" class="language-option" data-lang="am">
+                                <img src="https://flagcdn.com/w20/et.png" class="language-flag" alt="Amharic">
+                                አማርኛ (Amharic)
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-
-
-    <!-- MOBILE DRAWER - Full height with collapsible submenus -->
-    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileMenu">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title fw-bold">TONGFANG <span style="color:var(--tf-yellow)">BMS</span></h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="list-unstyled">
-                <li class="mobile-menu-item">
-                    <a href="/index.html" class="mobile-menu-link">
-                        Home
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="/about/index.html" class="mobile-menu-link text-warning">
-                        About
-                    </a>
-                </li>
-                
-                <!-- Solutions Mobile Dropdown -->
-                <li class="mobile-menu-item">
-                    <a class="mobile-menu-link" data-bs-toggle="collapse" href="#mobileSolutions" role="button" aria-expanded="false">
-                        Solutions
-                        <span class="arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </a>
-                    <div class="collapse" id="mobileSolutions">
-                        <div class="mobile-submenu">
-                            <a href="/solutions/index.html" class="mobile-view-all">All Solutions →</a>
-                            
-                            <span class="mobile-submenu-category">Buildings & Hospitality</span>
-                            <a href="/solutions/residential/index.html">Residential</a>
-                            <a href="/solutions/office/index.html">Office Buildings</a>
-                            <a href="/solutions/hotel-smart-security/index.html">Hotels & Hospitality</a>
-                            <a href="/solutions/by-scenario/smart-campus-hub/index.html">Educational</a>
-                            <a href="/solutions/retail/index.html">Shopping Malls</a>
-                            
-                            <span class="mobile-submenu-category">Critical Infrastructure</span>
-                            <a href="/solutions/smart-hospital-access/index.html">Hospitals</a>
-                            <a href="/solutions/airport/index.html">Airports</a>
-                            <a href="/solutions/industrial/index.html">Smart Factories</a>
-                            <a href="/solutions/ipdc/index.html">Data Centers</a>
-                            <a href="/solutions/smart-port-platform/index.html">Smart Ports</a>
-                            
-                            <span class="mobile-submenu-category">City & Systems</span>
-                            <a href="/solutions/smart-city/index.html">Smart Cities</a>
-                            <a href="/solutions/traffic/index.html">Smart Traffic</a>
-                            <a href="/solutions/sports-center-automation/index.html">Sports & Stadiums</a>
-                            <a href="/solutions/parking-lots/index.html">Parking Lots</a>
-                        </div>
-                    </div>
-                </li>
-                
-                <!-- Products Mobile Dropdown -->
-                <li class="mobile-menu-item">
-                    <a class="mobile-menu-link" data-bs-toggle="collapse" href="#mobileProducts" role="button" aria-expanded="false">
-                        Products
-                        <span class="arrow">
-                            <i class="fas fa-chevron-down"></i>
-                        </span>
-                    </a>
-                    <div class="collapse" id="mobileProducts">
-                        <div class="mobile-submenu">
-                            <a href="/products/index.html" class="mobile-view-all">All Products →</a>
-                            
-                            <span class="mobile-submenu-category">Core Controllers</span>
-                            <a href="/products/ddc-controllers/index.html">DDC Controllers</a>
-                            <a href="/products/io-modules/index.html">I/O Modules</a>
-                            
-                            <span class="mobile-submenu-category">Field Instrumentation</span>
-                            <a href="/products/sensors-thermostats/index.html">Sensors & Thermostats</a>
-                            <a href="/products/valves-actuators/index.html">Valves & Actuators</a>
-                            
-                            <span class="mobile-submenu-category">Management & Power</span>
-                            <a href="/products/bms-software/index.html">BMS Software</a>
-                            <a href="/products/energy-meters/index.html">Energy Meters</a>
-                            <a href="/products/control-panels/index.html">Control Panels</a>
-                        </div>
-                    </div>
-                </li>
-                
-                <li class="mobile-menu-item">
-                    <a href="/technologies/index.html" class="mobile-menu-link">
-                        Technologies
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="/projects/index.html" class="mobile-menu-link">
-                        Projects
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="/contact/index.html" class="mobile-menu-link">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
 
     <!-- ================= HERO ================= -->
     <section class="inner-hero">
@@ -654,7 +1052,7 @@
                     <a class="btn-link" href="/about/index.html">About Us</a><br>
                     <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
                     <a class="btn-link" href="/products/index.html">Products</a><br>
-                    <a class="btn-link" href="projects/index.html">Projects</a><br>
+                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
                     <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
                     <a class="btn-link" href="/contact/index.html">Contact</a>
                 </div>
@@ -675,6 +1073,7 @@
                         <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
                     </div>
                 </div>
             </div>
@@ -685,12 +1084,159 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Header Scroll
+        // Header Scroll Effect - SIMPLIFIED
         window.addEventListener('scroll', function() {
             const header = document.getElementById('navBox');
-            if (window.scrollY > 50) { header.classList.add('scrolled'); } 
-            else { header.classList.remove('scrolled'); }
+            
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
         });
+
+        // Mobile Menu Functions - FIXED
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            // Force white background when menu is open
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+            } else {
+                header.style.background = "";
+                header.style.borderBottom = "";
+                if(window.scrollY > 50) {
+                    mobileToggle.style.color = "#111827";
+                } else {
+                    mobileToggle.style.color = "#fff";
+                }
+            }
+        }
+
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 992) {
+                const dropdowns = document.querySelectorAll('.nav-item-dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(event.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Handle dropdown toggle on mobile
+        document.querySelectorAll('.nav-item-dropdown .nav-link-custom').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    // On mobile, just let the link navigate
+                }
+            });
+        });
+
+        // Optional: Add separate arrow click handler for mobile
+        document.querySelectorAll('.fa-angle-down').forEach(arrow => {
+            arrow.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const parent = this.closest('.nav-item-dropdown');
+                    parent.classList.toggle('active');
+                }
+            });
+        });
+
+        // SEARCH FUNCTIONALITY
+        const searchToggleIcon = document.getElementById('searchToggleIcon');
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+
+        // Toggle search overlay
+        searchToggleIcon.addEventListener('click', () => {
+            searchOverlay.classList.add('active');
+            searchInput.focus();
+        });
+
+        // Close search overlay
+        searchClose.addEventListener('click', () => {
+            searchOverlay.classList.remove('active');
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchOverlay.classList.remove('active');
+            }
+        });
+
+        // Close on overlay click (outside container)
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                searchOverlay.classList.remove('active');
+            }
+        });
+
+        // Search functionality
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    // Here you would implement your search logic
+                    alert(`Searching for: "${query}"\n\nThis would trigger a real search functionality.`);
+                    // Example: window.location.href = `/search?q=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+
+        // LANGUAGE SELECTOR FUNCTIONALITY
+        const languageOptions = document.querySelectorAll('.language-option');
+        
+        languageOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                const lang = option.getAttribute('data-lang');
+                
+                // Remove active class from all options
+                languageOptions.forEach(opt => opt.classList.remove('active'));
+                // Add active class to clicked option
+                option.classList.add('active');
+                
+                // Here you would implement language switching logic
+                switchLanguage(lang);
+            });
+        });
+
+        function switchLanguage(lang) {
+            // This is where you would implement actual language switching
+            const languages = {
+                'en': 'English',
+                'zh': 'Chinese',
+                'am': 'Amharic'
+            };
+            
+            alert(`Switching language to: ${languages[lang]}\n\nThis would trigger actual language translation.`);
+            
+            // Store the language preference in localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+                if (option.getAttribute('data-lang') === savedLang) {
+                    option.classList.add('active');
+                }
+            });
+        }
 
         // Sticky Nav Active State
         const sections = document.querySelectorAll('.scroll-target');
@@ -700,28 +1246,50 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 180) { current = section.getAttribute('id'); }
+                if (window.scrollY >= sectionTop - 180) { 
+                    current = section.getAttribute('id'); 
+                }
             });
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) { link.classList.add('active'); }
+                if (link.getAttribute('href').includes(current)) { 
+                    link.classList.add('active'); 
+                }
             });
         });
 
-        // Close mobile submenus when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.mobile-menu-link')) {
-                // Handle closing if needed
-            }
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
 
-        // Prevent parent link navigation when clicking to expand/collapse
-        document.querySelectorAll('.mobile-menu-link[data-bs-toggle="collapse"]').forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Prevent default only if it's a collapse toggle (not a regular link)
-                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
-                    e.preventDefault();
-                }
+        // Initialize tooltips for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add tooltip to search icon
+            searchToggleIcon.setAttribute('title', 'Search');
+            searchToggleIcon.setAttribute('data-bs-toggle', 'tooltip');
+            
+            // Add tooltip to language icon
+            const languageToggleIcon = document.getElementById('languageToggleIcon');
+            languageToggleIcon.setAttribute('title', 'Language');
+            languageToggleIcon.setAttribute('data-bs-toggle', 'tooltip');
+            
+            // Initialize Bootstrap tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
             });
         });
     </script>

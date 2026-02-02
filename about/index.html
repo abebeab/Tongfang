@@ -78,19 +78,40 @@
         .header-fix.scrolled .header-icons { color: var(--tf-dark) !important; }
         .header-fix.scrolled .btn-mobile-toggle { color: var(--tf-dark) !important; }
 
-        /* DROPDOWN */
+        /* DROPDOWN IMPROVEMENTS */
         .nav-item-dropdown { position: relative; height: 100%; display: flex; align-items: center; }
         .dropdown-menu-custom {
             position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(20px);
-            width: 700px; background: #fff; box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px;
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 1100;
+            width: 750px; background: #fff; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow); border-radius: 0 0 12px 12px; padding: 35px 40px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease; z-index: 1100;
         }
-        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .dropdown-link { color: #555; font-size: 13px; font-weight: 600; padding: 6px 10px; border-radius: 4px; display: block; border-left: 2px solid transparent; }
-        .dropdown-link:hover { background: #f4f7fa; color: var(--tf-blue); border-left: 2px solid var(--tf-blue); padding-left: 15px; }
-        .dropdown-category { grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); 
+        }
+        .dropdown-link { 
+            color: #555; font-size: 13.5px; font-weight: 600; padding: 8px 12px; border-radius: 6px; 
+            display: block; border-left: 3px solid transparent; transition: all 0.3s ease;
+        }
+        .dropdown-link:hover { 
+            background: #f4f8ff; color: var(--tf-blue); border-left: 3px solid var(--tf-blue); 
+            padding-left: 18px; transform: translateX(3px);
+        }
+        .dropdown-category { 
+            grid-column: span 3; color: var(--tf-blue); font-size: 11px; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; margin-bottom: 8px; 
+            border-bottom: 1px solid #eef2f7; padding-bottom: 8px; 
+        }
+        .dropdown-main-link {
+            display: block; position: relative; padding-right: 25px;
+        }
+        .dropdown-main-link::after {
+            content: "\f105"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            color: #aaa; font-size: 12px;
+        }
+        .dropdown-main-link:hover::after { color: var(--tf-blue); }
 
         /* --- 2. HERO SECTION --- */
         .inner-hero {
@@ -189,8 +210,107 @@
         .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
         .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
         
-        .btn-mobile-toggle { font-size: 24px; color: #fff; background: none; border: none; }
+        .btn-mobile-toggle { 
+            font-size: 22px; color: #fff; background: none; border: none; 
+            padding: 5px; min-width: 36px; display: flex; align-items: center; justify-content: center;
+        }
         .header-fix.scrolled .btn-mobile-toggle { color: var(--tf-dark); }
+        
+        /* Header icons reorder */
+        .header-icons { display: flex; align-items: center; gap: 15px; order: 2; }
+        .nav-menu { order: 1; }
+        
+        /* Mobile styles */
+        @media (max-width: 576px) {
+            .header-icons { gap: 12px !important; }
+            .header-icons i { font-size: 16px !important; }
+            .hero-title { font-size: 2.2rem !important; }
+            .inner-hero { height: 40vh !important; }
+            .header-container { padding: 0 15px; }
+            .btn-mobile-toggle { font-size: 20px; }
+        }
+        
+        @media (max-width: 991px) {
+            .header-container { justify-content: space-between; }
+            .nav-menu { margin-right: 0; }
+        }
+        
+        /* Full height mobile drawer */
+        #mobileMenu.offcanvas {
+            height: 100vh !important;
+        }
+        
+        .offcanvas-body {
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+        }
+        
+        /* Mobile dropdown improvements */
+        .mobile-menu-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .mobile-menu-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .mobile-menu-link .arrow {
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu-link[aria-expanded="true"] .arrow {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-submenu {
+            padding-left: 15px;
+            border-left: 2px solid rgba(255,255,255,0.1);
+            margin-left: 10px;
+            display: none;
+        }
+        
+        .mobile-submenu.show {
+            display: block;
+        }
+        
+        .mobile-submenu a {
+            display: block;
+            padding: 10px 0;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .mobile-submenu a:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-submenu a:hover {
+            color: var(--tf-yellow);
+        }
+        
+        .mobile-submenu-category {
+            color: var(--tf-yellow) !important;
+            font-weight: 700;
+            font-size: 13px !important;
+            margin-top: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .mobile-view-all {
+            color: var(--tf-yellow) !important;
+            font-weight: 700;
+            margin-top: 10px;
+            display: block;
+        }
     </style>
 </head>
 
@@ -215,7 +335,7 @@
                         
                         <!-- SOLUTIONS DROPDOWN -->
                         <div class="nav-item-dropdown">
-                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
+                            <a href="/solutions/index.html" class="nav-link-custom dropdown-main-link">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
                             <div class="dropdown-menu-custom">
                                 <!-- Col 1: Buildings -->
                                 <div>
@@ -233,7 +353,7 @@
                                     <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
                                     <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
                                     <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                      <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a> 
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a> 
                                 </div>
                                 <!-- Col 3: Cities & Systems -->
                                 <div>
@@ -241,58 +361,58 @@
                                     <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
                                     <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
                                     <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">  parking-lots  </a>
-                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; border-left: 3px solid var(--tf-blue); padding-left: 18px; background: #f4f8ff;">
+                                        View All Systems >
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <!-- END DROPDOWN -->
-
                         
-<!-- PRODUCTS DROPDOWN - UPDATED CATEGORIES -->
-<div class="nav-item-dropdown">
-    <a href="/products/index.html" class="nav-link-custom">
-        Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
-    </a>
-
-    <div class="dropdown-menu-custom">
-        <!-- Col 1 -->
-        <div>
-            <div class="dropdown-category">Core Controllers</div>
-            <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-            <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-        </div>
-
-        <!-- Col 2 -->
-        <div>
-            <div class="dropdown-category">Field Instrumentation</div>
-            <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
-            <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
-        </div>
-
-        <!-- Col 3 -->
-        <div>
-            <div class="dropdown-category">Management & Power</div>
-            <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
-            <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
-            <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
-
-            <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
-                View All Products >
-            </a>
-        </div>
-    </div>
-</div>
+                        <!-- PRODUCTS DROPDOWN -->
+                        <div class="nav-item-dropdown">
+                            <a href="/products/index.html" class="nav-link-custom dropdown-main-link">
+                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                            </a>
+                            <div class="dropdown-menu-custom">
+                                <!-- Col 1 -->
+                                <div>
+                                    <div class="dropdown-category">Core Controllers</div>
+                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                </div>
+                                <!-- Col 2 -->
+                                <div>
+                                    <div class="dropdown-category">Field Instrumentation</div>
+                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                                </div>
+                                <!-- Col 3 -->
+                                <div>
+                                    <div class="dropdown-category">Management & Power</div>
+                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; border-left: 3px solid var(--tf-blue); padding-left: 18px; background: #f4f8ff;">
+                                        View All Products >
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
                         <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
-<!-- END PRODUCTS DROPDOWN -->
-
                         <a href="/projects/index.html" class="nav-link-custom">Projects</a>
                         <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                     </div>
                 </nav>
 
-                <div class="header-icons d-flex align-items-center gap-4 text-white">
+                <!-- Header Icons - Reordered with hamburger first -->
+                <div class="header-icons d-flex align-items-center">
+                    <!-- Mobile Menu Toggle Button -->
+                    <button class="btn-mobile-toggle d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <!-- Search and Language icons -->
                     <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                     <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
                 </div>
@@ -301,7 +421,7 @@
     </header>
 
 
-    <!-- MOBILE DRAWER -->
+    <!-- MOBILE DRAWER - Full height with collapsible submenus -->
     <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mobileMenu">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title fw-bold">TONGFANG <span style="color:var(--tf-yellow)">BMS</span></h5>
@@ -309,11 +429,95 @@
         </div>
         <div class="offcanvas-body">
             <ul class="list-unstyled">
-                <li class="py-2 border-bottom border-secondary"><a href="/index.html" class="text-white text-decoration-none">Home</a></li>
-                <li class="py-2 border-bottom border-secondary"><a href="/about/index.html" class="text-warning text-decoration-none">About</a></li>
-                <li class="py-2 border-bottom border-secondary"><a href="/solutions/index.html" class="text-white text-decoration-none">Solutions</a></li>
-                <li class="py-2 border-bottom border-secondary"><a href="/projects/index.html" class="text-white text-decoration-none">Projects</a></li>
-                <li class="py-2"><a href="/contact/index.html" class="text-white text-decoration-none">Contact</a></li>
+                <li class="mobile-menu-item">
+                    <a href="/index.html" class="mobile-menu-link">
+                        Home
+                    </a>
+                </li>
+                <li class="mobile-menu-item">
+                    <a href="/about/index.html" class="mobile-menu-link text-warning">
+                        About
+                    </a>
+                </li>
+                
+                <!-- Solutions Mobile Dropdown -->
+                <li class="mobile-menu-item">
+                    <a class="mobile-menu-link" data-bs-toggle="collapse" href="#mobileSolutions" role="button" aria-expanded="false">
+                        Solutions
+                        <span class="arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="collapse" id="mobileSolutions">
+                        <div class="mobile-submenu">
+                            <a href="/solutions/index.html" class="mobile-view-all">All Solutions →</a>
+                            
+                            <span class="mobile-submenu-category">Buildings & Hospitality</span>
+                            <a href="/solutions/residential/index.html">Residential</a>
+                            <a href="/solutions/office/index.html">Office Buildings</a>
+                            <a href="/solutions/hotel-smart-security/index.html">Hotels & Hospitality</a>
+                            <a href="/solutions/by-scenario/smart-campus-hub/index.html">Educational</a>
+                            <a href="/solutions/retail/index.html">Shopping Malls</a>
+                            
+                            <span class="mobile-submenu-category">Critical Infrastructure</span>
+                            <a href="/solutions/smart-hospital-access/index.html">Hospitals</a>
+                            <a href="/solutions/airport/index.html">Airports</a>
+                            <a href="/solutions/industrial/index.html">Smart Factories</a>
+                            <a href="/solutions/ipdc/index.html">Data Centers</a>
+                            <a href="/solutions/smart-port-platform/index.html">Smart Ports</a>
+                            
+                            <span class="mobile-submenu-category">City & Systems</span>
+                            <a href="/solutions/smart-city/index.html">Smart Cities</a>
+                            <a href="/solutions/traffic/index.html">Smart Traffic</a>
+                            <a href="/solutions/sports-center-automation/index.html">Sports & Stadiums</a>
+                            <a href="/solutions/parking-lots/index.html">Parking Lots</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <!-- Products Mobile Dropdown -->
+                <li class="mobile-menu-item">
+                    <a class="mobile-menu-link" data-bs-toggle="collapse" href="#mobileProducts" role="button" aria-expanded="false">
+                        Products
+                        <span class="arrow">
+                            <i class="fas fa-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="collapse" id="mobileProducts">
+                        <div class="mobile-submenu">
+                            <a href="/products/index.html" class="mobile-view-all">All Products →</a>
+                            
+                            <span class="mobile-submenu-category">Core Controllers</span>
+                            <a href="/products/ddc-controllers/index.html">DDC Controllers</a>
+                            <a href="/products/io-modules/index.html">I/O Modules</a>
+                            
+                            <span class="mobile-submenu-category">Field Instrumentation</span>
+                            <a href="/products/sensors-thermostats/index.html">Sensors & Thermostats</a>
+                            <a href="/products/valves-actuators/index.html">Valves & Actuators</a>
+                            
+                            <span class="mobile-submenu-category">Management & Power</span>
+                            <a href="/products/bms-software/index.html">BMS Software</a>
+                            <a href="/products/energy-meters/index.html">Energy Meters</a>
+                            <a href="/products/control-panels/index.html">Control Panels</a>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="mobile-menu-item">
+                    <a href="/technologies/index.html" class="mobile-menu-link">
+                        Technologies
+                    </a>
+                </li>
+                <li class="mobile-menu-item">
+                    <a href="/projects/index.html" class="mobile-menu-link">
+                        Projects
+                    </a>
+                </li>
+                <li class="mobile-menu-item">
+                    <a href="/contact/index.html" class="mobile-menu-link">
+                        Contact
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -327,38 +531,23 @@
     </section>
 
     <!-- ================= SECTION BREADCRUMB NAV ================= -->
-<div class="project-nav-bar">
-  <div class="container d-flex justify-content-center">
-
-    <nav aria-label="Section navigation" class="nav-breadcrumb">
-      <ol class="breadcrumb mb-0 align-items-center">
-
-        <li class="breadcrumb-item">
-          <a href="#overview">Overview</a>
-        </li>
-
-        <li class="breadcrumb-item">
-          <a href="#values">Mission & Vision</a>
-        </li>
-
-        <li class="breadcrumb-item">
-          <a href="#core-values">Core Values</a>
-        </li>
-
-        <!--<li class="breadcrumb-item">
-          <a href="#team">Leadership</a>
-        </li>
-
-        <li class="breadcrumb-item">
-          <a href="#certificates">Certificates & Compliance</a>
-        </li>-->
-
-      </ol>
-    </nav>
-
-  </div>
-</div>
-
+    <div class="project-nav-bar">
+        <div class="container d-flex justify-content-center">
+            <nav aria-label="Section navigation" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0 align-items-center">
+                    <li class="breadcrumb-item">
+                        <a href="#overview">Overview</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#values">Mission & Vision</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="#core-values">Core Values</a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
     <!-- ================= 1. OVERVIEW & WHO WE ARE ================= -->
     <div id="overview" class="container py-5 mt-4 scroll-target">
@@ -409,17 +598,14 @@
         </div>
     </div>
 
-  <!-- ================= 3. CORE VALUES ================= -->
-<div id="core-values" class="container py-5 mt-4">
-    <div class="text-center mx-auto mb-5" style="max-width: 600px;">
-        <h6 class="text-uppercase fw-bold" style="color:var(--tf-blue);">The Tongfang Way</h6>
-        <h2 class="display-6 mb-3">Our Core Values</h2>
-        <div style="width:60px; height:4px; background:var(--tf-yellow); margin:0 auto 20px; border-radius:10px;"></div>
-        <p class="text-secondary">"Moving Forward" — guiding our innovation, reliability, and customer-centric approach.</p>
-    </div>
-</div>
-
-
+    <!-- ================= 3. CORE VALUES ================= -->
+    <div id="core-values" class="container py-5 mt-4">
+        <div class="text-center mx-auto mb-5" style="max-width: 600px;">
+            <h6 class="text-uppercase fw-bold" style="color:var(--tf-blue);">The Tongfang Way</h6>
+            <h2 class="display-6 mb-3">Our Core Values</h2>
+            <div style="width:60px; height:4px; background:var(--tf-yellow); margin:0 auto 20px; border-radius:10px;"></div>
+            <p class="text-secondary">"Moving Forward" — guiding our innovation, reliability, and customer-centric approach.</p>
+        </div>
         <div class="row g-4">
             <div class="col-lg-3 col-md-6">
                 <div class="value-card">
@@ -452,173 +638,6 @@
         </div>
     </div>
 
-    <!-- ================= 4. LEADERSHIP TEAM ================= -->
-    <!--<div id="team" class="container-fluid py-5 mt-5 scroll-target" style="background-color: #f9fafb;">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h6 class="text-uppercase fw-bold" style="color:var(--tf-blue);">Leadership</h6>
-                <h2>Executive Team</h2>
-                <div style="width:60px; height:4px; background:var(--tf-yellow); margin:10px auto;"></div>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <!-- Chairman -->
-              <!--   <div class="col-lg-4 col-md-6">
-                    <div class="team-item">
-                        <img class="team-photo" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/xia.jpg" alt="Mr. Xia">
-                        <div class="team-content">
-                            <span class="team-role">Chairman</span>
-                            <h5 class="mt-2">Mr. Xia</h5>
-                            <p class="small text-muted mb-0">Strategic leadership for large-scale system integration projects and global partnerships.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- GM -->
-                <!-- <div class="col-lg-4 col-md-6">
-                    <div class="team-item">
-                        <img class="team-photo" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/fan.png" alt="Mr. Fan">
-                        <div class="team-content">
-                            <span class="team-role">General Manager</span>
-                            <h5 class="mt-2">Mr. Fan</h5>
-                            <p class="small text-muted mb-0">Oversees system integration operations, project delivery, and multi-disciplinary coordination.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Deputy GM -->
-               <!--  <div class="col-lg-4 col-md-6">
-                    <div class="team-item">
-                        <img class="team-photo" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/admass.jpg" alt="Dr. Admass">
-                        <div class="team-content">
-                            <span class="team-role">Deputy GM</span>
-                            <h5 class="mt-2">Dr. Admass</h5>
-                            <p class="small text-muted mb-0">Leads technical design, integration architecture, and coordination of complex intelligent systems.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ================= 5. CERTIFICATES & COMPLIANCE (INTEGRATED) ================= -->
-    <!-- <div id="certificates" class="container py-5 mt-4 scroll-target">
-        <div class="text-center mx-auto mb-5" style="max-width: 720px;">
-            <h6 class="fw-bold text-uppercase" style="color:var(--tf-blue);">Trusted & Certified</h6>
-            <h2 class="display-6">Certifications & Standards</h2>
-            <div style="width:60px; height:4px; background:var(--tf-yellow); margin:15px auto; border-radius:10px;"></div>
-            <p class="text-secondary">
-                Tongfang System Integration PLC operates under a comprehensive framework of 
-                <strong>international standards and local regulatory approvals</strong>, 
-                ensuring all projects meet the highest requirements.
-            </p>
-        </div>
-
-        <!-- Local License Section -->
-        <!-- <h4 class="mb-4 fw-bold" style="color:var(--tf-dark);">Local Certification & License</h4>
-        <div class="row g-4 mb-5">
-            <!-- License 1 -->
-          <!--   <div class="col-lg-4 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-university cert-icon"></i>
-                    <h5 class="fw-bold">Federal Republic of Ethiopia License</h5>
-                    <p class="small text-muted">Issued by the Ethiopian Investment Commission (AEIC), N 15200.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/local-license1.png">
-                        <i class="fa fa-eye"></i> <span>View Certificate</span>
-                    </div>
-                </div>
-            </div>
-            <!-- License 2 -->
-            <!-- <div class="col-lg-4 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-building cert-icon"></i>
-                    <h5 class="fw-bold">AEIC Registration</h5>
-                    <p class="small text-muted">Ethiopian Investment Commission legal registration for operations.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/local-license2.png">
-                        <i class="fa fa-eye"></i> <span>View Certificate</span>
-                    </div>
-                </div>
-            </div>
-            <!-- License 3 -->
-           <!--  <div class="col-lg-4 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-file-alt cert-icon"></i>
-                    <h5 class="fw-bold">Tax Compliance</h5>
-                    <p class="small text-muted">Full tax compliance for lawful operation in Ethiopia.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/local-license3.png">
-                        <i class="fa fa-eye"></i> <span>View Certificate</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- International Section -->
-       <!--  <h4 class="mb-4 fw-bold" style="color:var(--tf-dark);">International Standards</h4>
-        <div class="row g-4">
-            <!-- AAA -->
-           <!--  <div class="col-lg-3 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-star cert-icon"></i>
-                    <h5 class="fw-bold">AAA Credit Grade</h5>
-                    <p class="small text-muted">Highest rating for Intelligent Engineering Integration.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/international-aaa.jpg">
-                        <i class="fa fa-eye"></i> <span>View</span>
-                    </div>
-                </div>
-            </div>
-            <!-- ISO 9001 -->
-          <!--   <div class="col-lg-3 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-certificate cert-icon"></i>
-                    <h5 class="fw-bold">ISO 9001:2015</h5>
-                    <p class="small text-muted">Quality Management System Standard.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/iso9001.jpg">
-                        <i class="fa fa-eye"></i> <span>View</span>
-                    </div>
-                </div>
-            </div>
-            <!-- ISO 14001 -->
-           <!--  <div class="col-lg-3 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-leaf cert-icon"></i>
-                    <h5 class="fw-bold">ISO 14001:2015</h5>
-                    <p class="small text-muted">Environmental Management System.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/iso14001.jpg">
-                        <i class="fa fa-eye"></i> <span>View</span>
-                    </div>
-                </div>
-            </div>
-            <!-- ISO 45001 -->
-          <!--   <div class="col-lg-3 col-md-6">
-                <div class="cert-card">
-                    <i class="fa fa-shield-alt cert-icon"></i>
-                    <h5 class="fw-bold">ISO 45001:2018</h5>
-                    <p class="small text-muted">Occupational Health & Safety Standard.</p>
-                    <div class="cert-preview" data-img="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/certificates/iso45001.jpg">
-                        <i class="fa fa-eye"></i> <span>View</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CERTIFICATE MODAL -->
-    <!-- <div class="modal fade" id="certModal" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title fw-bold">Certificate Preview</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body p-0 bg-light">
-                    <div class="zoom-container p-4">
-                        <img id="certModalImg" src="" alt="Certificate" class="img-fluid">
-                    </div>
-                </div>
-                <div class="modal-footer border-0 justify-content-center">
-                    <small class="text-muted"><i class="fa fa-search-plus me-1"></i> Click image to zoom</small>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
         <div class="container py-5">
@@ -635,7 +654,7 @@
                     <a class="btn-link" href="/about/index.html">About Us</a><br>
                     <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
                     <a class="btn-link" href="/products/index.html">Products</a><br>
-                      <a class="btn-link" href="products/index.html">Projects</a><br>
+                    <a class="btn-link" href="projects/index.html">Projects</a><br>
                     <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
                     <a class="btn-link" href="/contact/index.html">Contact</a>
                 </div>
@@ -689,19 +708,22 @@
             });
         });
 
-        // Certificate Modal
-        const certModal = new bootstrap.Modal(document.getElementById('certModal'));
-        const certImg = document.getElementById('certModalImg');
-        
-        document.querySelectorAll('.cert-preview').forEach(item => {
-            item.addEventListener('click', function() {
-                certImg.src = this.getAttribute('data-img');
-                certImg.classList.remove('zoomed');
-                certModal.show();
-            });
+        // Close mobile submenus when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.mobile-menu-link')) {
+                // Handle closing if needed
+            }
         });
 
-        certImg.addEventListener('click', function() { this.classList.toggle('zoomed'); });
+        // Prevent parent link navigation when clicking to expand/collapse
+        document.querySelectorAll('.mobile-menu-link[data-bs-toggle="collapse"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Prevent default only if it's a collapse toggle (not a regular link)
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                }
+            });
+        });
     </script>
 </body>
 </html>

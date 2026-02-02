@@ -26,6 +26,7 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
             --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --footer-link: #3b82f6;   /* Blue for footer links */
         }
 
         body { 
@@ -93,7 +94,8 @@
         .header-logo a .logo-accent {
             color: var(--tf-yellow);
             transition: var(--transition);
-       margin-left: 10px; }
+            margin-left: 10px; 
+        }
         
         .header-fix.scrolled .header-logo a .logo-text {
             color: var(--tf-blue) !important;
@@ -541,8 +543,8 @@
 
         /* --- CONTACT PAGE SPECIFIC STYLES --- */
         .inner-hero { 
-            height: 45vh; 
-            background: linear-gradient(rgba(0, 76, 163, 0.8), rgba(0, 76, 163, 0.8)), url('https://images.unsplash.com/photo-1516387933669-1816dbb8ac22?auto=format&fit=crop&w=1600');
+            height: 50vh; 
+            background: linear-gradient(rgba(0, 76, 163, 0.85), rgba(0, 76, 163, 0.9)), url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600');
             background-size: cover; 
             background-position: center; 
             display: flex; 
@@ -550,6 +552,109 @@
             justify-content: center; 
             text-align: center; 
             color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .inner-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
+                       radial-gradient(circle at 70% 20%, rgba(0, 76, 163, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .worldwide-presence {
+            position: relative;
+            background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .worldwide-presence::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--tf-blue) 0%, var(--tf-yellow) 100%);
+        }
+
+        .office-card {
+            background: #fff;
+            border-radius: var(--card-radius);
+            padding: 40px;
+            height: 100%;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,76,163,0.08);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .office-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--tf-blue);
+        }
+
+        .office-card.hq-card::before {
+            background: linear-gradient(90deg, var(--tf-blue) 0%, var(--tf-yellow) 100%);
+        }
+
+        .office-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .office-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--tf-blue);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .office-badge.yellow {
+            background: var(--tf-yellow);
+            color: var(--tf-blue);
+        }
+
+        .country-flag {
+            width: 40px;
+            height: 25px;
+            border-radius: 3px;
+            margin-right: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .contact-card {
@@ -569,16 +674,22 @@
         }
 
         .icon-circle {
-            width: 70px; 
-            height: 70px; 
-            background: var(--tf-bg-light); 
-            color: var(--tf-blue);
+            width: 80px; 
+            height: 80px; 
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #0066cc 100%); 
+            color: white;
             border-radius: 50%; 
             display: flex; 
             align-items: center; 
             justify-content: center;
-            margin: 0 auto 20px; 
-            font-size: 24px;
+            margin: 0 auto 25px; 
+            font-size: 28px;
+            box-shadow: 0 8px 20px rgba(0, 76, 163, 0.2);
+        }
+
+        .icon-circle.blue-light {
+            background: linear-gradient(135deg, #eef6ff 0%, #d9e9ff 100%);
+            color: var(--tf-blue);
         }
 
         /* MAP BOX */
@@ -591,6 +702,7 @@
             transition: var(--transition);
             background: #f5f7fa; 
             cursor: pointer;
+            height: 400px;
         }
         
         .map-container:hover { 
@@ -600,29 +712,41 @@
         
         .map-container img { 
             width: 100%; 
-            height: auto; 
-            max-height: 450px; 
-            object-fit: contain; 
+            height: 100%; 
+            object-fit: cover; 
             display: block; 
             transition: 0.5s; 
         }
         
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
         .map-overlay-link {
-            position: absolute; 
-            bottom: 25px; 
-            right: 25px; 
             background: var(--tf-blue);
             color: #fff; 
-            padding: 12px 30px; 
+            padding: 15px 35px; 
             border-radius: 50px; 
             font-weight: 700;
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
             transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .map-overlay-link:hover {
             background: var(--tf-yellow);
             color: var(--tf-blue);
+            transform: translateY(-3px);
         }
 
         /* --- FOOTER STYLES --- */
@@ -638,6 +762,18 @@
             color: #fff; 
             margin-bottom: 30px; 
             font-weight: 700; 
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer h5::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--tf-yellow);
         }
         
         .copyright { 
@@ -648,14 +784,16 @@
         }
         
         .btn-link {
-            color: #aaa;
+            color: var(--footer-link) !important;  /* Blue color for all footer links */
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             transition: color 0.3s;
+            font-weight: 500;
         }
         
         .btn-link:hover {
-            color: var(--tf-yellow);
+            color: var(--tf-yellow) !important;
+            padding-left: 5px;
         }
         
         .btn-square {
@@ -673,20 +811,46 @@
         .btn-square:hover {
             background: var(--tf-blue);
             color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-contact i {
+            color: var(--tf-yellow);
+            margin-right: 10px;
+            width: 20px;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .inner-hero {
-                height: 35vh !important;
+                height: 40vh !important;
             }
             
-            .contact-card {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .contact-card, .office-card {
                 padding: 25px;
             }
             
             .map-container {
                 margin-top: 30px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
             }
         }
     </style>
@@ -827,29 +991,139 @@
     <!-- HERO -->
     <section class="inner-hero">
         <div class="container">
-            <h1 class="display-3 fw-800 text-white">Contact Us</h1>
-            <p class="lead text-white-50 fs-4">Engineering the Digital Backbone of East Africa</p>
+            <h1 class="hero-title text-white">Connect With Us</h1>
+            <p class="hero-subtitle text-white-50">Global Expertise, Local Presence - Building Smart Solutions Worldwide</p>
         </div>
     </section>
 
-    <!-- INFO CARDS -->
-    <section class="py-5 mt-5">
-        <div class="container">
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="contact-card">
-                        <div class="icon-circle"><i class="fa fa-phone-alt"></i></div>
-                        <h4>Direct Line</h4>
-                        <p>Technical support & Sales</p>
-                        <h5 class="text-dark">+251 9 11249722</h5>
+    <!-- WORLDWIDE PRESENCE -->
+    <section class="worldwide-presence py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Our Global & Regional Presence</h2>
+                <p class="lead text-muted">Headquartered in Beijing with strategic regional headquarters in East Africa</p>
+            </div>
+
+            <div class="row g-5 justify-content-center">
+                <!-- HEADQUARTERS - BEIJING -->
+                <div class="col-lg-6">
+                    <div class="office-card hq-card">
+                        <div class="office-badge">HEADQUARTERS</div>
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://flagcdn.com/w40/cn.png" class="country-flag" alt="China Flag">
+                            <div>
+                                <h3 class="mb-1">Tongfang BMS Global HQ</h3>
+                                <p class="text-muted mb-0">Beijing, China</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-marker-alt text-primary me-2"></i> Main Office Address</h5>
+                            <p class="ms-4">Tsinghua Tongfang Building, Haidian District, Beijing, China 100083</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5><i class="fas fa-phone-alt text-primary me-2"></i> Global Contact</h5>
+                            <p class="ms-4">+86 10 6278 0000</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5><i class="fas fa-envelope text-primary me-2"></i> International Inquiries</h5>
+                            <p class="ms-4">global@tongfangbms.com</p>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-top">
+                            <p class="small text-muted mb-0"><i class="fas fa-info-circle me-2"></i> Global headquarters for R&D, manufacturing, and international operations</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
+
+                <!-- REGIONAL HQ - ETHIOPIA -->
+                <div class="col-lg-6">
+                    <div class="office-card">
+                        <div class="office-badge yellow">EAST AFRICA HQ</div>
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://flagcdn.com/w40/et.png" class="country-flag" alt="Ethiopia Flag">
+                            <div>
+                                <h3 class="mb-1">Tongfang BMS East Africa</h3>
+                                <p class="text-muted mb-0">Addis Ababa, Ethiopia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5><i class="fas fa-map-marker-alt text-primary me-2"></i> Regional Office Address</h5>
+                            <p class="ms-4">Maryam Mazoria, Bole Bulbula, Addis Ababa, Ethiopia</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5><i class="fas fa-phone-alt text-primary me-2"></i> Regional Contact</h5>
+                            <p class="ms-4">+251 9 11249722</p>
+                            <p class="ms-4">+251 11 123 4567</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <h5><i class="fas fa-envelope text-primary me-2"></i> Regional Inquiries</h5>
+                            <p class="ms-4">eastafrica@tongfangbms.com</p>
+                            <p class="ms-4">info@tongfangbms.com</p>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-top">
+                            <p class="small text-muted mb-0"><i class="fas fa-info-circle me-2"></i> Regional headquarters for East African operations, project implementation, and technical support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT METHODS -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold mb-3">Get In Touch</h2>
+                <p class="lead text-muted">Multiple ways to connect with our team</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="icon-circle"><i class="fa fa-phone-alt"></i></div>
+                        <h4>Phone Support</h4>
+                        <p class="text-muted">Technical support & Sales inquiries</p>
+                        <h5 class="text-dark mb-3">+251 9 11249722</h5>
+                        <p class="small text-muted">Available Mon-Fri: 8:30 AM – 5:30 PM</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
                     <div class="contact-card">
                         <div class="icon-circle"><i class="fa fa-envelope-open"></i></div>
                         <h4>Email Inquiry</h4>
-                        <p>Project RFQs & Support</p>
-                        <h5 class="text-dark">info@tongfangbms.com</h5>
+                        <p class="text-muted">Project RFQs & Technical support</p>
+                        <h5 class="text-dark mb-3">info@tongfangbms.com</h5>
+                        <p class="small text-muted">Response within 24 hours</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="icon-circle blue-light"><i class="fa fa-headset"></i></div>
+                        <h4>Technical Support</h4>
+                        <p class="text-muted">24/7 Emergency support</p>
+                        <h5 class="text-dark mb-3">support@tongfangbms.com</h5>
+                        <p class="small text-muted">For critical system issues</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card">
+                        <div class="icon-circle blue-light"><i class="fa fa-calendar-alt"></i></div>
+                        <h4>Schedule Meeting</h4>
+                        <p class="text-muted">Book a consultation</p>
+                        <a href="mailto:sales@tongfangbms.com" class="btn btn-primary px-4 py-2 rounded-pill fw-bold mt-2">
+                            Request Meeting
+                        </a>
+                        <p class="small text-muted mt-3">On-site or virtual consultations</p>
                     </div>
                 </div>
             </div>
@@ -857,45 +1131,58 @@
     </section>
 
     <!-- VISIT US SECTION -->
-    <section class="py-5 bg-light mt-5">
+    <section class="py-5 bg-light">
         <div class="container py-5">
-            <div class="row g-5">
+            <div class="row g-5 align-items-center">
                 <div class="col-lg-5">
-                    <h6 class="text-primary text-uppercase fw-bold mb-3">Headquarters</h6>
-                    <h2 class="display-5 mb-4">Visit Our Main Office</h2>
-                    <p class="mb-5 lead text-muted">Maryam Mazoria, Bole Bulbula, Addis Ababa, Ethiopia. We are open for project consultations and technical demonstrations.</p>
+                    <h6 class="text-primary text-uppercase fw-bold mb-3">Visit Our Office</h6>
+                    <h2 class="display-5 mb-4">East Africa Headquarters</h2>
+                    <p class="lead text-muted mb-5">Located in the heart of Addis Ababa, our regional headquarters serves as the hub for East African operations, offering project consultations, technical demonstrations, and training sessions.</p>
                     
                     <div class="d-flex align-items-start mb-4">
-                        <div class="icon-circle m-0 me-3" style="width:55px; height:55px; flex-shrink:0;"><i class="fa fa-map-marker-alt"></i></div>
+                        <div class="icon-circle m-0 me-3" style="width:55px; height:55px; flex-shrink:0; background: var(--tf-blue);">
+                            <i class="fa fa-map-marker-alt"></i>
+                        </div>
                         <div>
-                            <h5 class="mb-1">HQ Address</h5>
-                            <p class="mb-0 text-dark">Maryam Mazoria, Bole Bulbula,<br>Addis Ababa, Ethiopia</p>
+                            <h5 class="mb-1">Regional Office Address</h5>
+                            <p class="mb-0 text-dark">Maryam Mazoria, Bole Bulbula<br>Addis Ababa, Ethiopia</p>
                         </div>
                     </div>
 
                     <div class="d-flex align-items-start mb-5">
-                        <div class="icon-circle m-0 me-3" style="width:55px; height:55px; flex-shrink:0;"><i class="fa fa-clock"></i></div>
+                        <div class="icon-circle m-0 me-3" style="width:55px; height:55px; flex-shrink:0; background: var(--tf-blue);">
+                            <i class="fa fa-clock"></i>
+                        </div>
                         <div>
                             <h5 class="mb-1">Office Hours</h5>
-                            <p class="mb-0 text-dark">Mon – Fri: 8:30 AM – 5:30 PM<br>Sat: 9:00 AM – 1:00 PM</p>
+                            <p class="mb-0 text-dark">Monday – Friday: 8:30 AM – 5:30 PM<br>Saturday: 9:00 AM – 1:00 PM<br>Sunday: Closed</p>
                         </div>
                     </div>
 
-                    <a href="mailto:info@tongfangbms.com" class="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow">
-                        <i class="fa fa-envelope me-2"></i> Email Engineers
-                    </a>
+                    <div class="d-flex gap-3">
+                        <a href="mailto:info@tongfangbms.com" class="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow">
+                            <i class="fa fa-envelope me-2"></i> Email Our Team
+                        </a>
+                        <a href="tel:+251911249722" class="btn btn-outline-primary px-5 py-3 rounded-pill fw-bold">
+                            <i class="fa fa-phone me-2"></i> Call Now
+                        </a>
+                    </div>
                 </div>
 
                 <div class="col-lg-7">
                     <div class="map-container shadow-lg">
                         <a href="https://maps.app.goo.gl/T35PdyCEETQNa8dKA?g_st=ipc" target="_blank">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/contact/google map.png" alt="Tongfang BMS Office Map">
-                            <div class="map-overlay-link">
-                                <i class="fa fa-directions me-2"></i> Open Google Maps
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/contact/google map.png" alt="Tongfang BMS Office Map - Addis Ababa">
+                            <div class="map-overlay">
+                                <div class="map-overlay-link">
+                                    <i class="fa fa-directions me-2"></i> Get Directions on Google Maps
+                                </div>
                             </div>
                         </a>
                     </div>
-                    <p class="mt-3 small text-center text-muted">Click the map above to get precise directions to our office.</p>
+                    <p class="mt-3 text-center text-muted">
+                        <i class="fa fa-map-pin text-primary me-2"></i> Click the map above for precise directions to our Addis Ababa office
+                    </p>
                 </div>
             </div>
         </div>
@@ -907,49 +1194,61 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
                     <h5>Tongfang BMS Integration</h5>
-                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
-                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
-                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                    <div class="footer-contact">
+                        <p><i class="fa fa-map-marker-alt"></i> <strong>Global HQ:</strong> Tsinghua Tongfang Building, Beijing, China</p>
+                        <p><i class="fa fa-map-marker-alt"></i> <strong>East Africa HQ:</strong> Maryam Mazoria, Bole Bulbula, Addis Ababa, Ethiopia</p>
+                        <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                        <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                    </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5>Quick Links</h5>
-                    <a class="btn-link" href="/index.html">Home</a><br>
-                    <a class="btn-link" href="/about/index.html">About Us</a><br>
-                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
-                    <a class="btn-link" href="/products/index.html">Products</a><br>
-                    <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
-                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                    <a class="btn-link" href="/index.html">Home</a>
+                    <a class="btn-link" href="/about/index.html">About Us</a>
+                    <a class="btn-link" href="/solutions/index.html">Solutions</a>
+                    <a class="btn-link" href="/products/index.html">Products</a>
+                    <a class="btn-link" href="/technologies/index.html">Technologies</a>
+                    <a class="btn-link" href="/projects/index.html">Projects</a>
                     <a class="btn-link" href="/contact/index.html">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Business Hours</h5>
+                    <p><strong>Addis Ababa Office:</strong></p>
                     <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
                     <p>Saturday: 9:00 AM – 1:00 PM</p>
                     <p>Sunday: Closed</p>
+                    <p class="mt-3"><strong>Emergency Support:</strong> 24/7</p>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h5>Newsletter</h5>
-                    <p>Get smart building & automation updates.</p>
-                    <div class="position-relative">
-                        <input class="form-control" type="email" placeholder="Your email">
-                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    <h5>Stay Connected</h5>
+                    <p>Get the latest updates on smart building technologies and automation solutions.</p>
+                    <div class="position-relative mb-3">
+                        <input class="form-control bg-dark border-dark text-white" type="email" placeholder="Your email address">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100 rounded-end">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
                     </div>
-                    <div class="d-flex gap-2 mt-3">
+                    <div class="d-flex gap-2 mt-4">
                         <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
                         <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+        <div class="copyright text-center py-3">
+            <div class="container">
+                <p class="mb-0">© 2026 Tongfang BMS Integration PLC. All Rights Reserved. | Global HQ: Beijing, China | East Africa HQ: Addis Ababa, Ethiopia</p>
+            </div>
+        </div>
     </footer>
 
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Header Scroll Effect - SIMPLIFIED
+        // Header Scroll Effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('navBox');
             
@@ -960,7 +1259,7 @@
             }
         });
 
-        // Mobile Menu Functions - FIXED
+        // Mobile Menu Functions
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
@@ -1053,9 +1352,8 @@
             if (e.key === 'Enter') {
                 const query = searchInput.value.trim();
                 if (query) {
-                    // Here you would implement your search logic
                     alert(`Searching for: "${query}"\n\nThis would trigger a real search functionality.`);
-                    // Example: window.location.href = `/search?q=${encodeURIComponent(query)}`;
+                    // window.location.href = `/search?q=${encodeURIComponent(query)}`;
                 }
             }
         });
@@ -1073,13 +1371,11 @@
                 // Add active class to clicked option
                 option.classList.add('active');
                 
-                // Here you would implement language switching logic
                 switchLanguage(lang);
             });
         });
 
         function switchLanguage(lang) {
-            // This is where you would implement actual language switching
             const languages = {
                 'en': 'English',
                 'zh': 'Chinese',
@@ -1103,7 +1399,7 @@
             });
         }
 
-        // Initialize tooltips for better UX
+        // Initialize tooltips
         document.addEventListener('DOMContentLoaded', function() {
             // Add tooltip to search icon
             searchToggleIcon.setAttribute('title', 'Search');

@@ -12,8 +12,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Swiper -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <style>
         :root {
@@ -40,6 +38,7 @@
             overflow-x: hidden; 
             color: var(--tf-text); 
             line-height: 1.7;
+            padding-top: var(--header-height);
         }
         
         h1, h2, h3, h4, h5 { 
@@ -53,44 +52,36 @@
             text-decoration: none !important;
         }
 
-        /* --- 1. HEADER & NAV --- */
+        /* --- RESPONSIVE HEADER --- */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
-            height: var(--header-height); 
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(6px);
-            transition: background-color 0.4s ease, box-shadow 0.4s ease; 
-            border-bottom: 1px solid rgba(255,255,255,0.15);
+            min-height: var(--header-height);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .header-fix.scrolled { 
             background: rgba(255, 255, 255, 0.98); 
             border-bottom: 1px solid rgba(0,0,0,0.05); 
             box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
-            backdrop-filter: blur(10px);
         }
         
-        .header-fix.scrolled .header-logo h2 {
-            color: var(--tf-blue) !important;
-        }
-
-        .header-fix.scrolled .header-logo span {
-            color: var(--tf-yellow) !important;
-        }
-
         .header-container { 
             max-width: 1440px; 
             margin: 0 auto; 
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            height: 100%; 
-            padding: 0 30px; 
+            padding: 0 20px; 
+            height: var(--header-height); 
         }
         
+        /* Desktop Menu */
         .nav-menu { 
             display: flex; 
             gap: 30px; 
@@ -102,16 +93,15 @@
         
         .nav-link-custom { 
             color: #fff; 
-            font-weight: 700; 
+            font-weight: 600; 
             font-size: 13px; 
-            transition: 0.3s; 
             text-transform: uppercase; 
             line-height: var(--header-height); 
             display: block; 
             position: relative; 
             letter-spacing: 0.5px; 
             text-decoration: none;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4); 
+            cursor: pointer;
         }
         
         .nav-link-custom:hover { 
@@ -120,14 +110,43 @@
         
         .header-fix.scrolled .nav-link-custom { 
             color: var(--tf-dark); 
-            text-shadow: none; 
         }
         
         .header-fix.scrolled .nav-link-custom:hover { 
             color: var(--tf-blue); 
         }
-
-        /* DROPDOWN */
+        
+        .header-fix.scrolled .header-logo h2 { 
+            color: var(--tf-blue) !important; 
+        }
+        
+        .header-fix.scrolled .header-logo h2 span { 
+            color: var(--tf-yellow) !important; 
+        }
+        
+        /* Icons & Toggle Wrapper */
+        .header-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-icons { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 15px; 
+            color: white; 
+        }
+        
+        .header-fix.scrolled .header-icons { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        .header-fix.scrolled .mobile-toggle { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        /* Dropdown Wrapper */
         .nav-item-dropdown { 
             position: relative; 
             height: 100%; 
@@ -135,52 +154,80 @@
             align-items: center; 
         }
         
+        /* Toggle Icon (Hidden on Desktop, Visible Mobile) */
+        .mobile-dropdown-toggle {
+            display: none;
+            color: inherit;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        /* Desktop Arrow */
+        .desktop-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 11px;
+        }
+        
         .dropdown-menu-custom {
-            position: absolute; 
-            top: 100%; 
-            left: 50%; 
-            transform: translateX(-50%) translateY(20px);
-            width: 700px; 
-            background: #fff; 
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 700px;
+            background: #fff;
             box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-            border-top: 3px solid var(--tf-yellow); 
-            border-radius: 0 0 8px 8px; 
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
             padding: 30px;
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            opacity: 0; 
-            visibility: hidden; 
-            transition: all 0.3s ease; 
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
             z-index: 1100;
         }
         
-        .nav-item-dropdown:hover .dropdown-menu-custom { 
-            opacity: 1; 
-            visibility: visible; 
-            transform: translateX(-50%) translateY(0); 
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px; 
+            left: 0; 
+            width: 100%; 
+            height: 20px; 
+            background: transparent;
         }
         
-        .dropdown-link { 
+        /* Hover Effect Desktop */
+        @media (min-width: 992px) {
+            .nav-item-dropdown:hover .dropdown-menu-custom {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        .dropdown-link {
             color: #555; 
             font-size: 13px; 
-            font-weight: 600; 
+            font-weight: 600;
             padding: 6px 10px; 
             border-radius: 4px; 
-            display: block; 
-            border-left: 2px solid transparent; 
-            text-decoration: none; 
-            text-shadow: none; 
+            display: block;
+            border-left: 2px solid transparent;
+            text-decoration: none;
         }
         
-        .dropdown-link:hover { 
+        .dropdown-link:hover {
             background: #f4f7fa; 
-            color: var(--tf-blue); 
-            border-left: 2px solid var(--tf-blue); 
-            padding-left: 15px; 
+            color: var(--tf-blue);
+            border-left: 2px solid var(--tf-blue);
+            padding-left: 15px;
         }
         
-        .dropdown-category { 
+        .dropdown-category {
             grid-column: span 3; 
             color: var(--tf-blue); 
             font-size: 11px; 
@@ -188,12 +235,217 @@
             text-transform: uppercase; 
             letter-spacing: 1px; 
             margin-top: 10px; 
-            margin-bottom: 5px; 
+            margin-bottom: 5px;
             border-bottom: 1px solid #eee; 
-            padding-bottom: 5px; 
+            padding-bottom: 5px;
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: white; 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        
+        /* --- MOBILE ADJUSTMENTS (Max-Width 991px) --- */
+        @media (max-width: 991px) {
+            .header-fix { height: auto; }
+            
+            .header-container {
+                padding: 0 20px;
+                justify-content: space-between;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px; 
+                left: 0; 
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
+            }
+            
+            .nav-menu.active { display: flex; }
+            
+            /* Link Styles Mobile */
+            .nav-link-custom {
+                color: #333;
+                width: 100%;
+                padding: 15px 25px;
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+            }
+            
+            /* DROPDOWN LOGIC MOBILE */
+            .nav-item-dropdown {
+                width: 100%;
+                flex-direction: column;
+                height: auto;
+                border-bottom: 1px solid #eee;
+            }
+            
+            /* Container for Link + Toggle Button */
+            .mobile-link-wrapper {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            /* Make the link take available space */
+            .nav-item-dropdown .nav-link-custom {
+                border-bottom: none;
+                width: auto;
+                flex-grow: 1;
+            }
+            
+            /* Show the separate toggle button */
+            .mobile-dropdown-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60px;
+                height: 100%;
+                border-left: 1px solid #eee;
+                color: #333;
+            }
+            
+            .mobile-dropdown-toggle:active {
+                background-color: #f0f0f0;
+            }
+            
+            /* Hide the small arrow inside the link text on mobile */
+            .desktop-arrow { display: none; }
+            
+            /* Dropdown Menu Mobile */
+            .dropdown-menu-custom {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px 20px 30px;
+                background: #f9f9f9;
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-menu-custom::before { display: none; }
+            
+            /* When Active Class added by JS */
+            .nav-item-dropdown.active .dropdown-menu-custom {
+                display: grid;
+            }
+            
+            .nav-item-dropdown.active .mobile-dropdown-toggle i {
+                transform: rotate(180deg);
+                transition: transform 0.3s;
+            }
+            
+            .dropdown-category { grid-column: span 1; }
+            
+            /* Header Elements */
+            .mobile-toggle { display: block; }
+            
+            /* Ensure Icons and Toggle are grouped right */
+            .header-right-actions {
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+            }
+            
+            /* Mobile adjustments for hero */
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-section {
+                height: 50vh;
+                min-height: 400px;
+            }
+            
+            /* Mobile adjustments for feature columns */
+            .feature-columns {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            /* Mobile adjustments for scenario boxes */
+            .scenario-box {
+                padding: 0 15px;
+            }
+            
+            /* Mobile adjustments for challenge cards */
+            .challenge-cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            /* Mobile adjustments for benefits section */
+            .benefit-item {
+                padding: 20px 10px;
+            }
+            
+            /* Mobile adjustments for product cards */
+            .product-card {
+                padding: 30px 15px;
+            }
+            
+            /* Mobile adjustments for features grid */
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header-right-actions { gap: 15px; }
+            .header-icons { gap: 10px !important; }
+            .header-logo h2 { font-size: 1.3rem !important; }
+            .hero-title { 
+                font-size: 2rem !important; 
+            }
+            
+            .hero-sub {
+                font-size: 1rem !important;
+            }
+            
+            .benefits-section {
+                padding: 40px 0;
+            }
+            
+            .benefit-icon {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section {
+                height: 45vh;
+                min-height: 350px;
+            }
+            
+            .topology-section {
+                padding: 20px;
+            }
+            
+            .solution-section {
+                padding: 25px;
+            }
         }
 
-        /* --- 2. HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero-section {
             height: 65vh; 
             min-height: 500px;
@@ -203,11 +455,9 @@
             display: flex; 
             align-items: center; 
             position: relative;
-            margin-top: var(--header-height);
         }
         
         .hero-content { 
-
             position: relative; 
             z-index: 2; 
             padding-top: 60px; 
@@ -240,7 +490,7 @@
             } 
         }
 
-        /* --- 3. SUB-NAV --- */
+        /* --- SUB-NAV --- */
         .project-nav-bar {
             position: sticky; 
             top: 80px; 
@@ -286,7 +536,7 @@
             padding: 0 10px; 
         }
 
-        /* --- 4. INTERACTIVE MAP --- */
+        /* --- INTERACTIVE MAP --- */
         .scroll-target { 
             scroll-margin-top: 160px; 
         }
@@ -364,7 +614,7 @@
             color: #fff; 
         }
 
-        /* --- 5. SECTIONS GENERAL --- */
+        /* --- SECTIONS GENERAL --- */
         .section-header { 
             text-align: center; 
             margin-bottom: 60px; 
@@ -544,7 +794,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* --- 6. RELATED --- */
+        /* --- RELATED --- */
         .related-card {
             background: #fff; 
             border-radius: var(--card-radius); 
@@ -579,7 +829,7 @@
             font-size: 1.1rem; 
         }
 
-        /* --- 7. PRODUCT SHOWCASE --- */
+        /* --- PRODUCT SHOWCASE --- */
         .product-card {
             background: #fff; 
             padding: 40px 20px; 
@@ -601,7 +851,7 @@
             margin-bottom: 25px; 
         }
 
-        /* --- 8. FOOTER --- */
+        /* --- FOOTER --- */
         .footer { 
             background: #0b111a; 
             color: #aaa; 
@@ -633,7 +883,7 @@
             margin-top: 60px; 
         }
 
-        /* --- 9. BENEFITS SECTION --- */
+        /* --- BENEFITS SECTION --- */
         .benefits-section {
             background: linear-gradient(135deg, var(--tf-blue), #002244);
             color: white;
@@ -655,33 +905,6 @@
             color: white;
             margin-bottom: 15px;
         }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-section {
-                height: 50vh;
-            }
-            
-            .feature-columns {
-                grid-template-columns: 1fr;
-            }
-            
-            .dropdown-menu-custom {
-                width: 90vw;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
-            .nav-menu {
-                gap: 15px;
-                margin-right: 20px;
-            }
-        }
-
     </style>
 </head>
 
@@ -691,6 +914,7 @@
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
+                <!-- LOGO (Left) -->
                 <div class="header-logo">
                     <a href="/index.html">
                         <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
@@ -698,82 +922,108 @@
                         </h2>
                     </a>
                 </div>
-                <nav class="d-none d-lg-block">
-                    <div class="nav-menu">
-                        <a href="/about/index.html" class="nav-link-custom">About</a>
-                        
-                        <!-- SOLUTIONS DROPDOWN -->
-                        <div class="nav-item-dropdown">
-                            <a href="/solutions/index.html" class="nav-link-custom">Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i></a>
-                            <div class="dropdown-menu-custom">
-                                <!-- Col 1: Buildings -->
-                                <div>
-                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                                </div>
-                                <!-- Col 2: Infrastructure -->
-                                <div>
-                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
-                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
-                                </div>
-                                <!-- Col 3: Cities & Systems -->
-                                <div>
-                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                                    <a href="/solutions/index.html" class="dropdown-link" style="color:var(--tf-blue);">View All Systems ></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- PRODUCTS DROPDOWN -->
-                        <div class="nav-item-dropdown">
-                            <a href="/products/index.html" class="nav-link-custom">
-                                Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                
+                <!-- NAVIGATION -->
+                <nav id="mainNav" class="nav-menu">
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    
+                    <!-- SOLUTIONS DROPDOWN -->
+                    <div class="nav-item-dropdown">
+                        <!-- Wrapper to separate Text and Toggle Button on Mobile -->
+                        <div class="mobile-link-wrapper">
+                            <a href="/solutions/index.html" class="nav-link-custom">
+                                Solutions
+                                <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <div class="dropdown-menu-custom">
-                                <!-- Col 1 -->
-                                <div>
-                                    <div class="dropdown-category">Core Controllers</div>
-                                    <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                    <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                </div>
-                                <!-- Col 2 -->
-                                <div>
-                                    <div class="dropdown-category">Field Instrumentation</div>
-                                    <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
-                                    <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
-                                </div>
-                                <!-- Col 3 -->
-                                <div>
-                                    <div class="dropdown-category">Management & Power</div>
-                                    <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
-                                    <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
-                                    <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
-
-                                    <a href="/products/index.html" class="dropdown-link" style="color:var(--tf-blue); font-weight:700; margin-top:10px;">
-                                        View All Products >
-                                    </a>
-                                </div>
+                            <!-- Specific Button for Toggling Dropdown on Mobile -->
+                            <span class="mobile-dropdown-toggle">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1: Buildings -->
+                            <div>
+                                <div class="dropdown-category">Buildings</div>
+                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                            </div>
+                            <!-- Col 2: Infrastructure -->
+                            <div>
+                                <div class="dropdown-category">Infrastructure</div>
+                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                            </div>
+                            <!-- Col 3: Cities & Systems -->
+                            <div>
+                                <div class="dropdown-category">City Systems</div>
+                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
                             </div>
                         </div>
-
-                        <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
-                        <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                        <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                     </div>
+                    
+                    <!-- PRODUCTS DROPDOWN -->
+                    <div class="nav-item-dropdown">
+                        <div class="mobile-link-wrapper">
+                            <a href="/products/index.html" class="nav-link-custom">
+                                Products
+                                <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
+                            </a>
+                            <!-- Specific Button for Toggling Dropdown on Mobile -->
+                            <span class="mobile-dropdown-toggle">
+                                <i class="fa fa-angle-down"></i>
+                            </span>
+                        </div>
+                        
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1 -->
+                            <div>
+                                <div class="dropdown-category">Core Controllers</div>
+                                <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                            </div>
+                            <!-- Col 2 -->
+                            <div>
+                                <div class="dropdown-category">Field Instrumentation</div>
+                                <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                            </div>
+                            <!-- Col 3 -->
+                            <div>
+                                <div class="dropdown-category">Management & Power</div>
+                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
-
-                <div class="header-icons d-flex align-items-center gap-4 text-white">
-                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
-                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                
+                <!-- RIGHT SIDE GROUP (Icons + Hamburger) -->
+                <div class="header-right-actions">
+                    <!-- HAMBURGER ICON (Visible on Mobile) - Moved before icons -->
+                    <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    
+                    <!-- Header Icons - Now positioned after hamburger -->
+                    <div class="header-icons">
+                        <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                        <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -835,22 +1085,22 @@
                     <div class="interactive-map-container">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-map.png" alt="Data Center Solution Map" class="map-img">
                         
-                        <!-- Hotspots -->
-                        <div id="hotspot-1" class="hotspot" onclick="showScenario(1)" style="top: 23%; left: 5%;">
+                        <!-- Hotspots with labels -->
+                        <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 23%; left: 5%;">
                             <div class="hotspot-dot">1</div>
-                            
+                            <div class="hotspot-label">Precision Cooling</div>
                         </div>
-                        <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 82%; left:6%;">
+                        <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 82%; left: 6%;">
                             <div class="hotspot-dot">2</div>
-                            
+                            <div class="hotspot-label">Power Management</div>
                         </div>
-                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 82%; left:65%;">
+                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 82%; left: 65%;">
                             <div class="hotspot-dot">3</div>
-                            
+                            <div class="hotspot-label">Environmental Monitoring</div>
                         </div>
                         <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 14%; left: 69%;">
                             <div class="hotspot-dot">4</div>
-                         
+                            <div class="hotspot-label">Security & Access</div>
                         </div>
                     </div>
                 </div>
@@ -1037,7 +1287,6 @@
                     <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
                         Data center environments must maintain precise temperature, humidity, and air quality conditions to ensure optimal equipment performance and longevity. Environmental fluctuations can lead to equipment failures, data corruption, and reduced reliability.
                     </p>
-                    <p class="white-space: pre-wrap;">                    </p>
                     <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
                         Traditional monitoring systems often lack the granularity and intelligence needed to proactively manage environmental conditions and prevent issues before they affect operations.
                     </p>
@@ -1283,33 +1532,12 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Interactive map functionality
-        function showScenario(scenarioNumber) {
-            // Remove active class from all hotspots
-            document.querySelectorAll('.hotspot').forEach(hotspot => {
-                hotspot.classList.remove('active');
-            });
-            
-            // Add active class to clicked hotspot
-            document.getElementById(`hotspot-${scenarioNumber}`).classList.add('active');
-            
-            // Hide all scenario content
-            document.querySelectorAll('.scenario-box').forEach(box => {
-                box.classList.remove('active');
-            });
-            
-            // Show selected scenario content
-            document.getElementById(`content-${scenarioNumber}`).classList.add('active');
-            
-            // Smooth scroll to scenarios section
-            document.getElementById('scenarios').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+        // Current active scenario for hotspots
+        let currentScenario = 1;
         
-        // Header scroll effect
+        // Header Scroll
         window.addEventListener('scroll', function() {
             const header = document.getElementById('navBox');
             if (window.scrollY > 50) {
@@ -1319,10 +1547,79 @@
             }
         });
         
+        // Mobile Menu Toggle Function
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('mainNav');
+            navMenu.classList.toggle('active');
+        }
+        
+        // Close dropdowns when clicking outside (for mobile)
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('mainNav');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            // Check if click was inside menu or on toggle button
+            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // Mobile dropdown toggle functionality
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggleBtn => {
+            toggleBtn.addEventListener('click', function(e) {
+                if (window.innerWidth <= 991) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Find the parent .nav-item-dropdown
+                    const dropdown = this.closest('.nav-item-dropdown');
+                    dropdown.classList.toggle('active');
+                    
+                    // Close other dropdowns
+                    document.querySelectorAll('.nav-item-dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Interactive Hotspot Logic
+        function showScenario(id) {
+            currentScenario = id;
+            
+            // Update hotspots
+            document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
+            const activeDot = document.getElementById('hotspot-' + id);
+            if(activeDot) activeDot.classList.add('active');
+            
+            // Update scenario content
+            const boxes = document.querySelectorAll('.scenario-box');
+            boxes.forEach(el => {
+                el.classList.remove('active');
+                el.style.display = 'none';
+            });
+            
+            const selectedContent = document.getElementById('content-' + id);
+            if(selectedContent) {
+                selectedContent.style.display = 'block';
+                setTimeout(() => {
+                    selectedContent.classList.add('active');
+                    // Scroll to scenario section
+                    const offset = 140;
+                    const elementPosition = selectedContent.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                }, 10);
+            }
+        }
+        
         // Initialize first scenario as active on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Activate first hotspot
+            // Activate first hotspot and content
             document.getElementById('hotspot-1').classList.add('active');
+            document.getElementById('content-1').classList.add('active');
             
             // Initialize header state
             const header = document.getElementById('navBox');
@@ -1330,56 +1627,60 @@
                 header.classList.add('scrolled');
             }
             
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            // Add click handlers for sub-nav breadcrumbs
+            document.querySelectorAll('.nav-breadcrumb a').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
+                    const targetId = this.getAttribute('href').replace('#', '');
+                    const targetElement = document.getElementById(targetId);
                     
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        const headerHeight = document.getElementById('navBox').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+                        let offset = 120;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: targetPosition, behavior: "smooth" });
                     }
                 });
             });
+            
+            // Breadcrumb navigation highlighting
+            document.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id], div[id]');
+                const navLinks = document.querySelectorAll('.nav-breadcrumb .breadcrumb-item a');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const headerHeight = document.getElementById('navBox').offsetHeight + 50;
+                    
+                    if (scrollY >= (sectionTop - headerHeight) && scrollY < (sectionTop + sectionHeight - headerHeight)) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.parentElement.classList.remove('active');
+                    if (link.getAttribute('href') === currentSection) {
+                        link.parentElement.classList.add('active');
+                    }
+                });
+            });
+            
+            // Ensure proper spacing for mobile
+            if (window.innerWidth <= 991) {
+                document.body.style.paddingTop = "60px";
+            }
         });
         
-        // Breadcrumb navigation highlighting
-        document.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id], div[id]');
-            const navLinks = document.querySelectorAll('.nav-breadcrumb .breadcrumb-item a');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                const headerHeight = document.getElementById('navBox').offsetHeight + 50;
-                
-                if (scrollY >= (sectionTop - headerHeight) && scrollY < (sectionTop + sectionHeight - headerHeight)) {
-                    currentSection = '#' + section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.parentElement.classList.remove('active');
-                if (link.getAttribute('href') === currentSection) {
-                    link.parentElement.classList.add('active');
-                }
-            });
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 991) {
+                document.body.style.paddingTop = "60px";
+            } else {
+                document.body.style.paddingTop = "80px";
+            }
         });
     </script>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
 </body>
 </html>

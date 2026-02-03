@@ -882,7 +882,7 @@
             <div class="text-center mb-5">
                 <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Interactive Office Solutions</h2>
                 <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
-                <p class="text-muted">Click the numbered hotspots to explore specific office scenarios.</p>
+                <p class="text-muted">Click the numbered hotspots to navigate to specific office scenario sections.</p>
             </div>
 
             <div class="interactive-map-container">
@@ -1209,20 +1209,42 @@
             });
         });
 
-        // Interactive Map Logic
+        // Interactive Map Logic (FIXED SCROLLING)
         function showScenario(id) {
+            // 1. Highlight the hotspot
             document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
             document.getElementById('hotspot-' + id).classList.add('active');
+            
+            // 2. Hide all scenarios first
             document.querySelectorAll('.scenario-box').forEach(el => {
                 el.classList.remove('active');
                 el.style.display = 'none';
             });
+            
+            // 3. Select the target content
             const selected = document.getElementById('content-' + id);
             selected.style.display = 'block';
+            
+            // 4. Calculate absolute position on the page (accounting for headers)
+            // We use getBoundingClientRect() + scrollY to get the absolute position
+            // regardless of parent "position: relative" settings.
             setTimeout(() => {
                 selected.classList.add('active');
-                window.scrollTo({ top: selected.offsetTop - 140, behavior: "smooth" });
-            }, 10);
+                
+                // Get the element's position relative to the viewport
+                const rect = selected.getBoundingClientRect();
+                
+                // Add current scroll position to get absolute document position
+                const absoluteTop = rect.top + window.scrollY;
+                
+                // Adjust for fixed header (80px) + sticky nav (60px) ~ 140px buffer
+                const headerOffset = 140; 
+                
+                window.scrollTo({ 
+                    top: absoluteTop - headerOffset, 
+                    behavior: "smooth" 
+                });
+            }, 50);
         }
 
         // Initialize Swiper with responsive settings

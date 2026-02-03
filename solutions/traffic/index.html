@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Smart Traffic Solutions | Tongfang BMS</title>
+    <title>Road Traffic Intelligent Traffic System Solution | Tongfang BMS</title>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
     <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
   
@@ -85,18 +85,19 @@
             margin-right: 40px; 
             align-items: center; 
         }
-       /* Add this to your CSS, preferably near the other header styles */
+       
+        /* Logo link styling */
+        .header-logo a {
+            text-decoration: none !important;
+        }
 
-.header-logo a {
-    text-decoration: none !important;
-}
-
-.header-logo a:hover,
-.header-logo a:focus,
-.header-logo a:active {
-    text-decoration: none !important;
-    outline: none;
-} 
+        .header-logo a:hover,
+        .header-logo a:focus,
+        .header-logo a:active {
+            text-decoration: none !important;
+            outline: none;
+        } 
+        
         .nav-link-custom { 
             color: #fff; 
             font-weight: 600; 
@@ -213,6 +214,14 @@
                 visibility: visible;
                 transform: translateX(-50%) translateY(0);
             }
+            
+            .nav-item-dropdown:hover .nav-link-custom {
+                color: var(--tf-yellow);
+            }
+            
+            .header-fix.scrolled .nav-item-dropdown:hover .nav-link-custom {
+                color: var(--tf-blue);
+            }
         }
         
         .dropdown-link {
@@ -257,67 +266,87 @@
             padding: 0;
         }
         
-        /* --- MOBILE ADJUSTMENTS (Max-Width 991px) --- */
+        /* Enhanced Mobile Dropdown Styles */
         @media (max-width: 991px) {
-            .header-fix { height: auto; }
+            .header-fix { 
+                height: auto; 
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(8px);
+            }
             
             .header-container {
-                padding: 0 20px;
-                justify-content: space-between;
+                padding: 0 15px;
+                flex-wrap: wrap;
+                min-height: 70px;
             }
             
             .nav-menu {
                 display: none;
-                position: absolute;
-                top: 80px; 
-                left: 0; 
+                position: fixed;
+                top: 70px;
+                left: 0;
                 width: 100%;
                 background: white;
                 flex-direction: column;
-                height: auto;
+                height: calc(100vh - 70px);
                 padding: 0;
                 margin: 0;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                align-items: flex-start;
+                align-items: stretch;
                 overflow-y: auto;
-                max-height: 80vh;
+                z-index: 1000;
             }
             
-            .nav-menu.active { display: flex; }
+            .nav-menu.active { 
+                display: flex; 
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
             
             /* Link Styles Mobile */
             .nav-link-custom {
                 color: #333;
                 width: 100%;
-                padding: 15px 25px;
+                padding: 16px 25px;
                 line-height: 1.5;
                 border-bottom: 1px solid #eee;
+                font-size: 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
             
-            /* DROPDOWN LOGIC MOBILE */
+            /* DROPDOWN LOGIC MOBILE - Enhanced */
             .nav-item-dropdown {
                 width: 100%;
                 flex-direction: column;
-                height: auto;
                 border-bottom: 1px solid #eee;
             }
             
-            /* Container for Link + Toggle Button */
             .mobile-link-wrapper {
                 display: flex;
                 width: 100%;
                 align-items: center;
                 justify-content: space-between;
+                position: relative;
             }
             
-            /* Make the link take available space */
             .nav-item-dropdown .nav-link-custom {
                 border-bottom: none;
-                width: auto;
-                flex-grow: 1;
+                width: calc(100% - 60px);
             }
             
-            /* Show the separate toggle button */
+            /* Improved Toggle Button */
             .mobile-dropdown-toggle {
                 display: flex;
                 align-items: center;
@@ -326,16 +355,24 @@
                 height: 100%;
                 border-left: 1px solid #eee;
                 color: #333;
+                background: transparent;
+                cursor: pointer;
+                transition: all 0.3s;
             }
             
-            .mobile-dropdown-toggle:active {
-                background-color: #f0f0f0;
+            .mobile-dropdown-toggle:hover {
+                background-color: rgba(0, 76, 163, 0.05);
+            }
+            
+            .nav-item-dropdown.active .mobile-dropdown-toggle i {
+                transform: rotate(180deg);
+                transition: transform 0.3s;
             }
             
             /* Hide the small arrow inside the link text on mobile */
             .desktop-arrow { display: none; }
             
-            /* Dropdown Menu Mobile */
+            /* Dropdown Menu Mobile - Enhanced */
             .dropdown-menu-custom {
                 position: static;
                 width: 100%;
@@ -344,10 +381,23 @@
                 visibility: visible;
                 display: none;
                 box-shadow: none;
-                border-top: none;
-                padding: 10px 30px 20px 30px;
-                background: #f9f9f9;
+                border-top: 1px solid #eee;
+                border-radius: 0;
+                padding: 15px 25px 20px;
+                background: #f8f9fa;
                 grid-template-columns: 1fr;
+                animation: fadeIn 0.3s ease;
+            }
+            
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    max-height: 0;
+                }
+                to {
+                    opacity: 1;
+                    max-height: 500px;
+                }
             }
             
             .dropdown-menu-custom::before { display: none; }
@@ -355,39 +405,80 @@
             /* When Active Class added by JS */
             .nav-item-dropdown.active .dropdown-menu-custom {
                 display: grid;
+                max-height: 500px;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
             }
             
-            .nav-item-dropdown.active .mobile-dropdown-toggle i {
-                transform: rotate(180deg);
-                transition: transform 0.3s;
+            .dropdown-category { 
+                grid-column: span 1; 
+                margin-top: 15px;
+                padding-top: 10px;
+                border-top: 1px solid #ddd;
             }
             
-            .dropdown-category { grid-column: span 1; }
+            .dropdown-category:first-child {
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+            
+            .dropdown-link {
+                padding: 10px 15px;
+                margin: 2px 0;
+                border-radius: 6px;
+                font-size: 13px;
+            }
             
             /* Header Elements */
-            .mobile-toggle { display: block; }
+            .mobile-toggle { 
+                display: block; 
+                color: var(--tf-blue);
+                font-size: 22px;
+            }
+            
+            .header-fix.scrolled .mobile-toggle {
+                color: var(--tf-blue);
+            }
             
             /* Ensure Icons and Toggle are grouped right */
             .header-right-actions {
                 display: flex;
                 flex-direction: row;
-                gap: 20px;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            .header-icons {
+                color: var(--tf-blue);
+                gap: 12px;
+            }
+            
+            .header-logo h2 {
+                font-size: 1.3rem !important;
+                color: var(--tf-blue) !important;
+            }
+            
+            .header-logo h2 span {
+                color: var(--tf-yellow) !important;
             }
             
             /* Mobile adjustments for hero */
             .hero-title {
-                font-size: 2.5rem !important;
-                margin-top: -50px !important;
+                font-size: 2.2rem !important;
+                margin-top: -40px !important;
+                line-height: 1.2;
             }
             
             .hero-section {
                 height: 50vh;
-                min-height: 400px;
+                min-height: 350px;
             }
             
             /* Mobile adjustments for traffic cards */
             .traffic-card {
-                padding: 25px;
+                padding: 25px 20px;
+                margin-bottom: 20px;
             }
             
             .traffic-icon {
@@ -407,51 +498,102 @@
             .stat-circle {
                 width: 120px;
                 height: 120px;
+                margin: 0 auto 15px;
             }
             
             .stat-circle h3 {
                 font-size: 2rem;
             }
+            
+            /* Mobile adjustments for scenario boxes */
+            .scenario-wrapper {
+                padding: 30px 0;
+                min-height: auto;
+            }
+            
+            .challenge-card,
+            .solution-card {
+                padding: 20px;
+                margin-bottom: 15px;
+            }
+            
+            /* Mobile adjustments for hotspot labels */
+            .hotspot-label {
+                font-size: 10px;
+                padding: 4px 8px;
+                white-space: normal;
+                max-width: 100px;
+                text-align: center;
+                word-break: break-word;
+            }
         }
         
         @media (max-width: 576px) {
-            .header-right-actions { gap: 15px; }
-            .header-icons { gap: 10px !important; }
-            .header-logo h2 { font-size: 1.3rem !important; }
+            .header-container {
+                padding: 0 10px;
+            }
+            
+            .header-right-actions { 
+                gap: 10px; 
+            }
+            
+            .header-icons { 
+                gap: 8px !important; 
+            }
+            
+            .header-logo h2 { 
+                font-size: 1.1rem !important; 
+            }
+            
             .hero-title { 
-                font-size: 2rem !important; 
-                margin-top: -30px !important;
+                font-size: 1.8rem !important; 
+                margin-top: -20px !important;
             }
             
             .traffic-btn {
                 padding: 8px 16px;
                 font-size: 12px;
-                margin-bottom: 10px;
+                margin-bottom: 8px;
+                width: 100%;
+                max-width: 200px;
             }
             
             .traffic-controls {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 10px;
+                gap: 8px;
+                margin: 20px 0;
             }
             
             .system-specs {
                 padding: 20px;
+                margin: 15px 0;
             }
             
             .spec-row {
                 flex-direction: column;
                 gap: 5px;
+                padding: 12px 0;
             }
             
             .roi-banner {
-                padding: 40px 20px;
+                padding: 30px 15px;
+                margin: 20px 0;
             }
             
             .hero-section {
-                height: 45vh;
-                min-height: 350px;
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .nav-link-custom {
+                padding: 14px 20px;
+                font-size: 13px;
+            }
+            
+            .dropdown-menu-custom {
+                padding: 12px 20px 15px;
             }
         }
         
@@ -459,7 +601,7 @@
         .hero-section {
             height: 65vh;
             min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/smart  trafic hero.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/smart  trafic hero.jpg'); 
             background-size: cover;
             background-position: center;
             display: flex;
@@ -631,6 +773,8 @@
             color: var(--tf-blue);
             transition: var(--transition);
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
         
         .traffic-btn:hover {
@@ -644,6 +788,24 @@
             border-color: var(--tf-yellow);
             color: #000;
             box-shadow: 0 5px 15px rgba(255,204,0,0.3);
+        }
+        
+        .traffic-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(0, 76, 163, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .traffic-btn:active::after {
+            width: 300px;
+            height: 300px;
         }
         
         /* TRAFFIC SYSTEM SPECS */
@@ -791,7 +953,7 @@
             100% { left: 100%; }
         }
         
-        /* --- HOTSPOTS FOR TRAFFIC INTERACTIVE --- */
+        /* --- ENHANCED HOTSPOT STYLES --- */
         .interactive-map-container {
             position: relative;
             width: 100%;
@@ -800,12 +962,39 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             border: 1px solid rgba(0,0,0,0.05);
             margin-bottom: 40px;
+            min-height: 400px;
+            background: #f8f9fa;
         }
         
         .map-img {
             width: 100%;
             height: auto;
             display: block;
+            min-height: 400px;
+            object-fit: cover;
+        }
+        
+        /* Hotspot animations */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-5px); }
+        }
+        
+        @keyframes ripple {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
         }
         
         .hotspot {
@@ -816,6 +1005,7 @@
             z-index: 10;
             transform: translate(-50%, -50%);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 6s ease-in-out infinite;
         }
         
         .hotspot:hover {
@@ -838,6 +1028,20 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             border: 2px solid #fff;
             transition: 0.3s;
+            position: relative;
+        }
+        
+        .hotspot-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 204, 0, 0.2);
+            animation: ripple 3s infinite;
         }
         
         .hotspot.active .hotspot-dot {
@@ -845,6 +1049,12 @@
             color: var(--tf-dark);
             transform: scale(1.3);
             box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
+            animation: pulse 2s infinite, float 3s ease-in-out infinite;
+        }
+        
+        .hotspot.active .hotspot-dot::after {
+            width: 60px;
+            height: 60px;
         }
         
         .hotspot-label {
@@ -858,11 +1068,60 @@
             white-space: nowrap;
             box-shadow: 0 4px 15px rgba(0,0,0,0.12);
             z-index: 5;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+            min-width: 140px;
+            text-align: center;
+        }
+        
+        .hotspot:hover .hotspot-label {
+            opacity: 1;
+            transform: translateX(5px);
         }
         
         .hotspot.active .hotspot-label {
             background: var(--tf-dark);
             color: #fff;
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        /* Map highlight effect */
+        .map-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--highlight-x, 50%) var(--highlight-y, 50%), rgba(0, 76, 163, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 15;
+            transition: all 0.5s ease;
+        }
+        
+        /* Tooltip for hotspots */
+        .hotspot-tooltip {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 25;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 200px;
+            text-align: center;
+        }
+        
+        .hotspot:hover .hotspot-tooltip {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* --- SCENARIO BOXES FOR HOTSPOT CONTENT --- */
@@ -877,13 +1136,25 @@
             display: none;
             opacity: 0;
             transform: translateY(20px);
-            transition: 0.5s ease;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
         
         .scenario-box.active {
             display: block;
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        .scenario-img {
+            transition: transform 0.5s ease;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .scenario-img:hover {
+            transform: scale(1.02);
         }
         
         .challenge-card,
@@ -902,6 +1173,86 @@
         
         .solution-card {
             border-left: 4px solid var(--tf-blue);
+        }
+        
+        /* Diagram styles */
+        .system-diagram {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 3px solid var(--tf-yellow);
+        }
+        
+        /* Hotspot Image Cards */
+        .hotspot-image-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .hotspot-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .hotspot-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+        
+        .hotspot-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .hotspot-card-content {
+            padding: 15px;
+        }
+        
+        .hotspot-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--tf-blue);
+            margin-bottom: 8px;
+        }
+        
+        .hotspot-card-desc {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .hotspot-card-badge {
+            display: inline-block;
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
         
         /* Social Media Buttons */
@@ -936,6 +1287,114 @@
             .hero-section {
                 background-position: center 70%;
             }
+            
+            /* Mobile-specific hotspot adjustments */
+            .hotspot {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            
+            .hotspot.active {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            
+            .hotspot-label {
+                font-size: 10px;
+                padding: 4px 8px;
+                min-width: 100px;
+                white-space: normal;
+                line-height: 1.2;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hotspot-image-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hotspot-image-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ITS Overview Section */
+        .its-overview-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 0;
+        }
+        
+        .its-diagram-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .overall-system-img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .its-description-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--tf-blue);
+            margin-top: 30px;
+        }
+        
+        .feature-benefits-section {
+            background: white;
+            padding: 60px 0;
+        }
+        
+        .benefit-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--tf-yellow);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--tf-blue);
+            margin-bottom: 15px;
+        }
+        
+        .its-components-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .component-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--tf-blue);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .component-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .component-icon {
+            font-size: 2.5rem;
+            color: var(--tf-yellow);
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -944,12 +1403,12 @@
 
     <!-- HEADER -->
     <header>
-        <div id="navBox" class="header-fix">
+        <div id="navBox" class="header-fix scrolled">
             <div class="header-container">
                 <!-- LOGO (Left) -->
                 <div class="header-logo">
                     <a href="/index.html">
-                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
+                        <h2 style="color:var(--tf-blue); margin:0; font-family:'Montserrat'; font-weight:900;">
                             TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
                         </h2>
                     </a>
@@ -1065,7 +1524,7 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Smart Traffic <br>Solutions</h1>
+                <h1 class="hero-title">Road Traffic<br>INTELLIGENT TRAFFIC SYSTEM<br>SOLUTION</h1>
             </div>
         </div>
     </section>
@@ -1076,9 +1535,11 @@
             
             <nav aria-label="breadcrumb" class="nav-breadcrumb">
                 <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#overview">System Overview</a></li>
+                    <li class="breadcrumb-item"><a href="#solutions">Solution Details</a></li>
+                    <li class="breadcrumb-item"><a href="#features">Solution Features</a></li>
                     <li class="breadcrumb-item"><a href="#interactive">Interactive Lab</a></li>
                     <li class="breadcrumb-item"><a href="#systems">Core Systems</a></li>
-                    <li class="breadcrumb-item"><a href="#impact">Urban Impact</a></li>
                 </ol>
             </nav>
 
@@ -1091,129 +1552,187 @@
         </div>
     </div>
 
-    <!-- INTERACTIVE TRAFFIC EXPERIENCE WITH HOTSPOTS -->
-    <section class="py-5 bg-white scroll-target" id="interactive">
+    <!-- ITS OVERVIEW SECTION -->
+    <section class="its-overview-section scroll-target" id="overview">
         <div class="container">
-            <div class="text-center mb-4">
-                <h2 class="text-uppercase" style="color:var(--tf-blue); font-weight:800;">The Future of Urban Mobility</h2>
-                <div class="line" style="width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
-                <p class="text-muted" style="max-width:700px; margin:0 auto;">Interactive experience: Click hotspots to explore intelligent traffic management systems.</p>
+            <div class="section-header">
+                <h2>Intelligent Traffic System (ITS) Overview</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Integration of computer, electronics, communication technologies and management strategies for efficient transportation systems.</p>
+            </div>
+
+            <div class="its-diagram-container">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overall-system-diagram.png" alt="ITS Overall System Diagram" class="overall-system-img">
+            </div>
+
+            <div class="its-description-box">
+                <h4 class="text-primary mb-3"><i class="fa fa-info-circle me-2"></i>What is Intelligent Traffic System?</h4>
+                <p class="mb-4">The Intelligent Traffic Systems (ITS) focuses on the integration of computer, electronics, communication technologies and management strategies. It provides relevant traveler information, which helps increase the efficiency of transportation systems.</p>
+                
+                <div class="its-components-grid">
+                    <div class="component-card">
+                        <i class="fa fa-shield-alt component-icon"></i>
+                        <h5>Traffic Violation Enforcement</h5>
+                        <p class="small">Automated detection and enforcement of traffic regulations including speeding, red light violations, and illegal parking.</p>
+                    </div>
+                    <div class="component-card">
+                        <i class="fa fa-chart-line component-icon"></i>
+                        <h5>Road Traffic Flow Monitoring</h5>
+                        <p class="small">Real-time monitoring of traffic patterns, congestion detection, and flow optimization through advanced sensors and cameras.</p>
+                    </div>
+                    <div class="component-card">
+                        <i class="fa fa-traffic-light component-icon"></i>
+                        <h5>Traffic Signal Control</h5>
+                        <p class="small">Adaptive traffic signal systems that adjust timing based on real-time traffic conditions to optimize flow and reduce congestion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION DETAILS SECTION -->
+    <section class="py-5 bg-white scroll-target" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Solution Details</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Our comprehensive ITS solutions cover all aspects of modern traffic management.</p>
+            </div>
+
+            <!-- Hotspot Image Cards -->
+            <div class="hotspot-image-cards">
+                <div class="hotspot-card" onclick="showTrafficScenario(1)">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/bus-lane-system.png" alt="Bus Lane Enforcement" class="hotspot-card-img">
+                    <div class="hotspot-card-content">
+                        <div class="hotspot-card-title">Bus Lane Enforcement</div>
+                        <div class="hotspot-card-desc">Automated detection of unauthorized vehicles in bus lanes</div>
+                        <span class="hotspot-card-badge">System 1</span>
+                    </div>
+                </div>
+                
+                <div class="hotspot-card" onclick="showTrafficScenario(2)">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/red-light-system.png" alt="Red Light Enforcement" class="hotspot-card-img">
+                    <div class="hotspot-card-content">
+                        <div class="hotspot-card-title">Red Light Enforcement</div>
+                        <div class="hotspot-card-desc">Automated detection of red light violations</div>
+                        <span class="hotspot-card-badge">System 2</span>
+                    </div>
+                </div>
+                
+                <div class="hotspot-card" onclick="showTrafficScenario(3)">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/signal-control-system.png" alt="Traffic Signal Control" class="hotspot-card-img">
+                    <div class="hotspot-card-content">
+                        <div class="hotspot-card-title">Traffic Signal Control</div>
+                        <div class="hotspot-card-desc">Adaptive traffic signal control system</div>
+                        <span class="hotspot-card-badge">System 3</span>
+                    </div>
+                </div>
+                
+                <div class="hotspot-card" onclick="showTrafficScenario(4)">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/parking-system.png" alt="Parking Violations" class="hotspot-card-img">
+                    <div class="hotspot-card-content">
+                        <div class="hotspot-card-title">Parking Violations</div>
+                        <div class="hotspot-card-desc">Automated parking violation detection</div>
+                        <span class="hotspot-card-badge">System 4</span>
+                    </div>
+                </div>
+                
+                <div class="hotspot-card" onclick="showTrafficScenario(5)">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/speed-system.png" alt="Speeding Detection" class="hotspot-card-img">
+                    <div class="hotspot-card-content">
+                        <div class="hotspot-card-title">Speeding Detection</div>
+                        <div class="hotspot-card-desc">Point and section speed enforcement</div>
+                        <span class="hotspot-card-badge">System 5</span>
+                    </div>
+                </div>
+                
+                <div class="hotspot-card" onclick="showTrafficScenario(6)">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/traffic-status-system.png" alt="Real Time Traffic Status" class="hotspot-card-img">
+                    <div class="hotspot-card-content">
+                        <div class="hotspot-card-title">Real Time Traffic Status</div>
+                        <div class="hotspot-card-desc">Real-time traffic monitoring and display</div>
+                        <span class="hotspot-card-badge">System 6</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Interactive Map with Hotspots -->
             <div class="row justify-content-center mb-5">
                 <div class="col-12">
                     <div class="interactive-map-container">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/traffic-intersection.jpg" alt="Traffic Intersection Overview" class="map-img">
-                        
-                        <!-- Hotspots -->
-                        <div id="hotspot-1" class="hotspot active" onclick="showTrafficScenario(1)" style="top: 25%; left: 30%;">
-                            <div class="hotspot-dot">1</div>
-                            <div class="hotspot-label">Adaptive Signals</div>
-                        </div>
-                        <div id="hotspot-2" class="hotspot" onclick="showTrafficScenario(2)" style="top: 60%; left: 50%;">
-                            <div class="hotspot-dot">2</div>
-                            <div class="hotspot-label">Traffic Control</div>
-                        </div>
-                        <div id="hotspot-3" class="hotspot" onclick="showTrafficScenario(3)" style="top: 40%; left: 70%;">
-                            <div class="hotspot-dot">3</div>
-                            <div class="hotspot-label">ANPR Cameras</div>
-                        </div>
-                        <div id="hotspot-4" class="hotspot" onclick="showTrafficScenario(4)" style="top: 75%; left: 20%;">
-                            <div class="hotspot-dot">4</div>
-                            <div class="hotspot-label">Pedestrian Safety</div>
-                        </div>
-                        <div id="hotspot-5" class="hotspot" onclick="showTrafficScenario(5)" style="top: 15%; left: 85%;">
-                            <div class="hotspot-dot">5</div>
-                            <div class="hotspot-label">Monitoring Center</div>
-                        </div>
+                       <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overview.png" alt="Traffic Intersection Overview" class="map-img">
+                       <!-- Hotspots will be dynamically generated here -->
                     </div>
                 </div>
             </div>
 
             <!-- Dynamic Scenario Content -->
             <div id="traffic-scenarios" class="scenario-wrapper">
-                <!-- Scenario 1: Adaptive Signals -->
-                <div id="content-1" class="scenario-box active">
-                    <h3 class="mb-4 text-primary">1. Adaptive Traffic Signal Control</h3>
-                    <div class="row g-5">
-                        <div class="col-lg-5">
-                            <div class="challenge-card">
-                                <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                                <ul class="text-muted mb-0">
-                                    <li>Fixed signal timing causing congestion</li>
-                                    <li>Long wait times at intersections</li>
-                                    <li>Inefficient traffic flow during peak hours</li>
-                                    <li>No real-time adaptation to traffic conditions</li>
-                                </ul>
-                            </div>
-                            <div class="solution-card">
-                                <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                                <p><strong>AI-Powered Signals:</strong> Real-time adjustment based on traffic volume.</p>
-                                <p><strong>Emergency Preemption:</strong> Priority for emergency vehicles.</p>
-                                <p><strong>Weather Adaptation:</strong> Adjust timing for rain, fog, or snow conditions.</p>
-                                <p><strong>Coordinated Corridors:</strong> Synchronized signals along major routes.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/adaptive-signals.jpg" class="scenario-img" alt="Adaptive Signals">
-                            <h5 class="mt-3">Key Features:</h5>
-                            <ul class="list-inline">
-                                <li class="list-inline-item me-4"><i class="fa fa-brain text-success"></i> AI Optimization</li>
-                                <li class="list-inline-item me-4"><i class="fa fa-ambulance text-success"></i> Emergency Priority</li>
-                                <li class="list-inline-item"><i class="fa fa-sync-alt text-success"></i> Real-time Adaptation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Scenario 2: Traffic Control -->
-                <div id="content-2" class="scenario-box">
-                    <h3 class="mb-4 text-primary">2. Intelligent Traffic Control System</h3>
-                    <div class="row g-5">
-                        <div class="col-lg-5">
-                            <div class="challenge-card">
-                                <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                                <ul class="text-muted mb-0">
-                                    <li>Manual traffic management inefficiencies</li>
-                                    <li>Delayed response to incidents</li>
-                                    <li>Poor coordination between intersections</li>
-                                    <li>Limited data for decision making</li>
-                                </ul>
-                            </div>
-                            <div class="solution-card">
-                                <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                                <p><strong>Centralized Control:</strong> Unified platform for city-wide traffic management.</p>
-                                <p><strong>Predictive Analytics:</strong> Anticipate congestion before it occurs.</p>
-                                <p><strong>Incident Management:</strong> Automated response to accidents and events.</p>
-                                <p><strong>Data Integration:</strong> Combine multiple data sources for optimal control.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/control-center.jpg" class="scenario-img" alt="Traffic Control">
-                            <h5 class="mt-3">Key Features:</h5>
-                            <ul class="list-inline">
-                                <li class="list-inline-item me-4"><i class="fa fa-desktop text-success"></i> Central Dashboard</li>
-                                <li class="list-inline-item me-4"><i class="fa fa-chart-line text-success"></i> Predictive Analytics</li>
-                                <li class="list-inline-item"><i class="fa fa-bell text-success"></i> Incident Alerts</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Add similar structure for scenarios 3, 4, 5 -->
+                <!-- Scenario content will be dynamically generated here -->
             </div>
 
             <div class="traffic-controls text-center mb-4 mt-5">
-                <button class="traffic-btn active" onclick="switchTrafficView('signals')">
-                    <i class="fa fa-traffic-light me-2"></i>Adaptive Signals
-                </button>
-                <button class="traffic-btn" onclick="switchTrafficView('anpr')">
-                    <i class="fa fa-car me-2"></i>ANPR & Enforcement
+                <button class="traffic-btn active" onclick="switchTrafficView('enforcement')">
+                    <i class="fa fa-shield-alt me-2"></i>Traffic Enforcement
                 </button>
                 <button class="traffic-btn" onclick="switchTrafficView('control')">
-                    <i class="fa fa-tv me-2"></i>Traffic Control Center
+                    <i class="fa fa-traffic-light me-2"></i>Traffic Control
                 </button>
+                <button class="traffic-btn" onclick="switchTrafficView('monitoring')">
+                    <i class="fa fa-tv me-2"></i>Real-time Monitoring
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION FEATURES SECTION -->
+    <section class="feature-benefits-section scroll-target" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Solution Features</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Key benefits and features of our Intelligent Traffic System</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fa fa-shield-alt benefit-icon"></i>
+                        <h4>Enhanced Security</h4>
+                        <p>Reduce traffic accidents by building up driver awareness of traffic regulations through efficient violation detection and enforcement.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fa fa-dollar-sign benefit-icon"></i>
+                        <h4>Reduced Labor Costs</h4>
+                        <p>Advanced technologies such as LPR and fuzzy search reduce manpower demands on the police force while increasing enforcement efficiency.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="benefit-card">
+                        <i class="fa fa-leaf benefit-icon"></i>
+                        <h4>Efficient & Eco-friendly</h4>
+                        <p>Significantly improves traveler safety and comfort, delivering substantial social and economic benefits by saving energy and protecting the environment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="its-description-box mt-5">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overall-system-diagram.png" alt="Overall System Diagram" class="system-diagram">
+                <h5 class="text-primary mt-3">Complete ITS Integration</h5>
+                <p>Our comprehensive ITS solution integrates all components into a unified platform that provides seamless traffic management, real-time monitoring, and automated enforcement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TRAFFIC EXPERIENCE -->
+    <section class="py-5 bg-white scroll-target" id="interactive">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Traffic Simulation</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Experience how our Intelligent Traffic System optimizes urban mobility in real-time.</p>
             </div>
 
             <div class="interactive-container">
@@ -1299,8 +1818,8 @@
                 
                 <!-- Traffic System Information -->
                 <div class="system-info mt-4 p-4 bg-light rounded">
-                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Adaptive Signals Work</h5>
-                    <p class="mb-0">Our intelligent traffic signals use real-time vehicle detection, AI algorithms, and predictive analytics to optimize signal timing based on actual traffic conditions, reducing congestion by up to 40%.</p>
+                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Intelligent Traffic Systems Work</h5>
+                    <p class="mb-0">Our comprehensive traffic solutions use AI algorithms, real-time vehicle detection, and predictive analytics to optimize traffic flow, enforce regulations, and reduce congestion by up to 40%.</p>
                 </div>
             </div>
         </div>
@@ -1313,23 +1832,23 @@
                 <h4 class="mb-4 fw-bold"><i class="fa fa-cogs text-primary me-2"></i>Traffic System Specifications</h4>
                 <div class="spec-row">
                     <span class="spec-label">Platform</span>
-                    <span class="spec-value text-primary fw-bold">ITS Command Center v3.5</span>
+                    <span class="spec-value text-primary fw-bold">Tongfang ITS Command Center v4.0</span>
                 </div>
                 <div class="spec-row">
-                    <span class="spec-label">Signal Control</span>
-                    <span class="spec-value">Adaptive, Coordinated, Emergency Preemption</span>
+                    <span class="spec-label">Detection Accuracy</span>
+                    <span class="spec-value">99.8% vehicle detection, 99.5% LPR accuracy</span>
                 </div>
                 <div class="spec-row">
-                    <span class="spec-label">Detection Systems</span>
-                    <span class="spec-value">Video Analytics, Radar, Inductive Loops, ANPR</span>
+                    <span class="spec-label">Enforcement Systems</span>
+                    <span class="spec-value">Speed, Red Light, Bus Lane, Parking Violations</span>
                 </div>
                 <div class="spec-row">
                     <span class="spec-label">Communications</span>
-                    <span class="spec-value">Fiber Optic, 4G/5G, DSRC, Ethernet</span>
+                    <span class="spec-value">Fiber Optic, 5G, Wi-Fi 6, IoT Mesh Network</span>
                 </div>
                 <div class="spec-row">
                     <span class="spec-label">Protocols</span>
-                    <span class="spec-value">NTCIP, ITS Standards, TCP/IP, SNMP</span>
+                    <span class="spec-value">NTCIP, ITS Standards, TCP/IP, SNMP, MQTT</span>
                 </div>
             </div>
         </div>
@@ -1339,45 +1858,45 @@
     <section class="py-5 bg-white scroll-target" id="systems">
         <div class="container py-5">
             <div class="section-header">
-                <h2>Intelligent Traffic Systems</h2>
+                <h2>Comprehensive Traffic Solutions</h2>
                 <div class="line"></div>
-                <p class="text-secondary">Comprehensive solutions for modern urban transportation.</p>
+                <p class="text-secondary">End-to-end intelligent traffic management and enforcement systems.</p>
             </div>
 
             <div class="row g-4">
                 <div class="col-lg-4">
                     <div class="traffic-card">
+                        <i class="fa fa-tachometer-alt traffic-icon"></i>
+                        <h4>Speed Enforcement</h4>
+                        <p class="text-muted">Point and section speed enforcement systems with high-precision 3D radar and AI-powered analytics.</p>
+                        <ul class="feature-list list-unstyled mt-3 text-start">
+                            <li><i class="fa fa-check"></i> 99.8% velocity measurement accuracy</li>
+                            <li><i class="fa fa-check"></i> Covers 3 lanes with single camera</li>
+                            <li><i class="fa fa-check"></i> Portable and fixed installations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="traffic-card">
+                        <i class="fa fa-bus traffic-icon"></i>
+                        <h4>Bus Lane Enforcement</h4>
+                        <p class="text-muted">Automated detection of unauthorized vehicles in bus lanes with real-time LPR and violation processing.</p>
+                        <ul class="feature-list list-unstyled mt-3 text-start">
+                            <li><i class="fa fa-check"></i> Fully automated violation detection</li>
+                            <li><i class="fa fa-check"></i> Real-time database integration</li>
+                            <li><i class="fa fa-check"></i> Improves bus transit times by 25%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="traffic-card">
                         <i class="fa fa-traffic-light traffic-icon"></i>
-                        <h4>Adaptive Signal Control</h4>
-                        <p class="text-muted">AI-powered traffic signals that adjust timing based on real-time traffic flow, weather conditions, and special events.</p>
+                        <h4>Traffic Signal Control</h4>
+                        <p class="text-muted">Adaptive traffic signal control systems that adjust timing based on real-time traffic flow and queue length.</p>
                         <ul class="feature-list list-unstyled mt-3 text-start">
-                            <li><i class="fa fa-check"></i> 40% reduction in travel time</li>
+                            <li><i class="fa fa-check"></i> Reduces travel times by 10-20%</li>
                             <li><i class="fa fa-check"></i> Emergency vehicle preemption</li>
-                            <li><i class="fa fa-check"></i> Pedestrian crossing optimization</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="traffic-card">
-                        <i class="fa fa-camera traffic-icon"></i>
-                        <h4>ANPR & Enforcement</h4>
-                        <p class="text-muted">Automatic Number Plate Recognition for traffic enforcement, toll collection, and security monitoring.</p>
-                        <ul class="feature-list list-unstyled mt-3 text-start">
-                            <li><i class="fa fa-check"></i> 99.5% recognition accuracy</li>
-                            <li><i class="fa fa-check"></i> Real-time violation detection</li>
-                            <li><i class="fa fa-check"></i> Integrated with police databases</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="traffic-card">
-                        <i class="fa fa-tv traffic-icon"></i>
-                        <h4>Traffic Control Center</h4>
-                        <p class="text-muted">Centralized monitoring and control platform with real-time analytics, incident management, and reporting.</p>
-                        <ul class="feature-list list-unstyled mt-3 text-start">
-                            <li><i class="fa fa-check"></i> Unified dashboard view</li>
-                            <li><i class="fa fa-check"></i> Predictive analytics</li>
-                            <li><i class="fa fa-check"></i> Mobile command capability</li>
+                            <li><i class="fa fa-check"></i> Weather-adaptive timing</li>
                         </ul>
                     </div>
                 </div>
@@ -1391,7 +1910,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <h2 class="text-white mb-4">Transforming Urban Mobility Across Africa</h2>
-                    <p class="lead mb-5 text-white-50">"To create smarter, safer, and more efficient transportation networks that connect communities and drive economic growth."</p>
+                    <p class="lead mb-5 text-white-50">"Creating smarter, safer, and more efficient transportation networks that connect communities and drive economic growth."</p>
                     
                     <div class="row g-4">
                         <div class="col-md-3">
@@ -1414,8 +1933,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="stat-circle">
-                                <h3>99.5%</h3>
-                                <p class="small m-0 text-uppercase fw-bold text-white">ANPR Accuracy</p>
+                                <h3>99.8%</h3>
+                                <p class="small m-0 text-uppercase fw-bold text-white">Detection Accuracy</p>
                             </div>
                         </div>
                     </div>
@@ -1485,104 +2004,639 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Current active scenario for hotspots
+        // ============================================
+        // COMPREHENSIVE TRAFFIC SOLUTIONS HOTSPOT SYSTEM
+        // ============================================
+        
         let currentTrafficScenario = 1;
+        let hotspotInteractionEnabled = true;
+        let autoRotateInterval;
+        let isSimulationRunning = false;
+        let simulationInterval;
         
-        // Header Scroll
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('navBox');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        // Hotspot data with all specified traffic systems
+        const hotspotData = {
+            1: {
+                title: "BUS LANE ENFORCEMENT",
+                description: "Automated detection of unauthorized vehicles in bus lanes",
+                position: { top: "45%", left: "40%" },
+                active: true,
+                icon: "fa-bus",
+                content: {
+                    title: "Bus Lane Enforcement System",
+                    background: "Millions of commuters, students, parents, and the elderly rely on bus transportation every day to get to where they need to be. Buses help reduce traffic congestion and air pollution because they provide a more efficient way of moving people from one point to another. However, cars and trucks travelling and parking in bus lanes reduces the efficiency of buses and creates unnecessary congestion.",
+                    systemOverview: {
+                        title: "System Overview",
+                        description: "This figure shows a camera with License Plate Recognition (LPR) enabled, capturing both the license plate number and a color snapshot of the vehicle crossing into the bus lane. The system then uploads the images to the Tongfang platform along with the vehicle plate number.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/bus-lane-system.png"
+                    },
+                    solutionDetails: {
+                        title: "Solution Details",
+                        description: "The business platform collects the vehicle list and checks to see if they are on the list of permitted vehicles provided by the vehicle registration database. These records can then be verified and traffic tickets can be issued after verification and approval. The system can also sort vehicles by custom rules or plate color, if provided.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/bus-lane-diagram.png"
+                    },
+                    features: [
+                        "Fully automated violation detection",
+                        "Real-time database integration with vehicle registration",
+                        "Reduces traffic enforcement overhead costs by 40%",
+                        "Speeds up bus transit times by 25%",
+                        "Video-based vehicle classification - No additional sensors needed"
+                    ],
+                    serverSupport: [
+                        "Search and fuzzy search by plate/time/type of vehicle",
+                        "Show plate/record time/processing pictures/linkage video",
+                        "Supports live monitoring of bus lanes",
+                        "Automatic violation ticketing system"
+                    ]
+                }
+            },
+            2: {
+                title: "RED LIGHT ENFORCEMENT",
+                description: "Automated detection of red light violations",
+                position: { top: "33%", left: "50%" },
+                active: false,
+                icon: "fa-traffic-light",
+                content: {
+                    title: "Red Light Enforcement System",
+                    background: "Safe public transportation is a global concern, especially in responding quickly to traffic accidents. In a modern society with increased mobility, red light violations are a major factor in traffic tragedies. Every year, 21.5% of all traffic accidents are caused by running red lights. The Tongfang Red Light Enforcement Solution reduces accidents to create safer and more secure roads for citizens.",
+                    systemOverview: {
+                        title: "System Overview",
+                        description: "At the core of the Red Light Enforcement Solution is a system that synchronizes the status of red light signals with the triggering signal to cameras. When a violation occurs, the Tongfang all-in-one capture camera takes three images of the violation to be used as evidence.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/red-light-system.png"
+                    },
+                    solutionDetails: {
+                        title: "Solution Details",
+                        description: "These images include the vehicle license plate, status of traffic signal, and an overview of the scene. Afterwards, the platform and storage collects the data from each camera and distributes it to client operators for further processing. Edge storage devices ensure data from the cameras is saved, even in the event of transmission failure.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/red-light-diagram.png"
+                    },
+                    features: [
+                        "Embedded LPR with 95% license plate recognition rate",
+                        "License plate color, vehicle color, and brand recognition",
+                        "Automatic Day/Night Mode switching",
+                        "High definition LPR camera captures more details",
+                        "Covers 3 or more lanes with only one enforcement device",
+                        "Takes 4 snapshots with violation evidence"
+                    ],
+                    serverSupport: [
+                        "Search and fuzzy search by plate/time/type of violations",
+                        "Show plate/record time/image thumbnails/linked video",
+                        "Supports real time monitoring",
+                        "Supports block car alarm system"
+                    ]
+                }
+            },
+            3: {
+                title: "TRAFFIC SIGNAL CONTROL",
+                description: "Adaptive traffic signal control system",
+                position: { top: "40%", left: "60%" },
+                active: false,
+                icon: "fa-signal",
+                content: {
+                    title: "Traffic Signal Control System",
+                    background: "Many signal controllers are unable to automatically adjust signal timing based on real-time traffic flows, which could lead to long traffic queues during rush hour, requiring more police resources to direct traffic.",
+                    systemOverview: {
+                        title: "System Overview",
+                        description: "The Tongfang VACS Solution is a system that can extend traffic light intervals according to the detected vehicle queue length of road intersections. It adopts a traffic flow camera to detect information such as traffic flow, headway, average speed, occupancy, and queue length.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/signal-control-system.png"
+                    },
+                    solutionDetails: {
+                        parts: [
+                            {
+                                title: "Traffic Data Collection",
+                                description: "The collection of traffic data helps manage traffic signals and provide for more efficient signal adjustments based on real traffic data. Traffic authorities can use real-time data to better understand current road conditions and enhance dynamic green light management, which can greatly reduce vehicle idle times. In the morning and evening rush hours, signal times can be adjusted according to actual conditions to provide more time for vehicles on busier roads.",
+                                image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/data-collection.png"
+                            },
+                            {
+                                title: "Adaptive Signal Control",
+                                description: "The traffic flow camera detects vehicles in pre-defined lanes and sends the length of vehicle queues to the controller through an Ethernet connection. The controller then triggers and automatically improves signal timings.",
+                                image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/adaptive-control.jpg"
+                            },
+                            {
+                                title: "Traffic Data Processing",
+                                description: "An advanced traffic flow information analysis algorithm gets and analyzes a city's traffic conditions in real time and displays results on special road signs in colors of red, yellow, and green to represent the speed of traffic flow. It serves as a guide to help drivers select the best travel route, easing overall traffic congestion.",
+                                image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/data-processing.jpg"
+                            }
+                        ]
+                    },
+                    features: [
+                        "Reduces number of stops by 30%",
+                        "Reduces travel times by 10-20%",
+                        "Lowers fuel consumption by 15%",
+                        "Reduces operational costs",
+                        "Works independently without central platform",
+                        "Emergency vehicle preemption"
+                    ]
+                }
+            },
+            4: {
+                title: "PARKING VIOLATIONS",
+                description: "Automated parking violation detection",
+                position: { top: "73%", left: "20%" },
+                active: false,
+                icon: "fa-parking",
+                content: {
+                    title: "Parking Violation Enforcement System",
+                    background: "Illegal parking is the act of parking vehicles in restricted areas such as fire lanes, crosswalks, sidewalks, in front of fire hydrants, etc.",
+                    systemOverview: {
+                        title: "System Overview",
+                        description: "The Tongfang Parking Enforcement solution is a system for detecting parking violations. It is used for simple and effective monitoring of parked cars in selected and precisely defined zones. It can effectively monitor areas where stopping or parking is prohibited, or areas with a limited parking time.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/parking-system.png"
+                    },
+                    solutionDetails: {
+                        title: "Solution Details",
+                        description: "Tongfang devotes itself to safeguarding pedestrians, easing the burden on public transportation, and helping the disabled community. Our parking enforcement system uses AI-powered cameras to detect violations in real-time and automatically issue citations.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/parking-diagram.png"
+                    },
+                    features: [
+                        "Real-time violation detection",
+                        "Automatic citation generation",
+                        "Mobile app for enforcement officers",
+                        "Integration with payment systems",
+                        "Disability parking space protection",
+                        "Fire lane monitoring"
+                    ]
+                }
+            },
+            5: {
+                title: "SPEEDING DETECTION",
+                description: "Point and section speed enforcement",
+                position: { top: "90%", left: "30%" },
+                active: false,
+                icon: "fa-tachometer-alt",
+                content: {
+                    title: "Speed Detection Enforcement System",
+                    background: "Speeding is a major contributor to road accidents and fatalities. Effective speed enforcement is crucial for road safety.",
+                    systemOverview: {
+                        title: "System Overview",
+                        description: "The Tongfang Point Speed Enforcement solution can effectively help transportation authorities detect vehicles which break the speed limit in all types of weather conditions.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/speed-system.png"
+                    },
+                    solutionDetails: {
+                        title: "Solution Details",
+                        description: "The system features an all-in-one design which makes it easy to use and install. It consists of an 8MP CCD camera and multi-target tracking radar which provide an accurate instant speed measurement of each passing vehicle with high definition images. What's more, the IR flash lamp ensures excellent imaging capabilities even at night.",
+                        diagram: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/speed-diagram.png"
+                    },
+                    pointSystem: {
+                        title: "Point Speed Enforcement System",
+                        features: [
+                            "Supports measurement of multiple vehicles in different lanes with high-precision 3D radar",
+                            "In addition to speed, cameras can also capture details such as plate number, vehicle type, and lane number",
+                            "High definition cameras can operate around-the-clock",
+                            "Long battery life, touch panel, and compact design provide better on-site enforcement",
+                            "Easy setup, instant deployment",
+                            "Uses wired / wireless(Wi-Fi, 4G) network to forward data back to control center"
+                        ]
+                    },
+                    sectionSystem: {
+                        title: "Section Speed Enforcement System",
+                        description: "Also known as Average Speed Measurement, this system calculates the average speed of vehicles over a defined section of road.",
+                        features: [
+                            "99.8% velocity measurement accuracy",
+                            "One camera covers 3 lanes, cost-effective",
+                            "Avoids abrupt braking to evade speed measurement",
+                            "Reduces accident rates throughout entire section"
+                        ],
+                        serverSupport: [
+                            "Search and fuzzy search by plate/time/type of violations",
+                            "Display plate/record time/image thumbnails/linked video",
+                            "Average speed measurement/setting according to different vehicle type"
+                        ]
+                    }
+                }
+            },
+            6: {
+                title: "REAL TIME TRAFFIC STATUS",
+                description: "Real-time traffic monitoring and display",
+                position: { top: "65%", left: "70%" },
+                active: false,
+                icon: "fa-tv",
+                content: {
+                    title: "Real-time Traffic Status Display System",
+                    background: "Millions of people deal with traffic congestion on a daily basis. The roadways leading into and out of most major cities can become gridlocked due to accidents, road construction, or simply a high number of cars on the road.",
+                    systemOverview: {
+                        title: "System Overview",
+                        description: "Real-time traffic monitoring systems provide up-to-the-minute information about traffic conditions to help drivers make informed decisions and traffic authorities manage flow efficiently.",
+                        image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/traffic-status-system.png"
+                    },
+                    solutionDetails: {
+                        parts: [
+                            {
+                                title: "Traffic Data Collection",
+                                description: "Traffic data is collected by traffic flow cameras using non-intrusive virtual loops where detection is done through advanced computer algorithms and does not involve any road work as in the case of an inductive loop. It can cover 1-4 lanes at a time, and has a 99% detection accuracy at speed below 80km/h.",
+                                image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/data-collection-2.png"
+                            },
+                            {
+                                title: "Information Dissemination",
+                                description: "Another core system function is information dissemination, which can also help guide traffic with these additional information types: congestion levels, estimated travel times, accident alerts, and alternative route suggestions.",
+                                image: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/info-dissemination.png"
+                            }
+                        ]
+                    },
+                    features: [
+                        "Works for both highways and surface streets",
+                        "Cameras provide accurate data in real-time",
+                        "Collects data for transit authorities and traffic planning",
+                        "Improves road safety by avoiding incidents and reducing accidents",
+                        "Integration with navigation apps and variable message signs",
+                        "Predictive analytics for traffic forecasting"
+                    ]
+                }
             }
-        });
+        };
+
+        // ============================================
+        // HOTSPOT MANAGEMENT FUNCTIONS
+        // ============================================
         
-        // Mobile Menu Toggle Function
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('mainNav');
-            navMenu.classList.toggle('active');
+        function initializeHotspots() {
+            const mapContainer = document.querySelector('.interactive-map-container');
+            const scenarioContainer = document.getElementById('traffic-scenarios');
+            
+            // Clear existing content
+            mapContainer.querySelectorAll('.hotspot').forEach(h => h.remove());
+            scenarioContainer.innerHTML = '';
+            
+            // Create hotspots
+            Object.keys(hotspotData).forEach(id => {
+                const data = hotspotData[id];
+                
+                // Create hotspot element
+                const hotspot = document.createElement('div');
+                hotspot.id = `hotspot-${id}`;
+                hotspot.className = `hotspot ${parseInt(id) === currentTrafficScenario ? 'active' : ''}`;
+                hotspot.style.top = data.position.top;
+                hotspot.style.left = data.position.left;
+                hotspot.style.setProperty('--hotspot-index', id);
+                
+                hotspot.innerHTML = `
+                    <div class="hotspot-dot">${id}</div>
+                    <div class="hotspot-label">${data.title}</div>
+                    <div class="hotspot-tooltip">${data.description}</div>
+                `;
+                
+                // Add event listeners
+                hotspot.addEventListener('click', () => handleHotspotClick(parseInt(id)));
+                hotspot.addEventListener('mouseenter', () => handleHotspotHover(parseInt(id), true));
+                hotspot.addEventListener('mouseleave', () => handleHotspotHover(parseInt(id), false));
+                
+                mapContainer.appendChild(hotspot);
+                
+                // Create scenario content container
+                const scenarioBox = document.createElement('div');
+                scenarioBox.id = `content-${id}`;
+                scenarioBox.className = `scenario-box ${parseInt(id) === currentTrafficScenario ? 'active' : ''}`;
+                scenarioContainer.appendChild(scenarioBox);
+            });
+            
+            // Initialize first scenario content
+            updateScenarioContent(currentTrafficScenario);
         }
         
-        // Close dropdowns when clicking outside (for mobile)
-        document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('mainNav');
-            const mobileToggle = document.querySelector('.mobile-toggle');
+        function handleHotspotClick(id) {
+            if (!hotspotInteractionEnabled) return;
             
-            // Check if click was inside menu or on toggle button
-            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-        
-        // Mobile dropdown toggle functionality
-        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggleBtn => {
-            toggleBtn.addEventListener('click', function(e) {
-                if (window.innerWidth <= 991) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    // Find the parent .nav-item-dropdown
-                    const dropdown = this.closest('.nav-item-dropdown');
-                    dropdown.classList.toggle('active');
-                    
-                    // Close other dropdowns
-                    document.querySelectorAll('.nav-item-dropdown').forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
-                    });
+            stopAutoRotation();
+            showTrafficScenario(id);
+            
+            // Restart auto rotation after 10 seconds
+            setTimeout(() => {
+                if (hotspotInteractionEnabled) {
+                    startAutoRotation();
                 }
-            });
-        });
+            }, 10000);
+        }
         
-        // Interactive Hotspot Logic for Traffic
+        function handleHotspotHover(id, isEntering) {
+            const hotspot = document.getElementById(`hotspot-${id}`);
+            if (!hotspot) return;
+            
+            if (isEntering && id !== currentTrafficScenario) {
+                hotspot.style.transform = 'translate(-50%, -50%) scale(1.15)';
+                hotspot.style.zIndex = '20';
+            } else if (!isEntering && id !== currentTrafficScenario) {
+                hotspot.style.transform = 'translate(-50%, -50%) scale(1)';
+                hotspot.style.zIndex = '10';
+            }
+        }
+        
         function showTrafficScenario(id) {
             currentTrafficScenario = id;
             
-            // Update hotspots
-            document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
-            const activeDot = document.getElementById('hotspot-' + id);
-            if(activeDot) activeDot.classList.add('active');
+            // Update all hotspots
+            document.querySelectorAll('.hotspot').forEach((el) => {
+                const hotspotId = parseInt(el.id.replace('hotspot-', ''));
+                if (hotspotId === id) {
+                    el.classList.add('active');
+                    el.style.zIndex = '20';
+                } else {
+                    el.classList.remove('active');
+                    el.style.zIndex = '10';
+                }
+            });
             
             // Update scenario content
-            const boxes = document.querySelectorAll('.scenario-box');
-            boxes.forEach(el => {
-                el.classList.remove('active');
-                el.style.display = 'none';
-            });
+            updateScenarioContent(id);
             
-            const selectedContent = document.getElementById('content-' + id);
-            if(selectedContent) {
-                selectedContent.style.display = 'block';
-                setTimeout(() => {
-                    selectedContent.classList.add('active');
-                    // Scroll to scenario section
-                    const offset = 140;
-                    const elementPosition = selectedContent.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-                }, 10);
-            }
+            // Highlight map area
+            highlightMapArea(id);
+            
+            // Scroll to scenario content
+            const offset = 160;
+            const scenarioContainer = document.getElementById('traffic-scenarios');
+            const elementPosition = scenarioContainer.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
         
-        // Interactive Button Toggle
-        document.querySelectorAll('.traffic-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.traffic-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+        function updateScenarioContent(id) {
+            const data = hotspotData[id].content;
+            const scenarioBox = document.getElementById(`content-${id}`);
+            const allBoxes = document.querySelectorAll('.scenario-box');
+            
+            // Hide all boxes with fade out
+            allBoxes.forEach(box => {
+                box.style.opacity = '0';
+                box.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    box.classList.remove('active');
+                    box.style.display = 'none';
+                }, 300);
             });
-        });
+            
+            // Generate content based on hotspot type
+            let contentHTML = '';
+            
+            switch(id) {
+                case 1: // BUS LANE ENFORCEMENT
+                case 2: // RED LIGHT ENFORCEMENT
+                case 4: // PARKING VIOLATIONS
+                    contentHTML = generateStandardContent(id, data);
+                    break;
+                case 3: // TRAFFIC SIGNAL CONTROL
+                case 6: // REAL TIME TRAFFIC STATUS
+                    contentHTML = generateMultiPartContent(id, data);
+                    break;
+                case 5: // SPEEDING DETECTION
+                    contentHTML = generateSpeedDetectionContent(id, data);
+                    break;
+                default:
+                    contentHTML = generateStandardContent(id, data);
+            }
+            
+            // Update content
+            scenarioBox.innerHTML = contentHTML;
+            
+            // Show selected box with fade in
+            setTimeout(() => {
+                scenarioBox.style.display = 'block';
+                setTimeout(() => {
+                    scenarioBox.classList.add('active');
+                    scenarioBox.style.opacity = '1';
+                    scenarioBox.style.transform = 'translateY(0)';
+                }, 50);
+            }, 350);
+        }
         
-        // Traffic Simulation Variables
+        function generateStandardContent(id, data) {
+            return `
+                <h3 class="mb-4 text-primary"><i class="fa ${hotspotData[id].icon} me-2"></i>${id}. ${data.title}</h3>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="challenge-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-info-circle me-2"></i>Background</h5>
+                            <p class="mb-0">${data.background}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-5 mb-4">
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-cogs me-2"></i>${data.systemOverview.title}</h5>
+                            <p>${data.systemOverview.description}</p>
+                            <img src="${data.systemOverview.image}" class="img-fluid rounded system-diagram" alt="${data.title}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>${data.solutionDetails.title}</h5>
+                            <p>${data.solutionDetails.description}</p>
+                            <img src="${data.solutionDetails.image}" class="img-fluid rounded system-diagram" alt="${data.title} Diagram">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-${data.serverSupport ? '6' : '12'}">
+                        <div class="feature-grid">
+                            ${data.features.map((feature, index) => `
+                                <div class="feature-item">
+                                    <h6><i class="fa fa-check text-success me-2"></i>${feature}</h6>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ${data.serverSupport ? `
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-server me-2"></i>Traffic Management Server Support</h5>
+                            <ul class="list-unstyled">
+                                ${data.serverSupport.map(item => `<li class="mb-2"><i class="fa fa-arrow-right text-yellow me-2"></i>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+        
+        function generateMultiPartContent(id, data) {
+            return `
+                <h3 class="mb-4 text-primary"><i class="fa ${hotspotData[id].icon} me-2"></i>${id}. ${data.title}</h3>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="challenge-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-info-circle me-2"></i>Background</h5>
+                            <p class="mb-0">${data.background}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-cogs me-2"></i>${data.systemOverview.title}</h5>
+                            <p>${data.systemOverview.description}</p>
+                            <img src="${data.systemOverview.image}" class="img-fluid rounded system-diagram" alt="${data.title}">
+                        </div>
+                    </div>
+                </div>
+                
+                ${data.solutionDetails.parts.map((part, index) => `
+                <div class="row mb-4 ${index % 2 === 1 ? 'flex-row-reverse' : ''}">
+                    <div class="col-lg-6">
+                        <div class="solution-card h-100">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-cog me-2"></i>${part.title}</h5>
+                            <p>${part.description}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="${part.image}" class="img-fluid rounded scenario-img" alt="${part.title}">
+                    </div>
+                </div>
+                `).join('')}
+                
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="feature-grid">
+                            ${data.features.map((feature, index) => `
+                                <div class="feature-item">
+                                    <h6><i class="fa fa-check text-success me-2"></i>${feature}</h6>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function generateSpeedDetectionContent(id, data) {
+            return `
+                <h3 class="mb-4 text-primary"><i class="fa ${hotspotData[id].icon} me-2"></i>${id}. ${data.title}</h3>
+                
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="challenge-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-info-circle me-2"></i>Background</h5>
+                            <p class="mb-0">${data.background}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-5 mb-4">
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-cogs me-2"></i>${data.systemOverview.title}</h5>
+                            <p>${data.systemOverview.description}</p>
+                            <img src="${data.systemOverview.image}" class="img-fluid rounded system-diagram" alt="${data.title}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>${data.solutionDetails.title}</h5>
+                            <p>${data.solutionDetails.description}</p>
+                            <img src="${data.solutionDetails.diagram}" class="img-fluid rounded system-diagram" alt="Portable Installation Diagram">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-bullseye me-2"></i>Point Speed Enforcement System</h5>
+                            <div class="feature-grid">
+                                ${data.pointSystem.features.map((feature, index) => `
+                                    <div class="feature-item">
+                                        <h6><i class="fa fa-check text-success me-2"></i>${feature}</h6>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-road me-2"></i>Section Speed Enforcement System</h5>
+                            <p>${data.sectionSystem.description}</p>
+                            <div class="feature-grid">
+                                ${data.sectionSystem.features.map((feature, index) => `
+                                    <div class="feature-item">
+                                        <h6><i class="fa fa-check text-success me-2"></i>${feature}</h6>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="solution-card">
+                            <h5 class="text-primary fw-bold"><i class="fa fa-server me-2"></i>Traffic Management Server Support</h5>
+                            <ul class="list-unstyled">
+                                ${data.sectionSystem.serverSupport.map(item => `<li class="mb-2"><i class="fa fa-arrow-right text-yellow me-2"></i>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function highlightMapArea(id) {
+            const mapContainer = document.querySelector('.interactive-map-container');
+            const existingHighlight = document.querySelector('.map-highlight');
+            
+            if (existingHighlight) {
+                existingHighlight.remove();
+            }
+            
+            const hotspot = document.getElementById(`hotspot-${id}`);
+            if (!hotspot) return;
+            
+            const highlight = document.createElement('div');
+            highlight.className = 'map-highlight';
+            
+            const rect = hotspot.getBoundingClientRect();
+            const containerRect = mapContainer.getBoundingClientRect();
+            
+            const x = ((rect.left + rect.width / 2 - containerRect.left) / containerRect.width) * 100;
+            const y = ((rect.top + rect.height / 2 - containerRect.top) / containerRect.height) * 100;
+            
+            highlight.style.setProperty('--highlight-x', `${x}%`);
+            highlight.style.setProperty('--highlight-y', `${y}%`);
+            
+            mapContainer.appendChild(highlight);
+            
+            // Remove highlight after delay
+            setTimeout(() => {
+                highlight.style.opacity = '0';
+                setTimeout(() => {
+                    if (highlight.parentNode) {
+                        highlight.remove();
+                    }
+                }, 500);
+            }, 2000);
+        }
+        
+        function startAutoRotation() {
+            clearInterval(autoRotateInterval);
+            
+            autoRotateInterval = setInterval(() => {
+                let nextId = currentTrafficScenario + 1;
+                if (nextId > 6) nextId = 1;
+                
+                showTrafficScenario(nextId);
+            }, 6000);
+        }
+        
+        function stopAutoRotation() {
+            clearInterval(autoRotateInterval);
+        }
+        
+        // ============================================
+        // TRAFFIC SIMULATION FUNCTIONS
+        // ============================================
+        
         let vehicleCount = 0;
         let avgSpeed = 45;
         let queueLength = 8;
         let waitTime = 25;
-        let isSimulationRunning = false;
-        let simulationInterval;
         
-        // Traffic Light States
         const lightStates = {
             north: 'red',
             east: 'yellow',
@@ -1590,7 +2644,6 @@
             west: 'red'
         };
         
-        // Update Traffic Stats Display
         function updateStats() {
             document.getElementById('vehicle-count').textContent = vehicleCount;
             document.getElementById('avg-speed').textContent = avgSpeed;
@@ -1598,10 +2651,6 @@
             document.getElementById('wait-time').textContent = waitTime;
         }
         
-        // Initialize Stats
-        updateStats();
-        
-        // Start Simulation
         function startSimulation() {
             if (isSimulationRunning) return;
             isSimulationRunning = true;
@@ -1626,13 +2675,11 @@
             }, 2000);
         }
         
-        // Stop Simulation
         function stopSimulation() {
             clearInterval(simulationInterval);
             isSimulationRunning = false;
         }
         
-        // Increase Traffic Function
         function increaseTraffic() {
             if (!isSimulationRunning) startSimulation();
             
@@ -1645,23 +2692,19 @@
             
             updateStats();
             
-            // Change light to yellow if heavy traffic
             if (vehicleCount > 30) {
                 changeLightColor('east', 'yellow');
                 changeLightColor('south', 'yellow');
             }
         }
         
-        // Optimize Signals Function
         function optimizeSignals() {
-            // Simulate optimization
             avgSpeed += 15;
             if (avgSpeed > 80) avgSpeed = 80;
             
             queueLength = Math.max(0, queueLength - 4);
             waitTime = Math.max(10, waitTime - 12);
             
-            // Change lights to green
             changeLightColor('north', 'green');
             changeLightColor('east', 'red');
             changeLightColor('south', 'red');
@@ -1669,23 +2712,20 @@
             
             updateStats();
             
-            // Show optimization message
             const infoDiv = document.querySelector('.system-info');
             infoDiv.innerHTML = `
                 <h5><i class="fa fa-magic text-primary me-2"></i>Signals Optimized!</h5>
                 <p class="mb-0">AI algorithms have adjusted signal timing. Traffic flow improved by 25%.</p>
             `;
             
-            // Revert message after 3 seconds
             setTimeout(() => {
                 infoDiv.innerHTML = `
-                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Adaptive Signals Work</h5>
-                    <p class="mb-0">Our intelligent traffic signals use real-time vehicle detection, AI algorithms, and predictive analytics to optimize signal timing based on actual traffic conditions, reducing congestion by up to 40%.</p>
+                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Intelligent Traffic Systems Work</h5>
+                    <p class="mb-0">Our comprehensive traffic solutions use AI algorithms, real-time vehicle detection, and predictive analytics to optimize traffic flow, enforce regulations, and reduce congestion by up to 40%.</p>
                 `;
             }, 3000);
         }
         
-        // Reset Simulation
         function resetSimulation() {
             stopSimulation();
             
@@ -1694,7 +2734,6 @@
             queueLength = 8;
             waitTime = 25;
             
-            // Reset lights
             changeLightColor('north', 'red');
             changeLightColor('east', 'yellow');
             changeLightColor('south', 'green');
@@ -1703,42 +2742,130 @@
             updateStats();
         }
         
-        // Change Traffic Light Color
         function changeLightColor(direction, color) {
             const light = document.getElementById(`${direction}-light`);
             light.className = `signal-light signal-${color}`;
             lightStates[direction] = color;
         }
         
-        // Switch Traffic View
         function switchTrafficView(view) {
             const infoDiv = document.querySelector('.system-info');
             
             switch(view) {
-                case 'signals':
+                case 'enforcement':
                     infoDiv.innerHTML = `
-                        <h5><i class="fa fa-traffic-light text-primary me-2"></i>Adaptive Signal Control</h5>
-                        <p class="mb-0">Intelligent traffic signals adjust timing in real-time based on vehicle detection, reducing congestion by up to 40% and improving traffic flow.</p>
-                    `;
-                    break;
-                    
-                case 'anpr':
-                    infoDiv.innerHTML = `
-                        <h5><i class="fa fa-camera text-primary me-2"></i>ANPR & Enforcement</h5>
-                        <p class="mb-0">Automatic Number Plate Recognition with 99.5% accuracy for traffic enforcement, toll collection, and security monitoring across city networks.</p>
+                        <h5><i class="fa fa-shield-alt text-primary me-2"></i>Traffic Enforcement Systems</h5>
+                        <p class="mb-0">Comprehensive enforcement solutions including speed detection, red light enforcement, bus lane monitoring, and parking violation detection with 99.8% accuracy.</p>
                     `;
                     break;
                     
                 case 'control':
                     infoDiv.innerHTML = `
-                        <h5><i class="fa fa-tv text-primary me-2"></i>Traffic Control Center</h5>
-                        <p class="mb-0">Centralized platform for monitoring, control, and analytics of city-wide transportation networks with predictive incident management.</p>
+                        <h5><i class="fa fa-traffic-light text-primary me-2"></i>Traffic Control Systems</h5>
+                        <p class="mb-0">Adaptive traffic signal control systems that adjust timing in real-time based on traffic flow, reducing congestion and improving overall traffic efficiency.</p>
+                    `;
+                    break;
+                    
+                case 'monitoring':
+                    infoDiv.innerHTML = `
+                        <h5><i class="fa fa-tv text-primary me-2"></i>Real-time Traffic Monitoring</h5>
+                        <p class="mb-0">Advanced monitoring systems providing real-time traffic status, congestion alerts, and predictive analytics for efficient traffic management.</p>
                     `;
                     break;
             }
+            
+            // Update active button
+            document.querySelectorAll('.traffic-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
         }
         
-        // Add click handlers for sub-nav breadcrumbs
+        // ============================================
+        // ENHANCED HEADER AND MOBILE MENU FUNCTIONS
+        // ============================================
+        
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('mainNav');
+            navMenu.classList.toggle('active');
+            
+            // Toggle hamburger icon
+            const toggleBtn = document.querySelector('.mobile-toggle i');
+            if (navMenu.classList.contains('active')) {
+                toggleBtn.classList.remove('fa-bars');
+                toggleBtn.classList.add('fa-times');
+            } else {
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            }
+        }
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('mainNav');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+                const toggleBtn = document.querySelector('.mobile-toggle i');
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            }
+        });
+        
+        // Enhanced mobile dropdown handling
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggleBtn => {
+            toggleBtn.addEventListener('click', function(e) {
+                if (window.innerWidth <= 991) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const dropdown = this.closest('.nav-item-dropdown');
+                    const isActive = dropdown.classList.contains('active');
+                    
+                    // Close all other dropdowns
+                    document.querySelectorAll('.nav-item-dropdown').forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('active');
+                    
+                    // Update icon
+                    const icon = this.querySelector('i');
+                    icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                }
+            });
+        });
+        
+        // Close dropdowns when clicking on dropdown links
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 991) {
+                    document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                    document.getElementById('mainNav').classList.remove('active');
+                    const toggleBtn = document.querySelector('.mobile-toggle i');
+                    toggleBtn.classList.remove('fa-times');
+                    toggleBtn.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // ============================================
+        // BREADCRUMB NAVIGATION
+        // ============================================
+        
         document.querySelectorAll('.nav-breadcrumb a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1757,22 +2884,47 @@
             });
         });
         
-        // Initialize simulation and hotspot
-        startSimulation();
-        showTrafficScenario(1);
+        // ============================================
+        // INITIALIZATION
+        // ============================================
         
-        // Initialize on DOM load
         document.addEventListener('DOMContentLoaded', function() {
-            // Ensure proper spacing for mobile
+            // Initialize hotspots
+            initializeHotspots();
+            
+            // Initialize traffic simulation
+            updateStats();
+            startSimulation();
+            
+            // Start auto rotation
+            startAutoRotation();
+            
+            // Set up event listeners for auto-rotation control
+            const mapContainer = document.querySelector('.interactive-map-container');
+            if (mapContainer) {
+                mapContainer.addEventListener('mouseenter', stopAutoRotation);
+                mapContainer.addEventListener('mouseleave', () => {
+                    setTimeout(() => startAutoRotation(), 1000);
+                });
+                
+                // Touch support for mobile
+                mapContainer.addEventListener('touchstart', stopAutoRotation, { passive: true });
+            }
+            
+            // Responsive padding adjustment
             if (window.innerWidth <= 991) {
-                document.body.style.paddingTop = "60px";
+                document.body.style.paddingTop = "70px";
+                document.getElementById('navBox').classList.add('scrolled');
             }
         });
         
-        // Handle window resize
         window.addEventListener('resize', function() {
+            // Re-initialize hotspots on resize
+            setTimeout(initializeHotspots, 100);
+            
+            // Responsive padding adjustment
             if (window.innerWidth <= 991) {
-                document.body.style.paddingTop = "60px";
+                document.body.style.paddingTop = "70px";
             } else {
                 document.body.style.paddingTop = "80px";
             }

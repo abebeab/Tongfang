@@ -1005,7 +1005,6 @@
             z-index: 10;
             transform: translate(-50%, -50%);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: float 6s ease-in-out infinite;
         }
         
         .hotspot:hover {
@@ -1041,7 +1040,6 @@
             height: 0;
             border-radius: 50%;
             background: rgba(255, 204, 0, 0.2);
-            animation: ripple 3s infinite;
         }
         
         .hotspot.active .hotspot-dot {
@@ -1049,12 +1047,13 @@
             color: var(--tf-dark);
             transform: scale(1.3);
             box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
-            animation: pulse 2s infinite, float 3s ease-in-out infinite;
+            animation: pulse 2s infinite;
         }
         
         .hotspot.active .hotspot-dot::after {
             width: 60px;
             height: 60px;
+            animation: ripple 3s infinite;
         }
         
         .hotspot-label {
@@ -1589,6 +1588,18 @@
             </div>
         </div>
     </section>
+<!-- Interactive Map with Hotspots -->
+            <div class="row justify-content-center mb-5">
+                
+                <div class="col-12">
+                     <div class="interactive-map-container">
+                 <h2 style="text-align: center;">Solution Overview</h2>
+
+                       <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overview.png" alt="Traffic Intersection Overview" class="map-img">
+                       <!-- Hotspots will be dynamically generated here -->
+                    </div>
+                </div>
+            </div>
 
     <!-- SOLUTION DETAILS SECTION -->
     <section class="py-5 bg-white scroll-target" id="solutions">
@@ -1656,16 +1667,7 @@
                 </div>
             </div>
 
-            <!-- Interactive Map with Hotspots -->
-            <div class="row justify-content-center mb-5">
-                <div class="col-12">
-                    <div class="interactive-map-container">
-                       <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overview.png" alt="Traffic Intersection Overview" class="map-img">
-                       <!-- Hotspots will be dynamically generated here -->
-                    </div>
-                </div>
-            </div>
-
+            
             <!-- Dynamic Scenario Content -->
             <div id="traffic-scenarios" class="scenario-wrapper">
                 <!-- Scenario content will be dynamically generated here -->
@@ -2010,9 +2012,6 @@
         
         let currentTrafficScenario = 1;
         let hotspotInteractionEnabled = true;
-        let autoRotateInterval;
-        let isSimulationRunning = false;
-        let simulationInterval;
         
         // Hotspot data with all specified traffic systems
         const hotspotData = {
@@ -2274,7 +2273,7 @@
                     <div class="hotspot-tooltip">${data.description}</div>
                 `;
                 
-                // Add event listeners
+                // Add event listeners - only click functionality
                 hotspot.addEventListener('click', () => handleHotspotClick(parseInt(id)));
                 hotspot.addEventListener('mouseenter', () => handleHotspotHover(parseInt(id), true));
                 hotspot.addEventListener('mouseleave', () => handleHotspotHover(parseInt(id), false));
@@ -2295,15 +2294,7 @@
         function handleHotspotClick(id) {
             if (!hotspotInteractionEnabled) return;
             
-            stopAutoRotation();
             showTrafficScenario(id);
-            
-            // Restart auto rotation after 10 seconds
-            setTimeout(() => {
-                if (hotspotInteractionEnabled) {
-                    startAutoRotation();
-                }
-            }, 10000);
         }
         
         function handleHotspotHover(id, isEntering) {
@@ -2613,21 +2604,6 @@
             }, 2000);
         }
         
-        function startAutoRotation() {
-            clearInterval(autoRotateInterval);
-            
-            autoRotateInterval = setInterval(() => {
-                let nextId = currentTrafficScenario + 1;
-                if (nextId > 6) nextId = 1;
-                
-                showTrafficScenario(nextId);
-            }, 6000);
-        }
-        
-        function stopAutoRotation() {
-            clearInterval(autoRotateInterval);
-        }
-        
         // ============================================
         // TRAFFIC SIMULATION FUNCTIONS
         // ============================================
@@ -2896,20 +2872,7 @@
             updateStats();
             startSimulation();
             
-            // Start auto rotation
-            startAutoRotation();
-            
-            // Set up event listeners for auto-rotation control
-            const mapContainer = document.querySelector('.interactive-map-container');
-            if (mapContainer) {
-                mapContainer.addEventListener('mouseenter', stopAutoRotation);
-                mapContainer.addEventListener('mouseleave', () => {
-                    setTimeout(() => startAutoRotation(), 1000);
-                });
-                
-                // Touch support for mobile
-                mapContainer.addEventListener('touchstart', stopAutoRotation, { passive: true });
-            }
+            // No auto rotation - hotspots only respond to clicks
             
             // Responsive padding adjustment
             if (window.innerWidth <= 991) {

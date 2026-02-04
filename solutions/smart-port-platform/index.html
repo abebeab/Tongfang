@@ -950,7 +950,27 @@
             max-width: 100%;
             height: auto;
         }
+        .section-header {
+    text-align: center;       /* Center the text */
+    margin-bottom: 40px;      /* Space below header */
+}
+
+.section-header h2 {
+    font-size: 2rem;          /* Adjust font size */
+    font-weight: 600;         /* Boldness */
+    margin-bottom: 10px;      /* Space between text and line */
+}
+
+.section-header .line {
+    width: 60px;              /* Line width */
+    height: 3px;              /* Line thickness */
+    background-color: #2c7be5; /* Line color */
+    margin: 0 auto;           /* Center the line horizontally */
+    border-radius: 2px;       /* Optional: rounded edges */
+}
+
     </style>
+    
 </head>
 
 <body>
@@ -1167,9 +1187,8 @@
                         <p style="line-height: 1.7;">
                             Remote-controlled and fully automated cranes, straddle carriers, and automated guided vehicles with precision positioning and collision avoidance systems.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-port/terminal-automation.jpg" 
-                             alt="Terminal Automation" 
-                             class="img-responsive">
+                         
+                             
                     </div>
                     
                     <div class="feature-column">
@@ -1177,9 +1196,7 @@
                         <p style="line-height: 1.7;">
                             Intelligent software for optimal container placement, yard planning, and equipment dispatching. Real-time visibility of yard operations and predictive analytics.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-port/yard-management.jpg" 
-                             alt="Yard Management" 
-                             class="img-responsive">
+                        
                     </div>
                 </div>
                 
@@ -1256,9 +1273,7 @@
                         <p style="line-height: 1.7;">
                             AI-powered algorithms for optimal vessel sequencing, berth allocation, and traffic flow management. Real-time adjustments based on weather, tides, and operational conditions.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-port/vessel-traffic.jpg" 
-                             alt="Vessel Traffic Management" 
-                             class="img-responsive">
+                        
                     </div>
                     
                     <div class="feature-column">
@@ -1266,9 +1281,7 @@
                         <p style="line-height: 1.7;">
                             Precision navigation systems with laser guidance and real-time positioning for safe and efficient berthing operations. Reduced dependency on tugs and pilot boats.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-port/berthing-system.jpg" 
-                             alt="Berthing Systems" 
-                             class="img-responsive">
+                        
                     </div>
                 </div>
                 
@@ -1345,7 +1358,7 @@
                         <p style="line-height: 1.7;">
                             Multi-layered access control with biometric authentication, RFID, and facial recognition. Zone-based permissions and comprehensive audit trails for all personnel and vehicle movements.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-port/access-control.jpg" 
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/access-control.jpg" 
                              alt="Access Control" 
                              class="img-responsive">
                     </div>
@@ -1545,56 +1558,57 @@
         </div>
     </section>
 
-    <!-- SECTION 4: PRODUCTS -->
-    <section id="products" class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Recommended Products</h2>
-                <div style="width: 60px; height: 4px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
-                <p class="text-muted">High-performance products designed for smart port applications</p>
+    <!-- SECTION 6: RELATED SOLUTIONS -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 >Related  Solutions</h2>
+                <div class="line"></div>
             </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/port-controllers.jpg" 
-                             alt="Port Controllers" 
-                             class="img-responsive">
-                        <h5>Port Automation Controllers</h5>
-                        <p>Rugged controllers for terminal automation and equipment control</p>
-                    </div>
+            <div class="row g-4 justify-content-center">
+                <!-- Related 1 -->
+                <div class="col-md-5">
+                    <a href="/solutions/traffic/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/traffic-banner.png" alt="Smart Traffic">
+                        <div class="related-content">
+                            <div class="related-title">Smart Traffic Systems</div>
+                            <p class="small text-muted">Intelligent transportation management for urban mobility.</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/marine-sensors.jpg" 
-                             alt="Marine Sensors" 
-                             class="img-responsive">
-                        <h5>Marine Environment Sensors</h5>
-                        <p>Corrosion-resistant sensors for harsh maritime conditions</p>
-                    </div>
+                <!-- Related 2 -->
+                <div class="col-md-5">
+                    <a href="/solutions/smart-port-platform/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg" alt="Smart Ports">
+                        <div class="related-content">
+                            <div class="related-title">Smart Port Platforms</div>
+                            <p class="small text-muted">Integrated logistics and container management systems.</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/security-systems.jpg" 
-                             alt="Security Systems" 
-                             class="img-responsive">
-                        <h5>Port Security Systems</h5>
-                        <p>Integrated security solutions for port perimeter and access control</p>
-                    </div>
+                <!-- Related 3 -->
+                <div class="col-md-5">
+                    <a href="/solutions/industrial/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/industrial/park.jpg" alt="Smart Factories">
+                        <div class="related-content">
+                            <div class="related-title">Smart Factories</div>
+                            <p class="small text-muted">Industrial automation and logistics management systems.</p>
+                        </div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/energy-management.jpg" 
-                             alt="Energy Management" 
-                             class="img-responsive">
-                        <h5>Port Energy Management</h5>
-                        <p>Comprehensive energy monitoring and optimization systems</p>
-                    </div>
+                <!-- Related 4 -->
+                <div class="col-md-5">
+                    <a href="/solutions/smart-city/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-city/smart-city.jpeg" alt="Smart Cities">
+                        <div class="related-content">
+                            <div class="related-title">Smart City Platforms</div>
+                            <p class="small text-muted">Integrated urban management for transportation hubs.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container py-5">

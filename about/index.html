@@ -727,34 +727,45 @@
             margin-top: 60px; 
         }
         
-        .btn-link {
-            color: #aaa;
-            display: block;
-            margin-bottom: 8px;
-            transition: color 0.3s;
+       
+        .footer .btn-link { 
+            color: #007bff !important;
+            text-decoration: none; 
+            display: inline-block; 
+            margin-bottom: 5px;
+            transition: 0.3s;
+            font-weight: 600;
         }
         
-        .btn-link:hover {
-            color: var(--tf-yellow);
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow) !important; 
+            padding-left: 5px; 
         }
         
-        .btn-square {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            border-radius: 6px;
-            color: #aaa;
-            transition: var(--transition);
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
         }
         
-        .btn-square:hover {
-            background: var(--tf-blue);
-            color: white;
+        .btn-square { 
+            width: 40px; 
+            height: 40px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            background: rgba(255,255,255,0.05); 
+            color: #fff; 
+            border-radius: 4px; 
+            transition: 0.3s; 
         }
-
+        
+        .btn-square:hover { 
+            background: var(--tf-blue); 
+            color: #fff; 
+            transform: translateY(-3px); 
+        }
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .hero-title {
@@ -1036,8 +1047,7 @@
             </div>
         </div>
     </div>
-
-    <!-- ================= FOOTER ================= -->
+ <!-- FOOTER -->
     <footer class="footer">
         <div class="container py-5">
             <div class="row g-4">
@@ -1052,24 +1062,16 @@
                     <a class="btn-link" href="/index.html">Home</a><br>
                     <a class="btn-link" href="/about/index.html">About Us</a><br>
                     <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                    <a class="btn-link" href="/projects/index.html">projects</a><br>
                     <a class="btn-link" href="/products/index.html">Products</a><br>
-                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
                     <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
                     <a class="btn-link" href="/contact/index.html">Contact</a>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Business Hours</h5>
-                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
-                    <p>Saturday: 9:00 AM – 1:00 PM</p>
-                    <p>Sunday: Closed</p>
-                </div>
+                <div class="col-lg-3 col-md-6"><h5>Business Hours</h5><p>Mon – Fri: 8:30 AM – 5:30 PM</p><p>Saturday: 9:00 AM – 1:00 PM</p><p>Sunday: Closed</p></div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Newsletter</h5>
                     <p>Get smart building & automation updates.</p>
-                    <div class="position-relative">
-                        <input class="form-control" type="email" placeholder="Your email">
-                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
-                    </div>
+                    <div class="position-relative"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button></div>
                     <div class="d-flex gap-2 mt-3">
                         <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>

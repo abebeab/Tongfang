@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>BCU-16160 | Core Control Unit | Tongfang BMS</title>
+    <meta name="description" content="BCU-16160 - Advanced building control unit with 16 digital inputs, 16 analog outputs. Perfect for large-scale BMS applications.">
+    <meta name="keywords" content="BCU-16160, building control unit, BMS controller, Tongfang, automation, BACnet, Modbus, HVAC control">
+    
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "BCU-16160 Building Control Unit",
+        "description": "Advanced building control unit with 16 digital inputs, 16 analog outputs for large-scale BMS applications",
+        "brand": {
+            "@type": "Brand",
+            "name": "Tongfang BMS"
+        },
+        "sku": "TF-BCU-16160-001",
+        "mpn": "BCU-16160",
+        "category": "Industrial Automation Equipment",
+        "image": "https://www.tongfangbms.com/images/products/bcu-16160/main.jpg",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "priceValidUntil": "2025-12-31"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "24"
+        }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== 1. DESIGN TOKENS ===== */
+        :root {
+            /* Colors */
+            --tf-blue: #004ca3;          
+            --tf-yellow: #ffcc00;        
+            --tf-dark: #111827;          
+            --tf-text: #4b5563;          
+            --tf-bg-light: #f9fafb;      
+            --tf-white: #ffffff;         
+            --tf-gray-light: #e5e7eb;
+            --tf-gray-dark: #6b7280;
+            
+            /* Dimensions */
+            --header-height: 80px;
+            --container-width: 1200px;
+            --card-radius: 8px;
+            --btn-radius: 50px;
+            
+            /* Shadows */
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.05);
+            --shadow-lift: 0 15px 30px rgba(0, 76, 163, 0.15);
+            --shadow-hard: 0 8px 25px rgba(0,0,0,0.1);
+            
+            /* Animation */
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* ===== 2. GLOBAL RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--tf-bg-light);
+            color: var(--tf-text);
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            line-height: 1.6;
+        }
+
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+            transition: var(--transition); 
+        }
+
+        ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
+        }
+
+        h1, h2, h3, h4, h5 { 
+            color: var(--tf-dark); 
+            font-family: 'Montserrat', sans-serif; 
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.5rem; font-weight: 700; }
+        h2 { font-size: 2rem; font-weight: 600; }
+        h3 { font-size: 1.5rem; font-weight: 600; }
+        h4 { font-size: 1.25rem; font-weight: 600; }
+
+        p { margin-bottom: 1rem; }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: var(--btn-radius);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--tf-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #003d82;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .btn-outline-primary {
+            background-color: transparent;
+            color: var(--tf-blue);
+            border: 2px solid var(--tf-blue);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--tf-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: rgba(0, 76, 163, 0.1);
+            color: var(--tf-blue);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .table tr {
+            border-bottom: 1px solid var(--tf-gray-light);
+        }
+
+        .table td {
+            padding: 12px 15px;
+        }
+
+        .table td:first-child {
+            font-weight: 600;
+            color: var(--tf-dark);
+            width: 40%;
+        }
+
+        /* ===== 3. HEADER (Copy from main page) ===== */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1030; 
+            min-height: var(--header-height); 
+            background: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(12px);
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+        
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        .header-logo a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 24px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-fix.scrolled .header-logo a {
+            color: var(--tf-blue);
+        }
+        
+        .header-logo a span {
+            color: var(--tf-yellow);
+            margin-left: 10px;
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: #fff; 
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link-custom:hover { 
+            color: var(--tf-yellow); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom:hover { 
+            color: var(--tf-blue); 
+        }
+        
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: white; 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            padding-right: 20px;
+        }
+        
+        .header-fix.scrolled .mobile-toggle { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        .header-icons { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 15px; 
+            color: white;
+        }
+        
+        .header-fix.scrolled .header-icons { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        .header-icons i {
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .header-icons i:hover {
+            color: var(--tf-yellow);
+        }
+        
+        .header-fix.scrolled .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+
+        /* ===== 4. BREADCRUMB ===== */
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--tf-gray-light);
+        }
+
+        .breadcrumb-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--tf-gray-dark);
+        }
+
+        .breadcrumb a {
+            color: var(--tf-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            color: #003d82;
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            color: var(--tf-dark);
+            font-weight: 600;
+        }
+
+        .breadcrumb-separator {
+            color: var(--tf-gray-dark);
+        }
+
+        /* ===== 5. PRODUCT HEADER ===== */
+        .product-detail-header {
+            background: linear-gradient(135deg, #004ca3 0%, #003d82 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-detail-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,0 L1000,0 L1000,100 Q500,80 0,100 Z" fill="rgba(255,255,255,0.1)"/></svg>') bottom center no-repeat;
+            background-size: 100% 100px;
+        }
+
+        .product-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-title {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .product-subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .product-badges .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 14px;
+            padding: 8px 16px;
+        }
+
+        /* ===== 6. PRODUCT GALLERY ===== */
+        .product-gallery-section {
+            padding: 60px 0 40px;
+            background-color: var(--tf-white);
+        }
+
+        .product-gallery-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hard);
+            background-color: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .main-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .main-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .thumbnail {
+            height: 120px;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+            background-color: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .thumbnail.active {
+            border-color: var(--tf-blue);
+        }
+
+        .thumbnail:hover {
+            border-color: var(--tf-blue);
+            transform: translateY(-5px);
+        }
+
+        .thumbnail img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* ===== 7. PRODUCT DETAILS ===== */
+        .product-details-section {
+            padding: 40px 0 60px;
+        }
+
+        .product-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .specs-card {
+            background: var(--tf-white);
+            border-radius: var(--card-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--tf-gray-light);
+        }
+
+        .specs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--tf-yellow);
+        }
+
+        .specs-header h3 {
+            margin-bottom: 0;
+        }
+
+        .sku {
+            color: var(--tf-gray-dark);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .features-card {
+            background: var(--tf-white);
+            border-radius: var(--card-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--tf-gray-light);
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            background-color: rgba(0, 76, 163, 0.05);
+        }
+
+        .feature-icon {
+            color: var(--tf-blue);
+            font-size: 18px;
+            min-width: 24px;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            font-size: 15px;
+        }
+
+        /* ===== 8. APPLICATIONS SECTION ===== */
+        .applications-section {
+            padding: 40px 0 60px;
+            background-color: #f8fafc;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .application-card {
+            background: var(--tf-white);
+            border-radius: var(--card-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--tf-gray-light);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .application-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--tf-blue);
+        }
+
+        .application-icon {
+            font-size: 40px;
+            color: var(--tf-blue);
+            margin-bottom: 20px;
+        }
+
+        .application-card h4 {
+            margin-bottom: 15px;
+            color: var(--tf-dark);
+        }
+
+        /* ===== 9. RELATED PRODUCTS ===== */
+        .related-products-section {
+            padding: 60px 0;
+            background-color: var(--tf-white);
+        }
+
+        .related-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .related-product-card {
+            background: var(--tf-white);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--tf-gray-light);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .related-product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--tf-blue);
+        }
+
+        .related-product-image {
+            height: 180px;
+            background-color: #f5f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .related-product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .related-product-info {
+            padding: 20px;
+            border-top: 1px solid var(--tf-gray-light);
+        }
+
+        .related-product-info h4 {
+            color: var(--tf-dark);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .related-product-specs {
+            font-size: 14px;
+            color: var(--tf-gray-dark);
+            display: flex;
+            gap: 15px;
+        }
+
+        /* ===== 10. TECHNICAL DOCS ===== */
+        .technical-docs-section {
+            padding: 40px 0 60px;
+            background-color: #f8fafc;
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .doc-card {
+            background: var(--tf-white);
+            border-radius: var(--card-radius);
+            padding: 25px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--tf-gray-light);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--tf-blue);
+        }
+
+        .doc-icon {
+            font-size: 32px;
+            color: var(--tf-blue);
+        }
+
+        .doc-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .doc-meta {
+            font-size: 14px;
+            color: var(--tf-gray-dark);
+        }
+
+        .doc-download {
+            margin-left: auto;
+            color: var(--tf-blue);
+            font-size: 20px;
+            transition: var(--transition);
+        }
+
+        .doc-card:hover .doc-download {
+            transform: translateX(5px);
+        }
+
+        /* ===== 11. FOOTER (Copy from main page) ===== */
+        .footer {
+            background: #0b111a; 
+            color: #aaa;
+            margin-top: 0; 
+            padding-top: 80px; 
+            font-size: 14px;
+        }
+
+        .footer h5 {
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700;
+        }
+
+        .footer-container {
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 30px;
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr; 
+            gap: 40px;
+        }
+
+        .footer p { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 10px; 
+        }
+        
+        .footer i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            width: 20px; 
+            text-align: center; 
+        }
+
+        .btn-link {
+            color: #60a5fa;
+            text-decoration: none; 
+            display: block;
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: var(--transition);
+        }
+        
+        .btn-link:hover { 
+            color: var(--tf-yellow); 
+            padding-left: 8px; 
+        }
+
+        .newsletter-box { 
+            position: relative; 
+            margin-top: 15px; 
+        }
+        
+        .form-control {
+            width: 100%; 
+            padding: 14px 15px; 
+            padding-right: 120px;
+            border: 1px solid #374151; 
+            background: #1f2937;
+            color: var(--tf-white); 
+            border-radius: var(--btn-radius);
+            font-size: 14px; 
+            box-sizing: border-box; 
+            outline: none;
+        }
+        
+        .form-control:focus { 
+            border-color: var(--tf-blue); 
+        }
+
+        .btn-footer {
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            height: 100%;
+            background: var(--tf-blue); 
+            color: white; 
+            border: none;
+            padding: 0 25px; 
+            border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+            cursor: pointer; 
+            font-weight: 600; 
+            transition: var(--transition);
+        }
+        
+        .btn-footer:hover { 
+            background: #003d82; 
+        }
+
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 25px; 
+        }
+        
+        .btn-square {
+            width: 40px; 
+            height: 40px; 
+            background: rgba(255,255,255,0.05);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            border-radius: 50%; 
+            color: var(--tf-white); 
+            transition: var(--transition);
+        }
+        
+        .btn-square:hover { 
+            background: var(--tf-blue); 
+            transform: translateY(-3px); 
+        }
+        
+        .btn-square i { 
+            margin: 0; 
+            color: #fff; 
+        }
+
+        .copyright {
+            background: #05080c; 
+            padding: 25px; 
+            margin-top: 60px;
+            color: #6b7280; 
+            font-size: 13px; 
+            text-align: center;
+            border-top: 1px solid #1a222e;
+        }
+
+        /* ===== 12. RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .product-gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .thumbnail-gallery {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .product-details-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .header-icons {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .product-title {
+                font-size: 36px;
+            }
+            
+            .product-subtitle {
+                font-size: 18px;
+            }
+            
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .applications-grid,
+            .related-products-grid,
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-title {
+                font-size: 28px;
+            }
+            
+            .product-subtitle {
+                font-size: 16px;
+            }
+            
+            .thumbnail-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        TONGFANG <span>BMS</span>
+                    </a>
+                </div>
+                
+                <!-- NAVIGATION -->
+                <nav id="mainNav" class="nav-menu">
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    <a href="/solutions/index.html" class="nav-link-custom">Solutions</a>
+                    <a href="/products/index.html" class="nav-link-custom">Products</a>
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                </nav>
+
+                <!-- HAMBURGER ICON -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Header Icons -->
+                <div class="header-icons d-flex align-items-center text-white">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== BREADCRUMB ===== -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <a href="/">Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="/products/">Products</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="/products/core-control-units/">Core Control Units</a>
+                <span class="breadcrumb-separator">›</span>
+                <span>BCU-16160</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT HEADER ===== -->
+    <div class="product-detail-header">
+        <div class="container">
+            <div class="product-header-content">
+                <h1 class="product-title">BCU-16160</h1>
+                <p class="product-subtitle">Advanced Building Control Unit with 16 Digital Inputs & 16 Analog Outputs - Perfect for Large-Scale BMS Applications</p>
+                <div class="product-badges">
+                    <span class="badge">BACnet/IP</span>
+                    <span class="badge">Modbus TCP</span>
+                    <span class="badge">16 Digital Inputs</span>
+                    <span class="badge">16 Analog Outputs</span>
+                    <span class="badge">IP40 Rated</span>
+                    <span class="badge">-20°C to 70°C</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT GALLERY ===== -->
+    <section class="product-gallery-section">
+        <div class="container">
+            <div class="product-gallery-container">
+                <div class="main-image" id="mainImage">
+                    <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-16160 Front View" id="currentImage">
+                </div>
+                <div class="thumbnail-gallery">
+                    <div class="thumbnail active" onclick="changeImage('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png', this)">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-16160 Front View">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png', this)">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-16160 Side View">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png', this)">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-16160 Wiring Diagram">
+                    </div>
+                    <div class="thumbnail" onclick="changeImage('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png', this)">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-16160 Installation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCT DETAILS ===== -->
+    <section class="product-details-section">
+        <div class="container">
+            <div class="product-details-grid">
+                <!-- Specifications Card -->
+                <div class="specs-card">
+                    <div class="specs-header">
+                        <h3>Technical Specifications</h3>
+                        <span class="sku">SKU: TF-BCU-16160-001</span>
+                    </div>
+                    
+                    <table class="table">
+                        <tr>
+                            <td>Digital Inputs</td>
+                            <td>16 (24VDC, dry contact)</td>
+                        </tr>
+                        <tr>
+                            <td>Analog Outputs</td>
+                            <td>16 (0-10VDC, 4-20mA)</td>
+                        </tr>
+                        <tr>
+                            <td>Communication Protocols</td>
+                            <td>BACnet/IP, Modbus TCP, RS-485</td>
+                        </tr>
+                        <tr>
+                            <td>Power Supply</td>
+                            <td>24VDC ±10% (2A max)</td>
+                        </tr>
+                        <tr>
+                            <td>Operating Temperature</td>
+                            <td>-20°C to 70°C (-4°F to 158°F)</td>
+                        </tr>
+                        <tr>
+                            <td>Storage Temperature</td>
+                            <td>-30°C to 85°C (-22°F to 185°F)</td>
+                        </tr>
+                        <tr>
+                            <td>Humidity Range</td>
+                            <td>10% to 90% RH (non-condensing)</td>
+                        </tr>
+                        <tr>
+                            <td>Dimensions (W×H×D)</td>
+                            <td>250 × 180 × 85 mm (9.8 × 7.1 × 3.3 in)</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>1.2 kg (2.6 lbs)</td>
+                        </tr>
+                        <tr>
+                            <td>Protection Rating</td>
+                            <td>IP40 (DIN rail mount)</td>
+                        </tr>
+                        <tr>
+                            <td>Certifications</td>
+                            <td>CE, RoHS, ISO 9001:2015</td>
+                        </tr>
+                        <tr>
+                            <td>Warranty</td>
+                            <td>3 Years Limited Warranty</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="action-buttons">
+                        <a href="/contact/" class="btn btn-primary">
+                            <i class="fa fa-envelope"></i> Request Quote
+                        </a>
+                        <a href="/contact/" class="btn btn-outline-primary">
+                            <i class="fa fa-headset"></i> Contact Sales
+                        </a>
+                        <a href="/datasheets/bcu-16160-datasheet.pdf" class="btn btn-outline-primary" target="_blank">
+                            <i class="fa fa-download"></i> Download Datasheet
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Features Card -->
+                <div class="features-card">
+                    <h3>Features & Benefits</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-microchip"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>High-Density I/O:</strong> 16 digital inputs and 16 analog outputs in compact design
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-exchange-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Multi-Protocol Support:</strong> BACnet/IP and Modbus TCP for seamless integration
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-temperature-low"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Wide Temperature Range:</strong> Operates from -20°C to 70°C for harsh environments
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-cogs"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Modular Design:</strong> Easy maintenance and future expansion capabilities
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-chart-line"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Built-in Diagnostics:</strong> Real-time monitoring and fault reporting
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-bolt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Energy Monitoring:</strong> Integrated power consumption tracking
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Industrial Grade:</strong> Rugged construction with IP40 protection
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fa fa-plug"></i>
+                            </div>
+                            <div class="feature-text">
+                                <strong>Easy Installation:</strong> DIN rail mounting with clear labeling
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== APPLICATIONS SECTION ===== -->
+    <section class="applications-section">
+        <div class="container">
+            <h2>Typical Applications</h2>
+            <p class="subtitle">The BCU-16160 is designed for a wide range of building automation and control applications</p>
+            
+            <div class="applications-grid">
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fa fa-building"></i>
+                    </div>
+                    <h4>Commercial Buildings</h4>
+                    <p>HVAC control, lighting management, and energy optimization in office complexes</p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fa fa-hospital"></i>
+                    </div>
+                    <h4>Healthcare Facilities</h4>
+                    <p>Environmental control in hospitals, labs, and medical centers with precise temperature management</p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fa fa-industry"></i>
+                    </div>
+                    <h4>Industrial Automation</h4>
+                    <p>Process control, machine monitoring, and facility management in manufacturing plants</p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fa fa-server"></i>
+                    </div>
+                    <h4>Data Centers</h4>
+                    <p>Environmental monitoring, cooling control, and power management in critical facilities</p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fa fa-school"></i>
+                    </div>
+                    <h4>Educational Institutions</h4>
+                    <p>Classroom automation, campus-wide lighting, and energy management systems</p>
+                </div>
+                
+                <div class="application-card">
+                    <div class="application-icon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <h4>Retail & Hospitality</h4>
+                    <p>Store automation, hotel room control, and public area management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RELATED PRODUCTS ===== -->
+    <section class="related-products-section">
+        <div class="container">
+            <h2>Related Products</h2>
+            <p class="subtitle">Explore other products in our Core Control Unit series</p>
+            
+            <div class="related-products-grid">
+                <a href="/products/core-control-units/bcu-1666/" class="related-product-card">
+                    <div class="related-product-image">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-1666">
+                    </div>
+                    <div class="related-product-info">
+                        <h4>BCU-1666</h4>
+                        <p>16 Digital Inputs, 6 Analog Outputs</p>
+                        <div class="related-product-specs">
+                            <span><i class="fa fa-microchip"></i> BACnet/IP</span>
+                            <span><i class="fa fa-plug"></i> 24VDC</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/products/core-control-units/bcu-1644/" class="related-product-card">
+                    <div class="related-product-image">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-1644">
+                    </div>
+                    <div class="related-product-info">
+                        <h4>BCU-1644</h4>
+                        <p>16 Digital Inputs, 4 Analog Outputs</p>
+                        <div class="related-product-specs">
+                            <span><i class="fa fa-microchip"></i> Modbus TCP</span>
+                            <span><i class="fa fa-plug"></i> 24VDC</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/products/field-controllers/blc-1656/" class="related-product-card">
+                    <div class="related-product-image">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-1656">
+                    </div>
+                    <div class="related-product-info">
+                        <h4>BLC-1656</h4>
+                        <p>Field Controller with 16 I/O</p>
+                        <div class="related-product-specs">
+                            <span><i class="fa fa-microchip"></i> BACnet MS/TP</span>
+                            <span><i class="fa fa-plug"></i> 24VDC</span>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="/products/energy-metering/emc-gt10/" class="related-product-card">
+                    <div class="related-product-image">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/thermal-products/thermal.jpg.thumb.1280.1280.png" alt="EMC-GT10">
+                    </div>
+                    <div class="related-product-info">
+                        <h4>EMC-GT10</h4>
+                        <p>Energy Monitoring Controller</p>
+                        <div class="related-product-specs">
+                            <span><i class="fa fa-bolt"></i> Energy Meter</span>
+                            <span><i class="fa fa-plug"></i> 100-240VAC</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECHNICAL DOCUMENTS ===== -->
+    <section class="technical-docs-section">
+        <div class="container">
+            <h2>Technical Documents</h2>
+            <p class="subtitle">Download detailed documentation for the BCU-16160</p>
+            
+            <div class="docs-grid">
+                <a href="/datasheets/bcu-16160-datasheet.pdf" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <i class="fa fa-file-pdf"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Product Datasheet</h4>
+                        <div class="doc-meta">PDF, 2.4 MB</div>
+                    </div>
+                    <div class="doc-download">
+                        <i class="fa fa-download"></i>
+                    </div>
+                </a>
+                
+                <a href="/manuals/bcu-16160-installation-guide.pdf" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Installation Guide</h4>
+                        <div class="doc-meta">PDF, 3.1 MB</div>
+                    </div>
+                    <div class="doc-download">
+                        <i class="fa fa-download"></i>
+                    </div>
+                </a>
+                
+                <a href="/manuals/bcu-16160-programming-manual.pdf" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <i class="fa fa-code"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Programming Manual</h4>
+                        <div class="doc-meta">PDF, 5.2 MB</div>
+                    </div>
+                    <div class="doc-download">
+                        <i class="fa fa-download"></i>
+                    </div>
+                </a>
+                
+                <a href="/cad/bcu-16160-cad-files.zip" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <i class="fa fa-cube"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>CAD Files</h4>
+                        <div class="doc-meta">ZIP, 8.7 MB</div>
+                    </div>
+                    <div class="doc-download">
+                        <i class="fa fa-download"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Col 1: Contact -->
+            <div>
+                <h5>Tongfang BMS Integration</h5>
+                <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+            </div>
+            
+            <!-- Col 2: Quick Links -->
+            <div>
+                <h5>Quick Links</h5>
+                <a class="btn-link" href="/index.html">Home</a>
+                <a class="btn-link" href="/about/index.html">About Us</a>
+                <a class="btn-link" href="/solutions/index.html">Solutions</a>
+                <a class="btn-link" href="/projects/index.html">Projects</a>
+                <a class="btn-link" href="/products/index.html">Products</a>
+                <a class="btn-link" href="/technologies/index.html">Technologies</a>
+                <a class="btn-link" href="/contact/index.html">Contact</a>
+            </div>
+            
+            <!-- Col 3: Business Hours -->
+            <div>
+                <h5>Business Hours</h5>
+                <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                <p>Saturday: 9:00 AM – 1:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+            
+            <!-- Col 4: Newsletter -->
+            <div>
+                <h5>Newsletter</h5>
+                <p>Get smart building & automation updates.</p>
+                <div class="newsletter-box">
+                    <input class="form-control" type="email" placeholder="Your email">
+                    <button class="btn-footer">Subscribe</button>
+                </div>
+                <div class="social-links">
+                    <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            © 2026 Tongfang BMS Integration PLC. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // Image Gallery Functionality
+        function changeImage(src, element) {
+            // Update main image
+            document.getElementById('currentImage').src = src;
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail').forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            element.classList.add('active');
+        }
+
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const icons = document.querySelectorAll('.header-icons i');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            const logoText = header.querySelector('.header-logo a');
+            
+            nav.classList.toggle('active');
+            
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+                icons.forEach(icon => {
+                    icon.style.color = "#333";
+                });
+                if(logoText) logoText.style.color = "#004ca3";
+            } else {
+                header.style.background = "";
+                header.style.borderBottom = "";
+                if(window.scrollY > 50) {
+                    mobileToggle.style.color = "#111827";
+                    icons.forEach(icon => {
+                        icon.style.color = "#111827";
+                    });
+                    if(logoText) logoText.style.color = "#004ca3";
+                } else {
+                    mobileToggle.style.color = "#fff";
+                    icons.forEach(icon => {
+                        icon.style.color = "#fff";
+                    });
+                    if(logoText) logoText.style.color = "#fff";
+                }
+            }
+        }
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            const icons = document.querySelectorAll('.header-icons i');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+                if(!document.getElementById('mainNav').classList.contains('active')) {
+                    mobileToggle.style.color = "#111827";
+                    icons.forEach(icon => {
+                        icon.style.color = "#111827";
+                    });
+                }
+            } else { 
+                header.classList.remove('scrolled');
+                if(!document.getElementById('mainNav').classList.contains('active')) {
+                    mobileToggle.style.color = "#fff";
+                    icons.forEach(icon => {
+                        icon.style.color = "#fff";
+                    });
+                }
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Newsletter Form Submission
+        document.querySelector('.btn-footer').addEventListener('click', function() {
+            const emailInput = document.querySelector('.form-control');
+            const email = emailInput.value;
+            
+            if(email && validateEmail(email)) {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+                emailInput.focus();
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Lazy loading for images
+        if('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img.lazy').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>

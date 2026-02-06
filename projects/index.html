@@ -81,6 +81,7 @@
             height: var(--header-height); 
         }
         
+        /* UPDATED LOGO STYLING - Like the company overview page */
         .header-logo a {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
@@ -88,14 +89,25 @@
             color: #fff;
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
         
-        .header-fix.scrolled .header-logo a {
-            color: var(--tf-blue);
+        .header-logo a .logo-text {
+            color: #fff;
+            transition: var(--transition);
         }
         
-        .header-logo a span {
+        .header-logo a .logo-accent {
             color: var(--tf-yellow);
+            transition: var(--transition);
+        }
+        
+        .header-fix.scrolled .header-logo a .logo-text {
+            color: var(--tf-blue) !important;
+        }
+        
+        .header-fix.scrolled .header-logo a .logo-accent {
+            color: var(--tf-yellow) !important;
         }
         
         /* Desktop Menu */
@@ -350,6 +362,17 @@
             
             .dropdown-category { 
                 grid-column: span 1; 
+            }
+            
+            /* Mobile logo fix - always blue on mobile for visibility */
+            .header-fix.scrolled .header-logo a .logo-text,
+            .header-fix .header-logo a .logo-text {
+                color: var(--tf-blue) !important;
+            }
+            
+            .header-fix.scrolled .header-logo a .logo-accent,
+            .header-fix .header-logo a .logo-accent {
+                color: var(--tf-yellow) !important;
             }
         }
         
@@ -658,9 +681,8 @@
             <div class="header-container">
                 <div class="header-logo">
                     <a href="/index.html">
-                      <h2 style="color:#ffffff; margin:0; font-family:'Montserrat'; font-weight:900;">
-                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
-                        </h2>
+                        <span class="logo-text">TONGFANG</span>
+                        <span class="logo-accent" style="margin-left: 6px;">BMS</span>
                     </a>
                 </div>
                 
@@ -1105,6 +1127,7 @@
                     <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/about/index.html">About Us</a>
                     <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/solutions/index.html">Solutions</a>
                     <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/products/index.html">Products</a>
+                                  <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/projects/index.html">Projects</a>
                     <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/technologies/index.html">Technologies</a>
                     <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/contact/index.html">Contact</a>
                 </div>
@@ -1135,38 +1158,22 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Header Scroll Effect
+        // Header Scroll Effect - SIMPLIFIED
         window.addEventListener('scroll', function() {
             const header = document.getElementById('navBox');
-            const icons = document.querySelectorAll('.header-icons i');
-            const mobileToggle = document.querySelector('.mobile-toggle i');
             
             if (window.scrollY > 50) { 
                 header.classList.add('scrolled'); 
-                if(!document.getElementById('mainNav').classList.contains('active')) {
-                    mobileToggle.style.color = "#111827";
-                    icons.forEach(icon => {
-                        icon.style.color = "#111827";
-                    });
-                }
             } else { 
-                header.classList.remove('scrolled');
-                if(!document.getElementById('mainNav').classList.contains('active')) {
-                    mobileToggle.style.color = "#fff";
-                    icons.forEach(icon => {
-                        icon.style.color = "#fff";
-                    });
-                }
+                header.classList.remove('scrolled'); 
             }
         });
 
-        // Mobile Menu Functions
+        // Mobile Menu Functions - FIXED
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
-            const icons = document.querySelectorAll('.header-icons i');
             const mobileToggle = document.querySelector('.mobile-toggle i');
-            const logoText = header.querySelector('.header-logo a');
             
             nav.classList.toggle('active');
             
@@ -1175,25 +1182,13 @@
                 header.style.background = "#fff";
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
                 mobileToggle.style.color = "#333";
-                icons.forEach(icon => {
-                    icon.style.color = "#333";
-                });
-                if(logoText) logoText.style.color = "#004ca3";
             } else {
                 header.style.background = "";
                 header.style.borderBottom = "";
                 if(window.scrollY > 50) {
                     mobileToggle.style.color = "#111827";
-                    icons.forEach(icon => {
-                        icon.style.color = "#111827";
-                    });
-                    if(logoText) logoText.style.color = "#004ca3";
                 } else {
                     mobileToggle.style.color = "#fff";
-                    icons.forEach(icon => {
-                        icon.style.color = "#fff";
-                    });
-                    if(logoText) logoText.style.color = "#fff";
                 }
             }
         }

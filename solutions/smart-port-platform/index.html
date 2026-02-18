@@ -54,34 +54,19 @@
             text-decoration: none !important;
         }
 
-        /* === 1. RESPONSIVE HEADER & NAVIGATION === */
+        /* === HEADER - SOLID WHITE WITH LOGO === */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
             min-height: var(--header-height); 
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(6px);
+            background: #ffffff; /* SOLID WHITE */
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
-            border-bottom: 1px solid rgba(255,255,255,0.15);
         }
         
-        .header-fix.scrolled { 
-            background: rgba(255, 255, 255, 0.98); 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
-            backdrop-filter: blur(10px);
-        }
-        
-        .header-fix.scrolled .header-logo h2 {
-            color: var(--tf-blue) !important;
-        }
-
-        .header-fix.scrolled .header-logo span {
-            color: var(--tf-yellow) !important;
-        }
-
         .header-container { 
             max-width: 1440px; 
             margin: 0 auto; 
@@ -90,6 +75,14 @@
             justify-content: space-between; 
             padding: 0 20px; 
             height: var(--header-height); 
+        }
+        
+        /* Logo image styling */
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
         
         /* Desktop Menu */
@@ -103,7 +96,7 @@
         }
         
         .nav-link-custom { 
-            color: #fff; 
+            color: #111827; /* SOLID BLACK */
             font-weight: 600; 
             font-size: 13px; 
             text-transform: uppercase; 
@@ -115,14 +108,6 @@
         }
         
         .nav-link-custom:hover { 
-            color: var(--tf-yellow); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom { 
-            color: var(--tf-dark); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom:hover { 
             color: var(--tf-blue); 
         }
 
@@ -211,19 +196,29 @@
             padding-bottom: 5px; 
         }
 
-        /* Header Icons */
+        /* Header icons - always black */
         .header-icons { 
             display: flex !important; 
             align-items: center; 
             gap: 15px; 
-            color: white;
+        }
+        
+        .header-icons i {
+            color: #111827; /* SOLID BLACK */
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .header-icons i:hover {
+            color: var(--tf-blue);
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: white; 
+            color: #111827; /* SOLID BLACK */
             cursor: pointer; 
             background: none;
             border: none;
@@ -239,12 +234,17 @@
             .mobile-toggle { 
                 display: block; 
                 order: 2;
+                color: #111827;
             }
             
             .header-icons { 
                 order: 3;
                 margin-left: 0;
                 margin-right: 0;
+            }
+            
+            .header-icons i {
+                color: #111827;
             }
             
             .header-container {
@@ -257,6 +257,10 @@
                 order: 1;
                 flex-shrink: 0;
                 margin-right: auto;
+            }
+            
+            .logo-img {
+                height: 50px;
             }
             
             .nav-menu {
@@ -306,7 +310,6 @@
                 grid-template-columns: 1fr;
             }
             
-            /* Remove the bridge on mobile since we click, not hover */
             .dropdown-menu-custom::before { display: none; }
             
             .nav-item-dropdown.active .dropdown-menu-custom { 
@@ -333,7 +336,6 @@
                 font-size: 1.1rem !important;
             }
             
-            /* Hotspot Adjustments */
             .hotspot {
                 transform: translate(-50%, -50%) scale(0.9);
             }
@@ -343,7 +345,6 @@
                 padding: 4px 10px;
             }
             
-            /* Grid Layout Adjustments */
             .challenge-cards-container {
                 grid-template-columns: 1fr !important;
                 gap: 20px !important;
@@ -378,7 +379,6 @@
                 font-size: 1.8rem !important;
             }
             
-            /* Adjust hotspot sizes */
             .hotspot-dot {
                 width: 28px;
                 height: 28px;
@@ -391,19 +391,16 @@
                 margin-left: 5px;
             }
             
-            /* Adjust cards padding */
             .challenge-image-card,
             .solution-section,
             .topology-section {
                 padding: 20px !important;
             }
             
-            /* Benefits section */
             .benefits-section .row > div {
                 margin-bottom: 30px;
             }
             
-            /* Adjust product cards */
             .product-card {
                 padding: 30px 15px !important;
             }
@@ -423,8 +420,8 @@
                 font-size: 16px !important;
             }
             
-            .header-logo h2 {
-                font-size: 1.3rem !important;
+            .logo-img {
+                height: 40px;
             }
             
             .mobile-toggle {
@@ -456,24 +453,20 @@
                 padding: 0 5px;
             }
             
-            /* Hide some hotspot labels on very small screens */
             .hotspot-label {
                 display: none;
             }
             
-            /* Adjust breadcrumb */
             .project-nav-bar span {
                 display: none;
             }
             
-            /* Adjust footer columns */
             .footer .col-lg-4, 
             .footer .col-lg-3, 
             .footer .col-lg-2 {
                 margin-bottom: 30px;
             }
             
-            /* Adjust benefits icons */
             .benefit-icon {
                 font-size: 2.5rem !important;
             }
@@ -481,8 +474,8 @@
 
         /* Extra Small (max-width: 400px) */
         @media (max-width: 400px) {
-            .header-logo h2 {
-                font-size: 1.1rem !important;
+            .logo-img {
+                height: 35px;
             }
             
             .hero-title {
@@ -495,7 +488,6 @@
                 font-size: 12px;
             }
             
-            /* Stack all columns */
             .related-card, 
             .product-card {
                 margin-bottom: 20px;
@@ -506,7 +498,7 @@
         .hero-section {
             height: 65vh; 
             min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-banner.jpg');
+            background:  url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-banner.jpg');
             background-size: cover; 
             background-position: center;
             display: flex; 
@@ -890,6 +882,21 @@
             max-width: 100%;
         }
 
+        .btn-outline-primary {
+            border: 2px solid var(--tf-blue);
+            color: var(--tf-blue);
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--tf-blue);
+            color: #fff;
+        }
+
         /* === 8. BENEFITS SECTION === */
         .benefits-section {
             background: linear-gradient(135deg, var(--tf-blue), #002244);
@@ -931,11 +938,13 @@
             text-decoration: none; 
             transition: 0.3s; 
             font-weight: 600; 
+            display: block;
+            margin-bottom: 8px;
         }
         
         .footer a:hover { 
             color: var(--tf-yellow) !important; 
-            text-decoration: underline; 
+            padding-left: 5px;
         }
         
         .copyright { 
@@ -950,40 +959,54 @@
             max-width: 100%;
             height: auto;
         }
+        
         .section-header {
-    text-align: center;       /* Center the text */
-    margin-bottom: 40px;      /* Space below header */
-}
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.section-header h2 {
-    font-size: 2rem;          /* Adjust font size */
-    font-weight: 600;         /* Boldness */
-    margin-bottom: 10px;      /* Space between text and line */
-}
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
 
-.section-header .line {
-    width: 60px;              /* Line width */
-    height: 3px;              /* Line thickness */
-    background-color: #2c7be5; /* Line color */
-    margin: 0 auto;           /* Center the line horizontally */
-    border-radius: 2px;       /* Optional: rounded edges */
-}
+        .section-header .line {
+            width: 60px;
+            height: 3px;
+            background-color: var(--tf-yellow);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
 
+        .btn-primary {
+            background: var(--tf-blue);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            transform: translateY(-2px);
+        }
     </style>
     
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- HEADER - SOLID WHITE WITH LOGO -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
                 <div class="header-logo">
                     <a href="/index.html">
-                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
-                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
-                        </h2>
+                        <img src="/assets/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
                 </div>
                 
@@ -991,7 +1014,7 @@
                 <nav id="mainNav" class="nav-menu">
                     <a href="/about/index.html" class="nav-link-custom">About</a>
                     
-                    <!-- SOLUTIONS DROPDOWN - Parent link is clickable -->
+                    <!-- SOLUTIONS DROPDOWN -->
                     <div class="nav-item-dropdown">
                         <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                             Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -1027,7 +1050,7 @@
                         </div>
                     </div>
                     
-                    <!-- PRODUCTS DROPDOWN - Parent link is clickable -->
+                    <!-- PRODUCTS DROPDOWN -->
                     <div class="nav-item-dropdown">
                         <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                             Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -1066,7 +1089,7 @@
                 </button>
 
                 <!-- HEADER ICONS -->
-                <div class="header-icons d-flex align-items-center text-white">
+                <div class="header-icons d-flex align-items-center">
                     <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                     <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
                 </div>
@@ -1079,7 +1102,7 @@
         <div class="container">
             <div class="col-lg-8 hero-content">
                 <h1 class="hero-title">Smart Port<br> Solutions</h1>
-                   </div>
+            </div>
         </div>
     </section>
 
@@ -1096,7 +1119,7 @@
             </nav>
             <div class="d-none d-md-block">
                 <span class="text-dark fw-bold small" style="letter-spacing:1px;">
-                    <i class="fa fa-anchor text-primary me-2"></i>
+                    <i class="fa fa-anchor text-primary me-2" style="color: var(--tf-blue) !important;"></i>
                     INTELLIGENT MARITIME SOLUTIONS
                 </span>
             </div>
@@ -1187,8 +1210,6 @@
                         <p style="line-height: 1.7;">
                             Remote-controlled and fully automated cranes, straddle carriers, and automated guided vehicles with precision positioning and collision avoidance systems.
                         </p>
-                         
-                             
                     </div>
                     
                     <div class="feature-column">
@@ -1196,7 +1217,6 @@
                         <p style="line-height: 1.7;">
                             Intelligent software for optimal container placement, yard planning, and equipment dispatching. Real-time visibility of yard operations and predictive analytics.
                         </p>
-                        
                     </div>
                 </div>
                 
@@ -1273,7 +1293,6 @@
                         <p style="line-height: 1.7;">
                             AI-powered algorithms for optimal vessel sequencing, berth allocation, and traffic flow management. Real-time adjustments based on weather, tides, and operational conditions.
                         </p>
-                        
                     </div>
                     
                     <div class="feature-column">
@@ -1281,7 +1300,6 @@
                         <p style="line-height: 1.7;">
                             Precision navigation systems with laser guidance and real-time positioning for safe and efficient berthing operations. Reduced dependency on tugs and pilot boats.
                         </p>
-                        
                     </div>
                 </div>
                 
@@ -1358,9 +1376,6 @@
                         <p style="line-height: 1.7;">
                             Multi-layered access control with biometric authentication, RFID, and facial recognition. Zone-based permissions and comprehensive audit trails for all personnel and vehicle movements.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/access-control.jpg" 
-                             alt="Access Control" 
-                             class="img-responsive">
                     </div>
                     
                     <div class="feature-column">
@@ -1368,9 +1383,6 @@
                         <p style="line-height: 1.7;">
                             AI-powered video analytics for automatic threat detection, suspicious behavior recognition, and license plate recognition. Integration with access control and alarm systems.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/video-surveillance.jpg" 
-                             alt="Video Surveillance" 
-                             class="img-responsive">
                     </div>
                 </div>
                 
@@ -1447,14 +1459,13 @@
                         <p style="line-height: 1.7;">
                             Automated shore-to-ship power connections allowing vessels to shut down engines while docked. Significant reduction in air pollution and noise in port areas.
                         </p>
-                        </div>
+                    </div>
                     
                     <div class="feature-column">
                         <h4>Renewable Energy Integration</h4>
                         <p style="line-height: 1.7;">
                             Solar, wind, and tidal energy systems integrated with port operations. Smart grid management and energy storage solutions for optimal renewable energy utilization.
                         </p>
-                        
                     </div>
                 </div>
                 
@@ -1553,11 +1564,57 @@
         </div>
     </section>
 
+    <!-- SECTION 4: PRODUCTS -->
+    <section id="products" class="py-5 bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Recommended Products</h2>
+                <div class="line"></div>
+                <p class="text-muted mt-3">High-performance products designed for port automation and management applications</p>
+            </div>
+            
+            <div class="row g-4 mt-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller">
+                        <h5>DDC Controllers</h5>
+                        <p class="small text-muted">Industrial controllers for port automation and equipment control</p>
+                        <a href="/products/ddc-controllers/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Environmental Sensors">
+                        <h5>Environmental Sensors</h5>
+                        <p class="small text-muted">Weather and environmental monitoring for port operations</p>
+                        <a href="/products/sensors-thermostats/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Energy Meters">
+                        <h5>Energy Meters</h5>
+                        <p class="small text-muted">Comprehensive energy monitoring for port facilities</p>
+                        <a href="/products/energy-meters/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="product-card">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="BMS Software">
+                        <h5>Port Management Software</h5>
+                        <p class="small text-muted">Unified platform for port operations and management</p>
+                        <a href="/products/bms-software/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION 6: RELATED SOLUTIONS -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="section-header">
-                <h2 >Related  Solutions</h2>
+                <h2>Related Solutions</h2>
                 <div class="line"></div>
             </div>
             <div class="row g-4 justify-content-center">
@@ -1573,16 +1630,6 @@
                 </div>
                 <!-- Related 2 -->
                 <div class="col-md-5">
-                    <a href="/solutions/smart-port-platform/index.html" class="related-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg" alt="Smart Ports">
-                        <div class="related-content">
-                            <div class="related-title">Smart Port Platforms</div>
-                            <p class="small text-muted">Integrated logistics and container management systems.</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Related 3 -->
-                <div class="col-md-5">
                     <a href="/solutions/industrial/index.html" class="related-card">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/industrial/park.jpg" alt="Smart Factories">
                         <div class="related-content">
@@ -1591,7 +1638,7 @@
                         </div>
                     </a>
                 </div>
-                <!-- Related 4 -->
+                <!-- Related 3 -->
                 <div class="col-md-5">
                     <a href="/solutions/smart-city/index.html" class="related-card">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-city/smart-city.jpeg" alt="Smart Cities">
@@ -1601,9 +1648,20 @@
                         </div>
                     </a>
                 </div>
+                <!-- Related 4 -->
+                <div class="col-md-5">
+                    <a href="/solutions/smart-port-platform/index.html" class="related-card">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg" alt="Smart Ports">
+                        <div class="related-content">
+                            <div class="related-title">Smart Port Platforms</div>
+                            <p class="small text-muted">Integrated logistics and container management systems.</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+    
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container py-5">
@@ -1616,13 +1674,13 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5>Quick Links</h5>
-                    <a class="d-block mb-2" href="/index.html">Home</a>
-                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
-                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
-                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
-                    <a class="d-block mb-2" href="/products/index.html">Products</a>
-                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
-                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                    <a href="/index.html">Home</a>
+                    <a href="/about/index.html">About Us</a>
+                    <a href="/solutions/index.html">Solutions</a>
+                    <a href="/projects/index.html">Projects</a>
+                    <a href="/products/index.html">Products</a>
+                    <a href="/technologies/index.html">Technologies</a>
+                    <a href="/contact/index.html">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Business Hours</h5>
@@ -1647,70 +1705,43 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Header Scroll Effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('navBox');
-            const icons = document.querySelectorAll('.header-icons i');
-            const mobileToggle = document.querySelector('.mobile-toggle i');
-            
-            if (window.scrollY > 50) { 
-                header.classList.add('scrolled'); 
-                if(!document.getElementById('mainNav').classList.contains('active')) {
-                    mobileToggle.style.color = "#111827";
-                    icons.forEach(icon => {
-                        icon.style.color = "#111827";
-                    });
-                }
-            } else { 
-                header.classList.remove('scrolled');
-                if(!document.getElementById('mainNav').classList.contains('active')) {
-                    mobileToggle.style.color = "#fff";
-                    icons.forEach(icon => {
-                        icon.style.color = "#fff";
-                    });
-                }
-            }
-        });
-
-        // Mobile Menu Functions
+        // SIMPLIFIED JavaScript - only mobile menu functionality
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
-            const icons = document.querySelectorAll('.header-icons i');
             const mobileToggle = document.querySelector('.mobile-toggle i');
-            const logoText = header.querySelector('.header-logo h2');
-            const logoSpan = header.querySelector('.header-logo h2 span');
             
             nav.classList.toggle('active');
             
-            // Force white background when menu is open
+            // Force white background when menu is open on mobile
             if(nav.classList.contains('active')) {
                 header.style.background = "#fff";
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
                 mobileToggle.style.color = "#333";
-                icons.forEach(icon => {
+                
+                // Change nav link colors to dark when menu is open
+                document.querySelectorAll('.nav-link-custom').forEach(link => {
+                    link.style.color = "#333";
+                });
+                
+                // Change icons to dark
+                document.querySelectorAll('.header-icons i').forEach(icon => {
                     icon.style.color = "#333";
                 });
-                if(logoText) logoText.style.color = "#004ca3";
-                if(logoSpan) logoSpan.style.color = "#ffcc00";
             } else {
-                header.style.background = "";
-                header.style.borderBottom = "";
-                if(window.scrollY > 50) {
-                    mobileToggle.style.color = "#111827";
-                    icons.forEach(icon => {
-                        icon.style.color = "#111827";
-                    });
-                    if(logoText) logoText.style.color = "#004ca3";
-                    if(logoSpan) logoSpan.style.color = "#ffcc00";
-                } else {
-                    mobileToggle.style.color = "#fff";
-                    icons.forEach(icon => {
-                        icon.style.color = "#fff";
-                    });
-                    if(logoText) logoText.style.color = "#fff";
-                    if(logoSpan) logoSpan.style.color = "#ffcc00";
-                }
+                header.style.background = "#ffffff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
+                mobileToggle.style.color = "#111827";
+                
+                // Reset nav link colors to black
+                document.querySelectorAll('.nav-link-custom').forEach(link => {
+                    link.style.color = "#111827";
+                });
+                
+                // Reset icons to black
+                document.querySelectorAll('.header-icons i').forEach(icon => {
+                    icon.style.color = "#111827";
+                });
             }
         }
 
@@ -1724,16 +1755,6 @@
                     }
                 });
             }
-        });
-
-        // Handle dropdown toggle on mobile
-        document.querySelectorAll('.nav-item-dropdown .nav-link-custom').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (window.innerWidth < 992) {
-                    // Allow the link to navigate to its page
-                    // No need to prevent default - let it navigate
-                }
-            });
         });
 
         // Separate arrow click handler for mobile dropdown toggle
@@ -1777,12 +1798,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Activate first hotspot
             document.getElementById('hotspot-1').classList.add('active');
-            
-            // Initialize header state
-            const header = document.getElementById('navBox');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            }
             
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {

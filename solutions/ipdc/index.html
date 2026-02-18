@@ -52,23 +52,17 @@
             text-decoration: none !important;
         }
 
-        /* --- RESPONSIVE HEADER --- */
+        /* --- HEADER - SOLID WHITE WITH LOGO --- */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
             min-height: var(--header-height);
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
+            background: #ffffff; /* SOLID WHITE */
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .header-fix.scrolled { 
-            background: rgba(255, 255, 255, 0.98); 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
         }
         
         .header-container { 
@@ -79,6 +73,14 @@
             justify-content: space-between; 
             padding: 0 20px; 
             height: var(--header-height); 
+        }
+        
+        /* Logo image styling */
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
         
         /* Desktop Menu */
@@ -92,7 +94,7 @@
         }
         
         .nav-link-custom { 
-            color: #fff; 
+            color: #111827; /* SOLID BLACK */
             font-weight: 600; 
             font-size: 13px; 
             text-transform: uppercase; 
@@ -105,23 +107,7 @@
         }
         
         .nav-link-custom:hover { 
-            color: var(--tf-yellow); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom { 
-            color: var(--tf-dark); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom:hover { 
             color: var(--tf-blue); 
-        }
-        
-        .header-fix.scrolled .header-logo h2 { 
-            color: var(--tf-blue) !important; 
-        }
-        
-        .header-fix.scrolled .header-logo h2 span { 
-            color: var(--tf-yellow) !important; 
         }
         
         /* Icons & Toggle Wrapper */
@@ -135,15 +121,17 @@
             display: flex !important; 
             align-items: center; 
             gap: 15px; 
-            color: white; 
         }
         
-        .header-fix.scrolled .header-icons { 
-            color: var(--tf-dark) !important; 
+        .header-icons i {
+            color: #111827; /* SOLID BLACK */
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
         }
         
-        .header-fix.scrolled .mobile-toggle { 
-            color: var(--tf-dark) !important; 
+        .header-icons i:hover {
+            color: var(--tf-blue);
         }
         
         /* Dropdown Wrapper */
@@ -157,7 +145,7 @@
         /* Toggle Icon (Hidden on Desktop, Visible Mobile) */
         .mobile-dropdown-toggle {
             display: none;
-            color: inherit;
+            color: #111827;
             padding: 10px 15px;
             cursor: pointer;
             font-size: 14px;
@@ -168,6 +156,7 @@
             display: inline-block;
             margin-left: 5px;
             font-size: 11px;
+            color: #111827;
         }
         
         .dropdown-menu-custom {
@@ -240,11 +229,11 @@
             padding-bottom: 5px;
         }
         
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: white; 
+            color: #111827; /* SOLID BLACK */
             cursor: pointer; 
             background: none;
             border: none;
@@ -258,6 +247,10 @@
             .header-container {
                 padding: 0 20px;
                 justify-content: space-between;
+            }
+            
+            .logo-img {
+                height: 50px;
             }
             
             .nav-menu {
@@ -368,6 +361,10 @@
                 gap: 20px;
             }
             
+            .header-icons i {
+                color: #111827;
+            }
+            
             /* Mobile adjustments for hero */
             .hero-title {
                 font-size: 2.5rem !important;
@@ -378,34 +375,28 @@
                 min-height: 400px;
             }
             
-            /* Mobile adjustments for feature columns */
             .feature-columns {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
             
-            /* Mobile adjustments for scenario boxes */
             .scenario-box {
                 padding: 0 15px;
             }
             
-            /* Mobile adjustments for challenge cards */
             .challenge-cards-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
             
-            /* Mobile adjustments for benefits section */
             .benefit-item {
                 padding: 20px 10px;
             }
             
-            /* Mobile adjustments for product cards */
             .product-card {
                 padding: 30px 15px;
             }
             
-            /* Mobile adjustments for features grid */
             .features-grid {
                 grid-template-columns: 1fr;
             }
@@ -414,7 +405,7 @@
         @media (max-width: 576px) {
             .header-right-actions { gap: 15px; }
             .header-icons { gap: 10px !important; }
-            .header-logo h2 { font-size: 1.3rem !important; }
+            .logo-img { height: 40px; }
             .hero-title { 
                 font-size: 2rem !important; 
             }
@@ -449,7 +440,7 @@
         .hero-section {
             height: 65vh; 
             min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-banner.jpg');
+            background:   url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-banner.jpg');
             background-size: cover; 
             background-position: center;
             display: flex; 
@@ -849,6 +840,22 @@
             height: 160px; 
             object-fit: contain; 
             margin-bottom: 25px; 
+            max-width: 100%;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--tf-blue);
+            color: var(--tf-blue);
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--tf-blue);
+            color: #fff;
         }
 
         /* --- FOOTER --- */
@@ -869,11 +876,13 @@
             text-decoration: none; 
             transition: 0.3s; 
             font-weight: 600; 
+            display: block;
+            margin-bottom: 8px;
         }
         
         .footer a:hover { 
             color: var(--tf-yellow) !important; 
-            text-decoration: underline; 
+            padding-left: 5px;
         }
         
         .copyright { 
@@ -905,21 +914,35 @@
             color: white;
             margin-bottom: 15px;
         }
+        
+        .btn-primary {
+            background: var(--tf-blue);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- HEADER - SOLID WHITE WITH LOGO -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
                 <!-- LOGO (Left) -->
                 <div class="header-logo">
                     <a href="/index.html">
-                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
-                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
-                        </h2>
+                        <img src="/assets/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
                 </div>
                 
@@ -967,8 +990,8 @@
                                 <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
                                 <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
                                 <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                            <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                        </div>
+                                <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                            </div>
                         </div>
                     </div>
                     
@@ -1015,12 +1038,12 @@
                 
                 <!-- RIGHT SIDE GROUP (Icons + Hamburger) -->
                 <div class="header-right-actions">
-                    <!-- HAMBURGER ICON (Visible on Mobile) - Moved before icons -->
+                    <!-- HAMBURGER ICON (Visible on Mobile) -->
                     <button class="mobile-toggle" onclick="toggleMobileMenu()">
                         <i class="fa fa-bars"></i>
                     </button>
                     
-                    <!-- Header Icons - Now positioned after hamburger -->
+                    <!-- Header Icons -->
                     <div class="header-icons">
                         <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                         <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
@@ -1048,12 +1071,11 @@
                     <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
                     <li class="breadcrumb-item"><a href="#scenarios">Scenarios</a></li>
                     <li class="breadcrumb-item"><a href="#benefits">Benefits</a></li>
-                    <li class="breadcrumb-item"><a href="#products">Products</a></li>
                 </ol>
             </nav>
             <div class="d-none d-md-block">
                 <span class="text-dark fw-bold small" style="letter-spacing:1px;">
-                    <i class="fa fa-server text-primary me-2"></i>
+                    <i class="fa fa-server text-primary me-2" style="color: var(--tf-blue) !important;"></i>
                     MISSION-CRITICAL INFRASTRUCTURE
                 </span>
             </div>
@@ -1089,19 +1111,19 @@
                         <!-- Hotspots with labels -->
                         <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 23%; left: 5%;">
                             <div class="hotspot-dot">1</div>
-                            <div class="hotspot-label">Precision Cooling</div>
+                            <div class="hotspot-label"> </div>
                         </div>
                         <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 82%; left: 6%;">
                             <div class="hotspot-dot">2</div>
-                            <div class="hotspot-label">Power Management</div>
+                            <div class="hotspot-label"> </div>
                         </div>
                         <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 82%; left: 65%;">
                             <div class="hotspot-dot">3</div>
-                            <div class="hotspot-label">Environmental Monitoring</div>
+                            <div class="hotspot-label"> </div>
                         </div>
                         <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 14%; left: 69%;">
                             <div class="hotspot-dot">4</div>
-                            <div class="hotspot-label">Security & Access</div>
+                            <div class="hotspot-label"> </div>
                         </div>
                     </div>
                 </div>
@@ -1451,7 +1473,7 @@
         </div>
     </section>
 
-    <!-- SECTION 4: PRODUCTS
+    <!-- SECTION 4: PRODUCTS -->
     <section id="products" class="py-5 bg-white">
         <div class="container py-5">
             <div class="text-center mb-5">
@@ -1463,36 +1485,40 @@
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/ddc-controller.jpg" alt="DDC Controller">
+                        <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller">
                         <h5>DDC Controllers</h5>
-                        <p>High-performance controllers for precision environmental control</p>
+                        <p class="small text-muted">High-performance controllers for precision environmental control</p>
+                        <a href="/products/ddc-controllers/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/energy-meter.jpg" alt="Energy Meter">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Energy Meter">
                         <h5>Energy Meters</h5>
-                        <p>Advanced metering for detailed power consumption analysis</p>
+                        <p class="small text-muted">Advanced metering for detailed power consumption analysis</p>
+                        <a href="/products/energy-meters/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/sensors.jpg" alt="Environmental Sensors">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Environmental Sensors">
                         <h5>Environmental Sensors</h5>
-                        <p>Precision sensors for temperature, humidity, and air quality monitoring</p>
+                        <p class="small text-muted">Precision sensors for temperature, humidity, and air quality monitoring</p>
+                        <a href="/products/sensors-thermostats/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/bms-software.jpg" alt="BMS Software">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="BMS Software">
                         <h5>BMS Software</h5>
-                        <p>Comprehensive management platform for data center operations</p>
+                        <p class="small text-muted">Comprehensive management platform for data center operations</p>
+                        <a href="/products/bms-software/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
- -->
+
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container py-5">
@@ -1505,13 +1531,13 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5>Quick Links</h5>
-                    <a class="d-block mb-2" href="/index.html">Home</a>
-                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
-                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
-                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
-                    <a class="d-block mb-2" href="/products/index.html">Products</a>
-                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
-                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                    <a href="/index.html">Home</a>
+                    <a href="/about/index.html">About Us</a>
+                    <a href="/solutions/index.html">Solutions</a>
+                    <a href="/projects/index.html">Projects</a>
+                    <a href="/products/index.html">Products</a>
+                    <a href="/technologies/index.html">Technologies</a>
+                    <a href="/contact/index.html">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Business Hours</h5>
@@ -1538,20 +1564,44 @@
         // Current active scenario for hotspots
         let currentScenario = 1;
         
-        // Header Scroll
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('navBox');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Mobile Menu Toggle Function
+        // SIMPLIFIED JavaScript - only mobile menu functionality
         function toggleMobileMenu() {
-            const navMenu = document.getElementById('mainNav');
-            navMenu.classList.toggle('active');
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            // Force white background when menu is open on mobile
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+                
+                // Change nav link colors to dark when menu is open
+                document.querySelectorAll('.nav-link-custom').forEach(link => {
+                    link.style.color = "#333";
+                });
+                
+                // Change icons to dark
+                document.querySelectorAll('.header-icons i').forEach(icon => {
+                    icon.style.color = "#333";
+                });
+            } else {
+                header.style.background = "#ffffff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
+                mobileToggle.style.color = "#111827";
+                
+                // Reset nav link colors to black
+                document.querySelectorAll('.nav-link-custom').forEach(link => {
+                    link.style.color = "#111827";
+                });
+                
+                // Reset icons to black
+                document.querySelectorAll('.header-icons i').forEach(icon => {
+                    icon.style.color = "#111827";
+                });
+            }
         }
         
         // Close dropdowns when clicking outside (for mobile)
@@ -1572,11 +1622,9 @@
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Find the parent .nav-item-dropdown
                     const dropdown = this.closest('.nav-item-dropdown');
                     dropdown.classList.toggle('active');
                     
-                    // Close other dropdowns
                     document.querySelectorAll('.nav-item-dropdown').forEach(otherDropdown => {
                         if (otherDropdown !== dropdown) {
                             otherDropdown.classList.remove('active');
@@ -1590,12 +1638,10 @@
         function showScenario(id) {
             currentScenario = id;
             
-            // Update hotspots
             document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
             const activeDot = document.getElementById('hotspot-' + id);
             if(activeDot) activeDot.classList.add('active');
             
-            // Update scenario content
             const boxes = document.querySelectorAll('.scenario-box');
             boxes.forEach(el => {
                 el.classList.remove('active');
@@ -1607,7 +1653,6 @@
                 selectedContent.style.display = 'block';
                 setTimeout(() => {
                     selectedContent.classList.add('active');
-                    // Scroll to scenario section
                     const offset = 140;
                     const elementPosition = selectedContent.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - offset;
@@ -1619,14 +1664,7 @@
         // Initialize first scenario as active on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Activate first hotspot and content
-            document.getElementById('hotspot-1').classList.add('active');
-            document.getElementById('content-1').classList.add('active');
-            
-            // Initialize header state
-            const header = document.getElementById('navBox');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            }
+            showScenario(1);
             
             // Add click handlers for sub-nav breadcrumbs
             document.querySelectorAll('.nav-breadcrumb a').forEach(link => {

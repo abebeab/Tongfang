@@ -40,7 +40,7 @@
             overflow-x: hidden; 
             color: var(--tf-text); 
             line-height: 1.7;
-            padding-top: var(--header-height); /* Fixed header offset */
+            padding-top: var(--header-height);
         }
         
         h1, h2, h3, h4, h5 { 
@@ -54,23 +54,17 @@
             text-decoration: none !important;
         }
 
-        /* --- 1. GLASS HEADER & DROPDOWN --- */
+        /* --- HEADER - SOLID WHITE WITH LOGO --- */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
             min-height: var(--header-height); 
-            background: rgba(0, 0, 0, 0.6); 
-            backdrop-filter: blur(12px);
+            background: #ffffff; /* SOLID WHITE */
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .header-fix.scrolled { 
-            background: rgba(255, 255, 255, 0.98); 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
         }
         
         .header-container { 
@@ -81,6 +75,14 @@
             justify-content: space-between; 
             padding: 0 20px; 
             height: var(--header-height); 
+        }
+        
+        /* Logo image styling */
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
         
         /* Desktop Menu */
@@ -94,7 +96,7 @@
         }
         
         .nav-link-custom { 
-            color: #fff; 
+            color: #111827; /* SOLID BLACK */
             font-weight: 600; 
             font-size: 13px; 
             text-transform: uppercase; 
@@ -107,23 +109,7 @@
         }
         
         .nav-link-custom:hover { 
-            color: var(--tf-yellow); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom { 
-            color: var(--tf-dark); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom:hover { 
             color: var(--tf-blue); 
-        }
-        
-        .header-fix.scrolled .header-logo h2 { 
-            color: var(--tf-blue) !important; 
-        }
-        
-        .header-fix.scrolled .header-logo h2 span { 
-            color: var(--tf-yellow) !important; 
         }
         
         /* Right Side Actions Wrapper */
@@ -137,23 +123,17 @@
             display: flex !important; 
             align-items: center; 
             gap: 15px; 
-            color: white;
         }
         
-        .header-fix.scrolled .header-icons { 
-            color: var(--tf-dark) !important; 
+        .header-icons i {
+            color: #111827; /* SOLID BLACK */
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
         }
-
-        .header-fix.scrolled .mobile-toggle { 
-            color: var(--tf-dark) !important; 
-        }
-
-        /* Dropdown Structure */
-        .nav-item-dropdown { 
-            position: relative; 
-            height: 100%; 
-            display: flex; 
-            align-items: center;
+        
+        .header-icons i:hover {
+            color: var(--tf-blue);
         }
 
         /* Desktop Arrow */
@@ -161,12 +141,13 @@
             display: inline-block;
             margin-left: 5px;
             font-size: 11px;
+            color: #111827;
         }
 
         /* Mobile Toggle Button (Hidden on Desktop) */
         .mobile-dropdown-toggle {
             display: none;
-            color: inherit;
+            color: #111827;
             padding: 10px 15px;
             cursor: pointer;
             font-size: 14px;
@@ -240,11 +221,11 @@
             padding-bottom: 5px;
         }
 
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: white; 
+            color: #111827; /* SOLID BLACK */
             cursor: pointer; 
             background: none;
             border: none;
@@ -260,22 +241,25 @@
                 justify-content: space-between; 
             }
             
-            /* Right Actions: Order changes here */
+            .logo-img {
+                height: 50px;
+            }
+            
             .header-right-actions {
                 display: flex;
                 flex-direction: row;
                 gap: 15px;
             }
             
-            /* Order: Hamburger (1), Icons (2) */
             .mobile-toggle {
                 display: block;
-                order: 1; /* Left */
+                order: 1;
                 margin-right: 5px;
+                color: #111827;
             }
             
             .header-icons {
-                order: 2; /* Right */
+                order: 2;
                 margin-left: 0;
                 margin-right: 0;
                 gap: 15px !important;
@@ -283,9 +267,9 @@
 
             .header-icons i {
                 font-size: 18px !important;
+                color: #111827;
             }
             
-            /* Nav Menu Drawer */
             .nav-menu {
                 display: none; 
                 position: absolute;
@@ -303,7 +287,6 @@
             
             .nav-menu.active { display: flex; }
 
-            /* Link Styles Mobile */
             .nav-link-custom { 
                 color: #333; 
                 width: 100%; 
@@ -312,15 +295,13 @@
                 border-bottom: 1px solid #eee;
             }
             
-            /* DROPDOWN LOGIC MOBILE */
             .nav-item-dropdown { 
                 width: 100%; 
-                flex-direction: column; /* Stack Menu under Link */
+                flex-direction: column;
                 height: auto;
                 border-bottom: 1px solid #eee;
             }
             
-            /* Wrapper for Link + Toggle Button */
             .mobile-link-wrapper {
                 display: flex;
                 width: 100%;
@@ -328,14 +309,12 @@
                 justify-content: space-between;
             }
             
-            /* Make link grow */
             .nav-item-dropdown .nav-link-custom {
                 border-bottom: none; 
                 width: auto;
                 flex-grow: 1;
             }
 
-            /* Show separate toggle button */
             .mobile-dropdown-toggle {
                 display: flex;
                 align-items: center;
@@ -350,17 +329,15 @@
                 background-color: #f0f0f0;
             }
 
-            /* Hide desktop arrow */
             .desktop-arrow { display: none; }
             
-            /* Dropdown Content Mobile */
             .dropdown-menu-custom {
                 position: static;
                 width: 100%;
                 transform: none;
                 opacity: 1; 
                 visibility: visible;
-                display: none; /* Hidden via JS toggle */
+                display: none;
                 box-shadow: none;
                 border-top: none;
                 padding: 10px 30px 20px 30px;
@@ -370,12 +347,10 @@
             
             .dropdown-menu-custom::before { display: none; }
             
-            /* Active State */
             .nav-item-dropdown.active .dropdown-menu-custom { 
                 display: grid; 
             }
             
-            /* Rotate Icon when active */
             .nav-item-dropdown.active .mobile-dropdown-toggle i {
                 transform: rotate(180deg);
                 transition: transform 0.3s;
@@ -390,12 +365,16 @@
                 height: 60vh;
                 min-height: 400px;
             }
+            
+            .hotspot-label {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
             .header-icons { gap: 12px !important; }
             .header-icons i { font-size: 16px !important; }
-            .header-logo h2 { font-size: 1.3rem !important; }
+            .logo-img { height: 40px; }
             .mobile-toggle { font-size: 20px; }
             .header-container { padding: 0 10px; }
             .hero-title { font-size: 2rem !important; }
@@ -404,7 +383,7 @@
         /* --- 2. HERO SECTION --- */
         .hero-section {
             height: 65vh; min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/sports-center-hero.png');
+            background:  url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/sports-center-hero.png');
             background-size: cover; background-position: center;
             display: flex; align-items: center; position: relative;
         }
@@ -522,6 +501,37 @@
         .topology-section h3 { color: var(--tf-blue); margin-bottom: 30px; text-align: center; }
         .topology-img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
+        .btn-outline-primary {
+            border: 2px solid var(--tf-blue);
+            color: var(--tf-blue);
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--tf-blue);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: var(--tf-blue);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            transform: translateY(-2px);
+        }
+
         /* --- 6. RELATED --- */
         .related-card {
             background: #fff; border-radius: var(--card-radius); overflow: hidden;
@@ -538,13 +548,13 @@
             text-align: center; border: 1px solid #f0f0f0; transition: 0.3s;
         }
         .product-card:hover { border-color: var(--tf-blue); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-        .product-card img { height: 160px; object-fit: contain; margin-bottom: 25px; }
+        .product-card img { height: 160px; object-fit: contain; margin-bottom: 25px; max-width: 100%; }
 
         /* --- 8. FOOTER --- */
         .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
         .footer h5 { color: #fff; margin-bottom: 30px; }
-        .footer a { color: var(--tf-blue) !important; text-decoration: none; transition: 0.3s; font-weight: 600; }
-        .footer a:hover { color: var(--tf-yellow) !important; text-decoration: underline; }
+        .footer a { color: var(--tf-blue) !important; text-decoration: none; transition: 0.3s; font-weight: 600; display: block; margin-bottom: 8px; }
+        .footer a:hover { color: var(--tf-yellow) !important; padding-left: 5px; }
         .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
 
         /* --- 9. BENEFITS SECTION --- */
@@ -556,21 +566,67 @@
         .benefit-icon { font-size: 3rem; color: var(--tf-yellow); margin-bottom: 20px; }
         .benefit-item h4 { color: white; margin-bottom: 15px; }
 
+        /* Topology Grid Styles */
+        .topology-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            min-height: 500px;
+        }
+        
+        .hub {
+            grid-column: 2;
+            grid-row: 2;
+            background: var(--tf-blue);
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .system {
+            background: white;
+            color: #333;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border-left: 4px solid var(--tf-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+        
+        .system.security { border-left-color: var(--tf-red); }
+        .system.communications { border-left-color: #6f42c1; }
+        .system.lighting { border-left-color: var(--tf-yellow); }
+        .system.concessions { border-left-color: #20c997; }
+
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <!-- HEADER - SOLID WHITE WITH LOGO -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
                 <!-- LOGO -->
                 <div class="header-logo">
                     <a href="/index.html">
-                        <h2 style="color:#fff; margin:0; font-family:'Montserrat'; font-weight:900;">
-                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
-                        </h2>
+                        <img src="/assets/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
                 </div>
                 
@@ -580,13 +636,11 @@
                     
                     <!-- SOLUTIONS DROPDOWN -->
                     <div class="nav-item-dropdown">
-                        <!-- Wrapper for Link + Split Button on Mobile -->
                         <div class="mobile-link-wrapper">
                             <a href="/solutions/index.html" class="nav-link-custom">
                                 Solutions 
                                 <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <!-- Separate Clickable Arrow for Mobile -->
                             <span class="mobile-dropdown-toggle">
                                 <i class="fa fa-angle-down"></i>
                             </span>
@@ -618,8 +672,8 @@
                                 <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
                                 <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
                                 <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                            <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                        </div>
+                                <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                            </div>
                         </div>
                     </div>
                     
@@ -630,7 +684,6 @@
                                 Products 
                                 <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <!-- Separate Clickable Arrow for Mobile -->
                             <span class="mobile-dropdown-toggle">
                                 <i class="fa fa-angle-down"></i>
                             </span>
@@ -666,12 +719,12 @@
 
                 <!-- RIGHT SIDE GROUP (Hamburger + Icons) -->
                 <div class="header-right-actions">
-                    <!-- HAMBURGER ICON (Order 1 on Mobile) -->
+                    <!-- HAMBURGER ICON -->
                     <button class="mobile-toggle" onclick="toggleMobileMenu()">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Header Icons (Order 2 on Mobile) -->
+                    <!-- Header Icons -->
                     <div class="header-icons">
                         <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                         <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
@@ -703,7 +756,7 @@
             </nav>
             <div class="d-none d-md-block">
                 <span class="text-dark fw-bold small" style="letter-spacing:1px;">
-                    <i class="fa fa-futbol text-primary me-2"></i>
+                    <i class="fa fa-futbol text-primary me-2" style="color: var(--tf-blue) !important;"></i>
                     SMART SPORTS FACILITIES
                 </span>
             </div>
@@ -737,7 +790,7 @@
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/stadium.jpg" alt="Sports Center Solution Map" class="map-img">
                         
                         <!-- Hotspots -->
-                        <div id="hotspot-1" class="hotspot " onclick="showScenario(1)" style="top: 45%; left: 20%;">
+                        <div id="hotspot-1" class="hotspot" onclick="showScenario(1)" style="top: 45%; left: 20%;">
                             <div class="hotspot-dot">1</div>
                             <div class="hotspot-label">Access & Crowd Control</div>
                         </div>
@@ -764,7 +817,7 @@
         <div class="container">
             
             <!-- 1. ACCESS & CROWD CONTROL -->
-            <div id="content-1" class="scenario-box ">
+            <div id="content-1" class="scenario-box">
                 <h2 class="mb-4 text-primary">1. Access & Crowd Control Management</h2>
                 
                 <div class="challenge-section mb-5">
@@ -791,13 +844,15 @@
                         <h4>Smart Access Control</h4>
                         <p style="line-height: 1.7;">
                             Multi-modal authentication including RFID tickets, mobile QR codes, and facial recognition. Automated turnstile control with real-time validation and anti-tailgating features.
-                        </p>  </div>
+                        </p>  
+                    </div>
                     
                     <div class="feature-column">
                         <h4>Crowd Analytics</h4>
                         <p style="line-height: 1.7;">
                             AI-powered video analytics for crowd density monitoring, flow optimization, and early detection of potential safety issues. Real-time occupancy tracking across all zones.
-                        </p>  </div>
+                        </p>  
+                    </div>
                 </div>
                 
                 <!-- Benefits Section -->
@@ -870,13 +925,15 @@
                         <h4>Smart Climate Control</h4>
                         <p style="line-height: 1.7;">
                             Zone-based temperature and humidity control with occupancy sensors. Automatic adjustment based on real-time crowd density and external weather conditions.
-                        </p> </div>
+                        </p> 
+                    </div>
                     
                     <div class="feature-column">
                         <h4>Air Quality Monitoring</h4>
                         <p style="line-height: 1.7;">
                             Continuous monitoring of CO2 levels, particulate matter, and ventilation efficiency. Automated adjustment of fresh air intake and filtration systems.
-                        </p> </div>
+                        </p> 
+                    </div>
                 </div>
                 
                 <!-- Benefits Section -->
@@ -923,13 +980,15 @@
                         <h4>Intelligent Lighting</h4>
                         <p style="line-height: 1.7;">
                             LED lighting systems with dynamic control for different sports and events. Automated dimming, color temperature adjustment, and emergency lighting integration.
-                        </p>    </div>
+                        </p>    
+                    </div>
                     
                     <div class="feature-column">
                         <h4>Media Integration</h4>
                         <p style="line-height: 1.7;">
                             Centralized control of video walls, scoreboards, sound systems, and broadcast equipment. Synchronized operation with lighting systems for enhanced event experiences.
-                        </p>  </div>
+                        </p>  
+                    </div>
                 </div>
                 
                 <!-- Benefits Section -->
@@ -976,13 +1035,15 @@
                         <h4>Unified Dashboard</h4>
                         <p style="line-height: 1.7;">
                             Centralized interface displaying real-time status of all systems, energy consumption, occupancy data, and security alerts. Customizable views for different operational roles.
-                        </p>  </div>
+                        </p>  
+                    </div>
                     
                     <div class="feature-column">
                         <h4>Predictive Analytics</h4>
                         <p style="line-height: 1.7;">
                             AI-driven insights for maintenance scheduling, energy optimization, and crowd prediction. Historical data analysis for continuous improvement.
-                        </p>   </div>
+                        </p>   
+                    </div>
                 </div>
                 
                 <!-- Benefits Section -->
@@ -997,190 +1058,92 @@
                     </ul>
                 </div>
                 
-               <!-- Topology Section -->
-<div class="topology-section">
-    <h3>System Topology</h3>
-    
-    <div class="topology-grid" style="
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        gap: 30px;
-        max-width: 800px;
-        margin: 40px auto;
-        position: relative;
-        min-height: 500px;
-    ">
-        <!-- Central Hub (Center) -->
-        <div class="hub" style="
-            grid-column: 2;
-            grid-row: 2;
-            background: var(--tf-blue);
-            color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        ">
-            <div style="font-size: 2.5rem; margin-bottom: 15px;">🏢</div>
-            <h4 style="margin: 0 0 10px 0; color: white; font-size: 1.1rem;">Operations Hub</h4>
-            <p style="font-size: 0.85rem; opacity: 0.9; line-height: 1.4;">
-                Unified Dashboard<br>Predictive Analytics<br>Alerts & Control
-            </p>
-        </div>
-        
-        <!-- SVG Connector Lines -->
-        <svg style="
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        ">
-            <!-- Security to Hub -->
-            <line x1="16.5%" y1="16.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-            <!-- Communications to Hub -->
-            <line x1="83.5%" y1="16.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-            <!-- HVAC to Hub -->
-            <line x1="16.5%" y1="83.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-            <!-- Lighting to Hub -->
-            <line x1="83.5%" y1="83.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-            <!-- Concessions to Hub -->
-            <line x1="50%" y1="100%" x2="50%" y2="83.5%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-        </svg>
-        
-        <!-- Security System (Top Left) -->
-        <div class="system" style="
-            grid-column: 1;
-            grid-row: 1;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-left: 4px solid var(--tf-red);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        ">
-            <div style="font-size: 2rem; margin-bottom: 10px;">🔒</div>
-            <span style="display: block; font-weight: bold; color: var(--tf-red); font-size: 1rem;">Security</span>
-            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                CCTV & Access Control
-            </small>
-        </div>
-        
-        <!-- Communications (Top Right) -->
-        <div class="system" style="
-            grid-column: 3;
-            grid-row: 1;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-left: 4px solid #6f42c1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        ">
-            <div style="font-size: 2rem; margin-bottom: 10px;">📡</div>
-            <span style="display: block; font-weight: bold; color: #6f42c1; font-size: 1rem;">Communications</span>
-            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                PA & Emergency
-            </small>
-        </div>
-        
-        <!-- HVAC (Bottom Left) -->
-        <div class="system" style="
-            grid-column: 1;
-            grid-row: 3;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-left: 4px solid var(--tf-blue);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        ">
-            <div style="font-size: 2rem; margin-bottom: 10px;">🌡️</div>
-            <span style="display: block; font-weight: bold; color: var(--tf-blue); font-size: 1rem;">HVAC</span>
-            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                Climate Control
-            </small>
-        </div>
-        
-        <!-- Lighting (Bottom Right) -->
-        <div class="system" style="
-            grid-column: 3;
-            grid-row: 3;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-left: 4px solid var(--tf-yellow);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        ">
-            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
-            <span style="display: block; font-weight: bold; color: #333; font-size: 1rem;">Lighting</span>
-            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                Arena & Facility
-            </small>
-        </div>
-        
-        <!-- Concessions (Bottom Center - Row 4) -->
-        <div class="system" style="
-            grid-column: 2;
-            grid-row: 3;
-            background: white;
-            color: #333;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            border-left: 4px solid #20c997;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 5;
-        ">
-            <div style="font-size: 2rem; margin-bottom: 10px;">🍔</div>
-            <span style="display: block; font-weight: bold; color: #20c997; font-size: 1rem;">Concessions</span>
-            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                Vendors & Services
-            </small>
-        </div>
-    </div>
-    
-    <div class="mt-4 text-center text-muted" style="font-size: 0.9rem;">
-        <p><i class="fas fa-info-circle me-2"></i>All systems integrate with the central Operations Hub for unified monitoring and control</p>
-    </div>
-</div>
+                <!-- Topology Section -->
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    
+                    <div class="topology-grid">
+                        <!-- Central Hub (Center) -->
+                        <div class="hub">
+                            <div style="font-size: 2.5rem; margin-bottom: 15px;">🏢</div>
+                            <h4 style="margin: 0 0 10px 0; color: white; font-size: 1.1rem;">Operations Hub</h4>
+                            <p style="font-size: 0.85rem; opacity: 0.9; line-height: 1.4;">
+                                Unified Dashboard<br>Predictive Analytics<br>Alerts & Control
+                            </p>
+                        </div>
+                        
+                        <!-- SVG Connector Lines -->
+                        <svg style="
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            pointer-events: none;
+                            z-index: 1;
+                        ">
+                            <!-- Security to Hub -->
+                            <line x1="16.5%" y1="16.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
+                            <!-- Communications to Hub -->
+                            <line x1="83.5%" y1="16.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
+                            <!-- HVAC to Hub -->
+                            <line x1="16.5%" y1="83.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
+                            <!-- Lighting to Hub -->
+                            <line x1="83.5%" y1="83.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
+                            <!-- Concessions to Hub -->
+                            <line x1="50%" y1="100%" x2="50%" y2="83.5%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
+                        </svg>
+                        
+                        <!-- Security System (Top Left) -->
+                        <div class="system" style="grid-column: 1; grid-row: 1; border-left-color: var(--tf-red);">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🔒</div>
+                            <span style="display: block; font-weight: bold; color: var(--tf-red); font-size: 1rem;">Security</span>
+                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
+                                CCTV & Access Control
+                            </small>
+                        </div>
+                        
+                        <!-- Communications (Top Right) -->
+                        <div class="system" style="grid-column: 3; grid-row: 1; border-left-color: #6f42c1;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">📡</div>
+                            <span style="display: block; font-weight: bold; color: #6f42c1; font-size: 1rem;">Communications</span>
+                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
+                                PA & Emergency
+                            </small>
+                        </div>
+                        
+                        <!-- HVAC (Bottom Left) -->
+                        <div class="system" style="grid-column: 1; grid-row: 3; border-left-color: var(--tf-blue);">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🌡️</div>
+                            <span style="display: block; font-weight: bold; color: var(--tf-blue); font-size: 1rem;">HVAC</span>
+                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
+                                Climate Control
+                            </small>
+                        </div>
+                        
+                        <!-- Lighting (Bottom Right) -->
+                        <div class="system" style="grid-column: 3; grid-row: 3; border-left-color: var(--tf-yellow);">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
+                            <span style="display: block; font-weight: bold; color: #333; font-size: 1rem;">Lighting</span>
+                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
+                                Arena & Facility
+                            </small>
+                        </div>
+                        
+                        <!-- Concessions (Bottom Center) -->
+                        <div class="system" style="grid-column: 2; grid-row: 3; border-left-color: #20c997;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🍔</div>
+                            <span style="display: block; font-weight: bold; color: #20c997; font-size: 1rem;">Concessions</span>
+                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
+                                Vendors & Services
+                            </small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-center text-muted" style="font-size: 0.9rem;">
+                        <p><i class="fas fa-info-circle me-2"></i>All systems integrate with the central Operations Hub for unified monitoring and control</p>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -1235,7 +1198,7 @@
         </div>
     </section>
 
-    <!-- SECTION 4: PRODUCT SHOWCASE  
+    <!-- SECTION 4: PRODUCT SHOWCASE -->
     <section class="py-5 bg-white scroll-target" id="products">
         <div class="container">
             <div class="section-header">
@@ -1246,37 +1209,37 @@
 
             <div class="swiper swiper-products pb-5">
                 <div class="swiper-wrapper">
-                    Product 1  
+                    <!-- Product 1 -->
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/ddc-controllers/main-controller.jpg" alt="DDC Controller">
+                            <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller">
                             <h5>Advanced DDC Controller</h5>
                             <p class="small text-muted">High-capacity controller for managing complex HVAC and lighting systems in large venues</p>
                             <a href="/products/ddc-controllers/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
-                     Product 2  
+                    <!-- Product 2 -->
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/sensors/air-quality-sensor.jpg" alt="Air Quality Sensor">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Air Quality Sensor">
                             <h5>Air Quality Monitor</h5>
                             <p class="small text-muted">Multi-parameter sensor for monitoring CO2, particulates, temperature, and humidity</p>
                             <a href="/products/sensors-thermostats/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
-                    Product 3  
+                    <!-- Product 3 -->
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/facial-recognition.jpg" alt="Access Control">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Facial Recognition">
                             <h5>Facial Recognition Terminal</h5>
                             <p class="small text-muted">High-speed biometric access control for staff and VIP areas</p>
                             <a href="/products/bms-software/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
-                  Product 4  
+                    <!-- Product 4 -->
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/energy/metering-panel.jpg" alt="Energy Meter">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Energy Meter">
                             <h5>Smart Energy Meter</h5>
                             <p class="small text-muted">Sub-metering solutions for tracking energy consumption across different facility zones</p>
                             <a href="/products/energy-meters/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
@@ -1286,9 +1249,9 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-    </section> -->
+    </section>
 
-    <!-- SECTION 6: Interested SOLUTIONS -->
+    <!-- SECTION 6: Related SOLUTIONS -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="section-header">
@@ -1352,13 +1315,13 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5>Quick Links</h5>
-                    <a class="d-block mb-2" href="/index.html">Home</a>
-                    <a class="d-block mb-2" href="/about/index.html">About Us</a>
-                    <a class="d-block mb-2" href="/solutions/index.html">Solutions</a>
-                    <a class="d-block mb-2" href="/projects/index.html">Projects</a>
-                    <a class="d-block mb-2" href="/products/index.html">Products</a>
-                    <a class="d-block mb-2" href="/technologies/index.html">Technologies</a>
-                    <a class="d-block mb-2" href="/contact/index.html">Contact</a>
+                    <a href="/index.html">Home</a>
+                    <a href="/about/index.html">About Us</a>
+                    <a href="/solutions/index.html">Solutions</a>
+                    <a href="/projects/index.html">Projects</a>
+                    <a href="/products/index.html">Products</a>
+                    <a href="/technologies/index.html">Technologies</a>
+                    <a href="/contact/index.html">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Business Hours</h5>
@@ -1383,64 +1346,43 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Header Scroll
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('navBox');
-            if (window.scrollY > 50) { 
-                header.classList.add('scrolled'); 
-                if(!document.getElementById('mainNav').classList.contains('active')) {
-                   const mobileToggle = document.querySelector('.mobile-toggle');
-                   if(mobileToggle) mobileToggle.style.color = "#111827";
-                   document.querySelectorAll('.header-icons i').forEach(icon => icon.style.color = "#111827");
-                }
-            } else { 
-                header.classList.remove('scrolled'); 
-                if(!document.getElementById('mainNav').classList.contains('active')) {
-                   const mobileToggle = document.querySelector('.mobile-toggle');
-                   if(mobileToggle) mobileToggle.style.color = "#fff";
-                   document.querySelectorAll('.header-icons i').forEach(icon => icon.style.color = "#fff");
-                }
-            }
-        });
-
-        // Mobile Menu Toggle Function
+        // SIMPLIFIED JavaScript - only mobile menu functionality
         function toggleMobileMenu() {
-            const navMenu = document.getElementById('mainNav');
+            const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            const icons = document.querySelectorAll('.header-icons i');
-            const logoText = header.querySelector('.header-logo h2');
-            const logoSpan = header.querySelector('.header-logo h2 span');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
             
-            navMenu.classList.toggle('active');
-
-            // Handle styling when menu is open/closed
-            if(navMenu.classList.contains('active')) {
-                // Menu Open: Force white background style
+            nav.classList.toggle('active');
+            
+            // Force white background when menu is open on mobile
+            if(nav.classList.contains('active')) {
                 header.style.background = "#fff";
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
-                if(mobileToggle) mobileToggle.style.color = "#333";
-                icons.forEach(icon => icon.style.color = "#333");
-                if(logoText) logoText.style.color = "#004ca3";
-                if(logoSpan) logoSpan.style.color = "#ffcc00";
-            } else {
-                // Menu Closed: Revert to standard scroll logic
-                header.style.background = "";
-                header.style.borderBottom = "";
+                mobileToggle.style.color = "#333";
                 
-                if(window.scrollY > 50) {
-                    // Scrolled state
-                    if(mobileToggle) mobileToggle.style.color = "#111827";
-                    icons.forEach(icon => icon.style.color = "#111827");
-                    if(logoText) logoText.style.color = "#004ca3";
-                    if(logoSpan) logoSpan.style.color = "#ffcc00";
-                } else {
-                    // Transparent state
-                    if(mobileToggle) mobileToggle.style.color = "#fff";
-                    icons.forEach(icon => icon.style.color = "#fff");
-                    if(logoText) logoText.style.color = "#fff";
-                    if(logoSpan) logoSpan.style.color = "#ffcc00";
-                }
+                // Change nav link colors to dark when menu is open
+                document.querySelectorAll('.nav-link-custom').forEach(link => {
+                    link.style.color = "#333";
+                });
+                
+                // Change icons to dark
+                document.querySelectorAll('.header-icons i').forEach(icon => {
+                    icon.style.color = "#333";
+                });
+            } else {
+                header.style.background = "#ffffff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
+                mobileToggle.style.color = "#111827";
+                
+                // Reset nav link colors to black
+                document.querySelectorAll('.nav-link-custom').forEach(link => {
+                    link.style.color = "#111827";
+                });
+                
+                // Reset icons to black
+                document.querySelectorAll('.header-icons i').forEach(icon => {
+                    icon.style.color = "#111827";
+                });
             }
         }
 
@@ -1457,7 +1399,7 @@
             }
         });
 
-        // UPDATED: Mobile Dropdown Toggle (Arrow Click Only)
+        // Mobile Dropdown Toggle (Arrow Click Only)
         document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggleBtn => {
             toggleBtn.addEventListener('click', function(e) {
                 if (window.innerWidth <= 991) {
@@ -1478,7 +1420,7 @@
             });
         });
 
-        // Interactive Map Logic - FIXED VERSION
+        // Interactive Map Logic
         function showScenario(id) {
             // Update hotspots
             document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
@@ -1522,11 +1464,9 @@
         
         // Initialize first scenario as active on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Hide all scenarios except the first one
+            // Ensure content-2 is active initially (as per your original file)
             const allScenarios = document.querySelectorAll('.scenario-box');
             allScenarios.forEach(el => {
-                // Ensure only content-2 is active initially (as per your original file)
-                // Or change to content-1 if preferred
                 if (el.id !== 'content-2') {
                     el.style.display = 'none';
                     el.classList.remove('active');
@@ -1535,6 +1475,11 @@
                     el.classList.add('active');
                 }
             });
+            
+            // Ensure hotspot-2 is active
+            document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
+            const hotspot2 = document.getElementById('hotspot-2');
+            if (hotspot2) hotspot2.classList.add('active');
         });
     </script>
 </body>

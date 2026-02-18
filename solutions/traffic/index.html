@@ -47,25 +47,19 @@
             color: var(--tf-blue); 
         }
 
-        /* --- RESPONSIVE HEADER --- */
+        /* --- HEADER - SOLID WHITE WITH LOGO --- */
         .header-fix {
             width: 100%;
             position: fixed;
             top: 0;
             z-index: 1030;
             min-height: var(--header-height);
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(12px);
+            background: #ffffff; /* SOLID WHITE */
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        .header-fix.scrolled { 
-            background: rgba(255, 255, 255, 0.98); 
-            border-bottom: 1px solid rgba(0,0,0,0.05); 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
-        }
-
         .header-container { 
             max-width: 1440px; 
             margin: 0 auto; 
@@ -74,6 +68,14 @@
             justify-content: space-between; 
             padding: 0 20px; 
             height: var(--header-height); 
+        }
+        
+        /* Logo image styling */
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
         
         /* Desktop Menu */
@@ -99,7 +101,7 @@
         } 
         
         .nav-link-custom { 
-            color: #fff; 
+            color: #111827; /* SOLID BLACK */
             font-weight: 600; 
             font-size: 13px; 
             text-transform: uppercase; 
@@ -112,23 +114,7 @@
         }
         
         .nav-link-custom:hover { 
-            color: var(--tf-yellow); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom { 
-            color: var(--tf-dark); 
-        }
-        
-        .header-fix.scrolled .nav-link-custom:hover { 
             color: var(--tf-blue); 
-        }
-        
-        .header-fix.scrolled .header-logo h2 { 
-            color: var(--tf-blue) !important; 
-        }
-        
-        .header-fix.scrolled .header-logo h2 span { 
-            color: var(--tf-yellow) !important; 
         }
         
         /* Icons & Toggle Wrapper */
@@ -142,15 +128,17 @@
             display: flex !important; 
             align-items: center; 
             gap: 15px; 
-            color: white; 
         }
         
-        .header-fix.scrolled .header-icons { 
-            color: var(--tf-dark) !important; 
+        .header-icons i {
+            color: #111827; /* SOLID BLACK */
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
         }
         
-        .header-fix.scrolled .mobile-toggle { 
-            color: var(--tf-dark) !important; 
+        .header-icons i:hover {
+            color: var(--tf-blue);
         }
         
         /* Dropdown Wrapper */
@@ -164,7 +152,7 @@
         /* Toggle Icon (Hidden on Desktop, Visible Mobile) */
         .mobile-dropdown-toggle {
             display: none;
-            color: inherit;
+            color: #111827;
             padding: 10px 15px;
             cursor: pointer;
             font-size: 14px;
@@ -175,6 +163,7 @@
             display: inline-block;
             margin-left: 5px;
             font-size: 11px;
+            color: #111827;
         }
         
         .dropdown-menu-custom {
@@ -214,14 +203,6 @@
                 visibility: visible;
                 transform: translateX(-50%) translateY(0);
             }
-            
-            .nav-item-dropdown:hover .nav-link-custom {
-                color: var(--tf-yellow);
-            }
-            
-            .header-fix.scrolled .nav-item-dropdown:hover .nav-link-custom {
-                color: var(--tf-blue);
-            }
         }
         
         .dropdown-link {
@@ -255,11 +236,11 @@
             padding-bottom: 5px;
         }
         
-        /* Mobile Menu Toggle */
+        /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: white; 
+            color: #111827; /* SOLID BLACK */
             cursor: pointer; 
             background: none;
             border: none;
@@ -270,14 +251,16 @@
         @media (max-width: 991px) {
             .header-fix { 
                 height: auto; 
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(8px);
             }
             
             .header-container {
                 padding: 0 15px;
                 flex-wrap: wrap;
                 min-height: 70px;
+            }
+            
+            .logo-img {
+                height: 50px;
             }
             
             .nav-menu {
@@ -433,12 +416,8 @@
             /* Header Elements */
             .mobile-toggle { 
                 display: block; 
-                color: var(--tf-blue);
+                color: #111827;
                 font-size: 22px;
-            }
-            
-            .header-fix.scrolled .mobile-toggle {
-                color: var(--tf-blue);
             }
             
             /* Ensure Icons and Toggle are grouped right */
@@ -450,17 +429,12 @@
             }
             
             .header-icons {
-                color: var(--tf-blue);
+                color: #111827;
                 gap: 12px;
             }
             
-            .header-logo h2 {
-                font-size: 1.3rem !important;
-                color: var(--tf-blue) !important;
-            }
-            
-            .header-logo h2 span {
-                color: var(--tf-yellow) !important;
+            .header-icons i {
+                color: #111827;
             }
             
             /* Mobile adjustments for hero */
@@ -475,7 +449,6 @@
                 min-height: 350px;
             }
             
-            /* Mobile adjustments for traffic cards */
             .traffic-card {
                 padding: 25px 20px;
                 margin-bottom: 20px;
@@ -485,7 +458,6 @@
                 font-size: 2.5rem;
             }
             
-            /* Mobile adjustments for interactive container */
             .interactive-container {
                 padding: 15px;
             }
@@ -494,7 +466,6 @@
                 height: 150px;
             }
             
-            /* Mobile adjustments for stats */
             .stat-circle {
                 width: 120px;
                 height: 120px;
@@ -505,7 +476,6 @@
                 font-size: 2rem;
             }
             
-            /* Mobile adjustments for scenario boxes */
             .scenario-wrapper {
                 padding: 30px 0;
                 min-height: auto;
@@ -517,7 +487,6 @@
                 margin-bottom: 15px;
             }
             
-            /* Mobile adjustments for hotspot labels */
             .hotspot-label {
                 font-size: 10px;
                 padding: 4px 8px;
@@ -541,8 +510,8 @@
                 gap: 8px !important; 
             }
             
-            .header-logo h2 { 
-                font-size: 1.1rem !important; 
+            .logo-img {
+                height: 40px;
             }
             
             .hero-title { 
@@ -601,7 +570,7 @@
         .hero-section {
             height: 65vh;
             min-height: 500px;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/smart  trafic hero.jpg'); 
+            background:  url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/smart  trafic hero.jpg'); 
             background-size: cover;
             background-position: center;
             display: flex;
@@ -846,17 +815,18 @@
             margin-bottom: 30px;
         }
         
-        /* Blue Links in Footer */
         .footer a {
             color: var(--tf-blue) !important;
             text-decoration: none;
             transition: 0.3s;
             font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
         }
         
         .footer a:hover {
             color: var(--tf-yellow) !important;
-            text-decoration: underline;
+            padding-left: 5px;
         }
         
         .copyright {
@@ -1287,7 +1257,6 @@
                 background-position: center 70%;
             }
             
-            /* Mobile-specific hotspot adjustments */
             .hotspot {
                 transform: translate(-50%, -50%) scale(0.9);
             }
@@ -1400,16 +1369,14 @@
 
 <body>
 
-    <!-- HEADER -->
+    <!-- HEADER - SOLID WHITE WITH LOGO -->
     <header>
-        <div id="navBox" class="header-fix scrolled">
+        <div id="navBox" class="header-fix">
             <div class="header-container">
                 <!-- LOGO (Left) -->
                 <div class="header-logo">
                     <a href="/index.html">
-                        <h2 style="color:var(--tf-blue); margin:0; font-family:'Montserrat'; font-weight:900;">
-                            TONGFANG <span style="color:var(--tf-yellow)">BMS</span>
-                        </h2>
+                        <img src="/assets/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
                 </div>
                 
@@ -1457,8 +1424,8 @@
                                 <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
                                 <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
                                 <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                           <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                         </div>
+                                <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                            </div>
                         </div>
                     </div>
                     
@@ -1505,12 +1472,12 @@
                 
                 <!-- RIGHT SIDE GROUP (Icons + Hamburger) -->
                 <div class="header-right-actions">
-                    <!-- HAMBURGER ICON (Visible on Mobile) - Moved before icons -->
+                    <!-- HAMBURGER ICON (Visible on Mobile) -->
                     <button class="mobile-toggle" onclick="toggleMobileMenu()">
                         <i class="fa fa-bars"></i>
                     </button>
                     
-                    <!-- Header Icons - Now positioned after hamburger -->
+                    <!-- Header Icons -->
                     <div class="header-icons">
                         <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                         <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
@@ -1524,7 +1491,7 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Road Traffic<br>INTELLIGENT TRAFFIC SYSTEM<br>SOLUTION</h1>
+                <h1 class="hero-title">  INTELLIGENT TRAFFIC <br>SYSTEM</h1>
             </div>
         </div>
     </section>
@@ -1545,7 +1512,7 @@
 
             <div class="d-none d-md-block">
                 <span class="text-dark fw-bold small" style="letter-spacing:1px;">
-                    <i class="fa fa-traffic-light text-primary me-2"></i>
+                    <i class="fa fa-traffic-light text-primary me-2" style="color: var(--tf-blue) !important;"></i>
                     FLUID URBAN MOBILITY
                 </span>
             </div>
@@ -1589,18 +1556,21 @@
             </div>
         </div>
     </section>
-<!-- Interactive Map with Hotspots -->
+    
+    <!-- Interactive Map with Hotspots -->
+    <section class="py-5 bg-white">
+        <div class="container">
             <div class="row justify-content-center mb-5">
-                
                 <div class="col-12">
-                     <div class="interactive-map-container">
-                 <h2 style="text-align: center;">Solution Overview</h2>
-
-                       <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overview.png" alt="Traffic Intersection Overview" class="map-img">
-                       <!-- Hotspots will be dynamically generated here -->
+                    <div class="interactive-map-container">
+                        <h2 style="text-align: center; padding-top: 20px;">Solution Overview</h2>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/overview.png" alt="Traffic Intersection Overview" class="map-img">
+                        <!-- Hotspots will be dynamically generated here -->
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
     <!-- SOLUTION DETAILS SECTION -->
     <section class="py-5 bg-white scroll-target" id="solutions">
@@ -1946,19 +1916,6 @@
         </div>
     </section>
 
-    <!-- CALL TO ACTION 
-    <section class="container py-5 mb-5 text-center">
-        <div class="p-5 border rounded shadow-sm bg-white">
-            <h2 class="fw-bold mb-3">Ready to Optimize Your City's Traffic Flow?</h2>
-            <p class="text-secondary mb-4">Let our traffic engineering specialists conduct a comprehensive assessment of your transportation network.</p>
-            <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="/contact/index.html" class="btn btn-primary btn-lg px-5">Request Traffic Study</a>
-                <a href="/solutions/smart-city/index.html" class="btn btn-outline-dark btn-lg px-4">Smart City Integration</a>
-                <a href="/projects/index.html" class="btn btn-outline-primary btn-lg px-4">View Traffic Projects</a>
-            </div>
-        </div>
-    </section>
--->
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container py-5">
@@ -1971,13 +1928,13 @@
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <h5>Quick Links</h5>
-                    <a class="btn-link" href="../index.html">Home</a><br>
-                    <a class="btn-link" href="/about/index.html">About Us</a><br>
-                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
-                    <a class="btn-link" href="/projects/index.html">Projects</a><br>
-                    <a class="btn-link" href="/products/index.html">Products</a><br>
-                    <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
-                    <a class="btn-link" href="/contact/index.html">Contact</a>
+                    <a href="../index.html">Home</a>
+                    <a href="/about/index.html">About Us</a>
+                    <a href="/solutions/index.html">Solutions</a>
+                    <a href="/projects/index.html">Projects</a>
+                    <a href="/products/index.html">Products</a>
+                    <a href="/technologies/index.html">Technologies</a>
+                    <a href="/contact/index.html">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Business Hours</h5>
@@ -2253,8 +2210,13 @@
             const scenarioContainer = document.getElementById('traffic-scenarios');
             
             // Clear existing content
-            mapContainer.querySelectorAll('.hotspot').forEach(h => h.remove());
-            scenarioContainer.innerHTML = '';
+            if (mapContainer) {
+                mapContainer.querySelectorAll('.hotspot').forEach(h => h.remove());
+            }
+            
+            if (scenarioContainer) {
+                scenarioContainer.innerHTML = '';
+            }
             
             // Create hotspots
             Object.keys(hotspotData).forEach(id => {
@@ -2279,13 +2241,17 @@
                 hotspot.addEventListener('mouseenter', () => handleHotspotHover(parseInt(id), true));
                 hotspot.addEventListener('mouseleave', () => handleHotspotHover(parseInt(id), false));
                 
-                mapContainer.appendChild(hotspot);
+                if (mapContainer) {
+                    mapContainer.appendChild(hotspot);
+                }
                 
                 // Create scenario content container
                 const scenarioBox = document.createElement('div');
                 scenarioBox.id = `content-${id}`;
                 scenarioBox.className = `scenario-box ${parseInt(id) === currentTrafficScenario ? 'active' : ''}`;
-                scenarioContainer.appendChild(scenarioBox);
+                if (scenarioContainer) {
+                    scenarioContainer.appendChild(scenarioBox);
+                }
             });
             
             // Initialize first scenario content
@@ -2335,19 +2301,23 @@
             // Scroll to scenario content
             const offset = 160;
             const scenarioContainer = document.getElementById('traffic-scenarios');
-            const elementPosition = scenarioContainer.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+            if (scenarioContainer) {
+                const elementPosition = scenarioContainer.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
         
         function updateScenarioContent(id) {
             const data = hotspotData[id].content;
             const scenarioBox = document.getElementById(`content-${id}`);
             const allBoxes = document.querySelectorAll('.scenario-box');
+            
+            if (!scenarioBox) return;
             
             // Hide all boxes with fade out
             allBoxes.forEach(box => {
@@ -2571,6 +2541,8 @@
         
         function highlightMapArea(id) {
             const mapContainer = document.querySelector('.interactive-map-container');
+            if (!mapContainer) return;
+            
             const existingHighlight = document.querySelector('.map-highlight');
             
             if (existingHighlight) {
@@ -2613,6 +2585,8 @@
         let avgSpeed = 45;
         let queueLength = 8;
         let waitTime = 25;
+        let simulationInterval = null;
+        let isSimulationRunning = false;
         
         const lightStates = {
             north: 'red',
@@ -2622,10 +2596,15 @@
         };
         
         function updateStats() {
-            document.getElementById('vehicle-count').textContent = vehicleCount;
-            document.getElementById('avg-speed').textContent = avgSpeed;
-            document.getElementById('queue-length').textContent = queueLength;
-            document.getElementById('wait-time').textContent = waitTime;
+            const vehicleCountEl = document.getElementById('vehicle-count');
+            const avgSpeedEl = document.getElementById('avg-speed');
+            const queueLengthEl = document.getElementById('queue-length');
+            const waitTimeEl = document.getElementById('wait-time');
+            
+            if (vehicleCountEl) vehicleCountEl.textContent = vehicleCount;
+            if (avgSpeedEl) avgSpeedEl.textContent = avgSpeed;
+            if (queueLengthEl) queueLengthEl.textContent = queueLength;
+            if (waitTimeEl) waitTimeEl.textContent = waitTime;
         }
         
         function startSimulation() {
@@ -2690,17 +2669,19 @@
             updateStats();
             
             const infoDiv = document.querySelector('.system-info');
-            infoDiv.innerHTML = `
-                <h5><i class="fa fa-magic text-primary me-2"></i>Signals Optimized!</h5>
-                <p class="mb-0">AI algorithms have adjusted signal timing. Traffic flow improved by 25%.</p>
-            `;
-            
-            setTimeout(() => {
+            if (infoDiv) {
                 infoDiv.innerHTML = `
-                    <h5><i class="fa fa-info-circle text-primary me-2"></i>How Intelligent Traffic Systems Work</h5>
-                    <p class="mb-0">Our comprehensive traffic solutions use AI algorithms, real-time vehicle detection, and predictive analytics to optimize traffic flow, enforce regulations, and reduce congestion by up to 40%.</p>
+                    <h5><i class="fa fa-magic text-primary me-2"></i>Signals Optimized!</h5>
+                    <p class="mb-0">AI algorithms have adjusted signal timing. Traffic flow improved by 25%.</p>
                 `;
-            }, 3000);
+                
+                setTimeout(() => {
+                    infoDiv.innerHTML = `
+                        <h5><i class="fa fa-info-circle text-primary me-2"></i>How Intelligent Traffic Systems Work</h5>
+                        <p class="mb-0">Our comprehensive traffic solutions use AI algorithms, real-time vehicle detection, and predictive analytics to optimize traffic flow, enforce regulations, and reduce congestion by up to 40%.</p>
+                    `;
+                }, 3000);
+            }
         }
         
         function resetSimulation() {
@@ -2721,12 +2702,15 @@
         
         function changeLightColor(direction, color) {
             const light = document.getElementById(`${direction}-light`);
-            light.className = `signal-light signal-${color}`;
-            lightStates[direction] = color;
+            if (light) {
+                light.className = `signal-light signal-${color}`;
+                lightStates[direction] = color;
+            }
         }
         
         function switchTrafficView(view) {
             const infoDiv = document.querySelector('.system-info');
+            if (!infoDiv) return;
             
             switch(view) {
                 case 'enforcement':
@@ -2753,7 +2737,9 @@
             
             // Update active button
             document.querySelectorAll('.traffic-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
         }
         
         // ============================================

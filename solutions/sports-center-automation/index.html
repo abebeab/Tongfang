@@ -15,7 +15,7 @@
     <!-- Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
-    <style>
+   <style>
         :root {
             /* BRAND COLORS */
             --tf-blue: #004ca3;       
@@ -54,14 +54,14 @@
             text-decoration: none !important;
         }
 
-        /* --- HEADER - SOLID WHITE WITH LOGO --- */
+        /* === HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS === */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
             min-height: var(--header-height); 
-            background: #ffffff; /* SOLID WHITE */
+            background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
@@ -73,7 +73,7 @@
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            padding: 0 20px; 
+            padding: 0 30px;
             height: var(--header-height); 
         }
         
@@ -96,29 +96,158 @@
         }
         
         .nav-link-custom { 
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             font-weight: 600; 
             font-size: 13px; 
+            transition: 0.3s; 
             text-transform: uppercase; 
             line-height: var(--header-height); 
             display: block; 
             position: relative; 
             letter-spacing: 0.5px;
+            white-space: nowrap;
             text-decoration: none;
-            cursor: pointer;
         }
         
         .nav-link-custom:hover { 
             color: var(--tf-blue); 
         }
-        
-        /* Right Side Actions Wrapper */
-        .header-right-actions {
+
+        /* Make parent links clickable */
+        .dropdown-parent-link {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 5px;
+        }
+
+        /* ENHANCED DROPDOWN STYLES - FULL WIDTH WITH YELLOW TOP BORDER */
+        .nav-item-dropdown { 
+            position: static; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+
+        .dropdown-menu-custom::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb {
+            background: var(--tf-blue);
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb:hover {
+            background: #003d82;
+        }
+
+        .dropdown-menu-custom {
+            position: absolute;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            width: 100vw;
+            background: #fff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: 1100;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* inner container to align with header content */
+        .dropdown-inner {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 30px;
+            text-align: left;
+        }
+
+        /* Special styling for Solutions dropdown */
+        .nav-item-dropdown:first-child .dropdown-inner {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Invisible bridge for hover */
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+
+        /* On hover: swipe down + fade in */
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Link Styles */
+        .dropdown-link {
+            color: #4b5563; 
+            font-size: 13px; 
+            font-weight: 500;
+            padding: 6px 0; 
+            display: block;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+            text-decoration: none;
         }
         
+        .dropdown-link:hover {
+            color: var(--tf-blue);
+            padding-left: 8px;
+            border-bottom-color: var(--tf-yellow);
+        }
+        
+        .dropdown-category {
+            color: var(--tf-blue); 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            margin: 0 0 5px 0;
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 3px;
+        }
+
+        .more-link {
+            color: var(--tf-blue);
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .more-link:hover {
+            padding-left: 5px;
+        }
+
+        /* Header icons - always black */
         .header-icons { 
             display: flex !important; 
             align-items: center; 
@@ -126,7 +255,7 @@
         }
         
         .header-icons i {
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
@@ -136,201 +265,133 @@
             color: var(--tf-blue);
         }
 
-        /* Desktop Arrow */
-        .desktop-arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 11px;
-            color: #111827;
-        }
-
-        /* Mobile Toggle Button (Hidden on Desktop) */
-        .mobile-dropdown-toggle {
-            display: none;
-            color: #111827;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .dropdown-menu-custom {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px); 
-            width: 700px;
-            background: #fff;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-            border-top: 3px solid var(--tf-yellow);
-            border-radius: 0 0 8px 8px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1100;
-        }
-
-        /* Hover Bridge */
-        .dropdown-menu-custom::before {
-            content: "";
-            position: absolute;
-            top: -20px; left: 0; width: 100%; height: 20px; background: transparent;
-        }
-
-        /* Hover Effect (Desktop Only) */
-        @media (min-width: 992px) {
-            .nav-item-dropdown:hover .dropdown-menu-custom { 
-                opacity: 1; 
-                visibility: visible; 
-                transform: translateX(-50%) translateY(0); 
-            }
-        }
-
-        /* Link Styles */
-        .dropdown-link {
-            color: #555; 
-            font-size: 13px; 
-            font-weight: 600;
-            padding: 6px 10px; 
-            border-radius: 4px; 
-            display: block;
-            border-left: 2px solid transparent;
-            text-decoration: none;
-        }
-        
-        .dropdown-link:hover {
-            background: #f4f7fa; 
-            color: var(--tf-blue);
-            border-left: 2px solid var(--tf-blue);
-            padding-left: 15px;
-        }
-        
-        .dropdown-category {
-            grid-column: span 3; 
-            color: var(--tf-blue); 
-            font-size: 11px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            margin-top: 10px; 
-            margin-bottom: 5px;
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 5px;
-        }
-
         /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             cursor: pointer; 
             background: none;
             border: none;
-            padding: 0;
+            padding-right: 20px;
         }
 
-        /* --- MOBILE ADJUSTMENTS (Max-Width 991px) --- */
+        /* Desktop arrow */
+        .desktop-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 11px;
+        }
+        
+        /* Mobile dropdown toggle */
+        .mobile-dropdown-toggle {
+            display: none;
+        }
+
+        /* === RESPONSIVE BREAKPOINTS === */
+        
+        @media (max-width: 1200px) { 
+            .dropdown-inner { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            .nav-item-dropdown:first-child .dropdown-inner { 
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Tablet and Below */
         @media (max-width: 991px) {
             .header-fix { height: auto; }
             
+            .mobile-toggle { 
+                display: block; 
+                order: 2;
+                color: #111827;
+            }
+            
+            .header-icons { 
+                display: flex !important; 
+                order: 3;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .header-icons i {
+                color: #111827;
+            }
+            
             .header-container {
                 padding: 0 20px;
-                justify-content: space-between; 
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto;
             }
             
             .logo-img {
                 height: 50px;
             }
             
-            .header-right-actions {
-                display: flex;
-                flex-direction: row;
-                gap: 15px;
-            }
-            
-            .mobile-toggle {
-                display: block;
-                order: 1;
-                margin-right: 5px;
-                color: #111827;
-            }
-            
-            .header-icons {
-                order: 2;
-                margin-left: 0;
-                margin-right: 0;
-                gap: 15px !important;
-            }
-
-            .header-icons i {
-                font-size: 18px !important;
-                color: #111827;
-            }
-            
             .nav-menu {
-                display: none; 
+                display: none;
                 position: absolute;
-                top: 80px; left: 0; width: 100%;
+                top: 80px; 
+                left: 0; 
+                width: 100%;
                 background: white;
                 flex-direction: column;
                 height: auto;
-                padding: 0;
+                padding: 20px 0;
                 margin: 0;
+                gap: 0;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                 align-items: flex-start;
                 overflow-y: auto;
                 max-height: 80vh;
+                z-index: 1050;
             }
             
-            .nav-menu.active { display: flex; }
+            .nav-menu.active { 
+                display: flex; 
+            }
 
             .nav-link-custom { 
                 color: #333; 
-                width: 100%; 
-                padding: 15px 25px; 
-                line-height: 1.5;
-                border-bottom: 1px solid #eee;
+                width: auto; 
+                flex-grow: 1; 
+                padding: 15px 0 15px 30px; 
+                line-height: 1.5; 
+                border-bottom: none; 
             }
             
             .nav-item-dropdown { 
                 width: 100%; 
-                flex-direction: column;
+                flex-wrap: wrap; 
+                align-items: center; 
                 height: auto;
                 border-bottom: 1px solid #eee;
+                position: relative;
             }
             
-            .mobile-link-wrapper {
-                display: flex;
-                width: 100%;
-                align-items: center;
-                justify-content: space-between;
-            }
-            
-            .nav-item-dropdown .nav-link-custom {
-                border-bottom: none; 
-                width: auto;
-                flex-grow: 1;
-            }
-
             .mobile-dropdown-toggle {
-                display: flex;
+                display: flex !important;
                 align-items: center;
                 justify-content: center;
-                width: 60px;
+                width: 50px;
                 height: 100%;
                 border-left: 1px solid #eee;
-                color: #333;
+                color: #555;
+                cursor: pointer;
             }
             
-            .mobile-dropdown-toggle:active {
-                background-color: #f0f0f0;
+            .desktop-arrow {
+                display: none;
             }
 
-            .desktop-arrow { display: none; }
-            
             .dropdown-menu-custom {
                 position: static;
                 width: 100%;
@@ -340,166 +401,668 @@
                 display: none;
                 box-shadow: none;
                 border-top: none;
-                padding: 10px 30px 20px 30px;
+                padding: 10px 30px;
                 background: #f9f9f9;
-                grid-template-columns: 1fr; 
+                max-height: none;
+                overflow-y: visible;
+                pointer-events: auto;
+                justify-content: flex-start;
             }
             
-            .dropdown-menu-custom::before { display: none; }
+            .dropdown-inner { 
+                grid-template-columns: 1fr; 
+                padding: 0;
+                gap: 10px;
+            }
+            
+            .nav-item-dropdown:first-child .dropdown-inner { 
+                grid-template-columns: 1fr;
+            }
             
             .nav-item-dropdown.active .dropdown-menu-custom { 
-                display: grid; 
+                display: block; 
             }
             
-            .nav-item-dropdown.active .mobile-dropdown-toggle i {
-                transform: rotate(180deg);
-                transition: transform 0.3s;
+            .nav-item-dropdown.active .mobile-dropdown-toggle { 
+                background: #eee; 
+                color: var(--tf-blue); 
             }
             
-            .dropdown-category { grid-column: span 1; }
+            .dropdown-category { 
+                grid-column: span 1; 
+            }
 
-            .hero-title {
-                font-size: 2.5rem !important;
-            }
+            /* Hero Adjustments */
             .hero-section {
                 height: 60vh;
                 min-height: 400px;
             }
             
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-sub {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Hotspot Adjustments */
+            .hotspot {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            
             .hotspot-label {
-                display: none;
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+            
+            /* Feature columns */
+            .feature-columns {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+            
+            .challenge-cards-container {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Benefits section */
+            .col-md-3 {
+                margin-bottom: 30px;
+            }
+            
+            /* Products section */
+            .col-lg-3 {
+                margin-bottom: 20px;
+            }
+            
+            /* Topology Grid */
+            .topology-grid {
+                grid-template-columns: 1fr !important;
+                grid-template-rows: auto !important;
+                gap: 20px !important;
+                max-width: 100% !important;
+                min-height: auto !important;
+            }
+            
+            .hub {
+                grid-column: 1 !important;
+                grid-row: auto !important;
+                margin: 0 0 20px 0 !important;
+            }
+            
+            .system {
+                grid-column: 1 !important;
+                grid-row: auto !important;
+                margin-bottom: 10px;
+            }
+            
+            .topology-grid svg {
+                display: none !important;
             }
         }
 
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .hero-title {
+                font-size: 2rem !important;
+            }
+            
+            .hero-title br {
+                display: none;
+            }
+            
+            .scenario-box .row {
+                flex-direction: column;
+            }
+            
+            .col-lg-5, .col-lg-7 {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .challenge-card, .solution-card {
+                margin-bottom: 20px;
+            }
+            
+            .hotspot-dot {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            
+            .hotspot-label {
+                font-size: 9px;
+                padding: 3px 8px;
+                margin-left: 5px;
+                display: none;
+            }
+            
+            .topology-img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .swiper-products .swiper-slide {
+                width: 85% !important;
+            }
+            
+            .section-header h2 {
+                font-size: 28px !important;
+            }
+            
+            .row.g-4 .col-lg-3 {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+            
+            .topology-section {
+                padding: 20px !important;
+            }
+            
+            .solution-section {
+                padding: 25px !important;
+            }
+            
+            .feature-column h4 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Small Mobile */
         @media (max-width: 576px) {
-            .header-icons { gap: 12px !important; }
-            .header-icons i { font-size: 16px !important; }
-            .logo-img { height: 40px; }
-            .mobile-toggle { font-size: 20px; }
-            .header-container { padding: 0 10px; }
-            .hero-title { font-size: 2rem !important; }
+            .header-icons {
+                gap: 12px !important;
+            }
+            
+            .header-icons i {
+                font-size: 16px !important;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .mobile-toggle {
+                font-size: 20px;
+                padding-right: 10px;
+            }
+            
+            .header-container {
+                padding: 0 10px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem !important;
+            }
+            
+            .hero-sub {
+                font-size: 0.9rem !important;
+            }
+            
+            .project-nav-bar {
+                top: 70px;
+            }
+            
+            .project-nav-bar .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-breadcrumb {
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .nav-breadcrumb .breadcrumb {
+                flex-wrap: nowrap;
+            }
+            
+            .nav-breadcrumb .breadcrumb-item {
+                font-size: 10px;
+            }
+            
+            .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+                padding: 0 5px;
+            }
+            
+            .project-nav-bar span {
+                display: none;
+            }
+            
+            .footer .col-lg-4, 
+            .footer .col-lg-3, 
+            .footer .col-lg-2 {
+                margin-bottom: 30px;
+            }
+            
+            .line {
+                width: 80% !important;
+                max-width: 300px;
+            }
+            
+            .related-card img {
+                height: 150px;
+            }
+            
+            .product-card {
+                padding: 30px 15px !important;
+            }
+            
+            .product-card img {
+                height: 120px !important;
+            }
+            
+            .benefit-icon {
+                font-size: 2.5rem !important;
+            }
         }
 
-        /* --- 2. HERO SECTION --- */
+        /* Extra Small */
+        @media (max-width: 400px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .hotspot-dot {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .section-header h2 {
+                font-size: 24px !important;
+            }
+            
+            .related-card, 
+            .product-card {
+                margin-bottom: 20px;
+            }
+            
+            .product-card img {
+                height: 100px;
+            }
+            
+            .swiper-slide {
+                width: 100% !important;
+            }
+        }
+
+        /* === 2. HERO SECTION === */
         .hero-section {
-            height: 65vh; min-height: 500px;
-            background:  url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/sports-center-hero.png');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; position: relative;
+            height: 65vh; 
+            min-height: 500px;
+            background: url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/sports-center-hero.png');
+            background-size: cover; 
+            background-position: center;
+            display: flex; 
+            align-items: center; 
+            position: relative;
         }
-        .hero-content { 
-            position: relative; z-index: 2; padding-top: 60px; animation: fadeUp 1s ease-out; 
-            text-shadow: 0 2px 20px rgba(0,0,0,0.7); 
-        }
-        .hero-title { font-size: 3.5rem; font-weight: 900; color: #fff; margin-bottom: 15px; }
-        .hero-sub { color: #fff; font-size: 1.25rem; max-width: 700px; font-weight: 600; }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+         
 
-        /* --- 3. SUB-NAV --- */
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            animation: fadeUp 1s ease-out; 
+        }
+        
+        .hero-title { 
+            font-size: 3.5rem; 
+            font-weight: 900; 
+            color: #fff; 
+            margin-bottom: 15px; 
+            text-shadow: 0 3px 8px rgba(0,0,0,0.45);
+        }
+        
+        .hero-sub { 
+            color: #fff; 
+            font-size: 1.25rem; 
+            max-width: 700px; 
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes fadeUp { 
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
+
+        /* === 3. SUB-NAV === */
         .project-nav-bar {
-            position: sticky; top: 80px; z-index: 1020;
-            background: #fff; padding: 15px 0;
+            position: sticky; 
+            top: var(--header-height);
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
-        .nav-breadcrumb .breadcrumb-item a { color: #666; font-weight: 700; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; text-decoration: none; }
-        .nav-breadcrumb .breadcrumb-item a:hover, .nav-breadcrumb .breadcrumb-item.active a { color: var(--tf-blue) !important; }
-        .nav-breadcrumb .breadcrumb-item.active::after {
-            content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 3px; background: var(--tf-yellow); border-radius: 10px;
+        .nav-breadcrumb .breadcrumb-item a { 
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            text-decoration: none; 
         }
-        .nav-breadcrumb .breadcrumb-item { position: relative; }
-        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { content: "|"; color: #ccc; padding: 0 10px; }
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a { 
+            color: var(--tf-blue) !important; 
+        }
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            bottom: -6px; 
+            width: 100%; 
+            height: 3px; 
+            background: var(--tf-yellow); 
+            border-radius: 10px;
+        }
+        .nav-breadcrumb .breadcrumb-item { 
+            position: relative; 
+        }
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { 
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px; 
+        }
 
-        /* --- 4. INTERACTIVE MAP --- */
-        .scroll-target { scroll-margin-top: 160px; }
+        /* === 4. INTERACTIVE MAP === */
+        .scroll-target { 
+            scroll-margin-top: 160px; 
+        }
         
         .interactive-map-container {
-            position: relative; width: 100%; border-radius: var(--card-radius); 
-            overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            border: 1px solid rgba(0,0,0,0.05); margin-bottom: 40px;
+            position: relative; 
+            width: 100%; 
+            border-radius: var(--card-radius); 
+            overflow: hidden; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
+            margin-bottom: 40px;
         }
-        .map-img { width: 100%; height: auto; display: block; }
+        .map-img { 
+            width: 100%; 
+            display: block; 
+            filter: brightness(0.9); 
+        }
         
         .hotspot {
-            position: absolute; display: flex; align-items: center; 
-            cursor: pointer; z-index: 10; transform: translate(-50%, -50%);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: absolute; 
+            display: flex; 
+            align-items: center; 
+            cursor: pointer; 
+            z-index: 10; 
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease;
         }
-        .hotspot:hover { z-index: 20; transform: translate(-50%, -50%) scale(1.1); }
+        .hotspot:hover { 
+            transform: translate(-50%, -50%) scale(1.1); 
+        }
         
         .hotspot-dot {
-            width: 36px; height: 36px; background-color: var(--tf-blue); color: #fff;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-family: 'Montserrat', sans-serif; font-size: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: 2px solid #fff;
+            width: 36px; 
+            height: 36px; 
+            background-color: var(--tf-blue); 
+            color: #fff;
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            font-weight: 800; 
+            border: 2px solid #fff; 
             transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         .hotspot.active .hotspot-dot {
-            background-color: var(--tf-yellow); color: var(--tf-dark);
-            transform: scale(1.3); box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
+            background-color: var(--tf-yellow); 
+            color: var(--tf-dark); 
+            transform: scale(1.3); 
+            box-shadow: 0 0 0 5px rgba(255,204,0,0.4);
         }
 
         .hotspot-label {
-            background-color: #fff; color: #333; padding: 6px 14px; border-radius: 20px;
-            font-size: 12px; font-weight: 700; margin-left: 10px; white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12); z-index: 5;
+            background-color: #fff; 
+            padding: 6px 15px 6px 25px; 
+            border-radius: 0 20px 20px 0; 
+            font-size: 12px; 
+            font-weight: 700; 
+            margin-left: -20px; 
+            z-index: -2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            white-space: nowrap;
         }
 
-        .hotspot.active .hotspot-label { background: var(--tf-dark); color: #fff; }
+        .hotspot.active .hotspot-label {
+            background: var(--tf-dark);
+            color: #fff;
+        }
 
-        /* --- 5. SECTIONS GENERAL --- */
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 36px; text-transform: uppercase; letter-spacing: -1px; }
-        .section-header .line { width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px; }
+        /* === 5. SECTIONS GENERAL === */
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 60px; 
+        }
+        .section-header h2 { 
+            font-size: 36px; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+        }
+        .section-header .line { 
+            width: 60px; 
+            height: 5px; 
+            background: var(--tf-yellow); 
+            margin: 15px auto; 
+            border-radius: 10px; 
+        }
 
-        .scenario-wrapper { background: #f8f9fa; border-top: 1px solid #eee; padding: 60px 0; min-height: 500px; }
-        .scenario-box { display: none; opacity: 0; transform: translateY(20px); transition: 0.5s ease; }
-        .scenario-box.active { display: block; opacity: 1; transform: translateY(0); }
+        .scenario-wrapper { 
+            background: #f8f9fa; 
+            border-top: 1px solid #eee; 
+            padding: 80px 0 120px 0; 
+            position: relative;
+            clear: both;
+        }
+        .scenario-box { 
+            display: none; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: 0.5s ease; 
+        }
+        .scenario-box.active { 
+            display: block; 
+            opacity: 1; 
+            transform: translateY(0); 
+            margin-bottom: 60px; 
+        }
         
+        .challenge-card { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--tf-red); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 25px; 
+        }
+        
+        .solution-card { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--tf-blue); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
+        
+        .scenario-img { 
+            width: 100%; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            margin-bottom: 25px; 
+        }
+
+        .challenge-card ul, 
+        .solution-card ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        
+        .challenge-card li, 
+        .solution-card li {
+            margin-bottom: 8px;
+        }
+
         /* Challenge Cards Side by Side */
         .challenge-cards-container {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 30px 0;
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 30px; 
+            margin: 30px 0;
         }
         
         .challenge-image-card {
-            background: white; border-radius: var(--card-radius); overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s ease;
+            background: white; 
+            border-radius: var(--card-radius); 
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease;
         }
         
-        .challenge-image-card:hover { transform: translateY(-5px); }
-        .challenge-image-card img { width: 100%; height: 200px; object-fit: cover; }
-        .challenge-image-card h5 { padding: 20px; margin: 0; border-top: 4px solid var(--tf-red); }
+        .challenge-image-card:hover { 
+            transform: translateY(-5px); 
+        }
+        .challenge-image-card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .challenge-image-card h5 { 
+            padding: 20px; 
+            margin: 0; 
+            border-top: 4px solid var(--tf-red); 
+        }
         
         /* Solution Section */
         .solution-section {
-            background: white; padding: 40px; border-radius: var(--card-radius);
-            margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 4px solid var(--tf-blue);
+            background: white; 
+            padding: 40px; 
+            border-radius: var(--card-radius);
+            margin: 40px 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            border-left: 4px solid var(--tf-blue);
         }
         
-        .solution-section h3 { color: var(--tf-blue); margin-bottom: 20px; }
+        .solution-section h3 { 
+            color: var(--tf-blue); 
+            margin-bottom: 20px; 
+        }
         
         /* Feature Columns */
-        .feature-columns { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin: 40px 0; }
-        .feature-column h4 { color: var(--tf-blue); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--tf-yellow); }
-        .feature-column img { width: 100%; border-radius: 8px; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .feature-columns { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 40px; 
+            margin: 40px 0; 
+        }
+        .feature-column h4 { 
+            color: var(--tf-blue); 
+            margin-bottom: 20px; 
+            padding-bottom: 10px; 
+            border-bottom: 2px solid var(--tf-yellow); 
+        }
+        .feature-column img { 
+            width: 100%; 
+            border-radius: 8px; 
+            margin-top: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
         
         /* Benefits Section */
-        .benefits-list { background: #f8f9fa; padding: 30px; border-radius: var(--card-radius); margin: 30px 0; }
-        .benefits-list h4 { color: var(--tf-blue); margin-bottom: 20px; }
-        .benefits-list ul { padding-left: 20px; }
-        .benefits-list li { margin-bottom: 10px; line-height: 1.6; }
+        .benefits-list { 
+            background: #f8f9fa; 
+            padding: 30px; 
+            border-radius: var(--card-radius); 
+            margin: 30px 0; 
+        }
+        .benefits-list h4 { 
+            color: var(--tf-blue); 
+            margin-bottom: 20px; 
+        }
+        .benefits-list ul { 
+            padding-left: 20px; 
+        }
+        .benefits-list li { 
+            margin-bottom: 10px; 
+            line-height: 1.6; 
+        }
         
         /* Features Section */
-        .features-section { margin: 40px 0; }
-        .features-section h4 { color: var(--tf-blue); margin-bottom: 20px; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .feature-item { background: white; padding: 20px; border-radius: 8px; border-left: 3px solid var(--tf-blue); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .feature-item h6 { color: var(--tf-blue); margin-bottom: 10px; }
+        .features-section { 
+            margin: 40px 0; 
+        }
+        .features-section h4 { 
+            color: var(--tf-blue); 
+            margin-bottom: 20px; 
+        }
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+        .feature-item { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border-left: 3px solid var(--tf-blue); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
+        .feature-item h6 { 
+            color: var(--tf-blue); 
+            margin-bottom: 10px; 
+        }
         
         /* Topology Section */
-        .topology-section { background: white; padding: 40px; border-radius: var(--card-radius); margin: 40px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .topology-section h3 { color: var(--tf-blue); margin-bottom: 30px; text-align: center; }
-        .topology-img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .topology-section { 
+            background: white; 
+            padding: 40px; 
+            border-radius: var(--card-radius); 
+            margin: 40px 0; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+        .topology-section h3 { 
+            color: var(--tf-blue); 
+            margin-bottom: 30px; 
+            text-align: center; 
+        }
+        .topology-img { 
+            width: 100%; 
+            border-radius: 8px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+        }
 
         .btn-outline-primary {
             border: 2px solid var(--tf-blue);
@@ -509,11 +1072,14 @@
             border-radius: 50px;
             font-weight: 600;
             transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
         }
         
         .btn-outline-primary:hover {
             background: var(--tf-blue);
             color: #fff;
+            transform: translateY(-2px);
         }
 
         .btn-primary {
@@ -524,6 +1090,8 @@
             font-weight: 600;
             transition: var(--transition);
             color: #fff;
+            display: inline-block;
+            text-decoration: none;
         }
         
         .btn-primary:hover {
@@ -532,39 +1100,100 @@
             transform: translateY(-2px);
         }
 
-        /* --- 6. RELATED --- */
+        .btn-square {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: #aaa;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .btn-square:hover {
+            background: var(--tf-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* === 6. RELATED === */
         .related-card {
-            background: #fff; border-radius: var(--card-radius); overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.3s; text-decoration: none; color: inherit; height: 100%; display: block;
+            background: #fff; 
+            border-radius: var(--card-radius); 
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
+            transition: 0.3s; 
+            text-decoration: none; 
+            color: inherit; 
+            height: 100%; 
+            display: block;
         }
-        .related-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .related-card img { width: 100%; height: 200px; object-fit: cover; }
-        .related-content { padding: 20px; }
-        .related-title { font-weight: 700; color: var(--tf-blue); margin-bottom: 10px; font-size: 1.1rem; }
+        .related-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 25px 50px rgba(0, 76, 163, 0.15); 
+        }
+        .related-card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .related-content { 
+            padding: 20px; 
+        }
+        .related-title { 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+            margin-bottom: 10px; 
+            font-size: 1.1rem; 
+        }
 
-        /* --- 7. PRODUCT SHOWCASE --- */
+        /* === 7. PRODUCT SHOWCASE === */
         .product-card {
-            background: #fff; padding: 40px 20px; border-radius: var(--card-radius);
-            text-align: center; border: 1px solid #f0f0f0; transition: 0.3s;
+            background: #fff; 
+            padding: 40px 20px; 
+            border-radius: var(--card-radius);
+            text-align: center; 
+            border: 1px solid #f0f0f0; 
+            transition: 0.3s;
+            height: 100%;
         }
-        .product-card:hover { border-color: var(--tf-blue); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-        .product-card img { height: 160px; object-fit: contain; margin-bottom: 25px; max-width: 100%; }
+        .product-card:hover { 
+            border-color: var(--tf-blue); 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+        }
+        .product-card img { 
+            height: 160px; 
+            object-fit: contain; 
+            margin-bottom: 25px; 
+            max-width: 100%;
+        }
 
-        /* --- 8. FOOTER --- */
-        .footer { background: #0b111a; color: #aaa; padding-top: 80px; font-size: 14px; }
-        .footer h5 { color: #fff; margin-bottom: 30px; }
-        .footer a { color: var(--tf-blue) !important; text-decoration: none; transition: 0.3s; font-weight: 600; display: block; margin-bottom: 8px; }
-        .footer a:hover { color: var(--tf-yellow) !important; padding-left: 5px; }
-        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
-
-        /* --- 9. BENEFITS SECTION --- */
+        /* === 8. BENEFITS SECTION === */
         .benefits-section {
             background: linear-gradient(135deg, var(--tf-blue), #002244);
-            color: white; padding: 80px 0;
+            color: white; 
+            padding: 80px 0;
         }
-        .benefit-item { text-align: center; padding: 30px 20px; }
-        .benefit-icon { font-size: 3rem; color: var(--tf-yellow); margin-bottom: 20px; }
-        .benefit-item h4 { color: white; margin-bottom: 15px; }
+        .benefit-item { 
+            text-align: center; 
+            padding: 30px 20px; 
+        }
+        .benefit-icon { 
+            font-size: 3rem; 
+            color: var(--tf-yellow); 
+            margin-bottom: 20px; 
+        }
+        .benefit-item h4 { 
+            color: white; 
+            margin-bottom: 15px; 
+        }
+        .benefit-item p {
+            color: rgba(255,255,255,0.8);
+        }
 
         /* Topology Grid Styles */
         .topology-grid {
@@ -614,12 +1243,82 @@
         .system.lighting { border-left-color: var(--tf-yellow); }
         .system.concessions { border-left-color: #20c997; }
 
+        /* === 9. FOOTER === */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+        }
+        .footer a { 
+            color: var(--tf-blue) !important; 
+            text-decoration: none; 
+            transition: 0.3s; 
+            font-weight: 600; 
+            display: block;
+            margin-bottom: 8px;
+        }
+        .footer a:hover { 
+            color: var(--tf-yellow) !important; 
+            padding-left: 5px;
+        }
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+
+        .form-control:focus {
+            border-color: var(--tf-yellow);
+            box-shadow: 0 0 0 0.2rem rgba(255,204,0,0.25);
+        }
+
+        /* Responsive Utility Classes */
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .text-responsive {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+        
+        .heading-responsive {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        .swiper, .swiper-wrapper, .swiper-slide { 
+            overflow: visible !important; 
+        }
+        
+        .swiper-slide { 
+            padding: 0 10px; 
+        }
+        
+        /* Text color utility */
+        .text-warning-custom {
+            color: var(--tf-yellow) !important;
+        }
+        
+        /* Stats Section */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--tf-yellow);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER - SOLID WHITE WITH LOGO -->
+  <!-- HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
@@ -632,14 +1331,12 @@
                 
                 <!-- NAVIGATION -->
                 <nav id="mainNav" class="nav-menu">
-                     
                     
-                    <!-- SOLUTIONS DROPDOWN -->
+                    <!-- SOLUTIONS DROPDOWN - FULL WIDTH -->
                     <div class="nav-item-dropdown">
-                        <div class="mobile-link-wrapper">
-                            <a href="/solutions/index.html" class="nav-link-custom">
-                                Solutions 
-                                <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
+                        <div class="mobile-link-wrapper" style="display: flex; width: 100%; align-items: center;">
+                            <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                                Solutions <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
                             <span class="mobile-dropdown-toggle">
                                 <i class="fa fa-angle-down"></i>
@@ -647,46 +1344,41 @@
                         </div>
                         
                         <div class="dropdown-menu-custom">
-                            <!-- Col 1: Buildings -->
-                            <div>
-                                <div class="dropdown-category">Buildings</div>
-                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                            </div>
-                            <!-- Col 2: Infrastructure -->
-                            <div>
-                                <div class="dropdown-category">Infrastructure</div>
-                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
-                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
-                            </div>
-                            <!-- Col 3: Cities & Systems -->
-                            <div>
-                                <div class="dropdown-category">City Systems</div>
-                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                              <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue);">
-  View All Solutions →
-</a>
- 
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Buildings</div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Infrastructure</div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">City Systems</div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- PRODUCTS DROPDOWN -->
+                    <!-- PRODUCTS DROPDOWN - FULL WIDTH WITH EXPANDED LISTS -->
                     <div class="nav-item-dropdown">
-                        <div class="mobile-link-wrapper">
-                            <a href="/products/index.html" class="nav-link-custom">
-                                Products 
-                                <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
+                        <div class="mobile-link-wrapper" style="display: flex; width: 100%; align-items: center;">
+                            <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                                Products <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
                             <span class="mobile-dropdown-toggle">
                                 <i class="fa fa-angle-down"></i>
@@ -694,46 +1386,85 @@
                         </div>
 
                         <div class="dropdown-menu-custom">
-                            <!-- Col 1 -->
-                            <div>
-                                <div class="dropdown-category">Core Controllers</div>
-                                <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Access Control</div>
+                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                    <a href="/products/access-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Fire & Safety</div>
+                                    <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
+                                    <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                    <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Building Management</div>
+                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                    <a href="/products/building-management/index.html" class="more-link">View All→</a>
+                                </div>
+                              <div>
+                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
+                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
+                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a> 
+                                 <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
+                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
-                            <!-- Col 2 -->
                             <div>
-                                <div class="dropdown-category">Field Instrumentation</div>
-                                <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
-                                <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
-                            </div>
-                            <!-- Col 3 -->
-                            <div>
-                                <div class="dropdown-category">Management & Power</div>
-                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
-                                <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
-                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <div class="dropdown-category">HVAC & Field Control</div>
+                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                    <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
+                                    <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
+                                    <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Lighting Control</div>
+                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                    <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Energy Management</div>
+                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                    <a href="/products/Energy-Management/water-meters/index.html" class="dropdown-link">Water Meters</a>
+                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                    <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
                     <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                     <a href="/about/index.html" class="nav-link-custom">About</a>                               <a href="/contact/index.html" class="nav-link-custom">Contact</a>
-                </nav>
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
 
-                <!-- RIGHT SIDE GROUP (Hamburger + Icons) -->
-                <div class="header-right-actions">
-                    <!-- HAMBURGER ICON -->
-                    <button class="mobile-toggle" onclick="toggleMobileMenu()">
-                        <i class="fa fa-bars"></i>
-                    </button>
+               <!-- HAMBURGER ICON -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
 
-                    <!-- Header Icons -->
-                    <div class="header-icons">
-                        <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
-                        <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
-                    </div>
+                <!-- Header Icons -->
+                <div class="header-icons d-flex align-items-center">
+                    <i class="fa fa-search fs-5"></i>
+                    <i class="fa fa-globe fs-5"></i>
                 </div>
             </div>
         </div>

@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>Smart Airport Solutions | Tongfang BMS</title>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
-    
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Icons -->
@@ -47,20 +48,15 @@
             font-weight: 700; 
             color: var(--tf-blue); 
         }
-        
-        .header-logo a,
-        .header-logo a:hover {
-            text-decoration: none !important;
-        }
 
-        /* --- HEADER - SOLID WHITE WITH LOGO --- */
+        /* === HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS === */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
             min-height: var(--header-height); 
-            background: #ffffff; /* SOLID WHITE */
+            background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
@@ -72,7 +68,7 @@
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            padding: 0 20px; 
+            padding: 0 30px;
             height: var(--header-height); 
         }
         
@@ -95,14 +91,16 @@
         }
         
         .nav-link-custom { 
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             font-weight: 600; 
             font-size: 13px; 
+            transition: 0.3s; 
             text-transform: uppercase; 
             line-height: var(--header-height); 
             display: block; 
             position: relative; 
             letter-spacing: 0.5px;
+            white-space: nowrap;
             text-decoration: none;
         }
         
@@ -110,40 +108,81 @@
             color: var(--tf-blue); 
         }
 
-        /* Dropdown */
+        /* Make parent links clickable */
         .dropdown-parent-link {
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
+        /* ENHANCED DROPDOWN STYLES - FULL WIDTH WITH YELLOW TOP BORDER */
         .nav-item-dropdown { 
-            position: relative; 
+            position: static; 
             height: 100%; 
             display: flex; 
             align-items: center;
         }
-        
+
+        .dropdown-menu-custom::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb {
+            background: var(--tf-blue);
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb:hover {
+            background: #003d82;
+        }
+
         .dropdown-menu-custom {
             position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px); 
-            width: 700px;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            width: 100vw;
             background: #fff;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
             border-top: 3px solid var(--tf-yellow);
             border-radius: 0 0 8px 8px;
             padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
             z-index: 1100;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
         }
 
+        /* inner container to align with header content */
+        .dropdown-inner {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 30px;
+            text-align: left;
+        }
+
+        /* Special styling for Solutions dropdown */
+        .nav-item-dropdown:first-child .dropdown-inner {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Invisible bridge for hover */
         .dropdown-menu-custom::before {
             content: "";
             position: absolute;
@@ -154,52 +193,64 @@
             background: transparent;
         }
 
+        /* On hover: swipe down + fade in */
         .nav-item-dropdown:hover .dropdown-menu-custom { 
             opacity: 1; 
             visibility: visible; 
-            transform: translateX(-50%) translateY(0); 
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
+        /* Link Styles */
         .dropdown-link {
-            color: #555; 
+            color: #4b5563; 
             font-size: 13px; 
-            font-weight: 600;
-            padding: 6px 10px; 
-            border-radius: 4px; 
+            font-weight: 500;
+            padding: 6px 0; 
             display: block;
-            border-left: 2px solid transparent;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
             text-decoration: none;
         }
         
         .dropdown-link:hover {
-            background: #f4f7fa; 
             color: var(--tf-blue);
-            border-left: 2px solid var(--tf-blue);
-            padding-left: 15px;
+            padding-left: 8px;
+            border-bottom-color: var(--tf-yellow);
         }
         
         .dropdown-category {
-            grid-column: span 3; 
             color: var(--tf-blue); 
-            font-size: 11px; 
-            font-weight: 800; 
+            font-size: 13px; 
+            font-weight: 700; 
             text-transform: uppercase; 
-            letter-spacing: 1px; 
-            margin-top: 10px; 
-            margin-bottom: 5px;
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 5px;
+            letter-spacing: 0.5px; 
+            margin: 0 0 5px 0;
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 3px;
+        }
+
+        .more-link {
+            color: var(--tf-blue);
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .more-link:hover {
+            padding-left: 5px;
         }
 
         /* Header icons - always black */
         .header-icons { 
             display: flex !important; 
             align-items: center; 
-            gap: 15px; 
+            gap: 15px;
         }
         
         .header-icons i {
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
@@ -213,14 +264,25 @@
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             cursor: pointer; 
             background: none;
             border: none;
             padding-right: 20px;
         }
 
-        /* Mobile Adjustments */
+        /* === RESPONSIVE BREAKPOINTS === */
+        
+        @media (max-width: 1200px) { 
+            .dropdown-inner { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            .nav-item-dropdown:first-child .dropdown-inner { 
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Tablet and Below */
         @media (max-width: 991px) {
             .header-fix { height: auto; }
             
@@ -238,12 +300,11 @@
             }
             
             .header-icons i {
-                font-size: 18px !important;
                 color: #111827;
             }
-
+            
             .header-container {
-                padding: 0 15px;
+                padding: 0 20px;
                 flex-wrap: nowrap;
                 justify-content: flex-start;
             }
@@ -261,26 +322,33 @@
             .nav-menu {
                 display: none;
                 position: absolute;
-                top: 80px; left: 0; width: 100%;
+                top: 80px; 
+                left: 0; 
+                width: 100%;
                 background: white;
                 flex-direction: column;
                 height: auto;
                 padding: 20px 0;
                 margin: 0;
+                gap: 0;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                 align-items: flex-start;
                 overflow-y: auto;
                 max-height: 80vh;
+                z-index: 1050;
             }
             
-            .nav-menu.active { display: flex; }
+            .nav-menu.active { 
+                display: flex; 
+            }
 
             .nav-link-custom { 
                 color: #333; 
                 width: 100%; 
-                padding: 10px 30px; 
+                padding: 15px 30px; 
                 line-height: 1.5;
                 border-bottom: 1px solid #eee;
+                white-space: normal;
             }
             
             .nav-item-dropdown { 
@@ -288,6 +356,7 @@
                 flex-direction: column; 
                 align-items: flex-start;
                 height: auto;
+                position: relative;
             }
             
             .dropdown-menu-custom {
@@ -301,19 +370,25 @@
                 border-top: none;
                 padding: 10px 30px;
                 background: #f9f9f9;
+                max-height: none;
+                overflow-y: visible;
+                pointer-events: auto;
+                justify-content: flex-start;
+            }
+            
+            .dropdown-inner { 
+                grid-template-columns: 1fr; 
+                padding: 0;
+                gap: 10px;
+            }
+            
+            .nav-item-dropdown:first-child .dropdown-inner { 
                 grid-template-columns: 1fr;
             }
             
-            .dropdown-menu-custom::before { display: none; }
-            
             .nav-item-dropdown.active .dropdown-menu-custom { 
-                display: grid; 
-                opacity: 1; 
-                visibility: visible;
-                transform: none;
+                display: block; 
             }
-            
-            .dropdown-category { grid-column: span 1; }
 
             /* Hero Adjustments */
             .hero-section {
@@ -328,8 +403,73 @@
             .hero-sub {
                 font-size: 1.1rem !important;
             }
+            
+            /* Hotspot Adjustments */
+            .hotspot {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            
+            .hotspot-label {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
         }
 
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .hero-title {
+                font-size: 2rem !important;
+            }
+            
+            .hero-title br {
+                display: none;
+            }
+            
+            .scenario-box .row {
+                flex-direction: column;
+            }
+            
+            .col-lg-5, .col-lg-7 {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .challenge-card, .solution-card {
+                margin-bottom: 20px;
+            }
+            
+            .hotspot-dot {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            
+            .hotspot-label {
+                font-size: 9px;
+                padding: 3px 8px;
+                margin-left: 5px;
+            }
+            
+            .topology-img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .swiper-products .swiper-slide {
+                width: 85% !important;
+            }
+            
+            .row .col-md-3 {
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Small Mobile */
         @media (max-width: 576px) {
             .header-icons {
                 gap: 12px !important;
@@ -345,7 +485,7 @@
             
             .mobile-toggle {
                 font-size: 20px;
-                margin-right: 10px;
+                padding-right: 10px;
             }
             
             .header-container {
@@ -353,20 +493,77 @@
             }
             
             .hero-title {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
             
             .hero-sub {
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .project-nav-bar {
+                top: 70px;
+            }
+            
+            .nav-breadcrumb .breadcrumb-item {
+                font-size: 10px;
+            }
+            
+            .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+                padding: 0 5px;
             }
             
             .hotspot-label {
                 display: none;
             }
+            
+            .project-nav-bar span {
+                display: none;
+            }
+            
+            .footer .col-lg-4, 
+            .footer .col-lg-3, 
+            .footer .col-lg-2 {
+                margin-bottom: 30px;
+            }
+            
+            .line {
+                width: 80% !important;
+                max-width: 300px;
+            }
+            
+            .display-4 {
+                font-size: 2.5rem;
+            }
         }
 
-        /* --- 2. HERO SECTION --- */
-        .hero-section {
+        /* Extra Small */
+        @media (max-width: 400px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .hotspot-dot {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .related-card, 
+            .product-card {
+                margin-bottom: 20px;
+            }
+            
+            .swiper-slide {
+                width: 100% !important;
+            }
+        }
+
+        /* === HERO SECTION === */
+         .hero-section {
             height: 65vh; 
             min-height: 500px;
             background:   url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/airport-hero.png');
@@ -377,28 +574,30 @@
             position: relative;
         }
         
+       
+
         .hero-content { 
             position: relative; 
             z-index: 2; 
-            padding-top: 60px; 
             animation: fadeUp 1s ease-out; 
-            text-shadow: 0 2px 20px rgba(0,0,0,0.7); 
         }
         
-        .hero-title { 
+        .hero-title {
             font-size: 3.5rem; 
             font-weight: 900; 
             color: #fff; 
-            margin-bottom: 15px; 
+            margin-bottom: 15px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.45);
         }
         
         .hero-sub { 
             color: #fff; 
             font-size: 1.25rem; 
             max-width: 700px; 
-            font-weight: 600; 
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         @keyframes fadeUp { 
             from { 
                 opacity: 0; 
@@ -410,71 +609,65 @@
             } 
         }
 
-        /* --- 3. SUB-NAV --- */
+        /* === STICKY BREADCRUMB === */
         .project-nav-bar {
             position: sticky; 
-            top: 80px; 
+            top: var(--header-height);
             z-index: 1020;
             background: #fff; 
             padding: 15px 0;
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
-        
+
         .nav-breadcrumb .breadcrumb-item a { 
             color: #666; 
             font-weight: 700; 
             text-transform: uppercase; 
             font-size: 12px; 
-            letter-spacing: 0.5px; 
             text-decoration: none; 
         }
         
-        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item a:hover,
         .nav-breadcrumb .breadcrumb-item.active a { 
             color: var(--tf-blue) !important; 
         }
-        
-        .nav-breadcrumb .breadcrumb-item.active::after {
-            content: ""; 
-            position: absolute; 
-            left: 0; 
-            bottom: -6px; 
-            width: 100%; 
-            height: 3px; 
-            background: var(--tf-yellow); 
-            border-radius: 10px;
-        }
-        
-        .nav-breadcrumb .breadcrumb-item { 
-            position: relative; 
-        }
-        
-        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { 
-            content: "|"; 
-            color: #ccc; 
-            padding: 0 10px; 
+
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+            content: "|";
+            color: #ccc;
+            padding: 0 10px;
         }
 
-        /* --- 4. INTERACTIVE MAP --- */
-        .scroll-target { 
-            scroll-margin-top: 160px; 
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
+            border-radius: 10px;
         }
-        
+
+        .nav-breadcrumb .breadcrumb-item {
+            position: relative;
+        }
+
+        /* === INTERACTIVE MAP === */
         .interactive-map-container {
             position: relative; 
             width: 100%; 
             border-radius: var(--card-radius); 
             overflow: hidden; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            border: 1px solid rgba(0,0,0,0.05); 
             margin-bottom: 40px;
         }
         
         .map-img { 
             width: 100%; 
-            height: auto; 
             display: block; 
+            filter: brightness(0.9); 
         }
         
         .hotspot {
@@ -484,11 +677,10 @@
             cursor: pointer; 
             z-index: 10; 
             transform: translate(-50%, -50%);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease;
         }
         
         .hotspot:hover { 
-            z-index: 20; 
             transform: translate(-50%, -50%) scale(1.1); 
         }
         
@@ -502,39 +694,101 @@
             align-items: center; 
             justify-content: center;
             font-weight: 800; 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-            border: 2px solid #fff;
+            border: 2px solid #fff; 
             transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         
         .hotspot.active .hotspot-dot {
             background-color: var(--tf-yellow); 
-            color: var(--tf-dark);
+            color: var(--tf-dark); 
             transform: scale(1.3); 
-            box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 0 0 5px rgba(255,204,0,0.4);
         }
 
         .hotspot-label {
-            background-color: #fff;
-            color: #333;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-left: 10px;
+            background-color: #fff; 
+            padding: 6px 15px 6px 25px; 
+            border-radius: 0 20px 20px 0; 
+            font-size: 12px; 
+            font-weight: 700; 
+            margin-left: -20px; 
+            z-index: -2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
             white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-            z-index: 5;
         }
 
-        .hotspot.active .hotspot-label { 
-            background: var(--tf-dark); 
-            color: #fff; 
+        .hotspot.active .hotspot-label {
+            background: var(--tf-dark);
+            color: #fff;
         }
 
-        /* --- 5. SECTIONS GENERAL --- */
+        /* === SCENARIO WRAPPER === */
+        .scenario-wrapper { 
+            background: #f8f9fa; 
+            border-top: 1px solid #eee; 
+            padding: 80px 0 120px 0; 
+            position: relative;
+            clear: both;
+        }
+        
+        .scenario-box { 
+            display: none; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: 0.5s ease; 
+        }
+        
+        .scenario-box.active { 
+            display: block; 
+            opacity: 1; 
+            transform: translateY(0); 
+            margin-bottom: 60px; 
+        }
+        
+        .challenge-card { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--tf-red); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 25px; 
+        }
+        
+        .solution-card { 
+            background: #fff; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border-left: 4px solid var(--tf-blue); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+        }
+        
+        .scenario-img { 
+            width: 100%; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            margin-bottom: 25px; 
+        }
+
+        .challenge-card ul, 
+        .solution-card ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        
+        .challenge-card li, 
+        .solution-card li {
+            margin-bottom: 8px;
+        }
+
+        /* === TOPOLOGY SECTION === */
+        .topology-img { 
+            width: 100%; 
+            border-radius: 12px; 
+            border: 1px solid #eee; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
+        }
+
         .section-header { 
             text-align: center; 
             margin-bottom: 60px; 
@@ -554,75 +808,62 @@
             border-radius: 10px; 
         }
 
-        .scenario-wrapper { 
-            background: #f8f9fa; 
-            border-top: 1px solid #eee; 
-            padding: 60px 0; 
-            min-height: 500px; 
+        /* === PRODUCT SHOWCASE === */
+        .product-card { 
+            background: #fff; 
+            padding: 40px 20px; 
+            border-radius: var(--card-radius); 
+            text-align: center; 
+            border: 1px solid #f0f0f0; 
+            transition: 0.3s; 
+            height: 100%;
         }
         
-        .scenario-box { 
-            display: none; 
-            opacity: 0; 
-            transform: translateY(20px); 
-            transition: 0.5s ease; 
+        .product-card:hover { 
+            border-color: var(--tf-blue); 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
         }
         
-        .scenario-box.active { 
-            display: block; 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
-        
-        .challenge-card,
-        .solution-card {
-            background: #fff;
-            padding: 24px 28px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-            height: auto;
-        }
-        
-        .challenge-card {
-            border-left: 4px solid var(--tf-red);
-        }
-        
-        .challenge-card ul {
-            padding-left: 18px;
-        }
-        
-        .challenge-card li {
-            margin-bottom: 6px;
-        }
-        
-        .col-lg-5 {
-            display: flex;
-            flex-direction: column;
+        .product-card img { 
+            height: 160px; 
+            object-fit: contain; 
+            margin-bottom: 25px; 
+            max-width: 100%;
         }
 
-        .challenge-card {
-            margin-bottom: 20px;
-        }
-
-        .solution-card {
-            border-left: 4px solid var(--tf-blue);
-        }
-        
-        .scenario-img { 
-            width: 100%; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            margin-bottom: 20px; 
-        }
-
-        /* --- 6. TOPOLOGY & RELATED --- */
-        .topology-img { 
-            width: 100%; 
-            border-radius: 12px; 
-            border: 1px solid #eee; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
+        .btn-primary {
+            background: var(--tf-blue);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
         }
         
+        .btn-primary:hover {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--tf-blue);
+            color: var(--tf-blue);
+            background: transparent;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--tf-blue);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* === RELATED SOLUTIONS === */
         .related-card {
             background: #fff; 
             border-radius: var(--card-radius); 
@@ -657,45 +898,28 @@
             font-size: 1.1rem; 
         }
 
-        /* --- 7. PRODUCT SHOWCASE --- */
-        .product-card {
-            background: #fff; 
-            padding: 40px 20px; 
-            border-radius: var(--card-radius);
-            text-align: center; 
-            border: 1px solid #f0f0f0; 
-            transition: 0.3s;
+        /* Stats Section */
+        .stat-item {
+            text-align: center;
+            padding: 20px;
         }
         
-        .product-card:hover { 
-            border-color: var(--tf-blue); 
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--tf-yellow);
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
         
-        .product-card img { 
-            height: 160px; 
-            object-fit: contain; 
-            margin-bottom: 25px; 
-            max-width: 100%;
-        }
-
-        .btn-outline-primary {
-            border: 2px solid var(--tf-blue);
-            color: var(--tf-blue);
-            background: transparent;
-            padding: 8px 20px;
-            border-radius: 50px;
+        .stat-label {
+            font-size: 1rem;
             font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .btn-outline-primary:hover {
-            background: var(--tf-blue);
-            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* --- 8. FOOTER --- */
+        /* === FOOTER === */
         .footer { 
             background: #0b111a; 
             color: #aaa; 
@@ -711,7 +935,6 @@
         .footer a { 
             color: var(--tf-blue) !important; 
             text-decoration: none; 
-            transition: 0.3s; 
             font-weight: 600; 
             display: block;
             margin-bottom: 8px;
@@ -729,12 +952,40 @@
             margin-top: 60px; 
         }
 
+        .btn-square {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: #aaa;
+            transition: var(--transition);
+        }
+        
+        .btn-square:hover {
+            background: var(--tf-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Utility Classes */
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Text color utilities */
+        .text-warning-custom {
+            color: var(--tf-yellow) !important;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER - SOLID WHITE WITH LOGO -->
+    <!-- HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
@@ -746,88 +997,125 @@
                 
                 <!-- NAVIGATION -->
                 <nav id="mainNav" class="nav-menu">
-                     
                     
-                    <!-- SOLUTIONS DROPDOWN -->
+                    <!-- SOLUTIONS DROPDOWN - FULL WIDTH -->
                     <div class="nav-item-dropdown">
                         <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                             Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                         </a>
                         <div class="dropdown-menu-custom">
-                            <!-- Col 1: Buildings -->
-                            <div>
-                                <div class="dropdown-category">Buildings</div>
-                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                            </div>
-                            <!-- Col 2: Infrastructure -->
-                            <div>
-                                <div class="dropdown-category">Infrastructure</div>
-                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
-                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
-                            </div>
-                            <!-- Col 3: Cities & Systems -->
-                            <div>
-                                <div class="dropdown-category">City Systems</div>
-                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                              <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue);">
-  View All Solutions →
-</a>
- 
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Buildings</div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Infrastructure</div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">City Systems</div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- PRODUCTS DROPDOWN -->
+
+                    <!-- PRODUCTS DROPDOWN - FULL WIDTH -->
                     <div class="nav-item-dropdown">
                         <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                             Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                         </a>
                         <div class="dropdown-menu-custom">
-                            <!-- Col 1 -->
-                            <div>
-                                <div class="dropdown-category">Core Controllers</div>
-                                <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Access Control</div>
+                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                    <a href="/products/access-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Fire & Safety</div>
+                                    <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
+                                    <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                    <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Building Management</div>
+                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                    <a href="/products/building-management/index.html" class="more-link">View All→</a>
+                                </div>
+                              <div>
+                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
+                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
+                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a> 
+                                 <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
+                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
-                            <!-- Col 2 -->
                             <div>
-                                <div class="dropdown-category">Field Instrumentation</div>
-                                <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
-                                <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
-                            </div>
-                            <!-- Col 3 -->
-                            <div>
-                                <div class="dropdown-category">Management & Power</div>
-                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
-                                <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
-                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <div class="dropdown-category">HVAC & Field Control</div>
+                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                    <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
+                                    <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
+                                    <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Lighting Control</div>
+                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                    <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Energy Management</div>
+                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                    <a href="/products/Energy-Management/water-meters/index.html" class="dropdown-link">Water Meters</a>
+                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                    <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
                     <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                     <a href="/about/index.html" class="nav-link-custom">About</a>                               <a href="/contact/index.html" class="nav-link-custom">Contact</a>
-                </nav>
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
 
-                <!-- HAMBURGER ICON -->
+                <!-- MOBILE MENU TOGGLE -->
                 <button class="mobile-toggle" onclick="toggleMobileMenu()">
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Header Icons -->
+                <!-- HEADER ICONS -->
                 <div class="header-icons d-flex align-items-center">
                     <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                     <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
@@ -839,7 +1127,7 @@
     <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="container">
-            <div class="col-lg-8 hero-content">
+            <div class="hero-content">
                 <h1 class="hero-title">Smart Airport Solutions</h1>
                 <p class="hero-sub">From runway to retail, Tongfang delivers comprehensive security, automation, and operational efficiency for the aviation industry</p>
             </div>
@@ -854,74 +1142,69 @@
                     <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
                     <li class="breadcrumb-item"><a href="#scenarios">Components</a></li>
                     <li class="breadcrumb-item"><a href="#topology">Architecture</a></li>
+                    <li class="breadcrumb-item"><a href="#showcase">Products</a></li>
                 </ol>
             </nav>
-            <div class="d-none d-md-block">
-                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
-                    <i class="fa fa-plane text-primary me-2" style="color: var(--tf-blue) !important;"></i>
-                    INTELLIGENT AVIATION
-                </span>
-            </div>
+            <span class="text-dark fw-bold small d-none d-md-block">
+                <i class="fa fa-plane text-primary me-2" style="color: var(--tf-blue) !important;"></i>
+                INTELLIGENT AVIATION
+            </span>
         </div>
     </div>
 
     <!-- SECTION 1: INTERACTIVE MAP -->
-    <section class="py-5 bg-white scroll-target" id="overview">
+    <section class="py-5 bg-white" id="overview">
         <div class="container py-4">
             
             <div class="text-center mb-5">
-                <h2 style="font-size: 2.5rem;">Airport Integration Platform</h2>
+                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Airport Integration Platform</h2>
                 <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
-                <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Click the numbered hotspots to explore smart airport components and integrated systems.</p>
+                <p class="text-muted">Click the numbered hotspots to explore smart airport components and integrated systems.</p>
             </div>
 
             <!-- MAP CONTAINER -->
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="interactive-map-container">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Airport Solution Map.jpg" alt="Smart Airport Overview" class="map-img">
-                        
-                        <!-- Hotspots -->
-                        <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 40%; left: 10%;">
-                            <div class="hotspot-dot">1</div>
-                            <div class="hotspot-label">Runway</div>
-                        </div>
-                        
-                        <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 15%; left: 75%;">
-                            <div class="hotspot-dot">2</div>
-                            <div class="hotspot-label">Perimeter</div>
-                        </div>
-                        
-                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 25%; left: 45%;">
-                            <div class="hotspot-dot">3</div>
-                            <div class="hotspot-label">Apron</div>
-                        </div>
-                        
-                        <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 75%; left: 25%;">
-                            <div class="hotspot-dot">4</div>
-                            <div class="hotspot-label">Airport Roads</div>
-                        </div>
-                        
-                        <div id="hotspot-5" class="hotspot" onclick="showScenario(5)" style="top: 50%; left:25%;">
-                            <div class="hotspot-dot">5</div>
-                            <div class="hotspot-label">Parking Lots</div>
-                        </div>
-                        
-                        <div id="hotspot-6" class="hotspot" onclick="showScenario(6)" style="top: 65%; left: 50%;">
-                            <div class="hotspot-dot">6</div>
-                            <div class="hotspot-label">Security Screening</div>
-                        </div>
-                        
-                        <div id="hotspot-7" class="hotspot" onclick="showScenario(7)" style="top: 50%; left: 60%;">
-                            <div class="hotspot-dot">7</div>
-                            <div class="hotspot-label">Lounge</div>
-                        </div>
-                        
-                        <div id="hotspot-8" class="hotspot" onclick="showScenario(8)" style="top: 55%; left: 75%;">
-                            <div class="hotspot-dot">8</div>
-                            <div class="hotspot-label">Duty-free Shop</div>
-                        </div>
-                    </div>
+            <div class="interactive-map-container">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Airport Solution Map.jpg" alt="Smart Airport Overview" class="map-img img-responsive">
+                
+                <!-- Hotspots -->
+                <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 40%; left: 10%;">
+                    <div class="hotspot-dot">1</div>
+                    <div class="hotspot-label">Runway</div>
+                </div>
+                
+                <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 15%; left: 75%;">
+                    <div class="hotspot-dot">2</div>
+                    <div class="hotspot-label">Perimeter</div>
+                </div>
+                
+                <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 25%; left: 45%;">
+                    <div class="hotspot-dot">3</div>
+                    <div class="hotspot-label">Apron</div>
+                </div>
+                
+                <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 75%; left: 25%;">
+                    <div class="hotspot-dot">4</div>
+                    <div class="hotspot-label">Airport Roads</div>
+                </div>
+                
+                <div id="hotspot-5" class="hotspot" onclick="showScenario(5)" style="top: 50%; left:25%;">
+                    <div class="hotspot-dot">5</div>
+                    <div class="hotspot-label">Parking Lots</div>
+                </div>
+                
+                <div id="hotspot-6" class="hotspot" onclick="showScenario(6)" style="top: 65%; left: 50%;">
+                    <div class="hotspot-dot">6</div>
+                    <div class="hotspot-label">Security Screening</div>
+                </div>
+                
+                <div id="hotspot-7" class="hotspot" onclick="showScenario(7)" style="top: 50%; left: 60%;">
+                    <div class="hotspot-dot">7</div>
+                    <div class="hotspot-label">Lounge</div>
+                </div>
+                
+                <div id="hotspot-8" class="hotspot" onclick="showScenario(8)" style="top: 55%; left: 75%;">
+                    <div class="hotspot-dot">8</div>
+                    <div class="hotspot-label">Duty-free Shop</div>
                 </div>
             </div>
         </div>
@@ -936,7 +1219,7 @@
                 <h3 class="mb-4 text-primary">1. Runway Management</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Monitoring landing and takeoff in low visibility (fog/night)</li>
@@ -955,8 +1238,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Runway Monitoring.jpg" class="scenario-img" alt="Runway Monitoring">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Runway Monitoring.jpg" class="scenario-img img-responsive" alt="Runway Monitoring">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-eye text-success"></i> 24/7 Visibility</li>
                             <li class="list-inline-item me-4"><i class="fa fa-shield-alt text-success"></i> Enhanced Safety</li>
@@ -971,7 +1254,7 @@
                 <h3 class="mb-4 text-primary">2. Perimeter Protection</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Extensive boundary lines difficult to patrol manually</li>
@@ -990,8 +1273,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Perimeter Security.jpg" class="scenario-img" alt="Perimeter Security">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Perimeter Security.jpg" class="scenario-img img-responsive" alt="Perimeter Security">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-radar text-success"></i> 95% False Alarm Reduction</li>
                             <li class="list-inline-item me-4"><i class="fa fa-bolt text-success"></i> Instant Response</li>
@@ -1006,7 +1289,7 @@
                 <h3 class="mb-4 text-primary">3. Apron Monitoring</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Complex mix of aircraft, fuel trucks, and personnel</li>
@@ -1025,8 +1308,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Apron Monitoring.jpg" class="scenario-img" alt="Apron Monitoring">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Apron Monitoring.jpg" class="scenario-img img-responsive" alt="Apron Monitoring">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-chart-line text-success"></i> 20% Efficiency Gain</li>
                             <li class="list-inline-item me-4"><i class="fa fa-video text-success"></i> Complete Visibility</li>
@@ -1041,7 +1324,7 @@
                 <h3 class="mb-4 text-primary">4. Airport Road Management</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Congestion at drop-off/pick-up zones</li>
@@ -1060,8 +1343,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/road to  airport.png" class="scenario-img" alt="Airport Roads">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/road to  airport.png" class="scenario-img img-responsive" alt="Airport Roads">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-car text-success"></i> 30% Less Congestion</li>
                             <li class="list-inline-item me-4"><i class="fa fa-clock text-success"></i> Faster Drop-off</li>
@@ -1076,7 +1359,7 @@
                 <h3 class="mb-4 text-primary">5. Smart Parking Management</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Drivers struggling to find empty spaces</li>
@@ -1095,8 +1378,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Smart Parking.jpg" class="scenario-img" alt="Smart Parking">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Smart Parking.jpg" class="scenario-img img-responsive" alt="Smart Parking">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-map-marker-alt text-success"></i> 50% Faster Parking</li>
                             <li class="list-inline-item me-4"><i class="fa fa-dollar-sign text-success"></i> 15% Revenue Increase</li>
@@ -1111,7 +1394,7 @@
                 <h3 class="mb-4 text-primary">6. Security Screening</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>High volume of passengers causing bottlenecks</li>
@@ -1130,8 +1413,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Security Screening.png" class="scenario-img" alt="Security Screening">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Security Screening.png" class="scenario-img img-responsive" alt="Security Screening">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-bolt text-success"></i> 40% Faster Screening</li>
                             <li class="list-inline-item me-4"><i class="fa fa-shield-alt text-success"></i> 99.9% Detection Rate</li>
@@ -1146,7 +1429,7 @@
                 <h3 class="mb-4 text-primary">7. Lounge & Waiting Areas</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Ensuring VIP safety and privacy</li>
@@ -1165,8 +1448,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Airport Lounge.jpg" class="scenario-img" alt="Airport Lounge">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Airport Lounge.jpg" class="scenario-img img-responsive" alt="Airport Lounge">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-user-shield text-success"></i> VIP Security</li>
                             <li class="list-inline-item me-4"><i class="fa fa-leaf text-success"></i> 25% Energy Savings</li>
@@ -1181,7 +1464,7 @@
                 <h3 class="mb-4 text-primary">8. Duty-Free Shop Management</h3>
                 <div class="row g-5">
                     <div class="col-lg-5">
-                        <div class="challenge-card mb-4">
+                        <div class="challenge-card">
                             <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
                             <ul class="text-muted mb-0">
                                 <li>Shoplifting and loss prevention</li>
@@ -1200,8 +1483,8 @@
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Duty Free Shop.png" class="scenario-img" alt="Duty Free Shop">
-                        <h5 class="mt-3">Key Benefits:</h5>
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Duty Free Shop.png" class="scenario-img img-responsive" alt="Duty Free Shop">
+                        <h5 class="mt-3">Key Features:</h5>
                         <ul class="list-inline">
                             <li class="list-inline-item me-4"><i class="fa fa-chart-bar text-success"></i> 30% Sales Increase</li>
                             <li class="list-inline-item me-4"><i class="fa fa-shield-alt text-success"></i> Reduced Shrinkage</li>
@@ -1215,7 +1498,7 @@
     </section>
 
     <!-- SECTION 3: SYSTEM TOPOLOGY -->
-    <section class="py-5 bg-white scroll-target" id="topology">
+    <section class="py-5 bg-white" id="topology">
         <div class="container">
             <div class="section-header">
                 <h2>System Architecture</h2>
@@ -1223,7 +1506,7 @@
                 <p class="text-muted">Integrated network connecting landside, terminal, and airside operations.</p>
             </div>
             <div class="text-center">
-                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Airport system topology.jpg" class="topology-img" alt="Airport System Architecture">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/airport/Airport system topology.jpg" class="topology-img img-responsive" alt="Airport System Architecture">
             </div>
         </div>
     </section>
@@ -1238,28 +1521,28 @@
                 to deliver exceptional passenger experiences while maximizing operational efficiency and safety.
             </p>
             <div class="row mt-5">
-                <div class="col-md-3">
-                    <h1 class="display-4 text-warning" style="color: var(--tf-yellow) !important;">40%</h1>
-                    <p>Reduction in Security Wait Times</p>
+                <div class="col-md-3 col-6 mb-4 stat-item">
+                    <div class="stat-number" style="color: var(--tf-yellow);">40%</div>
+                    <div class="stat-label">Reduction in Security Wait Times</div>
                 </div>
-                <div class="col-md-3">
-                    <h1 class="display-4 text-warning" style="color: var(--tf-yellow) !important;">35%</h1>
-                    <p>Energy Cost Reduction</p>
+                <div class="col-md-3 col-6 mb-4 stat-item">
+                    <div class="stat-number" style="color: var(--tf-yellow);">35%</div>
+                    <div class="stat-label">Energy Cost Reduction</div>
                 </div>
-                <div class="col-md-3">
-                    <h1 class="display-4 text-warning" style="color: var(--tf-yellow) !important;">99.9%</h1>
-                    <p>Security Detection Rate</p>
+                <div class="col-md-3 col-6 mb-4 stat-item">
+                    <div class="stat-number" style="color: var(--tf-yellow);">99.9%</div>
+                    <div class="stat-label">Security Detection Rate</div>
                 </div>
-                <div class="col-md-3">
-                    <h1 class="display-4 text-warning" style="color: var(--tf-yellow) !important;">20%</h1>
-                    <p>Increase in Retail Revenue</p>
+                <div class="col-md-3 col-6 mb-4 stat-item">
+                    <div class="stat-number" style="color: var(--tf-yellow);">20%</div>
+                    <div class="stat-label">Increase in Retail Revenue</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SECTION 5: PRODUCT SHOWCASE -->
-    <section class="py-5 bg-white scroll-target" id="showcase">
+    <section class="py-5 bg-white" id="showcase">
         <div class="container">
             <div class="section-header">
                 <h2>Platform Components</h2>
@@ -1271,34 +1554,34 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller">
+                            <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller" class="img-responsive">
                             <h5>Airport DDC Controllers</h5>
                             <p class="small text-muted">Zone-based climate control for terminals and concourses.</p>
-                            <a href="/products/ddc-controllers/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                            <a href="/products/ddc-controllers/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Sensor">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Sensor" class="img-responsive">
                             <h5>Environmental Sensors</h5>
                             <p class="small text-muted">Air quality and occupancy monitoring for passenger comfort.</p>
-                            <a href="/products/sensors-thermostats/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                            <a href="/products/sensors-thermostats/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Software">
+                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Software" class="img-responsive">
                             <h5>Airport Management Software</h5>
                             <p class="small text-muted">Unified platform for airport operations and security.</p>
-                            <a href="/products/bms-software/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                            <a href="/products/bms-software/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="product-card h-100">
-                            <img src="https://material.dahuasecurity.com/product/20180709/MPTZ1100-2030RA_thumb.png" alt="Actuator">
+                            <img src="https://material.dahuasecurity.com/product/20180709/MPTZ1100-2030RA_thumb.png" alt="Actuator" class="img-responsive">
                             <h5>Smart Ventilation</h5>
                             <p class="small text-muted">Automated airflow control for terminal spaces.</p>
-                            <a href="/products/valves-actuators/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                            <a href="/products/valves-actuators/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                         </div>
                     </div>
                 </div>
@@ -1315,40 +1598,36 @@
                 <div class="line"></div>
             </div>
             <div class="row g-4 justify-content-center">
-                <!-- Related 1 -->
                 <div class="col-md-5">
                     <a href="/solutions/traffic/index.html" class="related-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/traffic-banner.png" alt="Smart Traffic">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/traffic/traffic-banner.png" alt="Smart Traffic" class="img-responsive">
                         <div class="related-content">
                             <div class="related-title">Smart Traffic Systems</div>
                             <p class="small text-muted">Intelligent transportation management for urban mobility.</p>
                         </div>
                     </a>
                 </div>
-                <!-- Related 2 -->
                 <div class="col-md-5">
                     <a href="/solutions/smart-port-platform/index.html" class="related-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg" alt="Smart Ports">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg" alt="Smart Ports" class="img-responsive">
                         <div class="related-content">
                             <div class="related-title">Smart Port Platforms</div>
                             <p class="small text-muted">Integrated logistics and container management systems.</p>
                         </div>
                     </a>
                 </div>
-                <!-- Related 3 -->
                 <div class="col-md-5">
                     <a href="/solutions/industrial/index.html" class="related-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/industrial/park.jpg" alt="Smart Factories">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/industrial/park.jpg" alt="Smart Factories" class="img-responsive">
                         <div class="related-content">
                             <div class="related-title">Smart Factories</div>
                             <p class="small text-muted">Industrial automation and logistics management systems.</p>
                         </div>
                     </a>
                 </div>
-                <!-- Related 4 -->
                 <div class="col-md-5">
                     <a href="/solutions/smart-city/index.html" class="related-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-city/smart-city.jpeg" alt="Smart Cities">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-city/smart-city.jpeg" alt="Smart Cities" class="img-responsive">
                         <div class="related-content">
                             <div class="related-title">Smart City Platforms</div>
                             <p class="small text-muted">Integrated urban management for transportation hubs.</p>
@@ -1402,7 +1681,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // SIMPLIFIED JavaScript - only mobile menu functionality
+        // Mobile menu functionality
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
@@ -1468,34 +1747,45 @@
 
         // Interactive Map Logic
         function showScenario(id) {
+            // 1. Highlight the hotspot
             document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
             const activeDot = document.getElementById('hotspot-' + id);
             if(activeDot) activeDot.classList.add('active');
 
+            // 2. Hide all scenarios first
             const boxes = document.querySelectorAll('.scenario-box');
             boxes.forEach(el => {
                 el.classList.remove('active');
                 el.style.display = 'none';
             });
             
+            // 3. Select the target content
             const selectedContent = document.getElementById('content-' + id);
             if(selectedContent) {
                 selectedContent.style.display = 'block';
+                
+                // 4. Scroll to the scenario section
                 setTimeout(() => {
                     selectedContent.classList.add('active');
                     const offset = 140; 
                     const elementPosition = selectedContent.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    window.scrollTo({ 
+                        top: offsetPosition, 
+                        behavior: "smooth" 
+                    });
                 }, 10);
             }
         }
 
-        // Initialize Swiper
-        var swiper = new Swiper(".swiper-products", {
+        // Initialize Swiper with responsive settings
+        new Swiper(".swiper-products", {
             slidesPerView: 1,
             spaceBetween: 20,
-            pagination: { el: ".swiper-pagination", clickable: true },
+            pagination: { 
+                el: ".swiper-pagination", 
+                clickable: true 
+            },
             breakpoints: {
                 640: { slidesPerView: 2 },
                 768: { slidesPerView: 3 },
@@ -1503,9 +1793,9 @@
             },
         });
 
-        // Initialize first scenario
+        // Initialize first scenario on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Ensure first scenario is active
+            // Ensure first scenario is active and visible
             showScenario(1);
         });
     </script>

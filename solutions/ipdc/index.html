@@ -52,14 +52,14 @@
             text-decoration: none !important;
         }
 
-        /* --- HEADER - SOLID WHITE WITH LOGO --- */
+        /* === HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS === */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
-            min-height: var(--header-height);
-            background: #ffffff; /* SOLID WHITE */
+            min-height: var(--header-height); 
+            background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
@@ -71,7 +71,7 @@
             display: flex; 
             align-items: center; 
             justify-content: space-between; 
-            padding: 0 20px; 
+            padding: 0 30px;
             height: var(--header-height); 
         }
         
@@ -94,29 +94,158 @@
         }
         
         .nav-link-custom { 
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             font-weight: 600; 
             font-size: 13px; 
+            transition: 0.3s; 
             text-transform: uppercase; 
             line-height: var(--header-height); 
             display: block; 
             position: relative; 
-            letter-spacing: 0.5px; 
+            letter-spacing: 0.5px;
+            white-space: nowrap;
             text-decoration: none;
-            cursor: pointer;
         }
         
         .nav-link-custom:hover { 
             color: var(--tf-blue); 
         }
-        
-        /* Icons & Toggle Wrapper */
-        .header-right-actions {
+
+        /* Make parent links clickable */
+        .dropdown-parent-link {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 5px;
+        }
+
+        /* ENHANCED DROPDOWN STYLES - FULL WIDTH WITH YELLOW TOP BORDER */
+        .nav-item-dropdown { 
+            position: static; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+
+        .dropdown-menu-custom::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb {
+            background: var(--tf-blue);
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb:hover {
+            background: #003d82;
+        }
+
+        .dropdown-menu-custom {
+            position: absolute;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            width: 100vw;
+            background: #fff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: 1100;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* inner container to align with header content */
+        .dropdown-inner {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 30px;
+            text-align: left;
+        }
+
+        /* Special styling for Solutions dropdown */
+        .nav-item-dropdown:first-child .dropdown-inner {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Invisible bridge for hover */
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+
+        /* On hover: swipe down + fade in */
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Link Styles */
+        .dropdown-link {
+            color: #4b5563; 
+            font-size: 13px; 
+            font-weight: 500;
+            padding: 6px 0; 
+            display: block;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+            text-decoration: none;
         }
         
+        .dropdown-link:hover {
+            color: var(--tf-blue);
+            padding-left: 8px;
+            border-bottom-color: var(--tf-yellow);
+        }
+        
+        .dropdown-category {
+            color: var(--tf-blue); 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            margin: 0 0 5px 0;
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 3px;
+        }
+
+        .more-link {
+            color: var(--tf-blue);
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            text-decoration: none;
+        }
+        .more-link:hover {
+            padding-left: 5px;
+        }
+
+        /* Header icons - always black */
         .header-icons { 
             display: flex !important; 
             align-items: center; 
@@ -124,7 +253,7 @@
         }
         
         .header-icons i {
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
@@ -133,120 +262,60 @@
         .header-icons i:hover {
             color: var(--tf-blue);
         }
-        
-        /* Dropdown Wrapper */
-        .nav-item-dropdown { 
-            position: relative; 
-            height: 100%; 
-            display: flex; 
-            align-items: center; 
-        }
-        
-        /* Toggle Icon (Hidden on Desktop, Visible Mobile) */
-        .mobile-dropdown-toggle {
-            display: none;
-            color: #111827;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        /* Desktop Arrow */
-        .desktop-arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 11px;
-            color: #111827;
-        }
-        
-        .dropdown-menu-custom {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            width: 700px;
-            background: #fff;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-            border-top: 3px solid var(--tf-yellow);
-            border-radius: 0 0 8px 8px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1100;
-        }
-        
-        .dropdown-menu-custom::before {
-            content: "";
-            position: absolute;
-            top: -20px; 
-            left: 0; 
-            width: 100%; 
-            height: 20px; 
-            background: transparent;
-        }
-        
-        /* Hover Effect Desktop */
-        @media (min-width: 992px) {
-            .nav-item-dropdown:hover .dropdown-menu-custom {
-                opacity: 1;
-                visibility: visible;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-        
-        .dropdown-link {
-            color: #555; 
-            font-size: 13px; 
-            font-weight: 600;
-            padding: 6px 10px; 
-            border-radius: 4px; 
-            display: block;
-            border-left: 2px solid transparent;
-            text-decoration: none;
-        }
-        
-        .dropdown-link:hover {
-            background: #f4f7fa; 
-            color: var(--tf-blue);
-            border-left: 2px solid var(--tf-blue);
-            padding-left: 15px;
-        }
-        
-        .dropdown-category {
-            grid-column: span 3; 
-            color: var(--tf-blue); 
-            font-size: 11px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            margin-top: 10px; 
-            margin-bottom: 5px;
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 5px;
-        }
-        
+
         /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
-            color: #111827; /* SOLID BLACK */
+            color: #111827;
             cursor: pointer; 
             background: none;
             border: none;
-            padding: 0;
+            padding-right: 20px;
+        }
+
+        /* === RESPONSIVE BREAKPOINTS === */
+        
+        @media (max-width: 1200px) { 
+            .dropdown-inner { 
+                grid-template-columns: repeat(3, 1fr); 
+            }
+            .nav-item-dropdown:first-child .dropdown-inner { 
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         
-        /* --- MOBILE ADJUSTMENTS (Max-Width 991px) --- */
+        /* Tablet and Below */
         @media (max-width: 991px) {
             .header-fix { height: auto; }
             
+            .mobile-toggle { 
+                display: block; 
+                order: 2;
+                color: #111827;
+            }
+            
+            .header-icons { 
+                display: flex !important; 
+                order: 3;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .header-icons i {
+                color: #111827;
+            }
+            
             .header-container {
                 padding: 0 20px;
-                justify-content: space-between;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto;
             }
             
             .logo-img {
@@ -262,185 +331,341 @@
                 background: white;
                 flex-direction: column;
                 height: auto;
-                padding: 0;
+                padding: 20px 0;
                 margin: 0;
+                gap: 0;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                 align-items: flex-start;
                 overflow-y: auto;
                 max-height: 80vh;
+                z-index: 1050;
             }
             
-            .nav-menu.active { display: flex; }
-            
-            /* Link Styles Mobile */
-            .nav-link-custom {
-                color: #333;
-                width: 100%;
-                padding: 15px 25px;
+            .nav-menu.active { 
+                display: flex; 
+            }
+
+            .nav-link-custom { 
+                color: #333; 
+                width: 100%; 
+                padding: 15px 30px; 
                 line-height: 1.5;
                 border-bottom: 1px solid #eee;
+                white-space: normal;
             }
             
-            /* DROPDOWN LOGIC MOBILE */
-            .nav-item-dropdown {
-                width: 100%;
-                flex-direction: column;
+            .nav-item-dropdown { 
+                width: 100%; 
+                flex-direction: column; 
+                align-items: flex-start;
                 height: auto;
-                border-bottom: 1px solid #eee;
+                position: relative;
             }
             
-            /* Container for Link + Toggle Button */
-            .mobile-link-wrapper {
-                display: flex;
+            .dropdown-menu-custom {
+                position: static;
                 width: 100%;
-                align-items: center;
-                justify-content: space-between;
+                transform: none;
+                opacity: 1; 
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px;
+                background: #f9f9f9;
+                max-height: none;
+                overflow-y: visible;
+                pointer-events: auto;
+                justify-content: flex-start;
             }
             
-            /* Make the link take available space */
-            .nav-item-dropdown .nav-link-custom {
-                border-bottom: none;
-                width: auto;
-                flex-grow: 1;
+            .dropdown-inner { 
+                grid-template-columns: 1fr; 
+                padding: 0;
+                gap: 10px;
             }
             
-            /* Show the separate toggle button */
+            .nav-item-dropdown:first-child .dropdown-inner { 
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-item-dropdown.active .dropdown-menu-custom { 
+                display: block; 
+            }
+
+            /* Hide desktop arrow on mobile */
+            .desktop-arrow {
+                display: none;
+            }
+            
+            /* Mobile dropdown toggle */
             .mobile-dropdown-toggle {
-                display: flex;
+                display: flex !important;
                 align-items: center;
                 justify-content: center;
                 width: 60px;
                 height: 100%;
                 border-left: 1px solid #eee;
                 color: #333;
+                cursor: pointer;
             }
             
-            .mobile-dropdown-toggle:active {
-                background-color: #f0f0f0;
+            .nav-item-dropdown .nav-link-custom {
+                width: calc(100% - 60px);
+                border-bottom: none;
             }
             
-            /* Hide the small arrow inside the link text on mobile */
-            .desktop-arrow { display: none; }
-            
-            /* Dropdown Menu Mobile */
-            .dropdown-menu-custom {
-                position: static;
-                width: 100%;
-                transform: none;
-                opacity: 1;
-                visibility: visible;
-                display: none;
-                box-shadow: none;
-                border-top: none;
-                padding: 10px 30px 20px 30px;
-                background: #f9f9f9;
-                grid-template-columns: 1fr;
-            }
-            
-            .dropdown-menu-custom::before { display: none; }
-            
-            /* When Active Class added by JS */
-            .nav-item-dropdown.active .dropdown-menu-custom {
-                display: grid;
-            }
-            
-            .nav-item-dropdown.active .mobile-dropdown-toggle i {
-                transform: rotate(180deg);
-                transition: transform 0.3s;
-            }
-            
-            .dropdown-category { grid-column: span 1; }
-            
-            /* Header Elements */
-            .mobile-toggle { display: block; }
-            
-            /* Ensure Icons and Toggle are grouped right */
-            .header-right-actions {
+            .mobile-link-wrapper {
                 display: flex;
-                flex-direction: row;
-                gap: 20px;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid #eee;
+            }
+
+            /* Hero Adjustments */
+            .hero-section {
+                height: 60vh;
+                min-height: 400px;
             }
             
-            .header-icons i {
-                color: #111827;
-            }
-            
-            /* Mobile adjustments for hero */
             .hero-title {
                 font-size: 2.5rem !important;
             }
             
-            .hero-section {
-                height: 50vh;
-                min-height: 400px;
+            .hero-sub {
+                font-size: 1.1rem !important;
             }
             
+            /* Hotspot Adjustments */
+            .hotspot {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            
+            .hotspot-label {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+            
+            /* Feature columns */
             .feature-columns {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
             
-            .scenario-box {
-                padding: 0 15px;
-            }
-            
             .challenge-cards-container {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .benefit-item {
-                padding: 20px 10px;
-            }
-            
-            .product-card {
-                padding: 30px 15px;
             }
             
             .features-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .hero-title {
+                font-size: 2rem !important;
+            }
+            
+            .hero-title br {
+                display: none;
+            }
+            
+            .section-header h2 {
+                font-size: 28px !important;
+            }
+            
+            .scenario-box .row {
+                flex-direction: column;
+            }
+            
+            .col-lg-5, .col-lg-7 {
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .challenge-card, .solution-card {
+                margin-bottom: 20px;
+            }
+            
+            .hotspot-dot {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+            
+            .hotspot-label {
+                font-size: 9px;
+                padding: 3px 8px;
+                margin-left: 5px;
+            }
+            
+            .topology-img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .row.g-4 .col-lg-3 {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+            
+            .col-md-3 {
+                margin-bottom: 30px;
+            }
+            
+            .feature-column img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Small Mobile */
         @media (max-width: 576px) {
-            .header-right-actions { gap: 15px; }
-            .header-icons { gap: 10px !important; }
-            .logo-img { height: 40px; }
-            .hero-title { 
-                font-size: 2rem !important; 
+            .header-icons {
+                gap: 12px !important;
+            }
+            
+            .header-icons i {
+                font-size: 16px !important;
+            }
+            
+            .logo-img {
+                height: 40px;
+            }
+            
+            .mobile-toggle {
+                font-size: 20px;
+                padding-right: 10px;
+            }
+            
+            .header-container {
+                padding: 0 10px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem !important;
             }
             
             .hero-sub {
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
             }
             
-            .benefits-section {
-                padding: 40px 0;
+            .project-nav-bar {
+                top: 70px;
+            }
+            
+            .project-nav-bar .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-breadcrumb {
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .nav-breadcrumb .breadcrumb {
+                flex-wrap: nowrap;
+            }
+            
+            .nav-breadcrumb .breadcrumb-item {
+                font-size: 10px;
+            }
+            
+            .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+                padding: 0 5px;
+            }
+            
+            .project-nav-bar span {
+                display: none;
+            }
+            
+            .hotspot-label {
+                display: none;
+            }
+            
+            .footer .col-lg-4, 
+            .footer .col-lg-3, 
+            .footer .col-lg-2 {
+                margin-bottom: 30px;
+            }
+            
+            .line {
+                width: 80% !important;
+                max-width: 300px;
+            }
+            
+            .related-card img {
+                height: 150px;
+            }
+            
+            .benefit-item {
+                padding: 20px 10px;
             }
             
             .benefit-icon {
                 font-size: 2.5rem;
             }
             
-            .hero-section {
-                height: 45vh;
-                min-height: 350px;
-            }
-            
-            .topology-section {
-                padding: 20px;
-            }
-            
             .solution-section {
                 padding: 25px;
             }
+            
+            .feature-column h4 {
+                font-size: 1.2rem;
+            }
         }
 
-        /* --- HERO SECTION --- */
+        /* Extra Small */
+        @media (max-width: 400px) {
+            .logo-img {
+                height: 35px;
+            }
+            
+            .hero-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .hotspot-dot {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .section-header h2 {
+                font-size: 24px !important;
+            }
+            
+            .related-card, 
+            .product-card {
+                margin-bottom: 20px;
+            }
+            
+            .product-card img {
+                height: 120px;
+            }
+            
+            .feature-item {
+                padding: 15px;
+            }
+        }
+
+        /* === HERO SECTION === */
         .hero-section {
             height: 65vh; 
             min-height: 500px;
-            background:   url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-banner.jpg');
+            background: url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-banner.jpg');
             background-size: cover; 
             background-position: center;
             display: flex; 
@@ -448,12 +673,12 @@
             position: relative;
         }
         
+        
+
         .hero-content { 
             position: relative; 
             z-index: 2; 
-            padding-top: 60px; 
             animation: fadeUp 1s ease-out; 
-            text-shadow: 0 2px 20px rgba(0,0,0,0.7); 
         }
         
         .hero-title { 
@@ -461,13 +686,15 @@
             font-weight: 900; 
             color: #fff; 
             margin-bottom: 15px; 
+            text-shadow: 0 3px 8px rgba(0,0,0,0.45);
         }
         
         .hero-sub { 
             color: #fff; 
             font-size: 1.25rem; 
             max-width: 700px; 
-            font-weight: 600; 
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
         @keyframes fadeUp { 
@@ -481,10 +708,10 @@
             } 
         }
 
-        /* --- SUB-NAV --- */
+        /* === SUB-NAV === */
         .project-nav-bar {
             position: sticky; 
-            top: 80px; 
+            top: var(--header-height);
             z-index: 1020;
             background: #fff; 
             padding: 15px 0;
@@ -497,7 +724,6 @@
             font-weight: 700; 
             text-transform: uppercase; 
             font-size: 12px; 
-            letter-spacing: 0.5px; 
             text-decoration: none; 
         }
         
@@ -527,7 +753,7 @@
             padding: 0 10px; 
         }
 
-        /* --- INTERACTIVE MAP --- */
+        /* === INTERACTIVE MAP === */
         .scroll-target { 
             scroll-margin-top: 160px; 
         }
@@ -538,14 +764,13 @@
             border-radius: var(--card-radius); 
             overflow: hidden; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
-            border: 1px solid rgba(0,0,0,0.05); 
             margin-bottom: 40px;
         }
         
         .map-img { 
             width: 100%; 
-            height: auto; 
             display: block; 
+            filter: brightness(0.9); 
         }
         
         .hotspot {
@@ -555,11 +780,10 @@
             cursor: pointer; 
             z-index: 10; 
             transform: translate(-50%, -50%);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease;
         }
         
         .hotspot:hover { 
-            z-index: 20; 
             transform: translate(-50%, -50%) scale(1.1); 
         }
         
@@ -573,39 +797,36 @@
             align-items: center; 
             justify-content: center;
             font-weight: 800; 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 16px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-            border: 2px solid #fff;
+            border: 2px solid #fff; 
             transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         
         .hotspot.active .hotspot-dot {
             background-color: var(--tf-yellow); 
-            color: var(--tf-dark);
+            color: var(--tf-dark); 
             transform: scale(1.3); 
-            box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 0 0 5px rgba(255,204,0,0.4);
         }
 
         .hotspot-label {
-            background-color: #fff;
-            color: #333;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-left: 10px;
+            background-color: #fff; 
+            padding: 6px 15px 6px 25px; 
+            border-radius: 0 20px 20px 0; 
+            font-size: 12px; 
+            font-weight: 700; 
+            margin-left: -20px; 
+            z-index: -2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
             white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-            z-index: 5;
         }
 
-        .hotspot.active .hotspot-label { 
-            background: var(--tf-dark); 
-            color: #fff; 
+        .hotspot.active .hotspot-label {
+            background: var(--tf-dark);
+            color: #fff;
         }
 
-        /* --- SECTIONS GENERAL --- */
+        /* === SECTIONS GENERAL === */
         .section-header { 
             text-align: center; 
             margin-bottom: 60px; 
@@ -628,10 +849,11 @@
         .scenario-wrapper { 
             background: #f8f9fa; 
             border-top: 1px solid #eee; 
-            padding: 60px 0; 
-            min-height: 500px; 
+            padding: 80px 0 120px 0; 
+            position: relative;
+            clear: both;
         }
-       
+        
         .scenario-box {
             display: none;
             opacity: 0;
@@ -644,7 +866,7 @@
             transform: translateY(0);
         }
 
-        /* Challenge Cards Side by Side */
+        /* Challenge Cards */
         .challenge-cards-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -785,7 +1007,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* --- RELATED --- */
+        /* === RELATED === */
         .related-card {
             background: #fff; 
             border-radius: var(--card-radius); 
@@ -820,7 +1042,7 @@
             font-size: 1.1rem; 
         }
 
-        /* --- PRODUCT SHOWCASE --- */
+        /* === PRODUCT SHOWCASE === */
         .product-card {
             background: #fff; 
             padding: 40px 20px; 
@@ -828,6 +1050,7 @@
             text-align: center; 
             border: 1px solid #f0f0f0; 
             transition: 0.3s;
+            height: 100%;
         }
         
         .product-card:hover { 
@@ -843,6 +1066,24 @@
             max-width: 100%;
         }
 
+        .btn-primary {
+            background: var(--tf-blue);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            color: #fff;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .btn-primary:hover {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            transform: translateY(-2px);
+        }
+
         .btn-outline-primary {
             border: 2px solid var(--tf-blue);
             color: var(--tf-blue);
@@ -851,14 +1092,45 @@
             border-radius: 50px;
             font-weight: 600;
             transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
         }
         
         .btn-outline-primary:hover {
             background: var(--tf-blue);
             color: #fff;
+            transform: translateY(-2px);
         }
 
-        /* --- FOOTER --- */
+        /* === BENEFITS SECTION === */
+        .benefits-section {
+            background: linear-gradient(135deg, var(--tf-blue), #002244);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--tf-yellow);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-item h4 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-item p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        /* === FOOTER === */
         .footer { 
             background: #0b111a; 
             color: #aaa; 
@@ -892,54 +1164,64 @@
             margin-top: 60px; 
         }
 
-        /* --- BENEFITS SECTION --- */
-        .benefits-section {
-            background: linear-gradient(135deg, var(--tf-blue), #002244);
-            color: white;
-            padding: 80px 0;
-        }
-        
-        .benefit-item {
-            text-align: center;
-            padding: 30px 20px;
-        }
-        
-        .benefit-icon {
-            font-size: 3rem;
-            color: var(--tf-yellow);
-            margin-bottom: 20px;
-        }
-        
-        .benefit-item h4 {
-            color: white;
-            margin-bottom: 15px;
-        }
-        
-        .btn-primary {
-            background: var(--tf-blue);
-            border: none;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
+        .btn-square {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: #aaa;
             transition: var(--transition);
-            color: #fff;
+            text-decoration: none;
         }
         
-        .btn-primary:hover {
-            background: var(--tf-yellow);
-            color: var(--tf-dark);
-            transform: translateY(-2px);
+        .btn-square:hover {
+            background: var(--tf-blue);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .form-control:focus {
+            border-color: var(--tf-yellow);
+            box-shadow: 0 0 0 0.2rem rgba(255,204,0,0.25);
+        }
+
+        /* Responsive Utility Classes */
+        .img-responsive {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .text-responsive {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+        
+        .heading-responsive {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        /* Desktop arrow */
+        .desktop-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 11px;
+        }
+        
+        /* Mobile dropdown toggle */
+        .mobile-dropdown-toggle {
+            display: none;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER - SOLID WHITE WITH LOGO -->
+    <!-- HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
-                <!-- LOGO (Left) -->
                 <div class="header-logo">
                     <a href="/index.html">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
@@ -948,111 +1230,138 @@
                 
                 <!-- NAVIGATION -->
                 <nav id="mainNav" class="nav-menu">
-                     
                     
-                    <!-- SOLUTIONS DROPDOWN -->
+                    <!-- SOLUTIONS DROPDOWN - FULL WIDTH -->
                     <div class="nav-item-dropdown">
-                        <!-- Wrapper to separate Text and Toggle Button on Mobile -->
                         <div class="mobile-link-wrapper">
-                            <a href="/solutions/index.html" class="nav-link-custom">
-                                Solutions
-                                <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
+                            <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                                Solutions <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <!-- Specific Button for Toggling Dropdown on Mobile -->
                             <span class="mobile-dropdown-toggle">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                         </div>
-                        
                         <div class="dropdown-menu-custom">
-                            <!-- Col 1: Buildings -->
-                            <div>
-                                <div class="dropdown-category">Buildings</div>
-                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                            </div>
-                            <!-- Col 2: Infrastructure -->
-                            <div>
-                                <div class="dropdown-category">Infrastructure</div>
-                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
-                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
-                            </div>
-                            <!-- Col 3: Cities & Systems -->
-                            <div>
-                                <div class="dropdown-category">City Systems</div>
-                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                              <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue);">
-  View All Solutions →
-</a>
- 
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Buildings</div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Infrastructure</div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">City Systems</div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- PRODUCTS DROPDOWN -->
+                    <!-- PRODUCTS DROPDOWN - FULL WIDTH WITH EXPANDED LISTS -->
                     <div class="nav-item-dropdown">
                         <div class="mobile-link-wrapper">
-                            <a href="/products/index.html" class="nav-link-custom">
-                                Products
-                                <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
+                            <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                                Products <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <!-- Specific Button for Toggling Dropdown on Mobile -->
                             <span class="mobile-dropdown-toggle">
                                 <i class="fa fa-angle-down"></i>
                             </span>
                         </div>
-                        
                         <div class="dropdown-menu-custom">
-                            <!-- Col 1 -->
-                            <div>
-                                <div class="dropdown-category">Core Controllers</div>
-                                <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Access Control</div>
+                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                    <a href="/products/access-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Fire & Safety</div>
+                                    <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
+                                    <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                    <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Building Management</div>
+                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                    <a href="/products/building-management/index.html" class="more-link">View All→</a>
+                                </div>
+                              <div>
+                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
+                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
+                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a> 
+                                 <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
+                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
-                            <!-- Col 2 -->
                             <div>
-                                <div class="dropdown-category">Field Instrumentation</div>
-                                <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
-                                <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
-                            </div>
-                            <!-- Col 3 -->
-                            <div>
-                                <div class="dropdown-category">Management & Power</div>
-                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
-                                <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
-                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <div class="dropdown-category">HVAC & Field Control</div>
+                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                    <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
+                                    <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
+                                    <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Lighting Control</div>
+                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                    <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Energy Management</div>
+                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                    <a href="/products/Energy-Management/water-meters/index.html" class="dropdown-link">Water Meters</a>
+                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                    <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
                     <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                     <a href="/about/index.html" class="nav-link-custom">About</a>                               <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
-                </nav>
-                
-                <!-- RIGHT SIDE GROUP (Icons + Hamburger) -->
-                <div class="header-right-actions">
-                    <!-- HAMBURGER ICON (Visible on Mobile) -->
-                    <button class="mobile-toggle" onclick="toggleMobileMenu()">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    
-                    <!-- Header Icons -->
-                    <div class="header-icons">
-                        <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
-                        <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
-                    </div>
+
+                <!-- MOBILE MENU TOGGLE -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- HEADER ICONS -->
+                <div class="header-icons d-flex align-items-center">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
                 </div>
             </div>
         </div>
@@ -1061,8 +1370,8 @@
     <!-- HERO SECTION -->
     <section class="hero-section">
         <div class="container">
-            <div class="col-lg-8 hero-content">
-                <h1 class="hero-title">Data Center (IPDC) Solutions</h1>
+            <div class="hero-content">
+                <h1 class="hero-title">Data Center (IPDC) <br>Solutions</h1>
                 <p class="hero-sub">Mission-critical infrastructure management for reliable, efficient, and secure data center operations</p>
             </div>
         </div>
@@ -1076,23 +1385,22 @@
                     <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
                     <li class="breadcrumb-item"><a href="#scenarios">Scenarios</a></li>
                     <li class="breadcrumb-item"><a href="#benefits">Benefits</a></li>
+                    <li class="breadcrumb-item"><a href="#products">Products</a></li>
                 </ol>
             </nav>
-            <div class="d-none d-md-block">
-                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
-                    <i class="fa fa-server text-primary me-2" style="color: var(--tf-blue) !important;"></i>
-                    MISSION-CRITICAL INFRASTRUCTURE
-                </span>
-            </div>
+            <span class="text-dark fw-bold small d-none d-md-block">
+                <i class="fa fa-server me-2" style="color: var(--tf-yellow) !important;"></i>
+                MISSION-CRITICAL INFRASTRUCTURE
+            </span>
         </div>
     </div>
 
     <!-- SECTION 1: SOLUTION OVERVIEW -->
-    <section class="py-5 bg-white scroll-target" id="overview">
+    <section class="py-5 bg-white" id="overview">
         <div class="container py-4">
             
             <div class="text-center mb-5">
-                <h2 style="font-size: 2.5rem;">Solution Overview</h2>
+                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Solution Overview</h2>
                 <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
                 <p class="text-muted" style="max-width: 900px; margin: 30px auto; font-size: 1.1rem;">
                     Modern data centers demand unprecedented levels of reliability, efficiency, and security. As digital infrastructure becomes increasingly critical to business operations, maintaining optimal environmental conditions, power availability, and physical security is essential for uninterrupted service delivery.
@@ -1108,29 +1416,25 @@
                 <p class="text-muted mb-4">Click on the numbered hotspots to explore different data center management scenarios</p>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="interactive-map-container">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-map.png" alt="Data Center Solution Map" class="map-img">
-                        
-                        <!-- Hotspots with labels -->
-                        <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 23%; left: 5%;">
-                            <div class="hotspot-dot">1</div>
-                            <div class="hotspot-label"> </div>
-                        </div>
-                        <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 82%; left: 6%;">
-                            <div class="hotspot-dot">2</div>
-                            <div class="hotspot-label"> </div>
-                        </div>
-                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 82%; left: 65%;">
-                            <div class="hotspot-dot">3</div>
-                            <div class="hotspot-label"> </div>
-                        </div>
-                        <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 14%; left: 69%;">
-                            <div class="hotspot-dot">4</div>
-                            <div class="hotspot-label"> </div>
-                        </div>
-                    </div>
+            <div class="interactive-map-container">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/data-center-map.png" alt="Data Center Solution Map" class="map-img img-responsive">
+                
+                <!-- Hotspots with labels -->
+                <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 23%; left: 5%;">
+                    <div class="hotspot-dot">1</div>
+                    <div class="hotspot-label">Precision Cooling</div>
+                </div>
+                <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 82%; left: 6%;">
+                    <div class="hotspot-dot">2</div>
+                    <div class="hotspot-label">Power Management</div>
+                </div>
+                <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 82%; left: 65%;">
+                    <div class="hotspot-dot">3</div>
+                    <div class="hotspot-label">Environmental Monitoring</div>
+                </div>
+                <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 14%; left: 69%;">
+                    <div class="hotspot-dot">4</div>
+                    <div class="hotspot-label">Security & Access</div>
                 </div>
             </div>
         </div>
@@ -1169,7 +1473,7 @@
                         <p style="line-height: 1.7;">
                             Variable capacity CRAC/CRAH units with real-time load matching. Automated control based on IT equipment heat output and environmental conditions.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Dynamic-Cooling-Control.png" alt="Dynamic Cooling Control">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Dynamic-Cooling-Control.png" alt="Dynamic Cooling Control" class="img-responsive">
                     </div>
                     
                     <div class="feature-column">
@@ -1177,7 +1481,7 @@
                         <p style="line-height: 1.7;">
                             Hot aisle/cold aisle containment solutions to prevent air mixing and improve cooling efficiency. Pressure differential monitoring and control.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/containment-systems.png" alt="Containment Systems">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/containment-systems.png" alt="Containment Systems" class="img-responsive">
                     </div>
                 </div>
                 
@@ -1219,7 +1523,7 @@
                 <!-- Topology Section -->
                 <div class="topology-section">
                     <h3>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/cooling-topology.png" alt="Cooling Topology" class="topology-img">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/cooling-topology.png" alt="Cooling Topology" class="topology-img img-responsive">
                 </div>
             </div>
 
@@ -1252,7 +1556,7 @@
                         <p style="line-height: 1.7;">
                             Real-time monitoring of power consumption at rack, row, and zone levels. Detailed analytics for capacity planning and optimization.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/power-monitoring.jpg" alt="Intelligent Power Monitoring">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/power-monitoring.jpg" alt="Intelligent Power Monitoring" class="img-responsive">
                     </div>
                     
                     <div class="feature-column">
@@ -1260,7 +1564,7 @@
                         <p style="line-height: 1.7;">
                             Continuous monitoring of voltage, frequency, harmonics, and power factor. Automatic alerts for power quality issues that could affect IT equipment.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/power-quality.jpg" alt="Power Quality Management">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/power-quality.jpg" alt="Power Quality Management" class="img-responsive">
                     </div>
                 </div>
                 
@@ -1302,7 +1606,7 @@
                 <!-- Topology Section -->
                 <div class="topology-section">
                     <h3>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Power Management Topology.png" alt="Power Management Topology" class="topology-img">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Power Management Topology.png" alt="Power Management Topology" class="topology-img img-responsive">
                 </div>
             </div>
 
@@ -1335,7 +1639,7 @@
                         <p style="line-height: 1.7;">
                             Precise monitoring and control of temperature and humidity at rack, row, and zone levels. Automated adjustments based on equipment heat loads and external conditions.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/temp-humidity.jpg" alt="Temperature & Humidity Control">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/temp-humidity.jpg" alt="Temperature & Humidity Control" class="img-responsive">
                     </div>
                     
                     <div class="feature-column">
@@ -1343,7 +1647,7 @@
                         <p style="line-height: 1.7;">
                             Continuous monitoring of particulate matter, gases, and other air quality parameters. Early detection of contaminants that could damage sensitive equipment.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/air-quality.jpg" alt="Air Quality Monitoring">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/air-quality.jpg" alt="Air Quality Monitoring" class="img-responsive">
                     </div>
                 </div>
                 
@@ -1362,7 +1666,7 @@
                 <!-- Topology Section -->
                 <div class="topology-section">
                     <h3>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Environmental Monitoring Topology.png" alt="Environmental Monitoring Topology" class="topology-img">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Environmental Monitoring Topology.png" alt="Environmental Monitoring Topology" class="topology-img img-responsive">
                 </div>
             </div>
 
@@ -1395,7 +1699,7 @@
                         <p style="line-height: 1.7;">
                             Multi-factor authentication, biometric access, and role-based permissions for different areas of the data center. Complete audit trails of all access events.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/access-control.jpg" alt="Access Control Systems">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/access-control.jpg" alt="Access Control Systems" class="img-responsive">
                     </div>
                     
                     <div class="feature-column">
@@ -1403,7 +1707,7 @@
                         <p style="line-height: 1.7;">
                             High-definition video monitoring with intelligent analytics for threat detection, motion tracking, and incident investigation. Integration with access control for comprehensive security.
                         </p>
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/video-surveillance.jpg" alt="Video Surveillance">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/data-centre/video-surveillance.jpg" alt="Video Surveillance" class="img-responsive">
                     </div>
                 </div>
                 
@@ -1422,7 +1726,7 @@
                 <!-- Topology Section -->
                 <div class="topology-section">
                     <h3>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Security & Access Topology.png" alt="Security & Access Topology" class="topology-img">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/ipdc/Security & Access Topology.png" alt="Security & Access Topology" class="topology-img img-responsive">
                 </div>
             </div>
             
@@ -1433,8 +1737,8 @@
     <section id="benefits" class="benefits-section">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 style="color: white;">Key Benefits</h2>
-                <div style="width: 60px; height: 4px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+                <h2 style="color: white; font-size: clamp(1.8rem, 4vw, 2.5rem);">Key Benefits</h2>
+                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
             </div>
             
             <div class="row">
@@ -1482,42 +1786,42 @@
     <section id="products" class="py-5 bg-white">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2>Recommended Products</h2>
-                <div style="width: 60px; height: 4px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
+                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Recommended Products</h2>
+                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
                 <p class="text-muted">High-performance products designed for data center applications</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller">
+                        <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC Controller" class="img-responsive">
                         <h5>DDC Controllers</h5>
                         <p class="small text-muted">High-performance controllers for precision environmental control</p>
-                        <a href="/products/ddc-controllers/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        <a href="/products/ddc-controllers/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Energy Meter">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Energy Meter" class="img-responsive">
                         <h5>Energy Meters</h5>
                         <p class="small text-muted">Advanced metering for detailed power consumption analysis</p>
-                        <a href="/products/energy-meters/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        <a href="/products/energy-meters/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Environmental Sensors">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Environmental Sensors" class="img-responsive">
                         <h5>Environmental Sensors</h5>
                         <p class="small text-muted">Precision sensors for temperature, humidity, and air quality monitoring</p>
-                        <a href="/products/sensors-thermostats/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        <a href="/products/sensors-thermostats/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="product-card">
-                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="BMS Software">
+                        <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="BMS Software" class="img-responsive">
                         <h5>BMS Software</h5>
                         <p class="small text-muted">Comprehensive management platform for data center operations</p>
-                        <a href="/products/bms-software/index.html" class="btn btn-outline-primary btn-sm rounded-pill mt-2">Details</a>
+                        <a href="/products/bms-software/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
                     </div>
                 </div>
             </div>
@@ -1552,10 +1856,16 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h5>Newsletter</h5>
-                    <p>Subscribe for updates.</p>
+                    <p>Subscribe for data center insights.</p>
                     <div class="position-relative">
                         <input class="form-control" type="email" placeholder="Your email">
                         <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
                     </div>
                 </div>
             </div>
@@ -1569,7 +1879,7 @@
         // Current active scenario for hotspots
         let currentScenario = 1;
         
-        // SIMPLIFIED JavaScript - only mobile menu functionality
+        // Mobile menu functionality
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
@@ -1577,18 +1887,15 @@
             
             nav.classList.toggle('active');
             
-            // Force white background when menu is open on mobile
             if(nav.classList.contains('active')) {
                 header.style.background = "#fff";
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
                 mobileToggle.style.color = "#333";
                 
-                // Change nav link colors to dark when menu is open
                 document.querySelectorAll('.nav-link-custom').forEach(link => {
                     link.style.color = "#333";
                 });
                 
-                // Change icons to dark
                 document.querySelectorAll('.header-icons i').forEach(icon => {
                     icon.style.color = "#333";
                 });
@@ -1597,12 +1904,10 @@
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
                 mobileToggle.style.color = "#111827";
                 
-                // Reset nav link colors to black
                 document.querySelectorAll('.nav-link-custom').forEach(link => {
                     link.style.color = "#111827";
                 });
                 
-                // Reset icons to black
                 document.querySelectorAll('.header-icons i').forEach(icon => {
                     icon.style.color = "#111827";
                 });
@@ -1611,12 +1916,13 @@
         
         // Close dropdowns when clicking outside (for mobile)
         document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('mainNav');
-            const mobileToggle = document.querySelector('.mobile-toggle');
-            
-            // Check if click was inside menu or on toggle button
-            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-                navMenu.classList.remove('active');
+            if (window.innerWidth < 992) {
+                const navMenu = document.getElementById('mainNav');
+                const mobileToggle = document.querySelector('.mobile-toggle');
+                
+                if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                }
             }
         });
         
@@ -1710,19 +2016,18 @@
                     }
                 });
             });
-            
-            // Ensure proper spacing for mobile
-            if (window.innerWidth <= 991) {
-                document.body.style.paddingTop = "60px";
-            }
         });
         
         // Handle window resize
         window.addEventListener('resize', function() {
-            if (window.innerWidth <= 991) {
-                document.body.style.paddingTop = "60px";
-            } else {
-                document.body.style.paddingTop = "80px";
+            if (window.innerWidth >= 992) {
+                const nav = document.getElementById('mainNav');
+                nav.classList.remove('active');
+                
+                // Close all dropdowns
+                document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
     </script>

@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FW2107 | Agent Releasing Panel | Tongfang BMS</title>
+          <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
+   
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+   <style>
+        :root {
+            /* BRAND COLORS - EXACT TEMPLATE */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            --tf-gray-light: #e5e7eb;
+            --header-height: 80px;
+            --card-radius: 12px;
+            
+            /* SHADOWS & TRANSITIONS */
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: var(--header-height);
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* ===== 1. UPDATED HEADER - EXACT TEMPLATE ===== */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 9999;
+            min-height: var(--header-height); 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+        
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-img {
+            height: 60px;   /* best fit inside 80px header */
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* ===== UPDATED PRODUCT NAVIGATION BAR - MATCHING TEMPLATE ===== */
+        .product-nav-bar {
+            position: sticky; 
+            top: 80px; 
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* Custom Breadcrumb in Nav Bar */
+        .nav-breadcrumb .breadcrumb-item a {
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue);
+        }
+
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px;
+        }
+
+        /* Active breadcrumb highlight */
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue) !important;
+            font-weight: 800;
+        }
+
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
+            border-radius: 10px;
+        }
+        
+        /* Desktop Menu */
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: var(--tf-dark);
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link-custom:hover { 
+            color: var(--tf-yellow); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom:hover { 
+            color: var(--tf-blue); 
+        }
+        
+        /* Make parent links clickable */
+        .dropdown-parent-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Dropdown Menu - EXACT TEMPLATE */
+        .nav-item-dropdown { 
+            position: relative; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+        
+        .dropdown-menu-custom {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px); 
+            width: 700px;
+            background: #fff;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+        }
+        
+        /* Invisible bridge for hover */
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        
+        .dropdown-link {
+            color: #555; 
+            font-size: 13px; 
+            font-weight: 600;
+            padding: 6px 10px; 
+            border-radius: 4px; 
+            display: block;
+            border-left: 2px solid transparent;
+        }
+        
+        .dropdown-link:hover {
+            background: #f4f7fa; 
+            color: var(--tf-blue);
+            border-left: 2px solid var(--tf-blue);
+            padding-left: 15px;
+        }
+        
+        .dropdown-category {
+            grid-column: span 3; 
+            color: var(--tf-blue); 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 10px; 
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px;
+        }
+        
+        .header-icons {
+            display: flex !important;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icons i {
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--tf-dark);
+        }
+
+        .header-fix.scrolled .header-icons i {
+            color: var(--tf-dark);
+        }
+
+        .header-icons i:hover {
+            color: var(--tf-yellow);
+        }
+
+        .header-fix.scrolled .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: var(--tf-dark); 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            padding-right: 20px;
+        }
+        
+        .header-fix.scrolled .mobile-toggle { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        /* ===== HERO SECTION - FIXED ===== */
+        .hero-section {
+            height: 70vh;
+            min-height: 300px;
+            background:url("https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2105/FACP-hero.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--tf-gray-light);
+        }
+        
+        .hero-content h1 {
+            color: #fff;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* ===== PRODUCT NAVIGATION BAR ===== */
+        .product-nav-bar {
+            background: var(--tf-white);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--tf-gray-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: sticky;
+            top: var(--header-height);
+            z-index: 1000;
+        }
+        
+        .product-nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ===== YOUR EXISTING PRODUCT & IMAGE ZOOM STYLES ===== */
+        .product-section { padding: 80px 0; }
+        
+        .main-image-stage {
+            width: 100%; height: 500px; border: 1px solid var(--tf-gray-light);
+            border-radius: var(--card-radius); display: flex; align-items: center;
+            justify-content: center; position: relative; background: #fff;
+            cursor: crosshair; overflow: hidden;
+        }
+
+        .main-image { max-width: 90%; max-height: 90%; object-fit: contain; }
+
+        /* THE IMPROVED ZOOM WINDOW */
+        .magnified-view {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; overflow: hidden;
+            display: none; border-radius: var(--card-radius);
+            border: 1px solid var(--tf-blue);
+        }
+        .magnified-view.active { display: block; }
+
+        .magnified-image {
+            position: absolute; width: 250%; /* Zoom level */
+            height: 250%; object-fit: contain; pointer-events: none;
+        }
+
+        .thumbs-wrapper { display: flex; gap: 10px; margin-top: 20px; }
+        .thumb-item {
+            width: 80px; height: 80px; border: 1px solid #ddd; padding: 5px;
+            cursor: pointer; border-radius: 8px; background: white;
+        }
+        .thumb-item.active { border-color: var(--tf-blue); border-width: 2px; }
+        .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
+
+        /* Right Column Info */
+        .product-info-column { position: relative; }
+        .product-badge { background: #eef2ff; color: var(--tf-blue); padding: 5px 12px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .key-specs { background: var(--tf-bg-light); padding: 20px; border-radius: 10px; margin: 20px 0; }
+
+        .btn-square { width: 40px; height: 40px; background: #333; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: white; }
+        .btn-square:hover { background: var(--tf-blue); }
+
+        /* TABS SECTION STYLES - YOUR EXISTING */
+        .tabs-section { padding: 80px 0; background: var(--tf-bg-light); }
+        .nav-tabs { border-bottom: 2px solid #e5e7eb; margin-bottom: 40px; }
+        .nav-tabs .nav-link { color: #666; font-weight: 700; font-size: 15px; padding: 15px 30px; }
+        .nav-tabs .nav-link:hover { color: var(--tf-blue); }
+        .nav-tabs .nav-link.active { color: var(--tf-blue); background: transparent; border-bottom: 3px solid var(--tf-blue); }
+        .tech-table { width: 100%; border-collapse: collapse; }
+        .tech-table tr:nth-child(odd) { background: #f9fafb; }
+        .tech-table td { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
+        .tech-table td:first-child { font-weight: 600; color: var(--tf-blue); width: 35%; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .feature-card { background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 25px; border-radius: 10px; border-left: 4px solid var(--tf-blue); }
+
+        /* Suppression System Specific Styles */
+        .agent-badge { background: linear-gradient(135deg, #dc3545, #c82333); color: white; }
+        .safety-features { border-left: 4px solid #28a745; }
+        .warning-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .agent-type { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 15px; text-align: center; }
+
+        /* ===== MOBILE RESPONSIVENESS - EXACT TEMPLATE ===== */
+        @media (max-width: 991px) {
+            .header-fix { height: auto; }
+            
+            .mobile-toggle { 
+                display: block; 
+                order: 2;
+            }
+            
+            .header-icons { 
+                display: flex !important; 
+                order: 3;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .header-icons i {
+                font-size: 18px !important;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px; 
+                left: 0; 
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
+            }
+            
+            .nav-menu.active { 
+                display: flex; 
+            }
+            
+            .nav-link-custom { 
+                color: #333; 
+                width: 100%; 
+                padding: 10px 30px; 
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .nav-item-dropdown { 
+                width: 100%; 
+                flex-direction: column; 
+                align-items: flex-start;
+                height: auto;
+            }
+            
+            .dropdown-menu-custom {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1; 
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px;
+                background: #f9f9f9;
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-menu-custom::before { 
+                display: none; 
+            }
+            
+            .nav-item-dropdown.active .dropdown-menu-custom { 
+                display: grid; 
+                opacity: 1; 
+                visibility: visible;
+                transform: none;
+            }
+            
+            .dropdown-category { 
+                grid-column: span 1; 
+            }
+            
+            /* HERO SECTION MOBILE */
+            .hero-section {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Product nav bar mobile */
+            .product-nav-container {
+                padding: 0 15px;
+            }
+            
+            .product-nav-links {
+                gap: 15px;
+            }
+            
+            .product-nav-link {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .dropdown-menu-custom {
+                width: 100%;
+            }
+            
+            .magnified-view { 
+                display: none !important; 
+            } /* Disable zoom on mobile */
+            
+            .main-image-stage { 
+                height: 350px; 
+            }
+            
+            .agent-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-img {
+                height: 50px;
+            }
+            
+            .hero-section {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== 4. UPDATED FOOTER - EXACT TEMPLATE ===== */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            margin-top: 0; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+        
+        /* FOOTER LINK COLOR OVERRIDE */
+        .footer a,
+        .footer .btn-link {
+            color: var(--tf-blue) !important;
+            font-weight: 600;
+        }
+
+        .footer a:hover,
+        .footer .btn-link:hover {
+            color: var(--tf-yellow) !important;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== UPDATED HEADER - EXACT TEMPLATE ===== -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+               <div class="header-logo">
+                    <a href="/index.html" class="logo-wrapper">
+                        <img 
+                            src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png"
+                            alt="Tongfang BMS Logo"
+                            class="logo-img"
+                        >
+                    </a>
+                </div>
+                
+                <!-- NAVIGATION -->
+                <nav id="mainNav" class="nav-menu">
+                     
+                    
+                    <!-- SOLUTIONS DROPDOWN - Parent link is clickable -->
+                    <div class="nav-item-dropdown">
+                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1: Buildings -->
+                            <div>
+                                <div class="dropdown-category">Buildings</div>
+                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                            </div>
+                            <!-- Col 2: Infrastructure -->
+                            <div>
+                                <div class="dropdown-category">Infrastructure</div>
+                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
+                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
+                            </div>
+                            <!-- Col 3: Cities & Systems -->
+                            <div>
+                                <div class="dropdown-category">City Systems</div>
+                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                              <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue);">
+  View All Solutions →
+</a>
+ 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PRODUCTS DROPDOWN - Parent link is clickable -->
+                    <div class="nav-item-dropdown">
+                        <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                            Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1 -->
+                            <div>
+                                <div class="dropdown-category">Fire Suppression Systems</div>
+                                <a href="/products/agent-releasing/index.html" class="dropdown-link">Agent Releasing Panels</a>
+                                <a href="/products/clean-agent-systems/index.html" class="dropdown-link">Clean Agent Systems</a>
+                                <a href="/products/co2-systems/index.html" class="dropdown-link">CO₂ Systems</a>
+                                <a href="/products/water-mist-systems/index.html" class="dropdown-link">Water Mist Systems</a>
+                            </div>
+                            <!-- Col 2 -->
+                            <div>
+                                <div class="dropdown-category">Detection & Control</div>
+                                <a href="/products/suppression-detection/index.html" class="dropdown-link">Suppression Detection</a>
+                                <a href="/products/manual-release/index.html" class="dropdown-link">Manual Release Stations</a>
+                                <a href="/products/abort-switches/index.html" class="dropdown-link">Abort Switches</a>
+                            </div>
+                            <!-- Col 3 -->
+                            <div>
+                                <div class="dropdown-category">Management & Integration</div>
+                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                <a href="/products/suppression-monitoring/index.html" class="dropdown-link">Suppression Monitoring</a>
+                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                     <a href="/about/index.html" class="nav-link-custom">About</a>                               <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                </nav>
+                </nav>
+
+                <!-- HAMBURGER ICON (Visible on Mobile) -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Header Icons - Always visible -->
+                <div class="header-icons d-flex align-items-center">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1>Agent Releasing Panel</h1>
+            <p class="lead fs-4">FW2107 - Special Hazard Fire Suppression Control System</p>
+            <p>UL Listed • Dual Cross-Zone Detection • Abort Function</p>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCT NAVIGATION BAR - UPDATED TO MATCH TEMPLATE ===== -->
+    <div class="product-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            
+            <!-- Left Side: Custom Breadcrumb Links -->
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products</a></li>
+                     <li class="breadcrumb-item parent-link"><a href="/products/fire-alarm/index.html">Fire Alarm</a></li>
+
+                    <li class="breadcrumb-item"><a href="#product-section">FW2107 Detail</a></li>
+                </ol>
+            </nav>
+
+            <!-- Right Side: Tagline -->
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-fire-extinguisher text-danger me-2"></i>
+                    SPECIAL HAZARD SUPPRESSION CONTROL
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT CONTENT ===== -->
+    <section class="product-section" id="product-section">
+        <div class="container">
+            <div class="row">
+                <!-- Image Side -->
+                <div class="col-lg-6">
+                    <div class="main-image-stage" id="imageContainer">
+                        <img id="mainImg" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/front-pannel-1.png" class="main-image">
+                        <!-- Zoom overlay will appear here on hover -->
+                    </div>
+                   <div class="thumbs-wrapper">
+    <div class="thumb-item active" onclick="updateImg(this, 'https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/front-pannel.png')">
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/front-pannel.png">
+    </div>
+    <div class="thumb-item" onclick="updateImg(this, 'https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/terminals.png')">
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/terminals.png">
+    </div>
+    <div class="thumb-item" onclick="updateImg(this, 'https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/schematic.png')">
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/schematic.png">
+    </div>
+    <div class="thumb-item" onclick="updateImg(this, 'https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/installation.png')">
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/installation.png">
+    </div>
+</div>
+
+                </div>
+
+                <!-- Info Side / Zoom Target -->
+                <div class="col-lg-6 product-info-column" id="infoColumn">
+                    <!-- This div appears on hover -->
+                    <div class="magnified-view" id="zoomWindow">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2107/front-pannel.png" id="zoomImg" class="magnified-image">
+                    </div>
+
+                    <div class="ps-lg-4">
+                        <span class="product-badge agent-badge">UL Listed</span>
+                        <h1 class="mt-3 fw-bold">Agent Releasing Panel</h1>
+                        <p class="text-muted fs-5">FW2107</p>
+                        
+                        <div class="key-specs">
+                            <div class="row g-3">
+                                <div class="col-6"><i class="fa fa-shield-alt me-2"></i> UL Listed</div>
+                                <div class="col-6"><i class="fa fa-microchip me-2"></i> Dual-Zone Detection</div>
+                                <div class="col-6"><i class="fa fa-check me-2"></i> Quality Tested</div>
+                                <div class="col-6"><i class="fa fa-tools me-2"></i> Easy Install</div>
+                            </div>
+                        </div>
+
+                        <div class="warning-box">
+                            <i class="fa fa-exclamation-triangle text-warning me-2"></i>
+                            <strong>Warning:</strong> This panel controls fire suppression agent release. Installation and maintenance must be performed by qualified personnel only.
+                        </div>
+
+                        <p>High-performance fire alarm component designed for modern life safety systems. Part of the Maple Armor 2025 series, providing reliability and code compliance for complex building environments.</p>
+                        
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="/contact/index.html" class="btn btn-primary btn-lg px-5" style="background:var(--tf-blue);">Get Quote</a>
+                            <button class="btn btn-outline-dark btn-lg">Datasheet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TABS SECTION ===== -->
+    <section class="tabs-section">
+        <div class="container">
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button">Technical Specs</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Overview</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="docs-tab" data-bs-toggle="tab" data-bs-target="#docs" type="button">Downloads</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="agents-tab" data-bs-toggle="tab" data-bs-target="#agents" type="button">Agent Types</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="safety-tab" data-bs-toggle="tab" data-bs-target="#safety" type="button">Safety Features</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- Specs Tab -->
+                <div class="tab-pane fade show active" id="specs">
+                    <h4 class="mb-4">Product Specifications</h4>
+                    <table class="table tech-table">
+                        <tbody>
+                            <tr><td>Model Number</td><td>FW2107</td></tr>
+                            <tr><td>Product Name</td><td>Agent Releasing Panel</td></tr>
+                            <tr><td>Category</td><td>Fire Suppression Control Panel</td></tr>
+                            <tr><td>Certification</td><td>UL 864, NFPA 72, NFPA 2001</td></tr>
+                            <tr><td>Manufacturer</td><td>Maple Armor / Tongfang</td></tr>
+                            <tr><td>Warranty</td><td>3-Year Comprehensive</td></tr>
+                            <tr><td>Power Supply</td><td>24VDC (Primary), 120/240VAC (Backup)</td></tr>
+                            <tr><td>Battery Backup</td><td>24VDC, 12-100 AH (Expandable)</td></tr>
+                            <tr><td>Detection Zones</td><td>2 Independent Cross-Zones</td></tr>
+                            <tr><td>Release Circuits</td><td>4 Independent Release Circuits</td></tr>
+                            <tr><td>Abort Function</td><td>Manual & Automatic Abort Capability</td></tr>
+                            <tr><td>Time Delays</td><td>Programmable 0-60 Seconds</td></tr>
+                            <tr><td>Supervisory Circuits</td><td>8 Supervised Inputs</td></tr>
+                            <tr><td>Alarm Outputs</td><td>6 Form C Relays (5A @ 30VDC)</td></tr>
+                            <tr><td>Display</td><td>Backlit LCD with Status Indicators</td></tr>
+                            <tr><td>Communication</td><td>RS-485, Ethernet Optional</td></tr>
+                            <tr><td>Operating Temperature</td><td>0°C to +49°C (32°F to 120°F)</td></tr>
+                            <tr><td>Enclosure Rating</td><td>NEMA 4X (Water & Dust Tight)</td></tr>
+                            <tr><td>Dimensions (HxWxD)</td><td>20" x 16" x 6" (508 x 406 x 152mm)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Description Tab -->
+                <div class="tab-pane fade" id="desc">
+                    <h4 class="mb-4">Product Overview</h4>
+                    <p>The FW2107 (Agent Releasing Panel) provides industry-leading fire detection and notification capabilities. It is fully compatible with Tongfang BMS architecture and optimized for quick field deployment and simplified maintenance.</p>
+                    
+                    <div class="features-grid mt-4">
+                        <div class="feature-card safety-features">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-shield-alt fs-4 text-success me-3"></i>
+                                <h5 class="mb-0">Cross-Zone Detection</h5>
+                            </div>
+                            <p class="mb-0">Dual-zone detection system requires activation of both zones before agent release, preventing false discharges.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-hand-paper fs-4 text-primary me-3"></i>
+                                <h5 class="mb-0">Manual Abort</h5>
+                            </div>
+                            <p class="mb-0">Multiple abort options including local panel abort, remote abort stations, and automatic time-based abort.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-history fs-4 text-primary me-3"></i>
+                                <h5 class="mb-0">Programmable Delays</h5>
+                            </div>
+                            <p class="mb-0">Configurable time delays (0-60 seconds) for personnel evacuation before agent discharge.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Applications</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Data Centers & Server Rooms</li>
+                            <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Telecommunications Facilities</li>
+                            <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Museums, Archives & Libraries</li>
+                            <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Power Generation & Substations</li>
+                            <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Chemical Storage Areas</li>
+                            <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Flammable Liquid Storage</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>System Operation Sequence</h5>
+                        <div class="alert alert-info mt-3">
+                            <i class="fa fa-info-circle me-2"></i>
+                            <strong>Standard Operation:</strong> Zone 1 Detection → Zone 2 Detection → Alarm Sounds → Time Delay Starts → Personnel Evacuation → Agent Release (if not aborted)
+                        </div>
+                    </div>
+                </div>
+                <!-- Docs Tab -->
+                <div class="tab-pane fade" id="docs">
+                    <h4 class="mb-4">Documentation & Downloads</h4>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-light">
+                                <i class="fa fa-file-pdf fs-2 text-danger me-3"></i>
+                                <div>
+                                    <h6 class="m-0">Technical Manual</h6>
+                                    <small class="text-muted">PDF • 4.2MB</small>
+                                </div>
+                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-light">
+                                <i class="fa fa-wrench fs-2 text-primary me-3"></i>
+                                <div>
+                                    <h6 class="m-0">Installation Guide</h6>
+                                    <small class="text-muted">PDF • 3.8MB</small>
+                                </div>
+                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-light">
+                                <i class="fa fa-book fs-2 text-warning me-3"></i>
+                                <div>
+                                    <h6 class="m-0">Operations Manual</h6>
+                                    <small class="text-muted">PDF • 2.9MB</small>
+                                </div>
+                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-light">
+                                <i class="fa fa-clipboard-check fs-2 text-success me-3"></i>
+                                <div>
+                                    <h6 class="m-0">Commissioning Guide</h6>
+                                    <small class="text-muted">PDF • 2.5MB</small>
+                                </div>
+                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-light">
+                                <i class="fa fa-exclamation-triangle fs-2 text-warning me-3"></i>
+                                <div>
+                                    <h6 class="m-0">Safety Procedures</h6>
+                                    <small class="text-muted">PDF • 1.8MB</small>
+                                </div>
+                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-light">
+                                <i class="fa fa-file-alt fs-2 text-secondary me-3"></i>
+                                <div>
+                                    <h6 class="m-0">Specification Sheet</h6>
+                                    <small class="text-muted">PDF • 1.3MB</small>
+                                </div>
+                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Agents Tab -->
+                <div class="tab-pane fade" id="agents">
+                    <h4 class="mb-4">Compatible Suppression Agents</h4>
+                    <p>The FW2107 is compatible with various clean agent and gaseous suppression systems:</p>
+                    
+                    <div class="agent-grid">
+                        <div class="agent-type">
+                            <i class="fa fa-wind fs-3 text-info mb-2"></i>
+                            <h6>FM-200®</h6>
+                            <small class="text-muted">Clean Agent, Fast Acting</small>
+                        </div>
+                        <div class="agent-type">
+                            <i class="fa fa-snowflake fs-3 text-info mb-2"></i>
+                            <h6>Novec™ 1230</h6>
+                            <small class="text-muted">Environmentally Friendly</small>
+                        </div>
+                        <div class="agent-type">
+                            <i class="fa fa-tint fs-3 text-primary mb-2"></i>
+                            <h6>FE-13™</h6>
+                            <small class="text-muted">Low Pressure Agent</small>
+                        </div>
+                        <div class="agent-type">
+                            <i class="fa fa-cloud fs-3 text-secondary mb-2"></i>
+                            <h6>CO₂ Systems</h6>
+                            <small class="text-muted">High Pressure CO₂</small>
+                        </div>
+                        <div class="agent-type">
+                            <i class="fa fa-water fs-3 text-info mb-2"></i>
+                            <h6>Water Mist</h6>
+                            <small class="text-muted">Water-Based Systems</small>
+                        </div>
+                        <div class="agent-type">
+                            <i class="fa fa-fire-extinguisher fs-3 text-danger mb-2"></i>
+                            <h6>Inergen®</h6>
+                            <small class="text-muted">Inert Gas Systems</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Agent Selection Guidelines</h5>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <h6><i class="fa fa-check-circle text-success me-2"></i>Considerations</h6>
+                                <ul class="small">
+                                    <li>Protected hazard type and contents</li>
+                                    <li>Occupancy and personnel safety</li>
+                                    <li>Environmental impact concerns</li>
+                                    <li>Space constraints and pipe routing</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><i class="fa fa-check-circle text-success me-2"></i>Design Support</h6>
+                                <p class="small">Tongfang BMS provides engineering support for agent selection, system design, and NFPA compliance.</p>
+                                <a href="/contact/index.html" class="btn btn-sm btn-outline-primary">Contact Engineering</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Safety Tab -->
+                <div class="tab-pane fade" id="safety">
+                    <h4 class="mb-4">Safety Features & Compliance</h4>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fa fa-exclamation-triangle me-2"></i>
+                        <strong>Important:</strong> Fire suppression systems involve potentially hazardous agents. System design, installation, and maintenance must comply with all applicable codes and standards.
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5>Safety Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Dual-Zone Cross-Zone Detection</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Manual and Automatic Abort Function</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Time Delay for Evacuation</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Supervised Abort Circuits</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Agent Release Lockout Switches</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> System Fault Monitoring</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Compliance Standards</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-file-contract text-info me-2"></i> NFPA 72 - Fire Alarm & Signaling</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-file-contract text-info me-2"></i> NFPA 2001 - Clean Agent Systems</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-file-contract text-info me-2"></i> UL 864 - Control Units</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-file-contract text-info me-2"></i> ISO 14520 - Gaseous Systems</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-file-contract text-info me-2"></i> Local AHJ Requirements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Personnel Safety Requirements</h5>
+                        <div class="card border-0 bg-light mt-3">
+                            <div class="card-body">
+                                <h6><i class="fa fa-user-shield text-primary me-2"></i>Qualified Personnel</h6>
+                                <p class="mb-2 small">Only trained and qualified personnel should install, test, or maintain suppression systems.</p>
+                                
+                                <h6><i class="fa fa-graduation-cap text-primary me-2"></i>Training Requirements</h6>
+                                <p class="mb-2 small">Tongfang BMS offers comprehensive training programs for installers and maintenance personnel.</p>
+                                
+                                <h6><i class="fa fa-clipboard-list text-primary me-2"></i>Documentation</h6>
+                                <p class="mb-0 small">Complete system documentation must be maintained on-site and available to emergency responders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== UPDATED FOOTER - EXACT TEMPLATE ===== -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS System Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/index.html">Home</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/projects/index.html">Projects</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get fire safety & automation updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+        });
+
+        // ===== MOBILE MENU FUNCTIONS - TEMPLATE MATCH =====
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            // Force white background when menu is open
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+            } else {
+                header.style.background = "";
+                header.style.borderBottom = "";
+                if(window.scrollY > 50) {
+                    mobileToggle.style.color = "#111827";
+                } else {
+                    mobileToggle.style.color = "#fff";
+                }
+            }
+        }
+
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 992) {
+                const dropdowns = document.querySelectorAll('.nav-item-dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(event.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Handle dropdown toggle on mobile - FIXED: Allow parent link to navigate
+        document.querySelectorAll('.nav-item-dropdown .dropdown-parent-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    // On mobile, check if clicking the arrow or the text
+                    const clickedElement = e.target;
+                    const arrowIcon = this.querySelector('.fa-angle-down');
+                    
+                    // If clicking the arrow icon, toggle dropdown
+                    if (arrowIcon && (clickedElement === arrowIcon || arrowIcon.contains(clickedElement))) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const parent = this.closest('.nav-item-dropdown');
+                        parent.classList.toggle('active');
+                    }
+                    // If clicking the text/link, allow navigation to the page
+                    // (no need to do anything - default behavior will work)
+                }
+            });
+        });
+
+        // ===== ZOOM FUNCTIONALITY =====
+        const imageContainer = document.getElementById('imageContainer');
+        const mainImg = document.getElementById('mainImg');
+        const zoomWindow = document.getElementById('zoomWindow');
+        const zoomImg = document.getElementById('zoomImg');
+
+        imageContainer.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 992) return; // Disable for mobile
+            
+            zoomWindow.classList.add('active');
+            const rect = imageContainer.getBoundingClientRect();
+            
+            // Calculate mouse position relative to image
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Percentage across the container
+            const xPerc = (x / rect.width) * 100;
+            const yPerc = (y / rect.height) * 100;
+            
+            // Move the large image inside the zoom window
+            // Since the large image is 250% size, we shift it
+            zoomImg.style.left = `-${(xPerc * 1.5)}%`; 
+            zoomImg.style.top = `-${(yPerc * 1.5)}%`;
+        });
+
+        imageContainer.addEventListener('mouseleave', () => {
+            zoomWindow.classList.remove('active');
+        });
+
+        function updateImg(el, src) {
+            mainImg.src = src;
+            zoomImg.src = src;
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // ===== BOOTSTRAP TABS INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            var triggerTabList = [].slice.call(document.querySelectorAll('#myTab button'));
+            triggerTabList.forEach(function (triggerEl) {
+                var tabTrigger = new bootstrap.Tab(triggerEl);
+                triggerEl.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    tabTrigger.show();
+                });
+            });
+        });
+
+        // ===== PRODUCT BREADCRUMB SCROLL SPY =====
+        window.addEventListener('scroll', function () {
+            /* ===== Header style toggle ===== */
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+
+            /* ===== Breadcrumb scroll-spy for product page ===== */
+            const productSection = document.getElementById('product-section');
+            const productTabSection = document.querySelector('.tabs-section');
+            
+            let currentSection = "#product-section"; // default
+            
+            if (productTabSection) {
+                const productOffsetTop = productSection.offsetTop - 180; // header + nav height
+                const tabsOffsetTop = productTabSection.offsetTop - 180;
+                
+                if (window.scrollY >= tabsOffsetTop) {
+                    currentSection = "#product-section";
+                } else if (window.scrollY >= productOffsetTop) {
+                    currentSection = "#product-section";
+                }
+            }
+
+            document.querySelectorAll('.nav-breadcrumb .breadcrumb-item').forEach(li => {
+                li.classList.remove('active');
+                const a = li.querySelector('a');
+                if (a && a.getAttribute('href') === currentSection) {
+                    li.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

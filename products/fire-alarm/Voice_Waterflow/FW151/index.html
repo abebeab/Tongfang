@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>FW151 | Voice Control | Tongfang BMS</title>
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+   <style>
+        :root {
+            /* BRAND COLORS - EXACT TEMPLATE */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            --tf-gray-light: #e5e7eb;
+            --header-height: 80px;
+            --card-radius: 12px;
+            
+            /* SHADOWS & TRANSITIONS */
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: var(--header-height);
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* ===== 1. UPDATED HEADER - EXACT TEMPLATE ===== */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 9999;
+            min-height: var(--header-height); 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+        
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* Desktop Menu */
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: var(--tf-dark);
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link-custom:hover,
+        .nav-link-custom.active { 
+            color: var(--tf-yellow); 
+        }
+        
+        .nav-link-custom.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
+            border-radius: 3px;
+        }
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom:hover,
+        .header-fix.scrolled .nav-link-custom.active { 
+            color: var(--tf-blue); 
+        }
+        
+        /* Make parent links clickable */
+        .dropdown-parent-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Dropdown Menu - EXACT TEMPLATE */
+        .nav-item-dropdown { 
+            position: relative; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+        
+        .dropdown-menu-custom {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px); 
+            width: 700px;
+            background: #fff;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1100;
+        }
+        
+        /* Invisible bridge for hover */
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        
+        .dropdown-link {
+            color: #555; 
+            font-size: 13px; 
+            font-weight: 600;
+            padding: 6px 10px; 
+            border-radius: 4px; 
+            display: block;
+            border-left: 2px solid transparent;
+        }
+        
+        .dropdown-link:hover,
+        .dropdown-link.active {
+            background: #f4f7fa; 
+            color: var(--tf-blue);
+            border-left: 2px solid var(--tf-blue);
+            padding-left: 15px;
+        }
+        
+        .dropdown-category {
+            grid-column: span 3; 
+            color: var(--tf-blue); 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 10px; 
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px;
+        }
+        
+        .header-icons {
+            display: flex !important;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icons i {
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--tf-dark);
+        }
+
+        .header-fix.scrolled .header-icons i {
+            color: var(--tf-dark);
+        }
+
+        .header-icons i:hover {
+            color: var(--tf-yellow);
+        }
+
+        .header-fix.scrolled .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: var(--tf-dark); 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            padding-right: 20px;
+        }
+        
+        .header-fix.scrolled .mobile-toggle { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        /* ===== HERO SECTION - EXACT TEMPLATE ===== */
+        .hero-section {
+            height: 70vh;
+            min-height: 300px;
+           background:url("https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2105/FACP-hero.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--tf-gray-light);
+        }
+        
+        .hero-content h1 {
+            color: #fff;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* ===== UPDATED PRODUCT NAVIGATION BAR - MATCHING TEMPLATE ===== */
+        .product-nav-bar {
+            position: sticky; 
+            top: 80px; 
+            z-index: 1010;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* Custom Breadcrumb in Nav Bar */
+        .nav-breadcrumb .breadcrumb-item a {
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue);
+        }
+
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px;
+        }
+
+        /* Active breadcrumb highlight */
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue) !important;
+            font-weight: 800;
+        }
+
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
+            border-radius: 10px;
+        }
+        
+        /* Parent link styling for breadcrumb */
+        .breadcrumb-item.parent-link a {
+            position: relative;
+            padding-right: 18px;
+        }
+
+        .breadcrumb-item.parent-link a::after {
+            content: "›";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* ===== PRODUCT SECTION STYLES ===== */
+        .product-section { padding: 80px 0; }
+        
+        .main-image-stage {
+            width: 100%; height: 500px; border: 1px solid var(--tf-gray-light);
+            border-radius: var(--card-radius); display: flex; align-items: center;
+            justify-content: center; position: relative; background: #fff;
+            cursor: crosshair; overflow: hidden;
+        }
+
+        .main-image { max-width: 90%; max-height: 90%; object-fit: contain; }
+
+        /* THE IMPROVED ZOOM WINDOW */
+        .magnified-view {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 100; overflow: hidden;
+            display: none; border-radius: var(--card-radius);
+            border: 1px solid var(--tf-blue);
+        }
+        .magnified-view.active { display: block; }
+
+        .magnified-image {
+            position: absolute; width: 250%; /* Zoom level */
+            height: 250%; object-fit: contain; pointer-events: none;
+        }
+
+        .thumbs-wrapper { display: flex; gap: 10px; margin-top: 20px; }
+        .thumb-item {
+            width: 80px; height: 80px; border: 1px solid #ddd; padding: 5px;
+            cursor: pointer; border-radius: 8px; background: white;
+        }
+        .thumb-item.active { border-color: var(--tf-blue); border-width: 2px; }
+        .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
+
+        /* Right Column Info */
+        .product-info-column { position: relative; }
+        .product-badge { background: #eef2ff; color: var(--tf-blue); padding: 5px 12px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .key-specs { background: var(--tf-bg-light); padding: 20px; border-radius: 10px; margin: 20px 0; }
+
+        .btn-square { width: 40px; height: 40px; background: #333; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: white; }
+        .btn-square:hover { background: var(--tf-blue); }
+
+        /* TABS SECTION STYLES - EXACT TEMPLATE */
+        .tabs-section { padding: 80px 0; background: var(--tf-bg-light); }
+        .nav-tabs { border-bottom: 2px solid #e5e7eb; margin-bottom: 40px; }
+        .nav-tabs .nav-link { color: #666; font-weight: 700; font-size: 15px; padding: 15px 30px; }
+        .nav-tabs .nav-link:hover { color: var(--tf-blue); }
+        .nav-tabs .nav-link.active { color: var(--tf-blue); background: transparent; border-bottom: 3px solid var(--tf-blue); }
+        .tech-table { width: 100%; border-collapse: collapse; }
+        .tech-table tr:nth-child(odd) { background: #f9fafb; }
+        .tech-table td { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
+        .tech-table td:first-child { font-weight: 600; color: var(--tf-blue); width: 35%; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .feature-card { background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 25px; border-radius: 10px; border-left: 4px solid var(--tf-blue); }
+
+        /* Voice Control Specific Styles */
+        .voice-control-badge { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+        .voice-control-card { border-left: 4px solid #8b5cf6; }
+        
+        /* Sound Quality Meter */
+        .quality-meter {
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(90deg, #ef4444 0%, #fbbf24 50%, #10b981 100%);
+            border-radius: 15px;
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .quality-marker {
+            position: absolute;
+            top: -5px;
+            width: 3px;
+            height: 40px;
+            background: #000;
+            transform: translateX(-50%);
+        }
+        
+        .quality-label {
+            position: absolute;
+            top: -25px;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Mounting Options */
+        .mounting-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .mounting-type { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 15px; text-align: center; }
+
+        /* Voice Demo */
+        .voice-demo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            animation: voice-pulse 2s infinite;
+        }
+        
+        @keyframes voice-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Message Types Grid */
+        .message-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .message-type {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS - EXACT TEMPLATE ===== */
+        @media (max-width: 991px) {
+            .header-fix { height: auto; }
+            
+            .mobile-toggle { 
+                display: block; 
+                order: 2;
+            }
+            
+            .header-icons { 
+                display: flex !important; 
+                order: 3;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .header-icons i {
+                font-size: 18px !important;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px; 
+                left: 0; 
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
+            }
+            
+            .nav-menu.active { 
+                display: flex; 
+            }
+            
+            .nav-link-custom { 
+                color: #333; 
+                width: 100%; 
+                padding: 10px 30px; 
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .nav-item-dropdown { 
+                width: 100%; 
+                flex-direction: column; 
+                align-items: flex-start;
+                height: auto;
+            }
+            
+            .dropdown-menu-custom {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1; 
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px;
+                background: #f9f9f9;
+                grid-template-columns: 1fr;
+            }
+            
+            .dropdown-menu-custom::before { 
+                display: none; 
+            }
+            
+            .nav-item-dropdown.active .dropdown-menu-custom { 
+                display: grid; 
+                opacity: 1; 
+                visibility: visible;
+                transform: none;
+            }
+            
+            .dropdown-category { 
+                grid-column: span 1; 
+            }
+            
+            /* HERO SECTION MOBILE */
+            .hero-section {
+                height: 50vh;
+                min-height: 350px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .magnified-view { 
+                display: none !important; 
+            } /* Disable zoom on mobile */
+            
+            .main-image-stage { 
+                height: 350px; 
+            }
+            
+            .mounting-options,
+            .message-types {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Product nav bar mobile */
+            .product-nav-bar .container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .quality-meter {
+                height: 25px;
+            }
+            
+            .voice-demo {
+                width: 80px;
+                height: 80px;
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-img {
+                height: 50px;
+            }
+            
+            .hero-section {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== 4. UPDATED FOOTER - EXACT TEMPLATE ===== */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            margin-top: 0; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+        
+        /* FOOTER LINK COLOR OVERRIDE */
+        .footer a,
+        .footer .btn-link {
+            color: var(--tf-blue) !important;
+            font-weight: 600;
+        }
+
+        .footer a:hover,
+        .footer .btn-link:hover {
+            color: var(--tf-yellow) !important;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== UPDATED HEADER - EXACT TEMPLATE ===== -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+               <div class="header-logo">
+                    <a href="/index.html" class="logo-wrapper">
+                        <img 
+                            src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png"
+                            alt="Tongfang BMS Logo"
+                            class="logo-img"
+                        >
+                    </a>
+                </div>
+                
+                <!-- NAVIGATION -->
+                <nav id="mainNav" class="nav-menu">
+                     
+                    
+                    <!-- SOLUTIONS DROPDOWN - Parent link is clickable -->
+                    <div class="nav-item-dropdown">
+                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <!-- Col 1: Buildings -->
+                            <div>
+                                <div class="dropdown-category">Buildings</div>
+                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                            </div>
+                            <!-- Col 2: Infrastructure -->
+                            <div>
+                                <div class="dropdown-category">Infrastructure</div>
+                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
+                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
+                            </div>
+                            <!-- Col 3: Cities & Systems -->
+                            <div>
+                                <div class="dropdown-category">City Systems</div>
+                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                              <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue);">
+  View All Solutions →
+</a>
+ 
+                            </div>
+                        </div>
+                    </div>
+                    
+                                 <!-- PRODUCTS DROPDOWN - Parent link is clickable -->
+<div class="nav-item-dropdown">
+    <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+        Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+    </a>
+    <div class="dropdown-menu-custom">
+        <!-- Col 1 -->
+        <div>
+            <div class="dropdown-category">Fire & Safety</div>
+            <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
+            <a href="/products/access-control/index.html" class="dropdown-link">Access Control</a>
+        </div>
+        <!-- Col 2 -->
+        <div>
+            <div class="dropdown-category">Core Controllers</div>
+            <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+            <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+        </div>
+        <!-- Col 3 -->
+        <div>
+            <div class="dropdown-category">Field Instrumentation</div>
+            <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+            <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+        </div>
+        <!-- Col 4 -->
+        <div>
+            <div class="dropdown-category">Management & Power</div>
+            <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+            <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+            <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+        </div>
+    </div>
+</div>
+
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                     <a href="/about/index.html" class="nav-link-custom">About</a>                               <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                </nav>
+                </nav>
+
+                <!-- HAMBURGER ICON (Visible on Mobile) -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Header Icons - Always visible -->
+                <div class="header-icons d-flex align-items-center">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;" onclick="openSearch()"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;" onclick="toggleLanguage()"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1>Voice Control</h1>
+            <p class="lead fs-4">FW151 - Intelligent Voice Evacuation System</p>
+            <p>Clear Voice Messages • Multi-Language Support • Emergency Communication</p>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCT NAVIGATION BAR - UPDATED TO MATCH TEMPLATE ===== -->
+    <div class="product-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            
+            <!-- Left Side: Custom Breadcrumb Links -->
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products</a></li>
+                    <li class="breadcrumb-item parent-link"><a href="/products/fire-alarm/index.html">Fire Alarm</a></li>
+                    <li class="breadcrumb-item active"><a href="#product-section">FW151 Detail</a></li>
+                </ol>
+            </nav>
+
+            <!-- Right Side: Tagline -->
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-microphone text-purple me-2"></i>
+                    INTELLIGENT VOICE EVACUATION
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT CONTENT ===== -->
+    <section class="product-section" id="product-section">
+        <div class="container">
+            <div class="row">
+                <!-- Image Side -->
+                <div class="col-lg-6">
+                    <div class="main-image-stage" id="imageContainer">
+                        <img id="mainImg" src="https://via.placeholder.com/600x600?text=FW151+Voice+Control" class="main-image">
+                        <!-- Zoom overlay will appear here on hover -->
+                    </div>
+                    <div class="thumbs-wrapper">
+                        <div class="thumb-item active" onclick="updateImg(this, 'https://via.placeholder.com/600x600?text=FW151+Voice+Control')">
+                            <img src="https://via.placeholder.com/100x100?text=Front+View">
+                        </div>
+                        <div class="thumb-item" onclick="updateImg(this, 'https://via.placeholder.com/600x600?text=FW151+Side+View')">
+                            <img src="https://via.placeholder.com/100x100?text=Side+View">
+                        </div>
+                        <div class="thumb-item" onclick="updateImg(this, 'https://via.placeholder.com/600x600?text=FW151+Wall+Mount')">
+                            <img src="https://via.placeholder.com/100x100?text=Wall+Mount">
+                        </div>
+                        <div class="thumb-item" onclick="updateImg(this, 'https://via.placeholder.com/600x600?text=FW151+Back+Panel')">
+                            <img src="https://via.placeholder.com/100x100?text=Back+Panel">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Side / Zoom Target -->
+                <div class="col-lg-6 product-info-column" id="infoColumn">
+                    <!-- This div appears on hover -->
+                    <div class="magnified-view" id="zoomWindow">
+                        <img src="https://via.placeholder.com/600x600?text=FW151+Voice+Control" id="zoomImg" class="magnified-image">
+                    </div>
+
+                    <div class="ps-lg-4">
+                        <span class="product-badge voice-control-badge">UL Listed</span>
+                        <h1 class="mt-3 fw-bold">Voice Control</h1>
+                        <p class="text-muted fs-5">FW151</p>
+                        
+                        <div class="key-specs">
+                            <div class="row g-3">
+                                <div class="col-6"><i class="fa fa-shield-alt me-2 text-purple"></i> UL Listed</div>
+                                <div class="col-6"><i class="fa fa-microphone me-2 text-purple"></i> Voice Messages</div>
+                                <div class="col-6"><i class="fa fa-check me-2 text-success"></i> Quality Tested</div>
+                                <div class="col-6"><i class="fa fa-tools me-2 text-info"></i> Easy Install</div>
+                            </div>
+                        </div>
+
+                        <p>The FW151 Voice Control is an intelligent voice evacuation system designed for modern fire alarm and emergency notification systems. It provides clear, pre-recorded voice messages for emergency evacuation, with multi-language support and zone-specific messaging capabilities for enhanced occupant safety and guidance.</p>
+                        
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="/contact/index.html" class="btn btn-primary btn-lg px-5" style="background:var(--tf-blue);">Get Quote</a>
+                            <button class="btn btn-outline-dark btn-lg" onclick="downloadDatasheet()">Datasheet</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TABS SECTION ===== -->
+    <section class="tabs-section">
+        <div class="container">
+            <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button">Technical Specs</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Overview</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button">Features</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="installation-tab" data-bs-toggle="tab" data-bs-target="#installation" type="button">Installation</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="compatibility-tab" data-bs-toggle="tab" data-bs-target="#compatibility" type="button">Compatibility</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- Specs Tab -->
+                <div class="tab-pane fade show active" id="specs">
+                    <h4 class="mb-4">Technical Specifications</h4>
+                    <table class="table tech-table">
+                        <tbody>
+                            <tr><td>Model Number</td><td>FW151</td></tr>
+                            <tr><td>Product Name</td><td>Voice Control</td></tr>
+                            <tr><td>Category</td><td>Voice Evacuation System</td></tr>
+                            <tr><td>Certification</td><td>UL Listed (UL864)</td></tr>
+                            <tr><td>Manufacturer</td><td>Maple Armor / Tongfang</td></tr>
+                            <tr><td>Warranty</td><td>2-Year Standard</td></tr>
+                            <tr><td>System Type</td><td>Digital Voice Evacuation</td></tr>
+                            <tr><td>Audio Output Power</td><td>25W RMS per channel</td></tr>
+                            <tr><td>Frequency Response</td><td>300Hz - 4kHz (±3dB)</td></tr>
+                            <tr><td>Total Harmonic Distortion</td><td>< 5% at rated output</td></tr>
+                            <tr><td>Signal-to-Noise Ratio</td><td>> 70dB</td></tr>
+                            <tr><td>Voice Message Storage</td><td>Up to 64 messages</td></tr>
+                            <tr><td>Message Duration</td><td>Up to 30 seconds each</td></tr>
+                            <tr><td>Language Support</td><td>Multi-language (up to 8 languages)</td></tr>
+                            <tr><td>Zone Control</td><td>Up to 32 zones independently controlled</td></tr>
+                            <tr><td>Operating Voltage</td><td>24VDC Nominal (18-32VDC range)</td></tr>
+                            <tr><td>Current Consumption</td><td>Standby: 100mA, Active: 500mA typical</td></tr>
+                            <tr><td>Power Consumption</td><td>12W (at 24VDC, typical operation)</td></tr>
+                            <tr><td>Operating Temperature</td><td>0°C to +55°C (32°F to 131°F)</td></tr>
+                            <tr><td>Storage Temperature</td><td>-20°C to +70°C (-4°F to 158°F)</td></tr>
+                            <tr><td>Humidity</td><td>10% to 93% RH (Non-condensing)</td></tr>
+                            <tr><td>Enclosure Material</td><td>Steel with powder coating</td></tr>
+                            <tr><td>Mounting Type</td><td>Wall Mount (rack or surface)</td></tr>
+                            <tr><td>Dimensions (HxWxD)</td><td>3.5" x 16" x 8" (89mm x 406mm x 203mm)</td></tr>
+                            <tr><td>Weight</td><td>8.8 lbs (4.0 kg)</td></tr>
+                            <tr><td>Wire Gauge</td><td>14-22 AWG for audio lines</td></tr>
+                            <tr><td>Terminal Type</td><td>Screw Terminals</td></tr>
+                            <tr><td>Communication Interface</td><td>RS-485, Ethernet (optional)</td></tr>
+                            <tr><td>Message Recording</td><td>Digital recording capability</td></tr>
+                            <tr><td>NFPA 72 Compliance</td><td>Yes (2019 Edition)</td></tr>
+                            <tr><td>ADA Compliance</td><td>Yes (provides clear voice instructions)</td></tr>
+                            <tr><td>Expected Life</td><td>10 years minimum</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- Sound Quality Visualization -->
+                    <div class="mt-5">
+                        <h5>Audio Quality Performance</h5>
+                        <div class="quality-meter">
+                            <div class="quality-marker" style="left: 0%;"></div>
+                            <div class="quality-label" style="left: 0%;">Poor</div>
+                            
+                            <div class="quality-marker" style="left: 25%;"></div>
+                            <div class="quality-label" style="left: 25%;">Average</div>
+                            
+                            <div class="quality-marker" style="left: 50%; background: #000; width: 5px;"></div>
+                            <div class="quality-label" style="left: 50%;">Good<br><strong>Standard</strong></div>
+                            
+                            <div class="quality-marker" style="left: 75%;"></div>
+                            <div class="quality-label" style="left: 75%;">Excellent</div>
+                            
+                            <div class="quality-marker" style="left: 100%;"></div>
+                            <div class="quality-label" style="left: 100%;">Premium</div>
+                        </div>
+                        <div class="text-center small text-muted mt-2">
+                            FW151 delivers "Excellent" audio quality with >70dB SNR and <5% THD for clear voice intelligibility
+                        </div>
+                    </div>
+                    
+                    <!-- Voice Demo -->
+                    <div class="mt-5 text-center">
+                        <h5>Voice Message System</h5>
+                        <div class="voice-demo">
+                            <i class="fa fa-microphone"></i>
+                        </div>
+                        <p class="text-muted small">Digital voice evacuation with up to 64 pre-recorded messages</p>
+                    </div>
+                </div>
+                <!-- Description Tab -->
+                <div class="tab-pane fade" id="desc">
+                    <h4 class="mb-4">Product Overview</h4>
+                    <p>The FW151 Voice Control is an advanced digital voice evacuation system designed for modern fire alarm and emergency notification applications. Using high-quality digital audio processing technology, it delivers clear, intelligible voice messages that provide specific instructions during emergencies, greatly enhancing occupant safety and evacuation efficiency.</p>
+                    
+                    <div class="features-grid mt-4">
+                        <div class="feature-card voice-control-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-microphone fs-4 text-purple me-3"></i>
+                                <h5 class="mb-0">Clear Voice Messages</h5>
+                            </div>
+                            <p class="mb-0">High-quality digital audio with >70dB SNR for clear, intelligible voice instructions.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-language fs-4 text-success me-3"></i>
+                                <h5 class="mb-0">Multi-Language Support</h5>
+                            </div>
+                            <p class="mb-0">Supports up to 8 languages for diverse occupant requirements.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-sitemap fs-4 text-primary me-3"></i>
+                                <h5 class="mb-0">Zone Control</h5>
+                            </div>
+                            <p class="mb-0">Independent control of up to 32 zones for targeted messaging.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Key Characteristics</h5>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <p><i class="fa fa-volume-up text-purple me-2"></i> <strong>Clear Audio:</strong> 25W RMS per channel with >70dB SNR</p>
+                                <p><i class="fa fa-database text-purple me-2"></i> <strong>Message Storage:</strong> Up to 64 pre-recorded messages</p>
+                                <p><i class="fa fa-globe text-purple me-2"></i> <strong>Multi-Language:</strong> Support for up to 8 languages</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><i class="fa fa-cog text-purple me-2"></i> <strong>Flexible Control:</strong> Up to 32 independently controlled zones</p>
+                                <p><i class="fa fa-shield text-purple me-2"></i> <strong>Reliable:</strong> UL864 certified for emergency voice systems</p>
+                                <p><i class="fa fa-network-wired text-purple me-2"></i> <strong>Integration:</strong> RS-485 and optional Ethernet communication</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Message Types -->
+                    <div class="mt-5">
+                        <h5>Standard Message Types</h5>
+                        <div class="message-types">
+                            <div class="message-type">
+                                <i class="fa fa-fire text-danger fs-3 mb-2"></i>
+                                <h6>Fire Evacuation</h6>
+                                <small class="text-muted">"Fire alarm, please evacuate immediately"</small>
+                            </div>
+                            <div class="message-type">
+                                <i class="fa fa-tornado text-warning fs-3 mb-2"></i>
+                                <h6>Emergency Alert</h6>
+                                <small class="text-muted">"Emergency situation, follow instructions"</small>
+                            </div>
+                            <div class="message-type">
+                                <i class="fa fa-shield-alt text-info fs-3 mb-2"></i>
+                                <h6>All Clear</h6>
+                                <small class="text-muted">"All clear, you may return to normal activities"</small>
+                            </div>
+                            <div class="message-type">
+                                <i class="fa fa-broadcast-tower text-success fs-3 mb-2"></i>
+                                <h6>Test Message</h6>
+                                <small class="text-muted">"This is a test of the emergency voice system"</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fa fa-info-circle me-2"></i>
+                        <strong>Voice Evacuation Benefits:</strong> Studies show that voice evacuation systems improve evacuation times by 30-50% compared to tone-only systems. Clear voice instructions reduce confusion, provide specific guidance, and can be tailored to different zones or building sections. The FW151's digital audio processing ensures message clarity even in noisy environments.
+                    </div>
+                </div>
+                <!-- Features Tab -->
+                <div class="tab-pane fade" id="features">
+                    <h4 class="mb-4">Product Features</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Audio Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Digital audio processing technology</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> 25W RMS power output per channel</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> >70dB signal-to-noise ratio</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> <5% total harmonic distortion</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> 300Hz - 4kHz frequency response</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Digital message storage (up to 64 messages)</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Message duration up to 30 seconds each</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>System Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Up to 32 independently controlled zones</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Multi-language support (up to 8 languages)</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Digital recording capability</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> RS-485 communication interface</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Optional Ethernet connectivity</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Message priority and sequencing</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Automatic message validation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <h5>Construction Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Steel enclosure with powder coating</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Rack or wall mount design</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Screw terminal connections</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Knockouts for conduit entry</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Ventilation for thermal management</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Tamper-resistant design</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Status indicator LEDs</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Safety & Compliance Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> UL864 certified for emergency voice</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> NFPA 72 compliant (2019 Edition)</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> ADA compliant voice instructions</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Short-circuit and overload protection</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Reverse polarity protection</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Automatic self-test functionality</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Battery backup compatibility</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <div class="alert alert-warning">
+                            <i class="fa fa-exclamation-triangle me-2"></i>
+                            <strong>Message Planning:</strong> Effective voice evacuation requires careful message planning. Messages should be clear, concise, and provide specific instructions. Consider multiple languages based on occupant demographics. Test messages for intelligibility in various building areas with typical ambient noise levels.
+                        </div>
+                    </div>
+                </div>
+                <!-- Installation Tab -->
+                <div class="tab-pane fade" id="installation">
+                    <h4 class="mb-4">Installation & Configuration</h4>
+                    
+                    <div class="mounting-options">
+                        <div class="mounting-type">
+                            <i class="fa fa-server fs-3 text-primary mb-2"></i>
+                            <h6>Rack Mount</h6>
+                            <small class="text-muted">Standard 19" rack installation</small>
+                        </div>
+                        <div class="mounting-type">
+                            <i class="fa fa-home fs-3 text-primary mb-2"></i>
+                            <h6>Wall Mount</h6>
+                            <small class="text-muted">Surface wall mounting</small>
+                        </div>
+                        <div class="mounting-type">
+                            <i class="fa fa-network-wired fs-3 text-primary mb-2"></i>
+                            <h6>Control Room</h6>
+                            <small class="text-muted">Fire command center installation</small>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <h5>Installation Guidelines</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Install in clean, dry, temperature-controlled area</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Maintain proper ventilation around unit</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Follow NEC and NFPA 72 requirements</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Provide adequate working clearance (36" minimum)</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Use proper conduit and wiring methods</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Ensure secure mounting to wall or rack</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check text-success me-2"></i> Verify audio circuit impedance matching</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Wiring & Configuration</h5>
+                            <div class="card border-0 bg-light">
+                                <div class="card-body">
+                                    <h6><i class="fa fa-bolt text-warning me-2"></i>Power Requirements</h6>
+                                    <p class="small mb-2">24VDC, 500mA typical, with battery backup.</p>
+                                    
+                                    <h6><i class="fa fa-sliders-h text-info me-2"></i>Audio Configuration</h6>
+                                    <p class="small mb-2">Set message priority, zones, and languages.</p>
+                                    
+                                    <h6><i class="fa fa-calculator text-success me-2"></i>Load Calculation</h6>
+                                    <p class="small mb-0">Include voice control in power supply calculations.</p>
+                                    
+                                    <h6><i class="fa fa-volume-up text-warning me-2"></i>Audio Testing</h6>
+                                    <p class="small mb-0">Verify intelligibility at all speaker locations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Installation Steps</h5>
+                        <div class="alert alert-success">
+                            <ol class="mb-0">
+                                <li>Select installation location per NFPA 72 requirements</li>
+                                <li>Mount unit securely to wall or 19" rack</li>
+                                <li>Route power wiring in approved conduit</li>
+                                <li>Connect audio lines to speaker circuits</li>
+                                <li>Connect communication lines (RS-485/Ethernet)</li>
+                                <li>Connect 24VDC power with proper polarity</li>
+                                <li>Program messages and zone assignments</li>
+                                <li>Configure language settings</li>
+                                <li>Test audio output at each speaker location</li>
+                                <li>Verify message clarity and intelligibility</li>
+                                <li>Document installation and programming</li>
+                                <li>Provide operator training</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h5>Audio System Guidelines</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card border-success">
+                                    <div class="card-body">
+                                        <h6><i class="fa fa-volume-up text-primary me-2"></i>Sound Level</h6>
+                                        <p class="small mb-0">Minimum 75 dB or 15 dB above ambient.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card border-success">
+                                    <div class="card-body">
+                                        <h6><i class="fa fa-microphone text-primary me-2"></i>Intelligibility</h6>
+                                        <p class="small mb-0">STI ≥ 0.5 or AI ≥ 0.7 in all areas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card border-success">
+                                    <div class="card-body">
+                                        <h6><i class="fa fa-language text-primary me-2"></i>Language</h6>
+                                        <p class="small mb-0">Multiple languages for diverse occupancy.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Compatibility Tab -->
+                <div class="tab-pane fade" id="compatibility">
+                    <h4 class="mb-4">Compatibility & Applications</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Compatible Systems</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Maple Armor FW2000 Series FACP</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Maple Armor FW2100 Series</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Maple Armor FW2200 Series</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Most addressable fire alarm systems</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Compatible with standard audio amplifiers</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Typical Applications</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> High-rise office buildings</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Hospitals and healthcare facilities</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Shopping malls and retail complexes</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Educational institutions</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Transportation hubs (airports, stations)</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Hotels and convention centers</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Application Scenarios</h5>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="card border-0 bg-light h-100">
+                                    <div class="card-body">
+                                        <h6><i class="fa fa-building text-primary me-2"></i>High-Rise Buildings</h6>
+                                        <p class="small mb-0">Zone-specific evacuation instructions for different floors.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card border-0 bg-light h-100">
+                                    <div class="card-body">
+                                        <h6><i class="fa fa-hospital text-primary me-2"></i>Healthcare</h6>
+                                        <p class="small mb-0">Defend-in-place or phased evacuation instructions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card border-0 bg-light h-100">
+                                    <div class="card-body">
+                                        <h6><i class="fa fa-university text-primary me-2"></i>Education</h6>
+                                        <p class="small mb-0">Clear instructions for students and staff.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Benefits</h5>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <p><i class="fa fa-volume-up text-purple me-2"></i> <strong>Clear Communication:</strong> Specific voice instructions reduce confusion</p>
+                                <p><i class="fa fa-certificate text-success me-2"></i> <strong>Code Compliance:</strong> UL864, NFPA 72 compliant</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><i class="fa fa-cogs text-success me-2"></i> <strong>Flexible:</strong> Multi-language and zone control</p>
+                                <p><i class="fa fa-shield-alt text-success me-2"></i> <strong>Reliable:</strong> Digital audio with high intelligibility</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><i class="fa fa-expand-alt text-success me-2"></i> <strong>Scalable:</strong> Supports up to 32 zones</p>
+                                <p><i class="fa fa-wrench text-success me-2"></i> <strong>Serviceable:</strong> Easy maintenance and testing</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fa fa-lightbulb me-2"></i>
+                        <strong>Emergency Communication Strategy:</strong> Voice evacuation systems are particularly valuable in complex buildings where different evacuation strategies may be needed for different areas. The FW151's zone control capability allows for targeted messaging - for example, evacuating only affected floors while keeping other areas in place, which is especially important in healthcare facilities where patient movement may be difficult.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== UPDATED FOOTER - EXACT TEMPLATE ===== -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS System Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/index.html">Home</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/about/index.html">About Us</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/solutions/index.html">Solutions</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/products/index.html">Products</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/projects/index.html">Projects</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/technologies/index.html">Technologies</a>
+                    <a class="btn-link text-decoration-none text-secondary d-block mb-2" href="/contact/index.html">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get fire safety & automation updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square text-secondary" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+        });
+
+        // ===== MOBILE MENU FUNCTIONS =====
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            // Force white background when menu is open
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+            } else {
+                header.style.background = "";
+                header.style.borderBottom = "";
+                if(window.scrollY > 50) {
+                    mobileToggle.style.color = "#111827";
+                } else {
+                    mobileToggle.style.color = "#fff";
+                }
+            }
+        }
+
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 992) {
+                const dropdowns = document.querySelectorAll('.nav-item-dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (!dropdown.contains(event.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Handle dropdown toggle on mobile
+        document.querySelectorAll('.nav-item-dropdown .dropdown-parent-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    const clickedElement = e.target;
+                    const arrowIcon = this.querySelector('.fa-angle-down');
+                    
+                    // If clicking the arrow icon, toggle dropdown
+                    if (arrowIcon && (clickedElement === arrowIcon || arrowIcon.contains(clickedElement))) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const parent = this.closest('.nav-item-dropdown');
+                        parent.classList.toggle('active');
+                    }
+                }
+            });
+        });
+
+        // ===== ZOOM FUNCTIONALITY =====
+        const imageContainer = document.getElementById('imageContainer');
+        const mainImg = document.getElementById('mainImg');
+        const zoomWindow = document.getElementById('zoomWindow');
+        const zoomImg = document.getElementById('zoomImg');
+
+        // Ensure zoom image loads with main image
+        mainImg.addEventListener('load', function() {
+            zoomImg.src = this.src;
+        });
+
+        imageContainer.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 992) return; // Disable for mobile
+            
+            zoomWindow.classList.add('active');
+            const rect = imageContainer.getBoundingClientRect();
+            
+            // Calculate mouse position relative to image
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Percentage across the container
+            const xPerc = (x / rect.width) * 100;
+            const yPerc = (y / rect.height) * 100;
+            
+            // Move the large image inside the zoom window
+            zoomImg.style.left = `-${(xPerc * 1.5)}%`; 
+            zoomImg.style.top = `-${(yPerc * 1.5)}%`;
+        });
+
+        imageContainer.addEventListener('mouseleave', () => {
+            zoomWindow.classList.remove('active');
+        });
+
+        function updateImg(el, src) {
+            mainImg.src = src;
+            zoomImg.src = src;
+            document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        // ===== BOOTSTRAP TABS INITIALIZATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            var triggerTabList = [].slice.call(document.querySelectorAll('#myTab button'));
+            triggerTabList.forEach(function (triggerEl) {
+                var tabTrigger = new bootstrap.Tab(triggerEl);
+                triggerEl.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    tabTrigger.show();
+                });
+            });
+        });
+
+        // ===== PRODUCT BREADCRUMB SCROLL SPY =====
+        window.addEventListener('scroll', function () {
+            /* ===== Header style toggle ===== */
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+
+            /* ===== Breadcrumb scroll-spy for product page ===== */
+            const productSection = document.getElementById('product-section');
+            const productTabSection = document.querySelector('.tabs-section');
+            
+            let currentSection = "#product-section"; // default
+            
+            if (productTabSection) {
+                const productOffsetTop = productSection.offsetTop - 180; // header + nav height
+                const tabsOffsetTop = productTabSection.offsetTop - 180;
+                
+                if (window.scrollY >= tabsOffsetTop) {
+                    currentSection = "#product-section";
+                } else if (window.scrollY >= productOffsetTop) {
+                    currentSection = "#product-section";
+                }
+            }
+
+            document.querySelectorAll('.nav-breadcrumb .breadcrumb-item').forEach(li => {
+                li.classList.remove('active');
+                const a = li.querySelector('a');
+                if (a && a.getAttribute('href') === currentSection) {
+                    li.classList.add('active');
+                }
+            });
+        });
+
+        // ===== HELPER FUNCTIONS =====
+        function openSearch() {
+            alert('Search functionality coming soon!');
+        }
+
+        function toggleLanguage() {
+            alert('Language selector coming soon!');
+        }
+
+        function downloadDatasheet() {
+            alert('Datasheet download would start here. For now, this is a demo.');
+            // In production: window.open('/datasheets/FW151.pdf', '_blank');
+        }
+
+        // Newsletter form submission
+        document.querySelector('.footer button.btn-primary').addEventListener('click', function() {
+            const emailInput = this.parentElement.querySelector('input');
+            const email = emailInput.value;
+            if(email && email.includes('@')) {
+                alert('Thank you for subscribing to our newsletter!');
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        });
+    </script>
+</body>
+</html>

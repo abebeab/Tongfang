@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Wall-Mounted IP Terminals & Speakers | ITC T-7700 Series | Tongfang BMS</title>
+    <!-- Favicon -->
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND COLORS - EXACT TEMPLATE */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            --tf-gray-light: #e5e7eb;
+            --header-height: 80px;
+            --card-radius: 12px;
+            
+            /* ITC Brand Accent */
+            --itc-orange: #ff8c42;
+            
+            /* Category accent */
+            --cat-primary: #2a4a5a;
+            --cat-soft: #eef2f6;
+            
+            /* SHADOWS & TRANSITIONS */
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: var(--header-height);
+        }
+        
+        h1, h2, h3, h4, h5 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        a { text-decoration: none; transition: var(--transition); }
+
+        /* ===== HEADER - EXACT TEMPLATE WITH FIXED DROPDOWNS ===== */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 9999;
+            min-height: var(--header-height); 
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            transition: var(--transition); 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .header-fix.scrolled { 
+            background: rgba(255, 255, 255, 0.98); 
+            border-bottom: 1px solid rgba(0,0,0,0.05); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03); 
+        }
+        
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        /* Desktop Menu */
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: var(--tf-dark);
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-link-custom:hover { 
+            color: var(--tf-yellow); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom { 
+            color: var(--tf-dark); 
+        }
+        
+        .header-fix.scrolled .nav-link-custom:hover { 
+            color: var(--tf-blue); 
+        }
+        
+        /* Make parent links clickable */
+        .dropdown-parent-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Dropdown Menu - EXACT TEMPLATE STYLE WITH FIXED HOVER (DESKTOP ONLY) */
+        .nav-item-dropdown { 
+            position: relative; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+        
+        .dropdown-menu-custom {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px); 
+            width: 700px;
+            background: #fff;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1100;
+            /* Critical fix: add a padding-top to create a seamless bridge */
+            padding-top: 25px;
+            margin-top: -5px;
+        }
+        
+        /* Create a much larger invisible bridge that connects the menu item to the dropdown */
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -25px;
+            left: -20px;
+            width: calc(100% + 40px);
+            height: 30px;
+            background: transparent;
+            z-index: 5;
+        }
+        
+        /* Keep dropdown visible when hovering over either the trigger or the dropdown */
+        .nav-item-dropdown:hover .dropdown-menu-custom {
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        
+        /* Also keep visible when hovering directly over the dropdown */
+        .dropdown-menu-custom:hover {
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateX(-50%) translateY(0); 
+        }
+        
+        .dropdown-link {
+            color: #555; 
+            font-size: 13px; 
+            font-weight: 600;
+            padding: 6px 10px; 
+            border-radius: 4px; 
+            display: block;
+            border-left: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-link:hover {
+            background: #f4f7fa; 
+            color: var(--tf-blue);
+            border-left: 2px solid var(--tf-blue);
+            padding-left: 15px;
+        }
+        
+        .dropdown-category {
+            grid-column: span 3; 
+            color: var(--tf-blue); 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-top: 10px; 
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee; 
+            padding-bottom: 5px;
+        }
+        
+        .header-icons {
+            display: flex !important;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-icons i {
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--tf-dark);
+        }
+
+        .header-fix.scrolled .header-icons i {
+            color: var(--tf-dark);
+        }
+
+        .header-icons i:hover {
+            color: var(--tf-yellow);
+        }
+
+        .header-fix.scrolled .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: var(--tf-dark); 
+            cursor: pointer; 
+            background: none;
+            border: none;
+            padding-right: 20px;
+        }
+        
+        .header-fix.scrolled .mobile-toggle { 
+            color: var(--tf-dark) !important; 
+        }
+        
+        /* ===== CATEGORY HERO SECTION ===== */
+        .category-hero {
+            height: 50vh;
+            min-height: 400px;
+            background: linear-gradient(135deg, #0a1c2c 0%, #1e3a4a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/pattern.svg') center/cover;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .category-hero h1 {
+            color: white;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .category-hero .lead {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+        
+        .category-hero .hero-badge {
+            display: inline-block;
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        /* ===== PRODUCT NAVIGATION BAR ===== */
+        .product-nav-bar {
+            position: sticky; 
+            top: 80px; 
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        /* Custom Breadcrumb */
+        .nav-breadcrumb .breadcrumb-item a {
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue);
+        }
+
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px;
+        }
+
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue) !important;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
+            border-radius: 10px;
+        }
+        
+        /* ===== FILTER / QUICK LINKS ===== */
+        .filter-section {
+            background: var(--tf-bg-light);
+            padding: 25px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .filter-link {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 0 5px 10px 5px;
+            background: white;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--tf-text);
+            border: 1px solid #dee2e6;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .filter-link:hover, .filter-link.active {
+            background: var(--tf-blue);
+            color: white;
+            border-color: var(--tf-blue);
+        }
+        
+        /* ===== PRODUCT CARD GRID ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid #eaeef2;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 76, 163, 0.1);
+            border-color: var(--tf-blue);
+        }
+        .card-img-wrapper {
+            height: 220px;
+            background: #f5f8fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-bottom: 1px solid #eaeef2;
+        }
+        .card-img-wrapper img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .card-content {
+            padding: 20px;
+            flex: 1;
+        }
+        .product-model {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--tf-blue);
+            margin-bottom: 5px;
+        }
+        .product-tags {
+            margin-bottom: 12px;
+        }
+        .tag {
+            display: inline-block;
+            background: #eef2f6;
+            color: #2a4a5a;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 30px;
+            margin-right: 5px;
+        }
+        .tag.primary {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+        }
+        .product-desc {
+            font-size: 14px;
+            color: #5a6874;
+            margin-bottom: 20px;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eaeef2;
+            padding: 15px 20px;
+            background: #fafcfd;
+            margin-top: auto;
+        }
+        .btn-sm-outline {
+            border: 1px solid var(--tf-blue);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--tf-blue);
+            background: transparent;
+            transition: 0.2s;
+        }
+        .btn-sm-outline:hover {
+            background: var(--tf-blue);
+            color: white;
+        }
+        .btn-sm-link {
+            color: var(--tf-text);
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .btn-sm-link:hover {
+            color: var(--tf-blue);
+        }
+        
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-section {
+            background: var(--tf-bg-light);
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+        .comparison-table th {
+            background: var(--tf-blue);
+            color: white;
+            font-weight: 700;
+            padding: 15px;
+            text-align: center;
+        }
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eaeef2;
+            text-align: center;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table td:first-child {
+            font-weight: 700;
+            color: var(--tf-dark);
+            text-align: left;
+        }
+        
+        /* ===== FOOTER - EXACT TEMPLATE ===== */
+        .footer { 
+            background: #0b111a; 
+            color: #aaa; 
+            margin-top: 0; 
+            padding-top: 80px; 
+            font-size: 14px; 
+        }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        
+        .copyright { 
+            background: #05080c; 
+            border-top: 1px solid #1a222e; 
+            padding: 25px 0; 
+            margin-top: 60px; 
+        }
+        
+        .footer a,
+        .footer .btn-link {
+            color: var(--tf-blue) !important;
+            font-weight: 600;
+        }
+
+        .footer a:hover,
+        .footer .btn-link:hover {
+            color: var(--tf-yellow) !important;
+            text-decoration: underline;
+        }
+        
+        /* ===== MOBILE RESPONSIVENESS - FIXED DROPDOWN BEHAVIOR ===== */
+        @media (max-width: 991px) {
+            .header-fix { height: auto; }
+            
+            .mobile-toggle { 
+                display: block; 
+                order: 2;
+            }
+            
+            .header-icons { 
+                display: flex !important; 
+                order: 3;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            
+            .header-icons i {
+                font-size: 18px !important;
+            }
+            
+            .header-container {
+                padding: 0 15px;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px; 
+                left: 0; 
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
+                z-index: 1000;
+            }
+            
+            .nav-menu.active { 
+                display: flex; 
+            }
+            
+            .nav-link-custom { 
+                color: #333 !important; 
+                width: 100%; 
+                padding: 10px 30px; 
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .nav-item-dropdown { 
+                width: 100%; 
+                flex-direction: column; 
+                align-items: flex-start;
+                height: auto;
+            }
+            
+            /* DISABLE HOVER ON MOBILE - FIX FOR DROPDOWN DISAPPEARING */
+            .nav-item-dropdown:hover .dropdown-menu-custom {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(-50%) translateY(10px);
+            }
+            
+            .dropdown-menu-custom {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1; 
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: 3px solid var(--tf-yellow);
+                border-radius: 0;
+                padding: 20px;
+                background: #f9f9f9;
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 0;
+                padding-top: 20px;
+                transition: none;
+            }
+            
+            .dropdown-menu-custom::before { 
+                display: none; 
+            }
+            
+            /* Show dropdown when parent has active class (click) */
+            .nav-item-dropdown.active .dropdown-menu-custom { 
+                display: grid; 
+            }
+            
+            .dropdown-category { 
+                grid-column: span 1; 
+                margin-top: 5px;
+            }
+            
+            /* Make dropdown parent link clickable on mobile */
+            .dropdown-parent-link {
+                width: 100%;
+                justify-content: space-between;
+                cursor: pointer;
+            }
+            
+            .dropdown-parent-link i {
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-item-dropdown.active .dropdown-parent-link i {
+                transform: rotate(180deg);
+            }
+            
+            .category-hero {
+                height: 40vh;
+                min-height: 300px;
+            }
+            
+            .category-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .category-hero .lead {
+                font-size: 1.1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-img {
+                height: 50px;
+            }
+            
+            .category-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                font-size: 12px;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER - EXACT TEMPLATE WITH FIXED DROPDOWNS ===== -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+               <div class="header-logo">
+                    <a href="/index.html" class="logo-wrapper">
+                        <img 
+                            src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png"
+                            alt="Tongfang BMS Logo"
+                            class="logo-img"
+                        >
+                    </a>
+                </div>
+                
+                <!-- NAVIGATION -->
+                <nav id="mainNav" class="nav-menu">
+                     
+                    
+                    <!-- SOLUTIONS DROPDOWN - EXACT TEMPLATE STYLE WITH FIXED HOVER -->
+                    <div class="nav-item-dropdown">
+                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div>
+                                <div class="dropdown-category">Buildings</div>
+                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                            </div>
+                            <div>
+                                <div class="dropdown-category">Infrastructure</div>
+                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
+                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
+                            </div>
+                            <div>
+                                <div class="dropdown-category">City Systems</div>
+                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                              <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue);">
+  View All Solutions →
+</a>
+ 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- PRODUCTS DROPDOWN - EXACT TEMPLATE STYLE WITH FIXED HOVER -->
+                    <div class="nav-item-dropdown">
+                        <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                            Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div>
+                                <div class="dropdown-category">Fire & Safety</div>
+                                <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
+                                <a href="/products/access-control/index.html" class="dropdown-link">Access Control</a>
+                            </div>
+                            <div>
+                                <div class="dropdown-category">Core Controllers</div>
+                                <a href="/products/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                <a href="/products/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                            </div>
+                            <div>
+                                <div class="dropdown-category">Field Instrumentation</div>
+                                <a href="/products/sensors-thermostats/index.html" class="dropdown-link">Sensors & Thermostats</a>
+                                <a href="/products/valves-actuators/index.html" class="dropdown-link">Valves & Actuators</a>
+                            </div>
+                            <div>
+                                <div class="dropdown-category">Management & Power</div>
+                                <a href="/products/bms-software/index.html" class="dropdown-link">BMS Software</a>
+                                <a href="/products/energy-meters/index.html" class="dropdown-link">Energy Meters</a>
+                                <a href="/products/control-panels/index.html" class="dropdown-link">Control Panels</a>
+                            </div>
+                            <div>
+                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
+                                <a href="/products/itc-t7700-series/index.html" class="dropdown-link">ITC T-7700 Series</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                     <a href="/about/index.html" class="nav-link-custom">About</a>                               <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                </nav>
+                </nav>
+
+                <!-- HAMBURGER ICON (Mobile) -->
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Header Icons -->
+                <div class="header-icons d-flex align-items-center">
+                    <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CATEGORY HERO SECTION ===== -->
+    <section class="category-hero">
+        <div class="container">
+            <span class="hero-badge"><i class="fa fa-home me-2"></i> WALL-MOUNTED TERMINALS</span>
+            <h1>IP Speakers & Wall Terminals</h1>
+            <p class="lead">Sleek, intelligent audio endpoints for classrooms, offices, and corridors. Choose from basic speakers to advanced multimedia terminals with wireless mic, Bluetooth, and 100V backup.</p>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCT NAVIGATION BAR ===== -->
+    <div class="product-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            
+            <!-- Left Side: Breadcrumb -->
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/products/index.html">Products</a></li>
+                    <li class="breadcrumb-item"><a href="/products/itc-t7700-series/index.html">ITC T-7700</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Wall-Mounted</a></li>
+                </ol>
+            </nav>
+
+            <!-- Right Side: Quick Specs -->
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-bolt text-warning me-2"></i>
+                    16+ models · PoE · 2.4G mic · 100V backup
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FILTER SECTION ===== -->
+    <div class="filter-section">
+        <div class="container text-center">
+            <span class="filter-link active" onclick="filterProducts('all')">All (16)</span>
+            <span class="filter-link" onclick="filterProducts('basic')">Basic IP</span>
+            <span class="filter-link" onclick="filterProducts('wireless')">2.4G Wireless</span>
+            <span class="filter-link" onclick="filterProducts('backup')">100V Backup</span>
+            <span class="filter-link" onclick="filterProducts('highpower')">High Power (2x30W)</span>
+            <span class="filter-link" onclick="filterProducts('bluetooth')">Bluetooth</span>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT GRID ===== -->
+    <div class="container">
+        <div class="product-grid" id="productGrid">
+            <!-- T-7705A -->
+            <div class="product-card" data-category="basic bluetooth highpower">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7705A"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7705A</div>
+                    <div class="product-tags"><span class="tag">4.3" TFT</span><span class="tag primary">2x30W</span><span class="tag">Bluetooth</span></div>
+                    <div class="product-desc">Wall-mounted IP terminal with 4.3" display, 2x30W digital amp, USB/SD, Bluetooth, optional 2.4G mic.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/t-7705a/index.html" class="btn-sm-outline">View</a>
+                    <a href="#" class="btn-sm-link">Compare <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            <!-- T-7705S -->
+            <div class="product-card" data-category="basic">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7705S"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7705S</div>
+                    <div class="product-tags"><span class="tag">3.4" LCD</span><span class="tag">2x20W</span></div>
+                    <div class="product-desc">Economic IP speaker, 2x20W digital amp, 3.4" LCD, 100V backup input, master/standby switch.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/t-7705s/index.html" class="btn-sm-outline">View</a>
+                    <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7705B -->
+            <div class="product-card" data-category="basic backup">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7705B"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7705B</div>
+                    <div class="product-tags"><span class="tag">3.4" LCD</span><span class="tag">2x20W</span><span class="tag primary">100V backup</span></div>
+                    <div class="product-desc">IP speaker with 100V analog backup input, master/standby switch (<0.3s).</div>
+                </div>
+                <div class="card-footer">
+                  <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7705B/index.html" class="btn-sm-outline">View</a>
+                     <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7705BG -->
+            <div class="product-card" data-category="wireless bluetooth">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7705BG"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7705BG</div>
+                    <div class="product-tags"><span class="tag primary">2.4G mic</span><span class="tag">Bluetooth</span><span class="tag">3.4" LCD</span></div>
+                    <div class="product-desc">Wall-mounted speaker with 2.4G wireless mic, Bluetooth, MP3 playback, 2x20W.</div>
+                </div>
+                <div class="card-footer">
+                   <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7705BG/index.html" class="btn-sm-outline">View</a>
+                    <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7705BM -->
+            <div class="product-card" data-category="wireless">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7705BM"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7705BM</div>
+                    <div class="product-tags"><span class="tag primary">2.4G mic</span><span class="tag">2x20W</span><span class="tag">3.4" LCD</span></div>
+                    <div class="product-desc">IP speaker with 2.4G wireless mic, MP3 playback, master/standby switch.</div>
+                </div>
+                <div class="card-footer">
+                     <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7705BM/index.html" class="btn-sm-outline">View</a>
+                  <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7705AC -->
+            <div class="product-card" data-category="basic">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7705AC"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7705AC</div>
+                    <div class="product-tags"><span class="tag">RS-232/485</span><span class="tag">I/O ports</span></div>
+                    <div class="product-desc">Multimedia central control IP terminal with RS-232/485, I/O, relay control, real-time clock.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7705AC/index.html" class="btn-sm-outline">View</a>
+                   <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707 -->
+            <div class="product-card" data-category="basic">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7707"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707</div>
+                    <div class="product-tags"><span class="tag">2x15W</span><span class="tag">AUX in</span></div>
+                    <div class="product-desc">Base model wall active speaker, 2x15W digital amp, AUX input, no display.</div>
+                </div>
+                <div class="card-footer">
+                   <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707/index.html" class="btn-sm-outline">View</a>
+                     <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707A -->
+            <div class="product-card" data-category="basic">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7707A"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707A</div>
+                    <div class="product-tags"><span class="tag">2x15W</span><span class="tag">AUX in</span></div>
+                    <div class="product-desc">Wall active speaker, 2x15W, AUX input.</div>
+                </div>
+                <div class="card-footer">
+                   <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707A/index.html" class="btn-sm-outline">View</a>
+                     <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707AB -->
+            <div class="product-card" data-category="backup">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7707AB"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707AB</div>
+                    <div class="product-tags"><span class="tag primary">100V backup</span><span class="tag">2x15W</span></div>
+                    <div class="product-desc">IP speaker with 100V analog backup input, seamless failover.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707AB/index.html" class="btn-sm-outline">View</a>
+                    <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707AS -->
+            <div class="product-card" data-category="basic">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7707AS"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707AS</div>
+                    <div class="product-tags"><span class="tag">LED display</span><span class="tag">2x15W</span></div>
+                    <div class="product-desc">IP speaker with LED status indicators, AUX input.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707AS/index.html" class="btn-sm-outline">View</a>
+                     <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707BG -->
+            <div class="product-card" data-category="wireless bluetooth">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7707BG"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707BG</div>
+                    <div class="product-tags"><span class="tag primary">2.4G mic</span><span class="tag">Bluetooth</span><span class="tag">2x15W</span></div>
+                    <div class="product-desc">Wall speaker with 2.4G wireless mic and Bluetooth, 2x15W.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707BG/index.html" class="btn-sm-outline">View</a>
+                       <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707BM -->
+            <div class="product-card" data-category="wireless highpower">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7707BM"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707BM</div>
+                    <div class="product-tags"><span class="tag primary">2x30W</span><span class="tag primary">2.4G mic</span><span class="tag">MP3</span></div>
+                    <div class="product-desc">High-power IP speaker with 2x30W amp, 2.4G wireless mic, MP3/USB playback.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707BM/index.html" class="btn-sm-outline">View</a>
+                     <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707M (Featured) -->
+            <div class="product-card" data-category="wireless highpower">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logvo.png" alt="T-7707M"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707M <span class="tag primary">NEW</span></div>
+                    <div class="product-tags"><span class="tag primary">2x30W</span><span class="tag primary">2.4G mic</span><span class="tag">PoE</span></div>
+                    <div class="product-desc">High-power wall speaker with 2x30W digital amp and built-in 2.4G wireless mic. Ideal for larger classrooms.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/t-7707m/index.html" class="btn-sm-outline">View</a>
+                    <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+            <!-- T-7707N2 -->
+            <div class="product-card" data-category="basic">
+                <div class="card-img-wrapper"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logho.png" alt="T-7707N2"></div>
+                <div class="card-content">
+                    <div class="product-model">T-7707N2</div>
+                    <div class="product-tags"><span class="tag">USB debug</span><span class="tag">2x15W</span></div>
+                    <div class="product-desc">Slim IP speaker with USB debugging interface, AUX input.</div>
+                </div>
+                <div class="card-footer">
+                    <a href="/products/itc-t7700-series/wall-mounted-ip-terminals-speakers/T-7707N2/index.html" class="btn-sm-outline">View</a>
+                    <a href="#" class="btn-sm-link">Compare</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COMPARISON TABLE (HIGHLIGHTS) ===== -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Quick Comparison: Popular Wall-Mounted Models</h2>
+            <div class="table-responsive">
+                <table class="table comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Power</th>
+                            <th>Display</th>
+                            <th>2.4G Mic</th>
+                            <th>Bluetooth</th>
+                            <th>Backup 100V</th>
+                            <th>AUX</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>T-7705A</td><td>2x30W</td><td>4.3" TFT</td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7705BG</td><td>2x20W</td><td>3.4" LCD</td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7705B</td><td>2x20W</td><td>3.4" LCD</td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7707BM</td><td>2x30W</td><td>LED</td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7707M</td><td>2x30W</td><td>LED</td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7707BG</td><td>2x15W</td><td>LED</td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7707AB</td><td>2x15W</td><td>LED</td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                        <tr><td>T-7707N2</td><td>2x15W</td><td>None</td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-times-circle text-danger"></i></td><td><i class="fa fa-check-circle text-success"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER - EXACT TEMPLATE ===== -->
+    <footer class="footer">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Tongfang BMS System Integration</h5>
+                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Quick Links</h5>
+                    <a href="/index.html" class="d-block mb-2">Home</a>
+                    <a href="/about/index.html" class="d-block mb-2">About Us</a>
+                    <a href="/solutions/index.html" class="d-block mb-2">Solutions</a>
+                    <a href="/products/index.html" class="d-block mb-2">Products</a>
+                    <a href="/projects/index.html" class="d-block mb-2">Projects</a>
+                    <a href="/technologies/index.html" class="d-block mb-2">Technologies</a>
+                    <a href="/contact/index.html" class="d-block mb-2">Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Business Hours</h5>
+                    <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                    <p>Saturday: 9:00 AM – 1:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Newsletter</h5>
+                    <p>Get IP audio & intercom system updates.</p>
+                    <div class="position-relative">
+                        <input class="form-control" type="email" placeholder="Your email">
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright text-center py-3">
+            © 2026 Tongfang BMS System Integration PLC. All Rights Reserved. | ITC T-7700 Series — Wall-Mounted IP Terminals & Speakers
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) { 
+                header.classList.add('scrolled'); 
+            } else { 
+                header.classList.remove('scrolled'); 
+            }
+        });
+
+        // ===== MOBILE MENU FUNCTIONS =====
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+            } else {
+                header.style.background = "";
+                header.style.borderBottom = "";
+                if(window.scrollY > 50) {
+                    mobileToggle.style.color = "#111827";
+                } else {
+                    mobileToggle.style.color = "#fff";
+                }
+            }
+        }
+
+        // Handle dropdown toggle on mobile (click on parent link)
+        document.querySelectorAll('.nav-item-dropdown .dropdown-parent-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only for mobile view
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close other open dropdowns first
+                    if (!this.closest('.nav-item-dropdown').classList.contains('active')) {
+                        document.querySelectorAll('.nav-item-dropdown.active').forEach(drop => {
+                            drop.classList.remove('active');
+                        });
+                    }
+                    
+                    // Toggle current dropdown
+                    this.closest('.nav-item-dropdown').classList.toggle('active');
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 992) {
+                const isClickInsideDropdown = event.target.closest('.nav-item-dropdown');
+                if (!isClickInsideDropdown) {
+                    document.querySelectorAll('.nav-item-dropdown.active').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            }
+        });
+
+        // ===== FILTER FUNCTION =====
+        window.filterProducts = function(category) {
+            // Update active class on filter buttons
+            document.querySelectorAll('.filter-link').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter product cards
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'all') {
+                    product.style.display = 'flex';
+                } else {
+                    const categories = product.getAttribute('data-category').split(' ');
+                    if (categories.includes(category)) {
+                        product.style.display = 'flex';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                }
+            });
+        };
+
+        // Initialize filter to 'all'
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ensure all products are visible initially
+            document.querySelectorAll('.product-card').forEach(p => p.style.display = 'flex');
+        });
+    </script>
+</body>
+</html>

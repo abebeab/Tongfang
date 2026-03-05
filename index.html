@@ -470,203 +470,220 @@
         .footer .btn-square i { margin: 0; color: #fff; }
         .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
 
-        /* Responsive grid for dropdown columns */
-        @media (max-width: 1200px) { 
-            .dropdown-inner { grid-template-columns: repeat(3, 1fr); }
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 991px) {
-            .header-fix { height: auto; }
-            
-            .mobile-toggle { 
-                display: block; 
-                order: 2;
-                color: #111827;
-            }
-            
-            .header-icons { 
-                display: flex !important; 
-                order: 3;
-            }
-            
-            .header-icons i {
-                font-size: 18px !important;
-                color: #111827;
-            }
+       /* ===== MOBILE RESPONSIVENESS - FIXED HEADER LAYOUT ===== */
+@media (max-width: 991px) {
+    .header-fix { 
+        height: auto; 
+    }
+    
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        flex-wrap: nowrap;
+    }
+    
+    .header-logo {
+        flex: 0 0 auto;
+        margin-right: 0;
+    }
+    
+    .logo-img {
+        height: 50px;
+    }
+    
+    .header-right-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-left: auto;
+    }
+    
+    .mobile-toggle { 
+        display: block;
+        order: 1;
+        font-size: 24px;
+        color: #333;
+        padding: 0;
+    }
+    
+    .header-icons { 
+        display: flex !important;
+        align-items: center;
+        gap: 15px;
+        order: 2;
+    }
+    
+    .header-icons i {
+        font-size: 18px !important;
+        color: #333;
+    }
+    
+    /* Mobile Navigation Menu */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+        margin: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        align-items: flex-start;
+        overflow-y: auto;
+        max-height: 80vh;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active { 
+        display: flex; 
+    }
+    
+    .nav-link-custom { 
+        color: #333; 
+        width: 100%; 
+        padding: 12px 30px; 
+        line-height: 1.5;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+    }
+    
+    /* Mobile Dropdowns */
+    .nav-item-dropdown { 
+        width: 100%; 
+        flex-direction: column; 
+        align-items: flex-start;
+        height: auto;
+    }
+    
+    .dropdown-menu-custom {
+        position: static;
+        width: 100%;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        box-shadow: none;
+        border-top: none;
+        padding: 10px 30px 20px;
+        background: #f9f9f9;
+        grid-template-columns: 1fr;
+        max-height: none;
+    }
+    
+    .dropdown-menu-custom::before { 
+        display: none; 
+    }
+    
+    .nav-item-dropdown.active .dropdown-menu-custom { 
+        display: block; 
+    }
+    
+    .dropdown-category { 
+        margin-top: 15px;
+        font-size: 12px;
+    }
+    
+    .dropdown-link {
+        padding: 8px 0;
+        font-size: 13px;
+    }
+    
+    /* Rotating arrow for active dropdowns */
+    .nav-item-dropdown.active > .dropdown-parent-link i {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-item-dropdown.active > .dropdown-parent-link {
+        color: var(--tf-blue) !important;
+    }
+}
 
-            .header-container {
-                padding: 0 15px;
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-            }
-            
-            .header-logo {
-                order: 1;
-                flex-shrink: 0;
-                margin-right: auto;
-            }
-            
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 80px; left: 0; width: 100%;
-                background: white;
-                flex-direction: column;
-                height: auto;
-                padding: 20px 0;
-                margin: 0;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                align-items: flex-start;
-                overflow-y: auto;
-                max-height: 80vh;
-            }
-            .nav-menu.active { display: flex; }
+@media (max-width: 576px) {
+    .logo-img {
+        height: 40px;
+    }
+    
+    .header-icons {
+        gap: 10px;
+    }
+    
+    .header-icons i {
+        font-size: 16px !important;
+    }
+}
 
-            .nav-link-custom { 
-                color: #333; 
-                width: 100%; 
-                padding: 10px 30px; 
-                line-height: 1.5;
-                border-bottom: 1px solid #eee;
-            }
-            
-            .nav-item-dropdown { 
-                width: 100%; 
-                flex-direction: column; 
-                align-items: flex-start;
-                height: auto;
-                position: relative;
-            }
-            .dropdown-menu-custom {
-                position: static;
-                width: 100%;
-                transform: none;
-                opacity: 1; 
-                visibility: visible;
-                display: none;
-                box-shadow: none;
-                border-top: none;
-                padding: 10px 30px;
-                background: #f9f9f9;
-                max-height: none;
-                overflow-y: visible;
-                pointer-events: auto;
-                justify-content: flex-start;
-            }
-            .dropdown-inner { 
-                grid-template-columns: 1fr; 
-                padding: 0;
-            }
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-item-dropdown.active .dropdown-menu-custom { 
-                display: block; 
-            }
-            
-            .dropdown-category { margin-top: 10px; }
-
-            .hero-simple-text { left: 20px; bottom: 60px; max-width: 90%; }
-            .hero-simple-text h1 { font-size: 42px; }
-            .hero-section, .carousel-item { height: 70vh; }
-            
-            .section-header h2 { font-size: 30px; }
-            
-            .product-card img { transform: scale(1); height: 200px; }
-            .product-card:hover img { transform: scale(1.1) translateY(-10px); }
-            
-            .compact-grid { padding: 0 15px; gap: 15px; }
-            .strat-section { padding: 60px 0; }
-        }
-
-        @media (max-width: 576px) {
-            .header-icons {
-                gap: 12px !important;
-            }
-            
-            .header-icons i {
-                font-size: 16px !important;
-            }
-            
-            .mobile-toggle {
-                font-size: 20px;
-                margin-right: 10px;
-            }
-            
-            .header-container {
-                padding: 0 10px;
-            }
-            
-            .hero-simple-text h1 { 
-                font-size: 32px; 
-            }
-        }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <div id="navBox" class="header-fix">
-            <div class="header-container">
-                <div class="header-logo">
-                    <a href="/index.html">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
-                    </a>
-                </div>
+  <!-- ===== HEADER - FULL-WIDTH DROPDOWNS TEMPLATE ===== -->
+<header>
+    <div id="navBox" class="header-fix">
+        <div class="header-container">
+            <!-- LOGO - LEFT -->
+            <div class="header-logo">
+                <a href="/index.html" class="logo-wrapper">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- NAVIGATION - CENTER -->
+            <nav id="mainNav" class="nav-menu">
                 
-                <!-- NAVIGATION -->
-                <nav id="mainNav" class="nav-menu">
-                    <!-- SOLUTIONS DROPDOWN - ENHANCED WITH FULL-WIDTH STYLE -->
-                    <div class="nav-item-dropdown">
-                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
-                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
-                        </a>
-                        <div class="dropdown-menu-custom">
-                            <div class="dropdown-inner">
-                                <!-- Buildings Column -->
-                                <div>
-                                    <div class="dropdown-category">Buildings</div>
-                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                                </div>
-                                <!-- Infrastructure Column -->
-                                <div>
-                                    <div class="dropdown-category">Infrastructure</div>
-                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
-                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
-                                </div>
-                                <!-- City Systems Column -->
-                                <div>
-                                    <div class="dropdown-category">City Systems</div>
-                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
-                                </div>
+                <!-- SOLUTIONS DROPDOWN - 3 COLUMNS -->
+                <div class="nav-item-dropdown">
+                    <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                        Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                    </a>
+                    <div class="dropdown-menu-custom">
+                        <div class="dropdown-inner">
+                            <!-- Buildings -->
+                            <div>
+                                <div class="dropdown-category">Buildings</div>
+                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                            </div>
+                            <!-- Infrastructure -->
+                            <div>
+                                <div class="dropdown-category">Infrastructure</div>
+                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
+                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
+                            </div>
+                            <!-- City Systems -->
+                            <div>
+                                <div class="dropdown-category">City Systems</div>
+                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
                             </div>
                         </div>
                     </div>
-
-                      <!-- PRODUCTS DROPDOWN - Complete   -->
+                </div>
+                
+                <!-- PRODUCTS DROPDOWN - 4 COLUMNS -->
                 <div class="nav-item-dropdown">
                     <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                         Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <!-- 1. Access Control -->
+                            <!-- Column 1: Access Control -->
                             <div>
                                 <div class="dropdown-category">Access Control</div>
                                 <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
@@ -674,44 +691,41 @@
                                 <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
                                 <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
                                 <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                <a href="/products/access-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/access-control/index.html" class="more-link">View All→</a>
                             </div>
                             
-                            <!-- 2. Fire & Safety -->
+                            <!-- Column 2: Fire & Safety -->
                             <div>
                                 <div class="dropdown-category">Fire & Safety</div>
                                 <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
-                                <a href="/products\fire-alarm\Control_Panels\index.html" class="dropdown-link">Control Panels</a>
+                                <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
                                 <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                              
                                 <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
                                 <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
                             </div>
                             
-                            <!-- 3. Building Management (UPDATED - NO DUPLICATES) -->
+                            <!-- Column 3: Building Management -->
                             <div>
                                 <div class="dropdown-category">Building Management</div>
                                 <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
                                 <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
                                 <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
                                 <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                <a href="/products/building-management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/building-management/index.html" class="more-link">View All→</a>
                             </div>
                             
-                            <!-- 4. IP Audio & Intercom -->
+                            <!-- Column 4: IP Audio -->
                             <div>
-                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
+                                <div class="dropdown-category">IP and ITC T-7700 Series</div>
                                 <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
+                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
                                 <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
-
-                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
-                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
+                                <a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a>
                             </div>
                             
-                           
-                            <!-- 6. HVAC & Field Control -->
+                            <!-- Column 5: HVAC -->
                             <div>
                                 <div class="dropdown-category">HVAC & Field Control</div>
                                 <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
@@ -720,10 +734,10 @@
                                 <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
                                 <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
                                 <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
                             </div>
                             
-                            <!-- 7. Lighting Control -->
+                            <!-- Column 6: Lighting -->
                             <div>
                                 <div class="dropdown-category">Lighting Control</div>
                                 <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
@@ -731,10 +745,10 @@
                                 <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
                                 <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
                                 <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
-                                <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
                             </div>
                             
-                            <!-- 8. Energy Management -->
+                            <!-- Column 7: Energy -->
                             <div>
                                 <div class="dropdown-category">Energy Management</div>
                                 <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
@@ -743,32 +757,36 @@
                                 <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
                                 <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
                                 <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
-                                <a href="/products/Energy-Management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
                             </div>
+                            
+                            <!-- Column 8: Spacer -->
+                            <div></div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Regular Navigation Links -->
+                <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                <a href="/about/index.html" class="nav-link-custom">About</a>
+                <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+            </nav>
 
-
-                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
-                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                    <a href="/about/index.html" class="nav-link-custom">About</a>
-                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
-                </nav>
-
-                <!-- HAMBURGER ICON -->
+            <!-- RIGHT GROUP - Hamburger + Icons -->
+            <div class="header-right-group">
                 <button class="mobile-toggle" onclick="toggleMobileMenu()">
                     <i class="fa fa-bars"></i>
                 </button>
-
-                <!-- Header Icons -->
-                <div class="header-icons d-flex align-items-center">
-                    <i class="fa fa-search fs-5"></i>
-                    <i class="fa fa-globe fs-5"></i>
+                <div class="header-icons">
+                    <i class="fa fa-search"></i>
+                    <i class="fa fa-globe"></i>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+
 
     <!-- HERO SLIDER -->
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
@@ -787,16 +805,26 @@
                 <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/banner_.png" class="hero-bg" alt="Hero 1">
                 <div class="hero-simple-text">
                     <h1 style="color: var(--tf-yellow);">
-                        AIoT<br><span style="color:#fff;">INTELLIGENCE</span>
+                        AIoT<br><span style="color:#fff;font-size:40px;">INTELLIGENCE</span>
                     </h1>
                     <p style="color:#fff; font-size:20px;">
                         Integrated Buildings & Weak Current Systems
                     </p>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg" class="hero-bg" alt="Hero 2">
-            </div>
+            <!-- Slide 2 -->
+<div class="carousel-item">
+    <picture>
+        <!-- MOBILE: screens up to 768px get the mobile image -->
+        <source media="(max-width: 768px)" srcset="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4-mob.jpg">
+        
+        <!-- DESKTOP: screens 769px and above get the desktop image -->
+        <source media="(min-width: 769px)" srcset="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg">
+        
+        <!-- Fallback -->
+        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg" class="hero-bg" alt="Hero 2">
+    </picture>
+</div>
             <div class="carousel-item">
                 <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-1.jpg" class="hero-bg" alt="Hero 3">
             </div>

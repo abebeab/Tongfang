@@ -88,7 +88,7 @@
         /* Desktop Menu */
         .nav-menu { 
             display: flex; 
-            gap: 30px; 
+            gap: 25px; 
             height: 100%; 
             margin-left: auto; 
             margin-right: 40px; 
@@ -338,20 +338,19 @@
             
             .nav-menu {
                 display: none;
-                position: absolute;
+                position: fixed;
                 top: 80px; 
                 left: 0; 
                 width: 100%;
                 background: white;
                 flex-direction: column;
-                height: auto;
+                height: calc(100vh - 80px);
                 padding: 20px 0;
                 margin: 0;
                 gap: 0;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                 align-items: flex-start;
                 overflow-y: auto;
-                max-height: 80vh;
                 z-index: 1050;
             }
             
@@ -359,14 +358,15 @@
                 display: flex; 
             }
 
-            .nav-link-custom { 
-                color: #333; 
-                width: auto; 
-                flex-grow: 1; 
-                padding: 15px 0 15px 30px; 
-                line-height: 1.5; 
-                border-bottom: none; 
-            }
+            /* Desktop Menu */
+.nav-menu { 
+    display: flex; 
+    gap: 25px; /* Change from 30px to 25px for consistent spacing */
+    height: 100%; 
+    margin-left: auto; 
+    margin-right: 40px; 
+    align-items: center; 
+}
             
             .nav-item-dropdown { 
                 width: 100%; 
@@ -386,6 +386,7 @@
                 border-left: 1px solid #eee;
                 color: #555;
                 cursor: pointer;
+                transition: all 0.3s;
             }
             
             .desktop-arrow {
@@ -400,9 +401,9 @@
                 visibility: visible;
                 display: none;
                 box-shadow: none;
-                border-top: none;
-                padding: 10px 30px;
-                background: #f9f9f9;
+                border-top: 1px solid #eee;
+                padding: 15px 30px 20px;
+                background: #f8f9fa;
                 max-height: none;
                 overflow-y: visible;
                 pointer-events: auto;
@@ -428,18 +429,39 @@
                 color: var(--tf-blue); 
             }
             
+            .nav-item-dropdown.active .mobile-dropdown-toggle i {
+                transform: rotate(180deg);
+                transition: transform 0.3s;
+            }
+            
             .dropdown-category { 
                 grid-column: span 1; 
+                margin-top: 15px;
+                padding-top: 10px;
+                border-top: 1px solid #ddd;
+            }
+            
+            .dropdown-category:first-child {
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
+            
+            .dropdown-link {
+                padding: 10px 15px;
+                margin: 2px 0;
+                border-radius: 6px;
+                font-size: 13px;
             }
 
             /* Hero Adjustments */
             .hero-section {
-                height: 60vh;
-                min-height: 400px;
+                height: 50vh;
+                min-height: 350px;
             }
             
             .hero-title {
-                font-size: 2.5rem !important;
+                font-size: 2.2rem !important;
             }
             
             .hero-sub {
@@ -454,6 +476,13 @@
             .hotspot-label {
                 font-size: 10px;
                 padding: 4px 10px;
+                display: none;
+            }
+            
+            .hotspot-dot {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
             }
             
             /* Feature columns */
@@ -477,6 +506,10 @@
             }
             
             /* Products section */
+            .col-lg-4 {
+                margin-bottom: 20px;
+            }
+            
             .col-lg-3 {
                 margin-bottom: 20px;
             }
@@ -510,16 +543,20 @@
         /* Mobile */
         @media (max-width: 768px) {
             .hero-section {
-                height: 50vh;
-                min-height: 350px;
+                height: 40vh;
+                min-height: 300px;
             }
             
             .hero-title {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
             
             .hero-title br {
                 display: none;
+            }
+            
+            .section-header h2 {
+                font-size: 28px !important;
             }
             
             .scenario-box .row {
@@ -533,6 +570,7 @@
             
             .challenge-card, .solution-card {
                 margin-bottom: 20px;
+                padding: 20px !important;
             }
             
             .hotspot-dot {
@@ -542,9 +580,6 @@
             }
             
             .hotspot-label {
-                font-size: 9px;
-                padding: 3px 8px;
-                margin-left: 5px;
                 display: none;
             }
             
@@ -555,10 +590,6 @@
             
             .swiper-products .swiper-slide {
                 width: 85% !important;
-            }
-            
-            .section-header h2 {
-                font-size: 28px !important;
             }
             
             .row.g-4 .col-lg-3 {
@@ -605,7 +636,7 @@
             }
             
             .hero-title {
-                font-size: 1.8rem !important;
+                font-size: 1.5rem !important;
             }
             
             .hero-sub {
@@ -679,7 +710,7 @@
             }
             
             .hero-title {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important;
             }
             
             .hotspot-dot {
@@ -718,8 +749,6 @@
             position: relative;
         }
         
-         
-
         .hero-content { 
             position: relative; 
             z-index: 2; 
@@ -812,6 +841,18 @@
             filter: brightness(0.9); 
         }
         
+        .map-highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--highlight-x, 50%) var(--highlight-y, 50%), rgba(0, 76, 163, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 15;
+            transition: all 0.5s ease;
+        }
+        
         .hotspot {
             position: absolute; 
             display: flex; 
@@ -819,10 +860,12 @@
             cursor: pointer; 
             z-index: 10; 
             transform: translate(-50%, -50%);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, z-index 0s;
         }
+        
         .hotspot:hover { 
             transform: translate(-50%, -50%) scale(1.1); 
+            z-index: 20;
         }
         
         .hotspot-dot {
@@ -838,12 +881,50 @@
             border: 2px solid #fff; 
             transition: 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: relative;
         }
+        
+        .hotspot-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 204, 0, 0.2);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+            50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(255, 204, 0, 0.3); }
+            100% { transform: scale(1); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        }
+        
+        @keyframes ripple {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+        
         .hotspot.active .hotspot-dot {
             background-color: var(--tf-yellow); 
             color: var(--tf-dark); 
             transform: scale(1.3); 
             box-shadow: 0 0 0 5px rgba(255,204,0,0.4);
+            animation: pulse 2s infinite;
+        }
+        
+        .hotspot.active .hotspot-dot::after {
+            width: 60px;
+            height: 60px;
+            animation: ripple 3s infinite;
         }
 
         .hotspot-label {
@@ -856,11 +937,40 @@
             z-index: -2;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
             white-space: nowrap;
+            opacity: 0.9;
+            min-width: 140px;
+            text-align: center;
         }
 
         .hotspot.active .hotspot-label {
             background: var(--tf-dark);
             color: #fff;
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .hotspot-tooltip {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 25;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 200px;
+            text-align: center;
+        }
+        
+        .hotspot:hover .hotspot-tooltip {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* === 5. SECTIONS GENERAL === */
@@ -892,7 +1002,7 @@
             display: none; 
             opacity: 0; 
             transform: translateY(20px); 
-            transition: 0.5s ease; 
+            transition: opacity 0.3s ease, transform 0.3s ease; 
         }
         .scenario-box.active { 
             display: block; 
@@ -916,6 +1026,7 @@
             border-radius: 12px; 
             border-left: 4px solid var(--tf-blue); 
             box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            margin-bottom: 25px;
         }
         
         .scenario-img { 
@@ -923,6 +1034,13 @@
             border-radius: 12px; 
             box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
             margin-bottom: 25px; 
+            transition: transform 0.5s ease;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        
+        .scenario-img:hover {
+            transform: scale(1.02);
         }
 
         .challenge-card ul, 
@@ -1108,15 +1226,14 @@
             justify-content: center;
             background: rgba(255,255,255,0.1);
             border-radius: 6px;
-            color: #aaa;
-            transition: var(--transition);
+            color: #fff;
             text-decoration: none;
+            transition: 0.3s;
         }
         
         .btn-square:hover {
             background: var(--tf-blue);
-            color: white;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         /* === 6. RELATED === */
@@ -1305,13 +1422,12 @@
             color: var(--tf-yellow) !important;
         }
         
-        /* Stats Section */
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--tf-yellow);
-            margin-bottom: 10px;
-            line-height: 1.2;
+        .text-white-50 {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .text-yellow {
+            color: var(--tf-yellow) !important;
         }
     </style>
 </head>
@@ -1522,26 +1638,9 @@
 
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <div class="interactive-map-container">
+                    <div class="interactive-map-container" id="interactive-map">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/stadium.jpg" alt="Sports Center Solution Map" class="map-img">
-                        
-                        <!-- Hotspots -->
-                        <div id="hotspot-1" class="hotspot" onclick="showScenario(1)" style="top: 45%; left: 20%;">
-                            <div class="hotspot-dot">1</div>
-                            <div class="hotspot-label">Access & Crowd Control</div>
-                        </div>
-                        <div id="hotspot-2" class="hotspot active" onclick="showScenario(2)" style="top: 60%; left: 30%;">
-                            <div class="hotspot-dot">2</div>
-                            <div class="hotspot-label">HVAC & Air Quality</div>
-                        </div>
-                        <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 75%; left: 60%;">
-                            <div class="hotspot-dot">3</div>
-                            <div class="hotspot-label">Lighting & Media Systems</div>
-                        </div>
-                        <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 35%; left: 80%;">
-                            <div class="hotspot-dot">4</div>
-                            <div class="hotspot-label">Operations Center</div>
-                        </div>
+                        <!-- Hotspots will be dynamically generated by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -1550,338 +1649,8 @@
 
     <!-- SECTION 2: SCENARIO DETAILS -->
     <section id="scenarios" class="scenario-wrapper">
-        <div class="container">
-            
-            <!-- 1. ACCESS & CROWD CONTROL -->
-            <div id="content-1" class="scenario-box">
-                <h2 class="mb-4 text-primary">1. Access & Crowd Control Management</h2>
-                
-                <div class="challenge-section mb-5">
-                    <h4 class="text-danger mb-3">Challenges</h4>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Sports venues face unique security challenges with thousands of spectators entering and exiting within short timeframes. Managing ticket validation, preventing unauthorized access, and ensuring smooth crowd flow during peak periods requires advanced automation and real-time monitoring systems.
-                    </p>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Traditional manual security checks create bottlenecks, while inadequate crowd monitoring can lead to safety hazards during emergency situations.
-                    </p>
-                </div>
-                
-                <!-- What We Offer Section -->
-                <div class="solution-section">
-                    <h3>What We Offer</h3>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Tongfang provides integrated access control and crowd management solutions with automated ticket scanning, facial recognition, real-time occupancy monitoring, and emergency response coordination for enhanced safety and efficient spectator movement.
-                    </p>
-                </div>
-                
-                <!-- Feature Columns -->
-                <div class="feature-columns">
-                    <div class="feature-column">
-                        <h4>Smart Access Control</h4>
-                        <p style="line-height: 1.7;">
-                            Multi-modal authentication including RFID tickets, mobile QR codes, and facial recognition. Automated turnstile control with real-time validation and anti-tailgating features.
-                        </p>  
-                    </div>
-                    
-                    <div class="feature-column">
-                        <h4>Crowd Analytics</h4>
-                        <p style="line-height: 1.7;">
-                            AI-powered video analytics for crowd density monitoring, flow optimization, and early detection of potential safety issues. Real-time occupancy tracking across all zones.
-                        </p>  
-                    </div>
-                </div>
-                
-                <!-- Benefits Section -->
-                <div class="benefits-list">
-                    <h4>Benefits</h4>
-                    <ul>
-                        <li>Reduce entry processing time by 70% during peak hours</li>
-                        <li>Enhance security with automated threat detection</li>
-                        <li>Optimize crowd flow and prevent overcrowding</li>
-                        <li>Improve emergency response with real-time evacuation guidance</li>
-                        <li>Reduce operational staffing requirements</li>
-                    </ul>
-                </div>
-                
-                <!-- Features Section -->
-                <div class="features-section">
-                    <h4>Key Features</h4>
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <h6>Multi-Modal Authentication</h6>
-                            <p>Support for RFID, QR codes, facial recognition, and mobile ticketing</p>
-                        </div>
-                        <div class="feature-item">
-                            <h6>Real-time Monitoring</h6>
-                            <p>Live occupancy tracking and crowd density analytics across all areas</p>
-                        </div>
-                        <div class="feature-item">
-                            <h6>Emergency Integration</h6>
-                            <p>Automatic emergency response coordination and evacuation guidance</p>
-                        </div>
-                        <div class="feature-item">
-                            <h6>Anti-Tailgating</h6>
-                            <p>Advanced detection systems to prevent unauthorized entry attempts</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Topology Section -->
-                <div class="topology-section">
-                    <h3>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/access-control-topology.jpg" alt="Access Control Topology" class="topology-img">
-                </div>
-            </div>
-
-            <!-- 2. HVAC & AIR QUALITY -->
-            <div id="content-2" class="scenario-box active">
-                <h2 class="mb-4 text-primary">2. HVAC & Air Quality Management</h2>
-                
-                <div class="challenge-section mb-5">
-                    <h4 class="text-danger mb-3">Challenges</h4>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Large sports facilities consume massive amounts of energy for heating, cooling, and ventilation. Maintaining optimal air quality and temperature for both athletes and spectators while minimizing energy costs requires sophisticated climate control systems.
-                    </p>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Traditional HVAC systems operate at fixed schedules, leading to energy waste during low-occupancy periods and inadequate ventilation during peak events.
-                    </p>
-                </div>
-                
-                <!-- What We Offer Section -->
-                <div class="solution-section">
-                    <h3>What We Offer</h3>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Tongfang provides intelligent HVAC systems with occupancy-based control, air quality monitoring, and predictive energy optimization to ensure optimal comfort while reducing energy consumption by up to 40%.
-                    </p>
-                </div>
-                
-                <!-- Feature Columns -->
-                <div class="feature-columns">
-                    <div class="feature-column">
-                        <h4>Smart Climate Control</h4>
-                        <p style="line-height: 1.7;">
-                            Zone-based temperature and humidity control with occupancy sensors. Automatic adjustment based on real-time crowd density and external weather conditions.
-                        </p> 
-                    </div>
-                    
-                    <div class="feature-column">
-                        <h4>Air Quality Monitoring</h4>
-                        <p style="line-height: 1.7;">
-                            Continuous monitoring of CO2 levels, particulate matter, and ventilation efficiency. Automated adjustment of fresh air intake and filtration systems.
-                        </p> 
-                    </div>
-                </div>
-                
-                <!-- Benefits Section -->
-                <div class="benefits-list">
-                    <h4>Benefits</h4>
-                    <ul>
-                        <li>Reduce HVAC energy consumption by 30-40%</li>
-                        <li>Maintain optimal air quality for athlete performance</li>
-                        <li>Ensure spectator comfort during all events</li>
-                        <li>Automated maintenance alerts and predictive servicing</li>
-                        <li>Compliance with indoor air quality regulations</li>
-                    </ul>
-                </div>
-                
-                <!-- Topology Section -->
-                <div class="topology-section">
-                    <h3>HVAC & Air Quality Management <br>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/HVAC Topology.jpg" alt="HVAC Topology" class="topology-img">
-                </div>
-            </div>
-
-            <!-- 3. LIGHTING & MEDIA SYSTEMS -->
-            <div id="content-3" class="scenario-box">
-                <h2 class="mb-4 text-primary">3. Lighting & Media Systems</h2>
-                
-                <div class="challenge-section mb-5">
-                    <h4 class="text-danger mb-3">Challenges</h4>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Sports venues require versatile lighting systems that can adapt to different events – from bright illumination for televised competitions to dramatic effects for entertainment shows. Managing complex lighting rigs, video displays, and sound systems requires precise coordination and control.
-                    </p>
-                </div>
-                
-                <!-- What We Offer Section -->
-                <div class="solution-section">
-                    <h3>What We Offer</h3>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Tongfang provides integrated lighting and media control systems with pre-programmed scenes for different event types, automated scheduling, and centralized management of all audiovisual equipment.
-                    </p>
-                </div>
-                
-                <!-- Feature Columns -->
-                <div class="feature-columns">
-                    <div class="feature-column">
-                        <h4>Intelligent Lighting</h4>
-                        <p style="line-height: 1.7;">
-                            LED lighting systems with dynamic control for different sports and events. Automated dimming, color temperature adjustment, and emergency lighting integration.
-                        </p>    
-                    </div>
-                    
-                    <div class="feature-column">
-                        <h4>Media Integration</h4>
-                        <p style="line-height: 1.7;">
-                            Centralized control of video walls, scoreboards, sound systems, and broadcast equipment. Synchronized operation with lighting systems for enhanced event experiences.
-                        </p>  
-                    </div>
-                </div>
-                
-                <!-- Benefits Section -->
-                <div class="benefits-list">
-                    <h4>Benefits</h4>
-                    <ul>
-                        <li>Reduce lighting energy consumption by up to 60%</li>
-                        <li>Create optimal viewing conditions for athletes and spectators</li>
-                        <li>Enable seamless event transitions with pre-programmed scenes</li>
-                        <li>Simplify complex AV system operations</li>
-                        <li>Extend equipment lifespan through smart scheduling</li>
-                    </ul>
-                </div>
-                
-                <!-- Topology Section -->
-                <div class="topology-section">
-                    <h3>System Topology</h3>
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/lighting-topology.jpg" alt="Lighting Topology" class="topology-img">
-                </div>
-            </div>
-
-            <!-- 4. OPERATIONS CENTER -->
-            <div id="content-4" class="scenario-box">
-                <h2 class="mb-4 text-primary">4. Central Operations Management</h2>
-                
-                <div class="challenge-section mb-5">
-                    <h4 class="text-danger mb-3">Challenges</h4>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Managing a modern sports facility involves coordinating multiple disparate systems - security, HVAC, lighting, communications, and concessions. Without integrated monitoring and control, facility managers struggle to respond effectively to incidents and optimize operations.
-                    </p>
-                </div>
-                
-                <!-- What We Offer Section -->
-                <div class="solution-section">
-                    <h3>What We Offer</h3>
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">
-                        Tongfang provides a unified operations center with real-time dashboards, predictive analytics, and centralized control of all building systems, enabling efficient facility management and rapid incident response.
-                    </p>
-                </div>
-                
-                <!-- Feature Columns -->
-                <div class="feature-columns">
-                    <div class="feature-column">
-                        <h4>Unified Dashboard</h4>
-                        <p style="line-height: 1.7;">
-                            Centralized interface displaying real-time status of all systems, energy consumption, occupancy data, and security alerts. Customizable views for different operational roles.
-                        </p>  
-                    </div>
-                    
-                    <div class="feature-column">
-                        <h4>Predictive Analytics</h4>
-                        <p style="line-height: 1.7;">
-                            AI-driven insights for maintenance scheduling, energy optimization, and crowd prediction. Historical data analysis for continuous improvement.
-                        </p>   
-                    </div>
-                </div>
-                
-                <!-- Benefits Section -->
-                <div class="benefits-list">
-                    <h4>Benefits</h4>
-                    <ul>
-                        <li>Single-point control for all facility systems</li>
-                        <li>Rapid incident detection and response coordination</li>
-                        <li>Data-driven decision making for operational optimization</li>
-                        <li>Reduced staffing requirements through automation</li>
-                        <li>Improved overall facility safety and efficiency</li>
-                    </ul>
-                </div>
-                
-                <!-- Topology Section -->
-                <div class="topology-section">
-                    <h3>System Topology</h3>
-                    
-                    <div class="topology-grid">
-                        <!-- Central Hub (Center) -->
-                        <div class="hub">
-                            <div style="font-size: 2.5rem; margin-bottom: 15px;">🏢</div>
-                            <h4 style="margin: 0 0 10px 0; color: white; font-size: 1.1rem;">Operations Hub</h4>
-                            <p style="font-size: 0.85rem; opacity: 0.9; line-height: 1.4;">
-                                Unified Dashboard<br>Predictive Analytics<br>Alerts & Control
-                            </p>
-                        </div>
-                        
-                        <!-- SVG Connector Lines -->
-                        <svg style="
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            pointer-events: none;
-                            z-index: 1;
-                        ">
-                            <!-- Security to Hub -->
-                            <line x1="16.5%" y1="16.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-                            <!-- Communications to Hub -->
-                            <line x1="83.5%" y1="16.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-                            <!-- HVAC to Hub -->
-                            <line x1="16.5%" y1="83.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-                            <!-- Lighting to Hub -->
-                            <line x1="83.5%" y1="83.5%" x2="50%" y2="50%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-                            <!-- Concessions to Hub -->
-                            <line x1="50%" y1="100%" x2="50%" y2="83.5%" stroke="#888" stroke-width="2" stroke-dasharray="5,5"/>
-                        </svg>
-                        
-                        <!-- Security System (Top Left) -->
-                        <div class="system" style="grid-column: 1; grid-row: 1; border-left-color: var(--tf-red);">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🔒</div>
-                            <span style="display: block; font-weight: bold; color: var(--tf-red); font-size: 1rem;">Security</span>
-                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                                CCTV & Access Control
-                            </small>
-                        </div>
-                        
-                        <!-- Communications (Top Right) -->
-                        <div class="system" style="grid-column: 3; grid-row: 1; border-left-color: #6f42c1;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">📡</div>
-                            <span style="display: block; font-weight: bold; color: #6f42c1; font-size: 1rem;">Communications</span>
-                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                                PA & Emergency
-                            </small>
-                        </div>
-                        
-                        <!-- HVAC (Bottom Left) -->
-                        <div class="system" style="grid-column: 1; grid-row: 3; border-left-color: var(--tf-blue);">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🌡️</div>
-                            <span style="display: block; font-weight: bold; color: var(--tf-blue); font-size: 1rem;">HVAC</span>
-                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                                Climate Control
-                            </small>
-                        </div>
-                        
-                        <!-- Lighting (Bottom Right) -->
-                        <div class="system" style="grid-column: 3; grid-row: 3; border-left-color: var(--tf-yellow);">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
-                            <span style="display: block; font-weight: bold; color: #333; font-size: 1rem;">Lighting</span>
-                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                                Arena & Facility
-                            </small>
-                        </div>
-                        
-                        <!-- Concessions (Bottom Center) -->
-                        <div class="system" style="grid-column: 2; grid-row: 3; border-left-color: #20c997;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🍔</div>
-                            <span style="display: block; font-weight: bold; color: #20c997; font-size: 1rem;">Concessions</span>
-                            <small style="display: block; margin-top: 5px; color: #666; font-size: 0.75rem;">
-                                Vendors & Services
-                            </small>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4 text-center text-muted" style="font-size: 0.9rem;">
-                        <p><i class="fas fa-info-circle me-2"></i>All systems integrate with the central Operations Hub for unified monitoring and control</p>
-                    </div>
-                </div>
-            </div>
-
+        <div class="container" id="scenarios-container">
+            <!-- Scenario content will be dynamically generated by JavaScript -->
         </div>
     </section>
 
@@ -1987,7 +1756,7 @@
         </div>
     </section>
 
-    <!-- SECTION 6: Related SOLUTIONS -->
+    <!-- SECTION 5: Related SOLUTIONS -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="section-header">
@@ -2070,7 +1839,13 @@
                     <p>Subscribe for updates.</p>
                     <div class="position-relative">
                         <input class="form-control" type="email" placeholder="Your email">
-                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Go</button>
+                        <button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
                     </div>
                 </div>
             </div>
@@ -2082,110 +1857,482 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // SIMPLIFIED JavaScript - only mobile menu functionality
-        function toggleMobileMenu() {
-            const nav = document.getElementById('mainNav');
-            const header = document.getElementById('navBox');
-            const mobileToggle = document.querySelector('.mobile-toggle i');
+        // ============================================
+        // SPORTS CENTER HOTSPOT SYSTEM
+        // ============================================
+        
+        let currentScenario = 2; // Start with scenario 2 active
+        
+        // Hotspot data
+        const hotspotData = {
+            1: {
+                title: "Access & Crowd Control",
+                description: "Advanced security and crowd management systems",
+                position: { top: "45%", left: "20%" },
+                icon: "fa-users",
+                content: {
+                    title: "1. Access & Crowd Control Management",
+                    challenges: [
+                        "Sports venues face unique security challenges with thousands of spectators entering and exiting within short timeframes.",
+                        "Traditional manual security checks create bottlenecks, while inadequate crowd monitoring can lead to safety hazards during emergency situations."
+                    ],
+                    offer: "Tongfang provides integrated access control and crowd management solutions with automated ticket scanning, facial recognition, real-time occupancy monitoring, and emergency response coordination.",
+                    features: [
+                        {
+                            title: "Smart Access Control",
+                            desc: "Multi-modal authentication including RFID tickets, mobile QR codes, and facial recognition. Automated turnstile control with real-time validation and anti-tailgating features."
+                        },
+                        {
+                            title: "Crowd Analytics",
+                            desc: "AI-powered video analytics for crowd density monitoring, flow optimization, and early detection of potential safety issues."
+                        }
+                    ],
+                    benefits: [
+                        "Reduce entry processing time by 70% during peak hours",
+                        "Enhance security with automated threat detection",
+                        "Optimize crowd flow and prevent overcrowding",
+                        "Improve emergency response with real-time evacuation guidance",
+                        "Reduce operational staffing requirements"
+                    ],
+                    keyFeatures: [
+                        "Multi-Modal Authentication - Support for RFID, QR codes, facial recognition, and mobile ticketing",
+                        "Real-time Monitoring - Live occupancy tracking and crowd density analytics across all areas",
+                        "Emergency Integration - Automatic emergency response coordination and evacuation guidance",
+                        "Anti-Tailgating - Advanced detection systems to prevent unauthorized entry attempts"
+                    ],
+                    topology: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/access-control-topology.jpg"
+                }
+            },
+            2: {
+                title: "HVAC & Air Quality",
+                description: "Intelligent climate control and air quality monitoring",
+                position: { top: "60%", left: "30%" },
+                icon: "fa-wind",
+                content: {
+                    title: "2. HVAC & Air Quality Management",
+                    challenges: [
+                        "Large sports facilities consume massive amounts of energy for heating, cooling, and ventilation.",
+                        "Traditional HVAC systems operate at fixed schedules, leading to energy waste during low-occupancy periods and inadequate ventilation during peak events."
+                    ],
+                    offer: "Tongfang provides intelligent HVAC systems with occupancy-based control, air quality monitoring, and predictive energy optimization to ensure optimal comfort while reducing energy consumption by up to 40%.",
+                    features: [
+                        {
+                            title: "Smart Climate Control",
+                            desc: "Zone-based temperature and humidity control with occupancy sensors. Automatic adjustment based on real-time crowd density and external weather conditions."
+                        },
+                        {
+                            title: "Air Quality Monitoring",
+                            desc: "Continuous monitoring of CO2 levels, particulate matter, and ventilation efficiency. Automated adjustment of fresh air intake and filtration systems."
+                        }
+                    ],
+                    benefits: [
+                        "Reduce HVAC energy consumption by 30-40%",
+                        "Maintain optimal air quality for athlete performance",
+                        "Ensure spectator comfort during all events",
+                        "Automated maintenance alerts and predictive servicing",
+                        "Compliance with indoor air quality regulations"
+                    ],
+                    keyFeatures: [
+                        "Zone-based temperature control",
+                        "Real-time air quality monitoring",
+                        "Occupancy-based ventilation",
+                        "Predictive energy optimization"
+                    ],
+                    topology: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/HVAC Topology.jpg"
+                }
+            },
+            3: {
+                title: "Lighting & Media",
+                description: "Dynamic lighting and integrated media control",
+                position: { top: "75%", left: "60%" },
+                icon: "fa-lightbulb",
+                content: {
+                    title: "3. Lighting & Media Systems",
+                    challenges: [
+                        "Sports venues require versatile lighting systems that can adapt to different events – from bright illumination for televised competitions to dramatic effects for entertainment shows.",
+                        "Managing complex lighting rigs, video displays, and sound systems requires precise coordination and control."
+                    ],
+                    offer: "Tongfang provides integrated lighting and media control systems with pre-programmed scenes for different event types, automated scheduling, and centralized management of all audiovisual equipment.",
+                    features: [
+                        {
+                            title: "Intelligent Lighting",
+                            desc: "LED lighting systems with dynamic control for different sports and events. Automated dimming, color temperature adjustment, and emergency lighting integration."
+                        },
+                        {
+                            title: "Media Integration",
+                            desc: "Centralized control of video walls, scoreboards, sound systems, and broadcast equipment. Synchronized operation with lighting systems for enhanced event experiences."
+                        }
+                    ],
+                    benefits: [
+                        "Reduce lighting energy consumption by up to 60%",
+                        "Create optimal viewing conditions for athletes and spectators",
+                        "Enable seamless event transitions with pre-programmed scenes",
+                        "Simplify complex AV system operations",
+                        "Extend equipment lifespan through smart scheduling"
+                    ],
+                    keyFeatures: [
+                        "Dynamic lighting scenes",
+                        "Automated scheduling",
+                        "Emergency lighting integration",
+                        "Centralized media control"
+                    ],
+                    topology: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/sports-center/lighting-topology.jpg"
+                }
+            },
+            4: {
+                title: "Operations Center",
+                description: "Centralized monitoring and predictive analytics",
+                position: { top: "35%", left: "80%" },
+                icon: "fa-desktop",
+                content: {
+                    title: "4. Central Operations Management",
+                    challenges: [
+                        "Managing a modern sports facility involves coordinating multiple disparate systems - security, HVAC, lighting, communications, and concessions.",
+                        "Without integrated monitoring and control, facility managers struggle to respond effectively to incidents and optimize operations."
+                    ],
+                    offer: "Tongfang provides a unified operations center with real-time dashboards, predictive analytics, and centralized control of all building systems, enabling efficient facility management and rapid incident response.",
+                    features: [
+                        {
+                            title: "Unified Dashboard",
+                            desc: "Centralized interface displaying real-time status of all systems, energy consumption, occupancy data, and security alerts. Customizable views for different operational roles."
+                        },
+                        {
+                            title: "Predictive Analytics",
+                            desc: "AI-driven insights for maintenance scheduling, energy optimization, and crowd prediction. Historical data analysis for continuous improvement."
+                        }
+                    ],
+                    benefits: [
+                        "Single-point control for all facility systems",
+                        "Rapid incident detection and response coordination",
+                        "Data-driven decision making for operational optimization",
+                        "Reduced staffing requirements through automation",
+                        "Improved overall facility safety and efficiency"
+                    ],
+                    keyFeatures: [
+                        "Unified dashboard",
+                        "Predictive analytics",
+                        "Real-time alerts",
+                        "Historical data analysis"
+                    ]
+                }
+            }
+        };
+
+        // ============================================
+        // INITIALIZE HOTSPOTS AND CONTENT
+        // ============================================
+        
+        function initializeSportsHotspots() {
+            const mapContainer = document.getElementById('interactive-map');
+            const scenariosContainer = document.getElementById('scenarios-container');
             
-            nav.classList.toggle('active');
+            if (!mapContainer || !scenariosContainer) return;
             
-            // Force white background when menu is open on mobile
-            if(nav.classList.contains('active')) {
-                header.style.background = "#fff";
-                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
-                mobileToggle.style.color = "#333";
+            // Clear existing hotspots
+            mapContainer.querySelectorAll('.hotspot').forEach(h => h.remove());
+            mapContainer.querySelectorAll('.map-highlight').forEach(h => h.remove());
+            
+            // Clear scenarios container
+            scenariosContainer.innerHTML = '';
+            
+            // Create hotspots
+            Object.keys(hotspotData).forEach(id => {
+                const data = hotspotData[id];
+                const numId = parseInt(id);
                 
-                // Change nav link colors to dark when menu is open
-                document.querySelectorAll('.nav-link-custom').forEach(link => {
-                    link.style.color = "#333";
+                // Create hotspot element
+                const hotspot = document.createElement('div');
+                hotspot.id = `hotspot-${id}`;
+                hotspot.className = `hotspot ${numId === currentScenario ? 'active' : ''}`;
+                hotspot.style.top = data.position.top;
+                hotspot.style.left = data.position.left;
+                
+                hotspot.innerHTML = `
+                    <div class="hotspot-dot">${id}</div>
+                    <div class="hotspot-label">${data.title}</div>
+                    <div class="hotspot-tooltip">${data.description}</div>
+                `;
+                
+                // Add click event
+                hotspot.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showScenario(numId);
                 });
                 
-                // Change icons to dark
-                document.querySelectorAll('.header-icons i').forEach(icon => {
-                    icon.style.color = "#333";
-                });
-            } else {
-                header.style.background = "#ffffff";
-                header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
-                mobileToggle.style.color = "#111827";
-                
-                // Reset nav link colors to black
-                document.querySelectorAll('.nav-link-custom').forEach(link => {
-                    link.style.color = "#111827";
+                // Add hover effects
+                hotspot.addEventListener('mouseenter', () => {
+                    if (numId !== currentScenario) {
+                        hotspot.style.transform = 'translate(-50%, -50%) scale(1.15)';
+                        hotspot.style.zIndex = '20';
+                    }
                 });
                 
-                // Reset icons to black
-                document.querySelectorAll('.header-icons i').forEach(icon => {
-                    icon.style.color = "#111827";
+                hotspot.addEventListener('mouseleave', () => {
+                    if (numId !== currentScenario) {
+                        hotspot.style.transform = 'translate(-50%, -50%) scale(1)';
+                        hotspot.style.zIndex = '10';
+                    }
+                });
+                
+                mapContainer.appendChild(hotspot);
+                
+                // Create scenario content
+                const scenarioBox = document.createElement('div');
+                scenarioBox.id = `content-${id}`;
+                scenarioBox.className = `scenario-box ${numId === currentScenario ? 'active' : ''}`;
+                scenarioBox.innerHTML = generateScenarioContent(numId);
+                
+                scenariosContainer.appendChild(scenarioBox);
+            });
+        }
+        
+        function generateScenarioContent(id) {
+            const data = hotspotData[id].content;
+            
+            return `
+                <h2 class="mb-4 text-primary">${data.title}</h2>
+                
+                <div class="challenge-section mb-5">
+                    <h4 class="text-danger mb-3">Challenges</h4>
+                    ${data.challenges.map(challenge => `
+                        <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">${challenge}</p>
+                    `).join('')}
+                </div>
+                
+                <div class="solution-section">
+                    <h3>What We Offer</h3>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.8;">${data.offer}</p>
+                </div>
+                
+                <div class="feature-columns">
+                    ${data.features.map(feature => `
+                        <div class="feature-column">
+                            <h4>${feature.title}</h4>
+                            <p style="line-height: 1.7;">${feature.desc}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="benefits-list">
+                    <h4>Benefits</h4>
+                    <ul>
+                        ${data.benefits.map(benefit => `<li>${benefit}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="features-section">
+                    <h4>Key Features</h4>
+                    <div class="features-grid">
+                        ${data.keyFeatures.map(feature => `
+                            <div class="feature-item">
+                                <h6>${feature.split(' - ')[0]}</h6>
+                                <p>${feature.split(' - ')[1] || feature}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                ${data.topology ? `
+                <div class="topology-section">
+                    <h3>System Topology</h3>
+                    <img src="${data.topology}" alt="System Topology" class="topology-img">
+                </div>
+                ` : ''}
+            `;
+        }
+        
+        function showScenario(id) {
+            currentScenario = id;
+            
+            // Update hotspots
+            document.querySelectorAll('.hotspot').forEach(el => {
+                const hotspotId = parseInt(el.id.replace('hotspot-', ''));
+                if (hotspotId === id) {
+                    el.classList.add('active');
+                    el.style.zIndex = '20';
+                } else {
+                    el.classList.remove('active');
+                    el.style.zIndex = '10';
+                    el.style.transform = 'translate(-50%, -50%) scale(1)';
+                }
+            });
+            
+            // Update scenario boxes
+            document.querySelectorAll('.scenario-box').forEach(el => {
+                const contentId = parseInt(el.id.replace('content-', ''));
+                if (contentId === id) {
+                    el.style.display = 'block';
+                    setTimeout(() => {
+                        el.classList.add('active');
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    el.classList.remove('active');
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        if (!el.classList.contains('active')) {
+                            el.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            });
+            
+            // Highlight map area
+            highlightMapArea(id);
+            
+            // Scroll to scenarios section
+            const offset = 160;
+            const scenariosSection = document.getElementById('scenarios');
+            if (scenariosSection) {
+                const elementPosition = scenariosSection.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
             }
         }
+        
+        function highlightMapArea(id) {
+            const mapContainer = document.getElementById('interactive-map');
+            if (!mapContainer) return;
+            
+            const existingHighlight = document.querySelector('.map-highlight');
+            if (existingHighlight) {
+                existingHighlight.remove();
+            }
+            
+            const hotspot = document.getElementById(`hotspot-${id}`);
+            if (!hotspot) return;
+            
+            const highlight = document.createElement('div');
+            highlight.className = 'map-highlight';
+            
+            const rect = hotspot.getBoundingClientRect();
+            const containerRect = mapContainer.getBoundingClientRect();
+            
+            const x = ((rect.left + rect.width / 2 - containerRect.left) / containerRect.width) * 100;
+            const y = ((rect.top + rect.height / 2 - containerRect.top) / containerRect.height) * 100;
+            
+            highlight.style.setProperty('--highlight-x', `${x}%`);
+            highlight.style.setProperty('--highlight-y', `${y}%`);
+            
+            mapContainer.appendChild(highlight);
+            
+            setTimeout(() => {
+                highlight.style.opacity = '0';
+                setTimeout(() => {
+                    if (highlight.parentNode) {
+                        highlight.remove();
+                    }
+                }, 500);
+            }, 2000);
+        }
 
-        // Close dropdowns when clicking outside (for mobile)
+        // ============================================
+        // MOBILE MENU FUNCTIONS
+        // ============================================
+        
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('mainNav');
+            navMenu.classList.toggle('active');
+            
+            const toggleBtn = document.querySelector('.mobile-toggle i');
+            if (navMenu.classList.contains('active')) {
+                toggleBtn.classList.remove('fa-bars');
+                toggleBtn.classList.add('fa-times');
+            } else {
+                toggleBtn.classList.remove('fa-times');
+                toggleBtn.classList.add('fa-bars');
+            }
+        }
+        
+        // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             const navMenu = document.getElementById('mainNav');
             const mobileToggle = document.querySelector('.mobile-toggle');
             
-            // If click is outside menu AND outside toggle button
-            if (navMenu.classList.contains('active')) {
-                if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-                    toggleMobileMenu(); // Close the menu
+            if (navMenu && mobileToggle && !navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+                const toggleBtn = document.querySelector('.mobile-toggle i');
+                if (toggleBtn) {
+                    toggleBtn.classList.remove('fa-times');
+                    toggleBtn.classList.add('fa-bars');
                 }
             }
         });
-
-        // Mobile Dropdown Toggle (Arrow Click Only)
+        
+        // Mobile dropdown handling
         document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggleBtn => {
             toggleBtn.addEventListener('click', function(e) {
                 if (window.innerWidth <= 991) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Find the parent .nav-item-dropdown
                     const dropdown = this.closest('.nav-item-dropdown');
-                    dropdown.classList.toggle('active');
+                    const isActive = dropdown.classList.contains('active');
                     
-                    // Close other dropdowns
                     document.querySelectorAll('.nav-item-dropdown').forEach(otherDropdown => {
                         if (otherDropdown !== dropdown) {
                             otherDropdown.classList.remove('active');
                         }
                     });
+                    
+                    dropdown.classList.toggle('active');
+                    
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    }
                 }
             });
         });
-
-        // Interactive Map Logic
-        function showScenario(id) {
-            // Update hotspots
-            document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
-            const activeHotspot = document.getElementById('hotspot-' + id);
-            if (activeHotspot) activeHotspot.classList.add('active');
-            
-            // Hide all scenario boxes
-            document.querySelectorAll('.scenario-box').forEach(el => {
-                el.classList.remove('active');
-                el.style.display = 'none';
+        
+        // Close dropdowns when clicking on dropdown links
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 991) {
+                    document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                    document.getElementById('mainNav').classList.remove('active');
+                    const toggleBtn = document.querySelector('.mobile-toggle i');
+                    if (toggleBtn) {
+                        toggleBtn.classList.remove('fa-times');
+                        toggleBtn.classList.add('fa-bars');
+                    }
+                }
             });
-            
-            // Show only the selected one
-            const selected = document.getElementById('content-' + id);
-            if (selected) {
-                selected.style.display = 'block';
-                // Force reflow before adding active class for animation
-                selected.offsetHeight;
-                selected.classList.add('active');
+        });
+        
+        // Breadcrumb navigation
+        document.querySelectorAll('.nav-breadcrumb a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').replace('#', '');
+                const targetElement = document.getElementById(targetId);
                 
-                // Scroll to the scenario section
-                const offset = 140;
-                window.scrollTo({
-                    top: selected.offsetTop - offset,
-                    behavior: "smooth"
-                });
+                if (targetElement) {
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 120;
+                    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+                }
+            });
+        });
+        
+        // Scroll header effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('navBox');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-        }
-
+        });
+        
         // Initialize Swiper
         var swiper = new Swiper(".swiper-products", {
             slidesPerView: 1,
@@ -2198,24 +2345,25 @@
             },
         });
         
-        // Initialize first scenario as active on page load
+        // Initialize everything on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Ensure content-2 is active initially (as per your original file)
-            const allScenarios = document.querySelectorAll('.scenario-box');
-            allScenarios.forEach(el => {
-                if (el.id !== 'content-2') {
-                    el.style.display = 'none';
-                    el.classList.remove('active');
-                } else {
-                    el.style.display = 'block';
-                    el.classList.add('active');
-                }
-            });
+            initializeSportsHotspots();
             
-            // Ensure hotspot-2 is active
-            document.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
-            const hotspot2 = document.getElementById('hotspot-2');
-            if (hotspot2) hotspot2.classList.add('active');
+            // Responsive padding adjustment
+            if (window.innerWidth <= 991) {
+                document.body.style.paddingTop = "70px";
+            }
+        });
+        
+        // Re-initialize on resize
+        window.addEventListener('resize', function() {
+            setTimeout(initializeSportsHotspots, 100);
+            
+            if (window.innerWidth <= 991) {
+                document.body.style.paddingTop = "70px";
+            } else {
+                document.body.style.paddingTop = "80px";
+            }
         });
     </script>
 </body>

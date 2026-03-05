@@ -595,6 +595,7 @@
         }
         
         @media (max-width: 991px) {
+            
             .header-fix { height: auto; }
             .mobile-toggle { 
                 display: block; 
@@ -624,7 +625,7 @@
                 background: white; 
                 flex-direction: column; 
                 height: auto; 
-                padding: 20px 0;
+              padding: 5px 0;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
                 align-items: flex-start; 
                 overflow-y: auto; 
@@ -636,7 +637,8 @@
             .nav-link-custom { 
                 color: #333; 
                 width: 100%; 
-                padding: 10px 30px; 
+                padding: 6px 30px; /* CHANGE THIS - was 10px 30px */
+        line-height: 1.2; /* ADD THIS */
                 border-bottom: 1px solid #eee; 
             }
             .nav-item-dropdown { 

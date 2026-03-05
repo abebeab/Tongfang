@@ -305,7 +305,7 @@
             }
         }
         
-        /* Tablet and Below */
+            /* Tablet and Below */
         @media (max-width: 991px) {
             .header-fix { height: auto; }
             
@@ -438,23 +438,21 @@
                 grid-column: span 1; 
             }
 
-            /* Hero Adjustments */
+            /* Hero Adjustments - TIGHT ELLIPSE ON LEFT */
             .industry-hero {
                 height: 400px !important;
             }
             
             .hero-overlay-shape {
-                width: 100% !important;
-                clip-path: none !important;
+                width: 60% !important;
+                clip-path: ellipse(70% 100% at 0% 50%) !important; /* Tighter ellipse - shrinks more to right */
+                background: rgba(0, 76, 163, 0.95) !important;
                 padding-left: 30px !important;
-                padding-right: 30px !important;
-                text-align: center !important;
-                justify-content: center !important;
             }
             
             .hero-overlay-shape h1 {
-                font-size: 2.5rem !important;
-                text-align: center !important;
+                font-size: 2.2rem !important;
+                max-width: 90%;
             }
             
             .showcase-section {
@@ -485,8 +483,14 @@
                 height: 350px !important;
             }
             
+            .hero-overlay-shape {
+                width: 65% !important;
+                clip-path: ellipse(75% 100% at 0% 50%) !important; /* Even tighter on smaller screens */
+                padding-left: 20px !important;
+            }
+            
             .hero-overlay-shape h1 {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
             
             .showcase-section {
@@ -516,6 +520,20 @@
 
         /* Small Mobile */
         @media (max-width: 576px) {
+            .industry-hero {
+                height: 300px !important;
+            }
+            
+            .hero-overlay-shape {
+                width: 70% !important;
+                clip-path: ellipse(80% 100% at 0% 50%) !important;
+                padding-left: 15px !important;
+            }
+            
+            .hero-overlay-shape h1 {
+                font-size: 1.5rem !important;
+            }
+            
             .header-icons {
                 gap: 12px !important;
             }
@@ -535,14 +553,6 @@
             
             .header-container {
                 padding: 0 10px;
-            }
-            
-            .hero-overlay-shape h1 {
-                font-size: 1.8rem !important;
-            }
-            
-            .hero-overlay-shape h6 {
-                font-size: 0.8rem;
             }
             
             .sticky-breadcrumb .container {
@@ -573,12 +583,21 @@
 
         /* Extra Small */
         @media (max-width: 400px) {
-            .logo-img {
-                height: 35px;
+            .industry-hero {
+                height: 250px !important;
+            }
+            
+            .hero-overlay-shape {
+                width: 75% !important;
+                clip-path: ellipse(85% 100% at 0% 50%) !important;
             }
             
             .hero-overlay-shape h1 {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important;
+            }
+            
+            .logo-img {
+                height: 35px;
             }
             
             .showcase-title {
@@ -1147,7 +1166,7 @@
                     <div class="arch-card shadow">
                         <i class="fa fa-desktop"></i>
                         <h5 class="small fw-bold text-uppercase" style="color:var(--tf-yellow)">Layer 01</h5>
-                        <h5>Management Visualization</h5>
+                        <h5 style="color:var(--tf-white)">Management Visualization</h5>
                         <p class="small opacity-75">WEBtalk-100 Platform providing centralized dashboards and multi-site monitoring.</p>
                     </div>
                 </div>
@@ -1155,7 +1174,7 @@
                     <div class="arch-card shadow">
                         <i class="fa fa-cogs"></i>
                         <h5 class="small fw-bold text-uppercase" style="color:var(--tf-yellow)">Layer 02</h5>
-                        <h5>Logic & Control</h5>
+                        <h5  style="color:var(--tf-white)">Logic & Control</h5>
                         <p class="small opacity-75">BCU Series High-Speed Engines handling dormitory energy metering and safety interlocks.</p>
                     </div>
                 </div>
@@ -1163,7 +1182,7 @@
                     <div class="arch-card shadow">
                         <i class="fa fa-microchip"></i>
                         <h5 class="small fw-bold text-uppercase" style="color:var(--tf-yellow)">Layer 03</h5>
-                        <h5>Field Level Intelligence</h5>
+                        <h5  style="color:var(--tf-white)">Field Level Intelligence</h5>
                         <p class="small opacity-75">BLC field controllers managing terminal HVAC units, smart lighting, and sensing nodes.</p>
                     </div>
                 </div>

@@ -91,56 +91,6 @@
             object-fit: contain;
             display: block;
         }
-
-        /* ===== UPDATED PRODUCT NAVIGATION BAR - MATCHING TEMPLATE ===== */
-        .product-nav-bar {
-            position: sticky; 
-            top: 80px; 
-            z-index: 1020;
-            background: #fff; 
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-
-        /* Custom Breadcrumb in Nav Bar */
-        .nav-breadcrumb .breadcrumb-item a {
-            color: #666; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            font-size: 12px; 
-            letter-spacing: 0.5px; 
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .nav-breadcrumb .breadcrumb-item a:hover, 
-        .nav-breadcrumb .breadcrumb-item.active a {
-            color: var(--tf-blue);
-        }
-
-        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
-            content: "|"; 
-            color: #ccc; 
-            padding: 0 10px;
-        }
-
-        /* Active breadcrumb highlight */
-        .nav-breadcrumb .breadcrumb-item.active a {
-            color: var(--tf-blue) !important;
-            font-weight: 800;
-        }
-
-        .nav-breadcrumb .breadcrumb-item.active::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -6px;
-            width: 100%;
-            height: 3px;
-            background: var(--tf-yellow);
-            border-radius: 10px;
-        }
         
         /* Desktop Menu */
         .nav-menu { 
@@ -164,15 +114,28 @@
             letter-spacing: 0.5px;
         }
         
-        .nav-link-custom:hover { 
+        .nav-link-custom:hover,
+        .nav-link-custom.active { 
             color: var(--tf-yellow); 
+        }
+        
+        .nav-link-custom.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
+            border-radius: 3px;
         }
         
         .header-fix.scrolled .nav-link-custom { 
             color: var(--tf-dark); 
         }
         
-        .header-fix.scrolled .nav-link-custom:hover { 
+        .header-fix.scrolled .nav-link-custom:hover,
+        .header-fix.scrolled .nav-link-custom.active { 
             color: var(--tf-blue); 
         }
         
@@ -183,7 +146,7 @@
             gap: 5px;
         }
         
-        /* ===== FULL-WIDTH DROPDOWNS ===== */
+       /* ===== FULL-WIDTH DROPDOWNS ===== */
 .nav-item-dropdown { 
     position: static; 
     height: 100%; 
@@ -304,7 +267,7 @@
 .more-link:hover {
     padding-left: 5px;
 }
-
+        
         /* Mobile Menu Toggle */
         .mobile-toggle { 
             display: none; 
@@ -320,11 +283,11 @@
             color: var(--tf-dark) !important; 
         }
         
-        /* ===== HERO SECTION - FIXED ===== */
+        /* ===== HERO SECTION - EXACT TEMPLATE STYLE ===== */
         .hero-section {
             height: 70vh;
             min-height: 300px;
-            background:   url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background: linear-gradient(135deg, rgba(0, 76, 163, 0.9) 0%, rgba(11, 17, 26, 0.95) 100%), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -339,93 +302,179 @@
             border-bottom: 1px solid var(--tf-gray-light);
         }
         
-        .hero-content {
-            max-width: 800px;
-            padding: 0 20px;
-            z-index: 2;
-        }
-        
-        .hero-title {
+        .hero-content h1 {
+            color: #fff;
             font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: white;
+            margin-bottom: 1rem;
         }
         
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        /* ===== PRODUCT NAVIGATION BAR ===== */
+        /* ===== UPDATED PRODUCT NAVIGATION BAR - MATCHING TEMPLATE ===== */
         .product-nav-bar {
-            background: var(--tf-white);
+            position: sticky; 
+            top: 80px; 
+            z-index: 1010;
+            background: #fff; 
             padding: 15px 0;
-            border-bottom: 1px solid var(--tf-gray-light);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            position: sticky;
-            top: var(--header-height);
-            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
-        
-        .product-nav-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        /* Custom Breadcrumb in Nav Bar */
+        .nav-breadcrumb .breadcrumb-item a {
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            transition: 0.3s;
         }
-        
-        .product-nav-links {
-            display: flex;
-            gap: 30px;
-            overflow-x: auto;
-            padding: 5px 0;
-            -webkit-overflow-scrolling: touch;
+
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue);
         }
-        
-        .product-nav-links::-webkit-scrollbar {
-            height: 4px;
+
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px;
         }
-        
-        .product-nav-links::-webkit-scrollbar-track {
-            background: #f1f1f1;
+
+        /* Active breadcrumb highlight */
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue) !important;
+            font-weight: 800;
+        }
+
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 100%;
+            height: 3px;
+            background: var(--tf-yellow);
             border-radius: 10px;
         }
         
-        .product-nav-links::-webkit-scrollbar-thumb {
-            background: var(--tf-blue);
-            border-radius: 10px;
+        /* Parent link styling for breadcrumb */
+        .breadcrumb-item.parent-link a {
+            position: relative;
+            padding-right: 18px;
+        }
+
+        .breadcrumb-item.parent-link a::after {
+            content: "›";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 14px;
         }
         
-        .product-nav-link {
-            color: var(--tf-text);
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 8px 15px;
-            border-radius: 6px;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+        /* ===== PRODUCT SECTION STYLES ===== */
+        .product-section { padding: 80px 0; }
+        
+        .main-image-stage {
+            width: 100%; height: 500px; border: 1px solid var(--tf-gray-light);
+            border-radius: var(--card-radius); display: flex; align-items: center;
+            justify-content: center; position: relative; background: #fff;
+            cursor: crosshair; overflow: hidden;
+        }
+
+        .main-image { max-width: 90%; max-height: 90%; object-fit: contain; }
+
+        /* THE IMPROVED ZOOM WINDOW - FOR RIGHT COLUMN */
+        .magnified-view {
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: white; 
+            z-index: 100; 
+            overflow: hidden;
+            display: none; 
+            border-radius: var(--card-radius);
+            border: 1px solid var(--tf-blue);
+        }
+        .magnified-view.active { display: block; }
+
+        .magnified-image {
+            position: absolute; 
+            width: 250%; /* Zoom level */
+            height: 250%; 
+            object-fit: contain; 
+            pointer-events: none;
+        }
+
+        .thumbs-wrapper { display: flex; gap: 10px; margin-top: 20px; }
+        .thumb-item {
+            width: 80px; height: 80px; border: 1px solid #ddd; padding: 5px;
+            cursor: pointer; border-radius: 8px; background: white;
+        }
+        .thumb-item.active { border-color: var(--tf-blue); border-width: 2px; }
+        .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
+
+        /* Right Column Info - THIS IS WHERE ZOOM APPEARS */
+        .product-info-column { 
+            position: relative; 
         }
         
-        .product-nav-link:hover {
-            color: var(--tf-blue);
-            background: rgba(0, 76, 163, 0.05);
-            border-color: rgba(0, 76, 163, 0.1);
+        /* Zoom window positioned in the info column (right side) */
+        #infoColumn .magnified-view {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px;
+            z-index: 1050;
+            background: white;
+            box-shadow: var(--shadow-lift);
         }
         
-        .product-nav-link.active {
-            color: var(--tf-blue);
-            background: rgba(0, 76, 163, 0.1);
-            border-color: var(--tf-blue);
+        .product-badge { background: #eef2ff; color: var(--tf-blue); padding: 5px 12px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .key-specs { background: var(--tf-bg-light); padding: 20px; border-radius: 10px; margin: 20px 0; }
+
+        .btn-square { width: 40px; height: 40px; background: #333; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: white; }
+        .btn-square:hover { background: var(--tf-blue); }
+
+        /* TABS SECTION STYLES - EXACT TEMPLATE */
+        .tabs-section { padding: 80px 0; background: var(--tf-bg-light); }
+        .nav-tabs { border-bottom: 2px solid #e5e7eb; margin-bottom: 40px; }
+        .nav-tabs .nav-link { color: #666; font-weight: 700; font-size: 15px; padding: 15px 30px; }
+        .nav-tabs .nav-link:hover { color: var(--tf-blue); }
+        .nav-tabs .nav-link.active { color: var(--tf-blue); background: transparent; border-bottom: 3px solid var(--tf-blue); }
+        .tech-table { width: 100%; border-collapse: collapse; }
+        .tech-table tr:nth-child(odd) { background: #f9fafb; }
+        .tech-table td { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
+        .tech-table td:first-child { font-weight: 600; color: var(--tf-blue); width: 35%; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
+        .feature-card { background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 25px; border-radius: 10px; border-left: 4px solid var(--tf-blue); }
+
+        /* Detector Base Specific Styles */
+        .detector-badge { background: linear-gradient(135deg, #6b7280, #4b5563); color: white; }
+        
+        /* Mounting Options */
+        .mounting-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0; }
+        .mounting-type { background: white; border: 1px solid #dee2e6; border-radius: 8px; padding: 15px; text-align: center; }
+
+        /* Application Types Grid */
+        .application-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
         }
         
-        .product-nav-link i {
-            margin-right: 8px;
-            font-size: 12px;
+        .application-type {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
         }
 
         /* ===== MOBILE RESPONSIVENESS - FIXED HEADER LAYOUT ===== */
@@ -560,6 +609,11 @@
     .nav-item-dropdown.active > .dropdown-parent-link {
         color: var(--tf-blue) !important;
     }
+    
+    /* Disable zoom on mobile */
+    #infoColumn .magnified-view {
+        display: none !important;
+    }
 }
 
 @media (max-width: 576px) {
@@ -575,7 +629,6 @@
         font-size: 16px !important;
     }
 }
-
 
         /* ===== 4. UPDATED FOOTER - EXACT TEMPLATE ===== */
         .footer { 
@@ -610,70 +663,6 @@
         .footer .btn-link:hover {
             color: var(--tf-yellow) !important;
             text-decoration: underline;
-        }
-
-        /* ===== PRODUCT & IMAGE ZOOM STYLES ===== */
-        .product-section { padding: 80px 0; }
-        
-        .main-image-stage {
-            width: 100%; height: 500px; border: 1px solid var(--tf-gray-light);
-            border-radius: var(--card-radius); display: flex; align-items: center;
-            justify-content: center; position: relative; background: #fff;
-            cursor: crosshair; overflow: hidden;
-        }
-
-        .main-image { max-width: 90%; max-height: 90%; object-fit: contain; }
-
-        /* THE IMPROVED ZOOM WINDOW */
-        .magnified-view {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: white; z-index: 100; overflow: hidden;
-            display: none; border-radius: var(--card-radius);
-            border: 1px solid var(--tf-blue);
-        }
-        .magnified-view.active { display: block; }
-
-        .magnified-image {
-            position: absolute; width: 250%;
-            height: 250%; object-fit: contain; pointer-events: none;
-        }
-
-        .thumbs-wrapper { display: flex; gap: 10px; margin-top: 20px; }
-        .thumb-item {
-            width: 80px; height: 80px; border: 1px solid #ddd; padding: 5px;
-            cursor: pointer; border-radius: 8px; background: white;
-        }
-        .thumb-item.active { border-color: var(--tf-blue); border-width: 2px; }
-        .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
-
-        /* Right Column Info */
-        .product-info-column { position: relative; }
-        .product-badge { background: #eef2ff; color: var(--tf-blue); padding: 5px 12px; border-radius: 5px; font-weight: 700; font-size: 12px; }
-        .key-specs { background: var(--tf-bg-light); padding: 20px; border-radius: 10px; margin: 20px 0; }
-
-        .btn-square { width: 40px; height: 40px; background: #333; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: white; }
-        .btn-square:hover { background: var(--tf-blue); }
-
-        /* TABS SECTION STYLES */
-        .tabs-section { padding: 80px 0; }
-        .nav-tabs { border-bottom: 2px solid #e5e7eb; margin-bottom: 40px; }
-        .nav-tabs .nav-link { color: #666; font-weight: 700; font-size: 15px; padding: 15px 30px; }
-        .nav-tabs .nav-link:hover { color: var(--tf-blue); }
-        .nav-tabs .nav-link.active { color: var(--tf-blue); background: transparent; border-bottom: 3px solid var(--tf-blue); }
-        .tech-table { width: 100%; border-collapse: collapse; }
-        .tech-table tr:nth-child(odd) { background: #f9fafb; }
-        .tech-table td { padding: 15px 20px; border-bottom: 1px solid #e5e7eb; }
-        .tech-table td:first-child { font-weight: 600; color: var(--tf-blue); width: 35%; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-        .feature-card { background: linear-gradient(135deg, #f8fafc, #f1f5f9); padding: 25px; border-radius: 10px; border-left: 4px solid var(--tf-blue); }
-
-        /* ===== RESPONSIVE ADJUSTMENTS FOR PRODUCT ===== */
-        @media (max-width: 991px) {
-            .dropdown-menu-custom {
-                width: 100%;
-            }
-            .magnified-view { display: none !important; }
-            .main-image-stage { height: 350px; }
         }
     </style>
 </head>
@@ -842,17 +831,12 @@
     </div>
 </header>
 
-
    <!-- ===== HERO SECTION FOR FW2501 ===== -->
 <section class="hero-section">
-    <div class="hero-content">
-        <h1 class="hero-title">FW2501 Detector Base</h1>
-        <p class="hero-subtitle">UL Listed Intelligent Mounting Base for Fire Detection Systems</p>
-        <div class="mt-4">
-            <span class="badge bg-warning text-dark fs-6 px-3 py-2 me-3">UL Listed</span>
-            <span class="badge bg-danger fs-6 px-3 py-2 me-3">Fire Safety</span>
-            <span class="badge bg-info fs-6 px-3 py-2">Maple Armor 2025</span>
-        </div>
+    <div class="container hero-content">
+        <h1>Detector Base</h1>
+        <p class="lead fs-4">FW2501 - Intelligent Mounting Base</p>
+        <p>UL Listed • Fire Safety • Detector Compatible</p>
     </div>
 </section>
 
@@ -865,7 +849,8 @@
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="/index.html">Home</a></li>
                 <li class="breadcrumb-item"><a href="/products/index.html">Products</a></li>
-                <li class="breadcrumb-item"><a href="#product-section">FW2501 Detector Base</a></li>
+                <li class="breadcrumb-item parent-link"><a href="/products/fire-alarm/index.html">Fire Alarm</a></li>
+                <li class="breadcrumb-item active"><a href="#product-section">FW2501 Detail</a></li>
             </ol>
         </nav>
 
@@ -887,30 +872,33 @@
                 <div class="col-lg-6">
                     <div class="main-image-stage" id="imageContainer">
                         <img id="mainImg" src="https://via.placeholder.com/600x600/004ca3/ffffff?text=FW2501+Detector+Base" class="main-image" alt="FW2501 Detector Base">
-                        <div class="magnified-view" id="zoomWindow">
-                            <img src="https://via.placeholder.com/600x600/004ca3/ffffff?text=FW2501+Detector+Base" id="zoomImg" class="magnified-image">
-                        </div>
+                        <!-- No zoom window here - it's in the right column -->
                     </div>
                     <div class="thumbs-wrapper">
                         <div class="thumb-item active" onclick="updateImg(this, 'https://via.placeholder.com/600x600/004ca3/ffffff?text=FW2501+Detector+Base')">
-                            <img src="https://via.placeholder.com/600x600/004ca3/ffffff?text=FW2501+Detector+Base" alt="FW2501 Front View">
+                            <img src="https://via.placeholder.com/100x100/004ca3/ffffff?text=Front" alt="FW2501 Front View">
                         </div>
                         <div class="thumb-item" onclick="updateImg(this, 'https://via.placeholder.com/600x600/111827/ffffff?text=FW2501+Side+View')">
-                            <img src="https://via.placeholder.com/600x600/111827/ffffff?text=FW2501+Side+View" alt="FW2501 Side View">
+                            <img src="https://via.placeholder.com/100x100/111827/ffffff?text=Side" alt="FW2501 Side View">
                         </div>
                         <div class="thumb-item" onclick="updateImg(this, 'https://via.placeholder.com/600x600/ffcc00/000000?text=FW2501+Installation')">
-                            <img src="https://via.placeholder.com/600x600/ffcc00/000000?text=FW2501+Installation" alt="FW2501 Installation">
+                            <img src="https://via.placeholder.com/100x100/ffcc00/000000?text=Install" alt="FW2501 Installation">
                         </div>
                     </div>
                 </div>
 
-                <!-- Info Side / Zoom Target -->
-                <div class="col-lg-6 product-info-column">
+                <!-- Info Side - THIS IS WHERE ZOOM APPEARS (RIGHT SIDE) -->
+                <div class="col-lg-6 product-info-column" id="infoColumn">
+                    <!-- Zoom window appears here on hover (right side) -->
+                    <div class="magnified-view" id="zoomWindow">
+                        <img src="https://via.placeholder.com/600x600/004ca3/ffffff?text=FW2501+Detector+Base" id="zoomImg" class="magnified-image">
+                    </div>
+
                     <div class="ps-lg-4">
-                        <span class="product-badge">UL Listed</span>
+                        <span class="product-badge detector-badge">UL Listed</span>
                         <span class="product-badge ms-2">Fire Safety</span>
-                        <h1 class="mt-3 fw-bold">FW2501 Detector Base</h1>
-                        <p class="text-muted fs-5">Intelligent Mounting Base for Fire Detection Systems</p>
+                        <h1 class="mt-3 fw-bold">Detector Base</h1>
+                        <p class="text-muted fs-5">FW2501</p>
                         
                         <div class="key-specs">
                             <div class="row g-3">
@@ -925,20 +913,8 @@
 
                         <p class="mt-4">High-performance fire alarm detector base designed for modern life safety systems. Part of the Maple Armor 2025 series, the FW2501 provides reliable mounting and electrical connection for smoke and heat detectors while ensuring code compliance for complex building environments.</p>
                         
-                        <div class="mt-4">
-                            <h5 class="mb-3">Key Features:</h5>
-                            <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fa fa-check text-success me-2"></i> Compatible with standard fire detectors</li>
-                                <li class="mb-2"><i class="fa fa-check text-success me-2"></i> Tool-free installation design</li>
-                                <li class="mb-2"><i class="fa fa-check text-success me-2"></i> Built-in tamper detection</li>
-                                <li class="mb-2"><i class="fa fa-check text-success me-2"></i> Corrosion-resistant construction</li>
-                                <li class="mb-2"><i class="fa fa-check text-success me-2"></i> LED status indicators</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="d-flex gap-3 mt-5">
+                        <div class="d-flex gap-3 mt-4">
                             <a href="/contact/index.html" class="btn btn-primary btn-lg px-5" style="background:var(--tf-blue);">Get Quote</a>
-                            
                         </div>
                     </div>
                 </div>
@@ -947,24 +923,30 @@
     </section>
 
     <!-- ===== TABS SECTION ===== -->
-    <section class="tabs-section bg-light">
+    <section class="tabs-section">
         <div class="container">
             <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button">Technical Specifications</button>
+                    <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button">Technical Specs</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Product Overview</button>
+                    <button class="nav-link" id="desc-tab" data-bs-toggle="tab" data-bs-target="#desc" type="button">Overview</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" id="docs-tab" data-bs-toggle="tab" data-bs-target="#docs" type="button">Downloads & Documents</button>
+                    <button class="nav-link" id="features-tab" data-bs-toggle="tab" data-bs-target="#features" type="button">Features</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="installation-tab" data-bs-toggle="tab" data-bs-target="#installation" type="button">Installation</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="compatibility-tab" data-bs-toggle="tab" data-bs-target="#compatibility" type="button">Compatibility</button>
                 </li>
             </ul>
-            <div class="tab-content mt-5" id="myTabContent">
+            <div class="tab-content" id="myTabContent">
                 <!-- Specs Tab -->
                 <div class="tab-pane fade show active" id="specs">
                     <h4 class="mb-4">Technical Specifications</h4>
-                    <table class="table tech-table bg-white shadow-sm rounded">
+                    <table class="table tech-table">
                         <tbody>
                             <tr><td>Model Number</td><td>FW2501</td></tr>
                             <tr><td>Product Name</td><td>Detector Base</td></tr>
@@ -982,81 +964,144 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- Description Tab -->
+                <!-- Overview Tab -->
                 <div class="tab-pane fade" id="desc">
                     <h4 class="mb-4">Product Overview</h4>
-                    <div class="p-4 bg-white shadow-sm rounded">
-                        <p>The FW2501 Detector Base is a critical component in modern fire detection systems. Designed for both reliability and ease of installation, it provides secure mounting and electrical connection for smoke and heat detectors in commercial, industrial, and residential applications.</p>
-                        
-                        <h5 class="mt-4">Design Features:</h5>
-                        <ul>
-                            <li><strong>Intelligent Circuit Design:</strong> Built-in monitoring circuit detects proper detector installation</li>
-                            <li><strong>Tool-Free Installation:</strong> Quick-connect terminals eliminate need for screwdrivers</li>
-                            <li><strong>Tamper Detection:</strong> Integrated switch detects unauthorized removal</li>
-                            <li><strong>Corrosion Resistance:</strong> High-quality materials resist environmental degradation</li>
-                            <li><strong>LED Status Indicators:</strong> Visual confirmation of proper operation</li>
-                        </ul>
-                        
-                        <h5 class="mt-4">Applications:</h5>
-                        <div class="features-grid mt-3">
-                            <div class="feature-card">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="fa fa-building fs-4 text-primary me-3"></i>
-                                    <h5 class="mb-0">Commercial Buildings</h5>
-                                </div>
-                                <p class="mb-0">Offices, shopping malls, hotels, and retail spaces requiring reliable fire detection.</p>
+                    <p>The FW2501 Detector Base is a critical component in modern fire detection systems. Designed for both reliability and ease of installation, it provides secure mounting and electrical connection for smoke and heat detectors in commercial, industrial, and residential applications.</p>
+                    
+                    <div class="features-grid mt-4">
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-microchip fs-4 text-primary me-3"></i>
+                                <h5 class="mb-0">Intelligent Circuit</h5>
                             </div>
-                            <div class="feature-card">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="fa fa-industry fs-4 text-primary me-3"></i>
-                                    <h5 class="mb-0">Industrial Facilities</h5>
-                                </div>
-                                <p class="mb-0">Factories, warehouses, and manufacturing plants with demanding environments.</p>
+                            <p class="mb-0">Built-in monitoring circuit detects proper detector installation.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-tools fs-4 text-primary me-3"></i>
+                                <h5 class="mb-0">Tool-Free Installation</h5>
                             </div>
-                            <div class="feature-card">
-                                <div class="d-flex align-items-center mb-3">
-                                    <i class="fa fa-home fs-4 text-primary me-3"></i>
-                                    <h5 class="mb-0">Residential Complexes</h5>
-                                </div>
-                                <p class="mb-0">Apartment buildings, condominiums, and multi-family housing developments.</p>
+                            <p class="mb-0">Quick-connect terminals eliminate need for screwdrivers.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fa fa-shield-alt fs-4 text-primary me-3"></i>
+                                <h5 class="mb-0">Tamper Detection</h5>
+                            </div>
+                            <p class="mb-0">Integrated switch detects unauthorized removal.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Application Types -->
+                    <div class="mt-5">
+                        <h5>Typical Applications</h5>
+                        <div class="application-types">
+                            <div class="application-type">
+                                <i class="fa fa-building text-primary fs-3 mb-2"></i>
+                                <h6>Commercial</h6>
+                                <small class="text-muted">Offices, retail, hotels</small>
+                            </div>
+                            <div class="application-type">
+                                <i class="fa fa-industry text-primary fs-3 mb-2"></i>
+                                <h6>Industrial</h6>
+                                <small class="text-muted">Factories, warehouses</small>
+                            </div>
+                            <div class="application-type">
+                                <i class="fa fa-home text-primary fs-3 mb-2"></i>
+                                <h6>Residential</h6>
+                                <small class="text-muted">Apartments, condos</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Docs Tab -->
-                <div class="tab-pane fade" id="docs">
-                    <h4 class="mb-4">Documentation & Downloads</h4>
+                <!-- Features Tab -->
+                <div class="tab-pane fade" id="features">
+                    <h4 class="mb-4">Product Features</h4>
+                    
                     <div class="row">
-                        <div class="col-md-4 mb-4">
-                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-white shadow-sm">
-                                <i class="fa fa-file-pdf fs-2 text-danger me-3"></i>
-                                <div>
-                                    <h6 class="m-0">Product Datasheet</h6>
-                                    <small class="text-muted">PDF • 1.8MB • Detailed specifications</small>
-                                </div>
-                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
-                            </div>
+                        <div class="col-md-6">
+                            <h5>Electrical Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Screwless quick-connect terminals</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Built-in tamper detection switch</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> LED status indicator compatible</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Low contact resistance</li>
+                            </ul>
                         </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-white shadow-sm">
-                                <i class="fa fa-wrench fs-2 text-primary me-3"></i>
-                                <div>
-                                    <h6 class="m-0">Installation Guide</h6>
-                                    <small class="text-muted">PDF • 2.3MB • Step-by-step instructions</small>
-                                </div>
-                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
-                            </div>
+                        <div class="col-md-6">
+                            <h5>Mechanical Features</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Fire-rated thermoplastic construction</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Corrosion-resistant materials</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Universal mounting pattern</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> UV-resistant for long life</li>
+                            </ul>
                         </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="p-3 border rounded d-flex align-items-center h-100 bg-white shadow-sm">
-                                <i class="fa fa-clipboard-check fs-2 text-success me-3"></i>
-                                <div>
-                                    <h6 class="m-0">Compliance Certificate</h6>
-                                    <small class="text-muted">PDF • 0.9MB • UL listing documentation</small>
-                                </div>
-                                <a href="#" class="ms-auto text-primary"><i class="fa fa-download"></i></a>
-                            </div>
+                    </div>
+                </div>
+                <!-- Installation Tab -->
+                <div class="tab-pane fade" id="installation">
+                    <h4 class="mb-4">Installation & Configuration</h4>
+                    
+                    <div class="mounting-options">
+                        <div class="mounting-type">
+                            <i class="fa fa-cog fs-3 text-primary mb-2"></i>
+                            <h6>Ceiling Mount</h6>
+                            <small class="text-muted">Standard ceiling installation</small>
                         </div>
+                        <div class="mounting-type">
+                            <i class="fa fa-cog fs-3 text-primary mb-2"></i>
+                            <h6>Wall Mount</h6>
+                            <small class="text-muted">Wall mounting configuration</small>
+                        </div>
+                        <div class="mounting-type">
+                            <i class="fa fa-cog fs-3 text-primary mb-2"></i>
+                            <h6>Electrical Box</h6>
+                            <small class="text-muted">Fits standard junction boxes</small>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5>Installation Steps</h5>
+                        <div class="alert alert-success">
+                            <ol class="mb-0">
+                                <li>Mount backbox securely to ceiling or wall</li>
+                                <li>Connect field wiring to quick-connect terminals</li>
+                                <li>Secure base to backbox with mounting screws</li>
+                                <li>Install compatible detector head into base</li>
+                                <li>Test operation and verify proper seating</li>
+                                <li>Confirm tamper switch operation</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- Compatibility Tab -->
+                <div class="tab-pane fade" id="compatibility">
+                    <h4 class="mb-4">Compatibility & Applications</h4>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Compatible Detectors</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> FW2801 Photoelectric Smoke Detector</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> FW2802 Heat Detector</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> FW2803 Multisensor Detector</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Compatible Panels</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Maple Armor FW2000 Series</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Maple Armor FW2100 Series</li>
+                                <li class="list-group-item bg-transparent border-0 ps-0"><i class="fa fa-check-circle text-success me-2"></i> Maple Armor FW2200 Series</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-info mt-4">
+                        <i class="fa fa-info-circle me-2"></i>
+                        <strong>System Integration:</strong> The FW2501 Detector Base provides secure mounting and reliable electrical connection for all Maple Armor series detectors, ensuring proper system operation and code compliance.
                     </div>
                 </div>
             </div>
@@ -1169,7 +1214,7 @@
             });
         });
 
-        // ===== ZOOM FUNCTIONALITY =====
+        // ===== ZOOM FUNCTIONALITY - EXACTLY LIKE TEMPLATE =====
         const imageContainer = document.getElementById('imageContainer');
         const mainImg = document.getElementById('mainImg');
         const zoomWindow = document.getElementById('zoomWindow');
@@ -1180,6 +1225,7 @@
             zoomImg.src = this.src;
         });
 
+        // Mouse move on the LEFT image container triggers zoom in the RIGHT column
         imageContainer.addEventListener('mousemove', (e) => {
             if (window.innerWidth < 992) return; // Disable for mobile
             
@@ -1194,7 +1240,7 @@
             const xPerc = (x / rect.width) * 100;
             const yPerc = (y / rect.height) * 100;
             
-            // Move the large image inside the zoom window
+            // Move the large image inside the zoom window (in right column)
             zoomImg.style.left = `-${(xPerc * 1.5)}%`; 
             zoomImg.style.top = `-${(yPerc * 1.5)}%`;
         });
@@ -1269,7 +1315,6 @@
 
         function downloadDatasheet() {
             alert('Datasheet download would start here. For now, this is a demo.');
-            // In production: window.open('/datasheets/FW2821.pdf', '_blank');
         }
 
         // Newsletter form submission

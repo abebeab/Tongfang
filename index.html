@@ -456,19 +456,70 @@
         .swiper, .swiper-wrapper, .swiper-slide { overflow: visible !important; }
         .swiper-slide { padding: 0 28px; }
 
-        /* --- 6. FOOTER --- */
-        .footer { background: #0b111a; color: #aaa; margin-top: 0; padding-top: 80px; font-size: 14px; }
-        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
-        .footer .btn-link { color:blue;   margin-bottom: 12px; font-size: 14px; transition: var(--transition); }
-        .footer .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
-        .footer .btn-square {
-            width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: inline-flex;
-            align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white);
-            transition: var(--transition); margin-right: 8px;
+        /* --- 6. FOOTER - FROM ORIGINAL FILE --- */
+        .footer {
+            background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 80px; font-size: 14px;
         }
-        .footer .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
-        .footer .btn-square i { margin: 0; color: #fff; }
-        .copyright { background: #05080c; border-top: 1px solid #1a222e; padding: 25px 0; margin-top: 60px; }
+        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .footer-container {
+            max-width: 1440px; margin: 0 auto; padding: 0 30px;
+            display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 40px;
+        }
+        .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
+        .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
+        .footer .btn-link { 
+             color: blue important;
+              display: inline-block; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: var(--transition);
+            text-decoration: none;
+                transition: 0.3s;
+            font-weight: 600;
+        }
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow); 
+            padding-left: 8px; 
+            background: transparent;
+        }
+        .newsletter-box { position: relative; margin-top: 15px; }
+        .form-control {
+            width: 100%; padding: 14px 15px; padding-right: 120px; border: 1px solid #374151;
+            background: #1f2937; color: var(--tf-white); border-radius: var(--btn-radius);
+            font-size: 14px; box-sizing: border-box; outline: none;
+        }
+        .form-control:focus { border-color: var(--tf-blue); }
+        .btn-primary {
+            position: absolute; top: 0; right: 0; height: 100%; background: var(--tf-blue); color: white;
+            border: none; padding: 0 25px; border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+            cursor: pointer; font-weight: 600; transition: var(--transition);
+        }
+        .btn-primary:hover { background: #003d82; }
+        .social-links { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+        .btn-square {
+            width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex;
+            align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white);
+            transition: var(--transition); text-decoration: none;
+        }
+        .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
+        .btn-square i { margin: 0; color: #fff; }
+        .copyright {
+            background: #05080c; padding: 25px; margin-top: 60px; color: #6b7280; font-size: 13px;
+            text-align: center; border-top: 1px solid #1a222e;
+        }
+
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+            .footer { padding-top: 60px; }
+            .footer h5 { margin-bottom: 20px; }
+            .newsletter-box .form-control { padding-right: 100px; }
+            .btn-primary { padding: 0 15px; }
+            .social-links { justify-content: center; }
+        }
 
        /* ===== MOBILE RESPONSIVENESS - FIXED HEADER LAYOUT ===== */
 @media (max-width: 991px) {
@@ -697,7 +748,7 @@
                             <!-- Column 2: Fire & Safety -->
                             <div>
                                 <div class="dropdown-category">Fire & Safety</div>
-                                <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>
+                               <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
                                 <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
                                 <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
                                 <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
@@ -1051,41 +1102,106 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - FROM ORIGINAL FILE -->
     <footer class="footer">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h5>Tongfang BMS Integration</h5>
-                    <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
-                    <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
-                    <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
-                </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5>Quick Links</h5>
-                    <a class="btn-link" href="/index.html">Home</a><br>
-                    <a class="btn-link" href="/about/index.html">About Us</a><br>
-                    <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
-                    <a class="btn-link" href="/projects/index.html">projects</a><br>
-                    <a class="btn-link" href="/products/index.html">Products</a><br>
-                    <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
-                    <a class="btn-link" href="/contact/index.html">Contact</a>
-                </div>
-                <div class="col-lg-3 col-md-6"><h5>Business Hours</h5><p>Mon – Fri: 8:30 AM – 5:30 PM</p><p>Saturday: 9:00 AM – 1:00 PM</p><p>Sunday: Closed</p></div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Newsletter</h5>
-                    <p>Get smart building & automation updates.</p>
-                    <div class="position-relative"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary position-absolute end-0 top-0 h-100">Subscribe</button></div>
-                    <div class="d-flex gap-2 mt-3">
-                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
-                    </div>
-                </div>
+        <div class="footer-container">
+
+            <!-- Company Info -->
+            <div>
+                <h5>Tongfang BMS System Integration</h5>
+                <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
             </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h5>Quick Links</h5>
+                <a class="btn-link" href="/index.html">Home</a><br>
+                <a class="btn-link" href="/about/index.html">About Us</a><br>
+                <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                <a class="btn-link" href="/products/index.html">Products</a><br>
+                <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+                <a class="btn-link" href="/contact/index.html">Contact</a>
+            </div>
+
+            <!-- Business Hours -->
+            <div>
+                <h5>Business Hours</h5>
+                <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                <p>Saturday: 9:00 AM – 1:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+
+            <!-- Contact & Newsletter -->
+            <div>
+                <h5>Connect With Us</h5>
+                <p>Get smart building & automation updates.</p>
+
+                <!-- Newsletter -->
+                <div class="newsletter-box" style="margin:20px 0;">
+                    <input class="form-control" type="email" placeholder="Your email">
+                    <button class="btn btn-primary">Subscribe</button>
+                </div>
+
+                <!-- Social / Chat Icons -->
+                <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+
+                    <!-- WeChat -->
+                    <a href="weixin://dl/chat?wxid_3jxtp7rz3p8e22"
+                       title="Chat on WeChat"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-weixin"></i>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/+251990207888"
+                       target="_blank"
+                       title="Chat on Telegram"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-telegram"></i>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/254712828498?text=Hello%20Tongfang%20BMS%20Team"
+                       target="_blank"
+                       title="Chat on WhatsApp"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                    <!-- Messenger -->
+                    <a href="https://m.me/tongfangbms"
+                       target="_blank"
+                       title="Chat on Messenger"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-facebook-messenger"></i>
+                    </a>
+
+                </div>
+
+                <p style="font-size:12px;color:#6b7280;text-align:center;margin-top:10px;">
+                    WeChat ID: wxid_3jxtp7rz3p8e22
+                </p>
+
+            </div>
+
         </div>
-        <div class="copyright text-center py-3">© 2026 Tongfang BMS Integration PLC. All Rights Reserved.</div>
+
+        <!-- Copyright -->
+        <div class="copyright" style="text-align:center;padding:15px 0;">
+            © 2026 Tongfang BMS System Integration PLC. All Rights Reserved.
+        </div>
+
     </footer>
 
     <!-- SCRIPTS -->

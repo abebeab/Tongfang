@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+
+# Enable variable substitution for all files
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# This enables the {{ env.VAR }} syntax
+[context.production]
+  environment = { NETLIFY_PROCESS = "true" }

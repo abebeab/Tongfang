@@ -1573,11 +1573,15 @@
     // ============================================
     
     // These will be replaced by Netlify environment variables
-    const CONFIG = {
-    EMAILJS_SERVICE_ID: '{{ env.EMAILJS_SERVICE_ID }}',
-    EMAILJS_TEMPLATE_ID: '{{ env.EMAILJS_TEMPLATE_ID }}',
-    EMAILJS_PUBLIC_KEY: '{{ env.EMAILJS_PUBLIC_KEY }}'
+   // These will be replaced by Netlify during build
+const CONFIG = {
+    EMAILJS_SERVICE_ID: JSON.parse('"{{ env.EMAILJS_SERVICE_ID }}"'),
+    EMAILJS_TEMPLATE_ID: JSON.parse('"{{ env.EMAILJS_TEMPLATE_ID }}"'),
+    EMAILJS_PUBLIC_KEY: JSON.parse('"{{ env.EMAILJS_PUBLIC_KEY }}"')
 };
+
+// Log to verify (remove after testing)
+console.log('Config loaded:', CONFIG);
 
     // Check if we're in development (keys not replaced yet)
     function isDevelopment() {

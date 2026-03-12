@@ -1574,10 +1574,10 @@
     
     // These will be replaced by Netlify environment variables
     const CONFIG = {
-        EMAILJS_SERVICE_ID: '%%EMAILJS_SERVICE_ID%%',
-        EMAILJS_TEMPLATE_ID: '%%EMAILJS_TEMPLATE_ID%%',
-        EMAILJS_PUBLIC_KEY: '%%EMAILJS_PUBLIC_KEY%%'
-    };
+    EMAILJS_SERVICE_ID: '{{ env.EMAILJS_SERVICE_ID }}',
+    EMAILJS_TEMPLATE_ID: '{{ env.EMAILJS_TEMPLATE_ID }}',
+    EMAILJS_PUBLIC_KEY: '{{ env.EMAILJS_PUBLIC_KEY }}'
+};
 
     // Check if we're in development (keys not replaced yet)
     function isDevelopment() {

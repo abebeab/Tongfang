@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+
+# Enable variable substitution for all HTML files
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true
+
+# This enables Netlify to replace {{ env.VAR }} in your HTML
+[context.production]
+  environment = { NETLIFY_PROCESS = "true" }

@@ -18,7 +18,7 @@ assets/uploads/
 *.rar
 *.7z
 *.pdf
-
+.env
 # System / IDE
 .DS_Store
 Thumbs.db

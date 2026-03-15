@@ -902,7 +902,86 @@
             background: var(--tf-blue);
             transform: translateY(-3px);
         }
+/* Ceros wrapper - show full content without horizontal scrolling */
+.ceros-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    border-radius: 12px;
+    background: #f5f5f5;
+}
 
+.ceros-wrapper iframe {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 500px;
+    aspect-ratio: 16/9;
+    border: 0;
+    display: block;
+}
+
+/* Mobile optimization - EXTEND TO FULL WIDTH */
+@media (max-width: 768px) {
+    /* Make container full width with negative margins to extend left and right */
+    .interactive-container {
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        left: 50%;
+        right: 50%;
+        position: relative;
+        transform: translateX(-50%);
+    }
+    
+    .ceros-wrapper {
+        border-radius: 0;
+        width: 100vw;
+        margin: 0;
+    }
+    
+    .ceros-wrapper iframe {
+        min-height: 400px;
+        width: 100vw !important;
+        height: auto !important;
+        aspect-ratio: 16/9;
+        border-radius: 0;
+    }
+    
+    /* Remove any scaling that might cut off content */
+    #interactive-demo iframe {
+        transform: none !important;
+        width: 100vw !important;
+        height: auto !important;
+    }
+    
+    /* Ensure the container in the section is full width */
+    #interactive .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 100% !important;
+    }
+    
+    /* Adjust padding for the content above */
+    #interactive .container .text-center,
+    #interactive .container .energy-controls,
+    #interactive .container .d-flex,
+    #interactive .container .text-center.mb-3 {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 576px) {
+    .ceros-wrapper iframe {
+        min-height: 300px;
+    }
+}
         /* --- FOOTER --- */
         .footer { 
             background: #0b111a; 
@@ -955,7 +1034,35 @@
             margin-bottom: 15px;
             max-width: 100%;
         }
-    </style>
+    /* Force desktop-like interactive view on mobile */
+@media (max-width:768px){
+
+#interactive-demo > div{
+    padding-bottom:56.25% !important; /* keep 16:9 like desktop */
+    max-width:1100px;
+    margin:auto;
+}
+
+/* Scale Ceros experience so full diagram shows */
+#interactive-demo iframe{
+transform: scale(0.85);
+transform-origin: center center;
+width: 120%;
+height: 120%;
+}
+
+/* Mobile adjustment */
+@media (max-width:768px){
+
+#interactive-demo iframe{
+transform: scale(0.65);
+width: 150%;
+height: 150%;
+}
+
+}
+
+}</style>
 </head>
 
 <body>
@@ -1127,60 +1234,65 @@
         </div>
     </div>
 
-    <!-- INTERACTIVE ENERGY EXPERIENCE -->
-    <section class="py-5 bg-white scroll-target" id="interactive">
-        <div class="container py-4">
-            <div class="text-center mb-4">
-                <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Experience Energy Innovation in Action</h2>
-                <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
-                <p class="text-muted lead" style="max-width:800px; margin:0 auto 25px;">
-                    Witness how Tongfang BMS transforms energy management into a visual, interactive experience.
-                </p>
-            </div>
+   <!-- INTERACTIVE ENERGY EXPERIENCE -->
+<section class="py-5 bg-white scroll-target" id="interactive">
+    <div class="container py-4">
+        <div class="text-center mb-4">
+            <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Experience Energy Innovation in Action</h2>
+            <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
+            <p class="text-muted lead" style="max-width:800px; margin:0 auto 25px;">
+                Witness how Tongfang BMS transforms energy management into a visual, interactive experience.
+            </p>
+        </div>
 
-            <div class="energy-controls text-center mb-4">
-                <button class="energy-btn active" data-label="storage">
-                    <i class="fas fa-battery-full me-2"></i>Energy Storage
-                </button>
-                <button class="energy-btn" data-label="peak">
-                    <i class="fas fa-chart-bar me-2"></i>Peak Shaving
-                </button>
-                <button class="energy-btn" data-label="carbon">
-                    <i class="fas fa-leaf me-2"></i>Carbon Reduction
-                </button>
-            </div>
-            
-            <!-- Interactive Call-to-Action -->
-            <div class="d-flex justify-content-center my-4">
-                <div class="d-inline-flex align-items-center px-4 py-2 rounded-pill"
-                     style="background: var(--tf-yellow); color: var(--tf-blue); font-weight: 800; border: 2px solid var(--tf-blue);">
-                    <i class="fas fa-arrow-down me-2"></i>
-                    <span>CLICK ON THE DIAGRAM BELOW TO BEGIN</span>
-                </div>
-            </div>
-
-            <div class="interactive-container" id="interactive-demo">
-                <div style='position: relative;width: 100%;padding: 0 0 56.25%;height: 0;top: 0;left: 0;bottom: 0;right: 0;margin: 0;border: 0 none' id="experience-6818608399dee" data-aspectRatio="1.77777778" data-mobile-aspectRatio="0.75">
-                    <iframe allowfullscreen src='https://view.ceros.com/honeywell-corporate/d0998969-energy-storage?heightOverride=1080' style='position: absolute;top: 0;left: 0;bottom: 0;right: 0;margin: 0;padding: 0;border: 0 none;height: 100%;width: 100%; min-height: 100%;min-width: 100%' frameborder='0' class='ceros-experience' title='Energy Storage Optimization' scrolling='no'></iframe>
-                </div>
-                <script type="text/javascript" src="https://view.ceros.com/scroll-proxy.min.js" data-ceros-origin-domains="view.ceros.com"></script>
-                
-                <!-- Hover overlay instruction -->
-                <div style="position:absolute; bottom:20px; right:20px; background:rgba(0, 76, 163, 0.9); color:white; padding:10px 15px; border-radius:8px; font-size:12px; z-index:1000; border: 1px solid var(--tf-yellow);">
-                    <i class="fas fa-info-circle me-2" style="color: var(--tf-yellow);"></i>Click hotspots to explore Tongfang features
-                </div>
-            </div>
-            
-            <div class="text-center mt-4">
-                <p class="text-muted">
-                    <small>
-                        <i class="fas fa-lightbulb me-2" style="color: var(--tf-yellow);"></i>
-                        <strong style="color: var(--tf-blue);">Tongfang Tip:</strong> Look for glowing elements to discover how our BMS solutions deliver 30% average energy savings
-                    </small>
-                </p>
+        <div class="energy-controls text-center mb-4">
+            <button class="energy-btn active" data-label="storage">
+                <i class="fas fa-battery-full me-2"></i>Energy Storage
+            </button>
+            <button class="energy-btn" data-label="peak">
+                <i class="fas fa-chart-bar me-2"></i>Peak Shaving
+            </button>
+            <button class="energy-btn" data-label="carbon">
+                <i class="fas fa-leaf me-2"></i>Carbon Reduction
+            </button>
+        </div>
+        
+        <!-- Interactive Call-to-Action -->
+        <div class="d-flex justify-content-center my-4">
+            <div class="d-inline-flex align-items-center px-4 py-2 rounded-pill"
+                 style="background: var(--tf-yellow); color: var(--tf-blue); font-weight: 800; border: 2px solid var(--tf-blue);">
+                <i class="fas fa-arrow-down me-2"></i>
+                <span>CLICK ON THE DIAGRAM BELOW TO BEGIN</span>
             </div>
         </div>
-    </section>
+
+        <!-- Tongfang Tip - MOVED TO TOP OF INTERACTIVE EXPERIENCE -->
+        <div class="text-center mb-3">
+            <p class="text-muted">
+                <small>
+                    <i class="fas fa-lightbulb me-2" style="color: var(--tf-yellow);"></i>
+                    <strong style="color: var(--tf-blue);">Tongfang Tip:</strong> Look for glowing elements to discover how our BMS solutions deliver 30% average energy savings
+                </small>
+            </p>
+        </div>
+
+        <div class="interactive-container" id="interactive-demo">
+            <div class="ceros-wrapper">
+                <iframe allowfullscreen 
+                        src='https://view.ceros.com/honeywell-corporate/d0998969-energy-storage?heightOverride=1080' 
+                        frameborder='0' 
+                        class='ceros-experience' 
+                        title='Energy Storage Optimization' 
+                        scrolling='no'
+                        style="width: 100%; height: auto; min-height: 500px; aspect-ratio: 16/9;">
+                </iframe>
+            </div>
+            <script type="text/javascript" src="https://view.ceros.com/scroll-proxy.min.js" data-ceros-origin-domains="view.ceros.com"></script>
+        </div>
+        
+        <!-- Original tip at bottom removed -->
+    </div>
+</section>
 
     <!-- CORE MODULES -->
     <section class="py-5 bg-light scroll-target" id="modules">

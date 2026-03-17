@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Tongfang BMS |products</title>
+<title>Tongfang BMS | Products</title>
 
 <!-- Favicon -->
 <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    /* --- 1. DESIGN TOKENS (adapted from Hikvision) --- */
+    /* --- 1. DESIGN TOKENS --- */
     :root {
         --tf-blue: #004ca3;          
         --tf-yellow: #ffcc00;        
@@ -30,6 +30,7 @@
         --shadow-soft: 0 4px 20px rgba(0,0,0,0.05);
         --shadow-lift: 0 15px 30px rgba(0, 76, 163, 0.15);
         --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        --no-image-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
     /* --- 2. GLOBAL RESET --- */
@@ -43,7 +44,7 @@
     ul { list-style: none; padding: 0; margin: 0; }
     h1, h2, h3, h4, h5 { color: var(--tf-dark); font-family: 'Montserrat', sans-serif; }
 
-    /* --- 3. HEADER (adapted from Hikvision style) --- */
+    /* --- 3. HEADER (same as before) --- */
     .header-fix { 
         width: 100%; position: fixed; top: 0; z-index: 1030; min-height: var(--header-height);
         background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03);
@@ -61,116 +62,49 @@
     .nav-link-custom:hover { color: var(--tf-blue); }
     .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
     
-    /* --- DROPDOWN STYLE EXACTLY LIKE HIKVISION (swipe from top) --- */
+    /* --- DROPDOWN STYLES --- */
     .nav-item-dropdown { 
-        position: static; /* changed from relative to static to allow full-width */
-        height: 100%; 
-        display: flex; 
-        align-items: center;
+        position: static; height: 100%; display: flex; align-items: center;
     }
-    /* Optional: Style the scrollbar to look nice */
-.dropdown-menu-custom::-webkit-scrollbar {
-    width: 6px;
-}
-.dropdown-menu-custom::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-.dropdown-menu-custom::-webkit-scrollbar-thumb {
-    background: var(--tf-blue);
-    border-radius: 10px;
-}
-.dropdown-menu-custom::-webkit-scrollbar-thumb:hover {
-    background: #003d82;
-}
-   .dropdown-menu-custom {
-    position: absolute;
-    top: var(--header-height);  /* right below header */
-    left: 0;
-    right: 0;
-    width: 100vw;
-    background: #fff;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-    border-top: 3px solid var(--tf-yellow);
-    border-radius: 0 0 8px 8px;
-   padding: 30px;
+    .dropdown-menu-custom::-webkit-scrollbar { width: 6px; }
+    .dropdown-menu-custom::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+    .dropdown-menu-custom::-webkit-scrollbar-thumb { background: var(--tf-blue); border-radius: 10px; }
+    .dropdown-menu-custom::-webkit-scrollbar-thumb:hover { background: #003d82; }
     
-    /* ADD THESE 2 LINES - limit height and add scroll */
-    max-height: calc(100vh - 150px);  /* Leaves space at bottom */
-    overflow-y: auto;  /* Adds scrollbar when needed */
+    .dropdown-menu-custom {
+        position: absolute; top: var(--header-height); left: 0; right: 0; width: 100vw;
+        background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px;
+        padding: 30px; max-height: calc(100vh - 150px); overflow-y: auto;
+        opacity: 0; visibility: hidden; transform: translateY(-20px);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        z-index: 1100; pointer-events: none; display: flex; justify-content: center;
+    }
     
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-20px); /* start slightly up */
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-    z-index: 1100;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-}
- /* inner container to align with header content */
-.dropdown-inner {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 30px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);  /* 4 columns for Products */
-    gap: 20px 20px;  /* Reduced from 30px to 20px */
-    text-align: left;
-}
-/* Special styling for Solutions dropdown (first dropdown) */
-.nav-item-dropdown:first-child .dropdown-inner {
-    grid-template-columns: repeat(3, 1fr);  /* 3 columns for Solutions */
-    max-width: 1200px;  /* Narrower width for better centering */
-    margin: 0 auto;
-}
-
-/* Invisible bridge for hover */
-.dropdown-menu-custom::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: transparent;
-}
-    
-    /* On hover: swipe down + fade in */
+    .dropdown-inner {
+        max-width: 1440px; width: 100%; margin: 0 auto; padding: 0 30px;
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: left;
+    }
+    .nav-item-dropdown:first-child .dropdown-inner {
+        grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto;
+    }
+    .dropdown-menu-custom::before {
+        content: ""; position: absolute; top: -20px; left: 0; width: 100%; height: 20px; background: transparent;
+    }
     .nav-item-dropdown:hover .dropdown-menu-custom { 
-        opacity: 1; 
-        visibility: visible; 
-        transform: translateY(0);
-        pointer-events: auto;
+        opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
     }
     
-/* category and link styling (Hikvision-like) */
-.dropdown-category {
-    color: var(--tf-blue); 
-    font-size: 13px; 
-    font-weight: 700; 
-    text-transform: uppercase; 
-    letter-spacing: 0.5px; 
-    margin: 0 0 5px 0;  /* Reduced bottom margin from 10px to 5px */
-    border-bottom: 1px solid #e5e7eb; 
-    padding-bottom: 3px;  /* Reduced from 8px to 3px */
-}
-    
+    .dropdown-category {
+        color: var(--tf-blue); font-size: 13px; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.5px; margin: 0 0 5px 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 3px;
+    }
     .dropdown-link {
-        color: #4b5563; 
-        font-size: 13px; 
-        font-weight: 500;
-        padding: 6px 0; 
-        display: block;
-        transition: var(--transition);
-        border-bottom: 1px solid transparent;
+        color: #4b5563; font-size: 13px; font-weight: 500; padding: 6px 0; 
+        display: block; transition: var(--transition); border-bottom: 1px solid transparent;
     }
-    
     .dropdown-link:hover {
-        color: var(--tf-blue);
-        padding-left: 8px;
-        border-bottom-color: var(--tf-yellow);
+        color: var(--tf-blue); padding-left: 8px; border-bottom-color: var(--tf-yellow);
     }
     
     /* Header icons */
@@ -179,7 +113,7 @@
     .header-icons i:hover { color: var(--tf-blue); }
     .mobile-toggle { display: none; font-size: 24px; color: #111827; cursor: pointer; background: none; border: none; padding-right: 20px; }
     
-    /* Mobile menu (unchanged but functional) */
+    /* Mobile menu */
     @media (max-width: 991px) {
         .header-fix { height: auto; }
         .mobile-toggle { display: block; order: 2; }
@@ -198,7 +132,7 @@
         .dropdown-menu-custom {
             position: static; width: 100%; transform: none; opacity: 1; visibility: visible; display: none;
             box-shadow: none; border-top: none; padding: 10px 30px; background: #f9f9f9; 
-            grid-template-columns: 1fr; transition: none; justify-content: flex-start;
+            transition: none; justify-content: flex-start;
         }
         .dropdown-inner { grid-template-columns: 1fr; padding: 0; }
         .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
@@ -213,17 +147,17 @@
         .header-container { padding: 0 10px; }
     }
 
-    /* --- 4. HERO BANNER (unchanged) --- */
+    /* --- 4. HERO BANNER --- */
     .hero-banner {
         position: relative; width: 100%; height: 350px;
-        background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/banner/products.jpg');
-        background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
+         background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/banner/products.jpg');
+       background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
     }
     .hero-content { position: relative; z-index: 2; text-align: center; color: white; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
     .hero-content h1 { font-size: 48px; color: white; margin-bottom: 10px; font-weight: 700; }
     .hero-content p { font-size: 20px; font-weight: 600; color: #fff; }
 
-    /* --- 5. STICKY PRODUCT SUB-BAR (unchanged) --- */
+    /* --- 5. STICKY PRODUCT SUB-BAR --- */
     .product-subnav {
         position: sticky; top: var(--header-height); z-index: 900; background: var(--tf-white);
         border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); height: var(--subnav-height);
@@ -248,7 +182,7 @@
         font-size: 32px; font-weight: 800; margin-bottom: 10px; color: var(--tf-dark);
     }
 
-    /* --- 7. PRODUCT GRID (unchanged) --- */
+    /* --- 7. PRODUCT GRID with image status indicators --- */
     .product-wrapper { max-width: 1440px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
     .category-section { scroll-margin-top: 160px; }
     .category-heading {
@@ -267,18 +201,53 @@
         cursor: pointer; transition: var(--transition); height: 100%; box-shadow: var(--shadow-soft);
         border: 1px solid rgba(0,0,0,0.03); display: flex; flex-direction: column;
     }
-    .product-image { position: relative; width: 100%; padding-top: 60%; overflow: hidden; background-color: var(--tf-white); }
+    .product-image { 
+        position: relative; width: 100%; padding-top: 60%; overflow: hidden; 
+       
+    }
     .product-image img.main-img {
         position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
         width: 85%; height: 85%; object-fit: contain; transition: var(--transition); z-index: 1;
     }
-    .product-item { padding: 25px 20px; flex-grow: 1; display: flex; align-items: center; justify-content: center; background: var(--tf-white); min-height: 70px; }
-    .product-title { font-size: 18px; font-weight: 700; color: var(--tf-dark); text-align: center; margin: 0; line-height: 1.4; transition: var(--transition); }
+    /* Image status indicator */
+    .image-status {
+        position: absolute; top: 10px; right: 10px; z-index: 2;
+        background: rgba(0,0,0,0.7); color: white; padding: 4px 8px;
+        border-radius: 4px; font-size: 11px; font-weight: 600;
+        display: flex; align-items: center; gap: 4px;
+    }
+    .image-status.has-image { background: rgba(0, 76, 163, 0.9); }
+    .image-status.no-image { background: rgba(255, 0, 0, 0.7); }
+    .image-status i { font-size: 10px; }
+    .no-image-overlay {
+        position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .product-item { 
+        padding: 25px 20px; flex-grow: 1; display: flex; 
+        align-items: center; justify-content: center; background: var(--tf-white); min-height: 70px;
+    }
+    .product-title { 
+        font-size: 18px; font-weight: 700; color: var(--tf-dark); 
+        text-align: center; margin: 0; line-height: 1.4; transition: var(--transition);
+    }
+    .product-category-badge {
+        display: inline-block; margin-top: 5px; font-size: 12px;
+        color: var(--tf-blue); font-weight: 600; text-transform: uppercase;
+    }
     .product-container:hover { box-shadow: var(--shadow-lift); transform: translateY(-8px); }
     .product-container:hover .product-image img.main-img { transform: translate(-50%, -50%) scale(1.1); }
     .product-container:hover .product-title { color: var(--tf-blue); }
 
-    /* --- 8. FOOTER (unchanged) --- */
+    /* No image placeholder text */
+    .no-image-text {
+        position: absolute; bottom: 10px; left: 0; right: 0; text-align: center;
+        color: rgba(255,255,255,0.7); font-size: 10px; font-weight: 400;
+    }
+
+    /* --- 8. FOOTER --- */
     .footer {
         background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 80px; font-size: 14px;
     }
@@ -316,39 +285,31 @@
         background: #05080c; padding: 25px; margin-top: 60px; color: #6b7280; font-size: 13px;
         text-align: center; border-top: 1px solid #1a222e;
     }
-/* Responsive grid for dropdown columns */
-@media (max-width: 1200px) { 
-    .products { width: 33.33%; } 
-    .dropdown-inner { grid-template-columns: repeat(3, 1fr); } /* 3 columns on tablet */
-    .nav-item-dropdown:first-child .dropdown-inner { 
-        grid-template-columns: repeat(2, 1fr); /* Solutions: 2 columns on tablet */
+
+    /* Responsive */
+    @media (max-width: 1200px) { 
+        .products { width: 33.33%; } 
+        .dropdown-inner { grid-template-columns: repeat(3, 1fr); }
+        .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: repeat(2, 1fr); }
     }
-}
-@media (max-width: 991px) {
-    .products { width: 50%; }
-    .footer-container { grid-template-columns: 1fr 1fr; }
-    .dropdown-inner, 
-    .nav-item-dropdown:first-child .dropdown-inner { 
-        grid-template-columns: repeat(2, 1fr); /* Both: 2 columns */
+    @media (max-width: 991px) {
+        .products { width: 50%; }
+        .footer-container { grid-template-columns: 1fr 1fr; }
+        .dropdown-inner, .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: repeat(2, 1fr); }
     }
-}
-@media (max-width: 576px) {
-    .products { width: 100%; }
-    .footer-container { grid-template-columns: 1fr; }
-    .dropdown-inner,
-    .nav-item-dropdown:first-child .dropdown-inner { 
-        grid-template-columns: 1fr; /* Both: 1 column on mobile */
+    @media (max-width: 576px) {
+        .products { width: 100%; }
+        .footer-container { grid-template-columns: 1fr; }
+        .dropdown-inner, .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: 1fr; }
+        .hero-banner { height: 250px; }
+        .hero-content h1 { font-size: 32px; }
+        .product-spotlight-header-wrapper .title h2 { font-size: 24px; }
     }
-    .product-image img.main-img { width: 60%; height: 60%; }
-    .hero-banner { height: 250px; }
-    .hero-content h1 { font-size: 32px; }
-    .product-spotlight-header-wrapper .title h2 { font-size: 24px; }
-}
 </style>
 </head>
 <body>
 
-<!-- ================= HEADER with Hikvision-style dropdowns ================= -->
+<!-- ================= HEADER ================= -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
@@ -361,7 +322,7 @@
             <!-- NAVIGATION -->
             <nav id="mainNav" class="nav-menu">
                 
-                <!-- SOLUTIONS DROPDOWN - full width with swipe animation -->
+                <!-- SOLUTIONS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                         Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -398,7 +359,8 @@
                         </div>
                     </div>
                 </div>
-       <!-- PRODUCTS DROPDOWN - Complete with Access Control focused content -->
+                
+                <!-- PRODUCTS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                         Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -419,16 +381,14 @@
                             <!-- 2. Fire & Safety -->
                             <div>
                                 <div class="dropdown-category">Fire & Safety</div>
-                               <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
-                                <a href="/products\fire-alarm\Control_Panels\index.html" class="dropdown-link">Control Panels</a>
+                                <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
                                 <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                              
                                 <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
                                 <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
                                 <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
                             
-                            <!-- 3. Building Management (UPDATED - NO DUPLICATES) -->
+                            <!-- 3. Building Management -->
                             <div>
                                 <div class="dropdown-category">Building Management</div>
                                 <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
@@ -440,16 +400,15 @@
                             
                             <!-- 4. IP Audio & Intercom -->
                             <div>
-                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
+                                <div class="dropdown-category">IP and ITC T-7700 Series</div>
                                 <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
+                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
                                 <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a> 
-                                 <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
+                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
                                 <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
                             
-                           
-                            <!-- 6. HVAC & Field Control -->
+                            <!-- 5. HVAC & Field Control -->
                             <div>
                                 <div class="dropdown-category">HVAC & Field Control</div>
                                 <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
@@ -461,7 +420,7 @@
                                 <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
                             
-                            <!-- 7. Lighting Control -->
+                            <!-- 6. Lighting Control -->
                             <div>
                                 <div class="dropdown-category">Lighting Control</div>
                                 <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
@@ -472,7 +431,7 @@
                                 <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
                             </div>
                             
-                            <!-- 8. Energy Management -->
+                            <!-- 7. Energy Management -->
                             <div>
                                 <div class="dropdown-category">Energy Management</div>
                                 <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
@@ -487,14 +446,10 @@
                     </div>
                 </div>
 
-
-
-
                 <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
                 <a href="/projects/index.html" class="nav-link-custom">Projects</a>
                 <a href="/about/index.html" class="nav-link-custom">About</a>
                 <a href="/contact/index.html" class="nav-link-custom">Contact</a>
-
             </nav>
 
             <!-- HAMBURGER ICON -->
@@ -523,144 +478,715 @@
 <nav class="product-subnav">
     <div class="subnav-container">
         <ul class="subnav-list">
-            <li><a href="#cat-software" class="subnav-link">Software</a></li>
-            <li><a href="#cat-network" class="subnav-link">Network</a></li>
-            <li><a href="#cat-bcu" class="subnav-link">Core Control (BCU)</a></li>
-            <li><a href="#cat-blc" class="subnav-link">Field Control (BLC)</a></li>
-            <li><a href="#cat-lighting" class="subnav-link">Lighting (BCX)</a></li>
+            <li><a href="#cat-access-control" class="subnav-link">Access Control</a></li>
+            <li><a href="#cat-fire-safety" class="subnav-link">Fire & Safety</a></li>
+            <li><a href="#cat-building-mgmt" class="subnav-link">Building Mgmt</a></li>
+            <li><a href="#cat-ip-audio" class="subnav-link">IP Audio</a></li>
+            <li><a href="#cat-hvac" class="subnav-link">HVAC</a></li>
+            <li><a href="#cat-lighting" class="subnav-link">Lighting</a></li>
             <li><a href="#cat-energy" class="subnav-link">Energy</a></li>
-            <li><a href="#cat-wireless" class="subnav-link">Wireless IoT</a></li>
-            <li><a href="#cat-sensors" class="subnav-link">Sensors</a></li>
-            <li><a href="#cat-gateway" class="subnav-link">Gateways</a></li>
         </ul>
     </div>
 </nav>
 
-<!-- ================= MAIN CONTENT (unchanged product grid) ================= -->
+<!-- ================= MAIN CONTENT ================= -->
 <div class="product-spotlight-header-wrapper">
   <div class="title-wrapper center">
-    <div class="title"><h2>Tongfang/MBS Product</h2></div>
-  </div>
+    <div class="title"><h2>Tongfang BMS Product  </h2></div>
+      </div>
 </div>
 
 <div class="product-categories">
     <div class="product-wrapper">
-        <!-- 1. Software & Management -->
-        <div id="cat-software" class="category-section">
-            <h3 class="category-heading">1. Software & Management</h3>
+        <!-- 1. Access Control -->
+        <div id="cat-access-control" class="category-section">
+            <h3 class="category-heading">Access Control</h3>
             <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg.thumb.1280.1280.png" alt="ESCloud"></div><div class="product-item"><div class="product-title">1. ESCloud Host</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg.thumb.1280.1280.png" alt="WEBtalk"></div><div class="product-item"><div class="product-title">2. WEBtalk-100</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg.thumb.1280.1280.png" alt="EMS-500"></div><div class="product-item"><div class="product-title">3. EMS-500 Suite</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/display-and-control/interactive-flat-panel-display/d5c-series/Preview_IFPD-ultra.png.thumb.1280.1280.png" alt="HMI-X70"></div><div class="product-item"><div class="product-title">4. HMI-X70</div></div></div></a></div>
+                <!-- Face Recognition Terminals - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/access-control/face-recognition/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                               
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" alt="Face Recognition Terminals">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Face Recognition Terminals
+                                    <div class="product-category-badge">Access Control</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Fingerprint Terminals - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/access-control/fingerprint/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                               
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/fingerprint/fingerprint-terminals.jpg" alt="Fingerprint Terminals">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Fingerprint Terminals
+                                    <div class="product-category-badge">Access Control</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Card Readers - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/access-control/card-readers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                              
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/card-readers.jpg" alt="Card Readers">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Card Readers
+                                    <div class="product-category-badge">Access Control</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Access Controllers - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/access-control/Access_Controllers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                               
+                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" alt="Card Readers">
+                                </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Access Controllers
+                                    <div class="product-category-badge">Access Control</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Electric Locks - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/access-control/electric-locks/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                   
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" alt="Electric Fence  ">
+                       
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Electric Fence with Locks
+                                    <div class="product-category-badge">Access Control</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- 2. Network & Communication -->
-        <div id="cat-network" class="category-section">
-            <h3 class="category-heading">2. Network & Communication</h3>
+
+        <!-- 2. Fire & Safety -->
+        <div id="cat-fire-safety" class="category-section">
+            <h3 class="category-heading">Fire & Safety</h3>
             <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/network-switches/smart-managed-series.jpg.thumb.1280.1280.png" alt="BR-10"></div><div class="product-item"><div class="product-title">5. BR-10 Controller</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/network-switches/smart-managed-series.jpg.thumb.1280.1280.png" alt="BR-50X"></div><div class="product-item"><div class="product-title">6. BR-50X Controller</div></div></div></a></div>
+                <!-- Control Panels - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/fire-alarm/Control_Panels/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                    
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2105/FW2105.png" alt="Control Pannel  ">
+                        </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Control Panels
+                                    <div class="product-category-badge">Fire & Safety</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Smoke Detectors - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/fire-alarm/detectors/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Detectors/FW2511/FW2511-card.png" alt="Smoke Detectors">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Smoke Detectors
+                                    <div class="product-category-badge">Fire & Safety</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Input/Output Modules - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/fire-alarm/modules/index.html">
+                        <div class="product-container">
+                            <div class="product-image">  
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Modules/FW2841/FW2841-card.png" alt="I/O Modules">
+                    </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    I/O Modules
+                                    <div class="product-category-badge">Fire & Safety</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Manual Stations - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/fire-alarm/Manual_Stations/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 
+                              
+                           
+                                <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Manual_Stations/FW2721/FW2721-card.png  " alt="Manual Stations> </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Manual Stations
+                                    <div class="product-category-badge">Fire & Safety</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- 3. Core Control Units (BCU) -->
-        <div id="cat-bcu" class="category-section">
-            <h3 class="category-heading">3. Core Control Units (BCU)</h3>
+
+        <!-- 3. Building Management -->
+        <div id="cat-building-mgmt" class="category-section">
+            <h3 class="category-heading">Building Management</h3>
             <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-16160"></div><div class="product-item"><div class="product-title">7. BCU-16160</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-1666"></div><div class="product-item"><div class="product-title">8. BCU-1666</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-1644"></div><div class="product-item"><div class="product-title">9. BCU-1644</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-1600"></div><div class="product-item"><div class="product-title">10. BCU-1600</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-941"></div><div class="product-item"><div class="product-title">11. BCU-941</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-940"></div><div class="product-item"><div class="product-title">12. BCU-940</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-860"></div><div class="product-item"><div class="product-title">13. BCU-860</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-843"></div><div class="product-item"><div class="product-title">14. BCU-843</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/alarm-products/hikvision-intrusion-alarm-panel/AX2-套装图.png.thumb.1280.1280.png" alt="BCU-630"></div><div class="product-item"><div class="product-title">15. BCU-630</div></div></div></a></div>
+                <!-- IBMS Platform - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/building-management/ibms-platform/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 
+                                <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg" alt="IBMS Platform">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    IBMS Platform
+                                    <div class="product-category-badge">Building Management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DDC Controllers - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/building-management/ddc-controllers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                            
+                           <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="DDC Controllers">
+                        
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    DDC Controllers
+                                    <div class="product-category-badge">Building Management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- I/O Modules - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/building-management/io-modules/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                  <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/io-modules/io-modules.png" alt="io-modules  "> </div>
+                          <div class="product-item">
+                                <div class="product-title">
+                                    I/O Modules
+                                    <div class="product-category-badge">Building Management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Sensors - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/building-management/sensors/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 
+                                <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg" alt="Sensors">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Sensors
+                                    <div class="product-category-badge">Building Management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- 4. Field Controllers (BLC) -->
-        <div id="cat-blc" class="category-section">
-            <h3 class="category-heading">4. Field Controllers (BLC)</h3>
+
+        <!-- 4. IP Audio & Intercom -->
+        <div id="cat-ip-audio" class="category-section">
+            <h3 class="category-heading">IP Audio & Intercom (ITC T-7700 Series)</h3>
             <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-1656"></div><div class="product-item"><div class="product-title">16. BLC-1656</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-1650"></div><div class="product-item"><div class="product-title">17. BLC-1650</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-1043"></div><div class="product-item"><div class="product-title">18. BLC-1043</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-310"></div><div class="product-item"><div class="product-title">19. BLC-310</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-1040"></div><div class="product-item"><div class="product-title">20. BLC-1040</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/Access control.jpg.thumb.1280.1280.png" alt="BLC-621"></div><div class="product-item"><div class="product-title">21. BLC-621</div></div></div></a></div>
+                <!-- IP Speakers - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/itc-t7700-series/ip-network-controllers-servers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                              <img src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/itc-t7700-series/column-horn-speakers-outdoor/t-7784h/landingpage-Audio-Products-01.jpg" alt="IP Speakers " style="width: 100%; border-radius: var(--card-radius);">
+                             </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    IP Speakers
+                                    <div class="product-category-badge">ITC T-7700</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Intercom Terminals - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/itc-t7700-series/paging-intercom-terminals/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                  <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/video-intercom-products/homepage/Video-Intercom_Homepage_product_IP.png" alt="Intercom Terminals">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Intercom Terminals
+                                    <div class="product-category-badge">ITC T-7700</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Amplifiers - NO IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/itc-t7700-series/ip-network-decoders-amplifiers/ip-network-decoders-amplifiers.png" alt="Amplifiers ITC T-7700">
+                               
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Amplifiers
+                                    <div class="product-category-badge">ITC T-7700</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- System Management Software - HAS IMAGE -->
+                <div class="products">
+                    <a class="products-links" href="/products/itc-t7700-series/system-management-software/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                               
+                                <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg" alt="System Management Software">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    System Management Software
+                                    <div class="product-category-badge">ITC T-7700</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- 5. Lighting Control (BCX) -->
+
+        <!-- 5. HVAC & Field Control -->
+        <div id="cat-hvac" class="category-section">
+            <h3 class="category-heading">HVAC & Field Control</h3>
+            <div class="product-categories-comp">
+                <!-- All HVAC products - NO IMAGES (placeholder) -->
+                <div class="products">
+                    <a class="products-links" href="/products/hvac-field-control/fan-coil-controllers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/fan-coil-controllers/Fan-Coil-Controllers-card.png" alt="Fan coil">
+                  
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Fan Coil Controllers
+                                    <div class="product-category-badge">HVAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/hvac-field-control/vav-controllers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                   <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/vav-controllers/vav-controller-card(1).png" alt="vav-controllers">
+                   </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    VAV Controllers
+                                    <div class="product-category-badge">HVAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/hvac-field-control/actuators/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                  <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/actuators/Electric-Damper-Actuator.png" alt="actuators">
+   
+                                
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Actuators
+                                    <div class="product-category-badge">HVAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/hvac-field-control/valves/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                               
+                                 <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/valves/Control-Valves.png" alt="valves">
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Valves
+                                    <div class="product-category-badge">HVAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/hvac-field-control/thermostats/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/thermostats/TCX-A330-W.png" alt="Thermostats">
+                          
+                              
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Thermostats
+                                    <div class="product-category-badge">HVAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/hvac-field-control/room-controllers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/room-controllers/ERC-404D.png" alt="Room vav-controllers">
+                          
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Room Controllers
+                                    <div class="product-category-badge">HVAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Lighting Control -->
         <div id="cat-lighting" class="category-section">
-            <h3 class="category-heading">5. Lighting Control (BCX)</h3>
+            <h3 class="category-heading">Lighting Control</h3>
             <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-H1216"></div><div class="product-item"><div class="product-title">22. BCX-H1216</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-H1016"></div><div class="product-item"><div class="product-title">23. BCX-H1016</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-H816"></div><div class="product-item"><div class="product-title">24. BCX-H816</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-H616"></div><div class="product-item"><div class="product-title">25. BCX-H616</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-E466"></div><div class="product-item"><div class="product-title">26. BCX-E466</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-E1043"></div><div class="product-item"><div class="product-title">27. BCX-E1043</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-E305B"></div><div class="product-item"><div class="product-title">28. BCX-E305B</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-S305X"></div><div class="product-item"><div class="product-title">29. BCX-S305X</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-816D"></div><div class="product-item"><div class="product-title">30. BCX-816D</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/transmission-and-display-products/commercial-displays/LCD Video Walls.jpg.thumb.1280.1280.png" alt="BCX-SN10"></div><div class="product-item"><div class="product-title">31. BCX-SN10</div></div></div></a></div>
+                <!-- All Lighting products - NO IMAGES (placeholder) -->
+                <div class="products">
+                    <a class="products-links" href="/products/Lighting-Control/lighting-controllers/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                             <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/lighting-controllers/Lighting-Controllers.png" alt="Lighting controller">
+                               
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Lighting Controllers
+                                    <div class="product-category-badge">Lighting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Lighting-Control/dimming-modules/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                              <img class="main-img" src="      https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/dimming-modules/dimming-modules-card.png" alt="dimming module">
+                          
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Dimming Modules
+                                    <div class="product-category-badge">Lighting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Lighting-Control/relay-modules/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                             <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Relay-Modules/Relay%20Modules(1).png" alt="relay module">
+                              
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Relay Modules
+                                    <div class="product-category-badge">Lighting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Lighting-Control/occupancy-sensors/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                <img class="main-img" src="   https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Occupancy-Sensors/Occupancy-Sensors(1).png" alt="Occupancy Sensors">
+                              
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Occupancy Sensors
+                                    <div class="product-category-badge">Lighting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Lighting-Control/Lighting-Scene-Panels/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                 <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Lighting-Scene-Panels/Lighting-Scene-Panels(1).png" alt=" Lighting Scene Panels">
+                               
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Lighting Scene Panels
+                                    <div class="product-category-badge">Lighting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <!-- 6. Energy -->
+
+        <!-- 7. Energy Management -->
         <div id="cat-energy" class="category-section">
-            <h3 class="category-heading">6. Energy Metering</h3>
+            <h3 class="category-heading">Energy Management</h3>
             <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/thermal-products/thermal.jpg.thumb.1280.1280.png" alt="EMC-GT10"></div><div class="product-item"><div class="product-title">32. EMC-GT10</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/thermal-products/thermal.jpg.thumb.1280.1280.png" alt="EMC-GT20"></div><div class="product-item"><div class="product-title">33. EMC-GT20</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/thermal-products/thermal.jpg.thumb.1280.1280.png" alt="EMC-GT30"></div><div class="product-item"><div class="product-title">34. EMC-GT30</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/thermal-products/thermal.jpg.thumb.1280.1280.png" alt="EMC-GT40"></div><div class="product-item"><div class="product-title">35. EMC-GT40</div></div></div></a></div>
-            </div>
-        </div>
-        <!-- 7. Wireless IoT -->
-        <div id="cat-wireless" class="category-section">
-            <h3 class="category-heading">7. Wireless IoT Devices</h3>
-            <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg.thumb.1280.1280.png" alt="BG-ZIGB"></div><div class="product-item"><div class="product-title">36. BG-ZIGB Gateway</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg.thumb.1280.1280.png" alt="RH-5W"></div><div class="product-item"><div class="product-title">37. RH-5W-R-T</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg.thumb.1280.1280.png" alt="TCU-FC2-W"></div><div class="product-item"><div class="product-title">38. TCU-FC2-W</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg.thumb.1280.1280.png" alt="ECP-W16"></div><div class="product-item"><div class="product-title">39. ECP-W16</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg.thumb.1280.1280.png" alt="SE-HM20W"></div><div class="product-item"><div class="product-title">40. SE-HM20W</div></div></div></a></div>
-            </div>
-        </div>
-        <!-- 8. Sensors -->
-        <div id="cat-sensors" class="category-section">
-            <h3 class="category-heading">8. Sensors & Field Devices</h3>
-            <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/radar/radar-products.jpg.thumb.1280.1280.png" alt="BVC-442-P"></div><div class="product-item"><div class="product-title">41. BVC-442-P</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/radar/radar-products.jpg.thumb.1280.1280.png" alt="Pressure"></div><div class="product-item"><div class="product-title">42. Pressure Switches</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/radar/radar-products.jpg.thumb.1280.1280.png" alt="Actuator"></div><div class="product-item"><div class="product-title">43. Actuators</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/radar/radar-products.jpg.thumb.1280.1280.png" alt="Status Node"></div><div class="product-item"><div class="product-title">44. Status Nodes</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/radar/radar-products.jpg.thumb.1280.1280.png" alt="Outdoor Node"></div><div class="product-item"><div class="product-title">45. Outdoor Nodes</div></div></div></a></div>
-            </div>
-        </div>
-        <!-- 9. Gateways -->
-        <div id="cat-gateway" class="category-section">
-            <h3 class="category-heading">9. Integration Gateways</h3>
-            <div class="product-categories-comp">
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/video-intercom-products/homepage/Video-Intercom_Homepage_product_IP.png.thumb.1280.1280.png" alt="BG-DMX"></div><div class="product-item"><div class="product-title">46. BG-DMX</div></div></div></a></div>
-                <div class="products"><a class="products-links" href="#"><div class="product-container"><div class="product-image"><img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/video-intercom-products/homepage/Video-Intercom_Homepage_product_IP.png.thumb.1280.1280.png" alt="IR Controller"></div><div class="product-item"><div class="product-title">47. IR Controller</div></div></div></a></div>
+                <!-- All Energy products - NO IMAGES (placeholder) -->
+                <div class="products">
+                    <a class="products-links" href="/products/Energy-Management/power-meters/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                   <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/power-meters/power-meters.png" alt="  Power Meters">
+
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Power Meters
+                                    <div class="product-category-badge">Energy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Energy-Management/Water%20Meters/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                   <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Water-Meters/Water-Meters.png" alt="  Water Meters">
+                                
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Water Meters
+                                    <div class="product-category-badge">Energy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Energy-Management/gas-meters/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                   <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Gas-Meters/gas-meter.png" alt="  gas Meters">
+                              
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Gas Meters
+                                    <div class="product-category-badge">Energy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Energy-Management/btu-meters/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+           
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/BTU-Meters/BTU-Meters-card.png" alt="BTU Meter">
+                        
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    BTU Meters
+                                    <div class="product-category-badge">Energy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Energy-Management/energy-gateways/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                  <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Gateways/EMC-GT-Energy-Gateways.png" alt="EMC-GT Energy Gateways">
+                         
+                                
+                                </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Energy Gateways
+                                    <div class="product-category-badge">Energy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="products">
+                    <a class="products-links" href="/products/Energy-Management/energy-software/index.html">
+                        <div class="product-container">
+                            <div class="product-image">
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Software/Energy-Software.png" alt="Energy Software">
+                               
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    Energy Software
+                                    <div class="product-category-badge">Energy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ================= FOOTER (unchanged) ================= -->
+ 
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
     <div class="footer-container">
-        <div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div>
-        <div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><a class="btn-link" href="/about/index.html">About Us</a><a class="btn-link" href="/solutions/index.html">Solutions</a><a class="btn-link" href="/projects/index.html">Projects</a><a class="btn-link" href="/products/index.html">Products</a><a class="btn-link" href="/technologies/index.html">Technologies</a><a class="btn-link" href="/contact/index.html">Contact</a></div>
-        <div><h5>Business Hours</h5><p>Mon – Fri: 8:30 AM – 5:30 PM</p><p>Saturday: 9:00 AM – 1:00 PM</p><p>Sunday: Closed</p></div>
-        <div><h5>Newsletter</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a><a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a><a class="btn-square" href="#"><i class="fab fa-twitter"></i></a><a class="btn-square" href="#"><i class="fab fa-weixin"></i></a></div></div>
+        <div>
+            <h5>Tongfang BMS System Integration</h5>
+            <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+            <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+        </div>
+        <div>
+            <h5>Quick Links</h5>
+            <a class="btn-link" href="/index.html">Home</a>
+            <a class="btn-link" href="/about/index.html">About Us</a>
+            <a class="btn-link" href="/solutions/index.html">Solutions</a>
+            <a class="btn-link" href="/projects/index.html">Projects</a>
+            <a class="btn-link" href="/products/index.html">Products</a>
+            <a class="btn-link" href="/technologies/index.html">Technologies</a>
+            <a class="btn-link" href="/contact/index.html">Contact</a>
+        </div>
+        <div>
+            <h5>Business Hours</h5>
+            <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+            <p>Saturday: 9:00 AM – 1:00 PM</p>
+            <p>Sunday: Closed</p>
+        </div>
+        <div>
+            <h5>Newsletter</h5>
+            <p>Get smart building & automation updates.</p>
+            <div class="newsletter-box">
+                <input class="form-control" type="email" placeholder="Your email">
+                <button class="btn btn-primary">Subscribe</button>
+            </div>
+            <div class="social-links">
+                <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+            </div>
+        </div>
     </div>
     <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
 </footer>
 
-<!-- JavaScript (unchanged) -->
+<!-- JavaScript -->
 <script>
     function toggleMobileMenu() {
         const nav = document.getElementById('mainNav');

@@ -578,6 +578,7 @@
             display: flex; 
             flex-direction: column; 
             height: 100%;
+            cursor: pointer;
         }
         
         .sol-card-premium:hover { 
@@ -784,95 +785,91 @@
                         </div>
                     </div>
                     
-                        <!-- PRODUCTS DROPDOWN - Complete with Access Control focused content -->
-                <div class="nav-item-dropdown">
-                    <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
-                        Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
-                    </a>
-                    <div class="dropdown-menu-custom">
-                        <div class="dropdown-inner">
-                            <!-- 1. Access Control -->
-                            <div>
-                                <div class="dropdown-category">Access Control</div>
-                                <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
-                                <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
-                                <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
-                                <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
-                                <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                <a href="/products/access-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 2. Fire & Safety -->
-                            <div>
-                                <div class="dropdown-category">Fire & Safety</div>
-                               <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
-                                <a href="/products\fire-alarm\Control_Panels\index.html" class="dropdown-link">Control Panels</a>
-                                <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                              
-                                <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
-                                <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 3. Building Management (UPDATED - NO DUPLICATES) -->
-                            <div>
-                                <div class="dropdown-category">Building Management</div>
-                                <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
-                                <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                <a href="/products/building-management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 4. IP Audio & Intercom -->
-                            <div>
-                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
-                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
-                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
-
-                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
-                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                           
-                            <!-- 6. HVAC & Field Control -->
-                            <div>
-                                <div class="dropdown-category">HVAC & Field Control</div>
-                                <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
-                                <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
-                                <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
-                                <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
-                                <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
-                                <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 7. Lighting Control -->
-                            <div>
-                                <div class="dropdown-category">Lighting Control</div>
-                                <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
-                                <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
-                                <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
-                                <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
-                                <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
-                                <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 8. Energy Management -->
-                            <div>
-                                <div class="dropdown-category">Energy Management</div>
-                                <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
-                                <a href="/products/Energy-Management/Water Meters/index.html" class="dropdown-link">Water Meters</a>
-                                <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
-                                <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
-                                <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
-                                <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
-                                <a href="/products/Energy-Management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                    <!-- PRODUCTS DROPDOWN - Complete with Access Control focused content -->
+                    <div class="nav-item-dropdown">
+                        <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                            Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div class="dropdown-inner">
+                                <!-- 1. Access Control -->
+                                <div>
+                                    <div class="dropdown-category">Access Control</div>
+                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                    <a href="/products/access-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
+                                
+                                <!-- 2. Fire & Safety -->
+                                <div>
+                                    <div class="dropdown-category">Fire & Safety</div>
+                                    <a href="/products\fire-alarm\Control_Panels\index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                    <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
+                                
+                                <!-- 3. Building Management -->
+                                <div>
+                                    <div class="dropdown-category">Building Management</div>
+                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                    <a href="/products/building-management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
+                                
+                                <!-- 4. IP Audio & Intercom -->
+                                <div>
+                                    <div class="dropdown-category">IP and ITC T-7700 Series</div>
+                                    <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                    <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
+                                    <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
+                                    <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
+                                    <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
+                                
+                                <!-- 6. HVAC & Field Control -->
+                                <div>
+                                    <div class="dropdown-category">HVAC & Field Control</div>
+                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                    <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
+                                    <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
+                                    <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
+                                
+                                <!-- 7. Lighting Control -->
+                                <div>
+                                    <div class="dropdown-category">Lighting Control</div>
+                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                    <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
+                                    <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
+                                
+                                <!-- 8. Energy Management -->
+                                <div>
+                                    <div class="dropdown-category">Energy Management</div>
+                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                    <a href="/products/Energy-Management/Water Meters/index.html" class="dropdown-link">Water Meters</a>
+                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                    <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
+                                    <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
+                                    <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
+                                    <a href="/products/Energy-Management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                     <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
                     <a href="/projects/index.html" class="nav-link-custom">Projects</a>
@@ -916,49 +913,49 @@
         <div class="sol-grid">
             
             <!-- CARD 1: SMART CAMPUS -->
-            <div class="sol-card-premium">
-                <a href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Smart Campus Hubs"
-                   data-description="Integrated ICT and facility control for universities, enhancing campus safety and creating sustainable learning environments.">
-                    
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg"
-                         alt="Smart Campus Hub"
-                         class="sol-card-img">
-                </a>
-
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/smart-campus-hub/index.html'">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg"
+                     alt="Smart Campus Hub"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Education</span>
                     <h4>Smart Campus Hubs</h4>
                     <p>
                         Integrated ICT and facility control for universities, enhancing campus safety and creating sustainable learning environments.
                     </p>
-                    <a href="/solutions/smart-campus-hub/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/smart-campus-hub/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
             <!-- CARD 2: OFFICE -->
-            <div class="sol-card-premium">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" class="sol-card-img">
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/office/index.html'">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800" 
+                     alt="Modern Office Infrastructure"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Corporate</span>
                     <h4>Modern Office Infrastructure</h4>
                     <p>Optimizing workspace productivity through occupancy-driven HVAC control, daylight harvesting, and integrated asset management platforms.</p>
-                    <a href="/solutions/office/index.html" class="card-link">View Solution Details →</a>
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/office/index.html'">
+                        View Solution Details →
+                    </span>
                 </div>
             </div>
 
             <!-- CARD 3: HOTELS -->
-            <div class="sol-card-premium">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800" class="sol-card-img">
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/hotel-smart-security/index.html'">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800" 
+                     alt="Hotels & Smart Hospitality"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Hospitality</span>
                     <h4>Hotels & Smart Hospitality</h4>
                     <p>Comprehensive Guest Room Management Systems (GRMS) providing 5-star comfort with centralized operational efficiency and energy savings.</p>
-                    <a href="/solutions/hotel-smart-security/index.html" class="card-link">View Solution Details →</a>
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/hotel-smart-security/index.html'">
+                        View Solution Details →
+                    </span>
                 </div>
             </div>
 
@@ -972,18 +969,12 @@
         </section>
         
         <div class="sol-grid">
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Digital Hospital Systems"
-                   data-description="Precision control for clean rooms and negative pressure environments, alongside unified patient security and monitoring.">
 
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800"
-                         alt="Digital Hospital Systems"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: DIGITAL HOSPITAL -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/smart-hospital-access/index.html'">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800"
+                     alt="Digital Hospital Systems"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Healthcare</span>
                     <h4>Digital Hospital Systems</h4>
@@ -991,24 +982,17 @@
                         Precision control for clean rooms and negative pressure environments,
                         alongside unified patient security and monitoring.
                     </p>
-                    <a href="/solutions/smart-hospital-access/index.html" class="card-link"> 
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/smart-hospital-access/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Smart Airports & Transit"
-                   data-description="Integrating passenger flow analytics with high-availability terminal climate control for global aviation hubs.">
-
-                    <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=800"
-                         alt="Smart Airports & Transit"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: SMART AIRPORTS -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/airport/index.html'">
+                <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=800"
+                     alt="Smart Airports & Transit"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Airport</span>
                     <h4>Smart Airports & Transit</h4>
@@ -1016,24 +1000,17 @@
                         Integrating passenger flow analytics with high-availability
                         terminal climate control for global aviation hubs.
                     </p>
-                    <a href="/solutions/airport/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/airport/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Industrial AIoT Platforms"
-                   data-description="Converging industrial automation and facility management to ensure plant uptime and peak energy efficiency.">
-
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800"
-                         alt="Industrial AIoT Platforms"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: INDUSTRIAL AIOT -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/industrial/index.html'">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800"
+                     alt="Industrial AIoT Platforms"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Industrial</span>
                     <h4>Industrial AIoT Platforms</h4>
@@ -1041,24 +1018,17 @@
                         Converging industrial automation and facility management to ensure
                         plant uptime and peak energy efficiency.
                     </p>
-                    <a href="/solutions/industrial/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/industrial/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Data Centers & IPDC"
-                   data-description="Highly reliable cooling, power quality monitoring, and PUE optimization for mission-critical IT infrastructure.">
-
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800"
-                         alt="Data Centers & IPDC"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: DATA CENTERS -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/ipdc/index.html'">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800"
+                     alt="Data Centers & IPDC"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Data Center</span>
                     <h4>Data Centers & IPDC</h4>
@@ -1066,24 +1036,17 @@
                         Highly reliable cooling, power quality monitoring,
                         and PUE optimization for mission-critical IT infrastructure.
                     </p>
-                    <a href="/solutions/ipdc/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/ipdc/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1521503862198-2ae9a997bbc9?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Smart Logistics Ports"
-                   data-description="Unified digital platforms for crane automation, automated gate management, and high-security port surveillance.">
-
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg"
-                         alt="Smart Logistics Ports"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: SMART PORTS -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/smart-port-platform/index.html'">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/port/port-card.jpg"
+                     alt="Smart Logistics Ports"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Logistics</span>
                     <h4>Smart Logistics Ports</h4>
@@ -1091,9 +1054,9 @@
                         Unified digital platforms for crane automation, automated gate management,
                         and high-security port surveillance.
                     </p>
-                    <a href="/solutions/smart-port-platform/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/smart-port-platform/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -1106,18 +1069,12 @@
         </section>
         
         <div class="sol-grid">
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Urban IoT Platforms"
-                   data-description="Centrally managed smart street lighting, environment monitoring, and civic data backbones for intelligent cities.">
 
-                    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=800"
-                         alt="Urban IoT Platforms"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: URBAN IOT -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/smart-city/index.html'">
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=800"
+                     alt="Urban IoT Platforms"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Smart City</span>
                     <h4>Urban IoT Platforms</h4>
@@ -1125,24 +1082,17 @@
                         Centrally managed smart street lighting, environment monitoring,
                         and civic data backbones for intelligent cities.
                     </p>
-                    <a href="/solutions/smart-city/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/smart-city/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Smart Traffic Management"
-                   data-description="AI-driven traffic signal control and intelligent transport systems (ITS) for safer, smoother urban mobility.">
-
-                    <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800"
-                         alt="Smart Traffic Management"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: TRAFFIC -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/traffic/index.html'">
+                <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800"
+                     alt="Smart Traffic Management"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Mobility</span>
                     <h4>Smart Traffic Management</h4>
@@ -1150,24 +1100,17 @@
                         AI-driven traffic signal control and intelligent transport systems (ITS)
                         for safer, smoother urban mobility.
                     </p>
-                    <a href="/solutions/traffic/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/traffic/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Sports & Stadium Control"
-                   data-description="Coordinated arena lighting, mass crowd safety integration, and high-efficiency environmental control.">
-
-                    <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=800"
-                         alt="Sports & Stadium Control"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: STADIUM -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/sports-center-automation/index.html'">
+                <img src="https://images.unsplash.com/photo-1504450758481-7338eba7524a?auto=format&fit=crop&w=800"
+                     alt="Sports & Stadium Control"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Stadium</span>
                     <h4>Sports & Stadium Control</h4>
@@ -1175,24 +1118,17 @@
                         Coordinated arena lighting, mass crowd safety integration,
                         and high-efficiency environmental control.
                     </p>
-                    <a href="/solutions/sports-center-automation/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/sports-center-automation/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Building Management System"
-                   data-description="Our flagship, vendor-neutral platform using BACnet and Modbus to converge HVAC, Power, and Lighting.">
-
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800"
-                         alt="Building Management System"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: BMS -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/index.html'">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800"
+                     alt="Building Management System"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">TITAN BMS</span>
                     <h4>Building Management System</h4>
@@ -1200,24 +1136,17 @@
                         Our flagship, vendor-neutral platform using BACnet and Modbus
                         to converge HVAC, Power, and Lighting.
                     </p>
-                    <a href="/solutions/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
 
-            <div class="sol-card-premium">
-                <a href="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600"
-                   class="glightbox"
-                   data-gallery="solutions"
-                   data-title="Energy & Carbon Optimization"
-                   data-description="Deep analytics for real-time power monitoring, enabling buildings to reach Net-Zero operational targets.">
-
-                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800"
-                         alt="Energy & Carbon Optimization"
-                         class="sol-card-img">
-                </a>
-
+            <!-- CARD: ENERGY -->
+            <div class="sol-card-premium" onclick="window.location.href='/solutions/energy-carbon-optimization/index.html'">
+                <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800"
+                     alt="Energy & Carbon Optimization"
+                     class="sol-card-img">
                 <div class="sol-card-body">
                     <span class="sol-category-tag">Energy</span>
                     <h4>Energy & Carbon Optimization</h4>
@@ -1225,9 +1154,9 @@
                         Deep analytics for real-time power monitoring,
                         enabling buildings to reach Net-Zero operational targets.
                     </p>
-                    <a href="/solutions/energy-carbon-optimization/index.html" class="card-link">
+                    <span class="card-link" onclick="event.stopPropagation(); window.location.href='/solutions/energy-carbon-optimization/index.html'">
                         View Solution Details →
-                    </a>
+                    </span>
                 </div>
             </div>
         </div>

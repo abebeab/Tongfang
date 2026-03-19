@@ -4,6 +4,17 @@
     <meta charset="utf-8">
     <title>Tongfang BMS | World Leading Building AIoT Solution Provider</title>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="description" content="Tongfang BMS - Leading Building AIoT Solution Provider specializing in smart building automation, BACnet systems, energy management, and integrated building management systems.">
+    <meta name="keywords" content="BMS, Building Management System, AIoT, BACnet, Modbus, Smart Building, Building Automation, Energy Management, HVAC Control, Access Control, Fire Alarm System, IP Intercom, Smart Home, Building Controller, DDC Controller, Building IoT">
+    <meta name="author" content="Tongfang BMS">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Tongfang BMS - Building AIoT Solution Provider">
+    <meta property="og:description" content="World-leading Building AIoT solutions with open BACnet/Modbus architecture">
+    <meta property="og:image" content="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png">
+    <meta property="og:url" content="https://tongfangbms.com">
+    
     <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
   
     <!-- Fonts -->
@@ -57,14 +68,14 @@
         a { text-decoration: none; transition: var(--transition); }
         html { scroll-behavior: smooth; }
 
-        /* --- 1. SOLID WHITE HEADER (NEVER CHANGES) --- */
+        /* --- 1. SOLID WHITE HEADER --- */
         .header-fix { 
             width: 100%; 
             position: fixed; 
             top: 0; 
             z-index: 1030; 
             min-height: var(--header-height); 
-            background: #ffffff; /* SOLID WHITE - no transparency */
+            background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition);
@@ -80,7 +91,6 @@
             height: var(--header-height); 
         }
         
-        /* Logo image styling */
         .logo-img {
             height: 60px;
             width: auto;
@@ -99,7 +109,7 @@
         }
         
         .nav-link-custom { 
-            color: #111827; /* SOLID BLACK - never changes */
+            color: #111827;
             font-weight: 600; 
             font-size: 13px; 
             transition: 0.3s; 
@@ -110,37 +120,20 @@
             letter-spacing: 0.5px;
         }
         .nav-link-custom:hover { 
-            color: var(--tf-blue); /* Blue on hover */
+            color: var(--tf-blue);
         }
 
-        /* Make parent links clickable */
         .dropdown-parent-link {
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
-        /* --- ENHANCED DROPDOWN STYLE (from template) --- */
         .nav-item-dropdown { 
             position: static; 
             height: 100%; 
             display: flex; 
             align-items: center;
-        }
-
-        .dropdown-menu-custom::-webkit-scrollbar {
-            width: 6px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-thumb {
-            background: var(--tf-blue);
-            border-radius: 10px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-thumb:hover {
-            background: #003d82;
         }
 
         .dropdown-menu-custom {
@@ -168,26 +161,23 @@
             justify-content: center;
         }
 
-        /* inner container to align with header content */
         .dropdown-inner {
             max-width: 1440px;
             width: 100%;
             margin: 0 auto;
             padding: 0 30px;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);  /* 4 columns for Products */
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px 20px;
             text-align: left;
         }
 
-        /* Special styling for Solutions dropdown */
         .nav-item-dropdown:first-child .dropdown-inner {
-            grid-template-columns: repeat(3, 1fr);  /* 3 columns for Solutions */
+            grid-template-columns: repeat(3, 1fr);
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Invisible bridge for hover */
         .dropdown-menu-custom::before {
             content: "";
             position: absolute;
@@ -198,7 +188,6 @@
             background: transparent;
         }
 
-        /* On hover: swipe down + fade in */
         .nav-item-dropdown:hover .dropdown-menu-custom { 
             opacity: 1; 
             visibility: visible; 
@@ -206,7 +195,6 @@
             pointer-events: auto;
         }
 
-        /* category and link styling (Hikvision-like) */
         .dropdown-category {
             color: var(--tf-blue); 
             font-size: 13px; 
@@ -245,7 +233,6 @@
             padding-left: 5px;
         }
 
-        /* Header icons - always black */
         .header-icons { 
             display: flex !important; 
             align-items: center; 
@@ -263,7 +250,6 @@
             color: var(--tf-blue);
         }
 
-        /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
@@ -272,6 +258,166 @@
             background: none;
             border: none;
             gap:7px ;
+        }
+
+        /* --- SEARCH OVERLAY STYLES --- */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .search-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .search-header h3 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .close-search {
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-search:hover {
+            color: var(--tf-yellow);
+            transform: rotate(90deg);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 30px;
+            font-size: 18px;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            background: #1a1a1a;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--tf-yellow);
+            background: #222;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tf-yellow);
+            font-size: 20px;
+        }
+
+        .search-results {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 15px 25px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            color: var(--tf-text);
+        }
+
+        .result-item:hover {
+            background: #f5f5f5;
+            padding-left: 35px;
+        }
+
+        .result-item h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: var(--tf-blue);
+        }
+
+        .result-item p {
+            margin: 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .result-item .category {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--tf-yellow);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: #666;
+        }
+
+        .search-highlight {
+            background-color: var(--tf-yellow);
+            color: #000;
+            padding: 2px 0;
+            font-weight: 700;
+        }
+
+        .search-stats {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* Keyboard shortcut hint */
+        .search-shortcut {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 12px;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
         }
 
         /* --- 2. HERO SLIDER --- */
@@ -331,7 +477,7 @@
             backdrop-filter: blur(5px);
         }
 
-        /* --- 3. QUICK NAVIGATION BAR (Sticky) --- */
+        /* --- 3. QUICK NAVIGATION BAR --- */
         .project-nav-bar {
             position: sticky; 
             top: 80px; 
@@ -456,7 +602,7 @@
         .swiper, .swiper-wrapper, .swiper-slide { overflow: visible !important; }
         .swiper-slide { padding: 0 28px; }
 
-        /* --- 6. FOOTER - FROM ORIGINAL FILE --- */
+        /* --- 6. FOOTER --- */
         .footer {
             background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 80px; font-size: 14px;
         }
@@ -521,7 +667,7 @@
             .social-links { justify-content: center; }
         }
 
-       /* ===== MOBILE RESPONSIVENESS - FIXED HEADER LAYOUT ===== */
+       /* ===== MOBILE RESPONSIVENESS ===== */
 @media (max-width: 991px) {
     .header-fix { 
         height: auto; 
@@ -644,7 +790,6 @@
         font-size: 13px;
     }
     
-    /* Rotating arrow for active dropdowns */
     .nav-item-dropdown.active > .dropdown-parent-link i {
         transform: rotate(180deg);
         transition: transform 0.3s ease;
@@ -652,6 +797,20 @@
     
     .nav-item-dropdown.active > .dropdown-parent-link {
         color: var(--tf-blue) !important;
+    }
+    
+    .search-container {
+        margin: 80px auto 30px;
+        padding: 0 15px;
+    }
+    
+    .search-input {
+        padding: 15px 50px 15px 20px;
+        font-size: 16px;
+    }
+    
+    .search-shortcut {
+        display: none;
     }
 }
 
@@ -667,28 +826,52 @@
     .header-icons i {
         font-size: 16px !important;
     }
+    
+    .search-header h3 {
+        font-size: 18px;
+    }
+    
+    .close-search {
+        font-size: 30px;
+    }
 }
-
     </style>
 </head>
 
 <body>
 
-  <!-- ===== HEADER - FULL-WIDTH DROPDOWNS TEMPLATE ===== -->
+  <!-- ===== SEARCH OVERLAY ===== -->
+  <div id="searchOverlay" class="search-overlay">
+    <div class="search-container">
+        <div class="search-header">
+            <h3><i class="fa fa-search" style="color: var(--tf-yellow); margin-right: 10px;"></i>Search Tongfang BMS</h3>
+            <span class="close-search" onclick="closeSearch()">&times;</span>
+        </div>
+        <div class="search-input-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="Type to search... (e.g., 'access control', 'bacnet', 'hotel')" autocomplete="off">
+            <i class="fa fa-search search-icon"></i>
+            <span class="search-shortcut">Ctrl + K</span>
+        </div>
+        <div id="searchStats" class="search-stats"></div>
+        <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+
+  <!-- ===== HEADER ===== -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
-            <!-- LOGO - LEFT -->
+            <!-- LOGO -->
             <div class="header-logo">
                 <a href="/index.html" class="logo-wrapper">
                     <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                 </a>
             </div>
             
-            <!-- NAVIGATION - CENTER -->
+            <!-- NAVIGATION -->
             <nav id="mainNav" class="nav-menu">
                 
-                <!-- SOLUTIONS DROPDOWN - 3 COLUMNS -->
+                <!-- SOLUTIONS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                         Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -727,7 +910,7 @@
                     </div>
                 </div>
                 
-                <!-- PRODUCTS DROPDOWN - 4 COLUMNS -->
+                <!-- PRODUCTS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                         Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -748,7 +931,6 @@
                             <!-- Column 2: Fire & Safety -->
                             <div>
                                 <div class="dropdown-category">Fire & Safety</div>
-                               <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
                                 <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
                                 <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
                                 <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
@@ -824,13 +1006,13 @@
                 <a href="/contact/index.html" class="nav-link-custom">Contact</a>
             </nav>
 
-            <!-- RIGHT GROUP - Hamburger + Icons -->
+            <!-- RIGHT GROUP -->
             <div class="header-right-group">
                 <button class="mobile-toggle" onclick="toggleMobileMenu()">
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="header-icons">
-                    <i class="fa fa-search"></i>
+                    <i class="fa fa-search" onclick="openSearch()" style="cursor: pointer;"></i>
                     <i class="fa fa-globe"></i>
                 </div>
             </div>
@@ -838,10 +1020,8 @@
     </div>
 </header>
 
-
     <!-- HERO SLIDER -->
     <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-        <!-- Indicators -->
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
@@ -850,7 +1030,6 @@
             <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
         </div>
 
-        <!-- Slides -->
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/banner_.png" class="hero-bg" alt="Hero 1">
@@ -863,19 +1042,13 @@
                     </p>
                 </div>
             </div>
-            <!-- Slide 2 -->
-<div class="carousel-item">
-    <picture>
-        <!-- MOBILE: screens up to 768px get the mobile image -->
-        <source media="(max-width: 768px)" srcset="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4-mob.jpg">
-        
-        <!-- DESKTOP: screens 769px and above get the desktop image -->
-        <source media="(min-width: 769px)" srcset="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg">
-        
-        <!-- Fallback -->
-        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg" class="hero-bg" alt="Hero 2">
-    </picture>
-</div>
+            <div class="carousel-item">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4-mob.jpg">
+                    <source media="(min-width: 769px)" srcset="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-4.jpg" class="hero-bg" alt="Hero 2">
+                </picture>
+            </div>
             <div class="carousel-item">
                 <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/hero-1.jpg" class="hero-bg" alt="Hero 3">
             </div>
@@ -887,7 +1060,6 @@
             </div>
         </div>
 
-        <!-- Controls -->
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
         </button>
@@ -973,7 +1145,6 @@
             <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
         </div>
         <div class="compact-grid">
-            <!-- All your solution cards here - keep exactly as before -->
             <div class="sol-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/retail-card.jpg" alt="Residential"><div class="sol-label">Residential</div><a href="/solutions/residential/index.html" class="sol-overlay"><h3>Residential</h3><p>Smart home automation & intercoms.</p></a></div>
             <div class="sol-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/office-card.jpg" alt="Office"><div class="sol-label">Office Buildings</div><a href="/solutions/office/index.html" class="sol-overlay"><h3>Offices</h3><p>Energy efficiency & access control.</p></a></div>
             <div class="sol-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/hotel-smart-security/Hotel-Security-System-Design-Scheme.jpg" alt="Hotel"><div class="sol-label">Hotels</div><a href="/solutions/hotel-smart-security/index.html" class="sol-overlay"><h3>Hospitality</h3><p>Luxury guest experience & RCU.</p></a></div>
@@ -1003,7 +1174,6 @@
 
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
-                <!-- All your product cards here - keep exactly as before -->
                 <div class="swiper-slide">
                     <div class="product-card">
                         <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png">
@@ -1102,11 +1272,10 @@
         </div>
     </section>
 
-    <!-- FOOTER - FROM ORIGINAL FILE -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
 
-            <!-- Company Info -->
             <div>
                 <h5>Tongfang BMS System Integration</h5>
                 <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
@@ -1114,7 +1283,6 @@
                 <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
             </div>
 
-            <!-- Quick Links -->
             <div>
                 <h5>Quick Links</h5>
                 <a class="btn-link" href="/index.html">Home</a><br>
@@ -1126,7 +1294,6 @@
                 <a class="btn-link" href="/contact/index.html">Contact</a>
             </div>
 
-            <!-- Business Hours -->
             <div>
                 <h5>Business Hours</h5>
                 <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
@@ -1134,21 +1301,16 @@
                 <p>Sunday: Closed</p>
             </div>
 
-            <!-- Contact & Newsletter -->
             <div>
                 <h5>Connect With Us</h5>
                 <p>Get smart building & automation updates.</p>
 
-                <!-- Newsletter -->
                 <div class="newsletter-box" style="margin:20px 0;">
                     <input class="form-control" type="email" placeholder="Your email">
                     <button class="btn btn-primary">Subscribe</button>
                 </div>
 
-                <!-- Social / Chat Icons -->
                 <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
-
-                    <!-- WeChat -->
                     <a href="weixin://dl/chat?wxid_3jxtp7rz3p8e22"
                        title="Chat on WeChat"
                        style="color:#9ca3af;font-size:30px;transition:0.3s;"
@@ -1156,8 +1318,6 @@
                        onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
                        <i class="fab fa-weixin"></i>
                     </a>
-
-                    <!-- Telegram -->
                     <a href="https://t.me/+251990207888"
                        target="_blank"
                        title="Chat on Telegram"
@@ -1166,8 +1326,6 @@
                        onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
                        <i class="fab fa-telegram"></i>
                     </a>
-
-                    <!-- WhatsApp -->
                     <a href="https://wa.me/254712828498?text=Hello%20Tongfang%20BMS%20Team"
                        target="_blank"
                        title="Chat on WhatsApp"
@@ -1176,8 +1334,6 @@
                        onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
                        <i class="fab fa-whatsapp"></i>
                     </a>
-
-                    <!-- Messenger -->
                     <a href="https://m.me/tongfangbms"
                        target="_blank"
                        title="Chat on Messenger"
@@ -1186,7 +1342,6 @@
                        onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
                        <i class="fab fa-facebook-messenger"></i>
                     </a>
-
                 </div>
 
                 <p style="font-size:12px;color:#6b7280;text-align:center;margin-top:10px;">
@@ -1197,7 +1352,6 @@
 
         </div>
 
-        <!-- Copyright -->
         <div class="copyright" style="text-align:center;padding:15px 0;">
             © 2026 Tongfang BMS System Integration PLC. All Rights Reserved.
         </div>
@@ -1208,7 +1362,179 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // SIMPLIFIED JavaScript - only mobile menu functionality
+        // ===== SEARCH INDEX =====
+        const searchIndex = [
+            // Solutions
+            { title: "Residential Solutions", category: "Solutions", url: "/solutions/residential/index.html", content: "Smart home automation, intercoms, lighting control, security systems for homes and apartments" },
+            { title: "Office Buildings", category: "Solutions", url: "/solutions/office/index.html", content: "Energy efficiency, access control, HVAC optimization for commercial office spaces" },
+            { title: "Hotels & Hospitality", category: "Solutions", url: "/solutions/hotel-smart-security/index.html", content: "Luxury guest experience, RCU, room control, smart hotel automation" },
+            { title: "Educational Institutions", category: "Solutions", url: "/solutions/smart-campus-hub/index.html", content: "Campus automation, school security, university building management" },
+            { title: "Shopping Malls", category: "Solutions", url: "/solutions/retail/index.html", content: "Retail analytics, HVAC control, lighting automation for malls" },
+            { title: "Hospitals & Healthcare", category: "Solutions", url: "/solutions/smart-hospital-access/index.html", content: "Patient safety, critical infrastructure, medical gas monitoring" },
+            { title: "Airports", category: "Solutions", url: "/solutions/airport/index.html", content: "Passenger flow management, security integration, baggage handling" },
+            { title: "Smart Factories", category: "Solutions", url: "/solutions/industrial/index.html", content: "Industrial AIoT, factory automation, production monitoring" },
+            { title: "Data Centers (IPDC)", category: "Solutions", url: "/solutions/ipdc/index.html", content: "Server room monitoring, cooling optimization, power management" },
+            { title: "Smart Ports", category: "Solutions", url: "/solutions/smart-port-platform/index.html", content: "Logistics automation, crane control, gate management systems" },
+            { title: "Smart Cities", category: "Solutions", url: "/solutions/smart-city/index.html", content: "Urban IoT platforms, city-wide monitoring, smart infrastructure" },
+            { title: "Smart Traffic", category: "Solutions", url: "/solutions/traffic/index.html", content: "Intelligent traffic signals, ITS, transportation management" },
+            { title: "Sports Centers", category: "Solutions", url: "/solutions/sports-center-automation/index.html", content: "Gym HVAC, lighting control, arena automation" },
+            { title: "Parking Lots", category: "Solutions", url: "/solutions/parking-lots/index.html", content: "Parking guidance, access control, payment systems" },
+            { title: "Energy & Carbon", category: "Solutions", url: "/solutions/energy-carbon-optimization/index.html", content: "Energy management, carbon footprint reduction, sustainability" },
+            
+            // Products
+            { title: "DDC Controllers", category: "Products", url: "/products/building-management/ddc-controllers/index.html", content: "Programmable Direct Digital Control for HVAC and building automation" },
+            { title: "I/O Modules", category: "Products", url: "/products/building-management/io-modules/index.html", content: "Input/Output expansion modules for building controllers" },
+            { title: "Sensors & Thermostats", category: "Products", url: "/products/hvac-field-control/thermostats/index.html", content: "Temperature sensors, humidity sensors, HVAC monitoring devices" },
+            { title: "Actuators", category: "Products", url: "/products/hvac-field-control/actuators/index.html", content: "Valve actuators, damper actuators, flow control" },
+            { title: "BMS Software", category: "Products", url: "/products/building-management/ibms-platform/index.html", content: "Centralized AIoT management platform, building analytics" },
+            { title: "Energy Meters", category: "Products", url: "/products/Energy-Management/power-meters/index.html", content: "Power meters, energy monitoring, utility metering" },
+            { title: "Control Panels", category: "Products", url: "/products/Lighting-Control/Lighting-Scene-Panels/index.html", content: "Lighting control panels, scene controllers, pre-wired enclosures" },
+            { title: "Face Recognition Terminals", category: "Products", url: "/products/access-control/face-recognition/index.html", content: "Biometric access control with facial recognition" },
+            { title: "Fingerprint Terminals", category: "Products", url: "/products/access-control/fingerprint/index.html", content: "Biometric fingerprint access control systems" },
+            { title: "Card Readers", category: "Products", url: "/products/access-control/card-readers/index.html", content: "RFID card readers, proximity readers, smart card access" },
+            { title: "Access Controllers", category: "Products", url: "/products/access-control/Access_Controllers/index.html", content: "Door controllers, access control panels" },
+            { title: "Electric Locks", category: "Products", url: "/products/access-control/electric-locks/index.html", content: "Magnetic locks, electric strikes, door hardware" },
+            { title: "Smoke Detectors", category: "Products", url: "/products/fire-alarm/detectors/index.html", content: "Smoke detection, fire alarm sensors" },
+            { title: "Lighting Controllers", category: "Products", url: "/products/Lighting-Control/lighting-controllers/index.html", content: "DALI controllers, lighting automation modules" },
+            { title: "Occupancy Sensors", category: "Products", url: "/products/Lighting-Control/occupancy-sensors/index.html", content: "Motion sensors, presence detection for lighting control" },
+            
+            // Technologies
+            { title: "AIoT Intelligence", category: "Technologies", url: "/technologies/see-clearer-ai/index.html", content: "Deep learning, AI analytics, computer vision for security" },
+            { title: "Open Standards", category: "Technologies", url: "/technologies/data-backbone/index.html", content: "BACnet, Modbus, LonWorks, open protocol integration" },
+            { title: "Weak Current Systems", category: "Technologies", url: "/technologies/networking-infrastructure/index.html", content: "ELV, structured cabling, data backbone, network infrastructure" },
+            
+            // Projects
+            { title: "Oromia Presidential Palace", category: "Projects", url: "/projects/index.html", content: "High-security integration, BAS control, mission-critical infrastructure" },
+            { title: "Ethiopian Airlines HQ", category: "Projects", url: "/projects/index.html", content: "Campus-wide ICT, security monitoring, structured cabling" },
+            { title: "La Gare - Eagle Hills", category: "Projects", url: "/projects/index.html", content: "Smart parking, video intercoms, high-speed fiber" },
+            { title: "Shanghai World Trade Center", category: "Projects", url: "/projects/index.html", content: "PDS, CCTV, fire protection integration" },
+            { title: "Wenzhou High-Speed New City", category: "Projects", url: "/projects/index.html", content: "Video surveillance, residential intercoms, energy management" },
+            
+            // Pages
+            { title: "Home", category: "Page", url: "/index.html", content: "Tongfang BMS - Building AIoT Solutions" },
+            { title: "About Us", category: "Page", url: "/about/index.html", content: "Company information, mission, team" },
+            { title: "Contact", category: "Page", url: "/contact/index.html", content: "Get in touch with our team" },
+        ];
+
+        // Search functionality
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchStats = document.getElementById('searchStats');
+
+        function openSearch() {
+            searchOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                searchInput.focus();
+            }, 100);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+            searchStats.innerHTML = '';
+        }
+
+        // Keyboard shortcut (Ctrl+K)
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openSearch();
+            }
+            // ESC to close
+            if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                closeSearch();
+            }
+        });
+
+        // Search function with first-letter matching
+        function performSearch(query) {
+            if (!query || query.length < 1) {
+                searchResults.innerHTML = '<div class="no-results">Start typing to search...</div>';
+                searchStats.innerHTML = '';
+                return;
+            }
+
+            const lowercaseQuery = query.toLowerCase();
+            
+            // Filter results based on first letters matching
+            const filtered = searchIndex.filter(item => {
+                const titleMatch = item.title.toLowerCase().includes(lowercaseQuery);
+                const contentMatch = item.content.toLowerCase().includes(lowercaseQuery);
+                const categoryMatch = item.category.toLowerCase().includes(lowercaseQuery);
+                
+                // Check if query matches the start of any word in title
+                const words = item.title.toLowerCase().split(' ');
+                const startsWithMatch = words.some(word => word.startsWith(lowercaseQuery));
+                
+                return titleMatch || contentMatch || categoryMatch || startsWithMatch;
+            });
+
+            // Sort results: exact matches first, then starts with, then contains
+            filtered.sort((a, b) => {
+                const aTitle = a.title.toLowerCase();
+                const bTitle = b.title.toLowerCase();
+                
+                // Exact match
+                if (aTitle === lowercaseQuery && bTitle !== lowercaseQuery) return -1;
+                if (bTitle === lowercaseQuery && aTitle !== lowercaseQuery) return 1;
+                
+                // Starts with
+                const aStarts = aTitle.startsWith(lowercaseQuery);
+                const bStarts = bTitle.startsWith(lowercaseQuery);
+                if (aStarts && !bStarts) return -1;
+                if (bStarts && !aStarts) return 1;
+                
+                return 0;
+            });
+
+            // Update stats
+            searchStats.innerHTML = `Found ${filtered.length} result${filtered.length !== 1 ? 's' : ''} for "${query}"`;
+
+            // Display results
+            if (filtered.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(item => {
+                // Highlight matching text
+                const regex = new RegExp(`(${lowercaseQuery})`, 'gi');
+                const highlightedTitle = item.title.replace(regex, '<span class="search-highlight">$1</span>');
+                
+                html += `
+                    <a href="${item.url}" class="result-item" onclick="closeSearch()">
+                        <div class="category">${item.category}</div>
+                        <h4>${highlightedTitle}</h4>
+                        <p>${item.content.substring(0, 100)}${item.content.length > 100 ? '...' : ''}</p>
+                    </a>
+                `;
+            });
+            
+            searchResults.innerHTML = html;
+        }
+
+        // Debounce search input
+        let searchTimeout;
+        searchInput.addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch(e.target.value);
+            }, 200);
+        });
+
+        // Click outside to close
+        searchOverlay.addEventListener('click', function(e) {
+            if (e.target === searchOverlay) {
+                closeSearch();
+            }
+        });
+
+        // Mobile menu toggle
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
@@ -1216,18 +1542,15 @@
             
             nav.classList.toggle('active');
             
-            // Force white background when menu is open on mobile
             if(nav.classList.contains('active')) {
                 header.style.background = "#fff";
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
                 mobileToggle.style.color = "#333";
                 
-                // Change nav link colors to dark when menu is open
                 document.querySelectorAll('.nav-link-custom').forEach(link => {
                     link.style.color = "#333";
                 });
                 
-                // Change icons to dark
                 document.querySelectorAll('.header-icons i').forEach(icon => {
                     icon.style.color = "#333";
                 });
@@ -1236,12 +1559,10 @@
                 header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
                 mobileToggle.style.color = "#111827";
                 
-                // Reset nav link colors to black
                 document.querySelectorAll('.nav-link-custom').forEach(link => {
                     link.style.color = "#111827";
                 });
                 
-                // Reset icons to black
                 document.querySelectorAll('.header-icons i').forEach(icon => {
                     icon.style.color = "#111827";
                 });

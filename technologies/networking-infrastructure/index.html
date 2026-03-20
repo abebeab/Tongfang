@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Weak Current Systems | ELV, Structured Cabling & Data Backbone | Tongfang BMS AIoT</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="description" content="Tongfang BMS Weak Current Systems: Comprehensive ELV solutions including structured cabling, data backbone, fiber optics, network infrastructure, and AIoT-enabled connectivity for smart buildings.">
+    <meta name="keywords" content="Weak Current Systems, ELV Systems, Structured Cabling, Data Backbone, Fiber Optic Infrastructure, Network Cabling, Building Connectivity, AIoT Infrastructure, Smart Building Wiring, Low Voltage Systems">
+    <meta name="author" content="Tongfang BMS">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Weak Current Systems & Data Backbone | Tongfang BMS">
+    <meta property="og:description" content="AIoT-enabled ELV and structured cabling solutions for intelligent building connectivity">
+    <meta property="og:image" content="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/technologyes/weekcurent.png">
+    <meta property="og:url" content="https://tongfangbms.com/technologies/networking-infrastructure/">
+    
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/technologyes/weekcurent.png" as="image">
+    <link rel="preload" href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" as="image">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS - load with media to prevent blocking -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"></noscript>
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            
+            /* CLEAN TECH PALETTE */
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
+            
+            --header-height: 80px;
+            --card-radius: 16px;
+            --btn-radius: 50px;
+            
+            /* PREMIUM SHADOWS */
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: var(--header-height);
+        }
+        
+        h1, h2, h3, h4 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        a { text-decoration: none; transition: var(--transition); }
+        html { scroll-behavior: smooth; }
+
+        /* --- HEADER (exactly from main site) --- */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1030; 
+            min-height: var(--header-height); 
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+        
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: #111827;
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
+        }
+        .nav-link-custom:hover { 
+            color: var(--tf-blue);
+        }
+
+        .dropdown-parent-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-item-dropdown { 
+            position: static; 
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+
+        .dropdown-menu-custom {
+            position: absolute;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            width: 100vw;
+            background: #fff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: 1100;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dropdown-inner {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 20px;
+            text-align: left;
+        }
+
+        .nav-item-dropdown:first-child .dropdown-inner {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+        .dropdown-category {
+            color: var(--tf-blue); 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            margin: 0 0 5px 0;
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 3px;
+        }
+
+        .dropdown-link {
+            color: #4b5563; 
+            font-size: 13px; 
+            font-weight: 500;
+            padding: 6px 0; 
+            display: block;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        .dropdown-link:hover {
+            color: var(--tf-blue);
+            padding-left: 8px;
+            border-bottom-color: var(--tf-yellow);
+        }
+
+        .more-link {
+            color: var(--tf-blue);
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        .more-link:hover {
+            padding-left: 5px;
+        }
+
+        .header-icons { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 5px; 
+        }
+        
+        .header-icons i {
+            color: #111827;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: #111827;
+            cursor: pointer; 
+            background: none;
+            border: none;
+            gap:7px ;
+        }
+
+        /* --- SEARCH OVERLAY (exactly from main site) --- */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .search-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .search-header h3 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .close-search {
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-search:hover {
+            color: var(--tf-yellow);
+            transform: rotate(90deg);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 30px;
+            font-size: 18px;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            background: #1a1a1a;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--tf-yellow);
+            background: #222;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tf-yellow);
+            font-size: 20px;
+        }
+
+        .search-results {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 15px 25px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            color: var(--tf-text);
+        }
+
+        .result-item:hover {
+            background: #f5f5f5;
+            padding-left: 35px;
+        }
+
+        .result-item h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: var(--tf-blue);
+        }
+
+        .result-item p {
+            margin: 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .result-item .category {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--tf-yellow);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: #666;
+        }
+
+        .search-highlight {
+            background-color: var(--tf-yellow);
+            color: #000;
+            padding: 2px 0;
+            font-weight: 700;
+        }
+
+        .search-stats {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .search-shortcut {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 12px;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* --- Technology Hero (adapted from main site style) --- */
+        .tech-hero {
+            position: relative;
+            height: 70vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, #0a1a2f 0%, #1a3a5f 100%);
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero-bg-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="100%" height="100%" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><circle cx="200" cy="200" r="3" fill="%23ffcc00" opacity="0.3"/><circle cx="400" cy="150" r="4" fill="%23ffffff" opacity="0.2"/><circle cx="600" cy="300" r="3" fill="%23ffcc00" opacity="0.3"/><circle cx="800" cy="250" r="4" fill="%23ffffff" opacity="0.2"/><circle cx="1000" cy="400" r="3" fill="%23ffcc00" opacity="0.3"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.9);
+            opacity: 0;
+            animation: fadeUp 1s 0.5s forwards;
+        }
+
+        .hero-content h1 span {
+            color: var(--tf-yellow);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0;
+            animation: fadeUp 1s 0.7s forwards;
+        }
+
+        @keyframes fadeUp { 
+            from { opacity: 0; transform: translateY(40px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 50px;
+            opacity: 0;
+            animation: fadeUp 1s 0.9s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--tf-yellow);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+        }
+
+        /* --- Quick Navigation Bar (from main site) --- */
+        .project-nav-bar {
+            position: sticky;
+            top: 80px;
+            z-index: 1020;
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .nav-breadcrumb .breadcrumb-item { 
+            position: relative; 
+            display: inline-block; 
+        }
+        .nav-breadcrumb .breadcrumb-item a {
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue) !important;
+            font-weight: 800;
+        }
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            bottom: -6px; 
+            width: 100%; 
+            height: 3px; 
+            background: var(--tf-yellow); 
+            border-radius: 10px;
+        }
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { 
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px; 
+        }
+        
+        .scroll-target { 
+            scroll-margin-top: 160px; 
+        }
+
+        /* --- Section Header (from main site) --- */
+        .section-header { 
+            text-align: center; 
+            margin: 90px 0 60px; 
+            padding: 0 15px; 
+        }
+        .section-header h2 { 
+            font-size: 42px; 
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+            letter-spacing: -1px; 
+        }
+        .section-header .line { 
+            width: 70px; 
+            height: 5px; 
+            background: var(--tf-yellow); 
+            margin: 0 auto 20px; 
+            border-radius: 10px; 
+        }
+
+        /* --- ELV Systems Grid (adapted from strat-card style) --- */
+        .elv-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .elv-card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: var(--card-radius);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(14,95,172,0.08);
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .elv-card:hover {
+            transform: translateY(-16px) scale(1.02);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--tf-yellow);
+        }
+
+        .elv-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, var(--tf-blue), #003377);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .elv-card:hover .elv-icon {
+            background: var(--tf-yellow);
+            color: var(--tf-blue);
+            transform: rotateY(180deg);
+        }
+
+        .elv-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--tf-blue);
+        }
+
+        .elv-card p {
+            font-size: 14px;
+            color: var(--tf-text);
+            line-height: 1.6;
+        }
+
+        /* --- Data Flow Visualization (new) --- */
+        .data-flow-section {
+            background: linear-gradient(to bottom, #ffffff, #f4f7fa);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .flow-visualization {
+            background: white;
+            border-radius: var(--card-radius);
+            padding: 60px;
+            box-shadow: var(--shadow-lift);
+            margin-top: 50px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+        }
+
+        .network-grid::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--tf-blue), var(--tf-yellow), transparent);
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .network-node {
+            background: white;
+            border-radius: var(--card-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(14,95,172,0.08);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .network-node:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lift);
+            border-color: var(--tf-yellow);
+        }
+
+        .node-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--tf-blue), #003377);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 32px;
+            transition: var(--transition);
+        }
+
+        .network-node:hover .node-icon {
+            background: var(--tf-yellow);
+            color: var(--tf-blue);
+            transform: rotate(360deg);
+        }
+
+        .pulse-animation {
+            position: relative;
+        }
+
+        .pulse-animation::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -20px;
+            width: 10px;
+            height: 10px;
+            background: var(--tf-yellow);
+            border-radius: 50%;
+            transform: translateY(-50%);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,204,0,0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255,204,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,204,0,0); }
+        }
+
+        /* --- Cabling Showcase (using sol-card style) --- */
+        .cabling-showcase {
+            background: linear-gradient(135deg, #0a1a2f 0%, #1a3a5f 100%);
+            padding: 100px 0;
+            color: white;
+        }
+
+        .cabling-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding: 0 30px;
+        }
+
+        .cabling-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+
+        .cabling-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+            border-color: var(--tf-yellow);
+        }
+
+        .cabling-icon {
+            font-size: 48px;
+            color: var(--tf-yellow);
+            margin-bottom: 20px;
+        }
+
+        .cabling-specs {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .spec-label {
+            opacity: 0.7;
+        }
+
+        .spec-value {
+            color: var(--tf-yellow);
+            font-weight: 600;
+        }
+
+        /* --- AIoT Intelligence (using strat-section style) --- */
+        .aiot-layer {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .intelligence-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding: 0 30px;
+        }
+
+        .intelligence-visual {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(145deg, #f0f4ff, #ffffff);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lift);
+        }
+
+        .ai-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, var(--tf-yellow) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, var(--tf-blue) 0%, transparent 50%);
+            animation: pulseBackground 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseBackground {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .data-streams {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stream {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--tf-yellow), transparent);
+            animation: flowDown 3s linear infinite;
+        }
+
+        @keyframes flowDown {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        .intelligence-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .intelligence-features li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intelligence-features li i {
+            color: var(--tf-yellow);
+            font-size: 20px;
+        }
+
+        /* --- Project Cards (from main site) --- */
+        .project-showcase {
+            padding: 100px 0;
+            background: #f8faff;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1440px;
+            margin: 60px auto 0;
+            padding: 0 30px;
+        }
+
+        .project-card-home {
+            background: #fff;
+            border: none;
+            transition: 0.4s;
+            height: 100%;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+        }
+        
+        .project-card-home:hover { 
+            transform: translateY(-10px); 
+            box-shadow: var(--shadow-lift); 
+        }
+
+        .project-card-home img { 
+            width: 100%; 
+            height: 240px; 
+            object-fit: cover; 
+            transition: 0.5s; 
+        }
+        
+        .project-card-home:hover img { 
+            transform: scale(1.05); 
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        .badge.bg-warning { background: var(--tf-yellow) !important; color: var(--tf-dark) !important; }
+        .badge.bg-primary { background: var(--tf-blue) !important; color: white !important; }
+
+        /* --- Technical Specs Table --- */
+        .specs-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .specs-table {
+            background: var(--tf-bg-light);
+            border-radius: var(--card-radius);
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .specs-table table {
+            width: 100%;
+        }
+
+        .specs-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .specs-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .specs-table .badge {
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            font-size: 12px;
+        }
+
+        /* --- CTA Section (similar to strat-section) --- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--tf-blue), #002b5c);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            padding: 18px 45px;
+            border-radius: var(--btn-radius);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 30px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* --- FOOTER (exactly from main site) --- */
+        .footer {
+            background: #0b111a;
+            color: #aaa;
+            margin-top: 0;
+            padding-top: 80px;
+            font-size: 14px;
+        }
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        .footer-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 40px;
+        }
+        .footer p { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 10px; 
+        }
+        .footer i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            width: 20px; 
+            text-align: center; 
+        }
+        .footer .btn-link { 
+            display: inline-block; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: var(--transition);
+            text-decoration: none;
+            color: #9ca3af;
+            font-weight: 600;
+        }
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow); 
+            padding-left: 8px; 
+            background: transparent;
+        }
+        .newsletter-box { 
+            position: relative; 
+            margin-top: 15px; 
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 15px;
+            padding-right: 120px;
+            border: 1px solid #374151;
+            background: #1f2937;
+            color: var(--tf-white);
+            border-radius: var(--btn-radius);
+            font-size: 14px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        .form-control:focus { 
+            border-color: var(--tf-blue); 
+        }
+        .btn-primary {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            background: var(--tf-blue);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .btn-primary:hover { 
+            background: #003d82; 
+        }
+        .copyright {
+            background: #05080c;
+            padding: 25px;
+            margin-top: 60px;
+            color: #6b7280;
+            font-size: 13px;
+            text-align: center;
+            border-top: 1px solid #1a222e;
+        }
+
+        /* ===== MOBILE RESPONSIVENESS (from main site) ===== */
+        @media (max-width: 1200px) {
+            .elv-grid { grid-template-columns: repeat(2, 1fr); }
+            .cabling-grid { grid-template-columns: repeat(2, 1fr); }
+            .project-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 991px) {
+            .header-fix { height: auto; }
+            .header-container { flex-wrap: nowrap; }
+            .logo-img { height: 50px; }
+            
+            .header-right-group {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-left: auto;
+            }
+            
+            .mobile-toggle { 
+                display: block;
+                order: 1;
+                font-size: 24px;
+                color: #333;
+                padding: 0;
+            }
+            
+            .header-icons { 
+                display: flex !important;
+                align-items: center;
+                gap: 15px;
+                order: 2;
+            }
+            
+            .header-icons i { font-size: 18px !important; color: #333; }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
+                z-index: 1000;
+            }
+            
+            .nav-menu.active { display: flex; }
+            
+            .nav-link-custom { 
+                color: #333; 
+                width: 100%; 
+                padding: 12px 30px; 
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+                font-size: 14px;
+            }
+            
+            .nav-item-dropdown { 
+                width: 100%; 
+                flex-direction: column; 
+                align-items: flex-start;
+                height: auto;
+            }
+            
+            .dropdown-menu-custom {
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px 20px;
+                background: #f9f9f9;
+                grid-template-columns: 1fr;
+                max-height: none;
+            }
+            
+            .dropdown-menu-custom::before { display: none; }
+            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
+            
+            .dropdown-category { margin-top: 15px; font-size: 12px; }
+            .dropdown-link { padding: 8px 0; font-size: 13px; }
+            
+            .nav-item-dropdown.active > .dropdown-parent-link i {
+                transform: rotate(180deg);
+                transition: transform 0.3s ease;
+            }
+            
+            .hero-content h1 { font-size: 48px; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+            .intelligence-showcase { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .elv-grid, .cabling-grid, .project-grid { grid-template-columns: 1fr; }
+            .network-grid { grid-template-columns: 1fr; }
+            .network-grid::before { display: none; }
+            .flow-visualization { padding: 30px; }
+        }
+
+        @media (max-width: 576px) {
+            .logo-img { height: 40px; }
+            .header-icons { gap: 10px; }
+            .header-icons i { font-size: 16px !important; }
+            .search-header h3 { font-size: 18px; }
+            .close-search { font-size: 30px; }
+            .footer-container { grid-template-columns: 1fr; gap: 30px; }
+        }
+
+        /* ===== FORCE EAGER LOADING ===== */
+        img, video {
+            loading: eager;
+            decoding: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== SEARCH OVERLAY (exactly from main site) ===== -->
+    <div id="searchOverlay" class="search-overlay">
+        <div class="search-container">
+            <div class="search-header">
+                <h3><i class="fa fa-search" style="color: var(--tf-yellow); margin-right: 10px;"></i>Search Tongfang BMS</h3>
+                <span class="close-search" onclick="closeSearch()">&times;</span>
+            </div>
+            <div class="search-input-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="Type to search... (e.g., 'weak current', 'structured cabling', 'fiber')" autocomplete="off">
+                <i class="fa fa-search search-icon"></i>
+                <span class="search-shortcut">Ctrl + K</span>
+            </div>
+            <div id="searchStats" class="search-stats"></div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER (exactly from main site) ===== -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html" class="logo-wrapper">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img" loading="eager" fetchpriority="high">
+                    </a>
+                </div>
+                
+                <nav id="mainNav" class="nav-menu">
+                    <div class="nav-item-dropdown">
+                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Buildings</div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Infrastructure</div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">City Systems</div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item-dropdown">
+                        <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
+                            Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Access Control</div>
+                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                    <a href="/products/access-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Fire & Safety</div>
+                                    <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                    <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Building Management</div>
+                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                    <a href="/products/building-management/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">IP and ITC T-7700 Series</div>
+                                    <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                    <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
+                                    <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
+                                    <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
+                                    <a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">HVAC & Field Control</div>
+                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                    <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
+                                    <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
+                                    <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Lighting Control</div>
+                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                    <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
+                                    <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Energy Management</div>
+                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                    <a href="/products/Energy-Management/Water Meters/index.html" class="dropdown-link">Water Meters</a>
+                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                    <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
+                                    <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
+                                    <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
+                                    <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                </nav>
+
+                <div class="header-right-group">
+                    <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="header-icons">
+                        <i class="fa fa-search" onclick="openSearch()" style="cursor: pointer;"></i>
+                        <i class="fa fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Technology Hero Section -->
+    <section class="tech-hero">
+        <div class="hero-bg-particles"></div>
+        <div class="hero-content">
+            <div>
+                <h1>Weak Current <span>Systems</span></h1>
+                <p>ELV, Structured Cabling & Data Backbone • AIoT-Enabled Intelligent Connectivity</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">10G+</div>
+                        <div class="stat-label">Bandwidth Capacity</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.99%</div>
+                        <div class="stat-label">Uptime Reliability</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50k+</div>
+                        <div class="stat-label">Connected Devices</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation -->
+    <div class="project-nav-bar py-3 border-bottom bg-white">
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav aria-label="breadcrumb" class="nav-breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
+                    <li class="breadcrumb-item"><a href="#elv-systems">ELV Systems</a></li>
+                    <li class="breadcrumb-item"><a href="#cabling">Structured Cabling</a></li>
+                    <li class="breadcrumb-item"><a href="#aiot">AIoT Intelligence</a></li>
+                </ol>
+            </nav>
+            <div class="d-none d-md-block">
+                <span class="text-dark fw-bold small" style="letter-spacing:1px;">
+                    <i class="fa fa-network-wired text-primary me-2"></i>
+                    DATA BACKBONE EXPERTS
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Flow Overview -->
+    <section id="overview" class="data-flow-section scroll-target">
+        <div class="container">
+            <div class="section-header">
+                <h2>AIoT Data Backbone</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Intelligent data flow from edge to cloud</p>
+            </div>
+            
+            <div class="flow-visualization">
+                <div class="network-grid">
+                    <div class="network-node pulse-animation">
+                        <div class="node-icon"><i class="fas fa-microchip"></i></div>
+                        <h4>Edge Devices</h4>
+                        <p>Sensors, Controllers, IoT Endpoints</p>
+                        <small class="text-muted">10,000+ devices per km²</small>
+                    </div>
+                    <div class="network-node pulse-animation">
+                        <div class="node-icon"><i class="fas fa-network-wired"></i></div>
+                        <h4>Converged Backbone</h4>
+                        <p>10G/40G/100G Fiber Infrastructure</p>
+                        <small class="text-muted">Zero packet loss</small>
+                    </div>
+                    <div class="network-node">
+                        <div class="node-icon"><i class="fas fa-cloud"></i></div>
+                        <h4>AIoT Cloud</h4>
+                        <p>Real-time Analytics & Control</p>
+                        <small class="text-muted"><5ms latency</small>
+                    </div>
+                </div>
+                
+                <div style="height: 4px; background: linear-gradient(90deg, var(--tf-blue), var(--tf-yellow), var(--tf-blue)); width: 100%; margin: 40px 0; border-radius: 2px;"></div>
+                
+                <div class="row text-center mt-5">
+                    <div class="col-md-4">
+                        <i class="fas fa-bolt text-warning mb-3" style="font-size: 30px;"></i>
+                        <h5>PoE++ Ready</h5>
+                        <p class="small">90W per port</p>
+                    </div>
+                    <div class="col-md-4">
+                        <i class="fas fa-shield-alt text-primary mb-3" style="font-size: 30px;"></i>
+                        <h5>Military-grade Security</h5>
+                        <p class="small">AES-256 Encryption</p>
+                    </div>
+                    <div class="col-md-4">
+                        <i class="fas fa-chart-line text-success mb-3" style="font-size: 30px;"></i>
+                        <h5>AI Predictive Maintenance</h5>
+                        <p class="small">99.9% failure prediction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ELV Systems Grid -->
+    <section id="elv-systems" class="elv-section scroll-target" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <h2>ELV Systems</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Extra Low Voltage infrastructure for intelligent buildings</p>
+            </div>
+            
+            <div class="elv-grid">
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-ethernet"></i></div>
+                    <h3>Structured Cabling</h3>
+                    <p>Category 6A/7/8 copper • OM5/OS2 fiber • Future-proof 40G/100G ready • TIA/EIA compliant</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-wifi"></i></div>
+                    <h3>Wireless Infrastructure</h3>
+                    <p>Wi-Fi 6E/7 • Private 5G • BLE mesh • IoT gateway integration • Seamless roaming</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-video"></i></div>
+                    <h3>CCTV & Security</h3>
+                    <p>IP surveillance • PoE cameras • AI analytics • Edge recording • 4K/8K support</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h3>IP Telephony</h3>
+                    <p>VoIP • SIP trunking • Unified communications • Emergency paging</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-bell"></i></div>
+                    <h3>Public Address</h3>
+                    <p>IP speakers • Zone control • Emergency evacuation • Background music</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-door-open"></i></div>
+                    <h3>Access Control</h3>
+                    <p>IP controllers • Biometric readers • Elevator integration • Visitor management</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-fire-extinguisher"></i></div>
+                    <h3>Fire Alarm</h3>
+                    <p>Addressable loops • Voice evacuation • Integration with BMS • 24/7 monitoring</p>
+                </div>
+                <div class="elv-card">
+                    <div class="elv-icon"><i class="fas fa-solar-panel"></i></div>
+                    <h3>Building Automation</h3>
+                    <p>BACnet/IP • Modbus TCP • Lighting control • HVAC integration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structured Cabling Showcase -->
+    <section id="cabling" class="cabling-showcase scroll-target">
+        <div class="container">
+            <h2 class="text-center text-white">Next-Gen Structured Cabling</h2>
+            <div class="line" style="background: var(--tf-yellow); margin: 20px auto;"></div>
+            <p class="text-center text-white-50 mb-5">The backbone of intelligent buildings</p>
+            
+            <div class="cabling-grid">
+                <div class="cabling-item">
+                    <div class="cabling-icon"><i class="fas fa-cable-car"></i></div>
+                    <h4>Copper Cabling</h4>
+                    <p>Category 6A, 7, 8.1 • 10GBASE-T • PoE++ up to 100W • Shielded/Unshielded</p>
+                    <div class="cabling-specs">
+                        <div class="spec-item"><span class="spec-label">Bandwidth</span><span class="spec-value">2000 MHz</span></div>
+                        <div class="spec-item"><span class="spec-label">Distance</span><span class="spec-value">100m</span></div>
+                        <div class="spec-item"><span class="spec-label">Standards</span><span class="spec-value">ISO/IEC 11801</span></div>
+                    </div>
+                </div>
+                <div class="cabling-item">
+                    <div class="cabling-icon"><i class="fas fa-wave-square"></i></div>
+                    <h4>Fiber Optic</h4>
+                    <p>OM5 wideband • OS2 single-mode • 40G/100G/400G ready • Low insertion loss</p>
+                    <div class="cabling-specs">
+                        <div class="spec-item"><span class="spec-label">Bandwidth</span><span class="spec-value">100 GHz</span></div>
+                        <div class="spec-item"><span class="spec-label">Distance</span><span class="spec-value">40km+</span></div>
+                        <div class="spec-item"><span class="spec-label">Wavelengths</span><span class="spec-value">4/8/16 CWDM</span></div>
+                    </div>
+                </div>
+                <div class="cabling-item">
+                    <div class="cabling-icon"><i class="fas fa-database"></i></div>
+                    <h4>Data Center Backbone</h4>
+                    <p>Spine-leaf architecture • MPO/MTP trunks • Top-of-rack switching • SDN ready</p>
+                    <div class="cabling-specs">
+                        <div class="spec-item"><span class="spec-label">Speed</span><span class="spec-value">400G</span></div>
+                        <div class="spec-item"><span class="spec-label">Port Density</span><span class="spec-value">576 ports/U</span></div>
+                        <div class="spec-item"><span class="spec-label">Redundancy</span><span class="spec-value">N+1</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cable Types Visual -->
+            <div class="row mt-5 pt-5">
+                <div class="col-12">
+                    <div class="d-flex justify-content-around flex-wrap">
+                        <div class="text-center text-white m-3">
+                            <i class="fas fa-circle" style="color: #00ff00; font-size: 40px;"></i>
+                            <p class="mt-2">OM5 Fiber<br><small>200G ready</small></p>
+                        </div>
+                        <div class="text-center text-white m-3">
+                            <i class="fas fa-circle" style="color: #ffaa00; font-size: 40px;"></i>
+                            <p class="mt-2">Cat 8 Copper<br><small>40GBASE-T</small></p>
+                        </div>
+                        <div class="text-center text-white m-3">
+                            <i class="fas fa-circle" style="color: #0066ff; font-size: 40px;"></i>
+                            <p class="mt-2">OS2 Single-mode<br><small>100km</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AIoT Intelligence Layer -->
+    <section id="aiot" class="aiot-layer scroll-target">
+        <div class="container">
+            <div class="section-header">
+                <h2>AIoT Intelligence Layer</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Where connectivity meets artificial intelligence</p>
+            </div>
+            
+            <div class="intelligence-showcase">
+                <div class="intelligence-visual">
+                    <div class="ai-animation"></div>
+                    <div class="data-streams">
+                        <div class="stream" style="left: 20%; animation-delay: 0s;"></div>
+                        <div class="stream" style="left: 40%; animation-delay: 0.5s;"></div>
+                        <div class="stream" style="left: 60%; animation-delay: 1s;"></div>
+                        <div class="stream" style="left: 80%; animation-delay: 1.5s;"></div>
+                    </div>
+                    <div style="position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); text-align: center; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+                        <i class="fas fa-brain" style="font-size: 60px; color: var(--tf-yellow);"></i>
+                        <h4>AI at the Edge</h4>
+                    </div>
+                </div>
+                <div class="intelligence-content">
+                    <ul class="intelligence-features">
+                        <li><i class="fas fa-microchip"></i> <strong>Edge AI Processing:</strong> Real-time analytics at the source, reducing cloud dependency by 80%</li>
+                        <li><i class="fas fa-chart-pie"></i> <strong>Predictive Maintenance:</strong> AI algorithms predict failures 72 hours in advance</li>
+                        <li><i class="fas fa-shield-virus"></i> <strong>Cyber Immunity:</strong> Self-healing network with AI-powered threat detection</li>
+                        <li><i class="fas fa-tachometer-alt"></i> <strong>Dynamic Bandwidth Allocation:</strong> AI optimizes traffic in real-time, prioritizing critical systems</li>
+                        <li><i class="fas fa-leaf"></i> <strong>Green Networking:</strong> AI reduces power consumption by 40% through intelligent sleep cycles</li>
+                        <li><i class="fas fa-project-diagram"></i> <strong>Digital Twin Integration:</strong> Real-time network simulation and optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase (using project-card-home from main site) -->
+    <section class="project-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <div class="line"></div>
+                <p class="text-secondary">Global projects powered by our weak current infrastructure</p>
+            </div>
+            
+            <div class="project-grid">
+                <div class="project-card-home">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/lagare-1.jpg" loading="eager">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Structured Cabling</span>
+                            <span class="tag">Fiber Backbone</span>
+                        </div>
+                        <h5>La Gare - Eagle Hills</h5>
+                        <p class="small text-muted">12,000+ data points • 40G backbone • 100% uptime</p>
+                        <span class="badge bg-warning text-dark">Ongoing</span>
+                    </div>
+                </div>
+                <div class="project-card-home">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/eal-1.jpg" loading="eager">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Campus Network</span>
+                            <span class="tag">Wi-Fi 6</span>
+                        </div>
+                        <h5>Ethiopian Airlines HQ</h5>
+                        <p class="small text-muted">Campus-wide ICT backbone • 10G to the desk</p>
+                        <span class="badge bg-warning text-dark">Ongoing</span>
+                    </div>
+                </div>
+                <div class="project-card-home">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/about/shwt-2.jpg" loading="eager">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Data Center</span>
+                            <span class="tag">MPO Trunk</span>
+                        </div>
+                        <h5>Shanghai World Trade Center</h5>
+                        <p class="small text-muted">Tier III data center • 400G spine-leaf</p>
+                        <span class="badge bg-primary">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="specs-section">
+        <div class="container">
+            <div class="specs-table">
+                <h3 class="text-center mb-4">Technical Specifications</h3>
+                <table class="table table-borderless">
+                    <tr><td><strong>Copper Cabling</strong></td><td>Cat 6A, Cat 7, Cat 8.1 (2000 MHz, 40GBASE-T)</td><td><span class="badge">Future-proof</span></td></tr>
+                    <tr><td><strong>Fiber Optic</strong></td><td>OM5 (WBMMF), OS2 (SMF), 400G ready, CWDM/DWDM</td><td><span class="badge">40km+</span></td></tr>
+                    <tr><td><strong>PoE Capability</strong></td><td>PoE++ (IEEE 802.3bt) up to 100W per port</td><td><span class="badge">90W typical</span></td></tr>
+                    <tr><td><strong>Network Protocols</strong></td><td>BACnet/IP, Modbus TCP, MQTT, OPC UA, REST API</td><td><span class="badge">All major</span></td></tr>
+                    <tr><td><strong>Redundancy</strong></td><td>N+1 power, dual-homed, ring topology, STP/RSTP/MSTP</td><td><span class="badge">99.999%</span></td></tr>
+                    <tr><td><strong>Security</strong></td><td>802.1X, MACsec, IPsec, TLS 1.3, AI threat detection</td><td><span class="badge">Military-grade</span></td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Build Your Intelligent Backbone?</h2>
+            <p>Let our experts design your weak current infrastructure with AIoT intelligence</p>
+            <a href="/contact/index.html" class="cta-button">Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- FOOTER (exactly from main site) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <h5>Tongfang BMS System Integration</h5>
+                <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+            </div>
+            <div>
+                <h5>Quick Links</h5>
+                <a class="btn-link" href="/index.html">Home</a><br>
+                <a class="btn-link" href="/about/index.html">About Us</a><br>
+                <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                <a class="btn-link" href="/products/index.html">Products</a><br>
+                <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+                <a class="btn-link" href="/contact/index.html">Contact</a>
+            </div>
+            <div>
+                <h5>Business Hours</h5>
+                <p>Mon – Fri: 8:30 AM – 5:30 PM</p>
+                <p>Saturday: 9:00 AM – 1:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+            <div>
+                <h5>Connect With Us</h5>
+                <p>Get smart building & automation updates.</p>
+                <div class="newsletter-box" style="margin:20px 0;">
+                    <input class="form-control" type="email" placeholder="Your email">
+                    <button class="btn btn-primary">Subscribe</button>
+                </div>
+                <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                    <a href="weixin://dl/chat?wxid_3jxtp7rz3p8e22" title="Chat on WeChat" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-weixin"></i></a>
+                    <a href="https://t.me/+251990207888" target="_blank" title="Chat on Telegram" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/254712828498?text=Hello%20Tongfang%20BMS%20Team" target="_blank" title="Chat on WhatsApp" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://m.me/tongfangbms" target="_blank" title="Chat on Messenger" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-facebook-messenger"></i></a>
+                </div>
+                <p style="font-size:12px;color:#6b7280;text-align:center;margin-top:10px;">WeChat ID: wxid_3jxtp7rz3p8e22</p>
+            </div>
+        </div>
+        <div class="copyright" style="text-align:center;padding:15px 0;">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
+    
+    <script>
+        // Search functionality (from main site)
+        const searchOverlay = document.getElementById('searchOverlay');
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchStats = document.getElementById('searchStats');
+
+        const searchIndex = [
+            // Technologies
+            { title: "Weak Current Systems", category: "Technologies", url: "/technologies/networking-infrastructure/index.html", content: "ELV, structured cabling, data backbone, network infrastructure, fiber optics, PoE, AIoT connectivity" },
+            { title: "Structured Cabling", category: "Technologies", url: "/technologies/networking-infrastructure/#cabling", content: "Category 6A, 7, 8, fiber optic OM5/OS2, 40G/100G ready, TIA/EIA compliant" },
+            { title: "ELV Systems", category: "Technologies", url: "/technologies/networking-infrastructure/#elv-systems", content: "Extra Low Voltage systems including CCTV, access control, fire alarm, IP telephony" },
+            { title: "Data Backbone", category: "Technologies", url: "/technologies/networking-infrastructure/#overview", content: "10G/40G/100G infrastructure, spine-leaf architecture, data center cabling" },
+            
+            // Projects (from main site)
+            { title: "Oromia Presidential Palace", category: "Projects", url: "/projects/index.html", content: "High-security integration, BAS control, and mission-critical infrastructure" },
+            { title: "Ethiopian Airlines HQ", category: "Projects", url: "/projects/index.html", content: "Campus-wide ICT, security monitoring, and structured cabling backbone" },
+            { title: "La Gare - Eagle Hills", category: "Projects", url: "/projects/index.html", content: "Smart parking guidance, video intercoms, and high-speed fiber connectivity" },
+        ];
+
+        function openSearch() {
+            searchOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => { searchInput.focus(); }, 100);
+        }
+
+        function closeSearch() {
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+            searchStats.innerHTML = '';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                openSearch();
+            }
+            if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                closeSearch();
+            }
+        });
+
+        function performSearch(query) {
+            if (!query || query.length < 1) {
+                searchResults.innerHTML = '<div class="no-results">Start typing to search...</div>';
+                searchStats.innerHTML = '';
+                return;
+            }
+
+            const lowercaseQuery = query.toLowerCase();
+            const filtered = searchIndex.filter(item => {
+                const titleMatch = item.title.toLowerCase().includes(lowercaseQuery);
+                const contentMatch = item.content.toLowerCase().includes(lowercaseQuery);
+                const categoryMatch = item.category.toLowerCase().includes(lowercaseQuery);
+                const words = item.title.toLowerCase().split(' ');
+                const startsWithMatch = words.some(word => word.startsWith(lowercaseQuery));
+                return titleMatch || contentMatch || categoryMatch || startsWithMatch;
+            });
+
+            searchStats.innerHTML = `Found ${filtered.length} result${filtered.length !== 1 ? 's' : ''} for "${query}"`;
+
+            if (filtered.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+                return;
+            }
+
+            let html = '';
+            filtered.forEach(item => {
+                const regex = new RegExp(`(${lowercaseQuery})`, 'gi');
+                const highlightedTitle = item.title.replace(regex, '<span class="search-highlight">$1</span>');
+                html += `<a href="${item.url}" class="result-item" onclick="closeSearch()"><div class="category">${item.category}</div><h4>${highlightedTitle}</h4><p>${item.content.substring(0, 100)}${item.content.length > 100 ? '...' : ''}</p></a>`;
+            });
+            searchResults.innerHTML = html;
+        }
+
+        let searchTimeout;
+        searchInput.addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => { performSearch(e.target.value); }, 200);
+        });
+
+        searchOverlay.addEventListener('click', function(e) {
+            if (e.target === searchOverlay) closeSearch();
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mainNav');
+            const header = document.getElementById('navBox');
+            const mobileToggle = document.querySelector('.mobile-toggle i');
+            
+            nav.classList.toggle('active');
+            
+            if(nav.classList.contains('active')) {
+                header.style.background = "#fff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+                mobileToggle.style.color = "#333";
+                document.querySelectorAll('.nav-link-custom').forEach(link => link.style.color = "#333");
+                document.querySelectorAll('.header-icons i').forEach(icon => icon.style.color = "#333");
+            } else {
+                header.style.background = "#ffffff";
+                header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
+                mobileToggle.style.color = "#111827";
+                document.querySelectorAll('.nav-link-custom').forEach(link => link.style.color = "#111827");
+                document.querySelectorAll('.header-icons i').forEach(icon => icon.style.color = "#111827");
+            }
+        }
+
+        // Close dropdowns on mobile
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 992) {
+                document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+                    if (!dropdown.contains(event.target)) dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Handle arrow clicks on mobile
+        document.querySelectorAll('.fa-angle-down').forEach(arrow => {
+            arrow.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.closest('.nav-item-dropdown').classList.toggle('active');
+                }
+            });
+        });
+
+        // Initialize everything after DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force eager loading
+            document.querySelectorAll('img').forEach(img => { if (!img.complete) img.loading = 'eager'; });
+            
+            // Breadcrumb scroll spy
+            window.addEventListener('scroll', function () {
+                const sections = [
+                    { id: "overview", link: "#overview" },
+                    { id: "elv-systems", link: "#elv-systems" },
+                    { id: "cabling", link: "#cabling" },
+                    { id: "aiot", link: "#aiot" }
+                ];
+                let currentSection = "#overview";
+                sections.forEach(section => {
+                    const el = document.getElementById(section.id);
+                    if (el && window.scrollY >= el.offsetTop - 180) currentSection = section.link;
+                });
+                document.querySelectorAll('.nav-breadcrumb .breadcrumb-item').forEach(li => {
+                    li.classList.remove('active');
+                    const a = li.querySelector('a');
+                    if (a && a.getAttribute('href') === currentSection) li.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

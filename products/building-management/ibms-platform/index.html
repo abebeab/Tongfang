@@ -275,85 +275,7 @@
             font-size: 18px; color: var(--tf-text); max-width: 800px; margin: 0 auto;
         }
 
-        /* --- 7. PRODUCT GRID --- */
-        .product-wrapper { max-width: 1440px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
-        .category-section { scroll-margin-top: 160px; }
-        .category-heading {
-            color: var(--tf-dark); margin-bottom: 30px; margin-top: 50px; font-weight: 700; text-transform: uppercase;
-            font-size: 22px; position: relative; padding-left: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px;
-        }
-        .category-heading::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 10px; width: 6px;
-            background-color: var(--tf-yellow); border-radius: 4px;
-        }
-        
-        /* --- 8. CATEGORY CARDS --- */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .category-card {
-            position: relative;
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            height: 300px;
-            cursor: pointer;
-        }
-        .category-card.large {
-            grid-column: span 2;
-            height: 400px;
-        }
-        .category-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        .category-card:hover .category-image {
-            transform: scale(1.1);
-        }
-        .category-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            color: white;
-        }
-        .category-overlay h3 {
-            color: white;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .category-overlay p {
-            font-size: 14px;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        .category-btn {
-            display: inline-block;
-            padding: 8px 25px;
-            background: var(--tf-yellow);
-            color: var(--tf-dark);
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            width: fit-content;
-            transition: var(--transition);
-        }
-        .category-btn:hover {
-            background: #e6b800;
-            transform: translateY(-2px);
-        }
-
-        /* --- 9. PRODUCT TABLE STYLES --- */
+        /* --- PRODUCT TABLE STYLES --- */
         .product-table-container {
             background: var(--tf-white);
             border-radius: var(--card-radius);
@@ -418,7 +340,7 @@
             color: white;
         }
 
-        /* --- 10. FEATURE GRID --- */
+        /* --- FEATURE GRID --- */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -458,7 +380,7 @@
             margin: 0;
         }
 
-        /* --- 11. APPLICATION ICONS --- */
+        /* --- APPLICATION ICONS --- */
         .application-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -503,65 +425,7 @@
             color: var(--tf-dark);
         }
 
-        /* --- 12. DOWNLOAD CARDS --- */
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .download-card {
-            background: var(--tf-white);
-            border-radius: var(--card-radius);
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-        }
-        .download-card:hover {
-            box-shadow: var(--shadow-lift);
-            transform: translateY(-5px);
-        }
-        .download-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--tf-bg-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: var(--tf-blue);
-        }
-        .download-content {
-            flex: 1;
-        }
-        .download-content h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: var(--tf-dark);
-        }
-        .download-content p {
-            font-size: 13px;
-            color: var(--tf-text);
-            margin-bottom: 0;
-        }
-        .download-link {
-            color: var(--tf-blue);
-            font-weight: 600;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .download-link:hover {
-            color: #003d82;
-            gap: 10px;
-        }
-
-        /* --- 13. CTA SECTION --- */
+        /* --- CTA SECTION --- */
         .cta-section {
             background: var(--tf-blue);
             padding: 80px 0;
@@ -594,7 +458,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* --- 14. RELATED LINKS --- */
+        /* --- RELATED LINKS --- */
         .related-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -646,7 +510,7 @@
             opacity: 0.9;
         }
 
-        /* --- 15. FOOTER --- */
+        /* --- FOOTER --- */
         .footer {
             background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 80px; font-size: 14px;
         }
@@ -685,68 +549,39 @@
             text-align: center; border-top: 1px solid #1a222e;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1200px) { 
-            .category-grid { grid-template-columns: repeat(2, 1fr); }
-            .feature-grid { grid-template-columns: repeat(2, 1fr); }
-            .application-grid { grid-template-columns: repeat(2, 1fr); }
-            .category-card.large { grid-column: span 1; height: 300px; }
-            .product-table-container { margin: 40px 20px; }
-        }
-        
-        @media (max-width: 991px) {
-            .category-grid { grid-template-columns: 1fr; }
-            .download-grid { grid-template-columns: 1fr; }
-            .related-grid { grid-template-columns: 1fr; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .application-grid { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr 1fr; }
-            .product-table-container { overflow-x: auto; }
-            .product-table { min-width: 800px; }
-        }
-        
-        @media (max-width: 576px) {
-            .footer-container { grid-template-columns: 1fr; }
-            .hero-banner { height: 250px; }
-            .hero-content h1 { font-size: 32px; }
-            .hero-content p { font-size: 16px; padding: 0 20px; }
-            .section-wrapper { padding: 40px 20px; }
-            .section-title h2 { font-size: 28px; }
-            .product-table-container { padding: 20px; margin: 20px; }
-        }
-
-        /* Platform-specific styles */
+        /* Platform-specific styles - ENHANCED FOR BETTER VISUAL APPEAL */
         .platform-showcase {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
+            margin: 40px 30px;
         }
         
         .platform-card {
             background: var(--tf-white);
-            border-radius: var(--card-radius);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            flex: 1 1 calc(50% - 15px);
-            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            flex: 1 1 calc(50% - 20px);
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
         .platform-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lift);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 76, 163, 0.2);
         }
         
         .platform-header {
-            background: var(--tf-blue);
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #003d82 100%);
             color: white;
-            padding: 30px 25px;
+            padding: 35px 30px;
             text-align: center;
+            position: relative;
         }
         
         .platform-header i {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 15px;
             color: var(--tf-yellow);
         }
@@ -755,28 +590,51 @@
             color: white;
             margin: 0;
             font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .platform-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--tf-yellow);
+            color: var(--tf-dark);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
         }
         
         .platform-body {
-            padding: 25px;
+            padding: 30px;
         }
         
-        .platform-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .platform-body p {
+            color: var(--tf-text);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
         
-        .platform-body li {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
+        .platform-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .platform-features li {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 13px;
+            padding: 6px 0;
+            color: var(--tf-text);
         }
         
-        .platform-body li i {
+        .platform-features li i {
             color: var(--tf-yellow);
+            font-size: 14px;
             width: 20px;
         }
         
@@ -784,48 +642,124 @@
             display: inline-block;
             background: #eef2ff;
             color: var(--tf-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 5px 14px;
+            border-radius: 30px;
             font-size: 12px;
             font-weight: 600;
-            margin: 0 5px 5px 0;
+            margin: 0 6px 6px 0;
         }
         
         .module-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 30px;
         }
         
         .module-item {
-            background: var(--tf-bg-light);
-            padding: 15px;
-            border-radius: var(--card-radius);
+            background: var(--tf-white);
+            padding: 20px 15px;
+            border-radius: 12px;
             text-align: center;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            border: 1px solid #eef2ff;
+            cursor: pointer;
         }
         
         .module-item:hover {
-            background: var(--tf-blue);
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #003d82 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,76,163,0.2);
+        }
+        
+        .module-item:hover i,
+        .module-item:hover h4,
+        .module-item:hover p {
             color: white;
         }
         
         .module-item i {
-            font-size: 24px;
-            color: var(--tf-yellow);
-            margin-bottom: 10px;
+            font-size: 32px;
+            color: var(--tf-blue);
+            margin-bottom: 12px;
+            display: inline-block;
+            transition: var(--transition);
         }
         
         .module-item h4 {
             font-size: 14px;
-            margin: 5px 0;
+            margin: 8px 0 4px;
+            font-weight: 700;
+        }
+        
+        .module-item p {
+            font-size: 11px;
+            color: var(--tf-text-light);
+            margin: 0;
+        }
+        
+        .supported-systems-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            background: var(--tf-white);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            margin: 40px 30px;
+        }
+        
+        .system-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .system-item:hover {
+            background: var(--tf-bg-light);
+            transform: translateX(5px);
+        }
+        
+        .system-item i {
+            color: var(--tf-yellow);
+            font-size: 18px;
+            width: 24px;
+        }
+        
+        .system-item span {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--tf-dark);
+        }
+
+        @media (max-width: 1200px) { 
+            .feature-grid { grid-template-columns: repeat(2, 1fr); }
+            .application-grid { grid-template-columns: repeat(2, 1fr); }
+            .module-grid { grid-template-columns: repeat(4, 1fr); }
+            .supported-systems-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        @media (max-width: 991px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .application-grid { grid-template-columns: 1fr; }
+            .module-grid { grid-template-columns: repeat(3, 1fr); }
+            .supported-systems-grid { grid-template-columns: repeat(2, 1fr); }
+            .platform-features { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 576px) {
+            .module-grid { grid-template-columns: repeat(2, 1fr); }
+            .supported-systems-grid { grid-template-columns: 1fr; }
+            .platform-card { flex: 1 1 100%; }
         }
     </style>
 </head>
 <body>
 
-<!-- ================= HEADER with full-width swipe-down dropdowns ================= -->
+<!-- ================= HEADER (SAME AS YOUR ORIGINAL) ================= -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
@@ -835,142 +769,33 @@
                 </a>
             </div>
             
-            <!-- NAVIGATION -->
             <nav id="mainNav" class="nav-menu">
-                
-                <!-- SOLUTIONS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                         Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <div>
-                                <div class="dropdown-category">Buildings</div>
-                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                            </div>
-                            <div>
-                                <div class="dropdown-category">Infrastructure</div>
-                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
-                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
-                            </div>
-                            <div>
-                                <div class="dropdown-category">City Systems</div>
-                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                                <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
-                            </div>
+                            <div><div class="dropdown-category">Buildings</div><a href="/solutions/residential/index.html" class="dropdown-link">Residential</a><a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a><a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a><a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a><a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a></div>
+                            <div><div class="dropdown-category">Infrastructure</div><a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a><a href="/solutions/airport/index.html" class="dropdown-link">Airports</a><a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a><a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a><a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a></div>
+                            <div><div class="dropdown-category">City Systems</div><a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a><a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a><a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a><a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a><a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a><a href="/solutions/index.html" class="more-link">View All Solutions →</a></div>
                         </div>
                     </div>
                 </div>
                 
-                  <!-- PRODUCTS DROPDOWN - Complete with Access Control focused content -->
                 <div class="nav-item-dropdown">
                     <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                         Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <!-- 1. Access Control -->
-                            <div>
-                                <div class="dropdown-category">Access Control</div>
-                                <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
-                                <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
-                                <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
-                                <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
-                                <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                <a href="/products/access-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 2. Fire & Safety -->
-                            <div>
-                                <div class="dropdown-category">Fire & Safety</div>
-                               <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
-                                <a href="/products\fire-alarm\Control_Panels\index.html" class="dropdown-link">Control Panels</a>
-                                <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                              
-                                <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
-                                <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 3. Building Management (UPDATED - NO DUPLICATES) -->
-                            <div>
-                                <div class="dropdown-category">Building Management</div>
-                                <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
-                                <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                <a href="/products/building-management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 4. IP Audio & Intercom -->
-                            <div>
-                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
-                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
-                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
- 
-                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
-                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                           <!-- 5. Video Surveillance
-                            <div>
-                                <div class="dropdown-category">Video Surveillance</div>
-                                <a href="/products/video-surveillance/ip-cameras/index.html" class="dropdown-link">IP Cameras</a>
-                                <a href="/products/video-surveillance/nvrs/index.html" class="dropdown-link">NVRs</a>
-                                <a href="/products/video-surveillance/analog-cameras/index.html" class="dropdown-link">Analog Cameras</a>
-                               
-                                <a href="/products/video-surveillance/cctv-accessories/index.html" class="dropdown-link">CCTV Accessories</a>
-                                <a href="/products/video-surveillance/index.html" class="more-link">View All→</a>
-                            </div>  -->
-                            
-                            
-                            <!-- 6. HVAC & Field Control -->
-                            <div>
-                                <div class="dropdown-category">HVAC & Field Control</div>
-                                <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
-                                <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
-                                <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
-                                <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
-                                <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
-                                <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 7. Lighting Control -->
-                            <div>
-                                <div class="dropdown-category">Lighting Control</div>
-                                <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
-                                <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
-                                <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
-                                <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
-                                <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
-                                <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 8. Energy Management -->
-                            <div>
-                                <div class="dropdown-category">Energy Management</div>
-                                <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
-                                <a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a>
-                                <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
-                                <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
-                                <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
-                                <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
-                                <a href="/products/Energy-Management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
+                            <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a><a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a><a href="/products/hvac-field-control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a><a href="/products/Lighting-Control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a><a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a><a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a><a href="/products/Energy-Management/index.html" class="more-link">View All→</a></div>
                         </div>
                     </div>
                 </div>
@@ -981,12 +806,10 @@
                 <a href="/contact/index.html" class="nav-link-custom">Contact</a>
             </nav>
 
-            <!-- HAMBURGER ICON -->
             <button class="mobile-toggle" onclick="toggleMobileMenu()">
                 <i class="fa fa-bars"></i>
             </button>
 
-            <!-- Header Icons -->
             <div class="header-icons d-flex align-items-center">
                 <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                 <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
@@ -998,7 +821,6 @@
 <!-- ================= HERO BANNER ================= -->
 <div class="hero-banner" style="background: linear-gradient(135deg, var(--tf-blue) 0%, #002a5c 100%);">
     <div class="hero-content">
-        <br><br><br><br>
         <h1>IBMS Platform</h1>
         <p>Integrated Building Management Systems for Intelligent Building Control</p>
     </div>
@@ -1009,434 +831,224 @@
     <div class="subnav-container">
         <ul class="subnav-list">
             <li><a href="#overview" class="subnav-link">Overview</a></li>
-            <li><a href="#inteserv" class="subnav-link">InteServ IBMS</a></li>
-            <li><a href="#bimview" class="subnav-link">BIMview 3D</a></li>
-            <li><a href="#modules" class="subnav-link">Integration Modules</a></li>
-            <li><a href="#security-modules" class="subnav-link">Security Modules</a></li>
+            <li><a href="#platforms" class="subnav-link">Platforms</a></li>
+            <li><a href="#models" class="subnav-link">Models</a></li>
+            <li><a href="#modules" class="subnav-link">Modules</a></li>
             <li><a href="#features" class="subnav-link">Features</a></li>
+            <li><a href="#applications" class="subnav-link">Applications</a></li>
         </ul>
     </div>
 </nav>
 
-<!-- ================= MAIN CONTENT ================= -->
-
-<!-- Overview Section -->
+<!-- ================= OVERVIEW SECTION ================= -->
 <div class="section-wrapper" id="overview">
     <div class="section-title">
-         <h2>System system-architecture</h2></div>
+        <h2>System Architecture</h2>
+        <p>Centralized control for all building systems</p>
+    </div>
     
-    <div class="media-content" style="display: flex; align-items: center; gap: 40px; background: var(--tf-white); padding: 40px; border-radius: var(--card-radius); box-shadow: var(--shadow-soft);">
-       
-      
-          
-     <div style="flex: 1;">
+    <div class="media-content" style="display: flex; align-items: center; gap: 40px; background: var(--tf-white); padding: 40px; border-radius: var(--card-radius); box-shadow: var(--shadow-soft); margin: 0 30px;">
+        <div style="flex: 1;">
             <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ibms-platform/system-architecture.jpeg" alt="IBMS Platform" style="width: 100%; border-radius: var(--card-radius);">
         </div>
         <div style="flex: 1;">
             <p style="font-size: 16px; line-height: 1.8; color: var(--tf-text);">Our Integrated Building Management Systems (IBMS) provide centralized control and monitoring for all building systems. From the 3D BIM-based BIMview platform to the comprehensive InteServ integration platform, our solutions connect building automation, energy management, security, fire, and IoT systems into a single intelligent management center.</p>
-            
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>3D BIM Visualization</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>Multi-system Integration</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>10k-50k Points</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>Web & Mobile Access</strong></span>
-                </div>
+                <div style="display: flex; align-items: center; gap: 10px;"><i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i><span style="font-size: 14px;"><strong>3D BIM Visualization</strong></span></div>
+                <div style="display: flex; align-items: center; gap: 10px;"><i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i><span style="font-size: 14px;"><strong>Multi-system Integration</strong></span></div>
+                <div style="display: flex; align-items: center; gap: 10px;"><i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i><span style="font-size: 14px;"><strong>10k-50k Points</strong></span></div>
+                <div style="display: flex; align-items: center; gap: 10px;"><i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i><span style="font-size: 14px;"><strong>Web & Mobile Access</strong></span></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Platform Showcase -->
-<div class="platform-showcase">
-    <!-- InteServ Card -->
-    <div class="platform-card" id="inteserv">
-        <div class="platform-header">
-            <i class="fa fa-cubes"></i>
-            <h3>InteServ IBMS</h3>
-        </div>
-        <div class="platform-body">
-            <p style="margin-top: 0; color: var(--tf-text);">System Integration Management Platform connecting all weak current and electromechanical systems.</p>
-            <ul>
-                <li><i class="fa fa-check-circle"></i> Electronic Map-based Monitoring</li>
-                <li><i class="fa fa-check-circle"></i> Multi-level user authorization</li>
-                <li><i class="fa fa-check-circle"></i> Emergency plan management</li>
-                <li><i class="fa fa-check-circle"></i> Comprehensive event logging</li>
-                <li><i class="fa fa-check-circle"></i> System linkage automation</li>
-                <li><i class="fa fa-check-circle"></i> Database self-protection</li>
-                <li><i class="fa fa-check-circle"></i> Alarm & response management</li>
-            </ul>
-            <div style="margin-top: 20px;">
-                <span class="capability-badge">10k-50k Points</span>
-                <span class="capability-badge">5-20 Modules</span>
-                <span class="capability-badge">BACnet</span>
-                <span class="capability-badge">MODBUS</span>
-            </div>
-        </div>
+<!-- ================= PLATFORM SHOWCASE ================= -->
+<div class="section-wrapper" id="platforms">
+    <div class="section-title">
+        <h2>Our Platforms</h2>
+        <p>Choose the right solution for your building management needs</p>
     </div>
     
-    <!-- BIMview Card -->
-    <div class="platform-card" id="bimview">
-        <div class="platform-header">
-            <i class="fa fa-cube"></i>
-            <h3>BIMview 3D</h3>
+    <div class="platform-showcase">
+        <!-- InteServ Card -->
+        <div class="platform-card" id="inteserv">
+            <div class="platform-header">
+                <span class="platform-badge">Enterprise</span>
+                <i class="fa fa-cubes"></i>
+                <h3>InteServ IBMS</h3>
+            </div>
+            <div class="platform-body">
+                <p>System Integration Management Platform connecting all weak current and electromechanical systems.</p>
+                <ul class="platform-features">
+                    <li><i class="fa fa-check-circle"></i> Electronic Map-based Monitoring</li>
+                    <li><i class="fa fa-check-circle"></i> Multi-level user authorization</li>
+                    <li><i class="fa fa-check-circle"></i> Emergency plan management</li>
+                    <li><i class="fa fa-check-circle"></i> System linkage automation</li>
+                </ul>
+                <div>
+                    <span class="capability-badge">10k-50k Points</span>
+                    <span class="capability-badge">5-20 Modules</span>
+                    <span class="capability-badge">BACnet</span>
+                    <span class="capability-badge">MODBUS</span>
+                </div>
+            </div>
         </div>
-        <div class="platform-body">
-            <p style="margin-top: 0; color: var(--tf-text);">3D BIM-based intelligent operation & maintenance platform for integrated building management.</p>
-            <ul>
-                <li><i class="fa fa-check-circle"></i> 3D Building Visualization</li>
-                <li><i class="fa fa-check-circle"></i> Real-time equipment monitoring</li>
-                <li><i class="fa fa-check-circle"></i> Energy color distribution mapping</li>
-                <li><i class="fa fa-check-circle"></i> Integrated alarm center</li>
-                <li><i class="fa fa-check-circle"></i> Asset lifecycle management</li>
-                <li><i class="fa fa-check-circle"></i> Emergency visualization</li>
-                <li><i class="fa fa-check-circle"></i> Electronic patrol tracking</li>
-                <li><i class="fa fa-check-circle"></i> Parking management integration</li>
-            </ul>
-            <div style="margin-top: 20px;">
-                <span class="capability-badge">50k-200k m²</span>
-                <span class="capability-badge">10k-50k Points</span>
-                <span class="capability-badge">Full 3D BIM</span>
+        
+        <!-- BIMview Card -->
+        <div class="platform-card" id="bimview">
+            <div class="platform-header">
+                <span class="platform-badge">3D BIM</span>
+                <i class="fa fa-cube"></i>
+                <h3>BIMview 3D</h3>
+            </div>
+            <div class="platform-body">
+                <p>3D BIM-based intelligent operation & maintenance platform for integrated building management.</p>
+                <ul class="platform-features">
+                    <li><i class="fa fa-check-circle"></i> 3D Building Visualization</li>
+                    <li><i class="fa fa-check-circle"></i> Real-time equipment monitoring</li>
+                    <li><i class="fa fa-check-circle"></i> Energy color distribution mapping</li>
+                    <li><i class="fa fa-check-circle"></i> Integrated alarm center</li>
+                </ul>
+                <div>
+                    <span class="capability-badge">50k-200k m²</span>
+                    <span class="capability-badge">10k-50k Points</span>
+                    <span class="capability-badge">Full 3D BIM</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- InteServ Models Table -->
-<div class="product-table-container">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">InteServ IBMS Platform Models</h3>
-    <table class="product-table" id="inteservTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Integration Points</th>
-                <th>Subsystems</th>
-                <th>Protocols</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="product-badge">InteServ-S5</span></td>
-                <td>Small Building IBMS</td>
-                <td>10,000 points</td>
-                <td>5 modules</td>
-                <td>BACnet, MODBUS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">InteServ-S10</span></td>
-                <td>Medium Building IBMS</td>
-                <td>20,000 points</td>
-                <td>10 modules</td>
-                <td>BACnet, MODBUS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">InteServ-S20</span></td>
-                <td>Large Building IBMS</td>
-                <td>50,000 points</td>
-                <td>20 modules</td>
-                <td>BACnet, MODBUS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-        </tbody>
-    </table>
+<!-- ================= MODELS SECTION ================= -->
+<div class="section-wrapper" id="models">
+    <div class="section-title">
+        <h2>Platform Models</h2>
+        <p>Select the right capacity for your building</p>
+    </div>
+
+    <!-- InteServ Models Table -->
+    <div class="product-table-container">
+        <h3 style="margin-bottom: 20px; color: var(--tf-dark);">InteServ IBMS Platform Models</h3>
+        <table class="product-table" id="inteservTable">
+            <thead><tr><th>Model</th><th>Description</th><th>Integration Points</th><th>Subsystems</th><th>Action</th></tr></thead>
+            <tbody>
+                <tr><td><span class="product-badge">InteServ-S5</span></td><td>Small Building IBMS</td><td>10,000 points</td><td>5 modules</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">InteServ-S10</span></td><td>Medium Building IBMS</td><td>20,000 points</td><td>10 modules</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">InteServ-S20</span></td><td>Large Building IBMS</td><td>50,000 points</td><td>20 modules</td><td><a href="#" class="btn-view">View</a></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BIMview Models Table -->
+    <div class="product-table-container">
+        <h3 style="margin-bottom: 20px; color: var(--tf-dark);">BIMview 3D BIM Platform Models</h3>
+        <table class="product-table" id="bimviewTable">
+            <thead><tr><th>Model</th><th>Description</th><th>Building Size</th><th>Integration Points</th><th>Action</th></tr></thead>
+            <tbody>
+                <tr><td><span class="product-badge">BIM-Line-5</span></td><td>Small Building BIM</td><td>50,000 m²</td><td>10,000 points</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIM-Line-10</span></td><td>Medium Building BIM</td><td>100,000 m²</td><td>20,000 points</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIM-Line-20</span></td><td>Large Building BIM</td><td>200,000 m²</td><td>50,000 points</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIM-Max-5</span></td><td>Advanced BIM Full-Scene</td><td>50,000 m²</td><td>Advanced 3D</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIM-Max-10</span></td><td>Advanced BIM Full-Scene</td><td>100,000 m²</td><td>Advanced 3D</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIM-Max-20</span></td><td>Advanced BIM Full-Scene</td><td>200,000 m²</td><td>Advanced 3D</td><td><a href="#" class="btn-view">View</a></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BIMview Integrated Platform Table -->
+    <div class="product-table-container">
+        <h3 style="margin-bottom: 20px; color: var(--tf-dark);">BIMview Integrated Platform (IBMS)</h3>
+        <table class="product-table" id="bimviewIBMSTable">
+            <thead><tr><th>Model</th><th>Description</th><th>Integration Points</th><th>Features</th><th>Action</th></tr></thead>
+            <tbody>
+                <tr><td><span class="product-badge">BIMview-S5</span></td><td>Small IBMS with BIM</td><td>10,000 points</td><td>3D BIM + system integration</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIMview-S10</span></td><td>Medium IBMS with BIM</td><td>20,000 points</td><td>3D BIM + system integration</td><td><a href="#" class="btn-view">View</a></td></tr>
+                <tr><td><span class="product-badge">BIMview-S20</span></td><td>Large IBMS with BIM</td><td>50,000 points</td><td>3D BIM + system integration</td><td><a href="#" class="btn-view">View</a></td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<!-- BIMview Models Table -->
-<div class="product-table-container">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">BIMview 3D BIM Platform Models</h3>
-    <table class="product-table" id="bimviewTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Building Size</th>
-                <th>Integration Points</th>
-                <th>Features</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="product-badge">BIM-Line-5</span></td>
-                <td>Small Building BIM</td>
-                <td>50,000 m²</td>
-                <td>10,000 points</td>
-                <td>3D visualization, equipment monitoring</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIM-Line-10</span></td>
-                <td>Medium Building BIM</td>
-                <td>100,000 m²</td>
-                <td>20,000 points</td>
-                <td>3D visualization, energy mapping</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIM-Line-20</span></td>
-                <td>Large Building BIM</td>
-                <td>200,000 m²</td>
-                <td>50,000 points</td>
-                <td>3D visualization, asset management</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIM-Max-5</span></td>
-                <td>Advanced BIM Full-Scene</td>
-                <td>50,000 m²</td>
-                <td>Advanced 3D</td>
-                <td>No-dead-angle 3D, emergency visualization</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIM-Max-10</span></td>
-                <td>Advanced BIM Full-Scene</td>
-                <td>100,000 m²</td>
-                <td>Advanced 3D</td>
-                <td>No-dead-angle 3D, patrol tracking</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIM-Max-20</span></td>
-                <td>Advanced BIM Full-Scene</td>
-                <td>200,000 m²</td>
-                <td>Advanced 3D</td>
-                <td>No-dead-angle 3D, parking integration</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<!-- BIMview Integrated Platform Table -->
-<div class="product-table-container">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">BIMview Integrated Platform (IBMS)</h3>
-    <table class="product-table" id="bimviewIBMSTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Integration Points</th>
-                <th>Features</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="product-badge">BIMview-S5</span></td>
-                <td>Small IBMS with BIM</td>
-                <td>10,000 points</td>
-                <td>3D BIM + system integration</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIMview-S10</span></td>
-                <td>Medium IBMS with BIM</td>
-                <td>20,000 points</td>
-                <td>3D BIM + system integration</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">BIMview-S20</span></td>
-                <td>Large IBMS with BIM</td>
-                <td>50,000 points</td>
-                <td>3D BIM + system integration</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<!-- BIM Energy & System Interface Modules Section -->
+<!-- ================= MODULES SECTION ================= -->
 <div class="section-wrapper" id="modules">
     <div class="section-title">
-        <h2>BIM Energy & System Interface Modules</h2>
-        <p>Specialized modules for specific building system integration</p>
+        <h2>Integration Modules</h2>
+        <p>Specialized modules for building system integration</p>
     </div>
     
     <div class="module-grid">
-        <!-- BM Modules -->
-        <div class="module-item">
-            <i class="fa fa-building"></i>
-            <h4>BM-LK-V2.0</h4>
-            <p style="font-size: 12px;">Building Automation</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-lightbulb"></i>
-            <h4>BM-ZM-V2.0</h4>
-            <p style="font-size: 12px;">Intelligent Lighting</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-chart-line"></i>
-            <h4>BM-NY-V2.2</h4>
-            <p style="font-size: 12px;">Energy Metering</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-snowflake"></i>
-            <h4>BM-LD-V2.0</h4>
-            <p style="font-size: 12px;">Chiller Management</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-bolt"></i>
-            <h4>BM-BD-V2.0</h4>
-            <p style="font-size: 12px;">Power Distribution</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-arrow-up"></i>
-            <h4>BM-DT-V2.0</h4>
-            <p style="font-size: 12px;">Elevator Module</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-fire"></i>
-            <h4>BM-GL-V2.0</h4>
-            <p style="font-size: 12px;">Boiler Module</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-microchip"></i>
-            <h4>BM-KT-V2.0</h4>
-            <p style="font-size: 12px;">Precision AC</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-wind"></i>
-            <h4>BM-VAV-V2.0</h4>
-            <p style="font-size: 12px;">VAV Module</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-thermometer-half"></i>
-            <h4>BM-VRV-V2.0</h4>
-            <p style="font-size: 12px;">VRV Module</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-cogs"></i>
-            <h4>BM-JF-V2.0</h4>
-            <p style="font-size: 12px;">Machine Room</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-database"></i>
-            <h4>BM-DJ-V2.0</h4>
-            <p style="font-size: 12px;">Generator</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-thermometer"></i>
-            <h4>BM-WK-V2.0</h4>
-            <p style="font-size: 12px;">Network Thermostat</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-wifi"></i>
-            <h4>BM-WL-V2.0</h4>
-            <p style="font-size: 12px;">Wireless IoT</p>
-        </div>
-        <div class="module-item">
-            <i class="fa fa-battery-full"></i>
-            <h4>BM-UPS-V2.0</h4>
-            <p style="font-size: 12px;">UPS Module</p>
-        </div>
+        <div class="module-item"><i class="fa fa-building"></i><h4>BM-LK-V2.0</h4><p>Building Automation</p></div>
+        <div class="module-item"><i class="fa fa-lightbulb"></i><h4>BM-ZM-V2.0</h4><p>Intelligent Lighting</p></div>
+        <div class="module-item"><i class="fa fa-chart-line"></i><h4>BM-NY-V2.2</h4><p>Energy Metering</p></div>
+        <div class="module-item"><i class="fa fa-snowflake"></i><h4>BM-LD-V2.0</h4><p>Chiller Management</p></div>
+        <div class="module-item"><i class="fa fa-bolt"></i><h4>BM-BD-V2.0</h4><p>Power Distribution</p></div>
+        <div class="module-item"><i class="fa fa-arrow-up"></i><h4>BM-DT-V2.0</h4><p>Elevator Module</p></div>
+        <div class="module-item"><i class="fa fa-fire"></i><h4>BM-GL-V2.0</h4><p>Boiler Module</p></div>
+        <div class="module-item"><i class="fa fa-microchip"></i><h4>BM-KT-V2.0</h4><p>Precision AC</p></div>
+        <div class="module-item"><i class="fa fa-wind"></i><h4>BM-VAV-V2.0</h4><p>VAV Module</p></div>
+        <div class="module-item"><i class="fa fa-thermometer-half"></i><h4>BM-VRV-V2.0</h4><p>VRV Module</p></div>
+        <div class="module-item"><i class="fa fa-cogs"></i><h4>BM-JF-V2.0</h4><p>Machine Room</p></div>
+        <div class="module-item"><i class="fa fa-database"></i><h4>BM-DJ-V2.0</h4><p>Generator</p></div>
+        <div class="module-item"><i class="fa fa-thermometer"></i><h4>BM-WK-V2.0</h4><p>Network Thermostat</p></div>
+        <div class="module-item"><i class="fa fa-wifi"></i><h4>BM-WL-V2.0</h4><p>Wireless IoT</p></div>
+        <div class="module-item"><i class="fa fa-battery-full"></i><h4>BM-UPS-V2.0</h4><p>UPS Module</p></div>
     </div>
 </div>
 
-<!-- InteServ Energy Interface Modules Table -->
+<!-- ================= ENERGY INTERFACE MODULES TABLE ================= -->
 <div class="product-table-container">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">InteServ Energy Interface Modules</h3>
+    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">Energy Interface Modules</h3>
     <table class="product-table" id="inteservEnergyTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Function</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+        <thead><tr><th>Model</th><th>Description</th><th>Function</th><th>Action</th></tr></thead>
         <tbody>
             <tr><td><span class="product-badge">SYS-LK-V2.0</span></td><td>Building Automation Module</td><td>BA system integration</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-ZM-V2.0</span></td><td>Intelligent Lighting Module</td><td>Lighting control integration</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-NY-V2.2</span></td><td>Energy Metering Module</td><td>Energy data collection</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-LD-V2.0</span></td><td>Chiller Management Module</td><td>Chiller plant optimization</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-BD-V2.0</span></td><td>Power Distribution Module</td><td>Electrical system monitoring</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-DT-V2.0</span></td><td>Elevator Module</td><td>Elevator monitoring</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-GL-V2.0</span></td><td>Boiler Module</td><td>Boiler system integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-KT-V2.0</span></td><td>Precision AC Module</td><td>Critical environment control</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-VAV-V2.0</span></td><td>VAV Module</td><td>VAV box integration</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-VRV-V2.0</span></td><td>VRV Module</td><td>VRV system integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-JF-V2.0</span></td><td>Machine Room Monitoring</td><td>Equipment room monitoring</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-DJ-V2.0</span></td><td>Generator Module</td><td>Generator monitoring</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-WK-V2.0</span></td><td>Network Thermostat Module</td><td>Thermostat integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-WL-V2.0</span></td><td>Wireless IoT Module</td><td>Wireless device integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-UPS-V2.0</span></td><td>UPS Module</td><td>UPS monitoring</td><td><a href="#" class="btn-view">View</a></td></tr>
         </tbody>
     </table>
 </div>
 
-<!-- InteServ Security Modules Section -->
-<div class="section-wrapper" id="security-modules">
-    <div class="section-title">
-        <h2>InteServ Security Modules</h2>
-        <p>Specialized modules for security system integration</p>
-    </div>
-</div>
-
-<!-- InteServ Security Modules Table -->
+<!-- ================= SECURITY MODULES TABLE ================= -->
 <div class="product-table-container">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">InteServ Security Modules</h3>
+    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">Security Modules</h3>
     <table class="product-table" id="securityTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Function</th>
-                <th>Action</th>
-            </tr>
-        </thead>
+        <thead><tr><th>Model</th><th>Description</th><th>Function</th><th>Action</th></tr></thead>
         <tbody>
             <tr><td><span class="product-badge">SYS-SA-V2.0</span></td><td>CCTV Module</td><td>Video surveillance integration</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-BJ-V2.0</span></td><td>Alarm Module</td><td>Security alarm integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-XG-V2.0</span></td><td>Patrol Module</td><td>Electronic patrol tracking</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-MJ-V2.0</span></td><td>Access Control</td><td>Door access integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-ZN-V2.0</span></td><td>One Card System</td><td>Unified card system</td><td><a href="#" class="btn-view">View</a></td></tr>
             <tr><td><span class="product-badge">SYS-CC-V2.0</span></td><td>Parking System</td><td>Parking management</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-GB-V2.0</span></td><td>Broadcast Module</td><td>Public address integration</td><td><a href="#" class="btn-view">View</a></td></tr>
-            <tr><td><span class="product-badge">SYS-ZJ-V2.0</span></td><td>Perimeter Alarm</td><td>Perimeter security</td><td><a href="#" class="btn-view">View</a></td></tr>
         </tbody>
     </table>
 </div>
 
-<!-- Supported Systems Section -->
+<!-- ================= SUPPORTED SYSTEMS ================= -->
 <div class="section-wrapper">
     <div class="section-title">
-        <h2>Supported Integrated Systems</h2>
-        <p>Comprehensive integration capabilities for all building systems</p>
+        <h2>Supported Systems</h2>
+        <p>Comprehensive integration capabilities</p>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; background: var(--tf-white); padding: 30px; border-radius: var(--card-radius); box-shadow: var(--shadow-soft);">
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Building Automation (BA)</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Fire Alarm (FA)</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> CCTV Surveillance</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Access Control</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Anti-theft Alarm</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Parking System</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Elevator Monitoring</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Power Distribution</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Intelligent Lighting</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Broadcast & PA</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Visitor Management</div>
-        <div><i class="fa fa-check-circle" style="color: var(--tf-yellow);"></i> Energy Metering</div>
+    <div class="supported-systems-grid">
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Building Automation (BA)</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Fire Alarm (FA)</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>CCTV Surveillance</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Access Control</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Anti-theft Alarm</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Parking System</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Elevator Monitoring</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Power Distribution</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Intelligent Lighting</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Broadcast & PA</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Visitor Management</span></div>
+        <div class="system-item"><i class="fa fa-check-circle"></i><span>Energy Metering</span></div>
     </div>
 </div>
 
-<!-- Features Section -->
+<!-- ================= FEATURES SECTION ================= -->
 <div class="section-wrapper" id="features">
     <div class="section-title">
         <h2>Key Features</h2>
@@ -1444,76 +1056,29 @@
     </div>
     
     <div class="feature-grid">
-        <div class="feature-item">
-            <i class="fa fa-cubes"></i>
-            <h4>Unified Platform</h4>
-            <p>Single interface for all building systems - BA, security, fire, energy, lighting</p>
-        </div>
-        
-        <div class="feature-item">
-            <i class="fa fa-cube"></i>
-            <h4>3D BIM Visualization</h4>
-            <p>Intuitive 3D building model with real-time equipment status and alarms</p>
-        </div>
-        
-        <div class="feature-item">
-            <i class="fa fa-link"></i>
-            <h4>System Linkage</h4>
-            <p>Automated responses and cross-system coordination for events</p>
-        </div>
-        
-        <div class="feature-item">
-            <i class="fa fa-shield-alt"></i>
-            <h4>Enterprise Security</h4>
-            <p>Multi-level user authorization and database self-protection</p>
-        </div>
+        <div class="feature-item"><i class="fa fa-cubes"></i><h4>Unified Platform</h4><p>Single interface for all building systems</p></div>
+        <div class="feature-item"><i class="fa fa-cube"></i><h4>3D BIM Visualization</h4><p>Intuitive 3D building model with real-time status</p></div>
+        <div class="feature-item"><i class="fa fa-link"></i><h4>System Linkage</h4><p>Automated cross-system coordination</p></div>
+        <div class="feature-item"><i class="fa fa-shield-alt"></i><h4>Enterprise Security</h4><p>Multi-level user authorization</p></div>
     </div>
 </div>
 
-<!-- Applications Section -->
-<div class="section-wrapper">
+<!-- ================= APPLICATIONS SECTION ================= -->
+<div class="section-wrapper" id="applications">
     <div class="section-title">
-        <h2>Typical Applications</h2>
-        <p>Ideal for various building types and scales</p>
+        <h2>Applications</h2>
+        <p>Ideal for various building types</p>
     </div>
     
     <div class="application-grid">
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-building"></i>
-            </div>
-            <h5>Commercial Complexes</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Office towers, shopping malls</p>
-        </div>
-        
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-hospital"></i>
-            </div>
-            <h5>Healthcare</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Hospitals, medical centers</p>
-        </div>
-        
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-university"></i>
-            </div>
-            <h5>Education</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">University campuses, schools</p>
-        </div>
-        
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-plane"></i>
-            </div>
-            <h5>Transportation</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Airports, train stations</p>
-        </div>
+        <div class="application-item"><div class="application-icon"><i class="fa fa-building"></i></div><h5>Commercial Complexes</h5><p>Office towers, shopping malls</p></div>
+        <div class="application-item"><div class="application-icon"><i class="fa fa-hospital"></i></div><h5>Healthcare</h5><p>Hospitals, medical centers</p></div>
+        <div class="application-item"><div class="application-icon"><i class="fa fa-university"></i></div><h5>Education</h5><p>University campuses, schools</p></div>
+        <div class="application-item"><div class="application-icon"><i class="fa fa-plane"></i></div><h5>Transportation</h5><p>Airports, train stations</p></div>
     </div>
 </div>
- 
 
-<!-- CTA Section -->
+<!-- ================= CTA SECTION ================= -->
 <div class="cta-section">
     <div class="section-wrapper">
         <h2>Ready to Integrate Your Building Systems?</h2>
@@ -1522,84 +1087,31 @@
     </div>
 </div>
 
-<!-- Related Links -->
+<!-- ================= RELATED LINKS ================= -->
 <div class="section-wrapper">
     <div class="section-title">
-        <h2>Related Links</h2>
+        <h2>Related Solutions</h2>
         <p>Explore more building management solutions</p>
     </div>
     
     <div class="related-grid">
-        <a href="/products/building-management/ddc-controllers/index.html" class="related-card">
-            <img src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="DDC Controllers" class="related-image">
-            <div class="related-overlay">
-                <h4>DDC Controllers</h4>
-                <p>Field level control</p>
-            </div>
-        </a>
-        
-        <a href="/products/Energy-Management/energy-software/index.html" class="related-card">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2034&q=80" alt="Energy Software" class="related-image">
-            <div class="related-overlay">
-                <h4>Energy Software</h4>
-                <p>Analytics and optimization</p>
-            </div>
-        </a>
-        
-        <a href="/products/integration-devices/bacnet-routers/index.html" class="related-card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Integration Devices" class="related-image">
-            <div class="related-overlay">
-                <h4>Integration Devices</h4>
-                <p>Gateways and routers</p>
-            </div>
-        </a>
+        <a href="/products/building-management/ddc-controllers/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="DDC Controllers" class="related-image"><div class="related-overlay"><h4>DDC Controllers</h4><p>Field level control</p></div></a>
+        <a href="/products/Energy-Management/energy-software/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Software/Energy-Software-Platform.png" alt="Energy Software" class="related-image"><div class="related-overlay"><h4>Energy Software</h4><p>Analytics and optimization</p></div></a>
+        <a href="/products/Energy-Management/energy-gateways/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Gateways/EMC-GT-Energy-Gateways.png" alt="Energy Gateways" class="related-image"><div class="related-overlay"><h4>Energy Gateways</h4><p>Data acquisition hardware</p></div></a>
     </div>
 </div>
 
-<!-- ================= FOOTER ================= -->
+<!-- ================= FOOTER (SAME AS ORIGINAL) ================= -->
 <footer class="footer">
     <div class="footer-container">
-        <div>
-            <h5>Tongfang BMS System Integration</h5>
-            <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
-            <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
-            <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
-        </div>
-        <div>
-            <h5>Quick Links</h5>
-            <a class="btn-link" href="/index.html">Home</a>
-            <a class="btn-link" href="/about/index.html">About Us</a>
-            <a class="btn-link" href="/solutions/index.html">Solutions</a>
-            <a class="btn-link" href="/projects/index.html">Projects</a>
-            <a class="btn-link" href="/products/index.html">Products</a>
-            <a class="btn-link" href="/technologies/index.html">Technologies</a>
-            <a class="btn-link" href="/contact/index.html">Contact</a>
-        </div>
-        <div>
-            <h5>Business Hours</h5>
-            <p>Mon – Sat 8:30 AM – 5:30 PM</p>
-            <p> </p>
-            <p>Sunday: Closed</p>
-        </div>
-        <div>
-            <h5>Newsletter</h5>
-            <p>Get smart building & automation updates.</p>
-            <div class="newsletter-box">
-                <input class="form-control" type="email" placeholder="Your email">
-                <button class="btn btn-primary">Subscribe</button>
-            </div>
-            <div class="social-links">
-                <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
-            </div>
-        </div>
+        <div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div>
+        <div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><a class="btn-link" href="/about/index.html">About Us</a><a class="btn-link" href="/solutions/index.html">Solutions</a><a class="btn-link" href="/projects/index.html">Projects</a><a class="btn-link" href="/products/index.html">Products</a><a class="btn-link" href="/technologies/index.html">Technologies</a><a class="btn-link" href="/contact/index.html">Contact</a></div>
+        <div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div>
+        <div><h5>Newsletter</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a><a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a><a class="btn-square" href="#"><i class="fab fa-twitter"></i></a><a class="btn-square" href="#"><i class="fab fa-weixin"></i></a></div></div>
     </div>
     <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
 </footer>
 
-<!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
@@ -1649,7 +1161,7 @@
     });
 
     document.addEventListener("DOMContentLoaded", function() {
-        const sections = document.querySelectorAll(".section-wrapper, .product-table-container, .platform-card");
+        const sections = document.querySelectorAll(".section-wrapper, .product-table-container");
         const navLinks = document.querySelectorAll(".subnav-link");
         
         window.addEventListener("scroll", () => {
@@ -1666,41 +1178,9 @@
         });
     });
 
-    // Initialize DataTables
     $(document).ready(function() {
-        $('#inteservTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
-        });
-        
-        $('#bimviewTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
-        });
-        
-        $('#bimviewIBMSTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
-        });
-        
-        $('#inteservEnergyTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
-        });
-        
-        $('#securityTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
+        $('#inteservTable, #bimviewTable, #bimviewIBMSTable, #inteservEnergyTable, #securityTable').DataTable({
+            paging: false, searching: true, info: false, order: [[0, 'asc']]
         });
     });
 </script>

@@ -1,75 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Energy Software | WEBtalk | ESCloud | Energy Management | Tongfang BMS</title>
-    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
-
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- DataTables for product tables -->
+    <meta charset="utf-8">
+    <title>Energy Software | WEBtalk | ESCloud | Robot-BA | Tongfang BMS</title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="description" content="Tongfang BMS Energy Software Suite - WEBtalk Data Management, Robot-BA AI Optimization, and ESCloud Cloud Platform for comprehensive energy monitoring and analytics.">
+    <meta name="keywords" content="Energy Software, WEBtalk, ESCloud, Robot-BA, Energy Management, BMS Software, Building Analytics, AI Optimization">
+    <meta name="author" content="Tongfang BMS">
+    
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
+  
+    <!-- PRELOAD CRITICAL RESOURCES -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables -->
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     <style>
-        /* --- 1. DESIGN TOKENS (adapted from Hikvision) --- */
         :root {
-            --tf-blue: #004ca3;          
-            --tf-yellow: #ffcc00;        
-            --tf-dark: #111827;          
-            --tf-text: #4b5563;          
-            --tf-bg-light: #f9fafb;      
-            --tf-white: #ffffff;         
+            --tf-blue: #004ca3;       
+            --tf-yellow: #ffcc00;     
+            --tf-dark: #111827;       
+            --tf-text: #4b5563;       
+            --tf-bg-light: #f9fafb;   
+            --tf-white: #ffffff;
             --header-height: 80px;
-            --subnav-height: 60px; 
-            --card-radius: 8px;
+            --card-radius: 16px;
             --btn-radius: 50px;
-            --shadow-soft: 0 4px 20px rgba(0,0,0,0.05);
-            --shadow-lift: 0 15px 30px rgba(0, 76, 163, 0.15);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.04);
+            --shadow-lift: 0 25px 50px rgba(0, 76, 163, 0.15);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* --- 2. GLOBAL RESET --- */
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Open Sans', sans-serif; margin: 0; padding: 0;
-            background-color: var(--tf-bg-light); color: var(--tf-text);
-            overflow-x: hidden; padding-top: var(--header-height);
+        body { 
+            background-color: var(--tf-white); 
+            font-family: 'Open Sans', sans-serif; 
+            margin: 0; 
+            overflow-x: hidden; 
+            color: var(--tf-text); 
+            line-height: 1.7;
+            padding-top: 0;
         }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; padding: 0; margin: 0; }
-        h1, h2, h3, h4, h5 { color: var(--tf-dark); font-family: 'Montserrat', sans-serif; }
-
-        /* --- 3. HEADER (adapted from Hikvision style) --- */
-        .header-fix { 
-            width: 100%; position: fixed; top: 0; z-index: 1030; min-height: var(--header-height);
-            background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-        }
-        .header-container { 
-            max-width: 1440px; margin: 0 auto; display: flex; align-items: center;
-            justify-content: space-between; padding: 0 20px; height: var(--header-height); 
-        }
-        .logo-img { height: 60px; width: auto; object-fit: contain; display: block; }
-        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
-        .nav-link-custom { 
-            color: #111827; font-weight: 600; font-size: 13px; transition: 0.3s; text-transform: uppercase;
-            line-height: var(--header-height); display: block; letter-spacing: 0.5px;
-        }
-        .nav-link-custom:hover { color: var(--tf-blue); }
-        .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
         
-        /* --- DROPDOWN STYLE - FULL WIDTH WITH SWIPE ANIMATION --- */
+        h1, h2, h3, h4 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-blue); 
+        }
+        
+        a { text-decoration: none; transition: var(--transition); }
+        html { scroll-behavior: smooth; }
+
+        /* --- HEADER - EXACT MATCH WITH HOMEPAGE --- */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1030; 
+            min-height: var(--header-height); 
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
+        
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .nav-menu { 
+            display: flex; 
+            gap: 30px; 
+            height: 100%; 
+            margin-left: auto; 
+            margin-right: 40px; 
+            align-items: center; 
+        }
+        
+        .nav-link-custom { 
+            color: #111827;
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase; 
+            line-height: var(--header-height); 
+            display: block; 
+            position: relative; 
+            letter-spacing: 0.5px;
+        }
+        .nav-link-custom:hover { 
+            color: var(--tf-blue);
+        }
+
+        .dropdown-parent-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
         .nav-item-dropdown { 
-            position: static;
+            position: static; 
             height: 100%; 
             display: flex; 
             align-items: center;
         }
-        
+
         .dropdown-menu-custom {
             position: absolute;
             top: var(--header-height);
@@ -92,19 +148,7 @@
             display: flex;
             justify-content: center;
         }
-        
-        .dropdown-menu-custom::-webkit-scrollbar {
-            width: 6px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-thumb {
-            background: var(--tf-blue);
-            border-radius: 10px;
-        }
-        
+
         .dropdown-inner {
             max-width: 1440px;
             width: 100%;
@@ -115,7 +159,7 @@
             gap: 20px 20px;
             text-align: left;
         }
-        
+
         .nav-item-dropdown:first-child .dropdown-inner {
             grid-template-columns: repeat(3, 1fr);
             max-width: 1200px;
@@ -131,14 +175,14 @@
             height: 20px;
             background: transparent;
         }
-        
+
         .nav-item-dropdown:hover .dropdown-menu-custom { 
             opacity: 1; 
             visibility: visible; 
             transform: translateY(0);
             pointer-events: auto;
         }
-        
+
         .dropdown-category {
             color: var(--tf-blue); 
             font-size: 13px; 
@@ -149,7 +193,7 @@
             border-bottom: 1px solid #e5e7eb; 
             padding-bottom: 3px;
         }
-        
+
         .dropdown-link {
             color: #4b5563; 
             font-size: 13px; 
@@ -159,660 +203,962 @@
             transition: var(--transition);
             border-bottom: 1px solid transparent;
         }
-        
+
         .dropdown-link:hover {
             color: var(--tf-blue);
             padding-left: 8px;
             border-bottom-color: var(--tf-yellow);
         }
-        
+
         .more-link {
             color: var(--tf-blue);
-            font-weight: 600;
-            font-size: 12px;
-            margin-top: 10px;
+            font-weight: 700;
             display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
         }
         .more-link:hover {
-            color: var(--tf-yellow);
-        }
-        
-        .header-icons { display: flex !important; align-items: center; gap: 15px; }
-        .header-icons i { color: #111827; font-size: 18px; cursor: pointer; transition: 0.3s; }
-        .header-icons i:hover { color: var(--tf-blue); }
-        .mobile-toggle { display: none; font-size: 24px; color: #111827; cursor: pointer; background: none; border: none; padding-right: 20px; }
-        
-        @media (max-width: 1200px) { 
-            .dropdown-inner { grid-template-columns: repeat(3, 1fr); }
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 991px) {
-            .header-fix { height: auto; }
-            .mobile-toggle { display: block; order: 2; }
-            .header-icons { display: flex !important; order: 3; }
-            .header-icons i { font-size: 18px !important; color: #111827; }
-            .header-container { padding: 0 15px; flex-wrap: nowrap; justify-content: flex-start; }
-            .header-logo { order: 1; flex-shrink: 0; margin-right: auto; }
-            .nav-menu {
-                display: none; position: absolute; top: 80px; left: 0; width: 100%; background: white;
-                flex-direction: column; height: auto; padding: 20px 0; margin: 0;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1); align-items: flex-start; overflow-y: auto; max-height: 80vh;
-            }
-            .nav-menu.active { display: flex; }
-            .nav-link-custom { color: #333; width: 100%; padding: 10px 30px; line-height: 1.5; border-bottom: 1px solid #eee; }
-            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; position: relative; }
-            .dropdown-menu-custom {
-                position: static; width: 100%; transform: none; opacity: 1; visibility: visible; display: none;
-                box-shadow: none; border-top: none; padding: 10px 30px; background: #f9f9f9; 
-                transition: none; justify-content: flex-start; max-height: none; overflow-y: visible;
-            }
-            .dropdown-inner, 
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: repeat(2, 1fr);
-                padding: 0;
-            }
-            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
-            .dropdown-category { margin-top: 10px; }
-        }
-        
-        @media (max-width: 576px) {
-            .header-icons { gap: 12px !important; }
-            .header-icons i { font-size: 16px !important; }
-            .logo-img { height: 50px; }
-            .mobile-toggle { font-size: 20px; margin-right: 10px; }
-            .header-container { padding: 0 10px; }
-            .dropdown-inner,
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: 1fr;
-            }
+            padding-left: 5px;
         }
 
-        /* --- 4. HERO BANNER --- */
-        .hero-banner {
-            position: relative; width: 100%; height: 350px;
-            background: linear-gradient(135deg, var(--tf-blue) 0%, #002a5c 100%);
-            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
-        }
-        .hero-content { position: relative; z-index: 2; text-align: center; color: white; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
-        .hero-content h1 { font-size: 48px; color: white; margin-bottom: 10px; font-weight: 700; }
-        .hero-content p { font-size: 20px; font-weight: 600; color: #fff; }
-
-        /* --- 5. STICKY PRODUCT SUB-BAR --- */
-        .product-subnav {
-            position: sticky; top: var(--header-height); z-index: 900; background: var(--tf-white);
-            border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); height: var(--subnav-height);
-        }
-        .subnav-container {
-            max-width: 1440px; margin: 0 auto; padding: 0 30px; height: 100%;
-            display: flex; align-items: center; overflow-x: auto; scrollbar-width: none;
-        }
-        .subnav-container::-webkit-scrollbar { display: none; }
-        .subnav-list { display: flex; gap: 30px; height: 100%; white-space: nowrap; }
-        .subnav-link {
-            display: flex; align-items: center; height: 100%; font-size: 13px; font-weight: 600; color: var(--tf-text);
-            text-transform: uppercase; border-bottom: 4px solid transparent; transition: all 0.3s ease;
-        }
-        .subnav-link:hover, .subnav-link.active { color: var(--tf-blue); border-bottom-color: var(--tf-yellow); }
-
-        /* --- 6. SECTION HEADERS --- */
-        .section-wrapper {
-            max-width: 1440px; margin: 0 auto; padding: 60px 30px;
-        }
-        .section-title {
-            text-align: center; margin-bottom: 50px;
-        }
-        .section-title h2 {
-            font-size: 36px; color: var(--tf-dark); position: relative; padding-bottom: 20px; margin-bottom: 20px;
-        }
-        .section-title h2:after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 4px; background: var(--tf-yellow);
-        }
-        .section-title p {
-            font-size: 18px; color: var(--tf-text); max-width: 800px; margin: 0 auto;
-        }
-
-        /* --- 7. PRODUCT GRID --- */
-        .product-wrapper { max-width: 1440px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
-        .category-section { scroll-margin-top: 160px; }
-        .category-heading {
-            color: var(--tf-dark); margin-bottom: 30px; margin-top: 50px; font-weight: 700; text-transform: uppercase;
-            font-size: 22px; position: relative; padding-left: 20px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px;
-        }
-        .category-heading::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 10px; width: 6px;
-            background-color: var(--tf-yellow); border-radius: 4px;
+        .header-icons { 
+            display: flex !important; 
+            align-items: center; 
+            gap: 5px; 
         }
         
-        /* --- 8. CATEGORY CARDS --- */
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .category-card {
-            position: relative;
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            height: 300px;
+        .header-icons i {
+            color: #111827;
+            font-size: 18px;
             cursor: pointer;
+            transition: 0.3s;
         }
-        .category-card.large {
-            grid-column: span 2;
-            height: 400px;
+        
+        .header-icons i:hover {
+            color: var(--tf-blue);
         }
-        .category-image {
+
+        .mobile-toggle { 
+            display: none; 
+            font-size: 24px; 
+            color: #111827;
+            cursor: pointer; 
+            background: none;
+            border: none;
+            gap:7px ;
+        }
+
+        /* --- SEARCH OVERLAY STYLES (EXACT MATCH) --- */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
         }
-        .category-card:hover .category-image {
-            transform: scale(1.1);
+
+        .search-overlay.active {
+            display: block;
+            opacity: 1;
         }
-        .category-overlay {
+
+        .search-container {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .search-header h3 {
+            color: #fff;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .close-search {
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-search:hover {
+            color: var(--tf-yellow);
+            transform: rotate(90deg);
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 20px 60px 20px 30px;
+            font-size: 18px;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            background: #1a1a1a;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--tf-yellow);
+            background: #222;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--tf-yellow);
+            font-size: 20px;
+        }
+
+        .search-shortcut {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 12px;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .search-results {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 15px 25px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            color: var(--tf-text);
+        }
+
+        .result-item:hover {
+            background: #f5f5f5;
+            padding-left: 35px;
+        }
+
+        .result-item h4 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: var(--tf-blue);
+        }
+
+        .result-item p {
+            margin: 0;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .result-item .category {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--tf-yellow);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: #666;
+        }
+
+        .search-highlight {
+            background-color: var(--tf-yellow);
+            color: #000;
+            padding: 2px 0;
+            font-weight: 700;
+        }
+
+        .search-stats {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        /* --- HERO SECTION (CUSTOM FOR SOFTWARE PAGE) --- */
+        .hero-section {
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #002a5c 100%);
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            color: white;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            opacity: 0.3;
         }
-        .category-overlay h3 {
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
             color: white;
-            font-size: 24px;
-            margin-bottom: 10px;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        .category-overlay p {
-            font-size: 14px;
-            opacity: 0.9;
+
+        .hero-content h1 {
+            font-size: 56px;
+            font-weight: 800;
+            color: white;
             margin-bottom: 20px;
         }
-        .category-btn {
+
+        .hero-content p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* --- SUBNAVIGATION (EXACT MATCH) --- */
+        .project-nav-bar {
+            position: sticky; 
+            top: 80px; 
+            z-index: 1020;
+            background: #fff; 
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .nav-breadcrumb .breadcrumb-item { 
+            position: relative; 
+            display: inline-block; 
+        }
+        
+        .nav-breadcrumb .breadcrumb-item a {
+            color: #666; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .nav-breadcrumb .breadcrumb-item a:hover, 
+        .nav-breadcrumb .breadcrumb-item.active a {
+            color: var(--tf-blue) !important;
+            font-weight: 800;
+        }
+        
+        .nav-breadcrumb .breadcrumb-item.active::after {
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            bottom: -6px; 
+            width: 100%; 
+            height: 3px; 
+            background: var(--tf-yellow); 
+            border-radius: 10px;
+        }
+        
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { 
+            content: "|"; 
+            color: #ccc; 
+            padding: 0 10px; 
+        }
+
+        /* --- SECTION STYLES --- */
+        .section-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 80px 30px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            position: relative;
             display: inline-block;
-            padding: 8px 25px;
+        }
+
+        .section-header .line {
+            width: 80px;
+            height: 4px;
+            background: var(--tf-yellow);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--tf-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- SOFTWARE CARDS --- */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .software-card {
+            background: #fff;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .software-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .software-card-header {
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #003d82 100%);
+            padding: 35px;
+            text-align: center;
+            position: relative;
+        }
+
+        .software-card-header i {
+            font-size: 56px;
+            color: var(--tf-yellow);
+            margin-bottom: 15px;
+        }
+
+        .software-card-header h3 {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .software-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
             background: var(--tf-yellow);
             color: var(--tf-dark);
+            padding: 5px 15px;
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .software-card-body {
+            padding: 30px;
+        }
+
+        .software-card-body p {
+            color: var(--tf-text);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+            color: var(--tf-text);
+        }
+
+        .feature-list li i {
+            color: var(--tf-yellow);
+            font-size: 14px;
+            width: 20px;
+        }
+
+        .software-card-footer {
+            padding: 20px 30px 30px;
+            border-top: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        .btn-primary-custom {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--tf-blue);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
             font-weight: 600;
-            width: fit-content;
+            font-size: 14px;
             transition: var(--transition);
         }
-        .category-btn:hover {
-            background: #e6b800;
+
+        .btn-primary-custom:hover {
+            background: #003d82;
+            gap: 12px;
             transform: translateY(-2px);
         }
 
-        /* --- 9. PRODUCT TABLE STYLES --- */
-        .product-table-container {
+        /* --- TABLE STYLES --- */
+        .table-container {
             background: var(--tf-white);
             border-radius: var(--card-radius);
-            padding: 30px;
+            padding: 35px;
             box-shadow: var(--shadow-soft);
-            margin: 40px 30px;
-            border: 1px solid rgba(0,0,0,0.03);
+            margin: 40px 0;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        
+
         .product-table {
             width: 100%;
             border-collapse: collapse;
         }
-        
-        .product-table thead {
+
+        .product-table thead tr {
             background: var(--tf-blue);
-            color: white;
         }
-        
+
         .product-table th {
-            padding: 15px;
+            padding: 15px 20px;
             font-weight: 600;
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: white;
+            text-align: left;
         }
-        
+
         .product-table td {
-            padding: 12px 15px;
+            padding: 12px 20px;
             border-bottom: 1px solid #e5e7eb;
-            vertical-align: middle;
             font-size: 14px;
+            color: var(--tf-text);
         }
-        
+
         .product-table tbody tr:hover {
             background: var(--tf-bg-light);
         }
-        
+
         .product-badge {
             background: #eef2ff;
             color: var(--tf-blue);
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 4px 12px;
+            border-radius: 20px;
             font-weight: 600;
             font-size: 12px;
             display: inline-block;
         }
-        
+
         .btn-view {
-            padding: 5px 15px;
+            padding: 5px 16px;
             border: 1px solid var(--tf-blue);
             color: var(--tf-blue);
-            border-radius: 4px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
             transition: var(--transition);
             display: inline-block;
         }
-        
+
         .btn-view:hover {
             background: var(--tf-blue);
             color: white;
         }
 
-        /* --- 10. FEATURE GRID --- */
+        /* --- FEATURE GRID --- */
         .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-top: 40px;
-        }
-        
-        .feature-item {
-            text-align: center;
-            padding: 30px;
-            background: var(--tf-white);
-            border-radius: var(--card-radius);
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-        }
-        
-        .feature-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lift);
-        }
-        
-        .feature-item i {
-            font-size: 40px;
-            color: var(--tf-yellow);
-            margin-bottom: 15px;
-        }
-        
-        .feature-item h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: var(--tf-dark);
-        }
-        
-        .feature-item p {
-            font-size: 13px;
-            color: var(--tf-text);
-            margin: 0;
-        }
-
-        /* --- 11. APPLICATION ICONS --- */
-        .application-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
-        
-        .application-item {
+
+        .feature-card {
             text-align: center;
+            padding: 35px 25px;
+            background: #fff;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
         }
-        
-        .application-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--tf-bg-light);
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lift);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(0,76,163,0.1), rgba(0,76,163,0.05));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            transition: var(--transition);
-        }
-        
-        .application-item:hover .application-icon {
-            background: var(--tf-blue);
-            transform: scale(1.1);
-        }
-        
-        .application-item:hover .application-icon i {
-            color: white;
-        }
-        
-        .application-icon i {
-            font-size: 40px;
-            color: var(--tf-blue);
-            transition: var(--transition);
-        }
-        
-        .application-item h5 {
-            font-size: 16px;
-            margin-bottom: 5px;
-            color: var(--tf-dark);
         }
 
-        /* --- 12. DOWNLOAD CARDS --- */
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .download-card {
-            background: var(--tf-white);
-            border-radius: var(--card-radius);
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-        }
-        .download-card:hover {
-            box-shadow: var(--shadow-lift);
-            transform: translateY(-5px);
-        }
-        .download-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--tf-bg-light);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+        .feature-icon i {
+            font-size: 36px;
             color: var(--tf-blue);
         }
-        .download-content {
-            flex: 1;
+
+        .feature-card h4 {
+            font-size: 20px;
+            margin-bottom: 12px;
         }
-        .download-content h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-            color: var(--tf-dark);
-        }
-        .download-content p {
-            font-size: 13px;
-            color: var(--tf-text);
-            margin-bottom: 0;
-        }
-        .download-link {
-            color: var(--tf-blue);
-            font-weight: 600;
+
+        .feature-card p {
             font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .download-link:hover {
-            color: #003d82;
-            gap: 10px;
+            color: var(--tf-text);
         }
 
-        /* --- 13. CTA SECTION --- */
+        /* --- CTA SECTION --- */
         .cta-section {
-            background: var(--tf-blue);
+            background: linear-gradient(135deg, var(--tf-blue) 0%, #002a5c 100%);
             padding: 80px 0;
             text-align: center;
-            color: white;
+            position: relative;
+            overflow: hidden;
         }
+
         .cta-section h2 {
             color: white;
-            font-size: 36px;
+            font-size: 40px;
             margin-bottom: 20px;
         }
+
         .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
             font-size: 18px;
             margin-bottom: 30px;
-            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
+
         .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
             background: var(--tf-yellow);
             color: var(--tf-dark);
+            padding: 16px 45px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 16px;
             transition: var(--transition);
         }
+
         .cta-button:hover {
             background: #e6b800;
             transform: translateY(-3px);
+            gap: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* --- 14. RELATED LINKS --- */
+        /* --- RELATED LINKS --- */
         .related-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
+
         .related-card {
-            background: var(--tf-white);
+            position: relative;
             border-radius: var(--card-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            height: 300px;
-            position: relative;
+            height: 280px;
+            display: block;
         }
-        .related-card:hover {
-            box-shadow: var(--shadow-lift);
-            transform: translateY(-8px);
-        }
-        .related-image {
+
+        .related-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
-        .related-card:hover .related-image {
-            transform: scale(1.1);
+
+        .related-card:hover img {
+            transform: scale(1.08);
         }
+
         .related-overlay {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 25px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 30px 24px 24px;
             color: white;
         }
+
         .related-overlay h4 {
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 8px;
         }
+
         .related-overlay p {
             font-size: 13px;
             opacity: 0.9;
         }
 
-        /* --- 15. FOOTER --- */
+        /* --- FOOTER (EXACT MATCH) --- */
         .footer {
-            background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 80px; font-size: 14px;
+            background: #0b111a;
+            color: #aaa;
+            margin-top: 60px;
+            padding-top: 80px;
+            font-size: 14px;
         }
-        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        
         .footer-container {
-            max-width: 1440px; margin: 0 auto; padding: 0 30px;
-            display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 40px;
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 30px;
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr; 
+            gap: 40px;
         }
-        .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
-        .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
-        .btn-link { color: var(--tf-blue); display: block; margin-bottom: 12px; font-size: 14px; transition: var(--transition); }
-        .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
-        .newsletter-box { position: relative; margin-top: 15px; }
+        
+        .footer p { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 10px; 
+        }
+        
+        .footer i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            width: 20px; 
+            text-align: center; 
+        }
+        
+        .footer .btn-link { 
+            color: #60a5fa;
+            display: inline-block; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow); 
+            padding-left: 8px; 
+        }
+        
+        .newsletter-box { 
+            position: relative; 
+            margin-top: 15px; 
+        }
+        
         .form-control {
-            width: 100%; padding: 14px 15px; padding-right: 120px; border: 1px solid #374151;
-            background: #1f2937; color: var(--tf-white); border-radius: var(--btn-radius);
-            font-size: 14px; box-sizing: border-box; outline: none;
+            width: 100%; 
+            padding: 14px 15px; 
+            padding-right: 120px; 
+            border: 1px solid #374151;
+            background: #1f2937; 
+            color: var(--tf-white); 
+            border-radius: var(--btn-radius);
+            font-size: 14px; 
+            box-sizing: border-box; 
+            outline: none;
         }
-        .form-control:focus { border-color: var(--tf-blue); }
+        
+        .form-control:focus { 
+            border-color: var(--tf-blue); 
+        }
+        
         .btn-primary {
-            position: absolute; top: 0; right: 0; height: 100%; background: var(--tf-blue); color: white;
-            border: none; padding: 0 25px; border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
-            cursor: pointer; font-weight: 600; transition: var(--transition);
-        }
-        .btn-primary:hover { background: #003d82; }
-        .social-links { display: flex; gap: 15px; margin-top: 25px; }
-        .btn-square {
-            width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex;
-            align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white);
+            position: absolute; 
+            top: 0; 
+            right: 0; 
+            height: 100%; 
+            background: var(--tf-blue); 
+            color: white;
+            border: none; 
+            padding: 0 25px; 
+            border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
+            cursor: pointer; 
+            font-weight: 600; 
             transition: var(--transition);
         }
-        .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
-        .btn-square i { margin: 0; color: #fff; }
-        .copyright {
-            background: #05080c; padding: 25px; margin-top: 60px; color: #6b7280; font-size: 13px;
-            text-align: center; border-top: 1px solid #1a222e;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 1200px) { 
-            .category-grid { grid-template-columns: repeat(2, 1fr); }
-            .feature-grid { grid-template-columns: repeat(2, 1fr); }
-            .application-grid { grid-template-columns: repeat(2, 1fr); }
-            .category-card.large { grid-column: span 1; height: 300px; }
-            .product-table-container { margin: 40px 20px; }
+        
+        .btn-primary:hover { 
+            background: #003d82; 
         }
         
-        @media (max-width: 991px) {
-            .category-grid { grid-template-columns: 1fr; }
-            .download-grid { grid-template-columns: 1fr; }
-            .related-grid { grid-template-columns: 1fr; }
-            .feature-grid { grid-template-columns: 1fr; }
-            .application-grid { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr 1fr; }
-            .product-table-container { overflow-x: auto; }
-            .product-table { min-width: 800px; }
-        }
-        
-        @media (max-width: 576px) {
-            .footer-container { grid-template-columns: 1fr; }
-            .hero-banner { height: 250px; }
-            .hero-content h1 { font-size: 32px; }
-            .hero-content p { font-size: 16px; padding: 0 20px; }
-            .section-wrapper { padding: 40px 20px; }
-            .section-title h2 { font-size: 28px; }
-            .product-table-container { padding: 20px; margin: 20px; }
-        }
-
-        /* Software-specific styles */
-        .software-showcase {
-            display: flex;
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 25px; 
             flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
         }
         
-        .software-card {
-            background: var(--tf-white);
-            border-radius: var(--card-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: var(--transition);
-            flex: 1 1 calc(33.333% - 20px);
-            border: 1px solid rgba(0,0,0,0.03);
-        }
-        
-        .software-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lift);
-        }
-        
-        .software-header {
-            background: var(--tf-blue);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-        }
-        
-        .software-header i {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: var(--tf-yellow);
-        }
-        
-        .software-header h3 {
-            color: white;
-            margin: 0;
-            font-size: 24px;
-        }
-        
-        .software-body {
-            padding: 25px;
-        }
-        
-        .software-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .software-body li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
+        .btn-square {
+            width: 40px; 
+            height: 40px; 
+            background: rgba(255,255,255,0.05); 
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            color: var(--tf-white);
+            transition: var(--transition);
         }
         
-        .software-body li i {
-            color: var(--tf-yellow);
-            width: 20px;
+        .btn-square:hover { 
+            background: var(--tf-blue); 
+            transform: translateY(-3px); 
         }
         
-        .software-footer {
-            padding: 20px 25px;
-            border-top: 1px solid #f0f0f0;
-            text-align: center;
+        .copyright {
+            background: #05080c; 
+            padding: 25px; 
+            margin-top: 60px; 
+            color: #6b7280; 
+            font-size: 13px;
+            text-align: center; 
+            border-top: 1px solid #1a222e;
         }
-        
-        .badge-cloud {
-            display: inline-block;
-            background: #eef2ff;
-            color: var(--tf-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 0 5px 5px 0;
-        }
+
+        /* ===== MOBILE RESPONSIVENESS - FIXED HEADER LAYOUT ===== */
+@media (max-width: 991px) {
+    .header-fix { 
+        height: auto; 
+    }
+    
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        flex-wrap: nowrap;
+    }
+    
+    .header-logo {
+        flex: 0 0 auto;
+        margin-right: 0;
+    }
+    
+    .logo-img {
+        height: 50px;
+    }
+    
+    .header-right-group {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-left: auto;
+    }
+    
+    .mobile-toggle { 
+        display: block;
+        order: 1;
+        font-size: 24px;
+        color: #333;
+        padding: 0;
+    }
+    
+    .header-icons { 
+        display: flex !important;
+        align-items: center;
+        gap: 15px;
+        order: 2;
+    }
+    
+    .header-icons i {
+        font-size: 18px !important;
+        color: #333;
+    }
+    
+    /* Mobile Navigation Menu */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+        margin: 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        align-items: flex-start;
+        overflow-y: auto;
+        max-height: 80vh;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active { 
+        display: flex; 
+    }
+    
+    .nav-link-custom { 
+        color: #333; 
+        width: 100%; 
+        padding: 12px 30px; 
+        line-height: 1.5;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+    }
+    
+    /* Mobile Dropdowns */
+    .nav-item-dropdown { 
+        width: 100%; 
+        flex-direction: column; 
+        align-items: flex-start;
+        height: auto;
+    }
+    
+    .dropdown-menu-custom {
+        position: static;
+        width: 100%;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        display: none;
+        box-shadow: none;
+        border-top: none;
+        padding: 10px 30px 20px;
+        background: #f9f9f9;
+        grid-template-columns: 1fr;
+        max-height: none;
+    }
+    
+    .dropdown-menu-custom::before { 
+        display: none; 
+    }
+    
+    .nav-item-dropdown.active .dropdown-menu-custom { 
+        display: block; 
+    }
+    
+    .dropdown-category { 
+        margin-top: 15px;
+        font-size: 12px;
+    }
+    
+    .dropdown-link {
+        padding: 8px 0;
+        font-size: 13px;
+    }
+    
+    /* Rotating arrow for active dropdowns */
+    .nav-item-dropdown.active > .dropdown-parent-link i {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease;
+    }
+    
+    .nav-item-dropdown.active > .dropdown-parent-link {
+        color: var(--tf-blue) !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-img {
+        height: 40px;
+    }
+    
+    .header-icons {
+        gap: 10px;
+    }
+    
+    .header-icons i {
+        font-size: 16px !important;
+    }
+}
+
     </style>
 </head>
+
 <body>
 
-<!-- ================= HEADER with full-width swipe-down dropdowns ================= -->
+<!-- ===== SEARCH OVERLAY (EXACT MATCH) ===== -->
+<div id="searchOverlay" class="search-overlay">
+    <div class="search-container">
+        <div class="search-header">
+            <h3><i class="fa fa-search" style="color: var(--tf-yellow); margin-right: 10px;"></i>Search Tongfang BMS</h3>
+            <span class="close-search" onclick="closeSearch()">&times;</span>
+        </div>
+        <div class="search-input-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="Type to search... (e.g., 'WEBtalk', 'energy software', 'BMS')" autocomplete="off">
+            <i class="fa fa-search search-icon"></i>
+            <span class="search-shortcut">Ctrl + K</span>
+        </div>
+        <div id="searchStats" class="search-stats"></div>
+        <div id="searchResults" class="search-results"></div>
+    </div>
+</div>
+
+<!-- ===== HEADER (EXACT MATCH) ===== -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
             <div class="header-logo">
-                <a href="/index.html">
-                   <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
+                <a href="/index.html" class="logo-wrapper">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                 </a>
             </div>
             
-            <!-- NAVIGATION -->
             <nav id="mainNav" class="nav-menu">
-                
                 <!-- SOLUTIONS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
@@ -820,667 +1166,245 @@
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <div>
-                                <div class="dropdown-category">Buildings</div>
-                                <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                            </div>
-                            <div>
-                                <div class="dropdown-category">Infrastructure</div>
-                                <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
-                                <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
-                            </div>
-                            <div>
-                                <div class="dropdown-category">City Systems</div>
-                                <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                                <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
-                            </div>
+                            <div><div class="dropdown-category">Buildings</div><a href="/solutions/residential/index.html" class="dropdown-link">Residential</a><a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a><a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a><a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a><a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a></div>
+                            <div><div class="dropdown-category">Infrastructure</div><a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a><a href="/solutions/airport/index.html" class="dropdown-link">Airports</a><a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a><a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a><a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a></div>
+                            <div><div class="dropdown-category">City Systems</div><a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a><a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a><a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a><a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a><a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a><a href="/solutions/index.html" class="more-link">View All Solutions →</a></div>
                         </div>
                     </div>
                 </div>
                 
-                  <!-- PRODUCTS DROPDOWN - Complete with Access Control focused content -->
+                <!-- PRODUCTS DROPDOWN -->
                 <div class="nav-item-dropdown">
                     <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                         Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <!-- 1. Access Control -->
-                            <div>
-                                <div class="dropdown-category">Access Control</div>
-                                <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
-                                <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
-                                <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
-                                <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
-                                <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                <a href="/products/access-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 2. Fire & Safety -->
-                            <div>
-                                <div class="dropdown-category">Fire & Safety</div>
-                               <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
-                                <a href="/products\fire-alarm\Control_Panels\index.html" class="dropdown-link">Control Panels</a>
-                                <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                              
-                                <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
-                                <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 3. Building Management (UPDATED - NO DUPLICATES) -->
-                            <div>
-                                <div class="dropdown-category">Building Management</div>
-                                <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
-                                <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                <a href="/products/building-management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 4. IP Audio & Intercom -->
-                            <div>
-                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
-                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
-                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
- 
-                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
-                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                           <!-- 5. Video Surveillance
-                            <div>
-                                <div class="dropdown-category">Video Surveillance</div>
-                                <a href="/products/video-surveillance/ip-cameras/index.html" class="dropdown-link">IP Cameras</a>
-                                <a href="/products/video-surveillance/nvrs/index.html" class="dropdown-link">NVRs</a>
-                                <a href="/products/video-surveillance/analog-cameras/index.html" class="dropdown-link">Analog Cameras</a>
-                               
-                                <a href="/products/video-surveillance/cctv-accessories/index.html" class="dropdown-link">CCTV Accessories</a>
-                                <a href="/products/video-surveillance/index.html" class="more-link">View All→</a>
-                            </div>  -->
-                            
-                            
-                            <!-- 6. HVAC & Field Control -->
-                            <div>
-                                <div class="dropdown-category">HVAC & Field Control</div>
-                                <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
-                                <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
-                                <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
-                                <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
-                                <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
-                                <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 7. Lighting Control -->
-                            <div>
-                                <div class="dropdown-category">Lighting Control</div>
-                                <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
-                                <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
-                                <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
-                                <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
-                                <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
-                                <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            
-                            <!-- 8. Energy Management -->
-                            <div>
-                                <div class="dropdown-category">Energy Management</div>
-                                <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
-                                <a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a>
-                                <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
-                                <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
-                                <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
-                                <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
-                                <a href="/products/Energy-Management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
+                            <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a><a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a><a href="/products/hvac-field-control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a><a href="/products/Lighting-Control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a><a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a><a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a><a href="/products/Energy-Management/index.html" class="more-link">View All→</a></div>
                         </div>
                     </div>
                 </div>
-
-
+                
                 <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
                 <a href="/projects/index.html" class="nav-link-custom">Projects</a>
                 <a href="/about/index.html" class="nav-link-custom">About</a>
                 <a href="/contact/index.html" class="nav-link-custom">Contact</a>
             </nav>
 
-            <!-- HAMBURGER ICON -->
-            <button class="mobile-toggle" onclick="toggleMobileMenu()">
-                <i class="fa fa-bars"></i>
-            </button>
-
-            <!-- Header Icons -->
-            <div class="header-icons d-flex align-items-center">
-                <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
-                <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
+            <div class="header-right-group">
+                <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <div class="header-icons">
+                    <i class="fa fa-search" onclick="openSearch()" style="cursor: pointer;"></i>
+                    <i class="fa fa-globe"></i>
+                </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- ================= HERO BANNER ================= -->
-<div class="hero-banner" style="background: linear-gradient(135deg, var(--tf-blue) 0%, #002a5c 100%);">
-    <div class="hero-content">
-        <br><br><br><br>
-        <h1>Energy Software</h1>
-        <p>Intelligent Software Solutions for Comprehensive Energy Management</p>
+<!-- ===== HERO SECTION ===== -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Energy Software Suite</h1>
+            <p>Transform your energy data into actionable insights with our comprehensive software solutions</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SUBNAVIGATION ===== -->
+<div class="project-nav-bar">
+    <div class="container">
+        <nav aria-label="breadcrumb" class="nav-breadcrumb">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="#overview">Overview</a></li>
+                <li class="breadcrumb-item"><a href="#software-solutions">Solutions</a></li>
+                <li class="breadcrumb-item"><a href="#webtalk-models">WEBtalk</a></li>
+                <li class="breadcrumb-item"><a href="#robot-models">Robot-BA</a></li>
+                <li class="breadcrumb-item"><a href="#escloud-models">ESCloud</a></li>
+                <li class="breadcrumb-item"><a href="#features">Features</a></li>
+            </ol>
+        </nav>
     </div>
 </div>
 
-<!-- ================= STICKY SUB-NAV BAR ================= -->
-<nav class="product-subnav">
-    <div class="subnav-container">
-        <ul class="subnav-list">
-            <li><a href="#overview" class="subnav-link">Overview</a></li>
-            <li><a href="#webtalk" class="subnav-link">WEBtalk</a></li>
-            <li><a href="#robot-ba" class="subnav-link">AI Machine</a></li>
-            <li><a href="#escloud" class="subnav-link">ESCloud</a></li>
-            <li><a href="#features" class="subnav-link">Features</a></li>
-            <li><a href="#applications" class="subnav-link">Applications</a></li>
-        </ul>
-    </div>
-</nav>
-
-<!-- ================= MAIN CONTENT ================= -->
-
-<!-- Overview Section -->
+<!-- ===== OVERVIEW SECTION ===== -->
 <div class="section-wrapper" id="overview">
-    <div class="section-title">
-        <h2>Overview</h2>
-        <p>Complete software ecosystem for energy data management, analytics, and optimization</p>
+    <div class="section-header">
+        <h2>Complete Software Ecosystem</h2>
+        <div class="line"></div>
+        <p>From on-premises data management to cloud-based analytics and AI optimization</p>
     </div>
-    
-    <div class="media-content" style="display: flex; align-items: center; gap: 40px; background: var(--tf-white); padding: 40px; border-radius: var(--card-radius); box-shadow: var(--shadow-soft);">
+
+    <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
         <div style="flex: 1;">
-            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Software/Energy-Software-Platform.png" alt="Energy Software Platform" style="width: 100%; border-radius: var(--card-radius);">
+            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Software/Energy-Software-Platform.png" alt="Energy Software Platform" style="width: 100%; border-radius: 20px; box-shadow: var(--shadow-soft);">
         </div>
         <div style="flex: 1;">
-            <p style="font-size: 16px; line-height: 1.8; color: var(--tf-text);">Our energy software suite provides comprehensive tools for data acquisition, visualization, analytics, and optimization. From on-premises data management with WEBtalk to cloud-based multi-site monitoring with ESCloud and AI-driven optimization with Robot-BA, our software solutions transform raw energy data into actionable insights for facility managers and energy professionals.</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>Real-time Dashboards</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>Cloud & On-premise</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>AI Optimization</strong></span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <i class="fa fa-check-circle" style="color: var(--tf-yellow); font-size: 20px;"></i>
-                    <span style="font-size: 14px;"><strong>Multi-site Management</strong></span>
-                </div>
+            <h3 style="font-size: 28px; margin-bottom: 20px; color: var(--tf-dark);">Intelligent Energy Management</h3>
+            <p style="font-size: 16px; color: var(--tf-text); margin-bottom: 24px;">Our energy software suite provides comprehensive tools for data acquisition, visualization, analytics, and optimization. Transform raw energy data into actionable insights for facility managers and energy professionals.</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                <div><i class="fa fa-check-circle" style="color: var(--tf-yellow); margin-right: 10px;"></i> Real-time Dashboards</div>
+                <div><i class="fa fa-check-circle" style="color: var(--tf-yellow); margin-right: 10px;"></i> Cloud & On-premise</div>
+                <div><i class="fa fa-check-circle" style="color: var(--tf-yellow); margin-right: 10px;"></i> AI Optimization</div>
+                <div><i class="fa fa-check-circle" style="color: var(--tf-yellow); margin-right: 10px;"></i> Multi-site Management</div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Software Showcase -->
-<div class="software-showcase">
-    <!-- WEBtalk Card -->
-    <div class="software-card" id="webtalk">
-        <div class="software-header">
-            <i class="fa fa-database"></i>
-            <h3>WEBtalk</h3>
-        </div>
-        <div class="software-body">
-            <p style="margin-top: 0; color: var(--tf-text);">Data Management System for centralized energy monitoring and analysis.</p>
-            <ul>
-                <li><i class="fa fa-check-circle"></i> Centralized data acquisition</li>
-                <li><i class="fa fa-check-circle"></i> Historical data storage</li>
-                <li><i class="fa fa-check-circle"></i> Real-time dashboards</li>
-                <li><i class="fa fa-check-circle"></i> Web browser access</li>
-                <li><i class="fa fa-check-circle"></i> Multi-protocol support</li>
-                <li><i class="fa fa-check-circle"></i> Custom reporting</li>
-            </ul>
-        </div>
-        <div class="software-footer">
-            <a href="#webtalk-models" class="btn-view">View Models →</a>
-        </div>
+<!-- ===== SOFTWARE SOLUTIONS SECTION ===== -->
+<div class="section-wrapper" id="software-solutions" style="background: var(--tf-bg-light); border-radius: 30px; margin: 20px auto;">
+    <div class="section-header">
+        <h2>Our Software Solutions</h2>
+        <div class="line"></div>
+        <p>Choose the right solution for your energy management needs</p>
     </div>
-    
-    <!-- Robot-BA Card -->
-    <div class="software-card" id="robot-ba">
-        <div class="software-header">
-            <i class="fa fa-robot"></i>
-            <h3>Robot-BA</h3>
-        </div>
-        <div class="software-body">
-            <p style="margin-top: 0; color: var(--tf-text);">Artificial Intelligence Machine for energy optimization and predictive analytics.</p>
-            <ul>
-                <li><i class="fa fa-check-circle"></i> Energy optimization logic</li>
-                <li><i class="fa fa-check-circle"></i> Predictive analytics</li>
-                <li><i class="fa fa-check-circle"></i> Equipment performance optimization</li>
-                <li><i class="fa fa-check-circle"></i> Fault detection</li>
-                <li><i class="fa fa-check-circle"></i> Automated scheduling</li>
-                <li><i class="fa fa-check-circle"></i> Machine learning algorithms</li>
-            </ul>
-        </div>
-        <div class="software-footer">
-            <a href="#robot-models" class="btn-view">View Models →</a>
-        </div>
-    </div>
-    
-    <!-- ESCloud Card -->
-    <div class="software-card" id="escloud">
-        <div class="software-header">
-            <i class="fa fa-cloud"></i>
-            <h3>ESCloud</h3>
-        </div>
-        <div class="software-body">
-            <p style="margin-top: 0; color: var(--tf-text);">Cloud Center Platform for remote monitoring and multi-site management.</p>
-            <ul>
-                <li><i class="fa fa-check-circle"></i> Remote monitoring</li>
-                <li><i class="fa fa-check-circle"></i> Cloud energy analytics</li>
-                <li><i class="fa fa-check-circle"></i> Multi-site management</li>
-                <li><i class="fa fa-check-circle"></i> Central command center</li>
-                <li><i class="fa fa-check-circle"></i> Mobile access</li>
-                <li><i class="fa fa-check-circle"></i> Benchmarking</li>
-            </ul>
-        </div>
-        <div class="software-footer">
-            <a href="#escloud-models" class="btn-view">View Details →</a>
-        </div>
+
+    <div class="software-grid">
+        <div class="software-card"><div class="software-card-header"><span class="software-badge">On-Premise</span><i class="fa fa-database"></i><h3>WEBtalk</h3></div><div class="software-card-body"><p>Data Management System for centralized energy monitoring and analysis.</p><ul class="feature-list"><li><i class="fa fa-check-circle"></i> Centralized data acquisition</li><li><i class="fa fa-check-circle"></i> Real-time dashboards</li><li><i class="fa fa-check-circle"></i> Historical data storage</li><li><i class="fa fa-check-circle"></i> Multi-protocol support</li><li><i class="fa fa-check-circle"></i> Custom reporting</li></ul></div><div class="software-card-footer"><a href="#webtalk-models" class="btn-primary-custom">View Models <i class="fa fa-arrow-right"></i></a></div></div>
+        <div class="software-card"><div class="software-card-header"><span class="software-badge">AI Powered</span><i class="fa fa-robot"></i><h3>Robot-BA</h3></div><div class="software-card-body"><p>Artificial Intelligence Machine for energy optimization and predictive analytics.</p><ul class="feature-list"><li><i class="fa fa-check-circle"></i> Energy optimization logic</li><li><i class="fa fa-check-circle"></i> Predictive analytics</li><li><i class="fa fa-check-circle"></i> Fault detection & diagnostics</li><li><i class="fa fa-check-circle"></i> Machine learning algorithms</li><li><i class="fa fa-check-circle"></i> Automated scheduling</li></ul></div><div class="software-card-footer"><a href="#robot-models" class="btn-primary-custom">View Models <i class="fa fa-arrow-right"></i></a></div></div>
+        <div class="software-card"><div class="software-card-header"><span class="software-badge">Cloud-Based</span><i class="fa fa-cloud-upload-alt"></i><h3>ESCloud</h3></div><div class="software-card-body"><p>Cloud Center Platform for remote monitoring and multi-site management.</p><ul class="feature-list"><li><i class="fa fa-check-circle"></i> Remote monitoring</li><li><i class="fa fa-check-circle"></i> Multi-site management</li><li><i class="fa fa-check-circle"></i> Central command center</li><li><i class="fa fa-check-circle"></i> Mobile access</li><li><i class="fa fa-check-circle"></i> Benchmarking & analytics</li></ul></div><div class="software-card-footer"><a href="#escloud-models" class="btn-primary-custom">Learn More <i class="fa fa-arrow-right"></i></a></div></div>
     </div>
 </div>
 
-<!-- WEBtalk Models Table -->
-<div class="product-table-container" id="webtalk-models">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">WEBtalk Data Management System</h3>
-    <table class="product-table" id="webtalkTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Data Points</th>
-                <th>Protocols Supported</th>
-                <th>Deployment</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="product-badge">WEBtalk-20</span></td>
-                <td>Small Building Data Management</td>
-                <td>2,000 points</td>
-                <td>MODBUS, BACnet, M-Bus</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-50</span></td>
-                <td>Medium Building Data Management</td>
-                <td>5,000 points</td>
-                <td>MODBUS, BACnet, M-Bus</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-100</span></td>
-                <td>Large Building Data Management</td>
-                <td>10,000 points</td>
-                <td>MODBUS, BACnet, M-Bus</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-200</span></td>
-                <td>Campus Data Management</td>
-                <td>20,000 points</td>
-                <td>MODBUS, BACnet, M-Bus</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-500</span></td>
-                <td>Enterprise Data Management</td>
-                <td>50,000 points</td>
-                <td>MODBUS, BACnet, M-Bus</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-800</span></td>
-                <td>Large Enterprise Data Management</td>
-                <td>80,000 points</td>
-                <td>MODBUS, BACnet, M-Bus</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-OPC</span></td>
-                <td>OPC Server</td>
-                <td>Unlimited</td>
-                <td>OPC DA, OPC UA</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">WEBtalk-OPC2</span></td>
-                <td>OPC Client</td>
-                <td>Unlimited</td>
-                <td>OPC DA, OPC UA</td>
-                <td>On-premise</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<!-- ===== TABLES ===== -->
+<div class="container" id="webtalk-models"><div class="table-container"><h3>WEBtalk Data Management System</h3><p>Choose the right capacity for your building or campus</p><table class="product-table" id="webtalkTable"><thead><tr><th>Model</th><th>Description</th><th>Data Points</th><th>Protocols</th><th>Action</th></tr></thead><tbody><tr><td><span class="product-badge">WEBtalk-20</span></td><td>Small Building</td><td>2,000 points</td><td>MODBUS, BACnet</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">WEBtalk-50</span></td><td>Medium Building</td><td>5,000 points</td><td>MODBUS, BACnet, M-Bus</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">WEBtalk-100</span></td><td>Large Building</td><td>10,000 points</td><td>MODBUS, BACnet, M-Bus</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">WEBtalk-200</span></td><td>Campus</td><td>20,000 points</td><td>MODBUS, BACnet, M-Bus</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">WEBtalk-500</span></td><td>Enterprise</td><td>50,000 points</td><td>MODBUS, BACnet, M-Bus</td><td><a href="#" class="btn-view">View</a></td></tr></tbody></table></div></div>
 
-<!-- Robot-BA Models Table -->
-<div class="product-table-container" id="robot-models">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">Robot-BA Artificial Intelligence Machine</h3>
-    <table class="product-table" id="robotTable">
-        <thead>
-            <tr>
-                <th>Model</th>
-                <th>Description</th>
-                <th>Point Capacity</th>
-                <th>Optimization Algorithms</th>
-                <th>Integration</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="product-badge">Robot-BA20</span></td>
-                <td>Small Building AI Optimizer</td>
-                <td>2,000 points</td>
-                <td>HVAC optimization, scheduling</td>
-                <td>WEBtalk, BMS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Robot-BA50</span></td>
-                <td>Medium Building AI Optimizer</td>
-                <td>5,000 points</td>
-                <td>HVAC, lighting, predictive analytics</td>
-                <td>WEBtalk, BMS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Robot-BA100</span></td>
-                <td>Large Building AI Optimizer</td>
-                <td>10,000 points</td>
-                <td>Central plant optimization, fault detection</td>
-                <td>WEBtalk, BMS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Robot-BA200</span></td>
-                <td>Campus AI Optimizer</td>
-                <td>20,000 points</td>
-                <td>Multi-building optimization, demand response</td>
-                <td>WEBtalk, BMS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Robot-BA500</span></td>
-                <td>Enterprise AI Optimizer</td>
-                <td>50,000 points</td>
-                <td>Enterprise-wide optimization, machine learning</td>
-                <td>WEBtalk, BMS</td>
-                <td><a href="#" class="btn-view">View</a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<div class="container" id="robot-models"><div class="table-container"><h3>Robot-BA Artificial Intelligence Machine</h3><p>AI-powered optimization for your building systems</p><table class="product-table" id="robotTable"><thead><tr><th>Model</th><th>Description</th><th>Point Capacity</th><th>Optimization</th><th>Action</th></tr></thead><tbody><tr><td><span class="product-badge">Robot-BA20</span></td><td>Small Building</td><td>2,000 points</td><td>HVAC, Scheduling</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">Robot-BA50</span></td><td>Medium Building</td><td>5,000 points</td><td>HVAC, Lighting, Predictive</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">Robot-BA100</span></td><td>Large Building</td><td>10,000 points</td><td>Central Plant, Fault Detection</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">Robot-BA200</span></td><td>Campus</td><td>20,000 points</td><td>Multi-building, Demand Response</td><td><a href="#" class="btn-view">View</a></td></tr><tr><td><span class="product-badge">Robot-BA500</span></td><td>Enterprise</td><td>50,000 points</td><td>Enterprise-wide, ML Algorithms</td><td><a href="#" class="btn-view">View</a></td></tr></tbody></table></div></div>
 
-<!-- ESCloud Section -->
-<div class="product-table-container" id="escloud-models">
-    <h3 style="margin-bottom: 20px; color: var(--tf-dark);">ESCloud Cloud Center Platform</h3>
-    <table class="product-table" id="escloudTable">
-        <thead>
-            <tr>
-                <th>Feature</th>
-                <th>Description</th>
-                <th>Benefits</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><span class="product-badge">Remote Monitoring</span></td>
-                <td>24/7 access to facility data from anywhere</td>
-                <td>Reduce on-site visits, faster response</td>
-                <td><a href="#" class="btn-view">Learn More</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Cloud Energy Analytics</span></td>
-                <td>Advanced analytics and benchmarking in the cloud</td>
-                <td>Identify savings opportunities, track KPIs</td>
-                <td><a href="#" class="btn-view">Learn More</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Multi-site Management</span></td>
-                <td>Centralized management of multiple facilities</td>
-                <td>Portfolio-wide visibility, standardized reporting</td>
-                <td><a href="#" class="btn-view">Learn More</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Central Command Center</span></td>
-                <td>Unified dashboard for enterprise-wide monitoring</td>
-                <td>Real-time alerts, coordinated response</td>
-                <td><a href="#" class="btn-view">Learn More</a></td>
-            </tr>
-            <tr>
-                <td><span class="product-badge">Mobile Access</span></td>
-                <td>iOS and Android apps for on-the-go monitoring</td>
-                <td>Stay connected anywhere, anytime</td>
-                <td><a href="#" class="btn-view">Learn More</a></td>
-            </tr>
-        </tbody>
-    </table>
-    <div style="margin-top: 20px; text-align: center;">
-        <span class="badge-cloud">SaaS Model</span>
-        <span class="badge-cloud">Annual Subscription</span>
-        <span class="badge-cloud">Scalable</span>
-        <span class="badge-cloud">Multi-tenant</span>
-    </div>
-</div>
+<div class="container" id="escloud-models"><div class="table-container"><h3>ESCloud Cloud Center Platform</h3><p>SaaS-based energy management for multi-site operations</p><table class="product-table" id="escloudTable"><thead><tr><th>Feature</th><th>Description</th><th>Benefits</th><th>Action</th></tr></thead><tbody><tr><td><span class="product-badge">Remote Monitoring</span></td><td>24/7 access from anywhere</td><td>Reduce on-site visits</td><td><a href="#" class="btn-view">Learn</a></td></tr><tr><td><span class="product-badge">Cloud Analytics</span></td><td>Advanced benchmarking</td><td>Identify savings</td><td><a href="#" class="btn-view">Learn</a></td></tr><tr><td><span class="product-badge">Multi-site Management</span></td><td>Centralized control</td><td>Portfolio visibility</td><td><a href="#" class="btn-view">Learn</a></td></tr><tr><td><span class="product-badge">Mobile Access</span></td><td>iOS & Android apps</td><td>On-the-go monitoring</td><td><a href="#" class="btn-view">Learn</a></td></tr></tbody></table><div style="margin-top: 24px; text-align: center; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;"><span class="product-badge">SaaS Model</span><span class="product-badge">Annual Subscription</span><span class="product-badge">Scalable</span><span class="product-badge">Multi-tenant</span></div></div></div>
 
-<!-- Features Section -->
+<!-- ===== FEATURES SECTION ===== -->
 <div class="section-wrapper" id="features">
-    <div class="section-title">
-        <h2>Key Features</h2>
-        <p>Why choose our energy software solutions</p>
-    </div>
-    
-    <div class="feature-grid">
-        <div class="feature-item">
-            <i class="fa fa-chart-line"></i>
-            <h4>Real-time Dashboards</h4>
-            <p>Interactive visualizations of energy consumption, costs, and carbon emissions</p>
-        </div>
-        
-        <div class="feature-item">
-            <i class="fa fa-robot"></i>
-            <h4>AI Optimization</h4>
-            <p>Machine learning algorithms that continuously optimize building performance</p>
-        </div>
-        
-        <div class="feature-item">
-            <i class="fa fa-cloud-upload-alt"></i>
-            <h4>Cloud & On-premise</h4>
-            <p>Flexible deployment options to meet any security or connectivity requirement</p>
-        </div>
-        
-        <div class="feature-item">
-            <i class="fa fa-bell"></i>
-            <h4>Automated Alerts</h4>
-            <p>Proactive notification of anomalies, faults, and savings opportunities</p>
-        </div>
-    </div>
+    <div class="section-header"><h2>Key Features</h2><div class="line"></div><p>Why leading organizations choose our energy software</p></div>
+    <div class="feature-grid"><div class="feature-card"><div class="feature-icon"><i class="fa fa-chart-line"></i></div><h4>Real-time Dashboards</h4><p>Interactive visualizations of energy consumption, costs, and carbon emissions</p></div><div class="feature-card"><div class="feature-icon"><i class="fa fa-robot"></i></div><h4>AI Optimization</h4><p>Machine learning algorithms that continuously optimize building performance</p></div><div class="feature-card"><div class="feature-icon"><i class="fa fa-cloud-upload-alt"></i></div><h4>Flexible Deployment</h4><p>Cloud, on-premise, or hybrid options to meet any security requirement</p></div><div class="feature-card"><div class="feature-icon"><i class="fa fa-bell"></i></div><h4>Automated Alerts</h4><p>Proactive notification of anomalies, faults, and savings opportunities</p></div></div>
 </div>
 
-<!-- Applications Section -->
-<div class="section-wrapper" id="applications">
-    <div class="section-title">
-        <h2>Typical Applications</h2>
-        <p>Ideal for various energy management scenarios</p>
-    </div>
-    
-    <div class="application-grid">
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-building"></i>
-            </div>
-            <h5>Commercial Buildings</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Energy benchmarking, tenant billing, optimization</p>
-        </div>
-        
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-industry"></i>
-            </div>
-            <h5>Industrial Facilities</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Process energy monitoring, predictive maintenance</p>
-        </div>
-        
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-university"></i>
-            </div>
-            <h5>University Campuses</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Multi-building central monitoring, district energy</p>
-        </div>
-        
-        <div class="application-item">
-            <div class="application-icon">
-                <i class="fa fa-hospital"></i>
-            </div>
-            <h5>Healthcare</h5>
-            <p style="font-size: 13px; color: var(--tf-text);">Critical environment monitoring, compliance</p>
-        </div>
-    </div>
-</div>
+<!-- ===== RELATED LINKS ===== -->
+<div class="section-wrapper"><div class="section-header"><h2>Related Solutions</h2><div class="line"></div><p>Explore more from Tongfang BMS</p></div><div class="related-grid"><a href="/products/Energy-Management/power-meters/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/power-meters/EMC-energy-gateway.png" alt="Power Meters"><div class="related-overlay"><h4>Power Meters</h4><p>High-precision electrical submeters</p></div></a><a href="/products/Energy-Management/energy-gateways/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Gateways/EMC-GT-Energy-Gateways.png" alt="Energy Gateways"><div class="related-overlay"><h4>Energy Gateways</h4><p>Data acquisition hardware</p></div></a><a href="/products/building-management/ibms-platform/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="IBMS Platform"><div class="related-overlay"><h4>IBMS Platform</h4><p>Integrated building management</p></div></a></div></div>
 
- 
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section"><div class="container"><h2>Ready to Transform Your Energy Data?</h2><p>Our software experts are ready to demonstrate how our solutions can help you achieve your energy goals</p><a href="/contact/index.html" class="cta-button">Request a Demo <i class="fa fa-arrow-right"></i></a></div></section>
 
-<!-- CTA Section -->
-<div class="cta-section">
-    <div class="section-wrapper">
-        <h2>Ready to Transform Your Energy Data?</h2>
-        <p>Our software experts are ready to demonstrate how our solutions can help you achieve your energy goals</p>
-        <a href="/contact/index.html" class="cta-button">Request a Demo</a>
-    </div>
-</div>
-
-<!-- Related Links -->
-<div class="section-wrapper">
-    <div class="section-title">
-        <h2>Related Links</h2>
-        <p>Explore more energy management solutions</p>
-    </div>
-    
-    <div class="related-grid">
-        <a href="/products/Energy-Management/power-meters/index.html" class="related-card">
-            <img src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="Power Meters" class="related-image">
-            <div class="related-overlay">
-                <h4>Power Meters</h4>
-                <p>Electricity sub-metering hardware</p>
-            </div>
-        </a>
-        
-        <a href="/products/Energy-Management/energy-gateways/index.html" class="related-card">
-            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=2034&q=80" alt="Energy Gateways" class="related-image">
-            <div class="related-overlay">
-                <h4>Energy Gateways</h4>
-                <p>Data acquisition hardware</p>
-            </div>
-        </a>
-        
-        <a href="/products/building-management/ibms-platform/index.html" class="related-card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="IBMS Platform" class="related-image">
-            <div class="related-overlay">
-                <h4>IBMS Platform</h4>
-                <p>Integrated building management</p>
-            </div>
-        </a>
-    </div>
-</div>
-
-<!-- ================= FOOTER ================= -->
+<!-- ===== FOOTER (EXACT MATCH) ===== -->
 <footer class="footer">
     <div class="footer-container">
-        <div>
-            <h5>Tongfang BMS System Integration</h5>
-            <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
-            <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
-            <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
-        </div>
-        <div>
-            <h5>Quick Links</h5>
-            <a class="btn-link" href="/index.html">Home</a>
-            <a class="btn-link" href="/about/index.html">About Us</a>
-            <a class="btn-link" href="/solutions/index.html">Solutions</a>
-            <a class="btn-link" href="/projects/index.html">Projects</a>
-            <a class="btn-link" href="/products/index.html">Products</a>
-            <a class="btn-link" href="/technologies/index.html">Technologies</a>
-            <a class="btn-link" href="/contact/index.html">Contact</a>
-        </div>
-        <div>
-            <h5>Business Hours</h5>
-            <p>Mon – Sat 8:30 AM – 5:30 PM</p>
-            <p> </p>
-            <p>Sunday: Closed</p>
-        </div>
-        <div>
-            <h5>Newsletter</h5>
-            <p>Get smart building & automation updates.</p>
-            <div class="newsletter-box">
-                <input class="form-control" type="email" placeholder="Your email">
-                <button class="btn btn-primary">Subscribe</button>
-            </div>
-            <div class="social-links">
-                <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
-            </div>
-        </div>
+        <div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div>
+        <div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><br><a class="btn-link" href="/about/index.html">About Us</a><br><a class="btn-link" href="/solutions/index.html">Solutions</a><br><a class="btn-link" href="/projects/index.html">Projects</a><br><a class="btn-link" href="/products/index.html">Products</a><br><a class="btn-link" href="/technologies/index.html">Technologies</a><br><a class="btn-link" href="/contact/index.html">Contact</a></div>
+        <div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div>
+        <div><h5>Connect With Us</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a href="#" class="btn-square"><i class="fab fa-weixin"></i></a><a href="#" class="btn-square"><i class="fab fa-telegram"></i></a><a href="#" class="btn-square"><i class="fab fa-whatsapp"></i></a><a href="#" class="btn-square"><i class="fab fa-facebook-messenger"></i></a></div></div>
     </div>
     <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
 </footer>
 
-<!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
+    // Search Index
+    const searchIndex = [
+        { title: "WEBtalk Data Management", category: "Software", url: "#webtalk-models", content: "Data management system for energy monitoring" },
+        { title: "Robot-BA AI Optimization", category: "Software", url: "#robot-models", content: "AI-powered energy optimization" },
+        { title: "ESCloud Platform", category: "Software", url: "#escloud-models", content: "Cloud-based energy management" },
+    ];
+
+    function openSearch() {
+        document.getElementById('searchOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => document.getElementById('searchInput').focus(), 100);
+    }
+
+    function closeSearch() {
+        document.getElementById('searchOverlay').classList.remove('active');
+        document.body.style.overflow = '';
+        document.getElementById('searchInput').value = '';
+        document.getElementById('searchResults').innerHTML = '';
+        document.getElementById('searchStats').innerHTML = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+        if (e.key === 'Escape' && document.getElementById('searchOverlay').classList.contains('active')) closeSearch();
+    });
+
+    function performSearch(query) {
+        if (!query || query.length < 1) {
+            document.getElementById('searchResults').innerHTML = '<div class="no-results">Start typing to search...</div>';
+            document.getElementById('searchStats').innerHTML = '';
+            return;
+        }
+
+        const lowercaseQuery = query.toLowerCase();
+        const filtered = searchIndex.filter(item => {
+            return item.title.toLowerCase().includes(lowercaseQuery) || 
+                   item.content.toLowerCase().includes(lowercaseQuery) ||
+                   item.category.toLowerCase().includes(lowercaseQuery);
+        });
+
+        document.getElementById('searchStats').innerHTML = `Found ${filtered.length} result${filtered.length !== 1 ? 's' : ''} for "${query}"`;
+
+        if (filtered.length === 0) {
+            document.getElementById('searchResults').innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+            return;
+        }
+
+        let html = '';
+        filtered.forEach(item => {
+            const regex = new RegExp(`(${lowercaseQuery})`, 'gi');
+            const highlightedTitle = item.title.replace(regex, '<span class="search-highlight">$1</span>');
+            html += `<a href="${item.url}" class="result-item" onclick="closeSearch()"><div class="category">${item.category}</div><h4>${highlightedTitle}</h4><p>${item.content.substring(0, 100)}${item.content.length > 100 ? '...' : ''}</p></a>`;
+        });
+        document.getElementById('searchResults').innerHTML = html;
+    }
+
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => performSearch(e.target.value), 200);
+    });
+
+    document.getElementById('searchOverlay').addEventListener('click', function(e) {
+        if (e.target === this) closeSearch();
+    });
+    // ===== MOBILE MENU TOGGLE =====
     function toggleMobileMenu() {
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('navBox');
         const mobileToggle = document.querySelector('.mobile-toggle i');
+        
         nav.classList.toggle('active');
+        
         if(nav.classList.contains('active')) {
-            header.style.background = "#fff"; header.style.borderBottom = "1px solid rgba(0,0,0,0.1)"; mobileToggle.style.color = "#333";
-            document.querySelectorAll('.nav-link-custom').forEach(link => link.style.color = "#333");
-            document.querySelectorAll('.header-icons i').forEach(icon => icon.style.color = "#333");
+            header.style.background = "#fff";
+            header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
+            mobileToggle.style.color = "#333";
         } else {
-            header.style.background = "#ffffff"; header.style.borderBottom = "1px solid rgba(0,0,0,0.08)"; mobileToggle.style.color = "#111827";
-            document.querySelectorAll('.nav-link-custom').forEach(link => link.style.color = "#111827");
-            document.querySelectorAll('.header-icons i').forEach(icon => icon.style.color = "#111827");
+            header.style.background = "";
+            header.style.borderBottom = "";
+            mobileToggle.style.color = "#111827";
         }
     }
+
+    document.querySelectorAll('.fa-angle-down, .dropdown-parent-link').forEach(el => {
+        el.addEventListener('click', function(e) {
+            if (window.innerWidth < 992) {
+                e.preventDefault();
+                const parent = this.closest('.nav-item-dropdown');
+                if (parent) parent.classList.toggle('active');
+            }
+        });
+    });
 
     document.addEventListener('click', function(event) {
         if (window.innerWidth < 992) {
@@ -1490,76 +1414,30 @@
         }
     });
 
-    document.querySelectorAll('.fa-angle-down').forEach(arrow => {
-        arrow.addEventListener('click', function(e) {
-            if (window.innerWidth < 992) {
-                e.preventDefault(); e.stopPropagation();
-                this.closest('.nav-item-dropdown').classList.toggle('active');
-            }
+    window.addEventListener('scroll', function() {
+        const sections = [
+            { id: "overview", link: "#overview" }, { id: "software-solutions", link: "#software-solutions" },
+            { id: "webtalk-models", link: "#webtalk-models" }, { id: "robot-models", link: "#robot-models" },
+            { id: "escloud-models", link: "#escloud-models" }, { id: "features", link: "#features" }
+        ];
+        let currentSection = sections[0].link;
+        sections.forEach(section => {
+            const el = document.getElementById(section.id);
+            if (el && window.scrollY >= el.offsetTop - 200) currentSection = section.link;
+        });
+        document.querySelectorAll('.nav-breadcrumb .breadcrumb-item').forEach(li => {
+            li.classList.remove('active');
+            const a = li.querySelector('a');
+            if (a && a.getAttribute('href') === currentSection) li.classList.add('active');
         });
     });
 
-    document.querySelectorAll('.dropdown-parent-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            if (window.innerWidth < 992) {
-                e.preventDefault();
-                const parent = this.closest('.nav-item-dropdown');
-                parent.classList.toggle('active');
-            }
-        });
-    });
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const sections = document.querySelectorAll(".section-wrapper, .product-table-container, .software-card");
-        const navLinks = document.querySelectorAll(".subnav-link");
-        
-        window.addEventListener("scroll", () => {
-            let current = "";
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 200)) current = section.getAttribute("id");
-            });
-            
-            navLinks.forEach((link) => {
-                link.classList.remove("active");
-                if (link.getAttribute("href").includes(current)) link.classList.add("active");
-            });
-        });
-    });
-
-    // Initialize DataTables
     $(document).ready(function() {
-        $('#webtalkTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
-        });
-        
-        $('#robotTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
-        });
-        
-        $('#escloudTable').DataTable({
-            paging: false,
-            searching: true,
-            info: false,
-            order: [[0, 'asc']]
+        $('#webtalkTable, #robotTable, #escloudTable').DataTable({
+            paging: false, searching: true, info: false, order: [[0, 'asc']],
+            language: { search: "Search: " }
         });
     });
-</script>
-
-<script>
-document.querySelectorAll('.dropdown-parent-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        if (window.innerWidth <= 991) {
-            window.location.href = this.getAttribute('href');
-        }
-    });
-});
 </script>
 </body>
 </html>

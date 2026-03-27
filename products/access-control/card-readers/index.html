@@ -108,9 +108,43 @@
         /* --- STICKY SUB-NAV --- */
         .product-subnav { position: sticky; top: var(--header-height); z-index: 900; background: var(--tf-white); border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); height: var(--subnav-height); }
         .subnav-container { max-width: 1440px; margin: 0 auto; padding: 0 30px; height: 100%; display: flex; align-items: center; overflow-x: auto; }
-        .subnav-list { display: flex; gap: 30px; height: 100%; white-space: nowrap; margin: 0; padding: 0; list-style: none; }
+        .subnav-list { display: flex; gap: 30px; height: 100%; white-space: nowrap; margin: 0; padding: 0; list-style: none; align-items: center; }
         .subnav-link { display: flex; align-items: center; height: 100%; font-size: 13px; font-weight: 600; color: var(--tf-text); text-transform: uppercase; border-bottom: 4px solid transparent; transition: all 0.3s ease; cursor: pointer; padding: 0 4px; }
         .subnav-link:hover, .subnav-link.active { color: var(--tf-blue); border-bottom-color: var(--tf-yellow); }
+        
+        /* Parent link styling */
+        .parent-nav-item {
+            border-right: 1px solid var(--tf-gray-light);
+            padding-right: 20px;
+            margin-right: 10px;
+        }
+        
+        .subnav-link.parent-link {
+            color: var(--tf-blue);
+            font-weight: 700;
+            gap: 8px;
+        }
+        
+        .subnav-link.parent-link:hover {
+            color: #003d82;
+        }
+        
+        .divider-vertical {
+            width: 1px;
+            height: 24px;
+            background-color: var(--tf-gray-light);
+            margin: auto 0;
+        }
+        
+        @media (max-width: 768px) {
+            .parent-nav-item {
+                padding-right: 12px;
+                margin-right: 5px;
+            }
+            .subnav-link.parent-link i {
+                display: none;
+            }
+        }
 
         /* --- PRODUCT GALLERY SECTION --- */
         .product-gallery-main {
@@ -379,13 +413,12 @@
         .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
         .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
         .footer .btn-link {
-    color: #60a5fa;
-    display: block;
-    margin-bottom: 12px;
-    font-size: 14px;
-    transition: var(--transition);
-    text-decoration: none;
-}
+            color: #60a5fa;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
         .footer .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; background: transparent; }
         .newsletter-box { position: relative; margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
         .form-control {
@@ -443,12 +476,12 @@
 </head>
 <body>
 
-<!-- ================= HEADER (with RELATIVE PATHS) ================= -->
+<!-- ================= HEADER (from template with complete products dropdown) ================= -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
             <div class="header-logo">
-                <a href="../../../../index.html">
+                <a href="/index.html">
                     <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                 </a>
             </div>
@@ -456,36 +489,29 @@
             <nav id="mainNav" class="nav-menu">
                 <!-- SOLUTIONS DROPDOWN -->
                 <div class="nav-item-dropdown">
-                    <a href="../../../../solutions/index.html" class="nav-link-custom dropdown-parent-link">
+                    <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                         Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                     </a>
                     <div class="dropdown-menu-custom">
-                       <div class="dropdown-inner">
-                            <!-- Buildings -->
+                        <div class="dropdown-inner">
                             <div>
                                 <div class="dropdown-category">Buildings</div>
                                 <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
                                 <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
                                 <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
                                 <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
                             </div>
-                            <!-- Infrastructure -->
                             <div>
                                 <div class="dropdown-category">Infrastructure</div>
                                 <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>  
                                 <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
                                 <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
                                 <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>  
                             </div>
-                            <!-- City Systems -->
                             <div>
                                 <div class="dropdown-category">City Systems</div>
                                 <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
                                 <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
                                 <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
                                 <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
                             </div>
@@ -493,91 +519,99 @@
                     </div>
                 </div>
                 
-                <!-- PRODUCTS DROPDOWN -->
+                <!-- PRODUCTS DROPDOWN - COMPLETE WITH ALL COLUMNS -->
                 <div class="nav-item-dropdown">
-                    <a href="../../../../products/index.html" class="nav-link-custom dropdown-parent-link">
+                    <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                         Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
+                            <!-- Column 1: Access Control -->
                             <div>
                                 <div class="dropdown-category">Access Control</div>
-                                <a href="../../../access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
-                                <a href="../../../access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
-                                <a href="index.html" class="dropdown-link">Card Readers</a>
-                                <a href="../../../access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
-                                <a href="../../../access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                <a href="../../../access-control/index.html" class="more-link">View All→</a>
+                                <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                <a href="/products/access-control/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 2: Fire & Safety -->
                             <div>
                                 <div class="dropdown-category">Fire & Safety</div>
-                                <a href="../../../../products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
-                                <a href="../../../../products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                                <a href="../../../../products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
-                                <a href="../../../../products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                <a href="../../../../products/fire-alarm/index.html" class="more-link">View All→</a>
+                                <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
+                                <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 3: Building Management -->
                             <div>
                                 <div class="dropdown-category">Building Management</div>
-                                <a href="../../../../products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
-                                <a href="../../../../products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                <a href="../../../../products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                <a href="../../../../products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                <a href="../../../../products/building-management/index.html" class="more-link">View All→</a>
+                                <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                <a href="/products/building-management/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 4: IP Audio -->
                             <div>
                                 <div class="dropdown-category">IP and ITC T-7700 Series</div>
-                                <a href="../../../../products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="../../../../products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
-                                <a href="../../../../products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
-                                <a href="../../../../products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
-                                <a href="../../../../products/itc-t7700-series/index.html" class="more-link">View All→</a>
+                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
+                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
+                                <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
+                                <a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 5: HVAC -->
                             <div>
                                 <div class="dropdown-category">HVAC & Field Control</div>
-                                <a href="../../../../products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
-                                <a href="../../../../products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
-                                <a href="../../../../products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
-                                <a href="../../../../products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
-                                <a href="../../../../products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
-                                <a href="../../../../products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                <a href="../../../../products/hvac-field-control/index.html" class="more-link">View All→</a>
+                                <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
+                                <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
+                                <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 6: Lighting -->
                             <div>
                                 <div class="dropdown-category">Lighting Control</div>
-                                <a href="../../../../products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
-                                <a href="../../../../products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
-                                <a href="../../../../products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
-                                <a href="../../../../products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
-                                <a href="../../../../products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
-                                <a href="../../../../products/Lighting-Control/index.html" class="more-link">View All→</a>
+                                <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
+                                <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 7: Energy -->
                             <div>
                                 <div class="dropdown-category">Energy Management</div>
-                                <a href="../../../../products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
-                                <a href="../../../../products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a>
-                                <a href="../../../../products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
-                                <a href="../../../../products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
-                                <a href="../../../../products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
-                                <a href="../../../../products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
-                                <a href="../../../../products/Energy-Management/index.html" class="more-link">View All→</a>
+                                <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                <a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a>
+                                <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
+                                <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
+                                <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
+                                <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
                             </div>
                             
+                            <!-- Column 8: Spacer -->
                             <div></div>
                         </div>
                     </div>
                 </div>
                 
-                <a href="../../../../technologies/index.html" class="nav-link-custom">Technologies</a>
-                <a href="../../../../projects/index.html" class="nav-link-custom">Projects</a>
-                <a href="../../../../about/index.html" class="nav-link-custom">About</a>
-                <a href="../../../../contact/index.html" class="nav-link-custom">Contact</a>
+                <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                <a href="/about/index.html" class="nav-link-custom">About</a>
+                <a href="/contact/index.html" class="nav-link-custom">Contact</a>
             </nav>
 
             <div class="header-right-group">
@@ -601,10 +635,17 @@
     </div>
 </div>
 
-<!-- STICKY SUB-NAV -->
+<!-- STICKY SUB-NAV with Parent Link -->
 <nav class="product-subnav">
     <div class="subnav-container">
         <ul class="subnav-list">
+            <li class="parent-nav-item">
+                <a href="/products/access-control/" class="subnav-link parent-link">
+                    <i class="fas fa-arrow-left me-2" style="font-size: 12px;"></i>
+                    Access Control
+                </a>
+            </li>
+            <li class="divider-vertical" role="separator"></li>
             <li><a href="#gallery" class="subnav-link active" data-target="gallery">Product Gallery</a></li>
             <li><a href="#related" class="subnav-link" data-target="related">Related Links</a></li>
         </ul>
@@ -646,15 +687,15 @@
         <p>Explore more from Tongfang BMS</p>
     </div>
     <div class="related-grid">
-        <a href="../../../access-control/face-recognition/index.html" class="related-card">
+        <a href="/products/access-control/face-recognition/index.html" class="related-card">
             <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" class="related-image" alt="Face Recognition">
             <div class="related-overlay"><h4>Face Recognition Terminals</h4></div>
         </a>
-        <a href="../../../access-control/Access_Controllers/index.html" class="related-card">
+        <a href="/products/access-control/Access_Controllers/index.html" class="related-card">
             <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" class="related-image" alt="Access Controllers">
             <div class="related-overlay"><h4>Access Controllers</h4></div>
         </a>
-        <a href="../../../access-control/electric-locks/index.html" class="related-card">
+        <a href="/products/access-control/electric-locks/index.html" class="related-card">
             <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" class="related-image" alt="Electric Locks">
             <div class="related-overlay"><h4>Electric Locks</h4></div>
         </a>
@@ -666,7 +707,7 @@
     <div class="container-custom">
         <h2>Need Help Choosing the Right Solution?</h2>
         <p>Our experts are ready to assist you</p>
-        <a href="../../../../contact/index.html" class="cta-button">Contact Sales Team</a>
+        <a href="/contact/index.html" class="cta-button">Contact Sales Team</a>
     </div>
 </div>
 
@@ -681,13 +722,13 @@
         </div>
         <div>
             <h5>Quick Links</h5>
-            <a class="btn-link" href="../../../../index.html">Home</a>
-            <a class="btn-link" href="../../../../about/index.html">About Us</a>
-            <a class="btn-link" href="../../../../solutions/index.html">Solutions</a>
-            <a class="btn-link" href="../../../../projects/index.html">Projects</a>
-            <a class="btn-link" href="../../../../products/index.html">Products</a>
-            <a class="btn-link" href="../../../../technologies/index.html">Technologies</a>
-            <a class="btn-link" href="../../../../contact/index.html">Contact</a>
+            <a class="btn-link" href="/index.html">Home</a>
+            <a class="btn-link" href="/about/index.html">About Us</a>
+            <a class="btn-link" href="/solutions/index.html">Solutions</a>
+            <a class="btn-link" href="/projects/index.html">Projects</a>
+            <a class="btn-link" href="/products/index.html">Products</a>
+            <a class="btn-link" href="/technologies/index.html">Technologies</a>
+            <a class="btn-link" href="/contact/index.html">Contact</a>
         </div>
         <div>
             <h5>Business Hours</h5>
@@ -752,14 +793,14 @@
     }
 
     function getProductUrl(product) {
-        // Use relative path from current location (card-readers folder)
+        // Normalize folder name: convert to lowercase and handle special cases
         let folderName = product.folder.toLowerCase();
+        // Handle special folder names
         if (folderName === 'asr1102a(v3)') folderName = 'asr1102a(v3)';
         if (folderName === 'asr1102a-d(v3)') folderName = 'asr1102a-d(v3)';
         if (folderName === 'asr2100a-me') folderName = 'asr2100a-me';
         if (folderName === 'asr2200a-b') folderName = 'ASR2200A-B';
-        // Relative path from current directory
-        return `./${folderName}/index.html`;
+        return `/products/access-control/card-readers/${folderName}/index.html`;
     }
 
     function renderGridAndPagination() {
@@ -867,6 +908,10 @@
         const subnavLinks = document.querySelectorAll('.subnav-link');
         subnavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
+                // Don't prevent default for parent link
+                if (link.classList.contains('parent-link')) {
+                    return;
+                }
                 e.preventDefault();
                 const targetId = link.getAttribute('data-target');
                 const targetElement = document.getElementById(targetId);
@@ -950,9 +995,10 @@
         }
     }
 
+    // Subnav scroll spy
     function subnavSpy() {
         const sections = document.querySelectorAll('#gallery, #related');
-        const links = document.querySelectorAll('.subnav-link');
+        const links = document.querySelectorAll('.subnav-link:not(.parent-link)');
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(sec => {
@@ -975,6 +1021,7 @@
         });
     }
 
+    // Close dropdowns when clicking outside
     function closeDropdownsOnOutsideClick() {
         document.addEventListener('click', function(event) {
             if (window.innerWidth < 992) {

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ASC3202B | 2-Door Access Controller | Tongfang BMS</title>
+    <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+
+    <style>
+        :root {
+            --tf-blue: #004ca3;          
+            --tf-yellow: #ffcc00;        
+            --tf-dark: #111827;          
+            --tf-text: #4b5563;          
+            --tf-bg-light: #f9fafb;      
+            --tf-white: #ffffff;         
+            --tf-gray-light: #e5e7eb;
+            --header-height: 80px;
+            --card-radius: 20px;
+            --btn-radius: 50px;
+            --shadow-soft: 0 8px 24px rgba(0,0,0,0.05);
+            --shadow-lift: 0 20px 35px rgba(0, 76, 163, 0.2);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--tf-white);
+            color: var(--tf-text);
+            overflow-x: hidden;
+            padding-top: 0;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-dark); }
+        .container-custom { max-width: 1440px; margin: 0 auto; padding: 0 30px; }
+
+        /* --- HEADER --- */
+        .header-fix { width: 100%; position: fixed; top: 0; z-index: 1030; min-height: var(--header-height); background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
+        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: var(--header-height); }
+        .logo-img { height: 60px; width: auto; object-fit: contain; }
+        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
+        .nav-link-custom { color: #111827; font-weight: 600; font-size: 13px; transition: 0.3s; text-transform: uppercase; line-height: var(--header-height); display: block; letter-spacing: 0.5px; }
+        .nav-link-custom:hover { color: var(--tf-blue); }
+        .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
+        .nav-item-dropdown { position: static; height: 100%; display: flex; align-items: center; }
+        .dropdown-menu-custom { position: absolute; top: var(--header-height); left: 0; right: 0; width: 100vw; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px; max-height: calc(100vh - 150px); overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(-20px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; z-index: 1100; pointer-events: none; display: flex; justify-content: center; }
+        .dropdown-inner { max-width: 1440px; width: 100%; margin: 0 auto; padding: 0 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: left; }
+        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+        .dropdown-category { color: var(--tf-blue); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 5px 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 3px; }
+        .dropdown-link { color: #4b5563; font-size: 13px; font-weight: 500; padding: 6px 0; display: block; transition: var(--transition); }
+        .dropdown-link:hover { color: var(--tf-blue); padding-left: 8px; }
+        .more-link { color: var(--tf-blue); font-weight: 600; font-size: 12px; margin-top: 10px; display: inline-block; }
+        .header-icons { display: flex !important; align-items: center; gap: 15px; }
+        .header-icons i { color: #111827; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        .mobile-toggle { display: none; font-size: 24px; color: #111827; cursor: pointer; background: none; border: none; padding-right: 20px; }
+        .header-right-group { display: flex; align-items: center; gap: 15px; }
+        
+        @media (max-width: 991px) {
+            .mobile-toggle { display: block; }
+            .nav-menu { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: white; flex-direction: column; height: auto; padding: 20px 0; margin: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); align-items: flex-start; max-height: 80vh; overflow-y: auto; z-index: 1000; }
+            .nav-menu.active { display: flex; }
+            .nav-link-custom { width: 100%; padding: 12px 30px; line-height: 1.5; border-bottom: 1px solid #eee; }
+            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; }
+            .dropdown-menu-custom { position: static; width: 100%; opacity: 1; visibility: visible; display: none; box-shadow: none; border-top: none; padding: 10px 30px 20px; background: #f9f9f9; transform: none; max-height: none; pointer-events: auto; }
+            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
+            .dropdown-inner { grid-template-columns: repeat(2, 1fr); padding: 0; }
+            .dropdown-parent-link i { transition: transform 0.3s; }
+            .nav-item-dropdown.active > .dropdown-parent-link i { transform: rotate(180deg); }
+        }
+        @media (max-width: 576px) { .dropdown-inner { grid-template-columns: 1fr; } .logo-img { height: 50px; } }
+
+        /* Sticky Subnav - Access Controllers variant */
+        .sticky-subnav { 
+            position: sticky; 
+            top: var(--header-height); 
+            z-index: 900; 
+            background: var(--tf-white); 
+            border-bottom: 1px solid #e5e7eb; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+        }
+        .subnav-links { 
+            display: flex; 
+            gap: 32px; 
+            padding: 0 30px; 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            align-items: center; 
+        }
+        .subnav-link { 
+            padding: 18px 0; 
+            font-size: 14px; 
+            font-weight: 600; 
+            color: var(--tf-text); 
+            border-bottom: 3px solid transparent; 
+            transition: var(--transition); 
+            cursor: pointer; 
+        }
+        .subnav-link:hover, 
+        .subnav-link.active { 
+            color: var(--tf-blue); 
+            border-bottom-color: var(--tf-yellow); 
+        }
+        .access-controllers-tab {
+            color: var(--tf-blue);
+        }
+        .access-controllers-tab i {
+            margin-right: 6px;
+        }
+        @media (max-width: 768px) {
+            .subnav-links { gap: 16px; padding: 0 15px; overflow-x: auto; white-space: nowrap; }
+            .subnav-link { padding: 12px 0; font-size: 12px; }
+        }
+
+        /* Product Detail custom */
+        .product-detail-page { margin-top: var(--header-height); padding: 40px 0; background: var(--tf-bg-light); }
+        .product-overview { background: var(--tf-white); border-radius: 32px; padding: 40px; margin-bottom: 40px; box-shadow: var(--shadow-soft); display: flex; flex-wrap: wrap; gap: 40px; }
+        .product-gallery { flex: 1; }
+        .product-main-image { width: 100%; border-radius: 24px; overflow: hidden; background: #f5f7fb; padding: 30px; text-align: center; }
+        .product-main-image img { max-width: 100%; max-height: 400px; object-fit: contain; }
+        .product-thumbs { display: flex; gap: 15px; margin-top: 20px; justify-content: center; }
+        .thumb-item { width: 80px; height: 80px; border-radius: 16px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: var(--transition); background: #f5f7fb; padding: 10px; }
+        .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
+        .thumb-item.active { border-color: var(--tf-yellow); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .product-info { flex: 1; }
+        .product-model { font-size: 14px; color: var(--tf-blue); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .product-title { font-size: 32px; font-weight: 800; color: var(--tf-dark); margin: 10px 0 15px; }
+        .key-features { background: #f8fafd; border-radius: 20px; padding: 20px; margin: 20px 0; }
+        .key-features h4 { font-size: 16px; margin-bottom: 12px; color: var(--tf-blue); }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 8px 0; padding-left: 24px; position: relative; font-size: 14px; }
+        .feature-list li:before { content: "✓"; position: absolute; left: 0; color: var(--tf-yellow); font-weight: bold; }
+        .action-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
+        .btn-primary-custom { background: var(--tf-blue); color: white; padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; display: inline-block; }
+        .btn-primary-custom:hover { background: #003d82; transform: translateY(-2px); color: white; }
+        .btn-outline-custom { background: transparent; border: 2px solid var(--tf-blue); color: var(--tf-blue); padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition); cursor: pointer; display: inline-block; }
+        .btn-outline-custom:hover { background: var(--tf-blue); color: white; transform: translateY(-2px); }
+        
+        .specifications-section { background: var(--tf-white); border-radius: 32px; padding: 40px; margin-bottom: 40px; box-shadow: var(--shadow-soft); }
+        .section-title { font-size: 28px; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 3px solid var(--tf-yellow); display: inline-block; }
+        .spec-table { width: 100%; border-collapse: collapse; }
+        .spec-table tr { border-bottom: 1px solid #eef2f6; }
+        .spec-table td { padding: 14px 12px; vertical-align: top; }
+        .spec-label { width: 35%; font-weight: 700; color: var(--tf-dark); background: #fafcff; }
+        .spec-value { width: 65%; color: var(--tf-text); }
+        
+        .downloads-section { background: var(--tf-white); border-radius: 32px; padding: 40px; box-shadow: var(--shadow-soft); }
+        .download-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid #eef2f6; }
+        .download-item:last-child { border-bottom: none; }
+        .download-info h4 { font-size: 16px; margin-bottom: 5px; }
+        .download-info p { font-size: 12px; color: #8b9cb0; margin: 0; }
+        .download-btn { background: #f0f4f9; padding: 10px 24px; border-radius: 40px; font-size: 13px; font-weight: 600; color: var(--tf-blue); transition: var(--transition); cursor: pointer; display: inline-block; }
+        .download-btn:hover { background: var(--tf-blue); color: white; }
+        
+        .related-section { padding: 60px 0; background: var(--tf-bg-light); }
+        .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1440px; margin: 0 auto; padding: 0 30px; }
+        .related-card { background: var(--tf-white); border-radius: 20px; overflow: hidden; text-align: center; padding: 24px; transition: var(--transition); box-shadow: var(--shadow-soft); }
+        .related-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+        .related-card img { max-width: 100%; height: 140px; object-fit: contain; margin-bottom: 15px; }
+        .related-card h4 { font-size: 16px; margin: 10px 0 5px; }
+        .related-card p { font-size: 12px; color: var(--tf-blue); font-weight: 600; }
+        
+        .footer { background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 70px; }
+        .footer-container { max-width: 1440px; margin: 0 auto; padding: 0 30px; display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 40px; }
+        .footer h5 { color: #fff; margin-bottom: 25px; font-weight: 700; }
+        .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
+        .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
+        .footer .btn-link { color: #60a5fa; display: block; margin-bottom: 12px; font-size: 14px; transition: var(--transition); text-decoration: none; }
+        .footer .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
+        .newsletter-box { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
+        .form-control { flex: 1; padding: 12px 15px; border: 1px solid #374151; background: #1f2937; color: white; border-radius: 50px; outline: none; }
+        .btn-primary { background: var(--tf-blue); border: none; padding: 0 24px; border-radius: 50px; color: white; font-weight: 600; cursor: pointer; }
+        .social-links { display: flex; gap: 15px; margin-top: 25px; }
+        .btn-square { width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white); transition: var(--transition); }
+        .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
+        .copyright { background: #05080c; padding: 25px; text-align: center; margin-top: 60px; font-size: 13px; color: #6b7280; }
+        
+        @media (max-width: 992px) {
+            .product-overview { flex-direction: column; padding: 24px; }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .spec-table td { display: block; width: 100%; }
+            .spec-label { width: 100%; }
+        }
+        @media (max-width: 576px) {
+            .related-grid { grid-template-columns: 1fr; }
+            .footer-container { grid-template-columns: 1fr; }
+            .product-title { font-size: 24px; }
+        }
+        .scroll-target { scroll-margin-top: 140px; }
+    </style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div id="navBox" class="header-fix">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="/index.html">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
+                </a>
+            </div>
+            <nav id="mainNav" class="nav-menu">
+                <div class="nav-item-dropdown">
+                    <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">Solutions <i class="fa fa-angle-down ms-1"></i></a>
+                    <div class="dropdown-menu-custom"><div class="dropdown-inner">  <div><div class="dropdown-category">Buildings</div><a href="/solutions/residential/index.html" class="dropdown-link">Residential</a><a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a><a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a><a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a><a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a></div>
+                            <div><div class="dropdown-category">Infrastructure</div><a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a><a href="/solutions/airport/index.html" class="dropdown-link">Airports</a><a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a><a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a><a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a></div>
+                            <div><div class="dropdown-category">City Systems</div><a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a><a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a><a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a><a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a><a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a><a href="/solutions/index.html" class="more-link">View All Solutions →</a></div>
+                        </div></div>
+                </div>
+                <div class="nav-item-dropdown">
+                    <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">Products <i class="fa fa-angle-down ms-1"></i></a>
+                    <div class="dropdown-menu-custom">
+                        <div class="dropdown-inner">
+                            <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/Access_Controllers/index.html" class="more-link">View All Access Control →</a></div>
+                            <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a><a href="/products/Energy-Management/index.html" class="more-link">View All→</a></div>
+                        </div></div>
+                </div>
+                <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                <a href="/about/index.html" class="nav-link-custom">About</a>
+                <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+            </nav>
+            <div class="header-right-group">
+                <button class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></button>
+                <div class="header-icons"><i class="fa fa-search" onclick="alert('Search')"></i><i class="fa fa-globe"></i></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- STICKY SUBNAV (Access Controllers context) -->
+<div class="sticky-subnav">
+    <div class="subnav-links">
+        <a href="/products/access-control/Access_Controllers/index.html" class="subnav-link access-controllers-tab"><i class="fas fa-arrow-left me-1"></i> Access Controllers</a>
+        <a class="subnav-link active" data-target="overview">Overview</a>
+        <a class="subnav-link" data-target="specifications">Specifications</a>
+        <a class="subnav-link" data-target="downloads">Downloads</a>
+    </div>
+</div>
+
+<!-- MAIN PRODUCT DETAIL (ASC3202B) -->
+<div class="product-detail-page">
+    <div class="container-custom">
+        <!-- Overview Section -->
+        <div id="overview" class="scroll-target">
+            <div class="product-overview">
+                <div class="product-gallery">
+                    <div class="product-main-image" id="mainImageContainer">
+                        <img id="mainProductImage" src="https://material.dahuasecurity.com/uploads/image/20221109/ASC3202B_1_thumb.png" alt="ASC3202B Access Controller">
+                    </div>
+                    <div class="product-thumbs" id="thumbContainer">
+                        <div class="thumb-item active" data-img="https://material.dahuasecurity.com/uploads/image/20221109/ASC3202B_1_thumb.png"><img src="https://material.dahuasecurity.com/uploads/image/20221109/ASC3202B_1_thumb.png" alt="Front"></div>
+                        <div class="thumb-item" data-img="https://material.dahuasecurity.com/uploads/image/20221109/ASC3202B_2_thumb.png"><img src="https://material.dahuasecurity.com/uploads/image/20221109/ASC3202B_2_thumb.png" alt="Angled"></div>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-model">ASC3202B</div>
+                    <h1 class="product-title">Dahua Access Controller (Main/Sub Control Modes)</h1>
+                    <div class="key-features">
+                        <h4><i class="fas fa-star" style="color: var(--tf-yellow); margin-right: 8px;"></i> Key Features</h4>
+                        <ul class="feature-list">
+                            <li>Web‑Based 1 Door 2 Way or 2 Door 1 Way Networked Access Controller</li>
+                            <li>Main Control Mode: Platform functions, manage up to 19 sub controllers</li>
+                            <li>Main Control Mode: 1,000 Users, 3,000 Fingerprints, 5,000 Bluetooth Cards, 300,000 Records</li>
+                            <li>Sub Control Mode: 10,000 Users, 50,000 Cards, standard access controller</li>
+                            <li>Supports configuring hardware I/O ports and exporting configuration diagrams</li>
+                            <li>Fire alarm linkage support</li>
+                            <li>PoE and power to lock</li>
+                            <li>IK06 protection rating, CE/FCC/UL certified</li>
+                        </ul>
+                    </div>
+                    <div class="action-buttons">
+                        <a href="/products/sales-inquiry?product=ASC3202B" class="btn-primary-custom"><i class="fas fa-envelope me-2"></i>Sales Enquiry</a>
+                        <a href="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/ASC3202B_datasheet_20231108.pdf" class="btn-outline-custom" target="_blank"><i class="fas fa-download me-2"></i>Download Datasheet</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specifications Section -->
+        <div id="specifications" class="scroll-target" style="margin-top: 40px;">
+            <div class="specifications-section">
+                <h2 class="section-title">Technical Specifications</h2>
+                <table class="spec-table">
+                    <tr><td class="spec-label">Product Type</td><td class="spec-value">Access Controller (1 Door 2 Way / 2 Door 1 Way)</td>
+                    </tr>
+                    <tr><td class="spec-label">Main Processor</td><td class="spec-value">Embedded Processor</td>
+                    </tr>
+                    <tr><td class="spec-label">Casing Material</td><td class="spec-value">PC + ABS</td>
+                    </tr>
+                    <tr><td class="spec-label">Internet Protocol</td><td class="spec-value">P2P; IPv4; DNS; DDNS; TCP; UDP</td>
+                    </tr>
+                    <tr><td class="spec-label">Interoperability</td><td class="spec-value">ONVIF; CGI</td>
+                    </tr>
+                    <tr><td class="spec-label">SDK and API</td><td class="spec-value">Yes</td>
+                    </tr>
+                    <tr><td class="spec-label">Unlock Mode</td><td class="spec-value">Card; Remote; Password; Fingerprint; Bluetooth; Combination Unlock</td>
+                    </tr>
+                    <tr><td class="spec-label">Period List / Holiday Period</td><td class="spec-value">128 periods each</td>
+                    </tr>
+                    <tr><td class="spec-label">Peripheral Card Reader</td><td class="spec-value">Supports 2 × RS-485 card readers; 2 × Wiegand card readers</td>
+                    </tr>
+                    <tr><td class="spec-label">User Capacity (Main/Sub Mode)</td><td class="spec-value">1,000 (main) / 10,000 (sub)</td>
+                    </tr>
+                    <tr><td class="spec-label">Fingerprint Capacity</td><td class="spec-value">3,000</td>
+                    </tr>
+                    <tr><td class="spec-label">Card Capacity (Main/Sub Mode)</td><td class="spec-value">5,000 (main) / 50,000 (sub)</td>
+                    </tr>
+                    <tr><td class="spec-label">Bluetooth Card Capacity</td><td class="spec-value">5,000</td>
+                    </tr>
+                    <tr><td class="spec-label">Record Capacity</td><td class="spec-value">300,000</td>
+                    </tr>
+                    <tr><td class="spec-label">RS-485 / Wiegand</td><td class="spec-value">3 RS-485 ports / 2 Wiegand inputs</td>
+                    </tr>
+                    <tr><td class="spec-label">Alarm Input / Output</td><td class="spec-value">2 inputs (digital) / 2 outputs (digital)</td>
+                    </tr>
+                    <tr><td class="spec-label">Exit Button / Door Status / Lock Control</td><td class="spec-value">2 each</td>
+                    </tr>
+                    <tr><td class="spec-label">Tamper / Duress / Door Sensor Timeout</td><td class="spec-value">Yes</td>
+                    </tr>
+                    <tr><td class="spec-label">Power Supply</td><td class="spec-value">12V DC or PoE IEEE 802.3at Type 2 Class 4</td>
+                    </tr>
+                    <tr><td class="spec-label">Protection</td><td class="spec-value">IK06</td>
+                    </tr>
+                    <tr><td class="spec-label">Power Consumption</td><td class="spec-value">Standby ≤2 W; DC budget: 1700mA, PoE budget: 1200mA at 12V</td>
+                    </tr>
+                    <tr><td class="spec-label">Product Dimensions</td><td class="spec-value">186.4 mm × 185.8 mm × 58.3 mm (7.34" × 7.31" × 2.30")</td>
+                    </tr>
+                    <tr><td class="spec-label">Gross Weight</td><td class="spec-value">0.99 kg (2.18 lb)</td>
+                    </tr>
+                    <tr><td class="spec-label">Operating Temperature / Humidity</td><td class="spec-value">–10°C to +55°C (+14°F to 131°F) / 5%–95% RH (non-condensing)</td>
+                    </tr>
+                    <tr><td class="spec-label">Installation</td><td class="spec-value">Surface Mount; Guide Rail Mount</td>
+                    </tr>
+                    <tr><td class="spec-label">Certifications</span></p></td><td class="spec-value">CE; FCC; UL</p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Downloads Section -->
+        <div id="downloads" class="scroll-target" style="margin-top: 40px;">
+            <div class="downloads-section">
+                <h2 class="section-title">Resources & Downloads</h2>
+                <div class="download-item">
+                    <div class="download-info"><h4>ASC3202B Datasheet</h4><p>Product specifications, technical overview – PDF, 0.6 MB</p></div>
+                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/ASC3202B_datasheet_20231108.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a>
+                </div>
+                <div class="download-item">
+                    <div class="download-info"><h4>Access Controller User Manual</h4><p>Complete operation and configuration guide – PDF, 3.5 MB</p></div>
+                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0006873/3503276/Access_Controller_User_Manual_V1.0.7.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a>
+                </div>
+                <div class="download-item">
+                    <div class="download-info"><h4>Quick Start Guide</h4><p>Installation and wiring basics – PDF, 1.2 MB</p></div>
+                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0006873/3503270/Access_Controller_Quick_Start_Guide_V1.0.4.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a>
+                </div>
+                <div class="download-item">
+                    <div class="download-info"><h4>ASC3202B Firmware</h4><p>Latest version V1.002.0000000.5.R.240417 – ZIP, 2.2 MB</p></div>
+                    <a href="https://material.dahuasecurity.com/uploads/cpq/SWR/2616612/M/DH_ASC320XB_MultiLang_NP_V1.002.0000000.5.R.240417.zip" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download ZIP</a>
+                </div>
+                <div class="download-item">
+                    <div class="download-info"><h4>Dimensions Drawing</h4><p>Mechanical drawing and mounting dimensions – PDF</p></div>
+                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/51437/drawings/ASC3202B_DIMENSIONS.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Drawings (PDF)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Related Products -->
+<section class="related-section">
+    <div class="container-custom">
+        <h2 class="section-title" style="margin-bottom: 40px;">Related Products</h2>
+        <div class="related-grid">
+            <a href="/products/access-control/Access_Controllers/asc4202b-d.html" class="related-card">
+                <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_25_12394/ProductImage/1_0_01_25_12394_696623924_crop_thumb.png" alt="ASC4202B-D">
+                <h4>ASC4202B-D</h4>
+                <p>2‑Door B-Series Controller</p>
+            </a>
+            <a href="/products/access-control/Access_Controllers/asc4201b-d.html" class="related-card">
+                <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_25_12393/ProductImage/1_0_01_25_12393_696624588_crop_thumb.png" alt="ASC4201B-D">
+                <h4>ASC4201B-D</h4>
+                <p>1‑Door B-Series Controller</p>
+            </a>
+            <a href="/products/access-control/face-recognition/index.html" class="related-card">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" alt="Face Recognition">
+                <h4>Face Recognition Terminals</h4>
+                <p>AI facial authentication</p>
+            </a>
+            <a href="/products/access-control/card-readers/asr2100a.html" class="related-card">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2100a.png" alt="ASR2100A">
+                <h4>ASR2100A</h4>
+                <p>13.56MHz Card Reader</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer"><div class="footer-container"><div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div><div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><a class="btn-link" href="/about/index.html">About Us</a><a class="btn-link" href="/solutions/index.html">Solutions</a>
+    <a class="btn-link" href="/products/index.html">Products</a>
+      <a class="btn-link" href="/technologies/index.html">Technologies</a>
+    <a class="btn-link" href="/contact/index.html">Contact</a></div><div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div><div><h5>Newsletter</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a><a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a><a class="btn-square" href="#"><i class="fab fa-twitter"></i></a></div></div></div><div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div></footer>
+
+<script>
+    function toggleMobileMenu() { document.getElementById('mainNav').classList.toggle('active'); }
+    function mobileDropdownHandler() {
+        if (window.innerWidth < 992) {
+            document.querySelectorAll('.nav-item-dropdown > .dropdown-parent-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const parent = link.closest('.nav-item-dropdown');
+                    parent.classList.contains('active') ? parent.classList.remove('active') : (document.querySelectorAll('.nav-item-dropdown.active').forEach(act => act.classList.remove('active')), parent.classList.add('active'));
+                });
+            });
+        }
+    }
+    function setupSubnavSpy() {
+        const sections = document.querySelectorAll('#overview, #specifications, #downloads');
+        const links = document.querySelectorAll('.subnav-link[data-target]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => { const top = sec.offsetTop - 150, bottom = top + sec.offsetHeight; if (window.scrollY >= top && window.scrollY < bottom) current = sec.getAttribute('id'); });
+            links.forEach(l => { const target = l.getAttribute('data-target'); if (target === current) l.classList.add('active'); else if (current === '' && target === 'overview') l.classList.add('active'); else l.classList.remove('active'); });
+        });
+    }
+    function setupSubnavClick() {
+        document.querySelectorAll('.subnav-link[data-target]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('data-target');
+                if (targetId) { const el = document.getElementById(targetId); if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' }); }
+                document.querySelectorAll('.subnav-link[data-target]').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
+    }
+    function setupGallery() {
+        const thumbs = document.querySelectorAll('.thumb-item'), mainImg = document.getElementById('mainProductImage');
+        thumbs.forEach(t => t.addEventListener('click', () => { mainImg.src = t.getAttribute('data-img'); thumbs.forEach(th => th.classList.remove('active')); t.classList.add('active'); }));
+    }
+    document.addEventListener('DOMContentLoaded', () => { mobileDropdownHandler(); setupSubnavSpy(); setupSubnavClick(); setupGallery(); window.scrollTo(0,0); });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 992) { document.getElementById('mainNav')?.classList.remove('active'); document.querySelectorAll('.nav-item-dropdown.active').forEach(act => act.classList.remove('active')); } });
+</script>
+</body>
+</html>

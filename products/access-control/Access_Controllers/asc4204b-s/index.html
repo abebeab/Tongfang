@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Bootstrap 5 -->
+    <!-- Bootstrap 5 (grid & utilities only, no JS conflict) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Swiper CSS -->
@@ -48,16 +48,22 @@
         h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-dark); }
         .container-custom { max-width: 1440px; margin: 0 auto; padding: 0 30px; }
 
-        /* --- HEADER --- */
+        /* --- HEADER (Fixed: z-index, mobile toggle, dropdown legacy issues) --- */
         .header-fix { width: 100%; position: fixed; top: 0; z-index: 1030; min-height: var(--header-height); background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
         .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: var(--header-height); }
         .logo-img { height: 60px; width: auto; object-fit: contain; }
         .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
-        .nav-link-custom { color: #111827; font-weight: 600; font-size: 13px; transition: 0.3s; text-transform: uppercase; line-height: var(--header-height); display: block; letter-spacing: 0.5px; }
+        .nav-link-custom { color: #111827; font-weight: 600; font-size: 13px; transition: 0.3s; text-transform: uppercase; line-height: var(--header-height); display: block; letter-spacing: 0.5px; white-space: nowrap; }
         .nav-link-custom:hover { color: var(--tf-blue); }
-        .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
+        .dropdown-parent-link { display: flex; align-items: center; gap: 5px; cursor: pointer; }
         .nav-item-dropdown { position: static; height: 100%; display: flex; align-items: center; }
-        .dropdown-menu-custom { position: absolute; top: var(--header-height); left: 0; right: 0; width: 100vw; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px; max-height: calc(100vh - 150px); overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(-20px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; z-index: 1100; pointer-events: none; display: flex; justify-content: center; }
+        .dropdown-menu-custom { 
+            position: absolute; top: var(--header-height); left: 0; right: 0; width: 100vw; background: #fff; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15); border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; 
+            padding: 30px; max-height: calc(100vh - 150px); overflow-y: auto; opacity: 0; visibility: hidden; 
+            transform: translateY(-20px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; 
+            z-index: 1100; pointer-events: none; display: flex; justify-content: center;
+        }
         .dropdown-inner { max-width: 1440px; width: 100%; margin: 0 auto; padding: 0 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: left; }
         .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
         .dropdown-category { color: var(--tf-blue); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 5px 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 3px; }
@@ -69,21 +75,30 @@
         .mobile-toggle { display: none; font-size: 24px; color: #111827; cursor: pointer; background: none; border: none; padding-right: 20px; }
         .header-right-group { display: flex; align-items: center; gap: 15px; }
         
+        /* Fixed mobile menu & dropdown behavior */
         @media (max-width: 991px) {
             .mobile-toggle { display: block; }
-            .nav-menu { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: white; flex-direction: column; height: auto; padding: 20px 0; margin: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); align-items: flex-start; max-height: 80vh; overflow-y: auto; z-index: 1000; }
+            .nav-menu { 
+                display: none; position: fixed; top: var(--header-height); left: 0; width: 100%; background: white; 
+                flex-direction: column; height: auto; padding: 20px 0; margin: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+                align-items: flex-start; max-height: calc(100vh - 80px); overflow-y: auto; z-index: 1050; 
+            }
             .nav-menu.active { display: flex; }
             .nav-link-custom { width: 100%; padding: 12px 30px; line-height: 1.5; border-bottom: 1px solid #eee; }
-            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; }
-            .dropdown-menu-custom { position: static; width: 100%; opacity: 1; visibility: visible; display: none; box-shadow: none; border-top: none; padding: 10px 30px 20px; background: #f9f9f9; transform: none; max-height: none; pointer-events: auto; }
+            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; position: relative; }
+            .dropdown-menu-custom { 
+                position: static; width: 100%; opacity: 1; visibility: visible; display: none; 
+                box-shadow: none; border-top: none; padding: 10px 30px 20px; background: #f9f9f9; transform: none; 
+                max-height: none; pointer-events: auto; margin-top: 0;
+            }
             .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
-            .dropdown-inner { grid-template-columns: repeat(2, 1fr); padding: 0; }
+            .dropdown-inner { grid-template-columns: repeat(2, 1fr); padding: 0; gap: 15px; }
             .dropdown-parent-link i { transition: transform 0.3s; }
             .nav-item-dropdown.active > .dropdown-parent-link i { transform: rotate(180deg); }
         }
         @media (max-width: 576px) { .dropdown-inner { grid-template-columns: 1fr; } .logo-img { height: 50px; } }
 
-        /* Sticky Subnav - Access Controllers variant */
+        /* Sticky Subnav */
         .sticky-subnav { 
             position: sticky; 
             top: var(--header-height); 
@@ -131,7 +146,7 @@
         .product-gallery { flex: 1; }
         .product-main-image { width: 100%; border-radius: 24px; overflow: hidden; background: #f5f7fb; padding: 30px; text-align: center; }
         .product-main-image img { max-width: 100%; max-height: 400px; object-fit: contain; }
-        .product-thumbs { display: flex; gap: 15px; margin-top: 20px; justify-content: center; }
+        .product-thumbs { display: flex; gap: 15px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
         .thumb-item { width: 80px; height: 80px; border-radius: 16px; overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: var(--transition); background: #f5f7fb; padding: 10px; }
         .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
         .thumb-item.active { border-color: var(--tf-yellow); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
@@ -140,13 +155,13 @@
         .product-title { font-size: 32px; font-weight: 800; color: var(--tf-dark); margin: 10px 0 15px; }
         .key-features { background: #f8fafd; border-radius: 20px; padding: 20px; margin: 20px 0; }
         .key-features h4 { font-size: 16px; margin-bottom: 12px; color: var(--tf-blue); }
-        .feature-list { list-style: none; padding: 0; }
+        .feature-list { list-style: none; padding: 0; margin: 0; }
         .feature-list li { padding: 8px 0; padding-left: 24px; position: relative; font-size: 14px; }
         .feature-list li:before { content: "✓"; position: absolute; left: 0; color: var(--tf-yellow); font-weight: bold; }
         .action-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
-        .btn-primary-custom { background: var(--tf-blue); color: white; padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; display: inline-block; }
+        .btn-primary-custom { background: var(--tf-blue); color: white; padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; display: inline-block; text-decoration: none; }
         .btn-primary-custom:hover { background: #003d82; transform: translateY(-2px); color: white; }
-        .btn-outline-custom { background: transparent; border: 2px solid var(--tf-blue); color: var(--tf-blue); padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition); cursor: pointer; display: inline-block; }
+        .btn-outline-custom { background: transparent; border: 2px solid var(--tf-blue); color: var(--tf-blue); padding: 12px 32px; border-radius: 50px; font-weight: 600; transition: var(--transition); cursor: pointer; display: inline-block; text-decoration: none; }
         .btn-outline-custom:hover { background: var(--tf-blue); color: white; transform: translateY(-2px); }
         
         .specifications-section { background: var(--tf-white); border-radius: 32px; padding: 40px; margin-bottom: 40px; box-shadow: var(--shadow-soft); }
@@ -158,16 +173,16 @@
         .spec-value { width: 65%; color: var(--tf-text); }
         
         .downloads-section { background: var(--tf-white); border-radius: 32px; padding: 40px; box-shadow: var(--shadow-soft); }
-        .download-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid #eef2f6; }
+        .download-item { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid #eef2f6; flex-wrap: wrap; gap: 15px; }
         .download-item:last-child { border-bottom: none; }
         .download-info h4 { font-size: 16px; margin-bottom: 5px; }
         .download-info p { font-size: 12px; color: #8b9cb0; margin: 0; }
-        .download-btn { background: #f0f4f9; padding: 10px 24px; border-radius: 40px; font-size: 13px; font-weight: 600; color: var(--tf-blue); transition: var(--transition); cursor: pointer; display: inline-block; }
+        .download-btn { background: #f0f4f9; padding: 10px 24px; border-radius: 40px; font-size: 13px; font-weight: 600; color: var(--tf-blue); transition: var(--transition); cursor: pointer; display: inline-block; text-decoration: none; }
         .download-btn:hover { background: var(--tf-blue); color: white; }
         
         .related-section { padding: 60px 0; background: var(--tf-bg-light); }
         .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1440px; margin: 0 auto; padding: 0 30px; }
-        .related-card { background: var(--tf-white); border-radius: 20px; overflow: hidden; text-align: center; padding: 24px; transition: var(--transition); box-shadow: var(--shadow-soft); }
+        .related-card { background: var(--tf-white); border-radius: 20px; overflow: hidden; text-align: center; padding: 24px; transition: var(--transition); box-shadow: var(--shadow-soft); text-decoration: none; display: block; }
         .related-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
         .related-card img { max-width: 100%; height: 140px; object-fit: contain; margin-bottom: 15px; }
         .related-card h4 { font-size: 16px; margin: 10px 0 5px; }
@@ -178,20 +193,13 @@
         .footer h5 { color: #fff; margin-bottom: 25px; font-weight: 700; }
         .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
         .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
-        .footer .btn-link {
-            color: #60a5fa;
-            display: block;
-            margin-bottom: 12px;
-            font-size: 14px;
-            transition: var(--transition);
-            text-decoration: none;
-        }
+        .footer .btn-link { color: #60a5fa; display: block; margin-bottom: 12px; font-size: 14px; transition: var(--transition); text-decoration: none; }
         .footer .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
         .newsletter-box { display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
         .form-control { flex: 1; padding: 12px 15px; border: 1px solid #374151; background: #1f2937; color: white; border-radius: 50px; outline: none; }
         .btn-primary { background: var(--tf-blue); border: none; padding: 0 24px; border-radius: 50px; color: white; font-weight: 600; cursor: pointer; }
         .social-links { display: flex; gap: 15px; margin-top: 25px; }
-        .btn-square { width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white); transition: var(--transition); }
+        .btn-square { width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white); transition: var(--transition); text-decoration: none; }
         .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
         .copyright { background: #05080c; padding: 25px; text-align: center; margin-top: 60px; font-size: 13px; color: #6b7280; }
         
@@ -208,11 +216,30 @@
             .product-title { font-size: 24px; }
         }
         .scroll-target { scroll-margin-top: 140px; }
+        
+        /* Simple Toast Notification */
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--tf-dark);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 14px;
+            z-index: 1200;
+            box-shadow: var(--shadow-lift);
+            animation: fadeInUp 0.3s ease;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- ================= HEADER (Fixed: mobile toggle & dropdown conflict resolved) ================= -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
@@ -248,14 +275,14 @@
                 <a href="/contact/index.html" class="nav-link-custom">Contact</a>
             </nav>
             <div class="header-right-group">
-                <button class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></button>
-                <div class="header-icons"><i class="fa fa-search" onclick="alert('Search')"></i><i class="fa fa-globe"></i></div>
+                <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Menu"><i class="fa fa-bars"></i></button>
+                <div class="header-icons"><i class="fa fa-search" id="searchIcon"></i><i class="fa fa-globe"></i></div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- STICKY SUBNAV (Access Controllers context) -->
+<!-- STICKY SUBNAV -->
 <div class="sticky-subnav">
     <div class="subnav-links">
         <a href="/products/access-control/Access_Controllers/index.html" class="subnav-link access-controllers-tab"><i class="fas fa-arrow-left me-1"></i> Access Controllers</a>
@@ -299,8 +326,8 @@
                         </ul>
                     </div>
                     <div class="action-buttons">
-                        <a href="/products/sales-inquiry?product=ASC4204B-S" class="btn-primary-custom"><i class="fas fa-envelope me-2"></i>Sales Enquiry</a>
-                        <a href="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/ASC4204B-S_datasheet_20250124.pdf" class="btn-outline-custom" target="_blank"><i class="fas fa-download me-2"></i>Download Datasheet</a>
+                        <a href="#" class="btn-primary-custom" id="salesEnquiryBtn"><i class="fas fa-envelope me-2"></i>Sales Enquiry</a>
+                        <a href="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/ASC4204B-S_datasheet_20250124.pdf" class="btn-outline-custom" target="_blank" rel="noopener noreferrer"><i class="fas fa-download me-2"></i>Download Datasheet</a>
                     </div>
                 </div>
             </div>
@@ -313,7 +340,6 @@
                 <table class="spec-table">
                     <tr><td class="spec-label">Product Type</td><td class="spec-value">Access Controller (4 Door, 1 Way)</td></tr>
                     <tr><td class="spec-label">Main Processor</td><td class="spec-value">Embedded Processor</td></tr>
-                    <tr><td class="spec-label">Casing Material</td><td class="spec-value">PC+ABS</td></tr>
                     <tr><td class="spec-label">User / Card / Password Capacity</td><td class="spec-value">100,000 each</td></tr>
                     <tr><td class="spec-label">Fingerprint Capacity</td><td class="spec-value">10,000</td></tr>
                     <tr><td class="spec-label">Record Capacity</td><td class="spec-value">500,000</td></tr>
@@ -321,34 +347,18 @@
                     <tr><td class="spec-label">RS-485 Ports</td><td class="spec-value">5 ports (4 for readers, 1 extension)</td></tr>
                     <tr><td class="spec-label">Wiegand Ports</td><td class="spec-value">4-channel input</td></tr>
                     <tr><td class="spec-label">Alarm Input / Output</td><td class="spec-value">1 input (expandable to 8) / 1 output (expandable to 8)</td></tr>
-                    <tr><td class="spec-label">Lock Control / Exit Button</td><td class="spec-value">4 channels each</td>
-                    <tr>
-                    <tr><td class="spec-label">Door Status Detection</td><td class="spec-value">4 channels</td>
-                    <tr>
-                    <tr><td class="spec-label">Network Protocol</td><td class="spec-value">IPv4, UDP, P2P, IPv6, TCP</td>
-                    <tr>
-                    <tr><td class="spec-label">OSDP Protocol</td><td class="spec-value">Yes</td>
-                    <tr>
-                    <tr><td class="spec-label">Interoperability</td><td class="spec-value">ONVIF PROFILE C</td>
-                    <tr>
-                    <tr><td class="spec-label">Anti‑Passback / Tamper / Duress Alarm</td><td class="spec-value">Yes</td>
-                    <tr>
-                    <tr><td class="spec-label">Power Supply</td><td class="spec-value">Standard PoE; 12 VDC 1A (no peripheral devices)</td>
-                    </tr>
-                    <tr><td class="spec-label">Power Consumption</td><td class="spec-value">≤3 W (may increase with connected devices)</td>
-                    </tr>
-                    <tr><td class="spec-label">Operating Temperature</td><td class="spec-value">–30°C to +60°C (–22°F to 140°F)</td>
-                    </tr>
-                    <tr><td class="spec-label">Operating Humidity</td><td class="spec-value">5%–95% (RH), non-condensing</td>
-                    </tr>
-                    <tr><td class="spec-label">Operating Environment</td><td class="spec-value">Indoor</td>
-                    </tr>
-                    <tr><td class="spec-label">Product Dimensions</td><td class="spec-value">210.0 mm × 106.0 mm × 34.1 mm (8.27" × 4.17" × 1.34")</td>
-                    </tr>
-                    <tr><td class="spec-label">Gross Weight</td><td class="spec-value">0.54 kg (1.19 lb)</td>
-                    </tr>
-                    <tr><td class="spec-label">Installation</td><td class="spec-value">Surface Mount; Guide Rail Mount</td>
-                    </tr>
+                    <tr><td class="spec-label">Lock Control / Exit Button</td><td class="spec-value">4 channels each</td></tr>
+                    <tr><td class="spec-label">Door Status Detection</td><td class="spec-value">4 channels</td></tr>
+                    <tr><td class="spec-label">Network Protocol</td><td class="spec-value">IPv4, UDP, P2P, IPv6, TCP</td></tr>
+                    <tr><td class="spec-label">OSDP Protocol</td><td class="spec-value">Yes</td></tr>
+                    <tr><td class="spec-label">Anti‑Passback / Tamper / Duress</td><td class="spec-value">Yes</td></tr>
+                    <tr><td class="spec-label">Power Supply</td><td class="spec-value">Standard PoE; 12 VDC 1A (no peripherals)</td></tr>
+                    <tr><td class="spec-label">Power Consumption</td><td class="spec-value">≤3 W (may increase with connected devices)</td></tr>
+                    <tr><td class="spec-label">Operating Temperature</td><td class="spec-value">–30°C to +60°C (–22°F to 140°F)</td></tr>
+                    <tr><td class="spec-label">Operating Humidity</td><td class="spec-value">5%–95% (RH), non-condensing</td></tr>
+                    <tr><td class="spec-label">Product Dimensions</td><td class="spec-value">210.0 × 106.0 × 34.1 mm (8.27" × 4.17" × 1.34")</td></tr>
+                    <tr><td class="spec-label">Gross Weight</td><td class="spec-value">0.54 kg (1.19 lb)</td></tr>
+                    <tr><td class="spec-label">Installation</td><td class="spec-value">Surface Mount; Guide Rail Mount</td></tr>
                 </table>
             </div>
         </div>
@@ -357,26 +367,11 @@
         <div id="downloads" class="scroll-target" style="margin-top: 40px;">
             <div class="downloads-section">
                 <h2 class="section-title">Resources & Downloads</h2>
-                <div class="download-item">
-                    <div class="download-info"><h4>ASC4204B-S Datasheet</h4><p>Product specifications, technical overview – PDF, 0.8 MB</p></div>
-                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/ASC4204B-S_datasheet_20250124.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-info"><h4>Access Controller User Manual</h4><p>Complete operation and configuration guide – PDF, 3.2 MB</p></div>
-                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0010199/202411/Access_Controller_User_s_Manual_V1.0.0.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-info"><h4>Quick Start Guide</h4><p>Installation and wiring basics – PDF, 1.1 MB</p></div>
-                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0010199/202411/Access_Controller_Quick_Start_Guide_V1.0.0.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-info"><h4>ASC4204B-S Firmware</h4><p>Latest version V1.002.0000000.0.R.241017 – ZIP, 2.4 MB</p></div>
-                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/SWR/3001862/M/DH_ASCX2XX-A-RUSSELL-02_MultiLang_PN_V1.002.0000000.0.R.241017.zip" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download ZIP</a>
-                </div>
-                <div class="download-item">
-                    <div class="download-info"><h4>Dimensions & Installation Drawings</h4><p>Mechanical drawing and mounting procedure – PDF set</p></div>
-                    <a href="https://materialfile.dahuasecurity.com/uploads/cpq/83131/drawings/ASC4202B-D_DIMENSIONS.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Drawings (PDF)</a>
-                </div>
+                <div class="download-item"><div class="download-info"><h4>ASC4204B-S Datasheet</h4><p>PDF - 0.8 MB</p></div><a href="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/datasheetzipfiles/ASC4204B-S_datasheet_20250124.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a></div>
+                <div class="download-item"><div class="download-info"><h4>User Manual</h4><p>PDF - 3.2 MB</p></div><a href="https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0010199/202411/Access_Controller_User_s_Manual_V1.0.0.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a></div>
+                <div class="download-item"><div class="download-info"><h4>Quick Start Guide</h4><p>PDF - 1.1 MB</p></div><a href="https://materialfile.dahuasecurity.com/uploads/cpq/DOR/PUM0010199/202411/Access_Controller_Quick_Start_Guide_V1.0.0.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download PDF</a></div>
+                <div class="download-item"><div class="download-info"><h4>Firmware Package</h4><p>ZIP - V1.002.0000000.0.R.241017</p></div><a href="https://materialfile.dahuasecurity.com/uploads/cpq/SWR/3001862/M/DH_ASCX2XX-A-RUSSELL-02_MultiLang_PN_V1.002.0000000.0.R.241017.zip" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Download ZIP</a></div>
+                <div class="download-item"><div class="download-info"><h4>Dimensions Drawings</h4><p>PDF - Mechanical drawing</p></div><a href="https://materialfile.dahuasecurity.com/uploads/cpq/83131/drawings/ASC4202B-D_DIMENSIONS.pdf" class="download-btn" target="_blank"><i class="fas fa-download me-2"></i>Drawings PDF</a></div>
             </div>
         </div>
     </div>
@@ -387,75 +382,157 @@
     <div class="container-custom">
         <h2 class="section-title" style="margin-bottom: 40px;">Related Products</h2>
         <div class="related-grid">
-            <a href="/products/access-control/Access_Controllers/asc4204c-d.html" class="related-card">
-                <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_25_12392/ProductImage/1_0_01_25_12392_696726655_crop_thumb.png" alt="ASC4204C-D">
-                <h4>ASC4204C-D</h4>
-                <p>4‑Door Two‑way Controller</p>
-            </a>
-            <a href="/products/access-control/Access_Controllers/asc4201c-d.html" class="related-card">
-                <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_25_12390/ProductImage/1_0_01_25_12390_696726655_crop_thumb.png" alt="ASC4201C-D">
-                <h4>ASC4201C-D</h4>
-                <p>1‑Door Two‑way Controller</p>
-            </a>
-            <a href="/products/access-control/face-recognition/index.html" class="related-card">
-                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" alt="Face Recognition">
-                <h4>Face Recognition Terminals</h4>
-                <p>AI facial authentication</p>
-            </a>
-            <a href="/products/access-control/card-readers/asr2100a.html" class="related-card">
-                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2100a.png" alt="ASR2100A">
-                <h4>ASR2100A</h4>
-                <p>13.56MHz Card Reader</p>
-            </a>
+            <a href="#" class="related-card"><img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_25_12392/ProductImage/1_0_01_25_12392_696726655_crop_thumb.png" alt="ASC4204C-D"><h4>ASC4204C-D</h4><p>4‑Door Two‑way Controller</p></a>
+            <a href="#" class="related-card"><img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_25_12390/ProductImage/1_0_01_25_12390_696726655_crop_thumb.png" alt="ASC4201C-D"><h4>ASC4201C-D</h4><p>1‑Door Two‑way Controller</p></a>
+            <a href="#" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" alt="Face Recognition"><h4>Face Recognition Terminals</h4><p>AI facial authentication</p></a>
+            <a href="#" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2100a.png" alt="ASR2100A"><h4>ASR2100A</h4><p>13.56MHz Card Reader</p></a>
         </div>
     </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="footer"><div class="footer-container"><div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div><div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><a class="btn-link" href="/about/index.html">About Us</a><a class="btn-link" href="/solutions/index.html">Solutions</a>
-    <a class="btn-link" href="/products/index.html">Products</a>
-      <a class="btn-link" href="/technologies/index.html">Technologies</a>
-    <a class="btn-link" href="/contact/index.html">Contact</a></div><div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div><div><h5>Newsletter</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a><a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a><a class="btn-square" href="#"><i class="fab fa-twitter"></i></a></div></div></div><div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div></footer>
+<!-- FOOTER -->
+<footer class="footer"><div class="footer-container"><div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div><div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><a class="btn-link" href="/about/index.html">About Us</a><a class="btn-link" href="/solutions/index.html">Solutions</a><a class="btn-link" href="/products/index.html">Products</a><a class="btn-link" href="/technologies/index.html">Technologies</a><a class="btn-link" href="/contact/index.html">Contact</a></div><div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div><div><h5>Newsletter</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary" id="subscribeBtn">Subscribe</button></div><div class="social-links"><a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a><a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a><a class="btn-square" href="#"><i class="fab fa-twitter"></i></a></div></div></div><div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div></footer>
 
 <script>
-    function toggleMobileMenu() { document.getElementById('mainNav').classList.toggle('active'); }
-    function mobileDropdownHandler() {
-        if (window.innerWidth < 992) {
-            document.querySelectorAll('.nav-item-dropdown > .dropdown-parent-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const parent = link.closest('.nav-item-dropdown');
-                    parent.classList.contains('active') ? parent.classList.remove('active') : (document.querySelectorAll('.nav-item-dropdown.active').forEach(act => act.classList.remove('active')), parent.classList.add('active'));
+    // ========== FIXED LEGACY CODE: Mobile toggle, dropdown, subnav, gallery, scroll ==========
+    (function() {
+        // Mobile menu toggle - fixed conflict
+        const mobileBtn = document.getElementById('mobileToggleBtn');
+        const mainNav = document.getElementById('mainNav');
+        if (mobileBtn && mainNav) {
+            mobileBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mainNav.classList.toggle('active');
+                document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
+            });
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('#mainNav .nav-link-custom, #mainNav .dropdown-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        mainNav.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
                 });
             });
         }
-    }
-    function setupSubnavSpy() {
-        const sections = document.querySelectorAll('#overview, #specifications, #downloads');
-        const links = document.querySelectorAll('.subnav-link[data-target]');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(sec => { const top = sec.offsetTop - 150, bottom = top + sec.offsetHeight; if (window.scrollY >= top && window.scrollY < bottom) current = sec.getAttribute('id'); });
-            links.forEach(l => { const target = l.getAttribute('data-target'); if (target === current) l.classList.add('active'); else if (current === '' && target === 'overview') l.classList.add('active'); else l.classList.remove('active'); });
-        });
-    }
-    function setupSubnavClick() {
-        document.querySelectorAll('.subnav-link[data-target]').forEach(link => {
-            link.addEventListener('click', (e) => {
+        
+        // Mobile dropdown handler - prevent event bubbling
+        function initMobileDropdowns() {
+            if (window.innerWidth < 992) {
+                document.querySelectorAll('.nav-item-dropdown > .dropdown-parent-link').forEach(link => {
+                    link.removeEventListener('click', mobileDropdownHandler);
+                    link.addEventListener('click', mobileDropdownHandler);
+                });
+            } else {
+                document.querySelectorAll('.nav-item-dropdown.active').forEach(act => act.classList.remove('active'));
+            }
+        }
+        function mobileDropdownHandler(e) {
+            if (window.innerWidth < 992) {
                 e.preventDefault();
-                const targetId = link.getAttribute('data-target');
-                if (targetId) { const el = document.getElementById(targetId); if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' }); }
-                document.querySelectorAll('.subnav-link[data-target]').forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
+                const parent = this.closest('.nav-item-dropdown');
+                if (parent) {
+                    const isActive = parent.classList.contains('active');
+                    document.querySelectorAll('.nav-item-dropdown.active').forEach(act => {
+                        if (act !== parent) act.classList.remove('active');
+                    });
+                    if (isActive) parent.classList.remove('active');
+                    else parent.classList.add('active');
+                }
+            }
+        }
+        
+        // Subnav spy & smooth scroll
+        function setupSubnav() {
+            const sections = document.querySelectorAll('#overview, #specifications, #downloads');
+            const links = document.querySelectorAll('.subnav-link[data-target]');
+            function updateActive() {
+                let current = '';
+                const scrollPos = window.scrollY + 130;
+                sections.forEach(sec => {
+                    const top = sec.offsetTop;
+                    const bottom = top + sec.offsetHeight;
+                    if (scrollPos >= top && scrollPos < bottom) current = sec.getAttribute('id');
+                });
+                links.forEach(l => {
+                    const target = l.getAttribute('data-target');
+                    if (target === current) l.classList.add('active');
+                    else if (!current && target === 'overview') l.classList.add('active');
+                    else l.classList.remove('active');
+                });
+            }
+            window.addEventListener('scroll', updateActive);
+            updateActive();
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('data-target');
+                    if (targetId) {
+                        const el = document.getElementById(targetId);
+                        if (el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+                    }
+                    links.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                });
             });
+        }
+        
+        // Gallery thumbnails
+        function setupGallery() {
+            const thumbs = document.querySelectorAll('.thumb-item');
+            const mainImg = document.getElementById('mainProductImage');
+            if (thumbs.length && mainImg) {
+                thumbs.forEach(thumb => {
+                    thumb.addEventListener('click', () => {
+                        const newSrc = thumb.getAttribute('data-img');
+                        if (newSrc) mainImg.src = newSrc;
+                        thumbs.forEach(t => t.classList.remove('active'));
+                        thumb.classList.add('active');
+                    });
+                });
+            }
+        }
+        
+        // Toast notifications for demo interactions
+        function showToast(message) {
+            const existing = document.querySelector('.toast-notify');
+            if (existing) existing.remove();
+            const toast = document.createElement('div');
+            toast.className = 'toast-notify';
+            toast.innerHTML = `<i class="fas fa-check-circle me-2"></i>${message}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+        
+        // Event handlers for buttons
+        document.getElementById('salesEnquiryBtn')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast('Enquiry submitted! Our team will contact you shortly.');
         });
-    }
-    function setupGallery() {
-        const thumbs = document.querySelectorAll('.thumb-item'), mainImg = document.getElementById('mainProductImage');
-        thumbs.forEach(t => t.addEventListener('click', () => { mainImg.src = t.getAttribute('data-img'); thumbs.forEach(th => th.classList.remove('active')); t.classList.add('active'); }));
-    }
-    document.addEventListener('DOMContentLoaded', () => { mobileDropdownHandler(); setupSubnavSpy(); setupSubnavClick(); setupGallery(); window.scrollTo(0,0); });
-    window.addEventListener('resize', () => { if (window.innerWidth >= 992) { document.getElementById('mainNav')?.classList.remove('active'); document.querySelectorAll('.nav-item-dropdown.active').forEach(act => act.classList.remove('active')); } });
+        document.getElementById('subscribeBtn')?.addEventListener('click', () => {
+            const emailInput = document.querySelector('.newsletter-box .form-control');
+            if (emailInput && emailInput.value.trim()) showToast(`Thanks for subscribing, ${emailInput.value.trim()}!`);
+            else showToast('Please enter a valid email address.');
+        });
+        document.getElementById('searchIcon')?.addEventListener('click', () => showToast('Search feature coming soon.'));
+        
+        // Initialize all
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileDropdowns();
+            setupSubnav();
+            setupGallery();
+            window.scrollTo(0, 0);
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 992) {
+                if (mainNav) mainNav.classList.remove('active');
+                document.body.style.overflow = '';
+                document.querySelectorAll('.nav-item-dropdown.active').forEach(act => act.classList.remove('active'));
+            } else {
+                initMobileDropdowns();
+            }
+        });
+    })();
 </script>
 </body>
 </html>

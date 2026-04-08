@@ -44,7 +44,166 @@
     ul { list-style: none; padding: 0; margin: 0; }
     h1, h2, h3, h4, h5 { color: var(--tf-dark); font-family: 'Montserrat', sans-serif; }
 
-    /* --- 3. HEADER (same as before) --- */
+    /* --- SEARCH OVERLAY STYLES --- */
+    .search-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow-y: auto;
+    }
+
+    .search-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    .search-container {
+        max-width: 800px;
+        margin: 100px auto 50px;
+        padding: 0 20px;
+    }
+
+    .search-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .search-header h3 {
+        color: #fff;
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .close-search {
+        color: #fff;
+        font-size: 40px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .close-search:hover {
+        color: var(--tf-yellow);
+        transform: rotate(90deg);
+    }
+
+    .search-input-wrapper {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 20px 60px 20px 30px;
+        font-size: 18px;
+        border: 2px solid transparent;
+        border-radius: 50px;
+        background: #1a1a1a;
+        color: #fff;
+        transition: 0.3s;
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: var(--tf-yellow);
+        background: #222;
+    }
+
+    .search-input::placeholder {
+        color: #666;
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--tf-yellow);
+        font-size: 20px;
+    }
+
+    .search-shortcut {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        font-size: 12px;
+        background: #333;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .search-results {
+        background: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .result-item {
+        padding: 15px 25px;
+        border-bottom: 1px solid #eee;
+        cursor: pointer;
+        transition: 0.3s;
+        display: block;
+        color: var(--tf-text);
+    }
+
+    .result-item:hover {
+        background: #f5f5f5;
+        padding-left: 35px;
+    }
+
+    .result-item h4 {
+        margin: 0 0 5px 0;
+        font-size: 16px;
+        color: var(--tf-blue);
+    }
+
+    .result-item p {
+        margin: 0;
+        font-size: 13px;
+        color: #666;
+    }
+
+    .result-item .category {
+        font-size: 11px;
+        text-transform: uppercase;
+        color: var(--tf-yellow);
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+    .no-results {
+        padding: 40px;
+        text-align: center;
+        color: #666;
+    }
+
+    .search-highlight {
+        background-color: var(--tf-yellow);
+        color: #000;
+        padding: 2px 0;
+        font-weight: 700;
+    }
+
+    .search-stats {
+        color: #999;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    /* --- 3. HEADER --- */
     .header-fix { 
         width: 100%; position: fixed; top: 0; z-index: 1030; min-height: var(--header-height);
         background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03);
@@ -62,7 +221,7 @@
     .nav-link-custom:hover { color: var(--tf-blue); }
     .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
     
-    /* --- DROPDOWN STYLES --- */
+    /* DROPDOWN STYLES */
     .nav-item-dropdown { 
         position: static; height: 100%; display: flex; align-items: center;
     }
@@ -106,6 +265,9 @@
     .dropdown-link:hover {
         color: var(--tf-blue); padding-left: 8px; border-bottom-color: var(--tf-yellow);
     }
+    .more-link {
+        color: var(--tf-blue); font-weight: 700; display: inline-block; margin-top: 10px; font-size: 12px;
+    }
     
     /* Header icons */
     .header-icons { display: flex !important; align-items: center; gap: 15px; }
@@ -137,6 +299,9 @@
         .dropdown-inner { grid-template-columns: 1fr; padding: 0; }
         .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
         .dropdown-category { margin-top: 10px; }
+        .search-container { margin: 80px auto 30px; padding: 0 15px; }
+        .search-input { padding: 15px 50px 15px 20px; font-size: 16px; }
+        .search-shortcut { display: none; }
     }
     
     @media (max-width: 576px) {
@@ -145,13 +310,15 @@
         .logo-img { height: 50px; }
         .mobile-toggle { font-size: 20px; margin-right: 10px; }
         .header-container { padding: 0 10px; }
+        .search-header h3 { font-size: 18px; }
+        .close-search { font-size: 30px; }
     }
 
     /* --- 4. HERO BANNER --- */
     .hero-banner {
         position: relative; width: 100%; height: 350px;
-         background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/banner/products.jpg');
-       background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
+        background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/banner/products.jpg');
+        background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
     }
     .hero-content { position: relative; z-index: 2; text-align: center; color: white; text-shadow: 0 4px 15px rgba(0,0,0,0.8); }
     .hero-content h1 { font-size: 48px; color: white; margin-bottom: 10px; font-weight: 700; }
@@ -182,7 +349,7 @@
         font-size: 32px; font-weight: 800; margin-bottom: 10px; color: var(--tf-dark);
     }
 
-    /* --- 7. PRODUCT GRID with image status indicators --- */
+    /* --- 7. PRODUCT GRID --- */
     .product-wrapper { max-width: 1440px; margin: 0 auto; padding: 0 30px; box-sizing: border-box; }
     .category-section { scroll-margin-top: 160px; }
     .category-heading {
@@ -203,27 +370,10 @@
     }
     .product-image { 
         position: relative; width: 100%; padding-top: 60%; overflow: hidden; 
-       
     }
     .product-image img.main-img {
         position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
         width: 85%; height: 85%; object-fit: contain; transition: var(--transition); z-index: 1;
-    }
-    /* Image status indicator */
-    .image-status {
-        position: absolute; top: 10px; right: 10px; z-index: 2;
-        background: rgba(0,0,0,0.7); color: white; padding: 4px 8px;
-        border-radius: 4px; font-size: 11px; font-weight: 600;
-        display: flex; align-items: center; gap: 4px;
-    }
-    .image-status.has-image { background: rgba(0, 76, 163, 0.9); }
-    .image-status.no-image { background: rgba(255, 0, 0, 0.7); }
-    .image-status i { font-size: 10px; }
-    .no-image-overlay {
-        position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-        display: flex; align-items: center; justify-content: center;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
     }
     .product-item { 
         padding: 25px 20px; flex-grow: 1; display: flex; 
@@ -241,13 +391,7 @@
     .product-container:hover .product-image img.main-img { transform: translate(-50%, -50%) scale(1.1); }
     .product-container:hover .product-title { color: var(--tf-blue); }
 
-    /* No image placeholder text */
-    .no-image-text {
-        position: absolute; bottom: 10px; left: 0; right: 0; text-align: center;
-        color: rgba(255,255,255,0.7); font-size: 10px; font-weight: 400;
-    }
-
-    /* --- 8. FOOTER --- */
+    /* --- 8. FOOTER - UPDATED TO MATCH MAIN TEMPLATE --- */
     .footer {
         background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 80px; font-size: 14px;
     }
@@ -258,13 +402,16 @@
     }
     .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
     .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
-    .btn-link { color: blue; display: block; margin-bottom: 12px; font-size: 14px; transition: var(--transition); }
-    .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
+    .btn-link { 
+        color: #007bff !important; display: inline-block; margin-bottom: 12px; font-size: 14px; 
+        transition: 0.3s; text-decoration: none; font-weight: 600;
+    }
+    .btn-link:hover { color: var(--tf-yellow) !important; padding-left: 8px; background: transparent; }
     .newsletter-box { position: relative; margin-top: 15px; }
     .form-control {
         width: 100%; padding: 14px 15px; padding-right: 120px; border: 1px solid #374151;
         background: #1f2937; color: var(--tf-white); border-radius: var(--btn-radius);
-        font-size: 14px; box-sizing: border-box; outline: none;
+        font-size: 14px; outline: none;
     }
     .form-control:focus { border-color: var(--tf-blue); }
     .btn-primary {
@@ -273,11 +420,10 @@
         cursor: pointer; font-weight: 600; transition: var(--transition);
     }
     .btn-primary:hover { background: #003d82; }
-    .social-links { display: flex; gap: 15px; margin-top: 25px; }
     .btn-square {
         width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex;
         align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white);
-        transition: var(--transition);
+        transition: var(--transition); text-decoration: none;
     }
     .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
     .btn-square i { margin: 0; color: #fff; }
@@ -308,6 +454,23 @@
 </style>
 </head>
 <body>
+
+<!-- SEARCH OVERLAY -->
+<div id="searchOverlay" class="search-overlay">
+    <div class="search-container">
+        <div class="search-header">
+            <h3><i class="fa fa-search" style="color: var(--tf-yellow); margin-right: 10px;"></i>Search Tongfang BMS</h3>
+            <span class="close-search" onclick="closeSearch()">&times;</span>
+        </div>
+        <div class="search-input-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="Type to search... (e.g., 'access control', 'bacnet', 'face recognition')" autocomplete="off">
+            <i class="fa fa-search search-icon"></i>
+            <span class="search-shortcut">Ctrl + K</span>
+        </div>
+        <div id="searchStats" class="search-stats"></div>
+        <div id="searchResults" class="search-results"></div>
+    </div>
+</div>
 
 <!-- ================= HEADER ================= -->
 <header>
@@ -352,9 +515,7 @@
                                 <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
                                 <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
                                 <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                <a href="/solutions/index.html" class="more-link" style="color: var(--tf-blue); font-weight:700; display:inline-block; margin-top:10px;">
-                                    View All Solutions →
-                                </a>
+                                <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
                             </div>
                         </div>
                     </div>
@@ -367,7 +528,6 @@
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <!-- 1. Access Control -->
                             <div>
                                 <div class="dropdown-category">Access Control</div>
                                 <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
@@ -375,40 +535,32 @@
                                 <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
                                 <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
                                 <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                <a href="/products/access-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/access-control/index.html" class="more-link">View All→</a>
                             </div>
-                            
-                            <!-- 2. Fire & Safety -->
                             <div>
                                 <div class="dropdown-category">Fire & Safety</div>
                                 <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
                                 <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
                                 <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
                                 <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                <a href="/products/fire-alarm/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
                             </div>
-                            
-                            <!-- 3. Building Management -->
                             <div>
                                 <div class="dropdown-category">Building Management</div>
                                 <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
                                 <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
                                 <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
                                 <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                <a href="/products/building-management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/building-management/index.html" class="more-link">View All→</a>
                             </div>
-                            
-                            <!-- 4. IP Audio & Intercom -->
                             <div>
                                 <div class="dropdown-category">IP and ITC T-7700 Series</div>
                                 <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
                                 <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
                                 <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a> 
                                 <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a>
-                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a>
                             </div>
-                            
-                            <!-- 5. HVAC & Field Control -->
                             <div>
                                 <div class="dropdown-category">HVAC & Field Control</div>
                                 <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
@@ -417,10 +569,8 @@
                                 <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
                                 <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
                                 <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                <a href="/products/hvac-field-control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
                             </div>
-                            
-                            <!-- 6. Lighting Control -->
                             <div>
                                 <div class="dropdown-category">Lighting Control</div>
                                 <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
@@ -428,10 +578,8 @@
                                 <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
                                 <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
                                 <a href="/products/Lighting-Control/Lighting-Scene-Panels/index.html" class="dropdown-link">Lighting Scene Panels</a>
-                                <a href="/products/Lighting-Control/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
                             </div>
-                            
-                            <!-- 7. Energy Management -->
                             <div>
                                 <div class="dropdown-category">Energy Management</div>
                                 <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
@@ -440,7 +588,7 @@
                                 <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
                                 <a href="/products/Energy-Management/energy-gateways/index.html" class="dropdown-link">Energy Gateways</a>
                                 <a href="/products/Energy-Management/energy-software/index.html" class="dropdown-link">Energy Software</a>
-                                <a href="/products/Energy-Management/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
+                                <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
                             </div>
                         </div>
                     </div>
@@ -457,9 +605,9 @@
                 <i class="fa fa-bars"></i>
             </button>
 
-            <!-- Header Icons -->
+            <!-- Header Icons - Search icon opens search -->
             <div class="header-icons d-flex align-items-center">
-                <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
+                <i class="fa fa-search fs-5" onclick="openSearch()" style="cursor: pointer;"></i>
                 <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
             </div>
         </div>
@@ -492,8 +640,8 @@
 <!-- ================= MAIN CONTENT ================= -->
 <div class="product-spotlight-header-wrapper">
   <div class="title-wrapper center">
-    <div class="title"><h2>Tongfang BMS Product  </h2></div>
-      </div>
+    <div class="title"><h2>Tongfang BMS Product</h2></div>
+  </div>
 </div>
 
 <div class="product-categories">
@@ -502,12 +650,10 @@
         <div id="cat-access-control" class="category-section">
             <h3 class="category-heading">Access Control</h3>
             <div class="product-categories-comp">
-                <!-- Face Recognition Terminals - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/access-control/face-recognition/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                               
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" alt="Face Recognition Terminals">
                             </div>
                             <div class="product-item">
@@ -519,13 +665,10 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Fingerprint Terminals - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/access-control/fingerprint/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                               
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/fingerprint/fingerprint-terminals.jpg" alt="Fingerprint Terminals">
                             </div>
                             <div class="product-item">
@@ -537,13 +680,10 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Card Readers - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/access-control/card-readers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                              
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/card-readers.jpg" alt="Card Readers">
                             </div>
                             <div class="product-item">
@@ -555,15 +695,12 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Access Controllers - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/access-control/Access_Controllers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                               
-                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" alt="Card Readers">
-                                </div>
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" alt="Access Controllers">
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     Access Controllers
@@ -573,15 +710,11 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Electric Locks - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/access-control/electric-locks/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                   
-                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" alt="Electric Fence  ">
-                       
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" alt="Electric Fence">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -599,14 +732,12 @@
         <div id="cat-fire-safety" class="category-section">
             <h3 class="category-heading">Fire & Safety</h3>
             <div class="product-categories-comp">
-                <!-- Control Panels - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/fire-alarm/Control_Panels/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                    
-                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2105/FW2105.png" alt="Control Pannel  ">
-                        </div>
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Control_Panels/FW2105/FW2105.png" alt="Control Panels">
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     Control Panels
@@ -616,13 +747,10 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Smoke Detectors - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/fire-alarm/detectors/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Detectors/FW2511/FW2511-card.png" alt="Smoke Detectors">
                             </div>
                             <div class="product-item">
@@ -634,14 +762,12 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Input/Output Modules - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/fire-alarm/modules/index.html">
                         <div class="product-container">
-                            <div class="product-image">  
+                            <div class="product-image">
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Modules/FW2841/FW2841-card.png" alt="I/O Modules">
-                    </div>
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     I/O Modules
@@ -651,16 +777,12 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Manual Stations - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/fire-alarm/Manual_Stations/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 
-                              
-                           
-                                <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Manual_Stations/FW2721/FW2721-card.png  " alt="Manual Stations> </div>
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/fire-alarm/Manual_Stations/FW2721/FW2721-card.png" alt="Manual Stations">
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     Manual Stations
@@ -677,12 +799,10 @@
         <div id="cat-building-mgmt" class="category-section">
             <h3 class="category-heading">Building Management</h3>
             <div class="product-categories-comp">
-                <!-- IBMS Platform - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/building-management/ibms-platform/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 
                                 <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg" alt="IBMS Platform">
                             </div>
                             <div class="product-item">
@@ -694,15 +814,11 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- DDC Controllers - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/building-management/ddc-controllers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                            
-                           <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="DDC Controllers">
-                        
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/ddc-controllers/ddc-controler-card.png" alt="DDC Controllers">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -713,14 +829,13 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- I/O Modules - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/building-management/io-modules/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                  <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/io-modules/io-modules.png" alt="io-modules  "> </div>
-                          <div class="product-item">
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/building-management/io-modules/io-modules.png" alt="I/O Modules">
+                            </div>
+                            <div class="product-item">
                                 <div class="product-title">
                                     I/O Modules
                                     <div class="product-category-badge">Building Management</div>
@@ -729,13 +844,10 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Sensors - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/building-management/sensors/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 
                                 <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/sensing-products/sensing-products.jpeg" alt="Sensors">
                             </div>
                             <div class="product-item">
@@ -754,13 +866,12 @@
         <div id="cat-ip-audio" class="category-section">
             <h3 class="category-heading">IP Audio & Intercom (ITC T-7700 Series)</h3>
             <div class="product-categories-comp">
-                <!-- IP Speakers - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/itc-t7700-series/ip-network-controllers-servers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                              <img src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/itc-t7700-series/column-horn-speakers-outdoor/t-7784h/landingpage-Audio-Products-01.jpg" alt="IP Speakers">
-                             </div>
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/itc-t7700-series/column-horn-speakers-outdoor/t-7784h/landingpage-Audio-Products-01.jpg" alt="IP Speakers">
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     IP Speakers
@@ -770,13 +881,11 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Intercom Terminals - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/itc-t7700-series/paging-intercom-terminals/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                  <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/video-intercom-products/homepage/Video-Intercom_Homepage_product_IP.png" alt="Intercom Terminals">
+                                <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/video-intercom-products/homepage/Video-Intercom_Homepage_product_IP.png" alt="Intercom Terminals">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -787,14 +896,11 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- Amplifiers - NO IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/itc-t7700-series/ip-network-decoders-amplifiers/ip-network-decoders-amplifiers.png" alt="Amplifiers ITC T-7700">
-                               
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/itc-t7700-series/ip-network-decoders-amplifiers/ip-network-decoders-amplifiers.png" alt="Amplifiers">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -805,13 +911,10 @@
                         </div>
                     </a>
                 </div>
-
-                <!-- System Management Software - HAS IMAGE -->
                 <div class="products">
                     <a class="products-links" href="/products/itc-t7700-series/system-management-software/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                               
                                 <img class="main-img" src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/software/Software.jpg" alt="System Management Software">
                             </div>
                             <div class="product-item">
@@ -830,13 +933,11 @@
         <div id="cat-hvac" class="category-section">
             <h3 class="category-heading">HVAC & Field Control</h3>
             <div class="product-categories-comp">
-                <!-- All HVAC products - NO IMAGES (placeholder) -->
                 <div class="products">
                     <a class="products-links" href="/products/hvac-field-control/fan-coil-controllers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/fan-coil-controllers/Fan-Coil-Controllers-card.png" alt="Fan coil">
-                  
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/fan-coil-controllers/Fan-Coil-Controllers-card.png" alt="Fan Coil Controllers">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -847,13 +948,12 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/hvac-field-control/vav-controllers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                   <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/vav-controllers/vav-controller-card(1).png" alt="vav-controllers">
-                   </div>
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/vav-controllers/vav-controller-card(1).png" alt="VAV Controllers">
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     VAV Controllers
@@ -863,14 +963,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/hvac-field-control/actuators/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                  <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/actuators/Electric-Damper-Actuator.png" alt="actuators">
-   
-                                
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/actuators/Electric-Damper-Actuator.png" alt="Actuators">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -881,13 +978,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/hvac-field-control/valves/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                               
-                                 <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/valves/Control-Valves.png" alt="valves">
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/valves/Control-Valves.png" alt="Valves">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -898,14 +993,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/hvac-field-control/thermostats/index.html">
                         <div class="product-container">
                             <div class="product-image">
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/thermostats/TCX-A330-W.png" alt="Thermostats">
-                          
-                              
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -916,13 +1008,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/hvac-field-control/room-controllers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/room-controllers/ERC-404D.png" alt="Room vav-controllers">
-                          
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/hvac-field-control/room-controllers/ERC-404D.png" alt="Room Controllers">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -940,13 +1030,11 @@
         <div id="cat-lighting" class="category-section">
             <h3 class="category-heading">Lighting Control</h3>
             <div class="product-categories-comp">
-                <!-- All Lighting products - NO IMAGES (placeholder) -->
                 <div class="products">
                     <a class="products-links" href="/products/Lighting-Control/lighting-controllers/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                             <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/lighting-controllers/Lighting-Controllers.png" alt="Lighting controller">
-                               
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/lighting-controllers/Lighting-Controllers.png" alt="Lighting Controllers">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -957,13 +1045,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Lighting-Control/dimming-modules/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                              <img class="main-img" src="      https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/dimming-modules/dimming-modules-card.png" alt="dimming module">
-                          
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/dimming-modules/dimming-modules-card.png" alt="Dimming Modules">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -974,13 +1060,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Lighting-Control/relay-modules/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                             <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Relay-Modules/Relay%20Modules(1).png" alt="relay module">
-                              
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Relay-Modules/Relay%20Modules(1).png" alt="Relay Modules">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -991,13 +1075,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Lighting-Control/occupancy-sensors/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                <img class="main-img" src="   https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Occupancy-Sensors/Occupancy-Sensors(1).png" alt="Occupancy Sensors">
-                              
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Occupancy-Sensors/Occupancy-Sensors(1).png" alt="Occupancy Sensors">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1008,13 +1090,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Lighting-Control/Lighting-Scene-Panels/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                 <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Lighting-Scene-Panels/Lighting-Scene-Panels(1).png" alt=" Lighting Scene Panels">
-                               
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Lighting-Control/Lighting-Scene-Panels/Lighting-Scene-Panels(1).png" alt="Lighting Scene Panels">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1032,13 +1112,11 @@
         <div id="cat-energy" class="category-section">
             <h3 class="category-heading">Energy Management</h3>
             <div class="product-categories-comp">
-                <!-- All Energy products - NO IMAGES (placeholder) -->
                 <div class="products">
                     <a class="products-links" href="/products/Energy-Management/power-meters/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                   <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/power-meters/power-meters.png" alt="  Power Meters">
-
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/power-meters/power-meters.png" alt="Power Meters">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1049,13 +1127,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Energy-Management/Water%20Meters/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                   <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Water-Meters/Water-Meters.png" alt="  Water Meters">
-                                
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Water-Meters/Water-Meters.png" alt="Water Meters">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1066,13 +1142,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Energy-Management/gas-meters/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                   <img class="main-img" src=" https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Gas-Meters/gas-meter.png" alt="  gas Meters">
-                              
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Gas-Meters/gas-meter.png" alt="Gas Meters">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1083,14 +1157,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Energy-Management/btu-meters/index.html">
                         <div class="product-container">
                             <div class="product-image">
-           
-                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/BTU-Meters/BTU-Meters-card.png" alt="BTU Meter">
-                        
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/BTU-Meters/BTU-Meters-card.png" alt="BTU Meters">
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1101,15 +1172,12 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Energy-Management/energy-gateways/index.html">
                         <div class="product-container">
                             <div class="product-image">
-                                  <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Gateways/EMC-GT-Energy-Gateways.png" alt="EMC-GT Energy Gateways">
-                         
-                                
-                                </div>
+                                <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Gateways/EMC-GT-Energy-Gateways.png" alt="Energy Gateways">
+                            </div>
                             <div class="product-item">
                                 <div class="product-title">
                                     Energy Gateways
@@ -1119,13 +1187,11 @@
                         </div>
                     </a>
                 </div>
-
                 <div class="products">
                     <a class="products-links" href="/products/Energy-Management/energy-software/index.html">
                         <div class="product-container">
                             <div class="product-image">
                                 <img class="main-img" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/Energy-Management/Energy-Software/Energy-Software.png" alt="Energy Software">
-                               
                             </div>
                             <div class="product-item">
                                 <div class="product-title">
@@ -1141,9 +1207,7 @@
     </div>
 </div>
 
- 
-
-<!-- ================= FOOTER ================= -->
+<!-- ================= FOOTER - UPDATED WITH SOCIAL MEDIA LINKS ================= -->
 <footer class="footer">
     <div class="footer-container">
         <div>
@@ -1154,33 +1218,30 @@
         </div>
         <div>
             <h5>Quick Links</h5>
-            <a class="btn-link" href="/index.html">Home</a>
-            <a class="btn-link" href="/about/index.html">About Us</a>
-            <a class="btn-link" href="/solutions/index.html">Solutions</a>
-            <a class="btn-link" href="/projects/index.html">Projects</a>
-            <a class="btn-link" href="/products/index.html">Products</a>
-            <a class="btn-link" href="/technologies/index.html">Technologies</a>
+            <a class="btn-link" href="/index.html">Home</a><br>
+            <a class="btn-link" href="/about/index.html">About Us</a><br>
+            <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+            <a class="btn-link" href="/projects/index.html">Projects</a><br>
+            <a class="btn-link" href="/products/index.html">Products</a><br>
+            <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
             <a class="btn-link" href="/contact/index.html">Contact</a>
         </div>
         <div>
             <h5>Business Hours</h5>
             <p>Mon – Sat 8:30 AM – 5:30 PM</p>
-            <p> </p>
             <p>Sunday: Closed</p>
         </div>
         <div>
-            <h5>Newsletter</h5>
+            <h5>Connect With Us</h5>
             <p>Get smart building & automation updates.</p>
-            <div class="newsletter-box">
-                <input class="form-control" type="email" placeholder="Your email">
-                <button class="btn btn-primary">Subscribe</button>
+           
+            <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                <a href="weixin://dl/chat?wxid_3jxtp7rz3p8e22" title="Chat on WeChat" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-weixin"></i></a>
+                <a href="https://t.me/+251990207888" target="_blank" title="Chat on Telegram" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/254712828498?text=Hello%20Tongfang%20BMS%20Team" target="_blank" title="Chat on WhatsApp" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://m.me/tongfangbms" target="_blank" title="Chat on Messenger" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-facebook-messenger"></i></a>
             </div>
-            <div class="social-links">
-                <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
-            </div>
+            <p style="font-size:12px;color:#6b7280;text-align:center;margin-top:10px;">WeChat ID: wxid_3jxtp7rz3p8e22</p>
         </div>
     </div>
     <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
@@ -1188,6 +1249,99 @@
 
 <!-- JavaScript -->
 <script>
+    // SEARCH FUNCTIONALITY
+    const searchIndex = [
+        { title: "Face Recognition Terminals", category: "Products", url: "/products/access-control/face-recognition/index.html", content: "Biometric access control with facial recognition technology" },
+        { title: "Fingerprint Terminals", category: "Products", url: "/products/access-control/fingerprint/index.html", content: "Biometric fingerprint access control systems" },
+        { title: "Card Readers", category: "Products", url: "/products/access-control/card-readers/index.html", content: "RFID card readers, proximity readers, smart card access" },
+        { title: "Access Controllers", category: "Products", url: "/products/access-control/Access_Controllers/index.html", content: "Door controllers, access control panels" },
+        { title: "Electric Locks", category: "Products", url: "/products/access-control/electric-locks/index.html", content: "Magnetic locks, electric strikes, door hardware" },
+        { title: "Control Panels", category: "Products", url: "/products/fire-alarm/Control_Panels/index.html", content: "Fire alarm control panels, system controllers" },
+        { title: "Smoke Detectors", category: "Products", url: "/products/fire-alarm/detectors/index.html", content: "Smoke detection, fire alarm sensors" },
+        { title: "I/O Modules", category: "Products", url: "/products/fire-alarm/modules/index.html", content: "Input/output modules for fire alarm systems" },
+        { title: "Manual Stations", category: "Products", url: "/products/fire-alarm/Manual_Stations/index.html", content: "Manual pull stations, call points" },
+        { title: "IBMS Platform", category: "Products", url: "/products/building-management/ibms-platform/index.html", content: "Integrated Building Management Software" },
+        { title: "DDC Controllers", category: "Products", url: "/products/building-management/ddc-controllers/index.html", content: "Direct Digital Control for HVAC and building automation" },
+        { title: "Sensors", category: "Products", url: "/products/building-management/sensors/index.html", content: "Temperature, humidity, pressure sensors" },
+        { title: "IP Speakers", category: "Products", url: "/products/itc-t7700-series/ip-network-controllers-servers/index.html", content: "Network speakers for public address" },
+        { title: "Fan Coil Controllers", category: "Products", url: "/products/hvac-field-control/fan-coil-controllers/index.html", content: "Controllers for fan coil units" },
+        { title: "VAV Controllers", category: "Products", url: "/products/hvac-field-control/vav-controllers/index.html", content: "Variable air volume controllers" },
+        { title: "Actuators", category: "Products", url: "/products/hvac-field-control/actuators/index.html", content: "Valve and damper actuators" },
+        { title: "Thermostats", category: "Products", url: "/products/hvac-field-control/thermostats/index.html", content: "Room thermostats and temperature control" },
+        { title: "Lighting Controllers", category: "Products", url: "/products/Lighting-Control/lighting-controllers/index.html", content: "DALI controllers, lighting automation" },
+        { title: "Power Meters", category: "Products", url: "/products/Energy-Management/power-meters/index.html", content: "Energy monitoring and power measurement" }
+    ];
+
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    const searchStats = document.getElementById('searchStats');
+
+    function openSearch() {
+        searchOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => searchInput.focus(), 100);
+    }
+
+    function closeSearch() {
+        searchOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        searchStats.innerHTML = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearch();
+        }
+        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+            closeSearch();
+        }
+    });
+
+    function performSearch(query) {
+        if (!query || query.length < 1) {
+            searchResults.innerHTML = '<div class="no-results">Start typing to search...</div>';
+            searchStats.innerHTML = '';
+            return;
+        }
+
+        const lowerQuery = query.toLowerCase();
+        const filtered = searchIndex.filter(item => 
+            item.title.toLowerCase().includes(lowerQuery) || 
+            item.content.toLowerCase().includes(lowerQuery) || 
+            item.category.toLowerCase().includes(lowerQuery)
+        );
+
+        searchStats.innerHTML = `Found ${filtered.length} result${filtered.length !== 1 ? 's' : ''} for "${query}"`;
+
+        if (filtered.length === 0) {
+            searchResults.innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+            return;
+        }
+
+        let html = '';
+        filtered.forEach(item => {
+            const regex = new RegExp(`(${lowerQuery})`, 'gi');
+            const highlightedTitle = item.title.replace(regex, '<span class="search-highlight">$1</span>');
+            html += `<a href="${item.url}" class="result-item" onclick="closeSearch()"><div class="category">${item.category}</div><h4>${highlightedTitle}</h4><p>${item.content.substring(0, 100)}${item.content.length > 100 ? '...' : ''}</p></a>`;
+        });
+        searchResults.innerHTML = html;
+    }
+
+    let searchTimeout;
+    searchInput.addEventListener('input', function(e) {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => performSearch(e.target.value), 200);
+    });
+
+    searchOverlay.addEventListener('click', function(e) {
+        if (e.target === searchOverlay) closeSearch();
+    });
+
+    // Mobile menu toggle
     function toggleMobileMenu() {
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('navBox');

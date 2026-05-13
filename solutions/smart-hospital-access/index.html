@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Smart Hospital Access | Tongfang BMS</title>
+    <title>Smart Hospital Access | Tongfang BMS - World Leading Building AIoT Solution Provider</title>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta name="description" content="Tongfang BMS - Leading Building AIoT Solution Provider specializing in smart building automation, BACnet systems, energy management, and integrated building management systems.">
+    <meta name="keywords" content="BMS, Building Management System, AIoT, BACnet, Modbus, Smart Building, Building Automation, Energy Management, HVAC Control, Access Control, Fire Alarm System, IP Intercom, Smart Home, Building Controller, DDC Controller, Building IoT, Hospital, Healthcare">
+    <meta name="author" content="Tongfang BMS">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Tongfang BMS - Building AIoT Solution Provider">
+    <meta property="og:description" content="World-leading Building AIoT solutions with open BACnet/Modbus architecture">
+    <meta property="og:image" content="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png">
+    <meta property="og:url" content="https://tongfangbms.com">
+    
     <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/jpeg">
   
     <!-- Fonts -->
@@ -17,17 +28,13 @@
 
     <style>
         :root {
-            /* BRAND COLORS */
             --tf-blue: #004ca3;       
             --tf-yellow: #ffcc00;     
             --tf-red: #e60012;        
-            
-            /* UI COLORS */
             --tf-dark: #111827;       
             --tf-text: #4b5563;       
             --tf-bg-light: #f9fafb;   
             --tf-white: #ffffff;
-            
             --header-height: 80px;
             --card-radius: 12px;
             --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -48,13 +55,8 @@
             font-weight: 700; 
             color: var(--tf-blue); 
         }
-        
-        .header-logo a,
-        .header-logo a:hover {
-            text-decoration: none !important;
-        }
 
-        /* === HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS === */
+        /* === HEADER - SOLID WHITE === */
         .header-fix { 
             width: 100%; 
             position: fixed; 
@@ -77,7 +79,6 @@
             height: var(--header-height); 
         }
         
-        /* Logo image styling */
         .logo-img {
             height: 60px;
             width: auto;
@@ -85,7 +86,6 @@
             display: block;
         }
         
-        /* Desktop Menu */
         .nav-menu { 
             display: flex; 
             gap: 30px; 
@@ -109,38 +109,19 @@
             text-decoration: none;
         }
         
-        .nav-link-custom:hover { 
-            color: var(--tf-blue); 
-        }
+        .nav-link-custom:hover { color: var(--tf-blue); }
 
-        /* Make parent links clickable */
         .dropdown-parent-link {
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
-        /* ENHANCED DROPDOWN STYLES - FULL WIDTH WITH YELLOW TOP BORDER */
         .nav-item-dropdown { 
             position: static; 
             height: 100%; 
             display: flex; 
             align-items: center;
-        }
-
-        .dropdown-menu-custom::-webkit-scrollbar {
-            width: 6px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-thumb {
-            background: var(--tf-blue);
-            border-radius: 10px;
-        }
-        .dropdown-menu-custom::-webkit-scrollbar-thumb:hover {
-            background: #003d82;
         }
 
         .dropdown-menu-custom {
@@ -154,10 +135,8 @@
             border-top: 3px solid var(--tf-yellow);
             border-radius: 0 0 8px 8px;
             padding: 30px;
-            
             max-height: calc(100vh - 150px);
             overflow-y: auto;
-            
             opacity: 0;
             visibility: hidden;
             transform: translateY(-20px);
@@ -168,7 +147,6 @@
             justify-content: center;
         }
 
-        /* inner container to align with header content */
         .dropdown-inner {
             max-width: 1440px;
             width: 100%;
@@ -180,14 +158,12 @@
             text-align: left;
         }
 
-        /* Special styling for Solutions dropdown */
         .nav-item-dropdown:first-child .dropdown-inner {
             grid-template-columns: repeat(3, 1fr);
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        /* Invisible bridge for hover */
         .dropdown-menu-custom::before {
             content: "";
             position: absolute;
@@ -198,7 +174,6 @@
             background: transparent;
         }
 
-        /* On hover: swipe down + fade in */
         .nav-item-dropdown:hover .dropdown-menu-custom { 
             opacity: 1; 
             visibility: visible; 
@@ -206,7 +181,6 @@
             pointer-events: auto;
         }
 
-        /* Link Styles */
         .dropdown-link {
             color: #4b5563; 
             font-size: 13px; 
@@ -243,29 +217,12 @@
             font-size: 12px;
             text-decoration: none;
         }
-        .more-link:hover {
-            padding-left: 5px;
-        }
+        .more-link:hover { padding-left: 5px; }
 
-        /* Header icons - always black */
-        .header-icons { 
-            display: flex !important; 
-            align-items: center; 
-            gap: 15px; 
-        }
-        
-        .header-icons i {
-            color: #111827;
-            font-size: 18px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        
-        .header-icons i:hover {
-            color: var(--tf-blue);
-        }
+        .header-icons { display: flex !important; align-items: center; gap: 15px; }
+        .header-icons i { color: #111827; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        .header-icons i:hover { color: var(--tf-blue); }
 
-        /* Mobile Menu Toggle - always black */
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
@@ -276,72 +233,25 @@
             padding-right: 20px;
         }
 
-        /* Desktop arrow */
-        .desktop-arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 11px;
-        }
-        
-        /* Mobile dropdown toggle */
-        .mobile-dropdown-toggle {
-            display: none;
-        }
+        .desktop-arrow { display: inline-block; margin-left: 5px; font-size: 11px; }
+        .mobile-dropdown-toggle { display: none; }
 
-        /* === RESPONSIVE BREAKPOINTS === */
-        
         @media (max-width: 1200px) { 
-            .dropdown-inner { 
-                grid-template-columns: repeat(3, 1fr); 
-            }
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .dropdown-inner { grid-template-columns: repeat(3, 1fr); }
+            .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: repeat(2, 1fr); }
         }
         
-        /* Tablet and Below */
         @media (max-width: 991px) {
             .header-fix { height: auto; }
-            
-            .mobile-toggle { 
-                display: block; 
-                order: 2;
-                color: #111827;
-            }
-            
-            .header-icons { 
-                display: flex !important; 
-                order: 3;
-                margin-left: 0;
-                margin-right: 0;
-            }
-            
-            .header-icons i {
-                color: #111827;
-            }
-            
-            .header-container {
-                padding: 0 20px;
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-            }
-            
-            .header-logo {
-                order: 1;
-                flex-shrink: 0;
-                margin-right: auto;
-            }
-            
-            .logo-img {
-                height: 50px;
-            }
-            
+            .mobile-toggle { display: block; order: 2; }
+            .header-icons { display: flex !important; order: 3; margin-left: 0; margin-right: 0; }
+            .header-container { padding: 0 20px; flex-wrap: nowrap; justify-content: flex-start; }
+            .header-logo { order: 1; flex-shrink: 0; margin-right: auto; }
+            .logo-img { height: 50px; }
             .nav-menu {
                 display: none;
                 position: absolute;
-                top: 80px; 
-                left: 0; 
-                width: 100%;
+                top: 80px; left: 0; width: 100%;
                 background: white;
                 flex-direction: column;
                 height: auto;
@@ -354,29 +264,9 @@
                 max-height: 80vh;
                 z-index: 1050;
             }
-            
-            .nav-menu.active { 
-                display: flex; 
-            }
-
-            .nav-link-custom { 
-                color: #333; 
-                width: auto; 
-                flex-grow: 1; 
-                padding: 15px 0 15px 30px; 
-                line-height: 1.5; 
-                border-bottom: none; 
-            }
-            
-            .nav-item-dropdown { 
-                width: 100%; 
-                flex-wrap: wrap; 
-                align-items: center; 
-                height: auto;
-                border-bottom: 1px solid #eee;
-                position: relative;
-            }
-            
+            .nav-menu.active { display: flex; }
+            .nav-link-custom { color: #333; width: auto; flex-grow: 1; padding: 15px 0 15px 30px; line-height: 1.5; border-bottom: none; }
+            .nav-item-dropdown { width: 100%; flex-wrap: wrap; align-items: center; height: auto; border-bottom: 1px solid #eee; position: relative; }
             .mobile-dropdown-toggle {
                 display: flex !important;
                 align-items: center;
@@ -387,11 +277,7 @@
                 color: #555;
                 cursor: pointer;
             }
-            
-            .desktop-arrow {
-                display: none;
-            }
-
+            .desktop-arrow { display: none; }
             .dropdown-menu-custom {
                 position: static;
                 width: 100%;
@@ -408,266 +294,32 @@
                 pointer-events: auto;
                 justify-content: flex-start;
             }
-            
-            .dropdown-inner { 
-                grid-template-columns: 1fr; 
-                padding: 0;
-                gap: 10px;
-            }
-            
-            .nav-item-dropdown:first-child .dropdown-inner { 
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-item-dropdown.active .dropdown-menu-custom { 
-                display: block; 
-            }
-            
-            .nav-item-dropdown.active .mobile-dropdown-toggle { 
-                background: #eee; 
-                color: var(--tf-blue); 
-            }
-            
-            .dropdown-category { 
-                grid-column: span 1; 
-            }
-
-            /* Hero Adjustments */
-            .hero-section {
-                height: 60vh;
-                min-height: 400px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem !important;
-            }
-            
-            .hero-sub {
-                font-size: 1.1rem !important;
-            }
-            
-            /* Hotspot Adjustments */
-            .hotspot {
-                transform: translate(-50%, -50%) scale(0.9);
-            }
-            
-            .hotspot-label {
-                font-size: 10px;
-                padding: 4px 10px;
-            }
-            
-            /* Stats Adjustments */
-            .col-md-3 {
-                margin-bottom: 30px;
-            }
-            
-            /* Topology boxes */
-            .col-md-4 {
-                margin-bottom: 20px;
-            }
-            
-            .topology-box .row {
-                flex-direction: column;
-            }
-            
-            .topology-box .col-md-4 {
-                width: 100%;
-                margin-bottom: 20px;
-            }
+            .dropdown-inner { grid-template-columns: 1fr; padding: 0; gap: 10px; }
+            .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: 1fr; }
+            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
+            .hero-section { height: 60vh; min-height: 400px; }
+            .hero-title { font-size: 2.5rem !important; }
+            .hotspot { transform: translate(-50%, -50%) scale(0.9); }
+            .hotspot-label { font-size: 10px; padding: 4px 10px; }
         }
 
-        /* Mobile */
         @media (max-width: 768px) {
-            .hero-section {
-                height: 50vh;
-                min-height: 350px;
-            }
-            
-            .hero-title {
-                font-size: 2rem !important;
-            }
-            
-            .hero-title br {
-                display: none;
-            }
-            
-            .scenario-box .row {
-                flex-direction: column;
-            }
-            
-            .col-lg-5, .col-lg-7 {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            
-            .challenge-card, .solution-card {
-                margin-bottom: 20px;
-            }
-            
-            .hotspot-dot {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-            
-            .hotspot-label {
-                font-size: 9px;
-                padding: 3px 8px;
-                margin-left: 5px;
-                display: none;
-            }
-            
-            .topology-img {
-                max-width: 100%;
-                height: auto;
-            }
-            
-            .swiper-products .swiper-slide {
-                width: 85% !important;
-            }
-            
-            .section-header h2 {
-                font-size: 28px !important;
-            }
-            
-            .row.g-4 .col-lg-3 {
-                width: 100% !important;
-                max-width: 100% !important;
-                flex: 0 0 100%;
-                margin-bottom: 20px;
-            }
-            
-            .row.mt-5 .col-md-3 {
-                margin-bottom: 20px;
-            }
-            
-            .topology-box .row.mt-4 {
-                margin-top: 20px !important;
-            }
+            .hero-section { height: 50vh; min-height: 350px; }
+            .hero-title { font-size: 2rem !important; }
+            .scenario-box .row { flex-direction: column; }
+            .col-lg-5, .col-lg-7 { width: 100% !important; max-width: 100% !important; }
+            .hotspot-dot { width: 28px; height: 28px; font-size: 14px; }
+            .hotspot-label { font-size: 9px; padding: 3px 8px; margin-left: 5px; display: none; }
         }
 
-        /* Small Mobile */
         @media (max-width: 576px) {
-            .header-icons {
-                gap: 12px !important;
-            }
-            
-            .header-icons i {
-                font-size: 16px !important;
-            }
-            
-            .logo-img {
-                height: 40px;
-            }
-            
-            .mobile-toggle {
-                font-size: 20px;
-                padding-right: 10px;
-            }
-            
-            .header-container {
-                padding: 0 10px;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem !important;
-            }
-            
-            .hero-sub {
-                font-size: 0.9rem !important;
-            }
-            
-            .project-nav-bar {
-                top: 70px;
-            }
-            
-            .project-nav-bar .container {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .nav-breadcrumb {
-                width: 100%;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding-bottom: 5px;
-            }
-            
-            .nav-breadcrumb .breadcrumb {
-                flex-wrap: nowrap;
-            }
-            
-            .nav-breadcrumb .breadcrumb-item {
-                font-size: 10px;
-            }
-            
-            .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
-                padding: 0 5px;
-            }
-            
-            .project-nav-bar span {
-                display: none;
-            }
-            
-            .footer .col-lg-4, 
-            .footer .col-lg-3, 
-            .footer .col-lg-2 {
-                margin-bottom: 30px;
-            }
-            
-            .line {
-                width: 80% !important;
-                max-width: 300px;
-            }
-            
-            .related-card img {
-                height: 150px;
-            }
-            
-            .product-card {
-                padding: 30px 15px;
-            }
-            
-            .product-card img {
-                height: 120px;
-            }
-            
-            .topology-box h5 {
-                font-size: 1rem;
-            }
+            .header-icons { gap: 12px !important; }
+            .logo-img { height: 40px; }
+            .hero-title { font-size: 1.8rem !important; }
+            .hotspot-label { display: none; }
         }
 
-        /* Extra Small */
-        @media (max-width: 400px) {
-            .logo-img {
-                height: 35px;
-            }
-            
-            .hero-title {
-                font-size: 1.5rem !important;
-            }
-            
-            .hotspot-dot {
-                width: 24px;
-                height: 24px;
-                font-size: 12px;
-            }
-            
-            .section-header h2 {
-                font-size: 24px !important;
-            }
-            
-            .related-card, 
-            .product-card {
-                margin-bottom: 20px;
-            }
-            
-            .swiper-slide {
-                width: 100% !important;
-            }
-        }
-
-        /* === 2. HERO SECTION === */
+        /* --- HERO SECTION --- */
         .hero-section {
             height: 65vh; 
             min-height: 500px;
@@ -678,8 +330,6 @@
             align-items: center; 
             position: relative;
         }
-        
-       
 
         .hero-content { 
             position: relative; 
@@ -695,26 +345,9 @@
             text-shadow: 0 3px 8px rgba(0,0,0,0.45);
         }
         
-        .hero-sub { 
-            color: #fff; 
-            font-size: 1.25rem; 
-            max-width: 700px; 
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        @keyframes fadeUp { 
-            from { 
-                opacity: 0; 
-                transform: translateY(30px); 
-            } 
-            to { 
-                opacity: 1; 
-                transform: translateY(0); 
-            } 
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Sub Nav */
+        /* --- SUB-NAV --- */
         .project-nav-bar {
             position: sticky; 
             top: var(--header-height);
@@ -724,38 +357,14 @@
             border-bottom: 1px solid rgba(0,0,0,0.08);
             box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
-        .nav-breadcrumb .breadcrumb-item a { 
-            color: #666; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            font-size: 12px; 
-            text-decoration: none; 
-        }
-        .nav-breadcrumb .breadcrumb-item a:hover, 
-        .nav-breadcrumb .breadcrumb-item.active a { 
-            color: var(--tf-blue) !important; 
-        }
-        .nav-breadcrumb .breadcrumb-item.active::after {
-            content: ""; 
-            position: absolute; 
-            left: 0; 
-            bottom: -6px; 
-            width: 100%; 
-            height: 3px; 
-            background: var(--tf-yellow); 
-            border-radius: 10px;
-        }
-        .nav-breadcrumb .breadcrumb-item { 
-            position: relative; 
-        }
-        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { 
-            content: "|"; 
-            color: #ccc; 
-            padding: 0 10px; 
-        }
+        
+        .nav-breadcrumb .breadcrumb-item a { color: #666; font-weight: 700; text-transform: uppercase; font-size: 12px; text-decoration: none; }
+        .nav-breadcrumb .breadcrumb-item a:hover, .nav-breadcrumb .breadcrumb-item.active a { color: var(--tf-blue) !important; }
+        .nav-breadcrumb .breadcrumb-item.active::after { content: ""; position: absolute; left: 0; bottom: -6px; width: 100%; height: 3px; background: var(--tf-yellow); border-radius: 10px; }
+        .nav-breadcrumb .breadcrumb-item { position: relative; display: inline-block; }
+        .nav-breadcrumb .breadcrumb-item+.breadcrumb-item::before { content: "|"; color: #ccc; padding: 0 10px; }
 
-        /* Map & Scenarios */
-        .scroll-target { scroll-margin-top: 160px; }
+        /* --- INTERACTIVE MAP --- */
         .interactive-map-container {
             position: relative; 
             width: 100%; 
@@ -764,11 +373,9 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1); 
             margin-bottom: 40px;
         }
-        .map-img { 
-            width: 100%; 
-            display: block; 
-            filter: brightness(0.9); 
-        }
+        
+        .map-img { width: 100%; display: block; filter: brightness(0.9); }
+        
         .hotspot {
             position: absolute; 
             display: flex; 
@@ -778,183 +385,48 @@
             transform: translate(-50%, -50%);
             transition: transform 0.3s ease;
         }
-        .hotspot:hover { 
-            transform: translate(-50%, -50%) scale(1.1); 
-        }
+        
+        .hotspot:hover { transform: translate(-50%, -50%) scale(1.1); }
+        
         .hotspot-dot {
-            width: 36px; 
-            height: 36px; 
-            background-color: var(--tf-blue); 
-            color: #fff;
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            font-weight: 800; 
-            border: 2px solid #fff; 
-            transition: 0.3s;
+            width: 36px; height: 36px; background-color: var(--tf-blue); color: #fff;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; border: 2px solid #fff; transition: 0.3s;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        .hotspot.active .hotspot-dot {
-            background-color: var(--tf-yellow); 
-            color: var(--tf-dark); 
-            transform: scale(1.3); 
-            box-shadow: 0 0 0 5px rgba(255,204,0,0.4);
-        }
-        .hotspot-label {
-            background-color: #fff; 
-            padding: 6px 15px 6px 25px; 
-            border-radius: 0 20px 20px 0; 
-            font-size: 12px; 
-            font-weight: 700; 
-            margin-left: -20px; 
-            z-index: -2;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            white-space: nowrap;
-        }
-        .hotspot.active .hotspot-label { 
-            background: var(--tf-dark); 
-            color: #fff; 
-        }
-
-        .section-header { 
-            text-align: center; 
-            margin-bottom: 60px; 
-        }
-        .section-header h2 { 
-            font-size: 36px; 
-            text-transform: uppercase; 
-            letter-spacing: -1px; 
-        }
-        .section-header .line { 
-            width: 60px; 
-            height: 5px; 
-            background: var(--tf-yellow); 
-            margin: 15px auto; 
-            border-radius: 10px; 
-        }
-        .scenario-wrapper { 
-            background: #f8f9fa; 
-            border-top: 1px solid #eee; 
-            padding: 80px 0 120px 0; 
-            position: relative;
-            clear: both;
-        }
-        .scenario-box { 
-            display: none; 
-            opacity: 0; 
-            transform: translateY(20px); 
-            transition: 0.5s ease; 
-        }
-        .scenario-box.active { 
-            display: block; 
-            opacity: 1; 
-            transform: translateY(0); 
-            margin-bottom: 60px; 
-        }
-        .challenge-card { 
-            background: #fff; 
-            padding: 30px; 
-            border-radius: 12px; 
-            border-left: 4px solid var(--tf-red); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-            margin-bottom: 25px; 
-        }
-        .solution-card { 
-            background: #fff; 
-            padding: 30px; 
-            border-radius: 12px; 
-            border-left: 4px solid var(--tf-blue); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-        }
-        .col-lg-5 { 
-            display: flex; 
-            flex-direction: column; 
-        }
-        .scenario-img { 
-            width: 100%; 
-            border-radius: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
-            margin-bottom: 25px; 
-        }
-        .challenge-card ul, 
-        .solution-card ul {
-            padding-left: 20px;
-            margin-bottom: 0;
-        }
-        .challenge-card li, 
-        .solution-card li {
-            margin-bottom: 8px;
-        }
-
-        .topology-img { 
-            width: 100%; 
-            border-radius: 12px; 
-            border: 1px solid #eee; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
-        }
-        .topology-box { 
-            display: none; 
-            opacity: 0; 
-            transform: translateY(20px); 
-            transition: opacity 0.5s ease, transform 0.5s ease; 
-        }
-        .topology-box.active { 
-            display: block; 
-            opacity: 1; 
-            transform: translateY(0); 
-        }
         
-        .related-card {
-            background: #fff; 
-            border-radius: var(--card-radius); 
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04); 
-            transition: 0.3s; 
-            text-decoration: none; 
-            color: inherit; 
-            height: 100%; 
-            display: block;
-        }
-        .related-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 25px 50px rgba(0, 76, 163, 0.15); 
-        }
-        .related-card img { 
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-        }
-        .related-content { 
-            padding: 20px; 
-        }
-        .related-title { 
-            font-weight: 700; 
-            color: var(--tf-blue); 
-            margin-bottom: 10px; 
-            font-size: 1.1rem; 
-        }
+        .hotspot.active .hotspot-dot { background-color: var(--tf-yellow); color: var(--tf-dark); transform: scale(1.3); box-shadow: 0 0 0 5px rgba(255,204,0,0.4); }
 
+        .hotspot-label {
+            background-color: #fff; padding: 6px 15px 6px 25px; border-radius: 0 20px 20px 0;
+            font-size: 12px; font-weight: 700; margin-left: -20px; z-index: -2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); white-space: nowrap;
+        }
+        .hotspot.active .hotspot-label { background: var(--tf-dark); color: #fff; }
+
+        /* --- SCENARIOS --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 36px; text-transform: uppercase; letter-spacing: -1px; }
+        .section-header .line { width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px; }
+
+        .scenario-wrapper { background: #f8f9fa; border-top: 1px solid #eee; padding: 80px 0 120px 0; position: relative; clear: both; }
+        .scenario-box { display: none; opacity: 0; transform: translateY(20px); transition: 0.5s ease; }
+        .scenario-box.active { display: block; opacity: 1; transform: translateY(0); margin-bottom: 60px; }
+        
+        .challenge-card { background: #fff; padding: 30px; border-radius: 12px; border-left: 4px solid var(--tf-red); box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .solution-card { background: #fff; padding: 30px; border-radius: 12px; border-left: 4px solid var(--tf-blue); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .scenario-img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 25px; }
+
+        .topology-img { width: 100%; border-radius: 12px; border: 1px solid #eee; box-shadow: 0 10px 40px rgba(0,0,0,0.04); }
+        .topology-box { display: none; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .topology-box.active { display: block; opacity: 1; transform: translateY(0); }
+        
         .product-card {
-            background: #fff; 
-            padding: 40px 20px; 
-            border-radius: var(--card-radius);
-            text-align: center; 
-            border: 1px solid #f0f0f0; 
-            transition: 0.3s;
-            height: 100%;
+            background: #fff; padding: 40px 20px; border-radius: var(--card-radius);
+            text-align: center; border: 1px solid #f0f0f0; transition: 0.3s; height: 100%;
         }
-        .product-card:hover { 
-            border-color: var(--tf-blue); 
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
-        }
-        .product-card img { 
-            height: 160px; 
-            object-fit: contain; 
-            margin-bottom: 25px; 
-            max-width: 100%;
-        }
+        .product-card:hover { border-color: var(--tf-blue); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+        .product-card img { height: 160px; object-fit: contain; margin-bottom: 25px; max-width: 100%; }
 
         .btn-primary {
             background: var(--tf-blue);
@@ -967,256 +439,128 @@
             display: inline-block;
             text-decoration: none;
         }
-        
-        .btn-primary:hover {
-            background: var(--tf-yellow);
-            color: var(--tf-dark);
-            transform: translateY(-2px);
-        }
+        .btn-primary:hover { background: var(--tf-yellow); color: var(--tf-dark); transform: translateY(-2px); }
 
-        .btn-outline-primary {
-            border: 2px solid var(--tf-blue);
-            color: var(--tf-blue);
-            background: transparent;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-block;
-            text-decoration: none;
+        .related-card {
+            background: #fff; border-radius: var(--card-radius); overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04); transition: 0.3s; text-decoration: none; color: inherit; height: 100%; display: block;
         }
-        
-        .btn-outline-primary:hover {
-            background: var(--tf-blue);
-            color: #fff;
-            transform: translateY(-2px);
-        }
+        .related-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0, 76, 163, 0.15); }
+        .related-card img { width: 100%; height: 200px; object-fit: cover; }
+        .related-content { padding: 20px; }
+        .related-title { font-weight: 700; color: var(--tf-blue); margin-bottom: 10px; font-size: 1.1rem; }
 
-        .btn-square {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.1);
-            border-radius: 6px;
-            color: #aaa;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-        
-        .btn-square:hover {
-            background: var(--tf-blue);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .footer { 
+        /* --- FOOTER - MATCHING SOLUTIONS HUB TEMPLATE --- */
+        .footer {
             background: #0b111a; 
             color: #aaa; 
+            margin-top: 60px; 
             padding-top: 80px; 
-            font-size: 14px; 
+            font-size: 14px;
         }
-        
         .footer h5 { 
             color: #fff; 
             margin-bottom: 30px; 
+            font-weight: 700; 
         }
-        
-        .footer a { 
-            color: var(--tf-blue) !important; 
-            text-decoration: none; 
-            transition: 0.3s; 
-            font-weight: 600; 
-            display: block;
-            margin-bottom: 8px;
+        .footer-container {
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 30px;
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr; 
+            gap: 40px;
         }
-        
-        .footer a:hover { 
+        .footer p { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 10px; 
+        }
+        .footer i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            width: 20px; 
+            text-align: center; 
+        }
+        .footer .btn-link { 
+            color: #007bff !important;
+            display: inline-block; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer .btn-link:hover { 
             color: var(--tf-yellow) !important; 
-            padding-left: 5px;
+            padding-left: 8px; 
+            background: transparent;
         }
-        
-        .copyright { 
+        .copyright {
             background: #05080c; 
-            border-top: 1px solid #1a222e; 
-            padding: 25px 0; 
+            padding: 25px; 
             margin-top: 60px; 
+            color: #6b7280; 
+            font-size: 13px;
+            text-align: center; 
+            border-top: 1px solid #1a222e;
         }
 
-        .form-control:focus {
-            border-color: var(--tf-yellow);
-            box-shadow: 0 0 0 0.2rem rgba(255,204,0,0.25);
-        }
+        @media (max-width: 992px) { .footer-container { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 576px) { .footer-container { grid-template-columns: 1fr; gap: 30px; } .footer { padding-top: 60px; } }
 
-        /* Responsive Utility Classes */
-        .img-responsive {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        .text-responsive {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-        }
-        
-        .heading-responsive {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-        }
-        
-        .swiper, .swiper-wrapper, .swiper-slide { 
-            overflow: visible !important; 
-        }
-        
-        .swiper-slide { 
-            padding: 0 10px; 
-        }
-        
-        /* Text color utility */
-        .text-warning-custom {
-            color: var(--tf-yellow) !important;
-        }
-        
-        /* Stats Section */
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--tf-yellow);
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
+        .img-responsive { max-width: 100%; height: auto; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--tf-yellow); margin-bottom: 10px; line-height: 1.2; }
+        .swiper-slide { padding: 0 10px; }
     </style>
 </head>
 
 <body>
 
-    <!-- HEADER - SOLID WHITE WITH LOGO AND FULL-WIDTH DROPDOWNS -->
+    <!-- HEADER -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
-                <!-- LOGO (Left) -->
                 <div class="header-logo">
                     <a href="/index.html">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
                 </div>
                 
-                <!-- NAVIGATION -->
                 <nav id="mainNav" class="nav-menu">
-                    
-                    <!-- SOLUTIONS DROPDOWN - FULL WIDTH -->
                     <div class="nav-item-dropdown">
                         <div class="mobile-link-wrapper" style="display: flex; width: 100%; align-items: center;">
                             <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                                 Solutions <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <span class="mobile-dropdown-toggle">
-                                <i class="fa fa-angle-down"></i>
-                            </span>
+                            <span class="mobile-dropdown-toggle"><i class="fa fa-angle-down"></i></span>
                         </div>
-                        
                         <div class="dropdown-menu-custom">
                             <div class="dropdown-inner">
-                                <div>
-                                    <div class="dropdown-category">Buildings</div>
-                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
-                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
-                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
-                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
-                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
-                                </div>
-                                <div>
-                                    <div class="dropdown-category">Infrastructure</div>
-                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
-                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
-                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
-                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
-                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
-                                </div>
-                                <div>
-                                    <div class="dropdown-category">City Systems</div>
-                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
-                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
-                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
-                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
-                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
-                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
-                                </div>
+                                <div><div class="dropdown-category">Buildings</div><a href="/solutions/residential/index.html" class="dropdown-link">Residential</a><a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a><a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a><a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a><a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a></div>
+                                <div><div class="dropdown-category">Infrastructure</div><a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a><a href="/solutions/airport/index.html" class="dropdown-link">Airports</a><a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a><a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a><a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a></div>
+                                <div><div class="dropdown-category">City Systems</div><a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a><a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a><a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a><a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a><a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a><a href="/solutions/index.html" class="more-link">View All Solutions →</a></div>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- PRODUCTS DROPDOWN - FULL WIDTH WITH EXPANDED LISTS -->
                     <div class="nav-item-dropdown">
                         <div class="mobile-link-wrapper" style="display: flex; width: 100%; align-items: center;">
                             <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                                 Products <span class="desktop-arrow"><i class="fa fa-angle-down"></i></span>
                             </a>
-                            <span class="mobile-dropdown-toggle">
-                                <i class="fa fa-angle-down"></i>
-                            </span>
+                            <span class="mobile-dropdown-toggle"><i class="fa fa-angle-down"></i></span>
                         </div>
-                        
                         <div class="dropdown-menu-custom">
                             <div class="dropdown-inner">
-                                <div>
-                                    <div class="dropdown-category">Access Control</div>
-                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
-                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
-                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
-                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
-                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
-                                    <a href="/products/access-control/index.html" class="more-link">View All→</a>
-                                </div>
-                                <div>
-                                    <div class="dropdown-category">Fire & Safety</div>
-                                   <!-- <a href="/products/fire-alarm/index.html" class="dropdown-link">Fire Alarm Systems</a>-->
-                                    <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
-                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
-                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
-                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
-                                    <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
-                                </div>
-                                <div>
-                                    <div class="dropdown-category">Building Management</div>
-                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
-                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
-                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
-                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
-                                    <a href="/products/building-management/index.html" class="more-link">View All→</a>
-                                </div>
-                              <div>
-                                 <div class="dropdown-category">  IP and ITC T-7700 Series</div>
-                                <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
-                                <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals </a>
-                                <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a> 
-                                 <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">system-management-software
-                                <a href="/products/itc-t7700-series/index.html" class="more-link" style="color: var(--tf-blue);">View All→</a>
-                            </div>
-                            <div>
-                                    <div class="dropdown-category">HVAC & Field Control</div>
-                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
-                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
-                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
-                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
-                                    <a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a>
-                                    <a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a>
-                                    <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
-                                </div>
-                                <div>
-                                    <div class="dropdown-category">Lighting Control</div>
-                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
-                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
-                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
-                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
-                                    <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
-                                </div>
-                                <div>
-                                    <div class="dropdown-category">Energy Management</div>
-                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
-                                    <a href="/products/Energy-Management/water-meters/index.html" class="dropdown-link">Water Meters</a>
-                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
-                                    <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
-                                </div>
+                                <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/index.html" class="more-link">View All→</a></div>
+                                <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All→</a></div>
+                                <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All→</a></div>
+                                <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management Software</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a></div>
+                                <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/thermostats/index.html" class="dropdown-link">Thermostats</a><a href="/products/hvac-field-control/room-controllers/index.html" class="dropdown-link">Room Controllers</a><a href="/products/hvac-field-control/index.html" class="more-link">View All→</a></div>
+                                <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/index.html" class="more-link">View All→</a></div>
+                                <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/water-meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/index.html" class="more-link">View All→</a></div>
                             </div>
                         </div>
                     </div>
@@ -1227,12 +571,10 @@
                     <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
 
-                <!-- HAMBURGER ICON -->
                 <button class="mobile-toggle" onclick="toggleMobileMenu()">
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Header Icons -->
                 <div class="header-icons d-flex align-items-center">
                     <i class="fa fa-search fs-5" style="cursor: pointer;"></i>
                     <i class="fa fa-globe fs-5" style="cursor: pointer;"></i>
@@ -1246,7 +588,7 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Smart Hospital<br> Access</h1>
-                     </div>
+            </div>
         </div>
     </section>
 
@@ -1262,8 +604,7 @@
                 </ol>
             </nav>
             <span class="text-dark fw-bold small d-none d-md-block">
-                <i class="fa fa-hospital me-2" style="color: var(--tf-yellow) !important;"></i>
-                HEALTHCARE SECURITY
+                <i class="fa fa-hospital me-2" style="color: var(--tf-yellow) !important;"></i>HEALTHCARE SECURITY
             </span>
         </div>
     </div>
@@ -1271,222 +612,42 @@
     <!-- SECTION 1: INTERACTIVE MAP -->
     <section class="py-5 bg-white" id="overview">
         <div class="container py-4">
-            
             <div class="text-center mb-5">
                 <h2 style="font-size: clamp(1.8rem, 4vw, 2.5rem);">Solution Overview</h2>
                 <div style="width: 80px; height: 5px; background: var(--tf-yellow); margin: 20px auto; border-radius:10px;"></div>
                 <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Click the numbered hotspots below to explore specific healthcare access scenarios.</p>
             </div>
 
-            <!-- MAP CONTAINER -->
             <div class="interactive-map-container">
                 <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/hospital-overview.jpg" alt="Hospital Access Overview" class="map-img img-responsive">
                 
-                <!-- Hotspots -->
-                <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 10%; left: 10%;">
-                    <div class="hotspot-dot">1</div>
-                    <div class="hotspot-label">Main Entrance</div>
-                </div>
-                <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 65%; left: 40%;">
-                    <div class="hotspot-dot">2</div>
-                    <div class="hotspot-label">Emergency Department</div>
-                </div>
-                <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 55%; left:60%;">
-                    <div class="hotspot-dot">3</div>
-                    <div class="hotspot-label">Patient Rooms</div>
-                </div>
-                
-                <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 45%; left: 35%;">
-                    <div class="hotspot-dot">4</div>
-                    <div class="hotspot-label">Pharmacy</div>
-                </div>
-                
-                <div id="hotspot-5" class="hotspot" onclick="showScenario(5)" style="top: 13%; left: 90%;">
-                    <div class="hotspot-dot">5</div>
-                    <div class="hotspot-label">Control Center</div>
-                </div>
+                <div id="hotspot-1" class="hotspot active" onclick="showScenario(1)" style="top: 10%; left: 10%;"><div class="hotspot-dot">1</div><div class="hotspot-label">Main Entrance</div></div>
+                <div id="hotspot-2" class="hotspot" onclick="showScenario(2)" style="top: 65%; left: 40%;"><div class="hotspot-dot">2</div><div class="hotspot-label">Emergency Department</div></div>
+                <div id="hotspot-3" class="hotspot" onclick="showScenario(3)" style="top: 55%; left:60%;"><div class="hotspot-dot">3</div><div class="hotspot-label">Patient Rooms</div></div>
+                <div id="hotspot-4" class="hotspot" onclick="showScenario(4)" style="top: 45%; left: 35%;"><div class="hotspot-dot">4</div><div class="hotspot-label">Pharmacy</div></div>
+                <div id="hotspot-5" class="hotspot" onclick="showScenario(5)" style="top: 13%; left: 90%;"><div class="hotspot-dot">5</div><div class="hotspot-label">Control Center</div></div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: SCENARIO DETAILS -->
+    <!-- SECTION 2: SCENARIO DETAILS (Simplified) -->
     <section id="scenarios" class="scenario-wrapper">
         <div class="container">
-            
-            <!-- 1. MAIN ENTRANCE -->
             <div id="content-1" class="scenario-box active">
                 <h3 class="mb-4 text-primary">1. Main Entrance & Visitor Management</h3>
                 <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="challenge-card">
-                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                           <ul class="text-muted mb-0">
-                                <li>High volume of visitors and staff traffic</li>
-                                <li>Difficulty distinguishing between staff, patients, and visitors</li>
-                                <li>Potential security breaches during peak hours</li>
-                                <li>Limited contact tracing capabilities</li>
-                            </ul>
-                        </div>
-                        <div class="solution-card">
-                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                            <p><strong>Multi-factor Authentication:</strong> Biometric + RFID + facial recognition for staff access.</p>
-                            <p><strong>Visitor Management System:</strong> Digital registration with ID verification.</p>
-                            <p><strong>Thermal Screening:</strong> Automated temperature checks and mask detection.</p>
-                            <p><strong>Contact Tracing:</strong> Integration with digital health passes.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/main-entrance.jpg" class="scenario-img img-responsive" alt="Main Entrance">
-                        <h5 class="mt-3">Key Features:</h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item me-4"><i class="fa fa-fingerprint text-success"></i> Biometric Access</li>
-                            <li class="list-inline-item me-4"><i class="fa fa-thermometer-half text-success"></i> Thermal Screening</li>
-                            <li class="list-inline-item"><i class="fa fa-camera text-success"></i> Facial Recognition</li>
-                        </ul>
-                    </div>
+                    <div class="col-lg-5"><div class="challenge-card"><h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5><ul class="text-muted mb-0"><li>High volume of visitors and staff traffic</li><li>Difficulty distinguishing between staff, patients, and visitors</li><li>Potential security breaches during peak hours</li></ul></div><div class="solution-card"><h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5><p><strong>Multi-factor Authentication:</strong> Biometric + RFID + facial recognition.</p><p><strong>Visitor Management System:</strong> Digital registration with ID verification.</p><p><strong>Thermal Screening:</strong> Automated temperature checks and mask detection.</p></div></div>
+                    <div class="col-lg-7"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/main-entrance.jpg" class="scenario-img img-responsive" alt="Main Entrance"></div>
                 </div>
             </div>
-
-            <!-- 2. EMERGENCY DEPARTMENT -->
-            <div id="content-2" class="scenario-box">
-                <h3 class="mb-4 text-primary">2. Emergency Department Access</h3>
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="challenge-card">
-                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                            <ul class="text-muted mb-0">
-                                <li>Need for rapid access during emergencies</li>
-                                <li>Preventing unauthorized access to restricted areas</li>
-                                <li>Maintaining infection control protocols</li>
-                                <li>Tracking patient movement within ED</li>
-                            </ul>
-                        </div>
-                        <div class="solution-card">
-                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                            <p><strong>Rapid Entry Systems:</strong> Hands-free doors for emergency personnel.</p>
-                            <p><strong>Zone-based Access Control:</strong> Different permissions for trauma rooms, isolation areas, and staff zones.</p>
-                            <p><strong>Patient Tracking:</strong> RFID wristbands for patient location monitoring.</p>
-                            <p><strong>Emergency Override:</strong> Fire and emergency lockdown protocols.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/Emergency-Department.png" class="scenario-img img-responsive" alt="Emergency Department">
-                        <h5 class="mt-3">Key Features:</h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item me-4"><i class="fa fa-ambulance text-success"></i> Rapid Access</li>
-                            <li class="list-inline-item me-4"><i class="fa fa-map-marker-alt text-success"></i> Zone Control</li>
-                            <li class="list-inline-item"><i class="fa fa-user-md text-success"></i> Patient Tracking</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 3. PATIENT ROOMS -->
-            <div id="content-3" class="scenario-box">
-                <h3 class="mb-4 text-primary">3. Patient Room Access & Safety</h3>
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="challenge-card">
-                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                            <ul class="text-muted mb-0">
-                                <li>Controlling access to patient medications and records</li>
-                                <li>Preventing unauthorized entry to patient rooms</li>
-                                <li>Emergency nurse call integration</li>
-                                <li>Monitoring patient movements for safety</li>
-                            </ul>
-                        </div>
-                        <div class="solution-card">
-                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                            <p><strong>Smart Door Locks:</strong> RFID/NFC access for authorized staff only.</p>
-                            <p><strong>Bedside Control Panels:</strong> Integrated nurse call and access control.</p>
-                            <p><strong>Fall Detection:</strong> Integration with patient monitoring systems.</p>
-                            <p><strong>Medication Cabinets:</strong> Biometric access to controlled substances.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/patient-room.jpg" class="scenario-img img-responsive" alt="Patient Rooms">
-                        <h5 class="mt-3">Key Features:</h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item me-4"><i class="fa fa-door-closed text-success"></i> Smart Locks</li>
-                            <li class="list-inline-item me-4"><i class="fa fa-bell text-success"></i> Nurse Call</li>
-                            <li class="list-inline-item"><i class="fa fa-shield-alt text-success"></i> Fall Detection</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. PHARMACY -->
-            <div id="content-4" class="scenario-box">
-                <h3 class="mb-4 text-primary">4. Pharmacy & Medication Storage</h3>
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="challenge-card">
-                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                            <ul class="text-muted mb-0">
-                                <li>Strict regulatory compliance requirements</li>
-                                <li>Preventing theft of controlled substances</li>
-                                <li>Tracking medication inventory accurately</li>
-                                <li>Limited access to authorized personnel only</li>
-                            </ul>
-                        </div>
-                        <div class="solution-card">
-                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                            <p><strong>Biometric Vault Access:</strong> Fingerprint/retina scanning for narcotic storage.</p>
-                            <p><strong>Audit Trail Logging:</strong> Complete digital record of all access events.</p>
-                            <p><strong>Inventory Integration:</strong> Access control linked to medication management systems.</p>
-                            <p><strong>Time-based Access:</strong> Restrict access to specific hours and personnel.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" class="scenario-img img-responsive" alt="Pharmacy">
-                        <h5 class="mt-3">Key Features:</h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item me-4"><i class="fa fa-fingerprint text-success"></i> Biometric Access</li>
-                            <li class="list-inline-item me-4"><i class="fa fa-clipboard-list text-success"></i> Audit Trails</li>
-                            <li class="list-inline-item"><i class="fa fa-clock text-success"></i> Time Restrictions</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. CONTROL CENTER -->
-            <div id="content-5" class="scenario-box">
-                <h3 class="mb-4 text-primary">5. Integrated Security Control Center</h3>
-                <div class="row g-5">
-                    <div class="col-lg-5">
-                        <div class="challenge-card">
-                            <h5 class="text-danger fw-bold"><i class="fa fa-exclamation-triangle me-2"></i>Challenges</h5>
-                            <ul class="text-muted mb-0">
-                                <li>Multiple disparate security systems</li>
-                                <li>Poor situational awareness during incidents</li>
-                                <li>Difficult to coordinate emergency responses</li>
-                                <li>Compliance reporting is manual and time-consuming</li>
-                            </ul>
-                        </div>
-                        <div class="solution-card">
-                            <h5 class="text-primary fw-bold"><i class="fa fa-check-circle me-2"></i>Tongfang Solution</h5>
-                            <p><strong>Unified Command Center:</strong> Single dashboard for access control, video surveillance, and alarms.</p>
-                            <p><strong>Real-time Monitoring:</strong> Live status of all access points and security devices.</p>
-                            <p><strong>Emergency Protocols:</strong> Automated lockdown and evacuation procedures.</p>
-                            <p><strong>Compliance Reporting:</strong> Automated audit trails and regulatory reports.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-7">
-                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" class="scenario-img img-responsive" alt="Control Center">
-                        <h5 class="mt-3">Key Features:</h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item me-4"><i class="fa fa-desktop text-success"></i> Unified Dashboard</li>
-                            <li class="list-inline-item me-4"><i class="fa fa-eye text-success"></i> Real-time Monitoring</li>
-                            <li class="list-inline-item"><i class="fa fa-file-contract text-success"></i> Compliance Reports</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+            <div id="content-2" class="scenario-box"><h3>2. Emergency Department Access</h3><div class="row"><div class="col-lg-5"><div class="challenge-card"><h5>Challenges</h5><ul><li>Need for rapid access during emergencies</li><li>Preventing unauthorized access to restricted areas</li><li>Maintaining infection control protocols</li></ul></div><div class="solution-card"><h5>Tongfang Solution</h5><p>Rapid Entry Systems, Zone-based Access Control, Patient Tracking.</p></div></div><div class="col-lg-7"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/Emergency-Department.png" class="scenario-img"></div></div></div>
+            <div id="content-3" class="scenario-box"><h3>3. Patient Room Access & Safety</h3><div class="row"><div class="col-lg-5"><div class="challenge-card"><h5>Challenges</h5><ul><li>Controlling access to patient medications and records</li><li>Preventing unauthorized entry to patient rooms</li><li>Emergency nurse call integration</li></ul></div><div class="solution-card"><h5>Tongfang Solution</h5><p>Smart Door Locks, Bedside Control Panels, Fall Detection.</p></div></div><div class="col-lg-7"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/patient-room.jpg" class="scenario-img"></div></div></div>
+            <div id="content-4" class="scenario-box"><h3>4. Pharmacy & Medication Storage</h3><div class="row"><div class="col-lg-5"><div class="challenge-card"><h5>Challenges</h5><ul><li>Strict regulatory compliance requirements</li><li>Preventing theft of controlled substances</li><li>Tracking medication inventory accurately</li></ul></div><div class="solution-card"><h5>Tongfang Solution</h5><p>Biometric Vault Access, Audit Trail Logging, Inventory Integration.</p></div></div><div class="col-lg-7"><img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=800&q=80" class="scenario-img"></div></div></div>
+            <div id="content-5" class="scenario-box"><h3>5. Integrated Security Control Center</h3><div class="row"><div class="col-lg-5"><div class="challenge-card"><h5>Challenges</h5><ul><li>Multiple disparate security systems</li><li>Poor situational awareness during incidents</li><li>Difficult to coordinate emergency responses</li></ul></div><div class="solution-card"><h5>Tongfang Solution</h5><p>Unified Command Center, Real-time Monitoring, Emergency Protocols.</p></div></div><div class="col-lg-7"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" class="scenario-img"></div></div></div>
         </div>
     </section>
 
-    <!-- SECTION 3: SYSTEM TOPOLOGY (Dynamic) -->
+    <!-- TOPOLOGY SECTION -->
     <section class="py-5 bg-white" id="topology">
         <div class="container">
             <div class="section-header">
@@ -1494,141 +655,25 @@
                 <div class="line"></div>
                 <p id="topology-description" class="text-muted">Network architecture for intelligent visitor management and access control at hospital entrances.</p>
             </div>
-            
-            <!-- Topology 1: Main Entrance -->
-            <div id="topology-1" class="topology-box active">
-                <div class="text-center">
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/main-entrance-topology.png" class="topology-img img-responsive" alt="Main Entrance Topology">
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-door-open me-2" style="color: var(--tf-blue) !important;"></i>Access Control</h5>
-                            <p class="small">Biometric turnstiles, facial recognition cameras, and RFID readers</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-user-check me-2" style="color: var(--tf-blue) !important;"></i>Visitor Management</h5>
-                            <p class="small">Digital registration kiosks with ID verification and thermal screening</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-shield-alt me-2" style="color: var(--tf-blue) !important;"></i>Security Integration</h5>
-                            <p class="small">Integrated with video surveillance and alarm systems</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Topology 2: Emergency Department -->
-            <div id="topology-2" class="topology-box">
-                <div class="text-center">
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/topology-emergency.png" class="topology-img img-responsive" alt="Emergency Department Topology">
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-ambulance me-2" style="color: var(--tf-blue) !important;"></i>Rapid Access</h5>
-                            <p class="small">Hands-free doors for emergency personnel and ambulance bays</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-user-injured me-2" style="color: var(--tf-blue) !important;"></i>Patient Tracking</h5>
-                            <p class="small">RFID wristbands for patient location and movement monitoring</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-first-aid me-2" style="color: var(--tf-blue) !important;"></i>Isolation Zones</h5>
-                            <p class="small">Separate access controls for trauma rooms and isolation areas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Topology 3: Patient Rooms -->
-            <div id="topology-3" class="topology-box">
-                <div class="text-center">
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/topology-patient-rooms.png" class="topology-img img-responsive" alt="Patient Rooms Topology">
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-bed me-2" style="color: var(--tf-blue) !important;"></i>Smart Door Locks</h5>
-                            <p class="small">RFID/NFC access control for authorized staff only</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-bell me-2" style="color: var(--tf-blue) !important;"></i>Nurse Call Integration</h5>
-                            <p class="small">Integrated bedside panels with emergency call functionality</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-pills me-2" style="color: var(--tf-blue) !important;"></i>Medication Security</h5>
-                            <p class="small">Biometric access to medication cabinets and storage</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Topology 4: Pharmacy -->
-            <div id="topology-4" class="topology-box">
-                <div class="text-center">
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/topology-pharmacy.png" class="topology-img img-responsive" alt="Pharmacy Topology">
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-prescription-bottle me-2" style="color: var(--tf-blue) !important;"></i>Controlled Access</h5>
-                            <p class="small">Biometric vaults and time-restricted access to narcotics</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-clipboard-check me-2" style="color: var(--tf-blue) !important;"></i>Audit Trail</h5>
-                            <p class="small">Complete digital record of all medication access events</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-boxes me-2" style="color: var(--tf-blue) !important;"></i>Inventory Integration</h5>
-                            <p class="small">Access control linked to medication management systems</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Topology 5: Control Center -->
-            <div id="topology-5" class="topology-box">
-                <div class="text-center">
-                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/control-room-topology.png" class="topology-img img-responsive" alt="Control Center Topology">
-                    <div class="row mt-4">
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-desktop me-2" style="color: var(--tf-blue) !important;"></i>Video Wall System</h5>
-                            <p class="small">8x4 LCD configuration for centralized monitoring</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-server me-2" style="color: var(--tf-blue) !important;"></i>Central Management</h5>
-                            <p class="small">HikCentral Professional with integrated NVR and switches</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h5><i class="fa fa-network-wired me-2" style="color: var(--tf-blue) !important;"></i>Network Infrastructure</h5>
-                            <p class="small">Redundant fiber backbone with PoE+ managed switches</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="topology-1" class="topology-box active"><div class="text-center"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-hospital/main-entrance-topology.png" class="topology-img img-responsive"><div class="row mt-4"><div class="col-md-4"><h5><i class="fa fa-door-open me-2" style="color: var(--tf-blue) !important;"></i>Access Control</h5><p class="small">Biometric turnstiles, facial recognition cameras, and RFID readers</p></div><div class="col-md-4"><h5><i class="fa fa-user-check me-2" style="color: var(--tf-blue) !important;"></i>Visitor Management</h5><p class="small">Digital registration kiosks with ID verification</p></div><div class="col-md-4"><h5><i class="fa fa-shield-alt me-2" style="color: var(--tf-blue) !important;"></i>Security Integration</h5><p class="small">Integrated with video surveillance and alarm systems</p></div></div></div></div>
         </div>
     </section>
 
-    <!-- SECTION 4: EFFICIENT MANAGEMENT -->
+    <!-- STATS SECTION -->
     <section class="py-5" style="background: linear-gradient(135deg, var(--tf-blue), #002244); color: #fff;">
         <div class="container text-center">
             <h2 class="mb-4" style="color: white;">Performance Metrics</h2>
             <div class="line" style="width: 60px; height: 5px; background: var(--tf-yellow); margin: 15px auto; border-radius: 10px;"></div>
             <div class="row mt-5">
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">99.9%</div>
-                    <p>System Uptime</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">60%</div>
-                    <p>Reduced Unauthorized Access</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">24/7</div>
-                    <p>Monitoring & Support</p>
-                </div>
-                <div class="col-md-3 col-6 mb-4">
-                    <div class="stat-number">HIPAA</div>
-                    <p>Compliant Systems</p>
-                </div>
+                <div class="col-md-3 col-6 mb-4"><div class="stat-number">99.9%</div><p>System Uptime</p></div>
+                <div class="col-md-3 col-6 mb-4"><div class="stat-number">60%</div><p>Reduced Unauthorized Access</p></div>
+                <div class="col-md-3 col-6 mb-4"><div class="stat-number">24/7</div><p>Monitoring & Support</p></div>
+                <div class="col-md-3 col-6 mb-4"><div class="stat-number">HIPAA</div><p>Compliant Systems</p></div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: PRODUCT SHOWCASE -->
+    <!-- PRODUCT SHOWCASE -->
     <section class="py-5 bg-white" id="products">
         <div class="container">
             <div class="section-header">
@@ -1636,52 +681,18 @@
                 <div class="line"></div>
                 <p class="text-muted">Integrated hardware and software for healthcare facility security.</p>
             </div>
-
             <div class="swiper swiper-products pb-5">
                 <div class="swiper-wrapper">
-                    <!-- Product 1 -->
-                    <div class="swiper-slide">
-                        <div class="product-card h-100">
-                            <img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="Access Controller" class="img-responsive">
-                            <h5>Hospital DDC Controllers</h5>
-                            <p class="small text-muted">Medical-grade controllers for access and environmental control.</p>
-                            <a href=" /products/building-management/ddc-controllers/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
-                        </div>
-                    </div>
-                    <!-- Product 2 -->
-                    <div class="swiper-slide">
-                        <div class="product-card h-100">
-                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Biometric Reader" class="img-responsive">
-                            <h5>Touchless Access Readers</h5>
-                            <p class="small text-muted">Hybrid biometric and RFID readers for infection control.</p>
-                            <a href="/products/sensors-thermostats/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
-                        </div>
-                    </div>
-                    <!-- Product 3 -->
-                    <div class="swiper-slide">
-                        <div class="product-card h-100">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&q=80" alt="Control Panel" class="img-responsive">
-                            <h5>Medical Control Panels</h5>
-                            <p class="small text-muted">Hospital-grade control panels with antimicrobial surfaces.</p>
-                            <a href="/products/control-panels/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
-                        </div>
-                    </div>
-                    <!-- Product 4 -->
-                    <div class="swiper-slide">
-                        <div class="product-card h-100">
-                            <img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Software" class="img-responsive">
-                            <h5>Healthcare Security Software</h5>
-                            <p class="small text-muted">Unified platform for hospital access and security management.</p>
-                            <a href="/products/bms-software/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a>
-                        </div>
-                    </div>
+                    <div class="swiper-slide"><div class="product-card"><img src="https://materialfile.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_15908/ProductImage/1_0_01_07_15908_729347579_crop_thumb.png" alt="DDC"><h5>Hospital DDC Controllers</h5><p class="small text-muted">Medical-grade controllers.</p><a href="/products/building-management/ddc-controllers/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a></div></div>
+                    <div class="swiper-slide"><div class="product-card"><img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_04_43055/ProductImage/1_0_01_04_43055_400556404-Black_crop_thumb.png" alt="Reader"><h5>Touchless Access Readers</h5><p class="small text-muted">Hybrid biometric readers.</p><a href="/products/hvac-field-control/thermostats/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a></div></div>
+                    <div class="swiper-slide"><div class="product-card"><img src="https://material.dahuasecurity.com/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1_0_01_07_14876/ProductImage/1_0_01_07_14876_27642791_crop_thumb.png" alt="Software"><h5>Healthcare Security Software</h5><p class="small text-muted">Unified platform.</p><a href="/products/building-management/ibms-platform/index.html" class="btn btn-primary btn-sm rounded-pill mt-2">Details</a></div></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 6: RELATED SOLUTIONS -->
+    <!-- RELATED SOLUTIONS -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="section-header">
@@ -1689,279 +700,116 @@
                 <div class="line"></div>
             </div>
             <div class="row g-4 justify-content-center">
-                <!-- Related 1 -->
-                <div class="col-md-5">
-                    <a href="/solutions/smart-campus-hub/index.html" class="related-card">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg" alt="Educational Institutions" class="img-responsive">
-                        <div class="related-content">
-                            <div class="related-title">Educational Institutions</div>
-                            <p class="small text-muted">Smart campus solutions for schools, colleges, and universities.</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Related 2 -->
-                <div class="col-md-5">
-                    <a href="/solutions/hotel-smart-security/index.html" class="related-card">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Hotels & Hospitality" class="img-responsive">
-                        <div class="related-content">
-                            <div class="related-title">Hotels & Hospitality</div>
-                            <p class="small text-muted">Integrated security and automation solutions for hospitality venues.</p>
-                        </div>
-                    </a>
-                </div>
+                <div class="col-md-5"><a href="/solutions/smart-campus-hub/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/solutions/smart-campus-hub/campus.jpg" alt="Campus" class="img-responsive"><div class="related-content"><div class="related-title">Educational Institutions</div><p class="small text-muted">Smart campus solutions for schools, colleges, and universities.</p></div></a></div>
+                <div class="col-md-5"><a href="/solutions/hotel-smart-security/index.html" class="related-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Hotel" class="img-responsive"><div class="related-content"><div class="related-title">Hotels & Hospitality</div><p class="small text-muted">Integrated security and automation solutions for hospitality venues.</p></div></a></div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER - EXACTLY MATCHING SOLUTIONS HUB TEMPLATE -->
     <footer class="footer">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <h5>Tongfang BMS System Integration</h5>
-                    <p><i class="fa fa-map-marker-alt me-2"></i> Addis Ababa, Ethiopia</p>
-                    <p><i class="fa fa-phone-alt me-2"></i> +251 9 11249722</p>
-                    <p><i class="fa fa-envelope me-2"></i> info@tongfangbms.com</p>
+        <div class="footer-container">
+            <div>
+                <h5>Tongfang BMS System Integration</h5>
+                <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+            </div>
+            <div>
+                <h5>Quick Links</h5>
+                <a class="btn-link" href="/index.html">Home</a><br>
+                <a class="btn-link" href="/about/index.html">About Us</a><br>
+                <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+                <a class="btn-link" href="/projects/index.html">Projects</a><br>
+                <a class="btn-link" href="/products/index.html">Products</a><br>
+                <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+                <a class="btn-link" href="/contact/index.html">Contact</a>
+            </div>
+            <div>
+                <h5>Business Hours</h5>
+                <p>Mon – Sat 8:30 AM – 5:30 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+            <div>
+                <h5>Connect With Us</h5>
+                <p>Get smart building & automation updates.</p>
+                <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                    <a href="weixin://dl/chat?wxid_monboaso8fwp22" title="Chat on WeChat" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-weixin"></i></a>
+                    <a href="https://t.me/admassb" target="_blank" title="Chat on Telegram" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/251911249722?text=Hello%20Tongfang%20BMS%20Team" target="_blank" title="Chat on WhatsApp" style="color:#9ca3af;font-size:30px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="col-lg-2 col-md-6">
-                    <h5>Quick Links</h5>
-                    <a href="/index.html">Home</a>
-                    <a href="/about/index.html">About Us</a>
-                    <a href="/solutions/index.html">Solutions</a>
-                    <a href="/projects/index.html">Projects</a>
-                    <a href="/products/index.html">Products</a>
-                    <a href="/technologies/index.html">Technologies</a>
-                    <a href="/contact/index.html">Contact</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Business Hours</h5>
-                    <p>Mon – Sat 8:30 AM – 5:30 PM</p>
-                    <p> </p>
-                    <p>Sunday: Closed</p>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Newsletter</h5>
-                    <p>Subscribe for healthcare security updates.</p>
-
-                    <div class="d-flex gap-2 mt-3">
-                        <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
-                    </div>
+                <a href="weixin://dl/chat?wxid_monboaso8fwp22" title="WeChat ID" style="font-size:12px;color:#6b7280;text-align:center;display:block;margin-top:10px;text-decoration:none;" onmouseover="this.style.color='#ffcc00'" onmouseout="this.style.color='#6b7280'">WeChat ID: wxid_monboaso8fwp22</a>
+                <div style="text-align:center; margin-top:15px;">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg" alt="WeChat QR Code" style="width:110px; height:110px; border-radius:10px; border:1px solid #ddd; padding:5px; background:#fff;">
+                    <p style="font-size:11px; color:#6b7280; margin-top:8px;">Scan QR to connect</p>
                 </div>
             </div>
         </div>
-        <div class="copyright text-center py-3">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
+        <div class="copyright" style="text-align:center;padding:15px 0;">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
     </footer>
 
-    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Current active scenario
-        let currentScenario = 1;
-        
-        // Mobile menu functionality
         function toggleMobileMenu() {
             const nav = document.getElementById('mainNav');
             const header = document.getElementById('navBox');
-            const mobileToggle = document.querySelector('.mobile-toggle i');
-            
             nav.classList.toggle('active');
-            
-            if(nav.classList.contains('active')) {
-                header.style.background = "#fff";
-                header.style.borderBottom = "1px solid rgba(0,0,0,0.1)";
-                mobileToggle.style.color = "#333";
-                
-                document.querySelectorAll('.nav-link-custom').forEach(link => {
-                    link.style.color = "#333";
-                });
-                
-                document.querySelectorAll('.header-icons i').forEach(icon => {
-                    icon.style.color = "#333";
-                });
-            } else {
-                header.style.background = "#ffffff";
-                header.style.borderBottom = "1px solid rgba(0,0,0,0.08)";
-                mobileToggle.style.color = "#111827";
-                
-                document.querySelectorAll('.nav-link-custom').forEach(link => {
-                    link.style.color = "#111827";
-                });
-                
-                document.querySelectorAll('.header-icons i').forEach(icon => {
-                    icon.style.color = "#111827";
-                });
-            }
+            if(nav.classList.contains('active')) { header.style.background = "#fff"; } 
+            else { header.style.background = "#ffffff"; }
         }
 
-        // MOBILE DROPDOWN LOGIC
-        document.querySelectorAll('.mobile-dropdown-toggle').forEach(toggleBtn => {
-            toggleBtn.addEventListener('click', function(e) {
-                if (window.innerWidth <= 991) {
+        document.querySelectorAll('.mobile-dropdown-toggle').forEach(function(arrow) {
+            arrow.addEventListener('click', function(e) {
+                if (window.innerWidth < 992) {
                     e.preventDefault();
                     e.stopPropagation();
-                    
-                    const dropdown = this.closest('.nav-item-dropdown');
-                    dropdown.classList.toggle('active');
-                    
-                    document.querySelectorAll('.nav-item-dropdown').forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            otherDropdown.classList.remove('active');
-                        }
+                    var parent = this.closest('.nav-item-dropdown');
+                    parent.classList.toggle('active');
+                    document.querySelectorAll('.nav-item-dropdown').forEach(function(dropdown) {
+                        if (dropdown !== parent) dropdown.classList.remove('active');
                     });
                 }
             });
         });
 
-        // Close dropdowns when clicking outside (for mobile)
         document.addEventListener('click', function(event) {
             if (window.innerWidth < 992) {
-                const navMenu = document.getElementById('mainNav');
-                const mobileToggle = document.querySelector('.mobile-toggle');
-                
-                if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
-                    navMenu.classList.remove('active');
-                    
-                    document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
+                var nav = document.getElementById('mainNav');
+                var mobileToggle = document.querySelector('.mobile-toggle');
+                if (!nav.contains(event.target) && !mobileToggle.contains(event.target)) {
+                    nav.classList.remove('active');
+                    document.querySelectorAll('.nav-item-dropdown').forEach(function(dropdown) {
                         dropdown.classList.remove('active');
                     });
                 }
             }
         });
 
-        // Interactive Map Logic
         function showScenario(id) {
-            currentScenario = id;
-            
-            // Update hotspots
-            document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
-            const activeDot = document.getElementById('hotspot-' + id);
+            document.querySelectorAll('.hotspot').forEach(function(el) { el.classList.remove('active'); });
+            var activeDot = document.getElementById('hotspot-' + id);
             if(activeDot) activeDot.classList.add('active');
-
-            // Update scenario content
-            const boxes = document.querySelectorAll('.scenario-box');
-            boxes.forEach(el => {
-                el.classList.remove('active');
-                el.style.display = 'none';
+            document.querySelectorAll('.scenario-box').forEach(function(el) { 
+                el.classList.remove('active'); 
+                el.style.display = 'none'; 
             });
-            
-            const selectedContent = document.getElementById('content-' + id);
-            if(selectedContent) {
-                selectedContent.style.display = 'block';
-                setTimeout(() => {
-                    selectedContent.classList.add('active');
-                    const offset = 140; 
-                    const elementPosition = selectedContent.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - offset;
-                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+            var selected = document.getElementById('content-' + id);
+            if(selected) {
+                selected.style.display = 'block';
+                setTimeout(function() {
+                    selected.classList.add('active');
+                    window.scrollTo({ top: selected.getBoundingClientRect().top + window.scrollY - 140, behavior: "smooth" });
                 }, 10);
-            }
-            
-            // Update topology section
-            updateTopology(id);
-            
-            setTimeout(() => {
-                const topologySection = document.getElementById('topology');
-                if (topologySection) {
-                    const topologyOffset = topologySection.getBoundingClientRect().top + window.pageYOffset - 120;
-                    window.scrollTo({ top: topologyOffset, behavior: "smooth" });
-                }
-            }, 600);
-        }
-        
-        // Update Topology Section
-        function updateTopology(scenarioId) {
-            document.querySelectorAll('.topology-box').forEach(el => {
-                el.classList.remove('active');
-                el.style.display = 'none';
-            });
-            
-            const selectedTopology = document.getElementById('topology-' + scenarioId);
-            if (selectedTopology) {
-                selectedTopology.style.display = 'block';
-                setTimeout(() => {
-                    selectedTopology.classList.add('active');
-                }, 10);
-            }
-            
-            const titles = [
-                "Main Entrance System Topology",
-                "Emergency Department System Topology", 
-                "Patient Rooms System Topology",
-                "Pharmacy & Medication Storage Topology",
-                "Control Center System Topology"
-            ];
-            
-            const descriptions = [
-                "Network architecture for intelligent visitor management and access control at hospital entrances.",
-                "Access control and patient tracking system for emergency department operations.",
-                "Secure access and monitoring system for patient room safety and medication control.",
-                "Regulatory-compliant access control system for pharmacy and medication storage areas.",
-                "Centralized monitoring and management system for hospital-wide security integration."
-            ];
-            
-            const titleElement = document.getElementById('topology-title');
-            const descElement = document.getElementById('topology-description');
-            
-            if (titleElement && descElement) {
-                titleElement.textContent = titles[scenarioId - 1] || titles[0];
-                descElement.textContent = descriptions[scenarioId - 1] || descriptions[0];
             }
         }
 
-        // Initialize Swiper
         new Swiper(".swiper-products", {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            pagination: { el: ".swiper-pagination", clickable: true },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 4 },
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
+            slidesPerView: 1, spaceBetween: 20, pagination: { el: ".swiper-pagination", clickable: true },
+            breakpoints: { 640: { slidesPerView: 2 }, 768: { slidesPerView: 3 }, 1024: { slidesPerView: 4 } },
         });
 
-        // Initialize first scenario
-        document.addEventListener('DOMContentLoaded', function() {
-            showScenario(1);
-            
-            document.querySelectorAll('.nav-breadcrumb a').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href').replace('#', '');
-                    const targetElement = document.getElementById(targetId);
-                    
-                    if (targetElement) {
-                        let offset = 120;
-                        if (targetId === 'topology') {
-                            offset = 140;
-                        }
-                        
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
-                        window.scrollTo({ top: targetPosition, behavior: "smooth" });
-                    }
-                });
-            });
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth >= 992) {
-                const nav = document.getElementById('mainNav');
-                nav.classList.remove('active');
-                
-                document.querySelectorAll('.nav-item-dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
+        document.addEventListener('DOMContentLoaded', function() { showScenario(1); });
     </script>
 </body>
 </html>

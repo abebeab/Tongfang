@@ -3,36 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Fingerprint Access Terminals | Access Control | Tongfang BMS</title>
+    <title>Face Recognition Terminals | Tongfang BMS</title>
     <link href="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/logo.png" rel="icon" type="image/png">
 
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap 5 (minimal grid utilities) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* --- 1. DESIGN TOKENS (Tongfang BMS theme) --- */
         :root {
-            --tf-blue: #004ca3;          
-            --tf-yellow: #ffcc00;        
-            --tf-dark: #111827;          
-            --tf-text: #4b5563;          
-            --tf-bg-light: #f9fafb;      
-            --tf-white: #ffffff;         
-            --tf-gray-light: #e5e7eb;
+            --tf-blue: #004ca3;
+            --tf-yellow: #ffcc00;
+            --tf-dark: #111827;
+            --tf-text: #4b5563;
+            --tf-bg-light: #f9fafb;
+            --tf-white: #ffffff;
             --header-height: 80px;
-            --subnav-height: 60px; 
-            --card-radius: 20px;
+            --card-radius: 8px;
             --btn-radius: 50px;
-            --shadow-soft: 0 8px 24px rgba(0,0,0,0.05);
-            --shadow-lift: 0 20px 35px rgba(0, 76, 163, 0.2);
+            --shadow-soft: 0 4px 20px rgba(0,0,0,0.05);
+            --shadow-lift: 0 15px 30px rgba(0, 76, 163, 0.15);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        /* --- 2. GLOBAL RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
@@ -40,172 +37,679 @@
             background-color: var(--tf-bg-light);
             color: var(--tf-text);
             overflow-x: hidden;
-            padding-top: 0;
+            padding-top: var(--header-height);
         }
         a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; margin: 0; padding: 0; }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--tf-dark); }
+        ul { list-style: none; padding: 0; margin: 0; }
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 700; 
+            color: var(--tf-dark);
+        }
         .container-custom {
             max-width: 1440px;
             margin: 0 auto;
             padding: 0 30px;
         }
 
-        /* --- HEADER (full-width dropdowns) --- */
-        .header-fix { width: 100%; position: fixed; top: 0; z-index: 1030; min-height: var(--header-height); background: #ffffff; border-bottom: 1px solid rgba(0,0,0,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); }
-        .header-container { max-width: 1440px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: var(--header-height); }
-        .logo-img { height: 60px; width: auto; object-fit: contain; }
+        /* --- 3. HEADER (Tongfang BMS - full width swipe dropdowns) --- */
+        .header-fix { 
+            width: 100%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 1030; 
+            min-height: var(--header-height);
+            background: #ffffff; 
+            border-bottom: 1px solid rgba(0,0,0,0.08); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .header-container { 
+            max-width: 1440px; 
+            margin: 0 auto; 
+            display: flex; 
+            align-items: center;
+            justify-content: space-between; 
+            padding: 0 20px; 
+            height: var(--header-height); 
+        }
+        .logo-img { height: 60px; width: auto; object-fit: contain; display: block; }
+        
         .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
-        .nav-link-custom { color: #111827; font-weight: 600; font-size: 13px; transition: 0.3s; text-transform: uppercase; line-height: var(--header-height); display: block; letter-spacing: 0.5px; }
+        .nav-link-custom { 
+            color: #111827; 
+            font-weight: 600; 
+            font-size: 13px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+            line-height: var(--header-height); 
+            display: block; 
+            letter-spacing: 0.5px;
+        }
         .nav-link-custom:hover { color: var(--tf-blue); }
         .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
-        .nav-item-dropdown { position: static; height: 100%; display: flex; align-items: center; }
-        .dropdown-menu-custom { position: absolute; top: var(--header-height); left: 0; right: 0; width: 100vw; background: #fff; box-shadow: 0 15px 40px rgba(0,0,0,0.15); border-top: 3px solid var(--tf-yellow); border-radius: 0 0 8px 8px; padding: 30px; max-height: calc(100vh - 150px); overflow-y: auto; opacity: 0; visibility: hidden; transform: translateY(-20px); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; z-index: 1100; pointer-events: none; display: flex; justify-content: center; }
-        .dropdown-inner { max-width: 1440px; width: 100%; margin: 0 auto; padding: 0 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: left; }
-        .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: repeat(3, 1fr); max-width: 1200px; }
-        .nav-item-dropdown:hover .dropdown-menu-custom { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
-        .dropdown-category { color: var(--tf-blue); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 5px 0; border-bottom: 1px solid #e5e7eb; padding-bottom: 3px; }
-        .dropdown-link { color: #4b5563; font-size: 13px; font-weight: 500; padding: 6px 0; display: block; transition: var(--transition); }
-        .dropdown-link:hover { color: var(--tf-blue); padding-left: 8px; }
-        .more-link { color: var(--tf-blue); font-weight: 600; font-size: 12px; margin-top: 10px; display: inline-block; }
+        
+        .nav-item-dropdown { 
+            position: static;
+            height: 100%; 
+            display: flex; 
+            align-items: center;
+        }
+        
+        .dropdown-menu-custom::-webkit-scrollbar { width: 6px; }
+        .dropdown-menu-custom::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb { background: var(--tf-blue); border-radius: 10px; }
+        
+        .dropdown-menu-custom {
+            position: absolute;
+            top: var(--header-height);
+            left: 0;
+            right: 0;
+            width: 100vw;
+            background: #fff;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-top: 3px solid var(--tf-yellow);
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+            z-index: 1100;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .dropdown-inner {
+            max-width: 1440px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 20px;
+            text-align: left;
+        }
+        
+        .nav-item-dropdown .dropdown-inner {
+            grid-template-columns: repeat(4, 1fr);
+            max-width: 1440px;
+        }
+        
+        .dropdown-menu-custom::before {
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+        
+        .nav-item-dropdown:hover .dropdown-menu-custom { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .dropdown-category {
+            color: var(--tf-blue); 
+            font-size: 13px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            margin: 0 0 5px 0;
+            border-bottom: 1px solid #e5e7eb; 
+            padding-bottom: 3px;
+        }
+        
+        .dropdown-link {
+            color: #4b5563; 
+            font-size: 13px; 
+            font-weight: 500;
+            padding: 6px 0; 
+            display: block;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        
+        .dropdown-link:hover {
+            color: var(--tf-blue);
+            padding-left: 8px;
+            border-bottom-color: var(--tf-yellow);
+        }
+        
+        .more-link {
+            color: var(--tf-blue);
+            font-weight: 600;
+            font-size: 12px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+        .more-link:hover { color: var(--tf-yellow); }
+        
         .header-icons { display: flex !important; align-items: center; gap: 15px; }
         .header-icons i { color: #111827; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        .header-icons i:hover { color: var(--tf-blue); }
         .mobile-toggle { display: none; font-size: 24px; color: #111827; cursor: pointer; background: none; border: none; padding-right: 20px; }
-        .header-right-group { display: flex; align-items: center; gap: 15px; }
         
-        @media (max-width: 991px) {
-            .mobile-toggle { display: block; }
-            .nav-menu { display: none; position: absolute; top: 80px; left: 0; width: 100%; background: white; flex-direction: column; height: auto; padding: 20px 0; margin: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); align-items: flex-start; max-height: 80vh; overflow-y: auto; z-index: 1000; }
-            .nav-menu.active { display: flex; }
-            .nav-link-custom { width: 100%; padding: 12px 30px; line-height: 1.5; border-bottom: 1px solid #eee; }
-            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; }
-            .dropdown-menu-custom {  position: static; width: 100%; opacity: 1; visibility: visible; display: none; box-shadow: none; border-top: none; padding: 10px 30px 20px; background: #f9f9f9; transform: none; max-height: none; pointer-events: auto; }
-            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
-            .dropdown-inner, .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: repeat(2, 1fr); padding: 0; }
+        @media (max-width: 1400px) {
+            .dropdown-inner, .nav-item-dropdown .dropdown-inner { grid-template-columns: repeat(4, 1fr); }
         }
-        @media (max-width: 576px) { .dropdown-inner { grid-template-columns: 1fr; } .logo-img { height: 50px; } }
+        @media (max-width: 1100px) {
+            .dropdown-inner, .nav-item-dropdown .dropdown-inner { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 991px) {
+            .header-fix { height: auto; }
+            .mobile-toggle { display: block; order: 2; }
+            .header-icons { display: flex !important; order: 3; }
+            .header-container { padding: 0 15px; flex-wrap: nowrap; justify-content: flex-start; }
+            .header-logo { order: 1; flex-shrink: 0; margin-right: auto; }
+            .nav-menu {
+                display: none; position: absolute; top: 80px; left: 0; width: 100%; background: white;
+                flex-direction: column; height: auto; padding: 20px 0; margin: 0;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1); align-items: flex-start; overflow-y: auto; max-height: 80vh;
+            }
+            .nav-menu.active { display: flex; }
+            .nav-link-custom { color: #333; width: 100%; padding: 12px 30px; line-height: 1.5; border-bottom: 1px solid #eee; }
+            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; position: relative; }
+            .dropdown-menu-custom {
+                position: static; width: 100%; transform: none; opacity: 1; visibility: visible; display: none;
+                box-shadow: none; border-top: none; padding: 10px 30px; background: #f9f9f9; 
+                transition: none; justify-content: flex-start; max-height: none; overflow-y: visible;
+            }
+            .dropdown-inner, .nav-item-dropdown .dropdown-inner { 
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0;
+            }
+            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
+            .dropdown-category { margin-top: 10px; }
+        }
+        @media (max-width: 576px) {
+            .header-icons { gap: 12px !important; }
+            .logo-img { height: 50px; }
+            .dropdown-inner, .nav-item-dropdown .dropdown-inner { grid-template-columns: 1fr; }
+        }
 
-        /* --- HERO BANNER (fingerprint theme) --- */
+        /* --- 4. HERO BANNER SECTION --- */
         .hero-banner {
             position: relative;
             width: 100%;
             height: 450px;
-          background: url(https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/fingerprint/Access-control-web-banner_2023-update_fingerprint-terminal_Banner6bbe.jpg);
+            background: url('https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/Face-Recognition-Terminal.jpg');
             background-size: cover;
-            background-blend-mode: overlay;
-            background-position: center 30%;
+            background-position: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-top: var(--header-height);
+            margin-bottom: 30px;
         }
-        .hero-content { text-align: center; color: white; text-shadow: 0 4px 15px rgba(0,0,0,0.6); }
-        .hero-content h1 { font-size: 48px; color: white; margin-bottom: 10px; letter-spacing: -0.5px; }
-        .hero-content p { font-size: 20px; font-weight: 500; max-width: 700px; margin: 0 auto; }
-        @media (max-width: 768px) { .hero-banner { height: 380px; } .hero-content h1 { font-size: 36px; } }
+        @media (max-width: 768px) { .hero-banner { height: 380px; background-position: 70% center; } }
+        @media (max-width: 576px) { .hero-banner { height: 320px; } }
 
-        /* --- STICKY SUB-NAV --- */
-        .product-subnav { position: sticky; top: var(--header-height); z-index: 900; background: var(--tf-white); border-bottom: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); height: var(--subnav-height); }
-        .subnav-container { max-width: 1440px; margin: 0 auto; padding: 0 30px; height: 100%; display: flex; align-items: center; overflow-x: auto; }
-        .subnav-list { display: flex; gap: 30px; height: 100%; white-space: nowrap; margin: 0; padding: 0; list-style: none; align-items: center; }
-        .subnav-link { display: flex; align-items: center; height: 100%; font-size: 13px; font-weight: 600; color: var(--tf-text); text-transform: uppercase; border-bottom: 4px solid transparent; transition: all 0.3s ease; cursor: pointer; padding: 0 4px; }
-        .subnav-link:hover, .subnav-link.active { color: var(--tf-blue); border-bottom-color: var(--tf-yellow); }
-        .parent-nav-item { border-right: 1px solid var(--tf-gray-light); padding-right: 20px; margin-right: 10px; }
-        .subnav-link.parent-link { color: var(--tf-blue); font-weight: 700; gap: 8px; }
-        .divider-vertical { width: 1px; height: 24px; background-color: var(--tf-gray-light); margin: auto 0; }
-        @media (max-width: 768px) { .parent-nav-item { padding-right: 12px; } }
-
-        /* --- PRODUCT GALLERY SECTION --- */
-        .product-gallery-main { background: var(--tf-white); padding: 50px 0 70px; }
-        .section-title { text-align: center; margin-bottom: 40px; }
-        .section-title h2 { font-size: 36px; position: relative; padding-bottom: 20px; }
-        .section-title h2:after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--tf-yellow); }
-        .section-title p { font-size: 18px; color: var(--tf-text); max-width: 800px; margin: 0 auto; }
-
-        /* Filter & Search */
-        .filter-bar { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 35px; }
-        .filter-btn { padding: 8px 26px; border-radius: 50px; background: var(--tf-white); border: 1px solid var(--tf-gray-light); font-weight: 600; font-size: 13px; transition: var(--transition); cursor: pointer; }
-        .filter-btn:hover, .filter-btn.active { background: var(--tf-blue); color: white; border-color: var(--tf-blue); }
-        .search-container { display: flex; justify-content: center; margin-bottom: 40px; }
-        .search-input { width: 100%; max-width: 400px; padding: 12px 24px; border: 1px solid var(--tf-gray-light); border-radius: 50px; font-size: 14px; outline: none; transition: var(--transition); }
-        .search-input:focus { border-color: var(--tf-blue); box-shadow: 0 0 0 3px rgba(0,76,163,0.1); }
-
-        /* Product Grid */
-        .products-grid-center { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; max-width: 1440px; margin: 0 auto; padding: 0 30px; }
-        .product-card { background: var(--tf-white); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-soft); transition: var(--transition); cursor: pointer; border: 1px solid rgba(0,0,0,0.04); text-align: center; padding: 28px 20px 24px; display: flex; flex-direction: column; align-items: center; }
-        .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lift); border-color: var(--tf-yellow); }
-        .product-card-img { width: 100%; height: 170px; display: flex; align-items: center; justify-content: center; background: #fafcff; border-radius: 20px; margin-bottom: 20px; padding: 10px; }
-        .product-card-img img { max-width: 85%; max-height: 150px; object-fit: contain; transition: transform 0.3s ease; }
-        .product-card:hover .product-card-img img { transform: scale(1.05); }
-        .product-info h4 { font-size: 18px; font-weight: 700; color: var(--tf-dark); margin-bottom: 8px; }
-        .product-info .model { font-family: 'Montserrat', monospace; font-size: 14px; font-weight: 600; color: var(--tf-blue); background: rgba(0,76,163,0.08); display: inline-block; padding: 4px 14px; border-radius: 40px; }
-        .product-badge { margin-top: 12px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-        .badge-feature { font-size: 10px; background: var(--tf-bg-light); padding: 3px 10px; border-radius: 30px; color: var(--tf-blue); font-weight: 600; }
-
-        /* Pagination */
-        .pagination-nav-wrapper { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 50px; flex-wrap: wrap; }
-        .nav-circle { width: 48px; height: 48px; border-radius: 50%; background: var(--tf-white); border: 1px solid var(--tf-gray-light); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); color: var(--tf-blue); font-size: 20px; }
-        .nav-circle:hover { background: var(--tf-blue); color: white; border-color: var(--tf-blue); transform: scale(1.05); }
-        .pagination-numbers { display: flex; gap: 12px; align-items: center; }
-        .page-btn { width: 44px; height: 44px; border-radius: 44px; background: var(--tf-white); border: 1px solid var(--tf-gray-light); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; cursor: pointer; transition: var(--transition); color: var(--tf-text); }
-        .page-btn.active-page { background: var(--tf-blue); color: white; border-color: var(--tf-blue); box-shadow: 0 6px 12px rgba(0,76,163,0.2); }
-        .page-btn:hover:not(.active-page) { border-color: var(--tf-blue); color: var(--tf-blue); transform: translateY(-2px); }
-        .no-results-grid { grid-column: 1/-1; text-align: center; padding: 60px; background: white; border-radius: 32px; }
-
-        /* Related Links */
-        .section-wrapper { max-width: 1440px; margin: 0 auto; padding: 60px 30px; }
-        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
-        .related-card { background: var(--tf-white); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-soft); transition: var(--transition); height: 280px; position: relative; cursor: pointer; }
-        .related-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lift); }
-        .related-image { width: 100%; height: 100%; object-fit: cover; }
-        .related-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), transparent); padding: 25px; color: white; }
-        .related-overlay h4 { color: white; font-size: 20px; margin-bottom: 6px; }
-
-        /* CTA Section */
-        .cta-section { background: var(--tf-blue); padding: 80px 0; text-align: center; color: white; }
-        .cta-section h2 { color: white; font-size: 36px; margin-bottom: 15px; }
-        .cta-button { display: inline-block; padding: 15px 40px; background: var(--tf-yellow); color: var(--tf-dark); border-radius: 50px; font-weight: 700; margin-top: 15px; transition: var(--transition); }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); color: var(--tf-dark); }
-
-        /* FOOTER */
-        .footer { background: #0b111a; color: #aaa; margin-top: 60px; padding-top: 70px; font-size: 14px; }
-        .footer-container { max-width: 1440px; margin: 0 auto; padding: 0 30px; display: grid; grid-template-columns: 2fr 1fr 1.5fr 1.5fr; gap: 40px; }
-        .footer h5 { color: #fff; margin-bottom: 25px; font-weight: 700; }
-        .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
-        .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
-       .footer .btn-link {	
-    color: #60a5fa;
-    display: block;
-    margin-bottom: 12px;
-    font-size: 14px;
-    transition: var(--transition);
-    text-decoration: none;
-}
-
-        .footer .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
-        .newsletter-box { position: relative; margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
-        .form-control { flex: 1; padding: 12px 15px; border: 1px solid #374151; background: #1f2937; color: white; border-radius: 50px; outline: none; font-size: 14px; }
-        .btn-primary { background: var(--tf-blue); border: none; padding: 0 24px; border-radius: 50px; color: white; font-weight: 600; cursor: pointer; transition: var(--transition); }
-        .btn-primary:hover { background: #003d82; }
-        .social-links { display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
-        .btn-square { width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white); transition: var(--transition); }
-        .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); color: white; }
-        .copyright { background: #05080c; padding: 25px; text-align: center; margin-top: 60px; font-size: 13px; color: #6b7280; border-top: 1px solid #1a222e; }
+        /* --- 5. MAIN CONTENT STYLES --- */
+        .crumbs {
+            padding: 20px 0;
+            font-size: 14px;
+            color: var(--tf-text);
+        }
+        .crumbs a { color: var(--tf-blue); }
+        .crumbs a:hover { color: var(--tf-yellow); }
+        
+        /* Video Box */
+        .video-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+            background: var(--tf-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+        }
+        .video {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+        .video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .video-poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            transition: var(--transition);
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .video-poster.hidden { display: none; }
+        .video-poster img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .play-btn-large {
+            width: 80px;
+            height: 80px;
+            background: rgba(0,76,163,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+        .play-btn-large i { font-size: 32px; color: white; margin-left: 5px; }
+        .video-poster:hover .play-btn-large { transform: scale(1.1); background: var(--tf-blue); }
+        .video-poster p {
+            margin-top: 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 20px;
+            border-radius: 50px;
+            z-index: 10;
+        }
+        
+        .video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 15px 20px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+        .video:hover .video-controls { opacity: 1; }
+        .progress-bar-container { width: 100%; cursor: pointer; }
+        .progress-bar { width: 100%; height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; position: relative; cursor: pointer; }
+        .progress-filled { width: 0%; height: 100%; background: var(--tf-yellow); border-radius: 2px; position: relative; }
+        .controls-buttons { display: flex; align-items: center; gap: 15px; }
+        .control-btn { background: none; border: none; color: white; font-size: 18px; cursor: pointer; padding: 5px; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+        .control-btn:hover { color: var(--tf-yellow); transform: scale(1.1); }
+        .time-display { color: white; font-size: 12px; font-family: monospace; margin-left: auto; }
+        
+        .video-desc-box { flex: 1; padding: 30px; }
+        .video-desc { font-size: 15px; line-height: 1.8; color: var(--tf-text); }
+        
+        /* Product Categories Grid */
+        .product-list-box { padding: 60px 0; }
+        .product-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--tf-dark);
+            border-left: 5px solid var(--tf-yellow);
+            padding-left: 20px;
+        }
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .product-item {
+            background: var(--tf-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            display: block;
+            text-align: center;
+            padding: 35px 25px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
+        }
+        .product-item:hover { transform: translateY(-10px); box-shadow: var(--shadow-lift); border-color: var(--tf-yellow); }
+        .product-item-info h3 { font-size: 22px; margin-bottom: 20px; color: var(--tf-dark); font-weight: 700; }
+        .product-item-img {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            border-radius: 16px;
+            padding: 20px;
+        }
+        .product-item-img img { max-width: 100%; max-height: 120px; object-fit: contain; transition: var(--transition); }
+        .product-item:hover .product-item-img img { transform: scale(1.05); }
+        .product-item-desc { font-size: 14px; color: var(--tf-text); margin-bottom: 20px; line-height: 1.6; padding: 0 10px; }
+        .product-features { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 25px; }
+        .product-features span { font-size: 11px; background: var(--tf-bg-light); padding: 5px 12px; border-radius: 50px; color: var(--tf-blue); font-weight: 600; }
+        
+        /* Icon Feature Gallery */
+        .icon-feature-gallery-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 30px; position: relative; }
+        .icon-feature-gallery-content { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .gallery-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--tf-white);
+            border-radius: 16px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+        .gallery-item-icon { width: 80px; height: 80px; margin: 0 auto 20px; background-size: contain; background-repeat: no-repeat; background-position: center; }
+        .gallery-item-title h3 { font-size: 18px; font-weight: 600; margin-bottom: 0; }
+        
+        /* Card Gallery */
+        .card-gallery-wrapper { display: flex; gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+        .card-gallery-content {
+            background: var(--tf-white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+        }
+        .card-gallery-content:hover { transform: translateY(-5px); box-shadow: var(--shadow-lift); }
+        .content-img { width: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center; }
+        .card-gallery-content-title { padding: 20px 20px 0; }
+        .card-gallery-content-title h3 { font-size: 20px; font-weight: 600; }
+        .card-gallery-content-desc { padding: 10px 20px 20px; font-size: 14px; color: var(--tf-text); }
+        
+        /* Text with Subtitle */
+        .text-with-subtitle-comp { max-width: 800px; margin: 0 auto; text-align: center; padding: 0 30px; }
+        .text-with-subtitle-comp .description { font-size: 18px; line-height: 1.6; color: var(--tf-text); }
+        .text-with-subtitle-comp .description ul { text-align: left; margin-top: 20px; padding-left: 20px; }
+        .text-with-subtitle-comp .description li { margin-bottom: 8px; }
+        
+        /* Full Bleeding Image */
+        .image.fixed-full-bleeding { width: 100%; margin: 40px 0; }
+        .cmp-image { width: 100%; }
+        .cmp-image img { width: 100%; height: auto; display: block; border-radius: 16px; }
+        
+        /* Sales Enquiry */
+        .sales {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 40px;
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border-radius: 20px;
+        }
+        .sales-desc { font-size: 18px; margin-right: 25px; font-weight: 500; }
+        .sales-btn {
+            display: inline-block;
+            background: var(--tf-blue);
+            color: white;
+            padding: 14px 40px;
+            border-radius: var(--btn-radius);
+            font-weight: 700;
+            transition: var(--transition);
+            font-size: 16px;
+        }
+        .sales-btn:hover { background: #003d82; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,76,163,0.3); }
+        
+        /* Section Wrapper and Related Links Styles */
+        .section-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
         .scroll-target { scroll-margin-top: 140px; }
-        @media (max-width: 1200px) { .products-grid-center { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 991px) { .products-grid-center { grid-template-columns: repeat(2, 1fr); } .related-grid { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 576px) { .products-grid-center { grid-template-columns: 1fr; } .footer-container { grid-template-columns: 1fr; } }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .section-title h2 {
+            font-size: 36px;
+            position: relative;
+            padding-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--tf-yellow);
+        }
+        .section-title p {
+            font-size: 18px;
+            color: var(--tf-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .related-card {
+            background: var(--tf-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            height: 280px;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        .related-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lift);
+        }
+        .related-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .related-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            padding: 25px;
+            color: white;
+        }
+        .related-overlay h4 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 6px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .related-overlay p {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        @media (max-width: 991px) {
+            .product-list { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+            .product-item { padding: 25px 20px; }
+            .product-item-info h3 { font-size: 20px; }
+            .product-item-img { height: 140px; }
+            .icon-feature-gallery-content { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .card-gallery-wrapper { flex-direction: column; gap: 20px; }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .sales-desc { display: block; margin-bottom: 15px; margin-right: 0; }
+        }
+        @media (max-width: 576px) {
+            .product-list { grid-template-columns: 1fr; }
+            .play-btn-large { width: 60px; height: 60px; }
+            .play-btn-large i { font-size: 24px; }
+            .product-title { font-size: 28px; }
+            .icon-feature-gallery-content { grid-template-columns: 1fr; }
+            .related-grid { grid-template-columns: 1fr; }
+            .section-wrapper { padding: 40px 20px; }
+            .section-title h2 { font-size: 28px; }
+        }
+
+        /* ===== NEW FOOTER - MATCHING SOLUTIONS HUB TEMPLATE ===== */
+        .footer {
+            background: #0b111a; 
+            color: #aaa; 
+            margin-top: 60px; 
+            padding-top: 80px; 
+            font-size: 14px;
+        }
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
+        .footer-container {
+            max-width: 1440px; 
+            margin: 0 auto; 
+            padding: 0 30px;
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr; 
+            gap: 40px;
+        }
+        .footer p { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 10px; 
+        }
+        .footer i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            width: 20px; 
+            text-align: center; 
+        }
+        .footer .btn-link { 
+            color: #007bff !important;
+            display: inline-block; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: 0.3s;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow) !important; 
+            padding-left: 8px; 
+            background: transparent;
+        }
+        .copyright {
+            background: #05080c; 
+            padding: 25px; 
+            margin-top: 60px; 
+            color: #6b7280; 
+            font-size: 13px;
+            text-align: center; 
+            border-top: 1px solid #1a222e;
+        }
+        .footer .btn-square {
+            width: 40px; 
+            height: 40px; 
+            background: rgba(255,255,255,0.05); 
+            display: inline-flex;
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            color: var(--tf-white);
+            transition: var(--transition); 
+            text-decoration: none;
+            margin-right: 5px;
+        }
+        .footer .btn-square:hover { 
+            background: var(--tf-blue); 
+            transform: translateY(-3px); 
+        }
+        .footer .btn-square i { 
+            margin: 0; 
+            color: #fff; 
+        }
+        
+        @media (max-width: 991px) { 
+            .footer-container { grid-template-columns: 1fr 1fr; } 
+        }
+        @media (max-width: 576px) { 
+            .footer-container { grid-template-columns: 1fr; gap: 30px; } 
+            .footer { padding-top: 60px; } 
+            .footer h5 { margin-bottom: 20px; } 
+        }
+        
+        /* Contact Us Button & Back to Top */
+        .contact-us-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+        }
+        .contact-us-btn-content {
+            width: 56px;
+            height: 56px;
+            background: var(--tf-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        .contact-us-btn-content:hover { transform: scale(1.05); }
+        .contact-us-svg { width: 28px; height: 28px; fill: #fff; }
+        
+        .back-to-top-comp {
+            position: fixed;
+            right: 20px;
+            bottom: 100px;
+            width: 48px;
+            height: 48px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        .back-to-top-comp:hover { background: var(--tf-blue); color: #fff; }
     </style>
 </head>
 <body>
 
-<!-- ================= HEADER (Tongfang BMS) ================= -->
+<!-- ================= HEADER ================= -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
             <div class="header-logo">
                 <a href="/index.html">
-                   <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                 </a>
             </div>
             
@@ -229,13 +733,13 @@
                     </a>
                     <div class="dropdown-menu-custom">
                         <div class="dropdown-inner">
-                            <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a><a href="/products/Energy-Management/index.html" class="more-link">View All→</a></div>
+                            <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/index.html" class="more-link">View All →</a></div>
+                            <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All →</a></div>
+                            <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All →</a></div>
+                            <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All →</a></div>
+                            <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/index.html" class="more-link">View All →</a></div>
+                            <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/index.html" class="more-link">View All →</a></div>
+                            <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a><a href="/products/Energy-Management/index.html" class="more-link">View All →</a></div>
                         </div>
                     </div>
                 </div>
@@ -251,28 +755,172 @@
     </div>
 </header>
 
-<!-- HERO BANNER -->
-<div class="hero-banner"><div class="hero-content"><h1>Fingerprint Access <br>Terminals</h1><p>High-speed biometric authentication <br>· Anti-spoofing · Seamless integration</p></div></div>
+<!-- ================= HERO BANNER ================= -->
+<div class="hero-banner"></div>
 
-<!-- STICKY SUB-NAV -->
-<nav class="product-subnav"><div class="subnav-container"><ul class="subnav-list"><li class="parent-nav-item"><a href="/products/access-control/" class="subnav-link parent-link"><i class="fas fa-arrow-left me-2"></i> Access Control</a></li><li class="divider-vertical"></li><li><a href="#gallery" class="subnav-link active" data-target="gallery">Product Gallery</a></li><li><a href="#related" class="subnav-link" data-target="related">Related Links</a></li></ul></div></nav>
+<!-- ================= MAIN CONTENT ================= -->
+<div class="container-custom">
+    <div class="crumbs">
+        <a href="/index.html">Home</a>
+        <span><i class="fa fa-angle-right"></i></span>
+        <a href="/products/index.html">Products</a>
+        <span><i class="fa fa-angle-right"></i></span>
+        <p style="display: inline-block;">Face Recognition Terminals</p>
+    </div>
 
-<!-- PRODUCT GALLERY -->
-<section id="gallery" class="product-gallery-main scroll-target">
-    <div class="container-custom"><div class="section-title"><h2>Fingerprint Readers & Terminals</h2><p>Precision capacitive sensors · Fast recognition (<0.5s) · Durable & weather-resistant</p></div>
-    <div class="filter-bar" id="filterBar"><button class="filter-btn active" data-category="all">All Models</button><button class="filter-btn" data-category="Indoor">Indoor Terminals</button><button class="filter-btn" data-category="Outdoor">Outdoor/IP Rated</button><button class="filter-btn" data-category="Multi">Multi-biometric</button></div>
-    <div class="search-container"><input type="text" id="searchInput" class="search-input" placeholder="Search by name or model..."></div></div>
-    <div id="productGridContainer" class="products-grid-center"></div>
-    <div class="pagination-nav-wrapper"><div class="nav-circle" id="prevPageBtn"><i class="fas fa-chevron-left"></i></div><div id="paginationNumbers" class="pagination-numbers"></div><div class="nav-circle" id="nextPageBtn"><i class="fas fa-chevron-right"></i></div></div>
-</section>
+    <!-- Video Section -->
+    <div class="video-box">
+        <div class="video" id="videoContainer">
+            <video id="promoVideo" preload="metadata">
+                <source src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/Tongfang%20MinMoe%20Iris%20Recognition%20Terminal.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-poster" id="videoPoster">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/video-poster.png" alt="Watch Video">
+                <div class="play-btn-large"><i class="fa fa-play"></i></div>
+                <p>Watch Introduction</p>
+            </div>
+            <div class="video-controls" id="videoControls">
+                <div class="progress-bar-container" id="progressBarContainer">
+                    <div class="progress-bar">
+                        <div class="progress-filled" id="progressFilled"></div>
+                    </div>
+                </div>
+                <div class="controls-buttons">
+                    <button class="control-btn" id="playPauseBtn"><i class="fa fa-play"></i></button>
+                    <button class="control-btn" id="rewindBtn"><i class="fa fa-backward-step"></i></button>
+                    <button class="control-btn" id="forwardBtn"><i class="fa fa-forward-step"></i></button>
+                    <span class="time-display" id="timeDisplay">0:00 / 0:00</span>
+                </div>
+            </div>
+        </div>
+        <div class="video-desc-box">
+            <div class="video-desc">
+                <strong>The Evolution of Access Control and Attendance</strong><br><br>
+                Authorized access has come a long way from using keys, pin codes, cards, and fingerprints. We now find ourselves stepping into the era of more advanced biometric recognition. The use of face recognition in access control and time attendance has been quite popular in the market, mostly for its advantageous "touch-free" experience.<br><br>
+                With advanced deep learning algorithms and practical functions, Tongfang BMS Face Recognition Terminals improve security and efficiency in access control and time attendance, making them easier than ever!
+            </div>
+        </div>
+    </div>
 
-<!-- RELATED LINKS -->
-<div id="related" class="section-wrapper scroll-target"><div class="section-title"><h2>Related Solutions</h2><p>Complete ecosystem for secure access</p></div><div class="related-grid"><a href="/products/access-control/face-recognition/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" class="related-image"><div class="related-overlay"><h4>Face Recognition Terminals</h4></div></a><a href="/products/access-control/Access_Controllers/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" class="related-image"><div class="related-overlay"><h4>Access Controllers</h4></div></a><a href="/products/access-control/electric-locks/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" class="related-image"><div class="related-overlay"><h4>Electric Locks</h4></div></a></div></div>
+    <!-- Product Categories Gallery -->
+    <div class="product-list-box">
+        <h2 class="product-title">Product Categories</h2>
+        <div class="product-list">
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Value Series</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Value.png" alt="Value Series">
+                    </div>
+                    <div class="product-item-desc">The Value Series features Max. 3,000 face capacity with fast recognition speed</div>
+                    <div class="product-features">
+                        <span>3,000 Faces</span>
+                        <span>0.3s Recognition</span>
+                        <span>Touch-free</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Pro Series</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/new-pro-series.png" alt="Pro Series">
+                    </div>
+                    <div class="product-item-desc">The Pro Series features 6,000+ face capacity with advanced anti-spoofing</div>
+                    <div class="product-features">
+                        <span>6,000+ Faces</span>
+                        <span>Anti-spoofing</span>
+                        <span>Dual Lenses</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Ultra Series</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/series-pics/Ultra-series.-420X280.jpg" alt="Ultra Series">
+                    </div>
+                    <div class="product-item-desc">The Ultra Series features 50,000+ face capacity with iris recognition option</div>
+                    <div class="product-features">
+                        <span>50,000+ Faces</span>
+                        <span>High Security</span>
+                        <span>Iris Option</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Face Modules for Turnstile</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/Face recognition modules for turnstile..png" alt="Turnstile Modules">
+                    </div>
+                    <div class="product-item-desc">Easy integration with turnstiles to provide a suitable access solution</div>
+                    <div class="product-features">
+                        <span>Easy Integration</span>
+                        <span>Compact Design</span>
+                        <span>High Speed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<!-- CTA SECTION -->
-<div class="cta-section"><div class="container-custom"><h2>Need Expert Guidance?</h2><p>Customized biometric access solutions for any environment</p><a href="/contact/index.html" class="cta-button">Request a Quote</a></div></div>
+    <!-- Product Highlights -->
+    <h2 class="product-title">Product Highlights</h2>
+    <div class="icon-feature-gallery-wrapper">
+        <div class="icon-feature-gallery-content">
+            <div class="gallery-item"><div class="gallery-item-icon" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Superior-recognition.jpg')"></div><div class="gallery-item-title"><h3>Superior Recognition in Any Environment</h3></div></div>
+            <div class="gallery-item"><div class="gallery-item-icon" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Top-level-security-icon.jpg')"></div><div class="gallery-item-title"><h3>Top Level Security</h3></div></div>
+            <div class="gallery-item"><div class="gallery-item-icon" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Easy-to-manage-and-operate-icon.jpg')"></div><div class="gallery-item-title"><h3>Easy to Manage and Operate</h3></div></div>
+            <div class="gallery-item"><div class="gallery-item-icon" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/All-in-one-management-icon.jpg')"></div><div class="gallery-item-title"><h3>Extensive Functionality via One Device</h3></div></div>
+        </div>
+    </div>
 
-<!-- ================= FOOTER (Tongfang BMS) ================= -->
+    <!-- Superior Recognition Section -->
+    <h2 class="product-title">Superior Recognition in Any Environment</h2>
+    <div class="text-with-subtitle-comp"><div class="description"><p>Empowered by deep learning algorithms, Tongfang BMS Face Recognition Terminals can reach an amazing recognition speed of 0.2 seconds, with the accuracy rate of over 99%. Equipped with dual lenses, the terminals perform equally well under low or even zero-light environments. Therefore, the face recognition device can adapt to various indoor and outdoor attendance scenarios.</p></div></div>
+    <div class="image fixed-full-bleeding"><div class="cmp-image"><img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Superior-recognition-in-any-environment_new.jpg" alt="Superior Recognition"></div></div>
+
+    <!-- Top Level Security -->
+    <h2 class="product-title">Top Level Security</h2>
+    <div class="text-with-subtitle-comp"><div class="description"><p>The embedded face image anti-spoofing technology boosts security level at entry points. All user data is encrypted for effective information protection, and the optional privacy protection mode also secures users' personal information.</p></div></div>
+    <div class="image fixed-full-bleeding"><div class="cmp-image"><img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Top-level-security.jpg" alt="Top Level Security"></div></div>
+
+    <!-- Easy to Manage -->
+    <h2 class="product-title">Easy to Manage and Operate</h2>
+    <div class="text-with-subtitle-comp"><div class="description"><p>Tongfang BMS Face Recognition Terminals support quick and easy registration via multiple access methods, and convenient device configuration via web or GUI. Users can remotely check live view, unlock door, check event logs and more, via the mobile App on their smartphone.</p><ul><li>Access methods include card, PIN code, fingerprint, face, and iris</li><li>Supports web or GUI configuration</li><li>Remote control via mobile App</li></ul></div></div>
+    <div class="image fixed-full-bleeding"><div class="cmp-image"><img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Easy-to-manage-and-operate.jpg" alt="Easy Management"></div></div>
+
+    <!-- Extensive Functionality -->
+    <h2 class="product-title">Extensive Functionality via One Device</h2>
+    <div class="text-with-subtitle-comp"><div class="description"><p>The face recognition device features extensive functionality with centralized management. Users can enjoy:</p><ul><li>Flexible access control management with multiple authentication methods</li><li>Convenient video intercom via indoor station or mobile App</li><li>Remotely check live view via indoor station, mobile App, or centralized platform</li></ul></div></div>
+    <div class="image fixed-full-bleeding"><div class="cmp-image"><img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/All-in-one-management.jpg" alt="All in One Management"></div></div>
+
+    <!-- Integration & Partnership -->
+    <h2 class="product-title">Integration & Partnership</h2>
+    <div class="card-gallery">
+        <div class="card-gallery-wrapper">
+            <div class="card-gallery-content"><div class="content-img" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Integration-Types.jpg')"></div><div class="card-gallery-content-title"><h3>Integration with Third-Parties</h3></div><div class="card-gallery-content-desc"><p>Face Recognition Terminals are ideal for third-party software developers to integrate with their systems and applications for access control or time & attendance.</p></div></div>
+            <div class="card-gallery-content"><div class="content-img" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Integration-Methods.jpg')"></div><div class="card-gallery-content-title"><h3>Multiple Integration Methods</h3></div><div class="card-gallery-content-desc"><p>Five helpful methods are available for integrating your system: Intelligent Security API, Access Control Gateway API, Hik-ProConnect OpenAPI, and more.</p></div></div>
+            <div class="card-gallery-content"><div class="content-img" style="background-image: url('https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Joint-value-Solutions.jpg')"></div><div class="card-gallery-content-title"><h3>Joint-Value Solutions</h3></div><div class="card-gallery-content-desc"><p>Technology partners from around the world are launching their industry-proven solutions based on the Face Recognition Terminals.</p></div></div>
+        </div>
+    </div>
+
+    <!-- RELATED LINKS -->
+    <div id="related" class="section-wrapper scroll-target"><div class="section-title"><h2>Related Solutions</h2><p>Complete ecosystem for secure access</p></div><div class="related-grid"><a href="/products/access-control/face-recognition/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" class="related-image"><div class="related-overlay"><h4>Face Recognition Terminals</h4></div></a><a href="/products/access-control/Access_Controllers/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" class="related-image"><div class="related-overlay"><h4>Access Controllers</h4></div></a><a href="/products/access-control/electric-locks/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" class="related-image"><div class="related-overlay"><h4>Electric Locks</h4></div></a></div></div>
+
+    <!-- Sales Enquiry -->
+    <div class="sales">
+        <span class="sales-desc">Contact us via the inquiry form for a quote or further details.</span>
+        <a href="/contact/index.html" class="sales-btn">Sales Enquiry <i class="fa fa-arrow-right"></i></a>
+    </div>
+</div>
+
+<!-- ================= NEW FOOTER - MATCHING SOLUTIONS HUB TEMPLATE ================= -->
 <footer class="footer">
     <div class="footer-container">
         <div>
@@ -283,12 +931,12 @@
         </div>
         <div>
             <h5>Quick Links</h5>
-            <a class="btn-link" href="/index.html">Home</a>
-            <a class="btn-link" href="/about/index.html">About Us</a>
-            <a class="btn-link" href="/solutions/index.html">Solutions</a>
-            <a class="btn-link" href="/projects/index.html">Projects</a>
-            <a class="btn-link" href="/products/index.html">Products</a>
-            <a class="btn-link" href="/technologies/index.html">Technologies</a>
+            <a class="btn-link" href="/index.html">Home</a><br>
+            <a class="btn-link" href="/about/index.html">About Us</a><br>
+            <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+            <a class="btn-link" href="/projects/index.html">Projects</a><br>
+            <a class="btn-link" href="/products/index.html">Products</a><br>
+            <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
             <a class="btn-link" href="/contact/index.html">Contact</a>
         </div>
         <div>
@@ -297,147 +945,165 @@
             <p>Sunday: Closed</p>
         </div>
         <div>
-            <h5>Newsletter</h5>
+            <h5>Connect With Us</h5>
             <p>Get smart building & automation updates.</p>
-            <div class="newsletter-box">
-              
+            <div style="display:flex; gap:15px; justify-content:flex-start; margin-top:15px; flex-wrap:wrap;">
+                <a href="#" title="Chat on WeChat" style="color:#9ca3af;font-size:24px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.1)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-weixin"></i></a>
+                <a href="#" target="_blank" title="Chat on Telegram" style="color:#9ca3af;font-size:24px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.1)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank" title="Chat on WhatsApp" style="color:#9ca3af;font-size:24px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.1)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <div class="social-links">
-                <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+            <div style="text-align:left; margin-top:15px;">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg" alt="WeChat QR Code" style="width:100px; height:100px; border-radius:10px; border:1px solid #ddd; padding:5px; background:#fff;">
+                <p style="font-size:11px; color:#6b7280; margin-top:8px;">Scan QR to connect</p>
             </div>
         </div>
     </div>
     <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
 </footer>
+
+<!-- Contact Us Button -->
+<div class="contact-us-btn">
+    <div class="contact-us-btn-content">
+        <svg class="contact-us-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+    </div>
+</div>
+
+<!-- Back to Top -->
+<div class="back-to-top-comp" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+</div>
+
 <script>
-    // Fingerprint product catalog (complete)
-    const allProducts = [
-               { title: "Indoor Fingerprint IC", model: "ASR1102A(V3)", category: "Fingerprint", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr1102a-v3.png", folder: "asr1102a(v3)" },
-        { title: "Waterproof Fingerprint Terminal", model: "ASR1102A-D(V3)", category: "Outdoor", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr1102a-d-v3.png", folder: "asr1102a-d(v3)", features: "IP65, RFID + Fingerprint" },
-        { title: "Multi-biometric Terminal", model: "ASR2102A", category: "Multi", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2102a.png", folder: "asr2102a", features: "Fingerprint + Face + Card" },
-        { title: "Premium Fingerprint Reader", model: "ASR2101A", category: "Indoor", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2101a.png", folder: "asr2101a", features: "2.8\" screen, TCP/IP" },
-        { title: "Rugged Outdoor Fingerprint", model: "ASR1101M-V1", category: "Outdoor", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr1101m-v1.png", folder: "asr1101m-v1", features: "Vandal-proof, -20°C to 60°C" },
-        { title: "Smart Fingerprint & PIN", model: "ASR1100B-V1", category: "Indoor", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/ASR1100B-V1.png", folder: "asr1100b-v1", features: "Standalone, 1000 users" },
-        { title: "Bluetooth Fingerprint", model: "ASR2200A-B", category: "Multi", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2200a-b.png", folder: "ASR2200A-B", features: "Mobile credentials, BLE" },
-        { title: "High-Speed Fingerprint", model: "ASR2200A", category: "Indoor", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2200a.png", folder: "asr2200a", features: "<0.3s recognition, 10k logs" },
-        { title: "Vandal-proof Fingerprint", model: "ASR1101M-D-V1", category: "Outdoor", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr1101m-d-v1.png", folder: "asr1101m-d-v1", features: "Metal housing, IK08" },
-        { title: "Advanced Multi-Tech", model: "ASR2201A-D", category: "Multi", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/card-readers/asr2201a-d.png", folder: "asr2201a-d", features: "Fingerprint + DESFire + QR" }
-    ];
-
-    let currentCategory = 'all';
-    let currentSearch = '';
-    let currentPage = 1;
-    const ITEMS_PER_PAGE = 8;
-
-    function getFilteredProducts() {
-        let filtered = currentCategory === 'all' ? [...allProducts] : allProducts.filter(p => p.category === currentCategory);
-        if (currentSearch.trim() !== '') {
-            const term = currentSearch.toLowerCase();
-            filtered = filtered.filter(p => p.title.toLowerCase().includes(term) || p.model.toLowerCase().includes(term));
-        }
-        return filtered;
+    function toggleMobileMenu() {
+        document.getElementById('mainNav').classList.toggle('active');
     }
 
-    function getProductUrl(product) {
-        let folder = product.folder.toLowerCase();
-        return `/products/access-control/card-readers/${folder}/index.html`;
-    }
-
-    function renderGridAndPagination() {
-        const filtered = getFilteredProducts();
-        const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
-        if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
-        const start = (currentPage - 1) * ITEMS_PER_PAGE;
-        const pageProducts = filtered.slice(start, start + ITEMS_PER_PAGE);
-        const gridContainer = document.getElementById('productGridContainer');
-        if (!gridContainer) return;
-        
-        if (pageProducts.length === 0) {
-            gridContainer.innerHTML = `<div class="no-results-grid"><i class="fa fa-fingerprint" style="font-size:48px; opacity:0.5;"></i><p style="margin-top:12px;">No fingerprint terminals found</p></div>`;
-        } else {
-            gridContainer.innerHTML = pageProducts.map(p => {
-                const badgeHtml = p.features ? `<div class="product-badge"><span class="badge-feature">${p.features}</span></div>` : '';
-                return `
-                    <div class="product-card" onclick="window.location.href='${getProductUrl(p)}'" style="cursor:pointer;">
-                        <div class="product-card-img"><img src="${p.img}" alt="${p.title}" onerror="this.src='https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/fingerprint/placeholder.jpg'"></div>
-                        <div class="product-info"><h4>${p.title}</h4><div class="model">${p.model}</div>${badgeHtml}</div>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        const paginationDiv = document.getElementById('paginationNumbers');
-        if (paginationDiv && totalPages > 0) {
-            let pagesHtml = '';
-            for (let i = 1; i <= totalPages; i++) {
-                pagesHtml += `<div class="page-btn ${i === currentPage ? 'active-page' : ''}" data-page="${i}">${i}</div>`;
-            }
-            paginationDiv.innerHTML = pagesHtml;
-            document.querySelectorAll('.page-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const pageNum = parseInt(btn.dataset.page);
-                    if (!isNaN(pageNum)) { currentPage = pageNum; renderGridAndPagination(); scrollToGallery(); }
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile dropdown handling
+        if (window.innerWidth < 992) {
+            const dropdownParents = document.querySelectorAll('.nav-item-dropdown > .dropdown-parent-link');
+            dropdownParents.forEach(parent => {
+                parent.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const redirectUrl = this.getAttribute('data-redirect') || this.getAttribute('href');
+                    const dropdown = this.closest('.nav-item-dropdown');
+                    if (dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
+                        if (redirectUrl && redirectUrl !== '#') window.location.href = redirectUrl;
+                    } else {
+                        document.querySelectorAll('.nav-item-dropdown.active').forEach(active => active.classList.remove('active'));
+                        dropdown.classList.add('active');
+                    }
                 });
             });
-        } else if (paginationDiv) paginationDiv.innerHTML = '';
-    }
-
-    function scrollToGallery() { const el = document.getElementById('gallery'); if(el) window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' }); }
-    function prevPage() { const total = Math.ceil(getFilteredProducts().length / ITEMS_PER_PAGE); if(currentPage > 1) { currentPage--; renderGridAndPagination(); scrollToGallery(); } }
-    function nextPage() { const total = Math.ceil(getFilteredProducts().length / ITEMS_PER_PAGE); if(currentPage < total) { currentPage++; renderGridAndPagination(); scrollToGallery(); } }
-
-    function setupFilters() {
-        const btns = document.querySelectorAll('.filter-btn');
-        const searchInput = document.getElementById('searchInput');
-        btns.forEach(btn => btn.addEventListener('click', () => { btns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentCategory = btn.dataset.category; currentPage = 1; renderGridAndPagination(); }));
-        if(searchInput) searchInput.addEventListener('input', (e) => { currentSearch = e.target.value; currentPage = 1; renderGridAndPagination(); });
-    }
-
-    function toggleMobileMenu() { document.getElementById('mainNav').classList.toggle('active'); }
-    
-    function setupSubnavLinks() {
-        const links = document.querySelectorAll('.subnav-link:not(.parent-link)');
-        links.forEach(link => link.addEventListener('click', (e) => { e.preventDefault(); const targetId = link.getAttribute('data-target'); const el = document.getElementById(targetId); if(el) { window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' }); } links.forEach(l => l.classList.remove('active')); link.classList.add('active'); }));
-    }
-    
-    function subnavSpy() {
-        const sections = document.querySelectorAll('#gallery, #related');
-        const links = document.querySelectorAll('.subnav-link:not(.parent-link)');
-        window.addEventListener('scroll', () => { let current = ''; sections.forEach(sec => { const top = sec.offsetTop - 140; const bottom = top + sec.offsetHeight; if(window.scrollY >= top && window.scrollY < bottom) current = sec.getAttribute('id'); }); links.forEach(l => { const target = l.getAttribute('data-target'); if(target === current) l.classList.add('active'); else if(current === '' && target === 'gallery') l.classList.add('active'); else l.classList.remove('active'); }); });
-    }
-    
-    function mobileDropdownFix() {
-        if (window.innerWidth < 992) {
-            document.querySelectorAll('.nav-item-dropdown').forEach(drop => {
-                const parentLink = drop.querySelector('.dropdown-parent-link');
-                if (parentLink && !parentLink.hasAttribute('data-fixed')) {
-                    parentLink.setAttribute('data-fixed', 'true');
-                    const originalHref = parentLink.getAttribute('href');
-                    const text = parentLink.innerText.replace(/[↓▼]/, '').trim();
-                    parentLink.innerHTML = `<span style="flex:1; cursor:pointer;" class="parent-link-text">${text}</span><span class="dropdown-toggle-icon" style="padding:0 8px;"><i class="fa fa-angle-down"></i></span>`;
-                    const textSpan = parentLink.querySelector('.parent-link-text');
-                    const toggleIcon = parentLink.querySelector('.dropdown-toggle-icon');
-                    textSpan.addEventListener('click', (e) => { e.stopPropagation(); if(originalHref && originalHref !== '#') window.location.href = originalHref; });
-                    toggleIcon.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); document.querySelectorAll('.nav-item-dropdown.active').forEach(d => { if(d !== drop) d.classList.remove('active'); }); drop.classList.toggle('active'); const icon = toggleIcon.querySelector('i'); if(drop.classList.contains('active')) icon.style.transform = 'rotate(180deg)'; else icon.style.transform = 'rotate(0deg)'; });
-                }
-            });
-        } else {
-            document.querySelectorAll('.nav-item-dropdown').forEach(drop => {
-                const parentLink = drop.querySelector('.dropdown-parent-link');
-                if (parentLink && parentLink.hasAttribute('data-fixed')) {
-                    const originalHref = parentLink.getAttribute('href');
-                    const textSpan = parentLink.querySelector('.parent-link-text');
-                    if(textSpan) { const originalText = textSpan.textContent; parentLink.innerHTML = `${originalText} <i class="fa fa-angle-down"></i>`; parentLink.setAttribute('href', originalHref || '#'); parentLink.style.display = 'flex'; parentLink.removeAttribute('data-fixed'); }
-                }
+            document.querySelectorAll('.fa-angle-down').forEach(arrow => {
+                arrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const parent = this.closest('.nav-item-dropdown');
+                    document.querySelectorAll('.nav-item-dropdown.active').forEach(active => {
+                        if (active !== parent) active.classList.remove('active');
+                    });
+                    parent.classList.toggle('active');
+                });
             });
         }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => { renderGridAndPagination(); setupFilters(); setupSubnavLinks(); subnavSpy(); mobileDropdownFix(); document.getElementById('prevPageBtn')?.addEventListener('click', prevPage); document.getElementById('nextPageBtn')?.addEventListener('click', nextPage); window.scrollTo(0,0); });
-    window.addEventListener('resize', () => { mobileDropdownFix(); if(window.innerWidth >= 992) document.getElementById('mainNav')?.classList.remove('active'); });
+        
+        // Video player with full controls
+        const video = document.getElementById('promoVideo');
+        const poster = document.getElementById('videoPoster');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const rewindBtn = document.getElementById('rewindBtn');
+        const forwardBtn = document.getElementById('forwardBtn');
+        const progressBarContainer = document.getElementById('progressBarContainer');
+        const progressFilled = document.getElementById('progressFilled');
+        const timeDisplay = document.getElementById('timeDisplay');
+        
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        function updateProgress() {
+            if (video.duration && !isNaN(video.duration)) {
+                const percent = (video.currentTime / video.duration) * 100;
+                progressFilled.style.width = `${percent}%`;
+                timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+            }
+        }
+        
+        function togglePlayPause() {
+            if (video.paused) {
+                video.play();
+                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                poster.classList.add('hidden');
+            } else {
+                video.pause();
+                playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+            }
+        }
+        
+        function rewind() { video.currentTime = Math.max(0, video.currentTime - 10); updateProgress(); }
+        function forward() { video.currentTime = Math.min(video.duration, video.currentTime + 10); updateProgress(); }
+        function seek(e) {
+            const rect = progressBarContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const seekTime = (clickX / width) * video.duration;
+            video.currentTime = Math.min(Math.max(0, seekTime), video.duration);
+            updateProgress();
+        }
+        
+        if (video && poster) {
+            poster.addEventListener('click', function() {
+                video.play();
+                poster.classList.add('hidden');
+                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+            });
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            rewindBtn.addEventListener('click', rewind);
+            forwardBtn.addEventListener('click', forward);
+            progressBarContainer.addEventListener('click', seek);
+            
+            video.addEventListener('play', () => {
+                playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+                poster.classList.add('hidden');
+            });
+            video.addEventListener('pause', () => { playPauseBtn.innerHTML = '<i class="fa fa-play"></i>'; });
+            video.addEventListener('ended', () => {
+                playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+                poster.classList.remove('hidden');
+                video.currentTime = 0;
+                updateProgress();
+            });
+            video.addEventListener('timeupdate', updateProgress);
+            video.addEventListener('loadedmetadata', updateProgress);
+        }
+    });
+    
+    window.addEventListener('resize', function() {
+        const nav = document.getElementById('mainNav');
+        if (window.innerWidth >= 992 && nav) {
+            nav.classList.remove('active');
+            document.querySelectorAll('.nav-item-dropdown.active').forEach(dropdown => dropdown.classList.remove('active'));
+        }
+    });
+    
+    const backToTop = document.querySelector('.back-to-top-comp');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+        } else {
+            backToTop.style.display = 'none';
+        }
+    });
+    backToTop.style.display = 'none';
 </script>
 </body>
 </html>

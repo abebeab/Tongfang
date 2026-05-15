@@ -385,6 +385,7 @@
             padding: 35px 25px;
             position: relative;
             border: 1px solid rgba(0,0,0,0.05);
+            cursor: pointer;
         }
         .product-item:hover { transform: translateY(-10px); box-shadow: var(--shadow-lift); border-color: var(--tf-yellow); }
         .product-item-info h3 { font-size: 22px; margin-bottom: 20px; color: var(--tf-dark); font-weight: 700; }
@@ -403,32 +404,6 @@
         .product-item-desc { font-size: 14px; color: var(--tf-text); margin-bottom: 20px; line-height: 1.6; padding: 0 10px; }
         .product-features { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 25px; }
         .product-features span { font-size: 11px; background: var(--tf-bg-light); padding: 5px 12px; border-radius: 50px; color: var(--tf-blue); font-weight: 600; }
-        .product-item-view {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--tf-blue);
-            font-weight: 700;
-            font-size: 14px;
-            padding: 10px 25px;
-            border-radius: 50px;
-            background: rgba(0,76,163,0.08);
-            transition: var(--transition);
-        }
-        .product-item-view i { font-size: 12px; transition: var(--transition); }
-        .product-item:hover .product-item-view { background: var(--tf-blue); color: white; }
-        .product-item:hover .product-item-view i { transform: translateX(5px); }
-        
-        /* Text with Subtitle */
-        .text-with-subtitle-comp { max-width: 800px; margin: 0 auto; text-align: center; padding: 0 30px; }
-        .text-with-subtitle-comp .description { font-size: 18px; line-height: 1.6; color: var(--tf-text); }
-        .text-with-subtitle-comp .description ul { text-align: left; margin-top: 20px; padding-left: 20px; }
-        .text-with-subtitle-comp .description li { margin-bottom: 8px; }
-        
-        /* Full Bleeding Image */
-        .image.fixed-full-bleeding { width: 100%; margin: 40px 0; }
-        .cmp-image { width: 100%; }
-        .cmp-image img { width: 100%; height: auto; display: block; border-radius: 16px; }
         
         /* Icon Feature Gallery */
         .icon-feature-gallery-wrapper { max-width: 1200px; margin: 0 auto; padding: 0 30px; position: relative; }
@@ -460,18 +435,16 @@
         .card-gallery-content-title h3 { font-size: 20px; font-weight: 600; }
         .card-gallery-content-desc { padding: 10px 20px 20px; font-size: 14px; color: var(--tf-text); }
         
-        /* Button */
-        .button-cmp { text-align: center; margin: 40px 0; }
-        .hiknow-button a, .hiknow-view a {
-            display: inline-block;
-            padding: 12px 32px;
-            background: var(--tf-blue);
-            color: #fff;
-            border-radius: var(--btn-radius);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        .hiknow-button a:hover, .hiknow-view a:hover { background: #003d82; transform: translateY(-2px); }
+        /* Text with Subtitle */
+        .text-with-subtitle-comp { max-width: 800px; margin: 0 auto; text-align: center; padding: 0 30px; }
+        .text-with-subtitle-comp .description { font-size: 18px; line-height: 1.6; color: var(--tf-text); }
+        .text-with-subtitle-comp .description ul { text-align: left; margin-top: 20px; padding-left: 20px; }
+        .text-with-subtitle-comp .description li { margin-bottom: 8px; }
+        
+        /* Full Bleeding Image */
+        .image.fixed-full-bleeding { width: 100%; margin: 40px 0; }
+        .cmp-image { width: 100%; }
+        .cmp-image img { width: 100%; height: auto; display: block; border-radius: 16px; }
         
         /* Sales Enquiry */
         .sales {
@@ -600,53 +573,92 @@
             .section-title h2 { font-size: 28px; }
         }
 
-        /* --- 6. FOOTER (Tongfang BMS) --- */
+        /* ===== NEW FOOTER - MATCHING SOLUTIONS HUB TEMPLATE ===== */
         .footer {
-            background: #0b111a;
-            color: #aaa;
-            margin-top: 60px;
-            padding-top: 80px;
+            background: #0b111a; 
+            color: #aaa; 
+            margin-top: 60px; 
+            padding-top: 80px; 
             font-size: 14px;
         }
-        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .footer h5 { 
+            color: #fff; 
+            margin-bottom: 30px; 
+            font-weight: 700; 
+        }
         .footer-container {
-            max-width: 1440px;
-            margin: 0 auto;
+            max-width: 1440px; 
+            margin: 0 auto; 
             padding: 0 30px;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr; 
             gap: 40px;
         }
-        .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
-        .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
-        .btn-link { color: blue; display: block; margin-bottom: 12px; font-size: 14px; transition: var(--transition); }
-        .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
-        .newsletter-box { position: relative; margin-top: 15px; }
-        .form-control {
-            width: 100%; padding: 14px 15px; padding-right: 120px; border: 1px solid #374151;
-            background: #1f2937; color: #fff; border-radius: var(--btn-radius);
-            font-size: 14px; box-sizing: border-box;
+        .footer p { 
+            color: #9ca3af; 
+            font-size: 14px; 
+            line-height: 1.8; 
+            margin-bottom: 10px; 
         }
-        .btn-primary {
-            position: absolute; top: 0; right: 0; height: 100%; background: var(--tf-blue); color: white;
-            border: none; padding: 0 25px; border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
-            cursor: pointer; font-weight: 600;
+        .footer i { 
+            color: var(--tf-yellow); 
+            margin-right: 10px; 
+            width: 20px; 
+            text-align: center; 
         }
-        .btn-primary:hover { background: #003d82; }
-        .social-links { display: flex; gap: 15px; margin-top: 25px; }
-        .btn-square {
-            width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex;
-            align-items: center; justify-content: center; border-radius: 50%; color: #fff;
-            transition: var(--transition);
+        .footer .btn-link { 
+            color: #007bff !important;
+            display: inline-block; 
+            margin-bottom: 12px; 
+            font-size: 14px; 
+            transition: 0.3s;
+            text-decoration: none;
+            font-weight: 600;
         }
-        .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
+        .footer .btn-link:hover { 
+            color: var(--tf-yellow) !important; 
+            padding-left: 8px; 
+            background: transparent;
+        }
         .copyright {
-            background: #05080c; padding: 25px; margin-top: 60px; color: #6b7280; font-size: 13px;
-            text-align: center;
+            background: #05080c; 
+            padding: 25px; 
+            margin-top: 60px; 
+            color: #6b7280; 
+            font-size: 13px;
+            text-align: center; 
+            border-top: 1px solid #1a222e;
+        }
+        .footer .btn-square {
+            width: 40px; 
+            height: 40px; 
+            background: rgba(255,255,255,0.05); 
+            display: inline-flex;
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+            color: var(--tf-white);
+            transition: var(--transition); 
+            text-decoration: none;
+            margin-right: 5px;
+        }
+        .footer .btn-square:hover { 
+            background: var(--tf-blue); 
+            transform: translateY(-3px); 
+        }
+        .footer .btn-square i { 
+            margin: 0; 
+            color: #fff; 
         }
         
-        @media (max-width: 991px) { .footer-container { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 576px) { .footer-container { grid-template-columns: 1fr; } }
+        @media (max-width: 991px) { 
+            .footer-container { grid-template-columns: 1fr 1fr; } 
+        }
+        @media (max-width: 576px) { 
+            .footer-container { grid-template-columns: 1fr; gap: 30px; } 
+            .footer { padding-top: 60px; } 
+            .footer h5 { margin-bottom: 20px; } 
+        }
         
         /* Contact Us Button & Back to Top */
         .contact-us-btn {
@@ -691,7 +703,7 @@
 </head>
 <body>
 
-<!-- ================= HEADER (Tongfang BMS) ================= -->
+<!-- ================= HEADER ================= -->
 <header>
     <div id="navBox" class="header-fix">
         <div class="header-container">
@@ -791,75 +803,71 @@
         </div>
     </div>
 
-   <!-- Product Categories Gallery -->
-<div class="product-list-box">
-    <h2 class="product-title">Product Categories</h2>
-    <div class="product-list">
-        <div class="product-item" onclick="window.location.href='#'">
-            <div class="product-item-info">
-                <h3>Value Series</h3>
-                <div class="product-item-img">
-                    <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Value.png" alt="Value Series">
-                </div>
-                <div class="product-item-desc">The Value Series features Max. 3,000 face capacity with fast recognition speed</div>
-                <div class="product-features">
-                    <span>3,000 Faces</span>
-                    <span>0.3s Recognition</span>
-                    <span>Touch-free</span>
-                </div>
-            </div>
-             <!-- <div class="product-item-view">Explore Series <i class="fa fa-arrow-right"></i></div> -->
-        </div>
-        
-        <div class="product-item" onclick="window.location.href='#'">
-            <div class="product-item-info">
-                <h3>Pro Series</h3>
-                <div class="product-item-img">
-                    <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/new-pro-series.png" alt="Pro Series">
-                </div>
-                <div class="product-item-desc">The Pro Series features 6,000+ face capacity with advanced anti-spoofing</div>
-                <div class="product-features">
-                    <span>6,000+ Faces</span>
-                    <span>Anti-spoofing</span>
-                    <span>Dual Lenses</span>
+    <!-- Product Categories Gallery -->
+    <div class="product-list-box">
+        <h2 class="product-title">Product Categories</h2>
+        <div class="product-list">
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Value Series</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/Value.png" alt="Value Series">
+                    </div>
+                    <div class="product-item-desc">The Value Series features Max. 3,000 face capacity with fast recognition speed</div>
+                    <div class="product-features">
+                        <span>3,000 Faces</span>
+                        <span>0.3s Recognition</span>
+                        <span>Touch-free</span>
+                    </div>
                 </div>
             </div>
-   <!-- <div class="product-item-view">Explore Series <i class="fa fa-arrow-right"></i></div> -->  
-        </div>
-        
-        <div class="product-item" onclick="window.location.href='#'">
-            <div class="product-item-info">
-                <h3>Ultra Series</h3>
-                <div class="product-item-img">
-                    <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/series-pics/Ultra-series.-420X280.jpg" alt="Ultra Series">
-                </div>
-                <div class="product-item-desc">The Ultra Series features 50,000+ face capacity with iris recognition option</div>
-                <div class="product-features">
-                    <span>50,000+ Faces</span>
-                    <span>High Security</span>
-                    <span>Iris Option</span>
-                </div>
-            </div>
-             <!-- <div class="product-item-view">Explore Series <i class="fa fa-arrow-right"></i></div> -->
-        </div>
-        
-        <div class="product-item" onclick="window.location.href='#'">
-            <div class="product-item-info">
-                <h3>Face Modules for Turnstile</h3>
-                <div class="product-item-img">
-                    <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/Face recognition modules for turnstile..png" alt="Turnstile Modules">
-                </div>
-                <div class="product-item-desc">Easy integration with turnstiles to provide a suitable access solution</div>
-                <div class="product-features">
-                    <span>Easy Integration</span>
-                    <span>Compact Design</span>
-                    <span>High Speed</span>
+            
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Pro Series</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/minmoe/new-pro-series.png" alt="Pro Series">
+                    </div>
+                    <div class="product-item-desc">The Pro Series features 6,000+ face capacity with advanced anti-spoofing</div>
+                    <div class="product-features">
+                        <span>6,000+ Faces</span>
+                        <span>Anti-spoofing</span>
+                        <span>Dual Lenses</span>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="product-item-view">Explore Collection <i class="fa fa-arrow-right"></i></div> -->
+            
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Ultra Series</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/series-pics/Ultra-series.-420X280.jpg" alt="Ultra Series">
+                    </div>
+                    <div class="product-item-desc">The Ultra Series features 50,000+ face capacity with iris recognition option</div>
+                    <div class="product-features">
+                        <span>50,000+ Faces</span>
+                        <span>High Security</span>
+                        <span>Iris Option</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product-item" onclick="window.location.href='#'">
+                <div class="product-item-info">
+                    <h3>Face Modules for Turnstile</h3>
+                    <div class="product-item-img">
+                        <img src="https://www.hikvision.com/content/dam/hikvision/en/marketing/image/products/access-control-products/face-recognition-terminals/Face recognition modules for turnstile..png" alt="Turnstile Modules">
+                    </div>
+                    <div class="product-item-desc">Easy integration with turnstiles to provide a suitable access solution</div>
+                    <div class="product-features">
+                        <span>Easy Integration</span>
+                        <span>Compact Design</span>
+                        <span>High Speed</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Product Highlights -->
     <h2 class="product-title">Product Highlights</h2>
@@ -902,11 +910,8 @@
         </div>
     </div>
 
- 
-
-   <!-- RELATED LINKS -->
-<div id="related" class="section-wrapper scroll-target"><div class="section-title"><h2>Related Solutions</h2><p>Complete ecosystem for secure access</p></div><div class="related-grid"><a href="/products/access-control/face-recognition/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" class="related-image"><div class="related-overlay"><h4>Face Recognition Terminals</h4></div></a><a href="/products/access-control/Access_Controllers/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" class="related-image"><div class="related-overlay"><h4>Access Controllers</h4></div></a><a href="/products/access-control/electric-locks/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" class="related-image"><div class="related-overlay"><h4>Electric Locks</h4></div></a></div></div>
-
+    <!-- RELATED LINKS -->
+    <div id="related" class="section-wrapper scroll-target"><div class="section-title"><h2>Related Solutions</h2><p>Complete ecosystem for secure access</p></div><div class="related-grid"><a href="/products/access-control/face-recognition/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/face-recognition/face-recognition-terminals.jpg" class="related-image"><div class="related-overlay"><h4>Face Recognition Terminals</h4></div></a><a href="/products/access-control/Access_Controllers/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/Access_Controllers/access-controler.png" class="related-image"><div class="related-overlay"><h4>Access Controllers</h4></div></a><a href="/products/access-control/electric-locks/index.html" class="related-card"><img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/Electric-fence.jpg" class="related-image"><div class="related-overlay"><h4>Electric Locks</h4></div></a></div></div>
 
     <!-- Sales Enquiry -->
     <div class="sales">
@@ -915,7 +920,7 @@
     </div>
 </div>
 
-<!-- ================= FOOTER (Tongfang BMS) ================= -->
+<!-- ================= NEW FOOTER - MATCHING SOLUTIONS HUB TEMPLATE ================= -->
 <footer class="footer">
     <div class="footer-container">
         <div>
@@ -926,12 +931,12 @@
         </div>
         <div>
             <h5>Quick Links</h5>
-            <a class="btn-link" href="/index.html">Home</a>
-            <a class="btn-link" href="/about/index.html">About Us</a>
-            <a class="btn-link" href="/solutions/index.html">Solutions</a>
-            <a class="btn-link" href="/projects/index.html">Projects</a>
-            <a class="btn-link" href="/products/index.html">Products</a>
-            <a class="btn-link" href="/technologies/index.html">Technologies</a>
+            <a class="btn-link" href="/index.html">Home</a><br>
+            <a class="btn-link" href="/about/index.html">About Us</a><br>
+            <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+            <a class="btn-link" href="/projects/index.html">Projects</a><br>
+            <a class="btn-link" href="/products/index.html">Products</a><br>
+            <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
             <a class="btn-link" href="/contact/index.html">Contact</a>
         </div>
         <div>
@@ -940,16 +945,16 @@
             <p>Sunday: Closed</p>
         </div>
         <div>
-            <h5>Newsletter</h5>
+            <h5>Connect With Us</h5>
             <p>Get smart building & automation updates.</p>
-            <div class="newsletter-box">
-              
+            <div style="display:flex; gap:15px; justify-content:flex-start; margin-top:15px; flex-wrap:wrap;">
+                <a href="#" title="Chat on WeChat" style="color:#9ca3af;font-size:24px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.1)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-weixin"></i></a>
+                <a href="#" target="_blank" title="Chat on Telegram" style="color:#9ca3af;font-size:24px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.1)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-telegram"></i></a>
+                <a href="#" target="_blank" title="Chat on WhatsApp" style="color:#9ca3af;font-size:24px;transition:0.3s;" onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.1)'" onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'"><i class="fab fa-whatsapp"></i></a>
             </div>
-            <div class="social-links">
-                <a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn-square" href="#"><i class="fab fa-weixin"></i></a>
+            <div style="text-align:left; margin-top:15px;">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg" alt="WeChat QR Code" style="width:100px; height:100px; border-radius:10px; border:1px solid #ddd; padding:5px; background:#fff;">
+                <p style="font-size:11px; color:#6b7280; margin-top:8px;">Scan QR to connect</p>
             </div>
         </div>
     </div>

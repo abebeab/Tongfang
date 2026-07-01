@@ -13,27 +13,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 1. DESIGN TOKENS (identical to reference) --- */
+        /* --- 1. DESIGN TOKENS --- */
         :root {
-            --tf-blue: #004ca3;          
-            --tf-yellow: #ffcc00;        
-            --tf-dark: #111827;          
-            --tf-text: #4b5563;          
-            --tf-bg-light: #f9fafb;      
-            --tf-white: #ffffff;         
+            --tf-blue: #004ca3;
+            --tf-yellow: #ffcc00;
+            --tf-dark: #111827;
+            --tf-text: #4b5563;
+            --tf-bg-light: #f9fafb;
+            --tf-white: #ffffff;
             --tf-gray-light: #e5e7eb;
             --header-height: 80px;
-            --subnav-height: 60px; 
+            --subnav-height: 60px;
             --card-radius: 8px;
             --btn-radius: 50px;
-            --shadow-soft: 0 4px 20px rgba(0,0,0,0.05);
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
             --shadow-lift: 0 15px 30px rgba(0, 76, 163, 0.15);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* --- 2. GLOBAL RESET (same as reference) --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* --- 2. GLOBAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: var(--tf-bg-light);
@@ -41,11 +47,24 @@
             overflow-x: hidden;
             padding-top: var(--header-height);
         }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; padding: 0; margin: 0; }
-        h1, h2, h3, h4, h5, h6 { 
-            font-family: 'Montserrat', sans-serif; 
-            font-weight: 700; 
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             color: var(--tf-dark);
         }
         .container-custom {
@@ -54,53 +73,79 @@
             padding: 0 30px;
         }
 
-        /* --- 3. HEADER (exactly from reference - full width swipe dropdowns) --- */
-        .header-fix { 
-            width: 100%; 
-            position: fixed; 
-            top: 0; 
-            z-index: 1030; 
+        /* --- 3. HEADER --- */
+        .header-fix {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1030;
             min-height: var(--header-height);
-            background: #ffffff; 
-            border-bottom: 1px solid rgba(0,0,0,0.08); 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
         }
-        .header-container { 
-            max-width: 1440px; 
-            margin: 0 auto; 
-            display: flex; 
+        .header-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
             align-items: center;
-            justify-content: space-between; 
-            padding: 0 20px; 
-            height: var(--header-height); 
+            justify-content: space-between;
+            padding: 0 20px;
+            height: var(--header-height);
         }
-        .logo-img { height: 60px; width: auto; object-fit: contain; display: block; }
-        
-        .nav-menu { display: flex; gap: 30px; height: 100%; margin-left: auto; margin-right: 40px; align-items: center; }
-        .nav-link-custom { 
-            color: #111827; 
-            font-weight: 600; 
-            font-size: 13px; 
-            transition: 0.3s; 
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            height: 100%;
+            margin-left: auto;
+            margin-right: 40px;
+            align-items: center;
+        }
+        .nav-link-custom {
+            color: #111827;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.3s;
             text-transform: uppercase;
-            line-height: var(--header-height); 
-            display: block; 
+            line-height: var(--header-height);
+            display: block;
             letter-spacing: 0.5px;
         }
-        .nav-link-custom:hover { color: var(--tf-blue); }
-        .dropdown-parent-link { display: flex; align-items: center; gap: 5px; }
-        
-        .nav-item-dropdown { 
+        .nav-link-custom:hover {
+            color: var(--tf-blue);
+        }
+        .dropdown-parent-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-item-dropdown {
             position: static;
-            height: 100%; 
-            display: flex; 
+            height: 100%;
+            display: flex;
             align-items: center;
         }
-        
-        .dropdown-menu-custom::-webkit-scrollbar { width: 6px; }
-        .dropdown-menu-custom::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
-        .dropdown-menu-custom::-webkit-scrollbar-thumb { background: var(--tf-blue); border-radius: 10px; }
-        
+
+        .dropdown-menu-custom::-webkit-scrollbar {
+            width: 6px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .dropdown-menu-custom::-webkit-scrollbar-thumb {
+            background: var(--tf-blue);
+            border-radius: 10px;
+        }
+
         .dropdown-menu-custom {
             position: absolute;
             top: var(--header-height);
@@ -108,7 +153,7 @@
             right: 0;
             width: 100vw;
             background: #fff;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             border-top: 3px solid var(--tf-yellow);
             border-radius: 0 0 8px 8px;
             padding: 30px;
@@ -123,7 +168,7 @@
             display: flex;
             justify-content: center;
         }
-        
+
         .dropdown-inner {
             max-width: 1440px;
             width: 100%;
@@ -134,12 +179,12 @@
             gap: 20px 20px;
             text-align: left;
         }
-        
+
         .nav-item-dropdown:first-child .dropdown-inner {
             grid-template-columns: repeat(3, 1fr);
             max-width: 1200px;
         }
-        
+
         .dropdown-menu-custom::before {
             content: "";
             position: absolute;
@@ -149,41 +194,41 @@
             height: 20px;
             background: transparent;
         }
-        
-        .nav-item-dropdown:hover .dropdown-menu-custom { 
-            opacity: 1; 
-            visibility: visible; 
+
+        .nav-item-dropdown:hover .dropdown-menu-custom {
+            opacity: 1;
+            visibility: visible;
             transform: translateY(0);
             pointer-events: auto;
         }
-        
+
         .dropdown-category {
-            color: var(--tf-blue); 
-            font-size: 13px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 0.5px; 
+            color: var(--tf-blue);
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin: 0 0 5px 0;
-            border-bottom: 1px solid #e5e7eb; 
+            border-bottom: 1px solid #e5e7eb;
             padding-bottom: 3px;
         }
-        
+
         .dropdown-link {
-            color: #4b5563; 
-            font-size: 13px; 
+            color: #4b5563;
+            font-size: 13px;
             font-weight: 500;
-            padding: 6px 0; 
+            padding: 6px 0;
             display: block;
             transition: var(--transition);
             border-bottom: 1px solid transparent;
         }
-        
+
         .dropdown-link:hover {
             color: var(--tf-blue);
             padding-left: 8px;
             border-bottom-color: var(--tf-yellow);
         }
-        
+
         .more-link {
             color: var(--tf-blue);
             font-weight: 600;
@@ -191,51 +236,140 @@
             margin-top: 10px;
             display: inline-block;
         }
-        .more-link:hover { color: var(--tf-yellow); }
-        
-        .header-icons { display: flex !important; align-items: center; gap: 15px; }
-        .header-icons i { color: #111827; font-size: 18px; cursor: pointer; transition: 0.3s; }
-        .header-icons i:hover { color: var(--tf-blue); }
-        .mobile-toggle { display: none; font-size: 24px; color: #111827; cursor: pointer; background: none; border: none; padding-right: 20px; }
-        
-        @media (max-width: 1200px) { 
-            .dropdown-inner { grid-template-columns: repeat(3, 1fr); }
-            .nav-item-dropdown:first-child .dropdown-inner { grid-template-columns: repeat(2, 1fr); }
+        .more-link:hover {
+            color: var(--tf-yellow);
         }
-        
+
+        .header-icons {
+            display: flex !important;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-icons i {
+            color: #111827;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .header-icons i:hover {
+            color: var(--tf-blue);
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            color: #111827;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding-right: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .dropdown-inner {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .nav-item-dropdown:first-child .dropdown-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 991px) {
-            .header-fix { height: auto; }
-            .mobile-toggle { display: block; order: 2; }
-            .header-icons { display: flex !important; order: 3; }
-            .header-container { padding: 0 15px; flex-wrap: nowrap; justify-content: flex-start; }
-            .header-logo { order: 1; flex-shrink: 0; margin-right: auto; }
+            .header-fix {
+                height: auto;
+            }
+            .mobile-toggle {
+                display: block;
+                order: 2;
+            }
+            .header-icons {
+                display: flex !important;
+                order: 3;
+            }
+            .header-container {
+                padding: 0 15px;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+            }
+            .header-logo {
+                order: 1;
+                flex-shrink: 0;
+                margin-right: auto;
+            }
             .nav-menu {
-                display: none; position: absolute; top: 80px; left: 0; width: 100%; background: white;
-                flex-direction: column; height: auto; padding: 20px 0; margin: 0;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1); align-items: flex-start; overflow-y: auto; max-height: 80vh;
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+                margin: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                align-items: flex-start;
+                overflow-y: auto;
+                max-height: 80vh;
             }
-            .nav-menu.active { display: flex; }
-            .nav-link-custom { color: #333; width: 100%; padding: 12px 30px; line-height: 1.5; border-bottom: 1px solid #eee; }
-            .nav-item-dropdown { width: 100%; flex-direction: column; align-items: flex-start; height: auto; position: relative; }
+            .nav-menu.active {
+                display: flex;
+            }
+            .nav-link-custom {
+                color: #333;
+                width: 100%;
+                padding: 12px 30px;
+                line-height: 1.5;
+                border-bottom: 1px solid #eee;
+            }
+            .nav-item-dropdown {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                height: auto;
+                position: relative;
+            }
             .dropdown-menu-custom {
-                position: static; width: 100%; transform: none; opacity: 1; visibility: visible; display: none;
-                box-shadow: none; border-top: none; padding: 10px 30px; background: #f9f9f9; 
-                transition: none; justify-content: flex-start; max-height: none; overflow-y: visible;
+                position: static;
+                width: 100%;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                display: none;
+                box-shadow: none;
+                border-top: none;
+                padding: 10px 30px;
+                background: #f9f9f9;
+                transition: none;
+                justify-content: flex-start;
+                max-height: none;
+                overflow-y: visible;
             }
-            .dropdown-inner, 
-            .nav-item-dropdown:first-child .dropdown-inner { 
+            .dropdown-inner,
+            .nav-item-dropdown:first-child .dropdown-inner {
                 grid-template-columns: repeat(2, 1fr);
                 padding: 0;
             }
-            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
-            .dropdown-category { margin-top: 10px; }
-            .magnified-view { display: none !important; }
+            .nav-item-dropdown.active .dropdown-menu-custom {
+                display: block;
+            }
+            .dropdown-category {
+                margin-top: 10px;
+            }
+            .magnified-view {
+                display: none !important;
+            }
         }
-        
+
         @media (max-width: 576px) {
-            .header-icons { gap: 12px !important; }
-            .logo-img { height: 50px; }
-            .dropdown-inner { grid-template-columns: 1fr; }
+            .header-icons {
+                gap: 12px !important;
+            }
+            .logo-img {
+                height: 50px;
+            }
+            .dropdown-inner {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* --- 4. HERO BANNER --- */
@@ -256,7 +390,7 @@
             z-index: 2;
             text-align: center;
             color: white;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
         .hero-content h1 {
             font-size: 48px;
@@ -280,15 +414,26 @@
             font-size: 13px;
             margin-bottom: 20px;
         }
-        
+
         @media (max-width: 768px) {
-            .hero-banner { height: 380px; }
-            .hero-content h1 { font-size: 36px; }
-            .hero-content p { font-size: 16px; padding: 0 20px; }
+            .hero-banner {
+                height: 380px;
+            }
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .hero-content p {
+                font-size: 16px;
+                padding: 0 20px;
+            }
         }
         @media (max-width: 576px) {
-            .hero-banner { height: 320px; }
-            .hero-content h1 { font-size: 28px; }
+            .hero-banner {
+                height: 320px;
+            }
+            .hero-content h1 {
+                font-size: 28px;
+            }
         }
 
         /* --- 5. STICKY PRODUCT SUB-BAR --- */
@@ -310,7 +455,12 @@
             align-items: center;
             overflow-x: auto;
         }
-        .subnav-list { display: flex; gap: 30px; height: 100%; white-space: nowrap; }
+        .subnav-list {
+            display: flex;
+            gap: 30px;
+            height: 100%;
+            white-space: nowrap;
+        }
         .subnav-link {
             display: flex;
             align-items: center;
@@ -322,7 +472,11 @@
             border-bottom: 4px solid transparent;
             transition: all 0.3s ease;
         }
-        .subnav-link:hover, .subnav-link.active { color: var(--tf-blue); border-bottom-color: var(--tf-yellow); }
+        .subnav-link:hover,
+        .subnav-link.active {
+            color: var(--tf-blue);
+            border-bottom-color: var(--tf-yellow);
+        }
 
         /* --- 6. SECTION STYLES --- */
         .section-wrapper {
@@ -357,7 +511,7 @@
             margin: 0 auto;
         }
 
-        /* Product Gallery with horizontal scroll and navigation arrows */
+        /* Product Gallery */
         .product-gallery-section {
             padding: 60px 0;
             background: var(--tf-white);
@@ -375,12 +529,12 @@
             cursor: crosshair;
             overflow: hidden;
         }
-        .main-image { 
-            max-width: 90%; 
-            max-height: 90%; 
+        .main-image {
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
         }
-        
+
         .magnified-view {
             position: absolute;
             top: 0;
@@ -394,7 +548,9 @@
             border-radius: var(--card-radius);
             border: 1px solid var(--tf-blue);
         }
-        .magnified-view.active { display: block; }
+        .magnified-view.active {
+            display: block;
+        }
         .magnified-image {
             position: absolute;
             width: 250%;
@@ -402,8 +558,7 @@
             object-fit: contain;
             pointer-events: none;
         }
-        
-        /* Thumbnail container with navigation arrows */
+
         .thumbnails-container {
             position: relative;
             margin-top: 20px;
@@ -411,7 +566,7 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .thumb-scroll-btn {
             width: 36px;
             height: 36px;
@@ -428,20 +583,20 @@
             font-size: 16px;
             z-index: 5;
         }
-        
+
         .thumb-scroll-btn:hover {
             background: var(--tf-blue);
             border-color: var(--tf-blue);
             color: white;
             transform: scale(1.05);
         }
-        
+
         .thumb-scroll-btn.disabled {
             opacity: 0.4;
             cursor: not-allowed;
             pointer-events: none;
         }
-        
+
         .thumbs-wrapper {
             display: flex;
             gap: 12px;
@@ -451,21 +606,21 @@
             scrollbar-width: thin;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         .thumbs-wrapper::-webkit-scrollbar {
             height: 4px;
         }
-        
+
         .thumbs-wrapper::-webkit-scrollbar-track {
             background: #e5e7eb;
             border-radius: 10px;
         }
-        
+
         .thumbs-wrapper::-webkit-scrollbar-thumb {
             background: var(--tf-blue);
             border-radius: 10px;
         }
-        
+
         .thumb-item {
             width: 80px;
             height: 80px;
@@ -477,10 +632,20 @@
             transition: var(--transition);
             flex-shrink: 0;
         }
-        .thumb-item:hover { transform: translateY(-3px); border-color: var(--tf-yellow); }
-        .thumb-item.active { border-color: var(--tf-blue); border-width: 2px; }
-        .thumb-item img { width: 100%; height: 100%; object-fit: contain; }
-        
+        .thumb-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--tf-yellow);
+        }
+        .thumb-item.active {
+            border-color: var(--tf-blue);
+            border-width: 2px;
+        }
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .product-badge {
             background: var(--tf-yellow);
             color: var(--tf-dark);
@@ -496,7 +661,7 @@
             border-radius: 12px;
             margin: 20px 0;
         }
-        
+
         /* Product Grid */
         .filter-bar {
             display: flex;
@@ -515,7 +680,8 @@
             transition: var(--transition);
             cursor: pointer;
         }
-        .filter-btn:hover, .filter-btn.active {
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--tf-blue);
             color: white;
             border-color: var(--tf-blue);
@@ -532,7 +698,7 @@
             box-shadow: var(--shadow-soft);
             transition: var(--transition);
             cursor: pointer;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         .product-card:hover {
             transform: translateY(-6px);
@@ -546,11 +712,25 @@
             background: #fafbfc;
             padding: 20px;
         }
-        .product-card-img img { max-width: 100%; max-height: 140px; object-fit: contain; }
-        .product-card-info { padding: 16px; text-align: center; }
-        .product-card-info h4 { font-size: 15px; margin-bottom: 5px; }
-        .product-card-info p { font-size: 12px; color: var(--tf-text-light); }
-        
+        .product-card-img img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
+        }
+        .product-card-info {
+            padding: 16px;
+            text-align: center;
+        }
+        .product-card-info h4 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+        .product-card-info p {
+            font-size: 12px;
+            color: var(--tf-text);
+            opacity: 0.7;
+        }
+
         /* Tabs Section */
         .tabs-section {
             padding: 60px 0;
@@ -580,22 +760,52 @@
             transition: var(--transition);
             text-align: center;
         }
-        .tab-btn i { margin-right: 8px; }
-        .tab-btn:hover { color: var(--tf-blue); background: #f9fafb; }
+        .tab-btn i {
+            margin-right: 8px;
+        }
+        .tab-btn:hover {
+            color: var(--tf-blue);
+            background: #f9fafb;
+        }
         .tab-btn.active {
             color: var(--tf-blue);
             border-bottom: 3px solid var(--tf-yellow);
         }
-        .tab-panels { padding: 30px; }
-        .tab-panel { display: none; animation: fadeIn 0.3s ease; }
-        .tab-panel.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .specs-table { width: 100%; border-collapse: collapse; }
-        .specs-table tr { border-bottom: 1px solid #e5e7eb; }
-        .specs-table td { padding: 12px 16px; }
-        .specs-table td:first-child { font-weight: 700; color: var(--tf-blue); width: 35%; }
-        
+        .tab-panels {
+            padding: 30px;
+        }
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .specs-table tr {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .specs-table td {
+            padding: 12px 16px;
+        }
+        .specs-table td:first-child {
+            font-weight: 700;
+            color: var(--tf-blue);
+            width: 35%;
+        }
+
         .features-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -607,10 +817,19 @@
             background: #f9fafb;
             border-radius: 12px;
         }
-        .feature-item i { font-size: 40px; color: var(--tf-yellow); margin-bottom: 12px; }
-        .feature-item h4 { font-size: 16px; margin-bottom: 8px; }
-        .feature-item p { font-size: 13px; }
-        
+        .feature-item i {
+            font-size: 40px;
+            color: var(--tf-yellow);
+            margin-bottom: 12px;
+        }
+        .feature-item h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .feature-item p {
+            font-size: 13px;
+        }
+
         .compatibility-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -624,7 +843,7 @@
             background: #f9fafb;
             border-radius: 10px;
         }
-        
+
         /* CTA Section */
         .cta-section {
             background: var(--tf-blue);
@@ -632,8 +851,15 @@
             text-align: center;
             color: white;
         }
-        .cta-section h2 { color: white; font-size: 32px; margin-bottom: 15px; }
-        .cta-section p { font-size: 16px; margin-bottom: 25px; }
+        .cta-section h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
         .cta-button {
             display: inline-block;
             padding: 12px 36px;
@@ -643,9 +869,12 @@
             font-weight: 700;
             transition: var(--transition);
         }
-        .cta-button:hover { background: #e6b800; transform: translateY(-2px); }
-        
-        /* Footer */
+        .cta-button:hover {
+            background: #e6b800;
+            transform: translateY(-2px);
+        }
+
+        /* --- 7. FOOTER — EXACT COLORS FROM TEMPLATE --- */
         .footer {
             background: #0b111a;
             color: #aaa;
@@ -653,7 +882,12 @@
             padding-top: 80px;
             font-size: 14px;
         }
-        .footer h5 { color: #fff; margin-bottom: 30px; font-weight: 700; }
+        .footer h5 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 20px;
+        }
         .footer-container {
             max-width: 1440px;
             margin: 0 auto;
@@ -662,171 +896,505 @@
             grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
             gap: 40px;
         }
-        .footer p { color: #9ca3af; font-size: 14px; line-height: 1.8; margin-bottom: 10px; }
-        .footer i { color: var(--tf-yellow); margin-right: 10px; width: 20px; text-align: center; }
-        .btn-link { color: blue; display: block; margin-bottom: 12px; font-size: 14px; transition: var(--transition); }
-        .btn-link:hover { color: var(--tf-yellow); padding-left: 8px; }
-        .newsletter-box { position: relative; margin-top: 15px; }
-        .form-control {
-            width: 100%; padding: 14px 15px; padding-right: 120px; border: 1px solid #374151;
-            background: #1f2937; color: var(--tf-white); border-radius: var(--btn-radius);
-            font-size: 14px; box-sizing: border-box;
+        .footer p {
+            color: #9ca3af;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 10px;
         }
-        .btn-primary {
-            position: absolute; top: 0; right: 0; height: 100%; background: var(--tf-blue); color: white;
-            border: none; padding: 0 25px; border-radius: 0 var(--btn-radius) var(--btn-radius) 0;
-            cursor: pointer; font-weight: 600;
-        }
-        .btn-primary:hover { background: #003d82; }
-        .social-links { display: flex; gap: 15px; margin-top: 25px; }
-        .btn-square {
-            width: 40px; height: 40px; background: rgba(255,255,255,0.05); display: flex;
-            align-items: center; justify-content: center; border-radius: 50%; color: var(--tf-white);
-            transition: var(--transition);
-        }
-        .btn-square:hover { background: var(--tf-blue); transform: translateY(-3px); }
-        .copyright {
-            background: #05080c; padding: 25px; margin-top: 60px; color: #6b7280; font-size: 13px;
+        .footer i {
+            color: var(--tf-yellow);
+            margin-right: 10px;
+            width: 20px;
             text-align: center;
         }
-        
-        @media (max-width: 1200px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+        .footer .btn-link {
+            color: var(--tf-blue);
+            display: block;
+            margin-bottom: 12px;
+            font-size: 14px;
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer .btn-link:hover {
+            color: var(--tf-yellow);
+            padding-left: 8px;
+        }
+        .copyright {
+            background: #05080c;
+            padding: 25px;
+            margin-top: 60px;
+            color: #6b7280;
+            font-size: 13px;
+            text-align: center;
+            border-top: 1px solid #1a222e;
+        }
+
+        /* Social icons in footer — exact template styling */
+        .footer-social-wrapper {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        .footer-social-link {
+            color: #9ca3af;
+            font-size: 30px;
+            transition: 0.3s;
+        }
+        .footer-social-link:hover {
+            color: var(--tf-yellow) !important;
+            transform: scale(1.2);
+        }
+
+        .footer-wechat-id {
+            font-size: 12px;
+            color: #6b7280;
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-wechat-id:hover {
+            color: var(--tf-yellow);
+        }
+
+        .footer-qr-wrapper {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .footer-qr-wrapper img {
+            width: 110px;
+            height: 110px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: #fff;
+        }
+        .footer-qr-wrapper p {
+            font-size: 11px;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+
+        /* --- 8. RESPONSIVE BREAKPOINTS --- */
+        @media (max-width: 1200px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
         @media (max-width: 991px) {
-            .product-grid { grid-template-columns: repeat(2, 1fr); }
-            .features-cards { grid-template-columns: repeat(2, 1fr); }
-            .compatibility-list { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr 1fr; }
-            .tabs-header { flex-direction: column; }
-            .tab-btn.active { border-bottom: none; background: #f9fafb; }
-            .main-image-stage { height: 350px; }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .features-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .compatibility-list {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            .tabs-header {
+                flex-direction: column;
+            }
+            .tab-btn.active {
+                border-bottom: none;
+                background: #f9fafb;
+            }
+            .main-image-stage {
+                height: 350px;
+            }
         }
         @media (max-width: 576px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .features-cards { grid-template-columns: 1fr; }
-            .footer-container { grid-template-columns: 1fr; }
-            .main-image-stage { height: 280px; }
-            .thumb-scroll-btn { width: 30px; height: 30px; font-size: 12px; }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .features-cards {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .footer {
+                padding-top: 60px;
+            }
+            .footer h5 {
+                margin-bottom: 20px;
+            }
+            .main-image-stage {
+                height: 280px;
+            }
+            .thumb-scroll-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
-<header>
-    <div id="navBox" class="header-fix">
-        <div class="header-container">
-            <div class="header-logo">
-                <a href="/index.html">
-                   <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
-                </a>
-            </div>
-            
-            <nav id="mainNav" class="nav-menu">
-                <div class="nav-item-dropdown">
-                    <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link" data-redirect="/solutions/index.html">
-                        Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+    <!-- ================= HEADER ================= -->
+    <header>
+        <div id="navBox" class="header-fix">
+            <div class="header-container">
+                <div class="header-logo">
+                    <a href="/index.html">
+                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
-                    <div class="dropdown-menu-custom">
-                        <div class="dropdown-inner">
-                            <div><div class="dropdown-category">Buildings</div><a href="/solutions/residential/index.html" class="dropdown-link">Residential</a><a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a><a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a><a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a><a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a></div>
-                            <div><div class="dropdown-category">Infrastructure</div><a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a><a href="/solutions/airport/index.html" class="dropdown-link">Airports</a><a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a><a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a><a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a></div>
-                            <div><div class="dropdown-category">City Systems</div><a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a><a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a><a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a><a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a><a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a><a href="/solutions/index.html" class="more-link">View All Solutions →</a></div>
-                        </div>
-                    </div>
                 </div>
-                
-                <div class="nav-item-dropdown">
-                    <a href="/products/index.html" class="nav-link-custom dropdown-parent-link" data-redirect="/products/index.html">
-                        Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
-                    </a>
-                    <div class="dropdown-menu-custom">
-                        <div class="dropdown-inner">
-                            <div><div class="dropdown-category">Access Control</div><a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a><a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a><a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a><a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a><a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a><a href="/products/access-control/Access_Controllers/index.html" class="more-link">View All Access Control →</a></div>
-                            <div><div class="dropdown-category">Fire & Safety</div><a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a><a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a><a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a><a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a><a href="/products/fire-alarm/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Building Management</div><a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a><a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a><a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a><a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a><a href="/products/building-management/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">IP and ITC T-7700 Series</div><a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a><a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a><a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a><a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management</a><a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">HVAC & Field Control</div><a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a><a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a><a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a><a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a><a href="/products/hvac-field-control/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Lighting Control</div><a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a><a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a><a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a><a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a><a href="/products/Lighting-Control/index.html" class="more-link">View All→</a></div>
-                            <div><div class="dropdown-category">Energy Management</div><a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a><a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a><a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a><a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a><a href="/products/Energy-Management/index.html" class="more-link">View All→</a></div>
-                        </div>
-                    </div>
-                </div>
-                <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
-                <a href="/projects/index.html" class="nav-link-custom">Projects</a>
-                <a href="/about/index.html" class="nav-link-custom">About</a>
-                <a href="/contact/index.html" class="nav-link-custom">Contact</a>
-            </nav>
 
-            <button class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></button>
-            <div class="header-icons"><i class="fa fa-search"></i><i class="fa fa-globe"></i></div>
+                <nav id="mainNav" class="nav-menu">
+                    <div class="nav-item-dropdown">
+                        <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link" data-redirect="/solutions/index.html">
+                            Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Buildings</div>
+                                    <a href="/solutions/residential/index.html" class="dropdown-link">Residential</a>
+                                    <a href="/solutions/office/index.html" class="dropdown-link">Office Buildings</a>
+                                    <a href="/solutions/hotel-smart-security/index.html" class="dropdown-link">Hotels & Hospitality</a>
+                                    <a href="/solutions/smart-campus-hub/index.html" class="dropdown-link">Educational Institutions</a>
+                                    <a href="/solutions/retail/index.html" class="dropdown-link">Shopping Malls</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Infrastructure</div>
+                                    <a href="/solutions/smart-hospital-access/index.html" class="dropdown-link">Hospitals & Healthcare</a>
+                                    <a href="/solutions/airport/index.html" class="dropdown-link">Airports</a>
+                                    <a href="/solutions/industrial/index.html" class="dropdown-link">Smart Factories</a>
+                                    <a href="/solutions/ipdc/index.html" class="dropdown-link">Data Centers (IPDC)</a>
+                                    <a href="/solutions/smart-port-platform/index.html" class="dropdown-link">Smart Ports</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">City Systems</div>
+                                    <a href="/solutions/smart-city/index.html" class="dropdown-link">Smart Cities</a>
+                                    <a href="/solutions/traffic/index.html" class="dropdown-link">Smart Traffic</a>
+                                    <a href="/solutions/sports-center-automation/index.html" class="dropdown-link">Sports & Stadiums</a>
+                                    <a href="/solutions/parking-lots/index.html" class="dropdown-link">Parking Lots</a>
+                                    <a href="/solutions/energy-carbon-optimization/index.html" class="dropdown-link">Energy</a>
+                                    <a href="/solutions/index.html" class="more-link">View All Solutions →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-item-dropdown">
+                        <a href="/products/index.html" class="nav-link-custom dropdown-parent-link" data-redirect="/products/index.html">
+                            Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
+                        </a>
+                        <div class="dropdown-menu-custom">
+                            <div class="dropdown-inner">
+                                <div>
+                                    <div class="dropdown-category">Access Control</div>
+                                    <a href="/products/access-control/face-recognition/index.html" class="dropdown-link">Face Recognition Terminals</a>
+                                    <a href="/products/access-control/fingerprint/index.html" class="dropdown-link">Fingerprint Terminals</a>
+                                    <a href="/products/access-control/card-readers/index.html" class="dropdown-link">Card Readers</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="dropdown-link">Access Controllers</a>
+                                    <a href="/products/access-control/electric-locks/index.html" class="dropdown-link">Electric Locks</a>
+                                    <a href="/products/access-control/Access_Controllers/index.html" class="more-link">View All Access Control →</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Fire & Safety</div>
+                                    <a href="/products/fire-alarm/Control_Panels/index.html" class="dropdown-link">Control Panels</a>
+                                    <a href="/products/fire-alarm/detectors/index.html" class="dropdown-link">Smoke Detectors</a>
+                                    <a href="/products/fire-alarm/modules/index.html" class="dropdown-link">Input/Output Modules</a>
+                                    <a href="/products/fire-alarm/Manual_Stations/index.html" class="dropdown-link">Manual Stations</a>
+                                    <a href="/products/fire-alarm/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Building Management</div>
+                                    <a href="/products/building-management/ibms-platform/index.html" class="dropdown-link">IBMS Platform</a>
+                                    <a href="/products/building-management/ddc-controllers/index.html" class="dropdown-link">DDC Controllers</a>
+                                    <a href="/products/building-management/io-modules/index.html" class="dropdown-link">I/O Modules</a>
+                                    <a href="/products/building-management/sensors/index.html" class="dropdown-link">Sensors</a>
+                                    <a href="/products/building-management/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">IP and ITC T-7700 Series</div>
+                                    <a href="/products/itc-t7700-series/ip-network-controllers-servers/index.html" class="dropdown-link">IP Speakers</a>
+                                    <a href="/products/itc-t7700-series/paging-intercom-terminals/index.html" class="dropdown-link">Intercom Terminals</a>
+                                    <a href="/products/itc-t7700-series/ip-network-decoders-amplifiers/index.html" class="dropdown-link">Amplifiers</a>
+                                    <a href="/products/itc-t7700-series/system-management-software/index.html" class="dropdown-link">System Management</a>
+                                    <a href="/products/itc-t7700-series/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">HVAC & Field Control</div>
+                                    <a href="/products/hvac-field-control/fan-coil-controllers/index.html" class="dropdown-link">Fan Coil Controllers</a>
+                                    <a href="/products/hvac-field-control/vav-controllers/index.html" class="dropdown-link">VAV Controllers</a>
+                                    <a href="/products/hvac-field-control/actuators/index.html" class="dropdown-link">Actuators</a>
+                                    <a href="/products/hvac-field-control/valves/index.html" class="dropdown-link">Valves</a>
+                                    <a href="/products/hvac-field-control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Lighting Control</div>
+                                    <a href="/products/Lighting-Control/lighting-controllers/index.html" class="dropdown-link">Lighting Controllers</a>
+                                    <a href="/products/Lighting-Control/dimming-modules/index.html" class="dropdown-link">Dimming Modules</a>
+                                    <a href="/products/Lighting-Control/relay-modules/index.html" class="dropdown-link">Relay Modules</a>
+                                    <a href="/products/Lighting-Control/occupancy-sensors/index.html" class="dropdown-link">Occupancy Sensors</a>
+                                    <a href="/products/Lighting-Control/index.html" class="more-link">View All→</a>
+                                </div>
+                                <div>
+                                    <div class="dropdown-category">Energy Management</div>
+                                    <a href="/products/Energy-Management/power-meters/index.html" class="dropdown-link">Power Meters</a>
+                                    <a href="/products/Energy-Management/Water-Meters/index.html" class="dropdown-link">Water Meters</a>
+                                    <a href="/products/Energy-Management/gas-meters/index.html" class="dropdown-link">Gas Meters</a>
+                                    <a href="/products/Energy-Management/btu-meters/index.html" class="dropdown-link">BTU Meters</a>
+                                    <a href="/products/Energy-Management/index.html" class="more-link">View All→</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/technologies/index.html" class="nav-link-custom">Technologies</a>
+                    <a href="/projects/index.html" class="nav-link-custom">Projects</a>
+                    <a href="/about/index.html" class="nav-link-custom">About</a>
+                    <a href="/contact/index.html" class="nav-link-custom">Contact</a>
+                </nav>
+
+                <button class="mobile-toggle" onclick="toggleMobileMenu()"><i class="fa fa-bars"></i></button>
+                <div class="header-icons"><i class="fa fa-search"></i><i class="fa fa-globe"></i></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO BANNER ================= -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fa fa-lock"></i> Premium Security Solutions</span>
+            <h1>Electrical Locks</h1>
+            <p>Secure your facility with advanced electric locking systems designed for maximum protection</p>
         </div>
     </div>
-</header>
 
-<!-- ================= HERO BANNER ================= -->
-<div class="hero-banner">
-    <div class="hero-content">
-        <span class="hero-badge"><i class="fa fa-lock"></i> Premium Security Solutions</span>
-        <h1>Electrical Locks</h1>
-        <p>Secure your facility with advanced electric locking systems designed for maximum protection</p>
+    <!-- ================= STICKY SUB-NAV ================= -->
+    <nav class="product-subnav">
+        <div class="subnav-container">
+            <ul class="subnav-list">
+                <li><a href="../index.html" class="subnav-link active"> Access control</a></li>
+                <li><a href="#product-gallery" class="subnav-link active">Product Gallery</a></li>
+                <li><a href="#all-products" class="subnav-link">All Locks</a></li>
+                <li><a href="#tabs-section" class="subnav-link">Specs & Features</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ================= PRODUCT GALLERY SECTION ================= -->
+    <section class="product-gallery-section" id="product-gallery">
+        <div class="container-custom">
+            <div style="display: flex; flex-wrap: wrap; gap: 40px;">
+                <div style="flex: 1; min-width: 280px;">
+                    <div class="main-image-stage" id="imageContainer">
+                        <img id="mainImg" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-ML12-500" class="main-image">
+                        <div class="magnified-view" id="zoomWindow">
+                            <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-ML12-500" id="zoomImg" class="magnified-image">
+                        </div>
+                    </div>
+                    <div class="thumbnails-container">
+                        <button class="thumb-scroll-btn" id="scrollLeftBtn"><i class="fa fa-chevron-left"></i></button>
+                        <div class="thumbs-wrapper" id="thumbGallery"></div>
+                        <button class="thumb-scroll-btn" id="scrollRightBtn"><i class="fa fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 280px;">
+                    <span class="product-badge"><i class="fa fa-star"></i> Premium Quality</span>
+                    <h1 class="mt-3" id="productTitle" style="font-size: 28px;">OEA-ML12-500</h1>
+                    <p class="text-muted" id="productSubtitle">Single Door Magnetic Lock 500KG</p>
+                    <div class="key-specs">
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                            <div><i class="fa fa-shield-alt"></i> UL Listed</div>
+                            <div><i class="fa fa-microchip"></i> Fail-Safe</div>
+                            <div><i class="fa fa-bolt"></i> 12/24VDC</div>
+                        </div>
+                    </div>
+                    <p id="productDescription">High-performance electromagnetic lock with 500KG holding force. Designed for heavy-duty security applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= ALL PRODUCTS ================= -->
+    <div class="section-wrapper" id="all-products">
+        <div class="section-title">
+            <h2>Complete Electric Lock Range</h2>
+            <p>Choose from our extensive collection of magnetic locks, electric bolt locks, and mounting brackets</p>
+        </div>
+        <div class="filter-bar" id="filterBar">
+            <button class="filter-btn active" data-category="all">All Products</button>
+            <button class="filter-btn" data-category="Magnetic Locks">Magnetic Locks</button>
+            <button class="filter-btn" data-category="Electric Bolt Locks">Electric Bolt Locks</button>
+            <button class="filter-btn" data-category="Lock Brackets">Lock Brackets</button>
+        </div>
+        <div class="product-grid" id="productGrid"></div>
     </div>
+
+    <!-- ================= TABS SECTION ================= -->
+    <section class="tabs-section" id="tabs-section">
+        <div class="container-custom">
+            <div class="horizontal-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="specs"><i class="fa fa-chart-line"></i> Technical Specs</button>
+                    <button class="tab-btn" data-tab="features"><i class="fa fa-star"></i> Key Features</button>
+                    <button class="tab-btn" data-tab="compatibility"><i class="fa fa-plug"></i> Compatibility</button>
+                </div>
+                <div class="tab-panels">
+                    <div class="tab-panel active" id="specs-panel">
+                        <h3>Technical Specifications</h3>
+                        <table class="specs-table">
+                            <tr>
+                                <td><strong>Model Series</strong></td>
+                                <td>OEA Series Electric Locks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Holding Force</strong></td>
+                                <td>280KG / 500KG</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Voltage</strong></td>
+                                <td>12VDC / 24VDC</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Current</strong></td>
+                                <td>500mA (12V) / 250mA (24V)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Certifications</strong></td>
+                                <td>CE, FCC, RoHS, UL Listed</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="tab-panel" id="features-panel">
+                        <div class="features-cards">
+                            <div class="feature-item"><i class="fa fa-shield-alt"></i>
+                                <h4>High Security</h4>
+                                <p>Holding force up to 500KG</p>
+                            </div>
+                            <div class="feature-item"><i class="fa fa-bolt"></i>
+                                <h4>Low Power</h4>
+                                <p>Efficient design</p>
+                            </div>
+                            <div class="feature-item"><i class="fa fa-tools"></i>
+                                <h4>Easy Install</h4>
+                                <p>Mounting brackets included</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-panel" id="compatibility-panel">
+                        <div class="compatibility-list">
+                            <div class="compatibility-item"><i class="fa fa-check-circle"></i><span>Tongfang BMS Access Controllers</span></div>
+                            <div class="compatibility-item"><i class="fa fa-check-circle"></i><span>3rd Party Panels (12/24V DC)</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA SECTION ================= -->
+    <div class="cta-section">
+        <div class="container-custom">
+            <h2>Need Help Choosing the Right Lock?</h2>
+            <p>Our security experts are ready to assist you</p>
+            <a href="/contact/index.html" class="cta-button">Contact Our Team <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER — EXACT COLORS FROM TEMPLATE ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Column 1: Company Info -->
+            <div>
+                <h5>Tongfang BMS System Integration</h5>
+                <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+                <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+                <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div>
+                <h5>Quick Links</h5>
+                <a class="btn-link" href="/index.html">Home</a>
+                <a class="btn-link" href="/about/index.html">About Us</a>
+                <a class="btn-link" href="/solutions/index.html">Solutions</a>
+                <a class="btn-link" href="/projects/index.html">Projects</a>
+                <a class="btn-link" href="/products/index.html">Products</a>
+                <a class="btn-link" href="/technologies/index.html">Technologies</a>
+                <a class="btn-link" href="/contact/index.html">Contact</a>
+            </div>
+
+            <!-- Column 3: Business Hours -->
+            <div>
+                <h5>Business Hours</h5>
+                <p>Mon – Sat 8:30 AM – 5:30 PM</p>
+                <p>&nbsp;</p>
+                <p>Sunday: Closed</p>
+            </div>
+
+            <!-- Column 4: Connect With Us -->
+            <div>
+                <h5>Connect With Us</h5>
+                <p>Get smart building & automation updates.</p>
+
+                <div class="footer-social-wrapper">
+                    <a href="weixin://dl/chat?wxid_monboaso8fwp22"
+                    title="Chat on WeChat"
+                    class="footer-social-link"
+                    onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                    onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                    <i class="fab fa-weixin"></i>
+                </a>
+
+                <a href="https://t.me/admassb"
+                target="_blank"
+                title="Chat on Telegram"
+                class="footer-social-link"
+                onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                <i class="fab fa-telegram"></i>
+            </a>
+
+            <a href="https://wa.me/251911249722?text=Hello%20Tongfang%20BMS%20Team"
+            target="_blank"
+            title="Chat on WhatsApp"
+            class="footer-social-link"
+            onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+            onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- WeChat ID -->
+    <a href="weixin://dl/chat?wxid_monboaso8fwp22"
+    title="Chat on WeChat"
+    class="footer-wechat-id"
+    onmouseover="this.style.color='#ffcc00'"
+    onmouseout="this.style.color='#6b7280'">
+    WeChat ID: wxid_monboaso8fwp22
+</a>
+
+<!-- QR Code -->
+<div class="footer-qr-wrapper">
+    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg"
+    alt="WeChat QR Code">
+    <p>Scan QR to connect</p>
+</div>
+</div>
 </div>
 
-<!-- ================= STICKY SUB-NAV ================= -->
-<nav class="product-subnav">
-    <div class="subnav-container">
-        <ul class="subnav-list">
-            <li><a href="../index.html" class="subnav-link active"> Access control</a></li>
-            <li><a href="#product-gallery" class="subnav-link active">Product Gallery</a></li>
-            <li><a href="#all-products" class="subnav-link">All Locks</a></li>
-            <li><a href="#tabs-section" class="subnav-link">Specs & Features</a></li>
-        </ul>
-    </div>
-</nav>
+<!-- Copyright -->
+<div class="copyright">
+    © 2026 Tongfang BMS System Integration PLC. All Rights Reserved.
+</div>
+</footer>
 
-<!-- ================= PRODUCT GALLERY SECTION WITH ARROWS ================= -->
-<section class="product-gallery-section" id="product-gallery">
-    <div class="container-custom">
-        <div style="display: flex; flex-wrap: wrap; gap: 40px;">
-            <div style="flex: 1; min-width: 280px;">
-                <div class="main-image-stage" id="imageContainer">
-                    <img id="mainImg" src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-ML12-500" class="main-image">
-                    <div class="magnified-view" id="zoomWindow">
-                        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-ML12-500" id="zoomImg" class="magnified-image">
-                    </div>
-                </div>
-                <div class="thumbnails-container">
-                    <button class="thumb-scroll-btn" id="scrollLeftBtn"><i class="fa fa-chevron-left"></i></button>
-                    <div class="thumbs-wrapper" id="thumbGallery"></div>
-                    <button class="thumb-scroll-btn" id="scrollRightBtn"><i class="fa fa-chevron-right"></i></button>
-                </div>
-            </div>
-            <div style="flex: 1; min-width: 280px;">
-                <span class="product-badge"><i class="fa fa-star"></i> Premium Quality</span>
-                <h1 class="mt-3" id="productTitle" style="font-size: 28px;">OEA-ML12-500</h1>
-                <p class="text-muted" id="productSubtitle">Single Door Magnetic Lock 500KG</p>
-                <div class="key-specs"><div style="display: flex; gap: 15px; flex-wrap: wrap;"><div><i class="fa fa-shield-alt"></i> UL Listed</div><div><i class="fa fa-microchip"></i> Fail-Safe</div><div><i class="fa fa-bolt"></i> 12/24VDC</div></div></div>
-                <p id="productDescription">High-performance electromagnetic lock with 500KG holding force. Designed for heavy-duty security applications.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= ALL PRODUCTS ================= -->
-<div class="section-wrapper" id="all-products"><div class="section-title"><h2>Complete Electric Lock Range</h2><p>Choose from our extensive collection of magnetic locks, electric bolt locks, and mounting brackets</p></div><div class="filter-bar" id="filterBar"><button class="filter-btn active" data-category="all">All Products</button><button class="filter-btn" data-category="Magnetic Locks">Magnetic Locks</button><button class="filter-btn" data-category="Electric Bolt Locks">Electric Bolt Locks</button><button class="filter-btn" data-category="Lock Brackets">Lock Brackets</button></div><div class="product-grid" id="productGrid"></div></div>
-
-<!-- ================= TABS SECTION ================= -->
-<section class="tabs-section" id="tabs-section"><div class="container-custom"><div class="horizontal-tabs"><div class="tabs-header"><button class="tab-btn active" data-tab="specs"><i class="fa fa-chart-line"></i> Technical Specs</button><button class="tab-btn" data-tab="features"><i class="fa fa-star"></i> Key Features</button><button class="tab-btn" data-tab="compatibility"><i class="fa fa-plug"></i> Compatibility</button></div><div class="tab-panels"><div class="tab-panel active" id="specs-panel"><h3>Technical Specifications</h3><table class="specs-table"> </tr><tr><td><strong>Model Series</strong></td><td>OEA Series Electric Locks</td></tr><tr><td><strong>Holding Force</strong></td><td>280KG / 500KG</td></tr><tr><td><strong>Voltage</strong></td><td>12VDC / 24VDC</td></tr><tr><td><strong>Current</strong></td><td>500mA (12V) / 250mA (24V)</td></tr><tr><td><strong>Certifications</strong></td><td>CE, FCC, RoHS, UL Listed</td></tr></table></div><div class="tab-panel" id="features-panel"><div class="features-cards"><div class="feature-item"><i class="fa fa-shield-alt"></i><h4>High Security</h4><p>Holding force up to 500KG</p></div><div class="feature-item"><i class="fa fa-bolt"></i><h4>Low Power</h4><p>Efficient design</p></div><div class="feature-item"><i class="fa fa-tools"></i><h4>Easy Install</h4><p>Mounting brackets included</p></div></div></div><div class="tab-panel" id="compatibility-panel"><div class="compatibility-list"><div class="compatibility-item"><i class="fa fa-check-circle"></i><span>Tongfang BMS Access Controllers</span></div><div class="compatibility-item"><i class="fa fa-check-circle"></i><span>3rd Party Panels (12/24V DC)</span></div></div></div></div></div></div></section>
-
-<!-- ================= CTA SECTION ================= -->
-<div class="cta-section"><div class="container-custom"><h2>Need Help Choosing the Right Lock?</h2><p>Our security experts are ready to assist you</p><a href="/contact/index.html" class="cta-button">Contact Our Team <i class="fa fa-arrow-right"></i></a></div></div>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer"><div class="footer-container"><div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div><div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><a class="btn-link" href="/about/index.html">About Us</a><a class="btn-link" href="/solutions/index.html">Solutions</a>
-    <a class="btn-link" href="/products/index.html">Products</a>
-      <a class="btn-link" href="/technologies/index.html">Technologies</a>
-    <a class="btn-link" href="/contact/index.html">Contact</a></div><div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div><div><h5>Newsletter</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a class="btn-square" href="#"><i class="fab fa-facebook-f"></i></a><a class="btn-square" href="#"><i class="fab fa-linkedin-in"></i></a><a class="btn-square" href="#"><i class="fab fa-twitter"></i></a></div></div></div><div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div></footer>
-
+<!-- ================= SCRIPTS ================= -->
 <script>
     const productsData = [
         { title: "OEA-ML12-500", desc: "Single Door Mag Lock 500KG", category: "Magnetic Locks", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-ML12-500" },
@@ -838,10 +1406,10 @@
         { title: "OEA-ES13-U", desc: "U-Shaped Bracket", category: "Lock Brackets", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-ES13-U" },
         { title: "OEA-MS12-280Z", desc: "280KG Z-Bracket", category: "Lock Brackets", img: "https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/products/access-control/electric-locks/OEA-MS12-280Z" }
     ];
-    
+
     let thumbScrollContainer;
     let scrollLeftBtn, scrollRightBtn;
-    
+
     function updateScrollButtons() {
         if (!thumbScrollContainer) return;
         const maxScroll = thumbScrollContainer.scrollWidth - thumbScrollContainer.clientWidth;
@@ -860,7 +1428,7 @@
             }
         }
     }
-    
+
     function scrollThumbs(direction) {
         if (!thumbScrollContainer) return;
         const scrollAmount = 200;
@@ -871,80 +1439,83 @@
         }
         setTimeout(updateScrollButtons, 300);
     }
-    
-    function renderThumbs() { 
-        let g = document.getElementById('thumbGallery'); 
-        if(g){ 
-            g.innerHTML = ''; 
-            productsData.forEach((p,i)=>{ 
-                let div = document.createElement('div'); 
-                div.className = 'thumb-item'+(i===0?' active':''); 
-                div.innerHTML = `<img src="${p.img}" alt="${p.title}">`; 
-                div.onclick = ()=>updateMain(p,div); 
-                g.appendChild(div); 
+
+    function renderThumbs() {
+        let g = document.getElementById('thumbGallery');
+        if (g) {
+            g.innerHTML = '';
+            productsData.forEach((p, i) => {
+                let div = document.createElement('div');
+                div.className = 'thumb-item' + (i === 0 ? ' active' : '');
+                div.innerHTML = `<img src="${p.img}" alt="${p.title}">`;
+                div.onclick = () => updateMain(p, div);
+                g.appendChild(div);
             });
             thumbScrollContainer = g;
             if (thumbScrollContainer) {
                 thumbScrollContainer.addEventListener('scroll', updateScrollButtons);
                 setTimeout(updateScrollButtons, 100);
             }
-        } 
+        }
     }
-    
-    function updateMain(p,el){ 
-        document.getElementById('mainImg').src = p.img; 
+
+    function updateMain(p, el) {
+        document.getElementById('mainImg').src = p.img;
         document.getElementById('zoomImg').src = p.img;
-        document.getElementById('productTitle').innerText = p.title; 
-        document.getElementById('productSubtitle').innerText = p.desc; 
-        document.getElementById('productDescription').innerHTML = `High-performance ${p.desc} designed for modern access control systems.`; 
-        document.querySelectorAll('.thumb-item').forEach(t=>t.classList.remove('active')); 
-        el.classList.add('active'); 
+        document.getElementById('productTitle').innerText = p.title;
+        document.getElementById('productSubtitle').innerText = p.desc;
+        document.getElementById('productDescription').innerHTML =
+            `High-performance ${p.desc} designed for modern access control systems.`;
+        document.querySelectorAll('.thumb-item').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
     }
-    
-    function renderGrid(cat='all'){ 
-        let grid=document.getElementById('productGrid'); 
-        if(grid){ 
-            let filtered = cat==='all'? productsData : productsData.filter(p=>p.category===cat); 
-            grid.innerHTML = filtered.map(p=>`<div class="product-card" onclick="updateMainFromTitle('${p.title}')"><div class="product-card-img"><img src="${p.img}" alt="${p.title}"></div><div class="product-card-info"><h4>${p.title}</h4><p>${p.desc}</p></div></div>`).join(''); 
-        } 
+
+    function renderGrid(cat = 'all') {
+        let grid = document.getElementById('productGrid');
+        if (grid) {
+            let filtered = cat === 'all' ? productsData : productsData.filter(p => p.category === cat);
+            grid.innerHTML = filtered.map(p =>
+                `<div class="product-card" onclick="updateMainFromTitle('${p.title}')"><div class="product-card-img"><img src="${p.img}" alt="${p.title}"></div><div class="product-card-info"><h4>${p.title}</h4><p>${p.desc}</p></div></div>`
+                ).join('');
+        }
     }
-    
-    function updateMainFromTitle(t){ 
-        let p=productsData.find(p=>p.title===t); 
-        if(p){ 
-            let thumbs = document.querySelectorAll('.thumb-item'); 
-            let idx = productsData.findIndex(p=>p.title===t); 
-            if(thumbs[idx]) updateMain(p,thumbs[idx]); 
-            document.getElementById('product-gallery').scrollIntoView({behavior:'smooth'}); 
-        } 
+
+    function updateMainFromTitle(t) {
+        let p = productsData.find(p => p.title === t);
+        if (p) {
+            let thumbs = document.querySelectorAll('.thumb-item');
+            let idx = productsData.findIndex(p => p.title === t);
+            if (thumbs[idx]) updateMain(p, thumbs[idx]);
+            document.getElementById('product-gallery').scrollIntoView({ behavior: 'smooth' });
+        }
     }
-    
-    function setupFilters(){ 
-        document.querySelectorAll('.filter-btn').forEach(btn=>{ 
-            btn.addEventListener('click',()=>{ 
-                document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); 
-                btn.classList.add('active'); 
-                renderGrid(btn.dataset.category); 
-            }); 
-        }); 
+
+    function setupFilters() {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderGrid(btn.dataset.category);
+            });
+        });
     }
-    
-    function setupTabs(){ 
-        document.querySelectorAll('.tab-btn').forEach(btn=>{ 
-            btn.addEventListener('click',()=>{ 
-                let tabId=btn.dataset.tab; 
-                document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
-                btn.classList.add('active'); 
-                document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active')); 
-                document.getElementById(`${tabId}-panel`).classList.add('active'); 
-            }); 
-        }); 
+
+    function setupTabs() {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                let tabId = btn.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById(`${tabId}-panel`).classList.add('active');
+            });
+        });
     }
-    
-    function toggleMobileMenu(){ 
-        document.getElementById('mainNav').classList.toggle('active'); 
+
+    function toggleMobileMenu() {
+        document.getElementById('mainNav').classList.toggle('active');
     }
-    
+
     // ZOOM FUNCTIONALITY
     const imageContainer = document.getElementById('imageContainer');
     const zoomWindow = document.getElementById('zoomWindow');
@@ -963,7 +1534,7 @@
         });
         imageContainer.addEventListener('mouseleave', () => { zoomWindow.classList.remove('active'); });
     }
-    
+
     // MOBILE NAVIGATION
     document.addEventListener('DOMContentLoaded', function() {
         if (window.innerWidth < 992) {
@@ -996,18 +1567,18 @@
                 });
             });
         }
-        
-        renderThumbs(); 
-        renderGrid('all'); 
-        setupFilters(); 
+
+        renderThumbs();
+        renderGrid('all');
+        setupFilters();
         setupTabs();
-        
+
         scrollLeftBtn = document.getElementById('scrollLeftBtn');
         scrollRightBtn = document.getElementById('scrollRightBtn');
         if (scrollLeftBtn) scrollLeftBtn.onclick = () => scrollThumbs('left');
         if (scrollRightBtn) scrollRightBtn.onclick = () => scrollThumbs('right');
     });
-    
+
     window.addEventListener('resize', function() {
         const nav = document.getElementById('mainNav');
         if (window.innerWidth >= 992) {

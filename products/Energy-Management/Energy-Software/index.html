@@ -889,13 +889,15 @@
             text-align: center; 
         }
         
-        .footer .btn-link { 
-            color: #60a5fa;
-            display: inline-block; 
+       .footer .btn-link { 
+             color: blue  ;
+              display: inline-block; 
             margin-bottom: 12px; 
             font-size: 14px; 
             transition: var(--transition);
             text-decoration: none;
+                transition: 0.3s;
+            font-weight: 600;
         }
         
         .footer .btn-link:hover { 
@@ -1295,15 +1297,93 @@
 <!-- ===== CTA SECTION ===== -->
 <section class="cta-section"><div class="container"><h2>Ready to Transform Your Energy Data?</h2><p>Our software experts are ready to demonstrate how our solutions can help you achieve your energy goals</p><a href="/contact/index.html" class="cta-button">Request a Demo <i class="fa fa-arrow-right"></i></a></div></section>
 
-<!-- ===== FOOTER (EXACT MATCH) ===== -->
+<!-- ===== FOOTER (UPDATED FROM TEMPLATE) ===== -->
 <footer class="footer">
     <div class="footer-container">
-        <div><h5>Tongfang BMS System Integration</h5><p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p><p><i class="fa fa-phone-alt"></i> +251 9 11249722</p><p><i class="fa fa-envelope"></i> info@tongfangbms.com</p></div>
-        <div><h5>Quick Links</h5><a class="btn-link" href="/index.html">Home</a><br><a class="btn-link" href="/about/index.html">About Us</a><br><a class="btn-link" href="/solutions/index.html">Solutions</a><br><a class="btn-link" href="/projects/index.html">Projects</a><br><a class="btn-link" href="/products/index.html">Products</a><br><a class="btn-link" href="/technologies/index.html">Technologies</a><br><a class="btn-link" href="/contact/index.html">Contact</a></div>
-        <div><h5>Business Hours</h5><p>Mon – Sat 8:30 AM – 5:30 PM</p><p>Sunday: Closed</p></div>
-        <div><h5>Connect With Us</h5><p>Get smart building & automation updates.</p><div class="newsletter-box"><input class="form-control" type="email" placeholder="Your email"><button class="btn btn-primary">Subscribe</button></div><div class="social-links"><a href="#" class="btn-square"><i class="fab fa-weixin"></i></a><a href="#" class="btn-square"><i class="fab fa-telegram"></i></a><a href="#" class="btn-square"><i class="fab fa-whatsapp"></i></a><a href="#" class="btn-square"><i class="fab fa-facebook-messenger"></i></a></div></div>
+        <!-- Column 1: Brand / Contact -->
+        <div>
+            <h5>Tongfang BMS System Integration</h5>
+            <p><i class="fa fa-map-marker-alt"></i> Addis Ababa, Ethiopia</p>
+            <p><i class="fa fa-phone-alt"></i> +251 9 11249722</p>
+            <p><i class="fa fa-envelope"></i> info@tongfangbms.com</p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+            <h5>Quick Links</h5>
+            <a class="btn-link" href="/index.html">Home</a><br>
+            <a class="btn-link" href="/about/index.html">About Us</a><br>
+            <a class="btn-link" href="/solutions/index.html">Solutions</a><br>
+            <a class="btn-link" href="/projects/index.html">Projects</a><br>
+            <a class="btn-link" href="/products/index.html">Products</a><br>
+            <a class="btn-link" href="/technologies/index.html">Technologies</a><br>
+            <a class="btn-link" href="/contact/index.html">Contact</a>
+        </div>
+
+        <!-- Column 3: Business Hours -->
+        <div>
+            <h5>Business Hours</h5>
+            <p>Mon – Sat 8:30 AM – 5:30 PM</p>
+            <p> </p>
+            <p>Sunday: Closed</p>
+        </div>
+
+        <!-- Column 4: Connect With Us (Social + QR) -->
+        <div>
+            <h5>Connect With Us</h5>
+            <p>Get smart building & automation updates.</p>
+
+            <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                <a href="weixin://dl/chat?wxid_monboaso8fwp22"
+                   title="Chat on WeChat"
+                   style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                   onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                   onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                   <i class="fab fa-weixin"></i>
+                </a>
+
+                <a href="https://t.me/admassb"
+                   target="_blank"
+                   title="Chat on Telegram"
+                   style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                   onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                   onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                   <i class="fab fa-telegram"></i>
+                </a>
+
+                <a href="https://wa.me/251911249722?text=Hello%20Tongfang%20BMS%20Team"
+                   target="_blank"
+                   title="Chat on WhatsApp"
+                   style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                   onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                   onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                   <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <!-- WeChat ID -->
+            <a href="weixin://dl/chat?wxid_monboaso8fwp22"
+               title="Chat on WeChat"
+               style="font-size:12px;color:#6b7280;text-align:center;display:block;margin-top:10px;text-decoration:none;"
+               onmouseover="this.style.color='#ffcc00'"
+               onmouseout="this.style.color='#6b7280'">
+               WeChat ID: wxid_monboaso8fwp22
+            </a>
+
+            <!-- QR Code -->
+            <div style="text-align:center; margin-top:15px;">
+                <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg"
+                     alt="WeChat QR Code"
+                     style="width:110px; height:110px; border-radius:10px; border:1px solid #ddd; padding:5px; background:#fff;">
+                <p style="font-size:11px; color:#6b7280; margin-top:8px;">Scan QR to connect</p>
+            </div>
+        </div>
     </div>
-    <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved.</div>
+
+    <!-- Copyright -->
+    <div class="copyright">
+        © 2026 Tongfang BMS System Integration PLC. All Rights Reserved.
+    </div>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>

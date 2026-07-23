@@ -1438,143 +1438,173 @@
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <!-- ====== LOAD CONFIG ====== -->
-    <script src="/config.js"></script>
-
-    <!-- ====== CONTACT FORM HANDLER (FINAL – ALL FIELDS) ====== -->
+    <!-- ====== DYNAMIC CONFIG LOADER (replaces /config.js) ====== -->
     <script>
-        $(document).ready(function() {
+        (function() {
+            window.__configReady = false;
+            window.__configQueue = [];
 
-            if (typeof EMAILJS_CONFIG === 'undefined') {
-                console.error('❌ config.js not loaded or EMAILJS_CONFIG missing.');
-                $('#statusMessage').addClass('alert alert-danger')
-                    .html('Configuration error. Please contact support!').fadeIn();
-                return;
+            function loadConfig(path) {
+                var script = document.createElement('script');
+                script.src = path;
+                script.onload = function() {
+                    if (typeof EMAILJS_CONFIG !== 'undefined') {
+                        window.__configReady = true;
+                        window.__configQueue.forEach(function(cb) { cb(); });
+                        window.__configQueue = [];
+                    }
+                };
+                script.onerror = function() {
+                    if (path === '/config.js') {
+                        // Fallback to local path
+                        loadConfig('config.js');
+                    } else {
+                        console.error('❌ Could not load config.js from any location');
+                    }
+                };
+                document.head.appendChild(script);
             }
 
-            emailjs.init(EMAILJS_CONFIG.publicKey);
+            window.waitForConfig = function(callback) {
+                if (window.__configReady && typeof EMAILJS_CONFIG !== 'undefined') {
+                    callback();
+                } else {
+                    window.__configQueue.push(callback);
+                }
+            };
 
-            $('#contactForm').on('submit', function(e) {
-                e.preventDefault();
+            loadConfig('/config.js');
+        })();
+    </script>
 
-                var name = $('#user_name').val().trim();
-                var email = $('#user_email').val().trim();
-                var phone = $('#user_phone').val().trim() || 'Not provided';
-                var service = $('#user_service').val() || 'General Inquiry';
-                var message = $('#message').val().trim();
-                var $alert = $('#statusMessage');
-
-                // Validation
-                if (name === '' || email === '' || message === '') {
-                    $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
-                        .html('Please fill in all required fields.').fadeIn();
+    <!-- ====== CONTACT FORM HANDLER (wrapped in waitForConfig) ====== -->
+    <script>
+        $(document).ready(function() {
+            window.waitForConfig(function() {
+                // Check that config is actually available (safety)
+                if (typeof EMAILJS_CONFIG === 'undefined') {
+                    console.error('❌ config.js not loaded even after wait.');
+                    $('#statusMessage').addClass('alert alert-danger')
+                        .html('Configuration error. Please contact support!').fadeIn();
                     return;
                 }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
-                        .html('Please enter a valid email address.').fadeIn();
-                    return;
-                }
 
-                $alert.removeClass('alert-danger alert-success').addClass('alert alert-info')
-                    .html('<i class="fas fa-spinner fa-spin me-2"></i>Sending your message...').fadeIn();
+                emailjs.init(EMAILJS_CONFIG.publicKey);
 
-                // --- Timestamp (Addis Ababa time) ---
-                var now = new Date().toLocaleString('en-US', { timeZone: 'Africa/Addis_Ababa' });
+                $('#contactForm').on('submit', function(e) {
+                    e.preventDefault();
 
-                // --- Send EVERY possible parameter name ---
-                var adminParams = {
-                    // Basic (already work)
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    service: service,
-                    message: message,
-                    // Common variants
-                    from_name: name,
-                    from_email: email,
-                    user_name: name,
-                    user_email: email,
-                    user_phone: phone,
-                    user_service: service,
-                    user_message: message,
-                    // Extra safety
-                    full_name: name,
-                    email_address: email,
-                    phone_number: phone,
-                    service_type: service,
-                    user_message_content: message,
-                    // Time fields – includes user_time for your template
-                    time: now,
-                    user_time: now,          // <-- added to match {{user_time}}
-                    submission_time: now,
-                    timestamp: now
-                };
+                    var name = $('#user_name').val().trim();
+                    var email = $('#user_email').val().trim();
+                    var phone = $('#user_phone').val().trim() || 'Not provided';
+                    var service = $('#user_service').val() || 'General Inquiry';
+                    var message = $('#message').val().trim();
+                    var $alert = $('#statusMessage');
 
-                // Auto-reply params (also with all variants)
-                var autoParams = {
-                    to_email: email,
-                    to_name: name,
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    service: service,
-                    message: message,
-                    user_name: name,
-                    user_email: email,
-                    user_phone: phone,
-                    user_service: service,
-                    user_message: message,
-                    from_name: 'Tongfang BMS',
-                    reply_to: 'info@tongfangbms.com',
-                    time: now,
-                    user_time: now,
-                    submission_time: now
-                };
-
-                // --- DEBUG: see exactly what we send ---
-                console.log('📤 Admin params:', adminParams);
-                console.log('📤 Auto-reply params:', autoParams);
-
-                // Send admin email
-                emailjs.send(
-                    EMAILJS_CONFIG.serviceID,
-                    EMAILJS_CONFIG.adminTemplateID,
-                    adminParams
-                ).then(function(adminResponse) {
-                    console.log('✅ Admin email sent! Status:', adminResponse.status);
-
-                    // Send auto-reply
-                    return emailjs.send(
-                        EMAILJS_CONFIG.serviceID,
-                        EMAILJS_CONFIG.autoReplyTemplateID,
-                        autoParams
-                    ).then(function(autoResponse) {
-                        console.log('✅ Auto-reply sent! Status:', autoResponse.status);
-                        return { admin: adminResponse, auto: autoResponse };
-                    }).catch(function(autoError) {
-                        console.warn('⚠️ Auto-reply failed but admin email was sent:', autoError);
-                        return { admin: adminResponse, auto: null, autoError: autoError };
-                    });
-                }).then(function(result) {
-                    var successMsg = 'Thank you ' + name +
-                        '! Your message has been sent. We will contact you within 24 hours.';
-                    if (result.auto) {
-                        successMsg += ' A confirmation email has been sent to <strong>' + email + '</strong>.';
-                    } else if (result.autoError) {
-                        successMsg += ' (Note: We could not send a confirmation email, but we received your message.)';
+                    // Validation
+                    if (name === '' || email === '' || message === '') {
+                        $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
+                            .html('Please fill in all required fields.').fadeIn();
+                        return;
                     }
-                    $alert.removeClass('alert-info alert-danger').addClass('alert alert-success')
-                        .html(successMsg);
-                    $('#contactForm')[0].reset();
-                    setTimeout(function() { $alert.fadeOut(); }, 7000);
-                }).catch(function(error) {
-                    console.error('❌ EmailJS error:', error);
-                    $alert.removeClass('alert-info').addClass('alert alert-danger')
-                        .html('Oops! Something went wrong. Please try again later or call us directly at +251 9 11249722.');
-                });
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                        $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
+                            .html('Please enter a valid email address.').fadeIn();
+                        return;
+                    }
 
-                return false;
+                    $alert.removeClass('alert-danger alert-success').addClass('alert alert-info')
+                        .html('<i class="fas fa-spinner fa-spin me-2"></i>Sending your message...').fadeIn();
+
+                    // Timestamp (Addis Ababa time)
+                    var now = new Date().toLocaleString('en-US', { timeZone: 'Africa/Addis_Ababa' });
+
+                    // Admin parameters
+                    var adminParams = {
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        service: service,
+                        message: message,
+                        from_name: name,
+                        from_email: email,
+                        user_name: name,
+                        user_email: email,
+                        user_phone: phone,
+                        user_service: service,
+                        user_message: message,
+                        full_name: name,
+                        email_address: email,
+                        phone_number: phone,
+                        service_type: service,
+                        user_message_content: message,
+                        time: now,
+                        user_time: now,
+                        submission_time: now,
+                        timestamp: now
+                    };
+
+                    // Auto-reply parameters
+                    var autoParams = {
+                        to_email: email,
+                        to_name: name,
+                        name: name,
+                        email: email,
+                        phone: phone,
+                        service: service,
+                        message: message,
+                        user_name: name,
+                        user_email: email,
+                        user_phone: phone,
+                        user_service: service,
+                        user_message: message,
+                        from_name: 'Tongfang BMS',
+                        reply_to: 'info@tongfangbms.com',
+                        time: now,
+                        user_time: now,
+                        submission_time: now
+                    };
+
+                    // Send admin email
+                    emailjs.send(
+                        EMAILJS_CONFIG.serviceID,
+                        EMAILJS_CONFIG.adminTemplateID,
+                        adminParams
+                    ).then(function(adminResponse) {
+                        console.log('✅ Admin email sent! Status:', adminResponse.status);
+
+                        // Send auto-reply
+                        return emailjs.send(
+                            EMAILJS_CONFIG.serviceID,
+                            EMAILJS_CONFIG.autoReplyTemplateID,
+                            autoParams
+                        ).then(function(autoResponse) {
+                            console.log('✅ Auto-reply sent! Status:', autoResponse.status);
+                            return { admin: adminResponse, auto: autoResponse };
+                        }).catch(function(autoError) {
+                            console.warn('⚠️ Auto-reply failed but admin email was sent:', autoError);
+                            return { admin: adminResponse, auto: null, autoError: autoError };
+                        });
+                    }).then(function(result) {
+                        var successMsg = 'Thank you ' + name +
+                            '! Your message has been sent. We will contact you within 24 hours.';
+                        if (result.auto) {
+                            successMsg += ' A confirmation email has been sent to <strong>' + email + '</strong>.';
+                        } else if (result.autoError) {
+                            successMsg += ' (Note: We could not send a confirmation email, but we received your message.)';
+                        }
+                        $alert.removeClass('alert-info alert-danger').addClass('alert alert-success')
+                            .html(successMsg);
+                        $('#contactForm')[0].reset();
+                        setTimeout(function() { $alert.fadeOut(); }, 7000);
+                    }).catch(function(error) {
+                        console.error('❌ EmailJS error:', error);
+                        $alert.removeClass('alert-info').addClass('alert alert-danger')
+                            .html('Oops! Something went wrong. Please try again later or call us directly at +251 9 11249722.');
+                    });
+
+                    return false;
+                });
             });
         });
     </script>

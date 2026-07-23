@@ -1439,13 +1439,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
     <!-- ====== LOAD CONFIG ====== -->
-   <script src="/config.js"></script>
+    <script src="config.js"></script>
 
-    <!-- ====== CONTACT FORM HANDLER ====== -->
+    <!-- ====== CONTACT FORM HANDLER (FINAL – ALL FIELDS) ====== -->
     <script>
         $(document).ready(function() {
 
-            // Check if config loaded
             if (typeof EMAILJS_CONFIG === 'undefined') {
                 console.error('❌ config.js not loaded or EMAILJS_CONFIG missing.');
                 $('#statusMessage').addClass('alert alert-danger')
@@ -1453,51 +1452,74 @@
                 return;
             }
 
-            // Initialize EmailJS
             emailjs.init(EMAILJS_CONFIG.publicKey);
 
-            // --- Form submission ---
             $('#contactForm').on('submit', function(e) {
                 e.preventDefault();
 
-                // Gather form data
                 var name = $('#user_name').val().trim();
                 var email = $('#user_email').val().trim();
                 var phone = $('#user_phone').val().trim() || 'Not provided';
                 var service = $('#user_service').val() || 'General Inquiry';
                 var message = $('#message').val().trim();
-
                 var $alert = $('#statusMessage');
 
-                // --- Validation ---
+                // Validation
                 if (name === '' || email === '' || message === '') {
                     $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
                         .html('Please fill in all required fields.').fadeIn();
                     return;
                 }
-                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                     $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
                         .html('Please enter a valid email address.').fadeIn();
                     return;
                 }
 
-                // --- Sending status ---
                 $alert.removeClass('alert-danger alert-success').addClass('alert alert-info')
                     .html('<i class="fas fa-spinner fa-spin me-2"></i>Sending your message...').fadeIn();
 
-                // --- Parameters for both emails ---
+                // --- Timestamp (Addis Ababa time) ---
+                var now = new Date().toLocaleString('en-US', { timeZone: 'Africa/Addis_Ababa' });
+
+                // --- Send EVERY possible parameter name ---
                 var adminParams = {
+                    // Basic (already work)
                     name: name,
                     email: email,
                     phone: phone,
                     service: service,
-                    message: message
+                    message: message,
+                    // Common variants
+                    from_name: name,
+                    from_email: email,
+                    user_name: name,
+                    user_email: email,
+                    user_phone: phone,
+                    user_service: service,
+                    user_message: message,
+                    // Extra safety
+                    full_name: name,
+                    email_address: email,
+                    phone_number: phone,
+                    service_type: service,
+                    user_message_content: message,
+                    // Time fields – includes user_time for your template
+                    time: now,
+                    user_time: now,          // <-- added to match {{user_time}}
+                    submission_time: now,
+                    timestamp: now
                 };
 
+                // Auto-reply params (also with all variants)
                 var autoParams = {
                     to_email: email,
                     to_name: name,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    service: service,
+                    message: message,
                     user_name: name,
                     user_email: email,
                     user_phone: phone,
@@ -1505,23 +1527,24 @@
                     user_message: message,
                     from_name: 'Tongfang BMS',
                     reply_to: 'info@tongfangbms.com',
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    service: service,
-                    message: message
+                    time: now,
+                    user_time: now,
+                    submission_time: now
                 };
 
-                // --- 1. Send admin notification ---
+                // --- DEBUG: see exactly what we send ---
+                console.log('📤 Admin params:', adminParams);
+                console.log('📤 Auto-reply params:', autoParams);
+
+                // Send admin email
                 emailjs.send(
                     EMAILJS_CONFIG.serviceID,
                     EMAILJS_CONFIG.adminTemplateID,
                     adminParams
                 ).then(function(adminResponse) {
-
                     console.log('✅ Admin email sent! Status:', adminResponse.status);
 
-                    // --- 2. Send auto-reply to customer ---
+                    // Send auto-reply
                     return emailjs.send(
                         EMAILJS_CONFIG.serviceID,
                         EMAILJS_CONFIG.autoReplyTemplateID,
@@ -1533,10 +1556,7 @@
                         console.warn('⚠️ Auto-reply failed but admin email was sent:', autoError);
                         return { admin: adminResponse, auto: null, autoError: autoError };
                     });
-
                 }).then(function(result) {
-
-                    // --- Success message ---
                     var successMsg = 'Thank you ' + name +
                         '! Your message has been sent. We will contact you within 24 hours.';
                     if (result.auto) {
@@ -1547,22 +1567,15 @@
                     $alert.removeClass('alert-info alert-danger').addClass('alert alert-success')
                         .html(successMsg);
                     $('#contactForm')[0].reset();
-                    setTimeout(function() {
-                        $alert.fadeOut();
-                    }, 7000);
-
+                    setTimeout(function() { $alert.fadeOut(); }, 7000);
                 }).catch(function(error) {
-
-                    // --- Complete failure ---
                     console.error('❌ EmailJS error:', error);
                     $alert.removeClass('alert-info').addClass('alert alert-danger')
                         .html('Oops! Something went wrong. Please try again later or call us directly at +251 9 11249722.');
-
                 });
 
                 return false;
             });
-
         });
     </script>
 

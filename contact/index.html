@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+        /* ----- ALL YOUR EXISTING STYLES (unchanged) ----- */
         :root {
             --tf-blue: #004ca3;       
             --tf-yellow: #ffcc00;     
@@ -37,13 +38,11 @@
             overflow-x: hidden; 
             padding-top: var(--header-height);
         }
-        
         h1, h2, h3, h4, h5 { 
             font-family: 'Montserrat', sans-serif; 
             font-weight: 700; 
             color: var(--tf-blue); 
         }
-        
         a { text-decoration: none; transition: var(--transition); }
 
         /* SEARCH OVERLAY STYLES */
@@ -60,48 +59,33 @@
             transition: opacity 0.3s ease;
             overflow-y: auto;
         }
-
-        .search-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
+        .search-overlay.active { display: block; opacity: 1; }
         .search-container {
             max-width: 800px;
             margin: 100px auto 50px;
             padding: 0 20px;
         }
-
         .search-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
         }
-
-        .search-header h3 {
-            color: #fff;
-            font-size: 24px;
-            margin: 0;
-        }
-
+        .search-header h3 { color: #fff; font-size: 24px; margin: 0; }
         .close-search {
             color: #fff;
             font-size: 40px;
             cursor: pointer;
             transition: 0.3s;
         }
-
         .close-search:hover {
             color: var(--tf-yellow);
             transform: rotate(90deg);
         }
-
         .search-input-wrapper {
             position: relative;
             margin-bottom: 30px;
         }
-
         .search-input {
             width: 100%;
             padding: 20px 60px 20px 30px;
@@ -112,17 +96,12 @@
             color: #fff;
             transition: 0.3s;
         }
-
         .search-input:focus {
             outline: none;
             border-color: var(--tf-yellow);
             background: #222;
         }
-
-        .search-input::placeholder {
-            color: #666;
-        }
-
+        .search-input::placeholder { color: #666; }
         .search-icon {
             position: absolute;
             right: 25px;
@@ -131,7 +110,6 @@
             color: var(--tf-yellow);
             font-size: 20px;
         }
-
         .search-shortcut {
             position: absolute;
             right: 70px;
@@ -143,7 +121,6 @@
             padding: 5px 10px;
             border-radius: 5px;
         }
-
         .search-results {
             background: #fff;
             border-radius: 20px;
@@ -151,7 +128,6 @@
             max-height: 60vh;
             overflow-y: auto;
         }
-
         .result-item {
             padding: 15px 25px;
             border-bottom: 1px solid #eee;
@@ -160,24 +136,16 @@
             display: block;
             color: var(--tf-text);
         }
-
         .result-item:hover {
             background: #f5f5f5;
             padding-left: 35px;
         }
-
         .result-item h4 {
             margin: 0 0 5px 0;
             font-size: 16px;
             color: var(--tf-blue);
         }
-
-        .result-item p {
-            margin: 0;
-            font-size: 13px;
-            color: #666;
-        }
-
+        .result-item p { margin: 0; font-size: 13px; color: #666; }
         .result-item .category {
             font-size: 11px;
             text-transform: uppercase;
@@ -185,27 +153,20 @@
             font-weight: 700;
             margin-bottom: 5px;
         }
-
-        .no-results {
-            padding: 40px;
-            text-align: center;
-            color: #666;
-        }
-
+        .no-results { padding: 40px; text-align: center; color: #666; }
         .search-highlight {
             background-color: var(--tf-yellow);
             color: #000;
             padding: 2px 0;
             font-weight: 700;
         }
-
         .search-stats {
             color: #999;
             font-size: 14px;
             margin-bottom: 10px;
         }
 
-        /* ===== HEADER - SOLID WHITE WITH LOGO ===== */
+        /* ===== HEADER ===== */
         .header-fix { 
             width: 100%; 
             position: fixed; 
@@ -217,7 +178,6 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             transition: var(--transition); 
         }
-        
         .header-container { 
             max-width: 1440px; 
             margin: 0 auto; 
@@ -227,14 +187,12 @@
             padding: 0 20px; 
             height: var(--header-height); 
         }
-        
         .logo-img {
             height: 60px;
             width: auto;
             object-fit: contain;
             display: block;
         }
-        
         .nav-menu { 
             display: flex; 
             gap: 30px; 
@@ -243,7 +201,6 @@
             margin-right: 40px; 
             align-items: center; 
         }
-        
         .nav-link-custom { 
             color: #111827;
             font-weight: 600; 
@@ -255,24 +212,18 @@
             position: relative; 
             letter-spacing: 0.5px;
         }
-        
-        .nav-link-custom:hover { 
-            color: var(--tf-blue); 
-        }
-
+        .nav-link-custom:hover { color: var(--tf-blue); }
         .dropdown-parent-link {
             display: flex;
             align-items: center;
             gap: 5px;
         }
-
         .nav-item-dropdown { 
             position: static; 
             height: 100%; 
             display: flex; 
             align-items: center; 
         }
-
         .dropdown-menu-custom::-webkit-scrollbar {
             width: 6px;
         }
@@ -284,7 +235,6 @@
             background: var(--tf-blue);
             border-radius: 10px;
         }
-
         .dropdown-menu-custom {
             position: absolute;
             top: var(--header-height);
@@ -307,7 +257,6 @@
             display: flex;
             justify-content: center;
         }
-
         .dropdown-inner {
             max-width: 1440px;
             width: 100%;
@@ -318,12 +267,10 @@
             gap: 20px;
             text-align: left;
         }
-
         .nav-item-dropdown:first-child .dropdown-inner {
             grid-template-columns: repeat(3, 1fr);
             max-width: 1200px;
         }
-
         .dropdown-menu-custom::before { 
             content: ""; 
             position: absolute; 
@@ -333,14 +280,12 @@
             height: 20px; 
             background: transparent; 
         }
-
         .nav-item-dropdown:hover .dropdown-menu-custom { 
             opacity: 1; 
             visibility: visible; 
             transform: translateY(0);
             pointer-events: auto;
         }
-
         .dropdown-link {
             color: #4b5563; 
             font-size: 13px; 
@@ -350,13 +295,11 @@
             transition: var(--transition);
             border-bottom: 1px solid transparent;
         }
-
         .dropdown-link:hover { 
             color: var(--tf-blue); 
             padding-left: 8px;
             border-bottom-color: var(--tf-yellow);
         }
-
         .dropdown-category {
             color: var(--tf-blue); 
             font-size: 13px; 
@@ -367,7 +310,6 @@
             border-bottom: 1px solid #e5e7eb; 
             padding-bottom: 3px;
         }
-
         .more-link {
             color: var(--tf-blue);
             font-weight: 700;
@@ -375,28 +317,19 @@
             margin-top: 10px;
             font-size: 12px;
         }
-
-        .more-link:hover {
-            padding-left: 5px;
-        }
-
+        .more-link:hover { padding-left: 5px; }
         .header-icons { 
             display: flex !important; 
             align-items: center; 
             gap: 5px; 
         }
-        
         .header-icons i {
             color: #111827;
             font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
         }
-        
-        .header-icons i:hover {
-            color: var(--tf-blue);
-        }
-
+        .header-icons i:hover { color: var(--tf-blue); }
         .mobile-toggle { 
             display: none; 
             font-size: 24px; 
@@ -414,12 +347,9 @@
             }
         }
 
-               /* ===== MOBILE RESPONSIVENESS - FIXED HEADER LAYOUT ===== */
+        /* MOBILE */
         @media (max-width: 991px) {
-            .header-fix { 
-                height: auto; 
-            }
-            
+            .header-fix { height: auto; }
             .header-container {
                 display: flex;
                 align-items: center;
@@ -428,16 +358,8 @@
                 flex-wrap: nowrap;
                 width: 100%;
             }
-            
-            .header-logo {
-                flex: 0 0 auto;
-            }
-            
-            .logo-img {
-                height: 50px;
-            }
-            
-            /* Navigation menu - full screen mobile menu */
+            .header-logo { flex: 0 0 auto; }
+            .logo-img { height: 50px; }
             .nav-menu {
                 display: none;
                 position: fixed;
@@ -455,19 +377,13 @@
                 max-height: calc(100vh - 70px);
                 z-index: 1000;
             }
-            
-            .nav-menu.active { 
-                display: flex; 
-            }
-            
-            /* Right side group - hamburger + icons */
+            .nav-menu.active { display: flex; }
             .header-right-group {
                 display: flex;
                 align-items: center;
                 gap: 12px;
                 margin-left: auto;
             }
-            
             .mobile-toggle { 
                 display: flex;
                 align-items: center;
@@ -481,13 +397,11 @@
                 height: 40px;
                 cursor: pointer;
             }
-            
             .header-icons { 
                 display: flex !important;
                 align-items: center;
                 gap: 5px;
             }
-            
             .header-icons i {
                 font-size: 18px !important;
                 color: #111827;
@@ -498,8 +412,6 @@
                 height: 36px;
                 cursor: pointer;
             }
-            
-            /* Mobile nav links */
             .nav-link-custom { 
                 color: #333; 
                 width: 100%; 
@@ -508,15 +420,12 @@
                 border-bottom: 1px solid #eee;
                 font-size: 14px;
             }
-            
-            /* Mobile Dropdowns */
             .nav-item-dropdown { 
                 width: 100%; 
                 flex-direction: column; 
                 align-items: flex-start;
                 height: auto;
             }
-            
             .dropdown-menu-custom {
                 position: static;
                 width: 100%;
@@ -531,40 +440,16 @@
                 grid-template-columns: 1fr;
                 max-height: none;
             }
-            
-            .dropdown-menu-custom::before { 
-                display: none; 
-            }
-            
-            .nav-item-dropdown.active .dropdown-menu-custom { 
-                display: block; 
-            }
-            
-            .dropdown-category { 
-                margin-top: 15px;
-                font-size: 12px;
-            }
-            
-            .dropdown-link {
-                padding: 8px 0;
-                font-size: 13px;
-            }
-            
-            /* Rotating arrow for active dropdowns */
+            .dropdown-menu-custom::before { display: none; }
+            .nav-item-dropdown.active .dropdown-menu-custom { display: block; }
+            .dropdown-category { margin-top: 15px; font-size: 12px; }
+            .dropdown-link { padding: 8px 0; font-size: 13px; }
             .nav-item-dropdown.active > .dropdown-parent-link i {
                 transform: rotate(180deg);
                 transition: transform 0.3s ease;
             }
-            
-            .nav-item-dropdown.active > .dropdown-parent-link {
-                color: var(--tf-blue) !important;
-            }
-            
-            /* Language dropdown mobile fix */
-            .language-selector {
-                position: relative;
-            }
-            
+            .nav-item-dropdown.active > .dropdown-parent-link { color: var(--tf-blue) !important; }
+            .language-selector { position: relative; }
             .language-dropdown {
                 position: absolute;
                 top: 40px;
@@ -577,49 +462,16 @@
                 z-index: 1001;
             }
         }
-
         @media (max-width: 576px) {
-            .logo-img {
-                height: 40px;
-            }
-            
-            .header-right-group {
-                gap: 8px;
-            }
-            
-            .mobile-toggle {
-                font-size: 20px;
-                width: 36px;
-                height: 36px;
-            }
-            
-            .header-icons {
-                gap: 8px;
-            }
-            
-            .header-icons i {
-                font-size: 16px !important;
-                width: 32px;
-                height: 32px;
-            }
-            
-            .search-header h3 {
-                font-size: 18px;
-            }
-            
-            .close-search {
-                font-size: 30px;
-            }
-            
-            .language-dropdown {
-                min-width: 130px;
-                right: -10px;
-            }
-            
-            .language-option {
-                padding: 10px 15px;
-                font-size: 12px;
-            }
+            .logo-img { height: 40px; }
+            .header-right-group { gap: 8px; }
+            .mobile-toggle { font-size: 20px; width: 36px; height: 36px; }
+            .header-icons { gap: 8px; }
+            .header-icons i { font-size: 16px !important; width: 32px; height: 32px; }
+            .search-header h3 { font-size: 18px; }
+            .close-search { font-size: 30px; }
+            .language-dropdown { min-width: 130px; right: -10px; }
+            .language-option { padding: 10px 15px; font-size: 12px; }
         }
 
         /* --- CONTACT PAGE SPECIFIC STYLES --- */
@@ -637,7 +489,6 @@
             overflow: hidden;
             padding-top: 0px;
         }
-
         .inner-hero::before {
             content: "";
             position: absolute;
@@ -648,7 +499,6 @@
             background: radial-gradient(circle at 30% 50%, rgba(255, 204, 0, 0.1) 0%, transparent 50%),
                        radial-gradient(circle at 70% 20%, rgba(0, 76, 163, 0.2) 0%, transparent 50%);
         }
-
         .hero-title {
             font-size: 3.5rem;
             font-weight: 900;
@@ -656,7 +506,6 @@
             margin-bottom: 1rem;
             position: relative;
         }
-
         .hero-subtitle {
             font-size: 1.5rem;
             font-weight: 300;
@@ -671,7 +520,6 @@
             padding: 80px 0;
             overflow: hidden;
         }
-
         .worldwide-presence::before {
             content: "";
             position: absolute;
@@ -681,7 +529,6 @@
             height: 5px;
             background: linear-gradient(90deg, var(--tf-blue) 0%, var(--tf-yellow) 100%);
         }
-
         .office-card {
             background: #fff;
             border-radius: var(--card-radius);
@@ -693,7 +540,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .office-card::before {
             content: "";
             position: absolute;
@@ -703,16 +549,13 @@
             height: 4px;
             background: var(--tf-blue);
         }
-
         .office-card.hq-card::before {
             background: linear-gradient(90deg, var(--tf-blue) 0%, var(--tf-yellow) 100%);
         }
-
         .office-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lift);
         }
-
         .office-badge {
             position: absolute;
             top: 5px;
@@ -725,12 +568,10 @@
             font-weight: 600;
             letter-spacing: 1px;
         }
-
         .office-badge.yellow {
             background: var(--tf-yellow);
             color: var(--tf-blue);
         }
-
         .country-flag {
             width: 40px;
             height: 25px;
@@ -742,25 +583,21 @@
         .contact-cards-section {
             padding: 60px 0;
         }
-        
         .contact-cards-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         .contact-cards-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 30px;
         }
-        
         .contact-card-wrapper {
             flex: 1 1 300px;
             max-width: 350px;
         }
-        
         .contact-card {
             background: #fff; 
             padding: 45px 30px; 
@@ -773,12 +610,10 @@
             display: flex;
             flex-direction: column;
         }
-        
         .contact-card:hover { 
             transform: translateY(-10px); 
             box-shadow: var(--shadow-lift); 
         }
-
         .icon-circle {
             width: 90px; 
             height: 90px; 
@@ -792,18 +627,15 @@
             font-size: 32px;
             box-shadow: 0 8px 20px rgba(0, 76, 163, 0.2);
         }
-
         .contact-card h4 {
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
-        
         .contact-card p.text-muted {
             font-size: 1rem;
             margin-bottom: 20px;
             flex-grow: 1;
         }
-        
         .contact-card .contact-value {
             font-size: 1.2rem;
             font-weight: 700;
@@ -811,17 +643,14 @@
             margin: 20px 0 10px;
             word-break: break-word;
         }
-        
         .contact-card .contact-value a {
             color: var(--tf-blue);
             text-decoration: none;
             font-size: 1rem;
         }
-        
         .contact-card .contact-value a:hover {
             color: var(--tf-yellow);
         }
-        
         .contact-card .small {
             margin-top: auto;
             color: #6c757d;
@@ -832,7 +661,6 @@
             background: linear-gradient(135deg, var(--tf-white) 0%, #f0f4f8 100%);
             color: var(--tf-blue);
         }
-        
         .contact-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -841,36 +669,30 @@
             gap: 60px;
             align-items: center;
         }
-        
         .contact-details {
             text-align: left;
         }
-        
         .section-title {
             font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 20px;
             color: var(--tf-blue);
         }
-        
         .section-description {
             font-size: 1.2rem;
             margin-bottom: 40px;
             color: #555;
             line-height: 1.7;
         }
-        
         .info-list {
             display: flex;
             flex-direction: column;
             gap: 30px;
         }
-        
         .info-item {
             display: flex;
             align-items: center;
         }
-        
         .info-icon-wrapper {
             width: 60px;
             height: 60px;
@@ -881,19 +703,16 @@
             align-items: center;
             margin-right: 20px;
         }
-        
         .info-icon-wrapper i {
             color: var(--tf-yellow);
             font-size: 1.5rem;
         }
-        
         .info-text h4 {
             margin: 0 0 8px 0;
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--tf-blue);
         }
-        
         .info-text p, .info-text a {
             margin: 0;
             font-size: 1.1rem;
@@ -901,37 +720,43 @@
             text-decoration: none;
             transition: color 0.3s;
         }
-        
         .info-text a:hover {
             color: var(--tf-yellow);
         }
-        
+
         .contact-form-wrapper {
             background: var(--tf-white);
             padding: 50px;
             border-radius: 16px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
-        
         .contact-form-wrapper h4 {
             font-size: 1.8rem;
             margin-bottom: 30px;
             text-align: center;
         }
-        
         form {
             display: flex;
             flex-direction: column;
             gap: 25px;
         }
-        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
         .form-group {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        
-        input, textarea {
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 2px;
+        }
+        input, textarea, select {
             width: 100%;
             padding: 18px;
             border: 1px solid #dddddd;
@@ -940,23 +765,20 @@
             border-radius: 10px;
             font-size: 1.1rem;
             transition: border-color 0.3s, box-shadow 0.3s;
+            font-family: inherit;
         }
-        
         input::placeholder, textarea::placeholder {
             color: #888;
         }
-        
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--tf-yellow);
             box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.2);
         }
-        
         textarea {
             height: 150px;
             resize: vertical;
         }
-        
         .cta-button {
             background: var(--tf-blue);
             color: white;
@@ -971,14 +793,12 @@
             letter-spacing: 1px;
             width: 100%;
         }
-        
         .cta-button:hover {
             background: var(--tf-yellow);
             color: var(--tf-blue);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
         .status-message {
             margin-top: 20px;
             padding: 15px;
@@ -986,18 +806,25 @@
             text-align: center;
             font-weight: 500;
             font-size: 1rem;
+            display: none;
         }
-        
         .status-message.success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
+            display: block;
         }
-        
         .status-message.error {
             background-color: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .status-message.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
         }
 
         @media (max-width: 992px) {
@@ -1020,7 +847,6 @@
                 max-width: 300px;
             }
         }
-        
         @media (max-width: 768px) {
             .contact-form-wrapper {
                 padding: 30px;
@@ -1047,8 +873,10 @@
                 flex: 1 1 100%;
                 max-width: 100%;
             }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
-
         @media (max-width: 576px) {
             .hero-title {
                 font-size: 2rem;
@@ -1061,7 +889,7 @@
             }
         }
 
-        /* FOOTER - UPDATED TO MATCH MAIN TEMPLATE */
+        /* FOOTER */
         .footer {
             background: #0b111a; 
             color: #aaa; 
@@ -1172,13 +1000,11 @@
             text-align: center; 
             border-top: 1px solid #1a222e;
         }
-
         @media (max-width: 992px) {
             .footer-container { 
                 grid-template-columns: 1fr 1fr; 
             }
         }
-        
         @media (max-width: 576px) {
             .footer-container { 
                 grid-template-columns: 1fr; 
@@ -1218,20 +1044,17 @@
         </div>
     </div>
 
-       <!-- HEADER - WITH NAVIGATION BETWEEN LOGO AND ICONS -->
+    <!-- HEADER -->
     <header>
         <div id="navBox" class="header-fix">
             <div class="header-container">
-                <!-- LOGO - LEFT -->
                 <div class="header-logo">
                     <a href="/index.html" class="logo-wrapper">
                         <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/logo_brand.png" alt="Tongfang BMS Logo" class="logo-img">
                     </a>
                 </div>
                 
-                <!-- NAVIGATION MENU - CENTER -->
                 <nav id="mainNav" class="nav-menu">
-                    <!-- SOLUTIONS DROPDOWN -->
                     <div class="nav-item-dropdown">
                         <a href="/solutions/index.html" class="nav-link-custom dropdown-parent-link">
                             Solutions <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -1267,7 +1090,6 @@
                         </div>
                     </div>
                     
-                    <!-- PRODUCTS DROPDOWN -->
                     <div class="nav-item-dropdown">
                         <a href="/products/index.html" class="nav-link-custom dropdown-parent-link">
                             Products <i class="fa fa-angle-down ms-1" style="font-size:11px;"></i>
@@ -1347,7 +1169,6 @@
                     <a href="/contact/index.html" class="nav-link-custom">Contact</a>
                 </nav>
 
-                               <!-- RIGHT GROUP - Hamburger + Icons -->
                 <div class="header-right-group">
                     <button class="mobile-toggle" onclick="toggleMobileMenu()">
                         <i class="fa fa-bars"></i>
@@ -1494,16 +1315,45 @@
             <div class="contact-form-wrapper">
                 <form id="contactForm">
                     <h4>Send Us a Message</h4>
-                    <div class="form-group">
-                        <input type="text" id="user_name" placeholder="Your Name" required />
-                        <input type="email" id="user_email" placeholder="Your Email" required />
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="user_name">Your Name *</label>
+                            <input type="text" id="user_name" placeholder="John Doe" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="user_email">Your Email *</label>
+                            <input type="email" id="user_email" placeholder="john@example.com" required />
+                        </div>
                     </div>
-                    <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="user_phone">Phone Number</label>
+                            <input type="tel" id="user_phone" placeholder="+251 9 12345678" />
+                        </div>
+                        <div class="form-group">
+                            <label for="user_service">Service Interested In</label>
+                            <select id="user_service">
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Access Control">Access Control</option>
+                                <option value="Fire Alarm">Fire Alarm</option>
+                                <option value="Building Management">Building Management</option>
+                                <option value="Energy Management">Energy Management</option>
+                                <option value="Lighting Control">Lighting Control</option>
+                                <option value="HVAC">HVAC</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+                    </div>
                     <button type="submit" class="cta-button" id="submitBtn">
-                        Send Inquiry
+                        <i class="fas fa-paper-plane me-2"></i> Send Inquiry
                     </button>
                 </form>
-                <div id="statusMessage" class="status-message" style="display: none;"></div>
+                <div id="statusMessage" class="status-message"></div>
             </div>
         </div>
     </section>
@@ -1535,60 +1385,188 @@
                 <p>Sunday: Closed</p>
                 <p class="mt-3"><strong>Emergency Support:</strong> 24/7</p>
             </div>
-          <div>
-    <h5>Connect With Us</h5>
-    <p>Get smart building & automation updates.</p>
-
-    <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
-        <a href="weixin://dl/chat?wxid_monboaso8fwp22"
-           title="Chat on WeChat"
-           style="color:#9ca3af;font-size:30px;transition:0.3s;"
-           onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
-           onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
-           <i class="fab fa-weixin"></i>
-        </a>
-
-        <a href="https://t.me/admassb"
-           target="_blank"
-           title="Chat on Telegram"
-           style="color:#9ca3af;font-size:30px;transition:0.3s;"
-           onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
-           onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
-           <i class="fab fa-telegram"></i>
-        </a>
-
-        <a href="https://wa.me/251911249722?text=Hello%20Tongfang%20BMS%20Team"
-           target="_blank"
-           title="Chat on WhatsApp"
-           style="color:#9ca3af;font-size:30px;transition:0.3s;"
-           onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
-           onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
-           <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
-
-    <!-- WeChat ID -->
-    <a href="weixin://dl/chat?wxid_monboaso8fwp22"
-       title="Chat on WeChat"
-       style="font-size:12px;color:#6b7280;text-align:center;display:block;margin-top:10px;text-decoration:none;"
-       onmouseover="this.style.color='#ffcc00'"
-       onmouseout="this.style.color='#6b7280'">
-       WeChat ID: wxid_monboaso8fwp22
-    </a>
-
-    <!-- QR Code -->
-    <div style="text-align:center; margin-top:15px;">
-        <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg"
-             alt="WeChat QR Code"
-             style="width:110px; height:110px; border-radius:10px; border:1px solid #ddd; padding:5px; background:#fff;">
-        <p style="font-size:11px; color:#6b7280; margin-top:8px;">Scan QR to connect</p>
-    </div>
-</div>
+            <div>
+                <h5>Connect With Us</h5>
+                <p>Get smart building & automation updates.</p>
+                <div style="display:flex; gap:20px; justify-content:center; margin-top:15px; flex-wrap:wrap;">
+                    <a href="weixin://dl/chat?wxid_monboaso8fwp22"
+                       title="Chat on WeChat"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-weixin"></i>
+                    </a>
+                    <a href="https://t.me/admassb"
+                       target="_blank"
+                       title="Chat on Telegram"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://wa.me/251911249722?text=Hello%20Tongfang%20BMS%20Team"
+                       target="_blank"
+                       title="Chat on WhatsApp"
+                       style="color:#9ca3af;font-size:30px;transition:0.3s;"
+                       onmouseover="this.style.color='#ffcc00';this.style.transform='scale(1.2)'"
+                       onmouseout="this.style.color='#9ca3af';this.style.transform='scale(1)'">
+                       <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <a href="weixin://dl/chat?wxid_monboaso8fwp22"
+                   title="Chat on WeChat"
+                   style="font-size:12px;color:#6b7280;text-align:center;display:block;margin-top:10px;text-decoration:none;"
+                   onmouseover="this.style.color='#ffcc00'"
+                   onmouseout="this.style.color='#6b7280'">
+                   WeChat ID: wxid_monboaso8fwp22
+                </a>
+                <div style="text-align:center; margin-top:15px;">
+                    <img src="https://pub-a5f450143ad2463386790a33e174fc15.r2.dev/img/home/QR-code.jpg"
+                         alt="WeChat QR Code"
+                         style="width:110px; height:110px; border-radius:10px; border:1px solid #ddd; padding:5px; background:#fff;">
+                    <p style="font-size:11px; color:#6b7280; margin-top:8px;">Scan QR to connect</p>
+                </div>
+            </div>
         </div>
         <div class="copyright">© 2026 Tongfang BMS System Integration PLC. All Rights Reserved. | Global HQ: Beijing, China | Africa HQ: Addis Ababa, Ethiopia</div>
     </footer>
 
+    <!-- ====== SCRIPTS ====== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (required for the EmailJS handler) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- ====== LOAD CONFIG ====== -->
+    <script src="config.js"></script>
+
+    <!-- ====== CONTACT FORM HANDLER ====== -->
+    <script>
+        $(document).ready(function() {
+
+            // Check if config loaded
+            if (typeof EMAILJS_CONFIG === 'undefined') {
+                console.error('❌ config.js not loaded or EMAILJS_CONFIG missing.');
+                $('#statusMessage').addClass('alert alert-danger')
+                    .html('Configuration error. Please contact support!').fadeIn();
+                return;
+            }
+
+            // Initialize EmailJS
+            emailjs.init(EMAILJS_CONFIG.publicKey);
+
+            // --- Form submission ---
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault();
+
+                // Gather form data
+                var name = $('#user_name').val().trim();
+                var email = $('#user_email').val().trim();
+                var phone = $('#user_phone').val().trim() || 'Not provided';
+                var service = $('#user_service').val() || 'General Inquiry';
+                var message = $('#message').val().trim();
+
+                var $alert = $('#statusMessage');
+
+                // --- Validation ---
+                if (name === '' || email === '' || message === '') {
+                    $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
+                        .html('Please fill in all required fields.').fadeIn();
+                    return;
+                }
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    $alert.removeClass('alert-success alert-info').addClass('alert alert-danger')
+                        .html('Please enter a valid email address.').fadeIn();
+                    return;
+                }
+
+                // --- Sending status ---
+                $alert.removeClass('alert-danger alert-success').addClass('alert alert-info')
+                    .html('<i class="fas fa-spinner fa-spin me-2"></i>Sending your message...').fadeIn();
+
+                // --- Parameters for both emails ---
+                var adminParams = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    service: service,
+                    message: message
+                };
+
+                var autoParams = {
+                    to_email: email,
+                    to_name: name,
+                    user_name: name,
+                    user_email: email,
+                    user_phone: phone,
+                    user_service: service,
+                    user_message: message,
+                    from_name: 'Tongfang BMS',
+                    reply_to: 'info@tongfangbms.com',
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    service: service,
+                    message: message
+                };
+
+                // --- 1. Send admin notification ---
+                emailjs.send(
+                    EMAILJS_CONFIG.serviceID,
+                    EMAILJS_CONFIG.adminTemplateID,
+                    adminParams
+                ).then(function(adminResponse) {
+
+                    console.log('✅ Admin email sent! Status:', adminResponse.status);
+
+                    // --- 2. Send auto-reply to customer ---
+                    return emailjs.send(
+                        EMAILJS_CONFIG.serviceID,
+                        EMAILJS_CONFIG.autoReplyTemplateID,
+                        autoParams
+                    ).then(function(autoResponse) {
+                        console.log('✅ Auto-reply sent! Status:', autoResponse.status);
+                        return { admin: adminResponse, auto: autoResponse };
+                    }).catch(function(autoError) {
+                        console.warn('⚠️ Auto-reply failed but admin email was sent:', autoError);
+                        return { admin: adminResponse, auto: null, autoError: autoError };
+                    });
+
+                }).then(function(result) {
+
+                    // --- Success message ---
+                    var successMsg = 'Thank you ' + name +
+                        '! Your message has been sent. We will contact you within 24 hours.';
+                    if (result.auto) {
+                        successMsg += ' A confirmation email has been sent to <strong>' + email + '</strong>.';
+                    } else if (result.autoError) {
+                        successMsg += ' (Note: We could not send a confirmation email, but we received your message.)';
+                    }
+                    $alert.removeClass('alert-info alert-danger').addClass('alert alert-success')
+                        .html(successMsg);
+                    $('#contactForm')[0].reset();
+                    setTimeout(function() {
+                        $alert.fadeOut();
+                    }, 7000);
+
+                }).catch(function(error) {
+
+                    // --- Complete failure ---
+                    console.error('❌ EmailJS error:', error);
+                    $alert.removeClass('alert-info').addClass('alert alert-danger')
+                        .html('Oops! Something went wrong. Please try again later or call us directly at +251 9 11249722.');
+
+                });
+
+                return false;
+            });
+
+        });
+    </script>
+
+    <!-- ====== SEARCH & MOBILE SCRIPTS (unchanged) ====== -->
     <script>
         // SEARCH FUNCTIONALITY
         const searchIndex = [
@@ -1675,5 +1653,6 @@
             }
         });
     </script>
+
 </body>
 </html>

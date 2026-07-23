@@ -1,13 +1,3 @@
 [build]
+  command = "printf 'const EMAILJS_CONFIG = { publicKey: \"%s\", serviceID: \"%s\", adminTemplateID: \"%s\", autoReplyTemplateID: \"%s\" };' \"$EMAILJS_PUBLIC_KEY\" \"$EMAILJS_SERVICE_ID\" \"$EMAILJS_ADMIN_TEMPLATE\" \"$EMAILJS_AUTO_REPLY_TEMPLATE\" > config.js"
   publish = "."
-
-# Enable variable substitution for all HTML files
-[build.processing]
-  skip_processing = false
-
-[build.processing.html]
-  pretty_urls = true
-
-# This enables Netlify to replace {{ env.VAR }} in your HTML
-[context.production]
-  environment = { NETLIFY_PROCESS = "true" }
